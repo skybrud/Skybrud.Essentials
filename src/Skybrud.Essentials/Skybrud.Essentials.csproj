@@ -51,6 +51,7 @@
     <Compile Include="Json\Converters\Enums\EnumLowercaseConverter.cs" />
     <Compile Include="Json\Extensions\JArrayExtensions.cs" />
     <Compile Include="Json\Extensions\JObjectExtensions.cs" />
+    <Compile Include="Json\JsonHelpers.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
     <Compile Include="Strings\StringHelpers.cs" />
