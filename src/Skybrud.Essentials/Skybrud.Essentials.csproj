@@ -55,6 +55,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
     <Compile Include="Strings\StringHelpers.cs" />
+    <Compile Include="Time\TimeHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
