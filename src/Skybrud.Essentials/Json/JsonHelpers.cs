@@ -1,8 +1,10 @@
 ﻿using System;
 using System.IO;
 using System.Linq;
+using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Common;
 
 namespace Skybrud.Essentials.Json {
     
@@ -36,6 +38,26 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <code>path</code>.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <returns>Returns an instance of <see cref="JObject"/>.</returns>
+        public static JObject LoadJsonObject(string path) {
+            return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8));
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <code>path</code>.
+        /// </summary>
+        /// <typeparam name="T">The type to be returned.</typeparam>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <code>T</code>.</param>
+        /// <returns>Returns an instance of <code>T</code>.</returns>
+        public static T LoadJsonObject<T>(string path, Func<JObject, T> func) {
+            return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8), func);
+        }
+
+        /// <summary>
         /// Parses the specified <code>json</code> string into an instance of <see cref="JArray"/>.
         /// </summary>
         /// <param name="json">The JSON string to be parsed.</param>
@@ -62,6 +84,77 @@ namespace Skybrud.Essentials.Json {
                 from JObject item in ParseJsonArray(json)
                 select func(item)
             ).ToArray();
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON array in the file at the specified <code>path</code>.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <returns>Returns an instance of <see cref="JArray"/>.</returns>
+        public static JArray LoadJsonArray(string path) {
+            return ParseJsonArray(File.ReadAllText(path, Encoding.UTF8));
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <code>path</code>.
+        /// </summary>
+        /// <typeparam name="T">The type to be returned.</typeparam>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <code>T</code>.</param>
+        /// <returns>Returns an instance of <code>T</code>.</returns>
+        public static T[] LoadJsonArray<T>(string path, Func<JObject, T> func) {
+            return ParseJsonArray(File.ReadAllText(path, Encoding.UTF8), func);
+        }
+        
+        /// <summary>
+        /// Saves the specified <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
+        public static void SaveJsonObject(string path, JsonObjectBase obj) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (obj == null) throw new ArgumentNullException("obj");
+            SaveJsonObject(path, obj, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonObject(string path, JsonObjectBase obj, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (obj == null) throw new ArgumentNullException("obj");
+            if (obj.JObject == null) throw new PropertyNotSetException("obj.JObject");
+            SaveJsonObject(path, obj.JObject, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
+        public static void SaveJsonObject(string path, JObject obj) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (obj == null) throw new ArgumentNullException("obj");
+            SaveJsonObject(path, obj, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonObject(string path, JObject obj, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (obj == null) throw new ArgumentNullException("obj");
+            File.WriteAllText(path, obj.ToString(formatting));
         }
     
     }
