@@ -44,6 +44,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Common\PropertyNotSetException.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
     <Compile Include="Enums\EnumParseException.cs" />
     <Compile Include="Json\Converters\Enums\EnumPascalCaseConverter.cs" />
