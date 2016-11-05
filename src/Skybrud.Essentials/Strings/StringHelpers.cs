@@ -9,6 +9,19 @@ namespace Skybrud.Essentials.Strings {
     /// Static class with various string related helper methods.
     /// </summary>
     public static class StringHelpers {
+        
+        /// <summary>
+        /// Converts a comma separated string into an array of integers.
+        /// </summary>
+        /// <param name="str">The comma separated string to be converted.</param>
+        /// <returns>Returns an array of <see cref="Int32"/>.</returns>
+        public static int[] CsvToInt(string str) {
+            return (
+                from piece in (str ?? "").Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
+                select Int32.Parse(piece)
+            ).ToArray();
+        }
 
         /// <summary>
         /// Converts the specified <code>str</code> to camel case (also referred to as lower camel casing).

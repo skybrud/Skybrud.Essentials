@@ -1,8 +1,17 @@
 ﻿using System;
 
 namespace Skybrud.Essentials.Strings.Extensions {
-    
+
     public static class StringExtensions {
+
+        /// <summary>
+        /// Converts a comma separated string into an array of integers.
+        /// </summary>
+        /// <param name="str">The comma separated string to be converted.</param>
+        /// <returns>Returns an array of <see cref="Int32"/>.</returns>
+        public static int[] CsvToInt(this string str) {
+            return StringHelpers.CsvToInt(str);
+        }
 
         /// <summary>
         /// Converts the specified <code>str</code> to camel case (also referred to as lower camel casing).
