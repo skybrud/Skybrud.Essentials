@@ -60,6 +60,13 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
     <Compile Include="Strings\StringHelpers.cs" />
+    <Compile Include="Xml\Extensions\XElementExtensions.GetAttributeValue.cs" />
+    <Compile Include="Xml\Extensions\XElementExtensions.GetElementValue.cs" />
+    <Compile Include="Xml\Extensions\XElementExtensions.GetElements.cs" />
+    <Compile Include="Xml\Extensions\XElementExtensions.GetElement.cs" />
+    <Compile Include="Xml\Extensions\XElementExtensions.cs" />
+    <Compile Include="Xml\XmlObjectBase.cs" />
+    <Compile Include="Xml\XmlHelpers.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />
