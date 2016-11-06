@@ -59,6 +59,7 @@
     <Compile Include="Dates\DateHelpersTests.cs" />
     <Compile Include="Enums\EnumTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
+    <Compile Include="Security\Security.cs" />
     <Compile Include="Strings\StringHelpersTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Xml\GetElementTests.cs" />
