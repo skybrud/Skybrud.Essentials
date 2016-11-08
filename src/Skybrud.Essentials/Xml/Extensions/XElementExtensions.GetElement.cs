@@ -78,6 +78,16 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return child == null ? default(T) : callback(child);
         }
 
+        public static T GetElement<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> func, IXmlNamespaceResolver namespaces) {
+            XElement child = element.XPathSelectElement(expression, namespaces);
+            return child == null ? default(T) : func(child, namespaces);
+        }
+
+        public static T GetElement<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> func, IXmlNamespaceResolver ns, IXmlNamespaceResolver ns2) {
+            XElement child = element.XPathSelectElement(expression, ns);
+            return child == null ? default(T) : func(child, ns2);
+        }
+
     }
 
 }

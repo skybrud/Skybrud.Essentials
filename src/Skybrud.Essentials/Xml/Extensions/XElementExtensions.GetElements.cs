@@ -76,6 +76,20 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return element == null ? new T[0] : element.XPathSelectElements(expression, resolver).Select(callback).ToArray();
         }
 
+        public static T[] GetElements<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> func, IXmlNamespaceResolver resolver) {
+            return (
+                from child in element.XPathSelectElements(expression, resolver)
+                select func(child, resolver)
+            ).ToArray();
+        }
+
+        public static T[] GetElements<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> func, IXmlNamespaceResolver resolver, IXmlNamespaceResolver resolver2) {
+            return (
+                from child in element.XPathSelectElements(expression, resolver)
+                select func(child, resolver2)
+            ).ToArray();
+        }
+
     }
 
 }

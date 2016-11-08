@@ -61,6 +61,7 @@
     <Compile Include="Security\SecurityHelpers.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
     <Compile Include="Strings\StringHelpers.cs" />
+    <Compile Include="Xml\Extensions\XElementExtensions.GetAttribute.cs" />
     <Compile Include="Xml\Extensions\XElementExtensions.GetAttributeValue.cs" />
     <Compile Include="Xml\Extensions\XElementExtensions.GetElementValue.cs" />
     <Compile Include="Xml\Extensions\XElementExtensions.GetElements.cs" />
