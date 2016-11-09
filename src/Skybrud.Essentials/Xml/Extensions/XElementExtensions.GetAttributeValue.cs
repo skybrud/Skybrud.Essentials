@@ -41,6 +41,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, null);
         }
 
+        public static T GetAttributeValue<T>(this XElement element, string expression, Func<string, T> callback) {
+            return GetAttributeValue(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
         public static string GetAttributeValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
 
             if (element == null) return null;
@@ -54,11 +58,6 @@ namespace Skybrud.Essentials.Xml.Extensions {
             // Get the value or return "null"
             return attr == null ? null : attr.Value;
 
-        }
-
-        public static T GetAttributeValue<T>(this XElement element, string expression, Func<string, T> callback) {
-            string value = GetAttributeValue(element, expression);
-            return value == null ? default(T) : callback(value);
         }
 
         public static T GetAttributeValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<string, T> callback) {
@@ -92,6 +91,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static int GetAttributeValueAsInt32(this XElement element, string expression) {
             return GetAttributeValueAsInt32(element, expression, null, x => x);
+        }
+
+        public static T GetAttributeValueAsInt32<T>(this XElement element, string expression, Func<int, T> callback) {
+            return GetAttributeValueAsInt32(element, expression, default(IXmlNamespaceResolver), callback);
         }
 
         public static int GetAttributeValueAsInt32(this XElement element, string expression, IXmlNamespaceResolver resolver) {
@@ -148,6 +151,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValueAsInt64(element, expression, null, x => x);
         }
 
+        public static T GetAttributeValueAsInt64<T>(this XElement element, string expression, Func<long, T> callback) {
+            return GetAttributeValueAsInt64(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
         public static long GetAttributeValueAsInt64(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetAttributeValueAsInt64(element, expression, resolver, x => x);
         }
@@ -200,6 +207,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static float GetAttributeValueAsSingle(this XElement element, string expression) {
             return GetAttributeValueAsSingle(element, expression, null, x => x);
+        }
+
+        public static T GetAttributeValueAsSingle<T>(this XElement element, string expression, Func<float, T> callback) {
+            return GetAttributeValueAsSingle(element, expression, default(IXmlNamespaceResolver), callback);
         }
 
         public static float GetAttributeValueAsSingle(this XElement element, string expression, IXmlNamespaceResolver resolver) {
@@ -256,6 +267,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValueAsDouble(element, expression, null, x => x);
         }
 
+        public static T GetAttributeValueAsDouble<T>(this XElement element, string expression, Func<double, T> callback) {
+            return GetAttributeValueAsDouble(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
         public static double GetAttributeValueAsDouble(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetAttributeValueAsDouble(element, expression, resolver, x => x);
         }
@@ -308,6 +323,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static bool GetAttributeAsBoolean(this XElement element, string expression) {
             return GetAttributeAsBoolean(element, expression, null, x => x);
+        }
+
+        public static T GetAttributeAsBoolean<T>(this XElement element, string expression, Func<bool, T> callback) {
+            return GetAttributeAsBoolean(element, expression, default(IXmlNamespaceResolver), callback);
         }
 
         public static bool GetAttributeAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver) {
