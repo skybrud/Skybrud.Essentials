@@ -1,10 +1,7 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.XPath;
-using System.Linq;
 using Skybrud.Essentials.Enums;
 
 namespace Skybrud.Essentials.Xml.Extensions {
@@ -46,18 +43,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static string GetAttributeValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
-
-            if (element == null) return null;
-
-            // Get the matches as a collection of "object" (rather than just "object")
-            IEnumerable<object> result = (IEnumerable<object>) element.XPathEvaluate(expression, resolver);
-
-            // Get the first instance of "XAttribute"
-            XAttribute attr = result.OfType<XAttribute>().FirstOrDefault();
-
-            // Get the value or return "null"
+            XAttribute attr = element == null ? null : element.GetAttribute(expression, resolver);
             return attr == null ? null : attr.Value;
-
         }
 
         public static T GetAttributeValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<string, T> callback) {
@@ -74,19 +61,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsInt32<T>(this XElement element, XName name, Func<int, T> callback) {
-
-            // Get the attribute from the specified "element"
-            XAttribute attr = element == null ? null : element.Attribute(name);
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Int32"
-            int value = Int32.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            int value;
+            return GetAttributeValue(element, name, out value) ? callback(value) : default(T);
         }
 
         public static int GetAttributeValueAsInt32(this XElement element, string expression) {
@@ -102,25 +78,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsInt32<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<int, T> callback) {
-
-            // Returns the default value of "T" if "element" is "null"
-            if (element == null) return default(T);
-
-            // Get the matches as a collection of "object" (rather than just "object")
-            IEnumerable<object> result = (IEnumerable<object>)element.XPathEvaluate(expression, resolver);
-
-            // Get the first instance of "XAttribute"
-            XAttribute attr = result.OfType<XAttribute>().FirstOrDefault();
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Int32"
-            int value = Int32.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            int value;
+            return GetAttributeValue(element, expression, resolver, out value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -132,19 +91,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsInt64<T>(this XElement element, XName name, Func<long, T> callback) {
-
-            // Get the attribute from the specified "element"
-            XAttribute attr = element == null ? null : element.Attribute(name);
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Int64"
-            long value = Int64.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            long value;
+            return GetAttributeValue(element, name, out value) ? callback(value) : default(T);
         }
 
         public static long GetAttributeValueAsInt64(this XElement element, string expression) {
@@ -160,25 +108,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsInt64<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<long, T> callback) {
-
-            // Returns the default value of "T" if "element" is "null"
-            if (element == null) return default(T);
-
-            // Get the matches as a collection of "object" (rather than just "object")
-            IEnumerable<object> result = (IEnumerable<object>)element.XPathEvaluate(expression, resolver);
-
-            // Get the first instance of "XAttribute"
-            XAttribute attr = result.OfType<XAttribute>().FirstOrDefault();
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Int64"
-            long value = Int64.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            long value;
+            return GetAttributeValue(element, expression, resolver, out value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -190,19 +121,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsSingle<T>(this XElement element, XName name, Func<float, T> callback) {
-
-            // Get the attribute from the specified "element"
-            XAttribute attr = element == null ? null : element.Attribute(name);
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Single"
-            float value = Single.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            float value;
+            return GetAttributeValue(element, name, out value) ? callback(value) : default(T);
         }
 
         public static float GetAttributeValueAsSingle(this XElement element, string expression) {
@@ -218,25 +138,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsSingle<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<float, T> callback) {
-
-            // Returns the default value of "T" if "element" is "null"
-            if (element == null) return default(T);
-
-            // Get the matches as a collection of "object" (rather than just "object")
-            IEnumerable<object> result = (IEnumerable<object>)element.XPathEvaluate(expression, resolver);
-
-            // Get the first instance of "XAttribute"
-            XAttribute attr = result.OfType<XAttribute>().FirstOrDefault();
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Single"
-            float value = Single.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            float value;
+            return GetAttributeValue(element, expression, resolver, out value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -248,19 +151,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsDouble<T>(this XElement element, XName name, Func<double, T> callback) {
-
-            // Get the attribute from the specified "element"
-            XAttribute attr = element == null ? null : element.Attribute(name);
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Double"
-            double value = Double.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            double value;
+            return GetAttributeValue(element, name, out value) ? callback(value) : default(T);
         }
 
         public static double GetAttributeValueAsDouble(this XElement element, string expression) {
@@ -276,25 +168,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValueAsDouble<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<double, T> callback) {
-
-            // Returns the default value of "T" if "element" is "null"
-            if (element == null) return default(T);
-
-            // Get the matches as a collection of "object" (rather than just "object")
-            IEnumerable<object> result = (IEnumerable<object>)element.XPathEvaluate(expression, resolver);
-
-            // Get the first instance of "XAttribute"
-            XAttribute attr = result.OfType<XAttribute>().FirstOrDefault();
-
-            // Return the default value of "T" if an attribute isn't found
-            if (attr == null) return default(T);
-
-            // Parse the string value into an instance of "Double"
-            double value = Double.Parse(attr.Value, CultureInfo.InvariantCulture);
-
-            // Parse the value using the specified callback
-            return callback(value);
-
+            double value;
+            return GetAttributeValue(element, expression, resolver, out value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -308,9 +183,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetAttributeAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
 
             // Get the attribute from the specified "element"
-            XAttribute attr = element == null ? null : element.Attribute(name);
-
-            // Return the default value of "T" if an attribute isn't found
+            XAttribute attr = element.GetAttribute(name);
             if (attr == null) return default(T);
 
             // Get the value as a lower case string
@@ -335,16 +208,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static T GetAttributeAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
 
-            // Returns the default value of "T" if "element" is "null"
-            if (element == null) return default(T);
-
-            // Get the matches as a collection of "object" (rather than just "object")
-            IEnumerable<object> result = (IEnumerable<object>)element.XPathEvaluate(expression, resolver);
-
-            // Get the first instance of "XAttribute"
-            XAttribute attr = result.OfType<XAttribute>().FirstOrDefault();
-
-            // Return the default value of "T" if an attribute isn't found
+            // Get the first attribute matching "expression"
+            XAttribute attr = element.GetAttribute(expression, resolver);
             if (attr == null) return default(T);
 
             // Get the value as a lower case string
@@ -404,6 +269,12 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
         }
         
+        public static bool GetAttributeValue<T>(this XElement element, XName name, out T value) {
+            XAttribute attr = GetAttribute(element, name);
+            value = attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr != null;
+        }
+        
         /// <summary>
         /// Gets the value of the attribute matching the specified <code>name</code>.
         /// </summary>
@@ -427,12 +298,18 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver) {
-            XAttribute attr = GetAttribute(element, expression);
+            XAttribute attr = GetAttribute(element, expression, resolver);
             return attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
         }
 
+        public static bool GetAttributeValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, out T value) {
+            XAttribute attr = GetAttribute(element, expression, resolver);
+            value = attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr != null;
+        }
+
         public static TResult GetAttributeValue<T, TResult>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<T, TResult> callback) {
-            XAttribute attr = GetAttribute(element, expression);
+            XAttribute attr = GetAttribute(element, expression, resolver);
             return attr == null ? default(TResult) : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
         }
 

@@ -38,7 +38,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static XAttribute GetAttribute(this XElement element, string expression, IXmlNamespaceResolver resolver) {
 
             // Get the matches as a collection of "object" (rather than just "object")
-            IEnumerable<object> result = (IEnumerable<object>)element.XPathEvaluate(expression, resolver);
+            IEnumerable<object> result = (IEnumerable<object>) element.XPathEvaluate(expression, resolver);
 
             // Get the first instance of "XAttribute"
             return result.OfType<XAttribute>().FirstOrDefault();
