@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
@@ -36,6 +37,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
         /// <returns>Returns an instance of <code>XAttribute</code>, or <code>null</code> if no attributes were matched.</returns>
         public static XAttribute GetAttribute(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+
+            // If "expression" is just the name of the attribute, we convert the expression to an instance of "XName"
+            if (Regex.IsMatch(expression, "^[0-9a-zA-Z_]+$")) return GetAttribute(element, (XName) expression);
 
             // Get the matches as a collection of "object" (rather than just "object")
             IEnumerable<object> result = (IEnumerable<object>) element.XPathEvaluate(expression, resolver);
