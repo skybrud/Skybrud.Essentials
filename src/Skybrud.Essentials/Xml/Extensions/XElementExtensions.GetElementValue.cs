@@ -2,139 +2,327 @@
 using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
-using System.Xml.XPath;
 using Skybrud.Essentials.Enums;
 
 namespace Skybrud.Essentials.Xml.Extensions {
 
     public static partial class XElementExtensions {
 
-        /// <summary>
-        /// Gets the value of the first element matching the specified <code>expression</code>.
-        /// </summary>
-        /// <param name="element">The parent <see cref="XElement"/>.</param>
-        /// <param name="expression">The XPath expression.</param>
-        /// <returns>Returns the value of the element, or <code>null</code> if not found.</returns>
-        public static string GetElementValue(this XElement element, string expression) {
-            XElement child = element == null ? null : element.XPathSelectElement(expression);
-            return child == null ? null : child.Value;
-        }
+        #region Get element value as System.String
 
-        /// <summary>
-        /// Gets the value of the first element matching the specified <code>expression</code>.
-        /// </summary>
-        /// <param name="element">The parent <see cref="XElement"/>.</param>
-        /// <param name="expression">A <see cref="System.String"/> that contains an XPath expression..</param>
-        /// <param name="resolver">An <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression..</param>
-        /// <returns>Returns the value of the element, or <code>null</code> if not found.</returns>
-        public static string GetElementValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
-            XElement child = element == null ? null : element.XPathSelectElement(expression, resolver);
-            return child == null ? null : child.Value;
-        }
-
-        /// <summary>
-        /// Gets the value of the first child element with the specified <see cref="XName"/>.
-        /// </summary>
-        /// <param name="element">The parent <see cref="XElement"/>.</param>
-        /// <param name="name">The <see cref="XName"/> to match.</param>
-        /// <returns>Returns the value of the element, or <code>null</code> if not found.</returns>
         public static string GetElementValue(this XElement element, XName name) {
-            XElement child = element == null ? null : element.Element(name);
+            XElement child = element == null ? null : element.GetElement(name);
             return child == null ? null : child.Value;
         }
 
-        /// <summary>
-        /// Gets the value of the first child element with the specified <see cref="XName"/>.
-        /// </summary>
-        /// <param name="element">The parent <see cref="XElement"/>.</param>
-        /// <param name="name">An instance of <see cref="XName"/> identifying the element.</param>
-        /// <returns>Returns an instance of <code>T</code> represnting the attribute value, or the default value of
-        /// <code>T</code> if not found.</returns>
-        public static T GetElementValue<T>(this XElement element, XName name) {
-            XElement child = element == null ? null : element.Element(name);
-            return child == null ? default(T) : (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
+        public static T GetElementValue<T>(this XElement element, XName name, Func<string, T> callback) {
+            XElement child = element == null ? null : element.GetElement(name);
+            return child == null ? default(T) : callback(child.Value);
         }
 
-        /// <summary>
-        /// Gets the value of the first child element with the specified <see cref="XName"/>.
-        /// </summary>
-        /// <param name="element">The parent <see cref="XElement"/>.</param>
-        /// <param name="name">The <see cref="XName"/> to match.</param>
-        /// <param name="callback">A callback function for parsing the element.</param>
-        /// <returns>Returns the value as parsed by the specified <code>callback</code>.</returns>
-        public static T GetElementValue<T>(this XElement element, XName name, Func<string, T> callback) {
-            XElement child = element == null ? null : element.Element(name);
-            return callback(child == null || String.IsNullOrWhiteSpace(child.Value) ? null : child.Value);
+        public static string GetElementValue(this XElement element, string expression) {
+            return GetElementValue(element, expression, null);
         }
+
+        public static T GetElementValue<T>(this XElement element, string expression, Func<string, T> callback) {
+            return GetElementValue(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
+        public static string GetElementValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            XElement attr = element == null ? null : element.GetElement(expression, resolver);
+            return attr == null ? null : attr.Value;
+        }
+
+        public static T GetElementValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<string, T> callback) {
+            string value = GetElementValue(element, expression, resolver);
+            return value == null ? default(T) : callback(value);
+        }
+
+        #endregion
+
+        #region Get element value as System.Int32
 
         public static int GetElementValueAsInt32(this XElement element, XName name) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(int) : Int32.Parse(xChild.Value);
+            return GetElementValueAsInt32(element, name, x => x);
+        }
+
+        public static bool GetElementValueAsInt32(this XElement element, XName name, out int value) {
+            return GetElementValue(element, name, out value);
         }
 
         public static T GetElementValueAsInt32<T>(this XElement element, XName name, Func<int, T> callback) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return callback(xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(int) : Int32.Parse(xChild.Value));
+            int value;
+            return GetElementValue(element, name, out value) ? callback(value) : default(T);
         }
 
+        public static int GetElementValueAsInt32(this XElement element, string expression) {
+            return GetElementValueAsInt32(element, expression, null, x => x);
+        }
+
+        public static T GetElementValueAsInt32<T>(this XElement element, string expression, Func<int, T> callback) {
+            return GetElementValueAsInt32(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
+        public static int GetElementValueAsInt32(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            return GetElementValueAsInt32(element, expression, resolver, x => x);
+        }
+
+        public static bool GetElementValueAsInt32(this XElement element, string expression, IXmlNamespaceResolver resolver, out int value) {
+            return GetElementValue(element, expression, resolver, out value);
+        }
+
+        public static T GetElementValueAsInt32<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<int, T> callback) {
+            int value;
+            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+        }
+
+        #endregion
+
+        #region Get element value as System.Int64
+
         public static long GetElementValueAsInt64(this XElement element, XName name) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(long) : Int64.Parse(xChild.Value);
+            return GetElementValueAsInt64(element, name, x => x);
+        }
+
+        public static bool GetElementValueAsInt64(this XElement element, XName name, out long value) {
+            return GetElementValue(element, name, out value);
         }
 
         public static T GetElementValueAsInt64<T>(this XElement element, XName name, Func<long, T> callback) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return callback(xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(long) : Int64.Parse(xChild.Value));
+            long value;
+            return GetElementValue(element, name, out value) ? callback(value) : default(T);
         }
 
-        public static float GetElementValueAsFloat(this XElement element, XName name) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(float) : Single.Parse(xChild.Value);
+        public static long GetElementValueAsInt64(this XElement element, string expression) {
+            return GetElementValueAsInt64(element, expression, null, x => x);
         }
 
-        public static T GetElementValueAsFloat<T>(this XElement element, XName name, Func<float, T> callback) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return callback(xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(float) : Single.Parse(xChild.Value));
+        public static T GetElementValueAsInt64<T>(this XElement element, string expression, Func<long, T> callback) {
+            return GetElementValueAsInt64(element, expression, default(IXmlNamespaceResolver), callback);
         }
+
+        public static long GetElementValueAsInt64(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            return GetElementValueAsInt64(element, expression, resolver, x => x);
+        }
+
+        public static bool GetElementValueAsInt64(this XElement element, string expression, IXmlNamespaceResolver resolver, out long value) {
+            return GetElementValue(element, expression, resolver, out value);
+        }
+
+        public static T GetElementValueAsInt64<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<long, T> callback) {
+            long value;
+            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+        }
+
+        #endregion
+
+        #region Get element value as System.Single
+
+        public static float GetElementValueAsSingle(this XElement element, XName name) {
+            return GetElementValueAsSingle(element, name, x => x);
+        }
+
+        public static bool GetElementValueAsSingle(this XElement element, XName name, out float value) {
+            return GetElementValue(element, name, out value);
+        }
+
+        public static T GetElementValueAsSingle<T>(this XElement element, XName name, Func<float, T> callback) {
+            float value;
+            return GetElementValue(element, name, out value) ? callback(value) : default(T);
+        }
+
+        public static float GetElementValueAsSingle(this XElement element, string expression) {
+            return GetElementValueAsSingle(element, expression, null, x => x);
+        }
+
+        public static T GetElementValueAsSingle<T>(this XElement element, string expression, Func<float, T> callback) {
+            return GetElementValueAsSingle(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
+        public static float GetElementValueAsSingle(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            return GetElementValueAsSingle(element, expression, resolver, x => x);
+        }
+
+        public static bool GetElementValueAsSingle(this XElement element, string expression, IXmlNamespaceResolver resolver, out float value) {
+            return GetElementValue(element, expression, resolver, out value);
+        }
+
+        public static T GetElementValueAsSingle<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<float, T> callback) {
+            float value;
+            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+        }
+
+        #endregion
+
+        #region Get element value as System.Double
 
         public static double GetElementValueAsDouble(this XElement element, XName name) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(double) : Double.Parse(xChild.Value);
+            return GetElementValueAsDouble(element, name, x => x);
+        }
+
+        public static bool GetElementValueAsDouble(this XElement element, XName name, out double value) {
+            return GetElementValue(element, name, out value);
         }
 
         public static T GetElementValueAsDouble<T>(this XElement element, XName name, Func<double, T> callback) {
-            XElement xChild = element == null ? null : element.Element(name);
-            return callback(xChild == null || String.IsNullOrWhiteSpace(xChild.Value) ? default(double) : Double.Parse(xChild.Value));
+            double value;
+            return GetElementValue(element, name, out value) ? callback(value) : default(T);
         }
 
-        /// <summary>
-        /// Gets an instance of <code>T</code> based on the value of the element matching the specified
-        /// <code>name</code>. An exception of the type <see cref="EnumParseException"/> will be thrown if the
-        /// element value doesn't match any of the values of <code>T</code>.
-        /// </summary>
-        /// <typeparam name="T">The type of the enum.</typeparam>
-        /// <param name="element">The parent <see cref="XElement"/>.</param>
-        /// <param name="name">An instance of <see cref="XName"/> identifying the element.</param>
-        /// <returns>Returns an instance of </returns>
+        public static double GetElementValueAsDouble(this XElement element, string expression) {
+            return GetElementValueAsDouble(element, expression, null, x => x);
+        }
+
+        public static T GetElementValueAsDouble<T>(this XElement element, string expression, Func<double, T> callback) {
+            return GetElementValueAsDouble(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
+        public static double GetElementValueAsDouble(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            return GetElementValueAsDouble(element, expression, resolver, x => x);
+        }
+
+        public static bool GetElementValueAsDouble(this XElement element, string expression, IXmlNamespaceResolver resolver, out double value) {
+            return GetElementValue(element, expression, resolver, out value);
+        }
+
+        public static T GetElementValueAsDouble<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<double, T> callback) {
+            double value;
+            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+        }
+
+        #endregion
+
+        #region Get element value as System.Boolean
+
+        public static bool GetElementAsBoolean(this XElement element, XName name) {
+            return GetElementAsBoolean(element, name, x => x);
+        }
+
+        public static bool GetElementAsBoolean(this XElement element, XName name, out bool value) {
+
+            // Get the attribute from the specified "element"
+            XElement attr = GetElement(element, name);
+
+            // Parse the value (if "attr" is not "null")
+            value = attr == null ? default(bool) : ParseBoolean(attr.Value);
+
+            // Returns whether the attribute was found
+            return attr != null;
+
+        }
+
+        public static T GetElementAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
+            bool value;
+            return GetElementAsBoolean(element, name, out value) ? callback(value) : default(T);
+        }
+
+        public static bool GetElementAsBoolean(this XElement element, string expression) {
+            return GetElementAsBoolean(element, expression, null, x => x);
+        }
+
+        public static T GetElementAsBoolean<T>(this XElement element, string expression, Func<bool, T> callback) {
+            return GetElementAsBoolean(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
+        public static bool GetElementAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            return GetElementAsBoolean(element, expression, resolver, x => x);
+        }
+
+        public static bool GetElementAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver, out bool value) {
+
+            // Get the attribute from the specified "element"
+            XElement attr = GetElement(element, expression, resolver);
+
+            // Parse the value (if "attr" is not "null")
+            value = attr == null ? default(bool) : ParseBoolean(attr.Value);
+
+            // Returns whether the attribute was found
+            return attr != null;
+
+        }
+
+        public static T GetElementAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
+            bool value;
+            return GetElementAsBoolean(element, expression, resolver, out value) ? callback(value) : default(T);
+        }
+
+        #endregion
+
+        #region Get element value as System.Enum
+
         public static T GetElementValueAsEnum<T>(this XElement element, XName name) where T : struct {
-            XElement child = element == null ? null : element.Element(name);
-            return EnumHelpers.ParseEnum<T>(child == null ? null : child.Value);
+            XAttribute child = element == null ? null : element.Attribute(name);
+            return child == null ? default(T) : EnumHelpers.ParseEnum<T>(child.Value);
         }
 
-        /// <summary>
-        /// Gets an instance of <code>T</code> based on the value of the element matching the specified
-        /// <code>name</code>. If the value cant be parsed, <code>fallback</code> will be returned instead.
-        /// </summary>
-        /// <typeparam name="T">The type of the enum.</typeparam>
-        /// <param name="element">The parent <see cref="XElement"/>.</param>
-        /// <param name="name">An instance of <see cref="XName"/> identifying the element.</param>
-        /// <param name="fallback">A fallback used if the element value doesn't match any of the values of
-        /// <code>T</code>.</param>
-        /// <returns>Returns an instance of <code>T</code>.</returns>
         public static T GetElementValueAsEnum<T>(this XElement element, XName name, T fallback) where T : struct {
-            XElement child = element == null ? null : element.Element(name);
+            XAttribute child = element == null ? null : element.Attribute(name);
             return child == null ? fallback : EnumHelpers.ParseEnum(child.Value, fallback);
         }
+
+        public static T GetElementValueAsEnum<T>(this XElement element, string expression) where T : struct {
+            return GetElementValueAsEnum<T>(element, expression, null);
+        }
+
+        public static T GetElementValueAsEnum<T>(this XElement element, string expression, T fallback) where T : struct {
+            return GetElementValueAsEnum(element, expression, null, fallback);
+        }
+
+        public static T GetElementValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver resolver) where T : struct {
+            XElement attr = GetElement(element, expression, resolver);
+            return attr == null ? default(T) : EnumHelpers.ParseEnum<T>(attr.Value);
+        }
+
+        public static T GetElementValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, T fallback) where T : struct {
+            XElement attr = GetElement(element, expression, resolver);
+            return attr == null ? fallback : EnumHelpers.ParseEnum(attr.Value, fallback);
+        }
+
+        #endregion
+
+        #region Get element value as T
+
+        public static T GetElementValue<T>(this XElement element, XName name) {
+            XElement attr = GetElement(element, name);
+            return attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+        }
+
+        public static bool GetElementValue<T>(this XElement element, XName name, out T value) {
+            XElement attr = GetElement(element, name);
+            value = attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr != null;
+        }
+
+        public static TResult GetElementValue<T, TResult>(this XElement element, XName name, Func<T, TResult> callback) {
+            XElement attr = GetElement(element, name);
+            return attr == null ? default(TResult) : callback((T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
+        }
+
+        public static T GetElementValue<T>(this XElement element, string expression) {
+            return GetElementValue<T>(element, expression, default(IXmlNamespaceResolver));
+        }
+
+        public static TResult GetElementValue<T, TResult>(this XElement element, string expression, Func<T, TResult> callback) {
+            return GetElementValue(element, expression, null, callback);
+        }
+
+        public static T GetElementValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            XElement attr = GetElement(element, expression, resolver);
+            return attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+        }
+
+        public static bool GetElementValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, out T value) {
+            XElement attr = GetElement(element, expression, resolver);
+            value = attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr != null;
+        }
+
+        public static TResult GetElementValue<T, TResult>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<T, TResult> callback) {
+            XElement attr = GetElement(element, expression, resolver);
+            return attr == null ? default(TResult) : callback((T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
+        }
+
+        #endregion
 
     }
 
