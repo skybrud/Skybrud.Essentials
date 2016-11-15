@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Net;
 using System.Xml;
 using System.Xml.Linq;
@@ -101,10 +102,10 @@ namespace UnitTestProject1.Xml {
             string attr5 = root.GetAttributeValueAsSingle("element/child/@pi", TestHelpers.ToString);
             string attr6 = root.GetAttributeValueAsSingle("test:element/test:child/@pi", namespaces, TestHelpers.ToString);
 
-            Assert.AreEqual("3.140000", attr1.ToString("N6"), "#1");
+            Assert.AreEqual("3.140000", attr1.ToString("N6", CultureInfo.InvariantCulture), "#1");
             Assert.AreEqual("3.14", attr2, "#2");
-            Assert.AreEqual("3.140000", attr3.ToString("N6"), "#3");
-            Assert.AreEqual("3.140000", attr4.ToString("N6"), "#4");
+            Assert.AreEqual("3.140000", attr3.ToString("N6", CultureInfo.InvariantCulture), "#3");
+            Assert.AreEqual("3.140000", attr4.ToString("N6", CultureInfo.InvariantCulture), "#4");
             Assert.AreEqual("3.14", attr5, "#5");
             Assert.AreEqual("3.14", attr6, "#6");
 
@@ -120,7 +121,7 @@ namespace UnitTestProject1.Xml {
 
             // Get an attribute using each overload
             double attr1 = root.GetAttributeValueAsDouble((XName)"pi");
-            string attr2 = root.GetAttributeValueAsDouble((XName)"pi", x => x + "");
+            string attr2 = root.GetAttributeValueAsDouble((XName)"pi", TestHelpers.ToString);
             double attr3 = root.GetAttributeValueAsDouble("element/child/@double");
             double attr4 = root.GetAttributeValueAsDouble("test:element/test:child/@double", namespaces);
             string attr5 = root.GetAttributeValueAsDouble("element/child/@double", TestHelpers.ToString);
