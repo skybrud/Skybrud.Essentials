@@ -18,13 +18,13 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <returns>Returns the value of the attribute, or <code>null</code> if not found.</returns>
         public static string GetAttributeValue(this XElement element, XName name) {
-            XAttribute child = element == null ? null : element.GetAttribute(name);
-            return child == null ? null : child.Value;
+            XAttribute attr = element == null ? null : element.GetAttribute(name);
+            return attr == null ? null : attr.Value;
         }
 
         public static T GetAttributeValue<T>(this XElement element, XName name, Func<string, T> callback) {
-            XAttribute child = element == null ? null : element.GetAttribute(name);
-            return child == null ? default(T) : callback(child.Value);
+            XAttribute attr = element == null ? null : element.GetAttribute(name);
+            return attr == null ? default(T) : callback(attr.Value);
         }
 
         /// <summary>
