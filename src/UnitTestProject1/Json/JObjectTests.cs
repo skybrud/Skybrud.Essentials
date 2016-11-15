@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System.Globalization;
+using System.Net;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Extensions;
 using System;
@@ -85,11 +86,11 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"obj\":{\"value\":\"0.123\",\"nothing\":\"0\",\"number\":1234.567}}}");
 
-            Assert.AreEqual("0.000", String.Format("{0:0.000}", obj.GetFloat("nothing")), "Check #1 failed");
-            Assert.AreEqual("0.000", String.Format("{0:0.000}", obj.GetFloat("root.nothing")), "Check #2 failed");
-            Assert.AreEqual("0.123", String.Format("{0:0.000}", obj.GetFloat("root.obj.value")), "Check #3 failed");
-            Assert.AreEqual("0.000", String.Format("{0:0.000}", obj.GetFloat("root.obj.nothing")), "Check #4 failed");
-            Assert.AreEqual("1234.567", String.Format("{0:0.000}", obj.GetFloat("root.obj.number")), "Check #5 failed");
+            Assert.AreEqual("0.000", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("nothing")), "Check #1 failed");
+            Assert.AreEqual("0.000", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.nothing")), "Check #2 failed");
+            Assert.AreEqual("0.123", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.obj.value")), "Check #3 failed");
+            Assert.AreEqual("0.000", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.obj.nothing")), "Check #4 failed");
+            Assert.AreEqual("1234.567", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.obj.number")), "Check #5 failed");
 
         }
 
@@ -98,11 +99,11 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"obj\":{\"value\":\"0.123\",\"nothing\":\"0\",\"number\":1234.567}}}");
 
-            Assert.AreEqual("0.000", String.Format("{0:0.000}", obj.GetDouble("nothing")), "Check #1 failed");
-            Assert.AreEqual("0.000", String.Format("{0:0.000}", obj.GetDouble("root.nothing")), "Check #2 failed");
-            Assert.AreEqual("0.123", String.Format("{0:0.000}", obj.GetDouble("root.obj.value")), "Check #3 failed");
-            Assert.AreEqual("0.000", String.Format("{0:0.000}", obj.GetDouble("root.obj.nothing")), "Check #4 failed");
-            Assert.AreEqual("1234.567", String.Format("{0:0.000}", obj.GetDouble("root.obj.number")), "Check #5 failed");
+            Assert.AreEqual("0.000", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("nothing")), "Check #1 failed");
+            Assert.AreEqual("0.000", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.nothing")), "Check #2 failed");
+            Assert.AreEqual("0.123", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.obj.value")), "Check #3 failed");
+            Assert.AreEqual("0.000", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.obj.nothing")), "Check #4 failed");
+            Assert.AreEqual("1234.567", String.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.obj.number")), "Check #5 failed");
 
         }
 
