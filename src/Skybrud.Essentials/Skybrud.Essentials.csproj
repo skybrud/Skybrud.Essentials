@@ -44,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Collections\Extensions\EnumerableExtensions.cs" />
+    <Compile Include="Collections\SortOrder.cs" />
     <Compile Include="Common\PropertyNotSetException.cs" />
     <Compile Include="Dates\DateHelpers.UnixTime.cs" />
     <Compile Include="Dates\DateHelpers.cs" />
