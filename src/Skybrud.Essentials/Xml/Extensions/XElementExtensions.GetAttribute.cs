@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The instance of <see cref="XElement"/> holding the attribute.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
-        /// <returns>Returns an instance of <code>XAttribute</code>, or <code>null</code> if no attributes were matched.</returns>
+        /// <returns>Returns an instance of <see cref="XAttribute"/>, or <code>null</code> if no attributes were matched.</returns>
         public static XAttribute GetAttribute(this XElement element, XName name) {
             return element == null ? null : element.Attribute(name);
         }
@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">An instance of <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression to match.</param>
-        /// <returns>Returns an instance of <code>XAttribute</code>, or <code>null</code> if no attributes were matched.</returns>
+        /// <returns>Returns an instance of <see cref="XAttribute"/>, or <code>null</code> if no attributes were matched.</returns>
         public static XAttribute GetAttribute(this XElement element, string expression) {
             return GetAttribute(element, expression, null);
         }
@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">An instance of <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression to match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
-        /// <returns>Returns an instance of <code>XAttribute</code>, or <code>null</code> if no attributes were matched.</returns>
+        /// <returns>Returns an instance of <see cref="XAttribute"/>, or <code>null</code> if no attributes were matched.</returns>
         public static XAttribute GetAttribute(this XElement element, string expression, IXmlNamespaceResolver resolver) {
 
             // If "expression" is just the name of the attribute, we convert the expression to an instance of "XName"
