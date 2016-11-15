@@ -18,12 +18,12 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <returns>Returns the value of the attribute, or <code>null</code> if not found.</returns>
         public static string GetAttributeValue(this XElement element, XName name) {
-            XAttribute child = element == null ? null : element.Attribute(name);
+            XAttribute child = element == null ? null : element.GetAttribute(name);
             return child == null ? null : child.Value;
         }
 
         public static T GetAttributeValue<T>(this XElement element, XName name, Func<string, T> callback) {
-            XAttribute child = element == null ? null : element.Attribute(name);
+            XAttribute child = element == null ? null : element.GetAttribute(name);
             return child == null ? default(T) : callback(child.Value);
         }
 
@@ -290,7 +290,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         public static T GetAttributeValue<T>(this XElement element, string expression) {
-            return GetAttributeValue<string, T>(element, expression, null);
+            return GetAttributeValue<T>(element, expression, default(IXmlNamespaceResolver));
         }
 
         public static TResult GetAttributeValue<T, TResult>(this XElement element, string expression, Func<T, TResult> callback) {
