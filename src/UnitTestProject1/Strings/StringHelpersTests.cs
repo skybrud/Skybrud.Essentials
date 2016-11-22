@@ -8,6 +8,28 @@ namespace UnitTestProject1.Strings {
     public class StringHelpersTests {
 
         [TestMethod]
+        public void ParseBoolean() {
+            
+            Assert.AreEqual(true, StringHelpers.ParseBoolean("true"), "Check #1 failed");
+            Assert.AreEqual(false, StringHelpers.ParseBoolean("false"), "Check #2 failed");
+            Assert.AreEqual(true, StringHelpers.ParseBoolean("True"), "Check #3 failed");
+            Assert.AreEqual(false, StringHelpers.ParseBoolean("False"), "Check #4 failed");
+
+            Assert.AreEqual(true, StringHelpers.ParseBoolean("1"), "Check #5 failed");
+            Assert.AreEqual(false, StringHelpers.ParseBoolean("0"), "Check #6 failed");
+            
+            Assert.AreEqual(true, StringHelpers.ParseBoolean("t"), "Check #7 failed");
+            Assert.AreEqual(false, StringHelpers.ParseBoolean("f"), "Check #8 failed");
+            Assert.AreEqual(true, StringHelpers.ParseBoolean("T"), "Check #9 failed");
+            Assert.AreEqual(false, StringHelpers.ParseBoolean("F"), "Check #10 failed");
+            
+            Assert.AreEqual(false, StringHelpers.ParseBoolean(""));
+            Assert.AreEqual(false, StringHelpers.ParseBoolean(default(string)));
+            Assert.AreEqual(false, StringHelpers.ParseBoolean(default(object)));
+
+        }
+
+        [TestMethod]
         public void ToUnderscore() {
 
             var samples1 = new[] {

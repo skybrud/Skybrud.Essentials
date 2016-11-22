@@ -9,7 +9,32 @@ namespace Skybrud.Essentials.Strings {
     /// Static class with various string related helper methods.
     /// </summary>
     public static class StringHelpers {
-        
+
+        /// <summary>
+        /// Parses the specified <code>str</code> into an instance of <see cref="System.Boolean"/>. The string is
+        /// considered <code>true</code> if it matches either <code>1</code>, <code>t</code> or <code>true</code>
+        /// (case insensitive).
+        /// </summary>
+        /// <param name="str">The string to be parsed.</param>
+        /// <returns>Returns <code>true</code> if <code>str</code> matches either <code>true</code>, <code>1</code>
+        /// or <code>t</code> (case insensitive).</returns>
+        public static bool ParseBoolean(string str) {
+            str = (str ?? "").ToLower();
+            return str == "true" || str == "1" || str == "t";
+        }
+
+        /// <summary>
+        /// Parses the specified <code>value</code> into an instance of <see cref="System.Boolean"/>. The value is
+        /// considered <code>true</code> if it matches either <code>1</code>, <code>t</code> or <code>true</code>
+        /// (case insensitive).
+        /// </summary>
+        /// <param name="value">The value to be parsed.</param>
+        /// <returns>Returns <code>true</code> if <code>value</code> matches either <code>true</code>, <code>1</code>
+        /// or <code>t</code> (case insensitive).</returns>
+        public static bool ParseBoolean(object value) {
+            return ParseBoolean(value + "");
+        }
+
         /// <summary>
         /// Converts a comma separated string into an array of integers.
         /// </summary>

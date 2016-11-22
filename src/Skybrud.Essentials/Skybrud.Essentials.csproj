@@ -68,7 +68,6 @@
     <Compile Include="Xml\Extensions\XElementExtensions.GetElementValue.cs" />
     <Compile Include="Xml\Extensions\XElementExtensions.GetElements.cs" />
     <Compile Include="Xml\Extensions\XElementExtensions.GetElement.cs" />
-    <Compile Include="Xml\Extensions\XElementExtensions.cs" />
     <Compile Include="Xml\XmlObjectBase.cs" />
     <Compile Include="Xml\XmlHelpers.cs" />
   </ItemGroup>

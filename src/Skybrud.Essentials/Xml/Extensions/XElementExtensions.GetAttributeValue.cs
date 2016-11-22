@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Xml;
 using System.Xml.Linq;
 using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Xml.Extensions {
 
@@ -218,7 +219,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XAttribute attr = GetAttribute(element, name);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : ParseBoolean(attr.Value);
+            value = attr == null ? default(bool) : StringHelpers.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;
@@ -248,7 +249,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XAttribute attr = GetAttribute(element, expression, resolver);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : ParseBoolean(attr.Value);
+            value = attr == null ? default(bool) : StringHelpers.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;
