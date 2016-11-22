@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Extensions {
     
@@ -74,7 +75,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>Returns an instance of <see cref="String"/>, or <code>null</code>.</returns>
         public static string GetString(this JObject obj, string path) {
             if (obj == null) return null;
-            JToken token = obj.SelectToken(path);
+            JToken token = GetSimpleTypeTokenFromPath(obj, path);
             return token == null ? null : token.Value<string>();
         }
 
@@ -87,7 +88,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>Returns an instance of <code>T</code>, or <code>null</code>.</returns>
         public static T GetString<T>(this JObject obj, string path, Func<string, T> callback) {
             if (obj == null) return default(T);
-            JToken token = obj.SelectToken(path);
+            JToken token = GetSimpleTypeTokenFromPath(obj, path);
             return token == null ? default(T) : callback(token.Value<string>());
         }
         
@@ -99,9 +100,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>Returns an instance of <see cref="System.Int32"/>.</returns>
         public static int GetInt32(this JObject obj, string path) {
-            if (obj == null) return default(int);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(int) : token.Value<int>();
+            return GetInt32(obj, path, x => x);
         }
 
         /// <summary>
@@ -116,9 +115,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>Returns an instance of <see cref="System.Int32"/>, or <code>0</code> if <code>path</code> doesn't
         /// match a token.</returns>
         public static T GetInt32<T>(this JObject obj, string path, Func<int, T> callback) {
-            if (obj == null) return default(T);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(T) : callback(token.Value<int>());
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
@@ -129,9 +126,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>Returns an instance of <see cref="System.Int64"/>.</returns>
         public static long GetInt64(this JObject obj, string path) {
-            if (obj == null) return default(long);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(long) : token.Value<long>();
+            return GetInt64(obj, path, x => x);
         }
 
         /// <summary>
@@ -145,9 +140,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>Returns an instance of <see cref="System.Int64"/>, or <code>0</code> if <code>path</code> doesn't
         /// match a token.</returns>
         public static T GetInt64<T>(this JObject obj, string path, Func<long, T> callback) {
-            if (obj == null) return default(T);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(T) : callback(token.Value<long>());
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
@@ -158,9 +151,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>Returns an instance of <see cref="System.Int64"/>.</returns>
         public static float GetFloat(this JObject obj, string path) {
-            if (obj == null) return default(float);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(float) : token.Value<float>();
+            return GetFloat(obj, path, x => x);
         }
 
         /// <summary>
@@ -173,10 +164,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
         /// <returns>Returns an instance of <see cref="System.Single"/>, or <code>0</code> if <code>path</code> doesn't
         /// match a token.</returns>
-        public static T GetFloat<T>(this JObject obj, string path, Func<long, T> callback) {
-            if (obj == null) return default(T);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(T) : callback(token.Value<long>());
+        public static T GetFloat<T>(this JObject obj, string path, Func<float, T> callback) {
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
@@ -187,9 +176,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>Returns an instance of <see cref="System.Double"/>.</returns>
         public static double GetDouble(this JObject obj, string path) {
-            if (obj == null) return default(double);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(double) : token.Value<double>();
+            return GetDouble(obj, path, x => x);
         }
 
         /// <summary>
@@ -203,9 +190,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>Returns an instance of <see cref="System.Double"/>, or <code>0</code> if <code>path</code> doesn't
         /// match a token.</returns>
         public static T GetDouble<T>(this JObject obj, string path, Func<double, T> callback) {
-            if (obj == null) return default(T);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(T) : callback(token.Value<long>());
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
@@ -216,9 +201,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>Returns an instance of <see cref="System.Boolean"/>.</returns>
         public static bool GetBoolean(this JObject obj, string path) {
-            if (obj == null) return default(bool);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(bool) : token.Value<bool>();
+            return GetBoolean(obj, path, x => x);
         }
 
         /// <summary>
@@ -231,10 +214,20 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
         /// <returns>Returns an instance of <see cref="System.Boolean"/>, or <code>false</code> if <code>path</code>
         /// doesn't match a token.</returns>
-        public static T GetBoolean<T>(this JObject obj, string path, Func<double, T> callback) {
-            if (obj == null) return default(T);
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? default(T) : callback(token.Value<long>());
+        public static T GetBoolean<T>(this JObject obj, string path, Func<bool, T> callback) {
+
+            // Get the token from the path
+            JToken token = GetSimpleTypeTokenFromPath(obj, path);
+
+            // Check whether the token is null
+            if (token == null || token.Type == JTokenType.Null) return default(T);
+
+            // Convert the value to a boolean
+            bool value = StringHelpers.ParseBoolean(token + "");
+
+            // Invoke the callback and return the value
+            return callback(value);
+
         }
 
         /// <summary>
@@ -462,6 +455,38 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>Returns the token value as an array of <see cref="System.Int64"/>.</returns>
         public static long[] GetInt64Array(this JObject obj, string path) {
             return GetArrayItems<long>(obj, path);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="JToken"/> at the specified <code>path</code>. If the type of <code>token</code> is
+        /// either <see cref="JTokenType.Object"/> or <see cref="JTokenType.Array"/>, the method will return
+        /// <code>null</code> instead.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>Returns an instance of <see cref="JToken"/>, or <code>null</code>.</returns>
+        private static JToken GetSimpleTypeTokenFromPath(JObject obj, string path) {
+            JToken token = obj == null ? null : obj.SelectToken(path);
+            return token == null || token.Type == JTokenType.Object || token.Type == JTokenType.Array ? null : token;
+        }
+
+        private static TOut GetSimpleTypeTokenValueFromPath<TIn, TOut>(this JObject obj, string path, Func<TIn, TOut> callback) {
+
+            // Get the token from the path
+            JToken token = GetSimpleTypeTokenFromPath(obj, path);
+
+            // Check whether the token is null
+            if (token == null || token.Type == JTokenType.Null) return default(TOut);
+
+            // Check whether the token is an empty string (or whitespace)
+            if (token.Type == JTokenType.String && String.IsNullOrWhiteSpace(token + "")) return default(TOut);
+
+            // Cast/convert the value from "TIn" to "TOut"
+            TIn value = token.Value<TIn>();
+
+            // Invoke the callback and return the value
+            return callback(value);
+
         }
 
     }
