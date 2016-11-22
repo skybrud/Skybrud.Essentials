@@ -244,14 +244,14 @@ namespace Skybrud.Essentials.Time {
             return date.ToString("MMMM", culture);
         }
 
-        #region Unix time (copied from https://github.com/abjerner/Skybrud.Social/blob/master/src/Skybrud.Social/SocialUtils.cs#L216)
+        #region Unix time
 
         /// <summary>
         /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
         /// </summary>
         /// <returns>The current Unix timestamp as an integer (Int32).</returns>
         public static int GetCurrentUnixTimestamp() {
-            return (int)Math.Floor(GetCurrentUnixTimestampAsDouble());
+            return (int) Math.Floor(GetCurrentUnixTimestampAsDouble());
         }
 
         /// <summary>
@@ -263,7 +263,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns an instance of <code>DateTime</code> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
+        /// Returns an instance of <see cref="DateTime"/> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
         /// </summary>
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>Instance of <code>>DateTime.</code></returns>
@@ -272,7 +272,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns an instance of <code>DateTime</code> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
+        /// Returns an instance of <see cref="DateTime"/> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
         /// </summary>
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>Instance of <code>>DateTime.</code></returns>
@@ -281,7 +281,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns an instance of <code>DateTime</code> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
+        /// Returns an instance of <see cref="DateTime"/> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
         /// </summary>
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>Instance of <code>>DateTime.</code></returns>
@@ -294,7 +294,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>The current Unix timestamp as an integer (Int32).</returns>
         public static int GetUnixTimeFromDateTime(DateTime date) {
-            return (int)GetUnixTimeFromDateTimeAsDouble(date);
+            return (int) GetUnixTimeFromDateTimeAsDouble(date);
         }
 
         /// <summary>
