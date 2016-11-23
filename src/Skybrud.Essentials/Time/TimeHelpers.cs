@@ -3,7 +3,7 @@ using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
-    public static class TimeHelpers {
+    public static partial class TimeHelpers {
 
         #region Constants
 
@@ -48,7 +48,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the English ordinal suffix of the day based on the specified <code>date</code>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>The day number and ordinal suffix.</returns>
+        /// <returns>The day ordinal suffix.</returns>
         public static string GetDaySuffix(DateTime date) {
             switch (date.Day) {
                 case 1: case 21: case 31: return "st";
@@ -62,6 +62,10 @@ namespace Skybrud.Essentials.Time {
         /// Gets the week number of <code>date</code> according to the ISO8601 specification.
         /// </summary>
         /// <param name="date">The date.</param>
+        /// <returns>Returns the <strong>ISO 8601</strong> week number.</returns>
+        /// <see>
+        ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
+        /// </see>
         public static int GetIso8601WeekNumber(DateTime date) {
             var day = (int) CultureInfo.CurrentCulture.Calendar.GetDayOfWeek(date);
             return CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(date.AddDays(4 - (day == 0 ? 7 : day)), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
@@ -72,7 +76,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>
-        /// Returns <code>TRUE</code> if the specified day is weekday; otherwise <code>FALSE</code>.
+        /// Returns <code>true</code> if the specified day is weekday; otherwise <code>false</code>.
         /// </returns>
         public static bool IsWeekday(DateTime date) {
             return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
@@ -83,7 +87,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>
-        /// Returns <code>TRUE</code> if the specified day is weekend; otherwise <code>FALSE</code>.
+        /// Returns <code>true</code> if the specified day is weekend; otherwise <code>false</code>.
         /// </returns>
         public static bool IsWeekend(DateTime date) {
             return !IsWeekday(date);
@@ -94,7 +98,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>
-        /// Returns <code>TRUE</code> if the year of the specified <code>date</code> is a leap year; otherwise <code>FALSE</code>.
+        /// Returns <code>true</code> if the year of the specified <code>date</code> is a leap year; otherwise <code>false</code>.
         /// </returns>
         public static bool IsLeapYear(DateTime date) {
             return IsLeapYear(date.Year);
@@ -105,7 +109,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns>
-        /// Returns <code>TRUE</code> if the specified year is a leap year; otherwise <code>FALSE</code>.
+        /// Returns <code>true</code> if the specified year is a leap year; otherwise <code>false</code>.
         /// </returns>
         public static bool IsLeapYear(int year) {
             return (DateTime.DaysInMonth(year, 2).Equals(29));
@@ -115,7 +119,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the elapsed seconds since the specified <code>date</code>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the elapsed seconds since the input DateTime.</returns>
+        /// <returns>Returns the elapsed seconds since <code>date</code>.</returns>
         public static double GetElapsedSeconds(DateTime date) {
             // TODO: Should we convert to UTC?
             return DateTime.Now.Subtract(date).TotalSeconds;
@@ -127,7 +131,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <param name="days">The number of days.</param>
         /// <returns>
-        /// Returns <code>TRUE</code> if the date is within the last number of days, otherwise <code>FALSE</code>.
+        /// Returns <code>true</code> if the date is within the last number of days, otherwise <code>false</code>.
         /// </returns>
         public static bool IsDateWithinLastDays(DateTime date, int days) {
             double lastDays = (double)0 - days;
@@ -139,6 +143,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the first day of the month of the specified <code>date</code>.
         /// </summary>
         /// <param name="date">The date.</param>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the month.</returns>
         public static DateTime GetFirstDayOfMonth(DateTime date) {
             return new DateTime(date.Year, date.Month, 1);
         }
@@ -147,15 +152,18 @@ namespace Skybrud.Essentials.Time {
         /// Gets the last day of the month of the specified <code>date</code>.
         /// </summary>
         /// <param name="date">The date.</param>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the month.</returns>
         public static DateTime GetLastDayOfMonth(DateTime date) {
             int daysInMonth = DateTime.DaysInMonth(date.Year, date.Month);
             return new DateTime(date.Year, date.Month, daysInMonth, 23, 59, 59);
         }
 
         /// <summary>
-        /// Gets the first day of the week of the specified <code>date</code>. Monday is considered the first day of the week.
+        /// Gets the first day of the week of the specified <code>date</code>. Monday is considered the first day of
+        /// the week.
         /// </summary>
         /// <param name="date">The date.</param>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the week.</returns>
         public static DateTime GetFirstDayOfWeek(DateTime date) {
             return GetFirstDayOfWeek(date, DayOfWeek.Monday);
         }
@@ -164,7 +172,9 @@ namespace Skybrud.Essentials.Time {
         /// Gets the first day of the week of the specified <code>date</code> and based on <code>startOfWeek</code>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <code>Monday</code> or <code>Sunday</code>).</param>
+        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <see cref="DayOfWeek.Sunday"/>).</param>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the week.</returns>
         public static DateTime GetFirstDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
             int diff = date.DayOfWeek - startOfWeek;
             if (diff < 0) diff += 7;
@@ -172,9 +182,11 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the week of the specified <code>date</code>. Monday is considered the first day of the week.
+        /// Gets the last day of the week of the specified <code>date</code>. Monday is considered the first day of
+        /// the week.
         /// </summary>
         /// <param name="date">The date.</param>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the week.</returns>
         public static DateTime GetLastDayOfWeek(DateTime date) {
             return GetLastDayOfWeek(date, DayOfWeek.Monday);
         }
@@ -183,13 +195,15 @@ namespace Skybrud.Essentials.Time {
         /// Gets the last day of the week of the specified <code>date</code> and based on <code>startOfWeek</code>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <code>Monday</code> or <code>Sunday</code>).</param>
+        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <see cref="DayOfWeek.Sunday"/>).</param>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the week.</returns>
         public static DateTime GetLastDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
             return GetFirstDayOfWeek(date, startOfWeek).AddDays(7).AddSeconds(-1);
         }
 
         /// <summary>
-        ///     Gets the English name of the day.
+        /// Gets the English name of the day.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>Returns the English name of the day.</returns>
@@ -210,7 +224,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the name of the day according to <code>culture</code>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="culture">The culture to be used.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
         /// <returns>Returns the local name of the day.</returns>
         public static string GetLocalDayName(DateTime date, CultureInfo culture) {
             return date.ToString("dddd", culture);
@@ -238,74 +252,11 @@ namespace Skybrud.Essentials.Time {
         /// Gets the name of the month according to <code>culture</code>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="culture">The culture to be used.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
         /// <returns>Returns the local name of the month.</returns>
         public static string GetLocalMonthName(DateTime date, CultureInfo culture) {
             return date.ToString("MMMM", culture);
         }
-
-        #region Unix time
-
-        /// <summary>
-        /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
-        /// </summary>
-        /// <returns>The current Unix timestamp as an integer (Int32).</returns>
-        public static int GetCurrentUnixTimestamp() {
-            return (int) Math.Floor(GetCurrentUnixTimestampAsDouble());
-        }
-
-        /// <summary>
-        /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
-        /// </summary>
-        /// <returns>The current Unix timestamp as a double.</returns>
-        public static double GetCurrentUnixTimestampAsDouble() {
-            return (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-        }
-
-        /// <summary>
-        /// Returns an instance of <see cref="DateTime"/> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
-        /// </summary>
-        /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
-        /// <returns>Instance of <code>>DateTime.</code></returns>
-        public static DateTime GetDateTimeFromUnixTime(double timestamp) {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
-        }
-
-        /// <summary>
-        /// Returns an instance of <see cref="DateTime"/> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
-        /// </summary>
-        /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
-        /// <returns>Instance of <code>>DateTime.</code></returns>
-        public static DateTime GetDateTimeFromUnixTime(long timestamp) {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
-        }
-
-        /// <summary>
-        /// Returns an instance of <see cref="DateTime"/> based on the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
-        /// </summary>
-        /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
-        /// <returns>Instance of <code>>DateTime.</code></returns>
-        public static DateTime GetDateTimeFromUnixTime(string timestamp) {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(Int64.Parse(timestamp));
-        }
-
-        /// <summary>
-        /// Returns the Unix timestamp for the specified <code>date</code>. The Unix timestamp is defined as the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
-        /// </summary>
-        /// <returns>The current Unix timestamp as an integer (Int32).</returns>
-        public static int GetUnixTimeFromDateTime(DateTime date) {
-            return (int) GetUnixTimeFromDateTimeAsDouble(date);
-        }
-
-        /// <summary>
-        /// Returns the Unix timestamp for the specified <code>date</code>. The Unix timestamp is defined as the amount of seconds since the start of the Unix epoch (1st of January, 1970 - 00:00:00 GMT).
-        /// </summary>
-        /// <returns>The current Unix timestamp as a double.</returns>
-        public static double GetUnixTimeFromDateTimeAsDouble(DateTime date) {
-            return (date.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
-        }
-
-        #endregion
 
     }
 
