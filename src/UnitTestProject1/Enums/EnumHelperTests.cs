@@ -1,12 +1,11 @@
-﻿using System;
-using System.Net;
+﻿using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Enums;
 
 namespace UnitTestProject1.Enums {
 
     [TestClass]
-    public class EnumTests {
+    public class EnumHelperTests {
 
         [TestMethod]
         public void ParseEnum() {
@@ -24,7 +23,7 @@ namespace UnitTestProject1.Enums {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Expected, EnumHelpers.ParseEnum(sample.Input, HttpStatusCode.OK));
+                Assert.AreEqual(sample.Expected, EnumHelper.ParseEnum(sample.Input, HttpStatusCode.OK));
             }
 
         }

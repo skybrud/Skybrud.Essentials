@@ -50,6 +50,7 @@
     <Compile Include="Dates\DateHelpers.UnixTime.cs" />
     <Compile Include="Dates\DateHelpers.cs" />
     <Compile Include="Dates\Extensions\DateExtensions.cs" />
+    <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
     <Compile Include="Enums\EnumParseException.cs" />
     <Compile Include="Json\Converters\Enums\EnumPascalCaseConverter.cs" />

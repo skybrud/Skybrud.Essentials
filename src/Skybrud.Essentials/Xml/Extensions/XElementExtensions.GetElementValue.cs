@@ -253,12 +253,12 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static T GetElementValueAsEnum<T>(this XElement element, XName name) where T : struct {
             XAttribute child = element == null ? null : element.Attribute(name);
-            return child == null ? default(T) : EnumHelpers.ParseEnum<T>(child.Value);
+            return child == null ? default(T) : EnumHelper.ParseEnum<T>(child.Value);
         }
 
         public static T GetElementValueAsEnum<T>(this XElement element, XName name, T fallback) where T : struct {
             XAttribute child = element == null ? null : element.Attribute(name);
-            return child == null ? fallback : EnumHelpers.ParseEnum(child.Value, fallback);
+            return child == null ? fallback : EnumHelper.ParseEnum(child.Value, fallback);
         }
 
         public static T GetElementValueAsEnum<T>(this XElement element, string expression) where T : struct {
@@ -271,12 +271,12 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static T GetElementValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver resolver) where T : struct {
             XElement attr = GetElement(element, expression, resolver);
-            return attr == null ? default(T) : EnumHelpers.ParseEnum<T>(attr.Value);
+            return attr == null ? default(T) : EnumHelper.ParseEnum<T>(attr.Value);
         }
 
         public static T GetElementValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, T fallback) where T : struct {
             XElement attr = GetElement(element, expression, resolver);
-            return attr == null ? fallback : EnumHelpers.ParseEnum(attr.Value, fallback);
+            return attr == null ? fallback : EnumHelper.ParseEnum(attr.Value, fallback);
         }
 
         #endregion
@@ -285,18 +285,18 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static T GetElementValue<T>(this XElement element, XName name) {
             XElement attr = GetElement(element, name);
-            return attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
         }
 
         public static bool GetElementValue<T>(this XElement element, XName name, out T value) {
             XElement attr = GetElement(element, name);
-            value = attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            value = attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
             return attr != null;
         }
 
         public static TResult GetElementValue<T, TResult>(this XElement element, XName name, Func<T, TResult> callback) {
             XElement attr = GetElement(element, name);
-            return attr == null ? default(TResult) : callback((T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
+            return attr == null ? default(TResult) : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
         }
 
         public static T GetElementValue<T>(this XElement element, string expression) {
@@ -309,18 +309,18 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static T GetElementValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             XElement attr = GetElement(element, expression, resolver);
-            return attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
         }
 
         public static bool GetElementValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, out T value) {
             XElement attr = GetElement(element, expression, resolver);
-            value = attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            value = attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
             return attr != null;
         }
 
         public static TResult GetElementValue<T, TResult>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<T, TResult> callback) {
             XElement attr = GetElement(element, expression, resolver);
-            return attr == null ? default(TResult) : callback((T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
+            return attr == null ? default(TResult) : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
         }
 
         #endregion
