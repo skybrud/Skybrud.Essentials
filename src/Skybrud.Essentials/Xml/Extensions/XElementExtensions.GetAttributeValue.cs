@@ -219,7 +219,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XAttribute attr = GetAttribute(element, name);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : StringHelpers.ParseBoolean(attr.Value);
+            value = attr == null ? default(bool) : StringHelper.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;
@@ -249,7 +249,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XAttribute attr = GetAttribute(element, expression, resolver);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : StringHelpers.ParseBoolean(attr.Value);
+            value = attr == null ? default(bool) : StringHelper.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;

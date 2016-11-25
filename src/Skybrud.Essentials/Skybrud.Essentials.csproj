@@ -63,6 +63,7 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecurityHelpers.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
+    <Compile Include="Strings\StringHelper.cs" />
     <Compile Include="Strings\StringHelpers.cs" />
     <Compile Include="Time\TimeHelpers.UnixTime.cs" />
     <Compile Include="Time\TimeHelpers.cs" />

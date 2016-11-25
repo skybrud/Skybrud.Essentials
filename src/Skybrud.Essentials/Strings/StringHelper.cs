@@ -8,8 +8,7 @@ namespace Skybrud.Essentials.Strings {
     /// <summary>
     /// Utility class with various static helper methods for working with strings.
     /// </summary>
-    [Obsolete("Use the StringHelper class instead.")]
-    public static class StringHelpers {
+    public static class StringHelper {
 
         /// <summary>
         /// Parses the specified <code>str</code> into an instance of <see cref="System.Boolean"/>. The string is
@@ -19,9 +18,9 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>Returns <code>true</code> if <code>str</code> matches either <code>true</code>, <code>1</code>
         /// or <code>t</code> (case insensitive).</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static bool ParseBoolean(string str) {
-            return StringHelper.ParseBoolean(str);
+            str = (str ?? "").ToLower();
+            return str == "true" || str == "1" || str == "t";
         }
 
         /// <summary>
@@ -32,9 +31,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="value">The value to be parsed.</param>
         /// <returns>Returns <code>true</code> if <code>value</code> matches either <code>true</code>, <code>1</code>
         /// or <code>t</code> (case insensitive).</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static bool ParseBoolean(object value) {
-            return StringHelper.ParseBoolean(value);
+            return ParseBoolean(value + "");
         }
 
         /// <summary>
@@ -42,9 +40,12 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The comma separated string to be converted.</param>
         /// <returns>Returns an array of <see cref="Int32"/>.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static int[] CsvToInt(string str) {
-            return StringHelper.CsvToInt(str);
+            return (
+                from piece in (str ?? "").Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
+                select Int32.Parse(piece)
+            ).ToArray();
         }
 
         /// <summary>
@@ -52,9 +53,17 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>Returns the camel cased string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string ToCamelCase(string str) {
-            return StringHelper.ToCamelCase(str);
+
+            // Convert the string to lowercase initially for better results (eg. if the string is already camel cased)
+            str = ToUnderscore(str);
+
+            // Split the string by space or underscore
+            string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Join the pieces again and uppercase the first character of each piece but the first
+            return String.Join("", pieces.Select((t, i) => i == 0 ? t : FirstCharToUpper(t)));
+
         }
 
         /// <summary>
@@ -62,9 +71,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>Returns the camel cased string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string ToCamelCase(Enum value) {
-            return StringHelper.ToCamelCase(value);
+            return ToCamelCase(value.ToString());
         }
 
         /// <summary>
@@ -72,9 +80,17 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>Returns the Pascal cased string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string ToPascalCase(string str) {
-            return StringHelper.ToPascalCase(str);
+
+            // Convert the string to lowercase initially for better results (eg. if the string is already camel cased)
+            str = ToUnderscore(str);
+
+            // Split the string by space or underscore
+            string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
+
+            // Join the pieces again and uppercase the first character of each piece
+            return String.Join("", from piece in pieces select FirstCharToUpper(piece));
+
         }
 
         /// <summary>
@@ -82,9 +98,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>Returns the Pascal cased string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string ToPascalCase(Enum value) {
-            return StringHelper.ToPascalCase(value);
+            return ToPascalCase(value.ToString());
         }
 
         /// <summary>
@@ -92,9 +107,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>Returns the converted string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string ToUnderscore(string str) {
-            return StringHelper.ToUnderscore(str);
+            return Regex.Replace(str ?? "", @"(\p{Ll})(\p{Lu})", "$1_$2").Replace(" ", "_").Replace("__", "_").ToLower();
         }
 
         /// <summary>
@@ -102,9 +116,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>Returns the converted string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string ToUnderscore(Enum value) {
-            return StringHelper.ToUnderscore(value);
+            return ToUnderscore(value.ToString());
         }
 
         /// <summary>
@@ -113,9 +126,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string FirstCharToUpper(string str) {
-            return StringHelper.FirstCharToUpper(str);
+            return String.IsNullOrEmpty(str) ? "" : String.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
         }
 
         /// <summary>
@@ -123,9 +135,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>Returns the encoded string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string UrlEncode(string str) {
-            return StringHelper.UrlEncode(str);
+            return HttpUtility.UrlEncode(str);
         }
 
         /// <summary>
@@ -133,9 +144,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>Returns the decoded string.</returns>
-        [Obsolete("Use the StringHelper class instead.")]
         public static string UrlDecode(string str) {
-            return StringHelper.UrlDecode(str);
+            return HttpUtility.UrlDecode(str);
         }
 
     }

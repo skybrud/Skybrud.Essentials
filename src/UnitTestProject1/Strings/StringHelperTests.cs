@@ -5,27 +5,27 @@ using Skybrud.Essentials.Strings;
 namespace UnitTestProject1.Strings {
 
     [TestClass]
-    public class StringHelpersTests {
+    public class StringHelperTests {
 
         [TestMethod]
         public void ParseBoolean() {
             
-            Assert.AreEqual(true, StringHelpers.ParseBoolean("true"), "Check #1 failed");
-            Assert.AreEqual(false, StringHelpers.ParseBoolean("false"), "Check #2 failed");
-            Assert.AreEqual(true, StringHelpers.ParseBoolean("True"), "Check #3 failed");
-            Assert.AreEqual(false, StringHelpers.ParseBoolean("False"), "Check #4 failed");
+            Assert.AreEqual(true, StringHelper.ParseBoolean("true"), "Check #1 failed");
+            Assert.AreEqual(false, StringHelper.ParseBoolean("false"), "Check #2 failed");
+            Assert.AreEqual(true, StringHelper.ParseBoolean("True"), "Check #3 failed");
+            Assert.AreEqual(false, StringHelper.ParseBoolean("False"), "Check #4 failed");
 
-            Assert.AreEqual(true, StringHelpers.ParseBoolean("1"), "Check #5 failed");
-            Assert.AreEqual(false, StringHelpers.ParseBoolean("0"), "Check #6 failed");
+            Assert.AreEqual(true, StringHelper.ParseBoolean("1"), "Check #5 failed");
+            Assert.AreEqual(false, StringHelper.ParseBoolean("0"), "Check #6 failed");
             
-            Assert.AreEqual(true, StringHelpers.ParseBoolean("t"), "Check #7 failed");
-            Assert.AreEqual(false, StringHelpers.ParseBoolean("f"), "Check #8 failed");
-            Assert.AreEqual(true, StringHelpers.ParseBoolean("T"), "Check #9 failed");
-            Assert.AreEqual(false, StringHelpers.ParseBoolean("F"), "Check #10 failed");
+            Assert.AreEqual(true, StringHelper.ParseBoolean("t"), "Check #7 failed");
+            Assert.AreEqual(false, StringHelper.ParseBoolean("f"), "Check #8 failed");
+            Assert.AreEqual(true, StringHelper.ParseBoolean("T"), "Check #9 failed");
+            Assert.AreEqual(false, StringHelper.ParseBoolean("F"), "Check #10 failed");
             
-            Assert.AreEqual(false, StringHelpers.ParseBoolean(""));
-            Assert.AreEqual(false, StringHelpers.ParseBoolean(default(string)));
-            Assert.AreEqual(false, StringHelpers.ParseBoolean(default(object)));
+            Assert.AreEqual(false, StringHelper.ParseBoolean(""));
+            Assert.AreEqual(false, StringHelper.ParseBoolean(default(string)));
+            Assert.AreEqual(false, StringHelper.ParseBoolean(default(object)));
 
         }
 
@@ -49,11 +49,11 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples1) {
-                Assert.AreEqual(sample.Expected, StringHelpers.ToUnderscore(sample.Input));
+                Assert.AreEqual(sample.Expected, StringHelper.ToUnderscore(sample.Input));
             }
 
             foreach (var sample in samples2) {
-                Assert.AreEqual(sample.Expected, StringHelpers.ToUnderscore(sample.Input));
+                Assert.AreEqual(sample.Expected, StringHelper.ToUnderscore(sample.Input));
             }
 
         }
@@ -77,11 +77,11 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples1) {
-                Assert.AreEqual(sample.Expected, StringHelpers.ToCamelCase(sample.Input));
+                Assert.AreEqual(sample.Expected, StringHelper.ToCamelCase(sample.Input));
             }
 
             foreach (var sample in samples2) {
-                Assert.AreEqual(sample.Expected, StringHelpers.ToCamelCase(sample.Input));
+                Assert.AreEqual(sample.Expected, StringHelper.ToCamelCase(sample.Input));
             }
 
         }
@@ -105,11 +105,11 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples1) {
-                Assert.AreEqual(sample.Expected, StringHelpers.ToPascalCase(sample.Input));
+                Assert.AreEqual(sample.Expected, StringHelper.ToPascalCase(sample.Input));
             }
 
             foreach (var sample in samples2) {
-                Assert.AreEqual(sample.Expected, StringHelpers.ToPascalCase(sample.Input));
+                Assert.AreEqual(sample.Expected, StringHelper.ToPascalCase(sample.Input));
             }
 
         }
@@ -125,7 +125,7 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Expected, StringHelpers.FirstCharToUpper(sample.Input));
+                Assert.AreEqual(sample.Expected, StringHelper.FirstCharToUpper(sample.Input));
             }
 
         }

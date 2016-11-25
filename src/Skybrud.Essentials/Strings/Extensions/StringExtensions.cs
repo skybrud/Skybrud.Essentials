@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The comma separated string to be converted.</param>
         /// <returns>Returns an array of <see cref="Int32"/>.</returns>
         public static int[] CsvToInt(this string str) {
-            return StringHelpers.CsvToInt(str);
+            return StringHelper.CsvToInt(str);
         }
 
         /// <summary>
@@ -19,7 +19,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to be converted.</param>
         /// <returns>Returns the camel cased string.</returns>
         public static string ToCamelCase(this string str) {
-            return StringHelpers.ToCamelCase(str);
+            return StringHelper.ToCamelCase(str);
         }
 
         /// <summary>
@@ -28,7 +28,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>Returns the camel cased string.</returns>
         public static string ToCamelCase(Enum value) {
-            return StringHelpers.ToCamelCase(value);
+            return StringHelper.ToCamelCase(value);
         }
 
         /// <summary>
@@ -37,7 +37,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to be converted.</param>
         /// <returns>Returns the Pascal cased string.</returns>
         public static string ToPascalCase(this string str) {
-            return StringHelpers.ToPascalCase(str);
+            return StringHelper.ToPascalCase(str);
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>Returns the Pascal cased string.</returns>
         public static string ToPascalCase(Enum value) {
-            return StringHelpers.ToPascalCase(value);
+            return StringHelper.ToPascalCase(value);
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to be converted.</param>
         /// <returns>Returns the converted string.</returns>
         public static string ToUnderscore(this string str) {
-            return StringHelpers.ToUnderscore(str);
+            return StringHelper.ToUnderscore(str);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>Returns the converted string.</returns>
         public static string ToUnderscore(this Enum value) {
-            return StringHelpers.ToUnderscore(value);
+            return StringHelper.ToUnderscore(value);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
         public static string FirstCharToUpper(this string str) {
-            return StringHelpers.FirstCharToUpper(str);
+            return StringHelper.FirstCharToUpper(str);
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to be encoded.</param>
         /// <returns>Returns the encoded string.</returns>
         public static string UrlEncode(this string str) {
-            return StringHelpers.UrlEncode(str);
+            return StringHelper.UrlEncode(str);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to be decoded.</param>
         /// <returns>Returns the decoded string.</returns>
         public static string UrlDecode(this string str) {
-            return StringHelpers.UrlDecode(str);
+            return StringHelper.UrlDecode(str);
         }
 
     }
