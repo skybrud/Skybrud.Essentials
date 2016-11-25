@@ -136,11 +136,11 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
-        /// Saves the specified <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file doesn't
-        /// already exist, a new file will be created.
+        /// Saves the specified <see cref="JObject"/> to the file at <code>path</code>. If the file doesn't already
+        /// exist, a new file will be created.
         /// </summary>
         /// <param name="path">The path to the file.</param>
-        /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be saved.</param>
         public static void SaveJsonObject(string path, JObject obj) {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
             if (obj == null) throw new ArgumentNullException("obj");
@@ -148,16 +148,85 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
-        /// Saves the specified <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file doesn't
-        /// already exist, a new file will be created.
+        /// Saves the specified <see cref="JObject"/> to the file at <code>path</code>. If the file doesn't already
+        /// exist, a new file will be created.
         /// </summary>
         /// <param name="path">The path to the file.</param>
-        /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonObject(string path, JObject obj, Formatting formatting) {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
             if (obj == null) throw new ArgumentNullException("obj");
             File.WriteAllText(path, obj.ToString(formatting));
+        }
+
+        /// <summary>
+        /// Saves the specified <see cref="JArray"/> to the file at <code>path</code>. If the file doesn't already
+        /// exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The instance of <see cref="JObject"/> to be saved.</param>
+        public static void SaveJsonArray(string path, JArray array) {
+            SaveJsonArray(path, array, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <see cref="JArray"/> to the file at <code>path</code>. If the file doesn't already
+        /// exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The instance of <see cref="JObject"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray(string path, JArray array, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (array == null) throw new ArgumentNullException("array");
+            File.WriteAllText(path, array.ToString());
+        }
+
+        /// <summary>
+        /// Saves the specified array of <see cref="JToken"/> to the file at <code>path</code>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JToken"/> to be saved.</param>
+        public static void SaveJsonArray(string path, JToken[] array) {
+            SaveJsonArray(path, array, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified array of <see cref="JToken"/> to the file at <code>path</code>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JToken"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray(string path, JToken[] array, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (array == null) throw new ArgumentNullException("array");
+            File.WriteAllText(path, JsonConvert.SerializeObject(array, formatting));
+        }
+
+        /// <summary>
+        /// Saves the specified array of <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JsonObjectBase"/> to be saved.</param>
+        public static void SaveJsonArray(string path, JsonObjectBase[] array) {
+            SaveJsonArray(path, array, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified array of <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JsonObjectBase"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray(string path, JsonObjectBase[] array, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (array == null) throw new ArgumentNullException("array");
+            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item == null ? null : item.JObject, formatting));
         }
     
     }
