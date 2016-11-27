@@ -62,7 +62,7 @@
     <Compile Include="Json\JsonHelpers.cs" />
     <Compile Include="Json\JsonObjectBase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\SecurityHelpers.cs" />
+    <Compile Include="Security\SecurityHelper.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
     <Compile Include="Strings\StringHelper.cs" />
     <Compile Include="Strings\StringHelpers.cs" />

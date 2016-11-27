@@ -8,7 +8,7 @@ namespace Skybrud.Essentials.Security {
     /// <summary>
     /// Static class with miscellaneous helper methods.
     /// </summary>
-    public static class SecurityHelpers {
+    public static class SecurityHelper {
 
         /// <summary>
         /// Base64 encodes the specified <code>input</code> string.
