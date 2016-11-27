@@ -56,11 +56,11 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Dates\DateHelpersTests.cs" />
+    <Compile Include="Dates\DateHelperTests.cs" />
     <Compile Include="Enums\EnumHelperTests.cs" />
     <Compile Include="Json\JsonHelperTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
-    <Compile Include="Security\Security.cs" />
+    <Compile Include="Security\SecurityHelperTests.cs" />
     <Compile Include="Strings\StringHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers.cs" />

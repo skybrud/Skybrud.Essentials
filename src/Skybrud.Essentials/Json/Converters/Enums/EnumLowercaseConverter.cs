@@ -1,12 +1,12 @@
 ﻿using System;
 using Newtonsoft.Json;
 
-namespace Skybrud.Essentials.Json.Converters {
+namespace Skybrud.Essentials.Json.Converters.Enums {
     
     /// <summary>
-    /// JSON converter for serializing an enum value into a lowercase string.
+    /// JSON converter for serializing an enum value into a lower case string.
     /// </summary>
-    public class EnumLowercaseConverter : JsonConverter {
+    public class EnumLowerCaseConverter : JsonConverter {
 
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
 

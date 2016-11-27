@@ -3,13 +3,13 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Dates;
-using Skybrud.Essentials.Dates.Extensions;
+using Skybrud.Essentials.Time;
+using Skybrud.Essentials.Time.Extensions;
 
 namespace UnitTestProject1.Dates {
     
     [TestClass]
-    public class Date {
+    public class DateHelperTests {
 
         [TestMethod]
         public void GetAge() {
@@ -23,8 +23,8 @@ namespace UnitTestProject1.Dates {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Age, DateHelpers.GetAge(sample.Date, fakeNow));
-                Assert.AreEqual(sample.Age, DateHelpers.GetAge(sample.Date, fakeNow));
+                Assert.AreEqual(sample.Age, TimeHelper.GetAge(sample.Date, fakeNow));
+                Assert.AreEqual(sample.Age, TimeHelper.GetAge(sample.Date, fakeNow));
             }
 
         }
@@ -32,80 +32,80 @@ namespace UnitTestProject1.Dates {
         [TestMethod]
         public void GetDayNumberAndSuffix() {
 
-            Assert.AreEqual("1st", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 1)));
-            Assert.AreEqual("2nd", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 2)));
-            Assert.AreEqual("3rd", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 3)));
-            Assert.AreEqual("4th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 4)));
-            Assert.AreEqual("5th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 5)));
-            Assert.AreEqual("6th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 6)));
-            Assert.AreEqual("7th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 7)));
-            Assert.AreEqual("8th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 8)));
-            Assert.AreEqual("9th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 9)));
+            Assert.AreEqual("1st", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 1)));
+            Assert.AreEqual("2nd", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 2)));
+            Assert.AreEqual("3rd", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 3)));
+            Assert.AreEqual("4th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 4)));
+            Assert.AreEqual("5th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 5)));
+            Assert.AreEqual("6th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 6)));
+            Assert.AreEqual("7th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 7)));
+            Assert.AreEqual("8th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 8)));
+            Assert.AreEqual("9th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 9)));
 
-            Assert.AreEqual("10th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 10)));
-            Assert.AreEqual("11th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 11)));
-            Assert.AreEqual("12th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 12)));
-            Assert.AreEqual("13th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 13)));
-            Assert.AreEqual("14th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 14)));
-            Assert.AreEqual("15th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 15)));
-            Assert.AreEqual("16th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 16)));
-            Assert.AreEqual("17th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 17)));
-            Assert.AreEqual("18th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 18)));
-            Assert.AreEqual("19th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 19)));
+            Assert.AreEqual("10th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 10)));
+            Assert.AreEqual("11th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 11)));
+            Assert.AreEqual("12th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 12)));
+            Assert.AreEqual("13th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 13)));
+            Assert.AreEqual("14th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 14)));
+            Assert.AreEqual("15th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 15)));
+            Assert.AreEqual("16th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 16)));
+            Assert.AreEqual("17th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 17)));
+            Assert.AreEqual("18th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 18)));
+            Assert.AreEqual("19th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 19)));
 
-            Assert.AreEqual("20th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 20)));
-            Assert.AreEqual("21st", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 21)));
-            Assert.AreEqual("22nd", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 22)));
-            Assert.AreEqual("23rd", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 23)));
-            Assert.AreEqual("24th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 24)));
-            Assert.AreEqual("25th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 25)));
-            Assert.AreEqual("26th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 26)));
-            Assert.AreEqual("27th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 27)));
-            Assert.AreEqual("28th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 28)));
-            Assert.AreEqual("29th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 29)));
+            Assert.AreEqual("20th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 20)));
+            Assert.AreEqual("21st", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 21)));
+            Assert.AreEqual("22nd", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 22)));
+            Assert.AreEqual("23rd", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 23)));
+            Assert.AreEqual("24th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 24)));
+            Assert.AreEqual("25th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 25)));
+            Assert.AreEqual("26th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 26)));
+            Assert.AreEqual("27th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 27)));
+            Assert.AreEqual("28th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 28)));
+            Assert.AreEqual("29th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 29)));
 
-            Assert.AreEqual("30th", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 30)));
-            Assert.AreEqual("31st", DateHelpers.GetDayNumberAndSuffix(new DateTime(2014, 1, 31)));
+            Assert.AreEqual("30th", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 30)));
+            Assert.AreEqual("31st", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 31)));
 
         }
 
         [TestMethod]
         public void GetDaySuffix() {
 
-            Assert.AreEqual("st", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 1)));
-            Assert.AreEqual("nd", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 2)));
-            Assert.AreEqual("rd", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 3)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 4)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 5)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 6)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 7)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 8)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 9)));
+            Assert.AreEqual("st", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 1)));
+            Assert.AreEqual("nd", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 2)));
+            Assert.AreEqual("rd", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 3)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 4)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 5)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 6)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 7)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 8)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 9)));
 
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 10)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 11)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 12)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 13)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 14)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 15)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 16)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 17)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 18)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 19)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 10)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 11)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 12)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 13)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 14)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 15)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 16)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 17)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 18)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 19)));
 
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 20)));
-            Assert.AreEqual("st", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 21)));
-            Assert.AreEqual("nd", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 22)));
-            Assert.AreEqual("rd", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 23)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 24)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 25)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 26)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 27)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 28)));
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 29)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 20)));
+            Assert.AreEqual("st", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 21)));
+            Assert.AreEqual("nd", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 22)));
+            Assert.AreEqual("rd", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 23)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 24)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 25)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 26)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 27)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 28)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 29)));
 
-            Assert.AreEqual("th", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 30)));
-            Assert.AreEqual("st", DateHelpers.GetDaySuffix(new DateTime(2014, 1, 31)));
+            Assert.AreEqual("th", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 30)));
+            Assert.AreEqual("st", TimeHelper.GetDaySuffix(new DateTime(2014, 1, 31)));
 
         }
 
@@ -123,7 +123,7 @@ namespace UnitTestProject1.Dates {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Week, DateHelpers.GetIso8601WeekNumber(sample.Date));
+                Assert.AreEqual(sample.Week, TimeHelper.GetIso8601WeekNumber(sample.Date));
             }
 
         }
@@ -131,13 +131,13 @@ namespace UnitTestProject1.Dates {
         [TestMethod]
         public void IsWeekDay() {
 
-            Assert.AreEqual(true, DateHelpers.IsWeekday(new DateTime(2014, 2, 10)));
-            Assert.AreEqual(true, DateHelpers.IsWeekday(new DateTime(2014, 2, 11)));
-            Assert.AreEqual(true, DateHelpers.IsWeekday(new DateTime(2014, 2, 12)));
-            Assert.AreEqual(true, DateHelpers.IsWeekday(new DateTime(2014, 2, 13)));
-            Assert.AreEqual(true, DateHelpers.IsWeekday(new DateTime(2014, 2, 14)));
-            Assert.AreEqual(false, DateHelpers.IsWeekday(new DateTime(2014, 2, 15)));
-            Assert.AreEqual(false, DateHelpers.IsWeekday(new DateTime(2014, 2, 16)));
+            Assert.AreEqual(true, TimeHelper.IsWeekday(new DateTime(2014, 2, 10)));
+            Assert.AreEqual(true, TimeHelper.IsWeekday(new DateTime(2014, 2, 11)));
+            Assert.AreEqual(true, TimeHelper.IsWeekday(new DateTime(2014, 2, 12)));
+            Assert.AreEqual(true, TimeHelper.IsWeekday(new DateTime(2014, 2, 13)));
+            Assert.AreEqual(true, TimeHelper.IsWeekday(new DateTime(2014, 2, 14)));
+            Assert.AreEqual(false, TimeHelper.IsWeekday(new DateTime(2014, 2, 15)));
+            Assert.AreEqual(false, TimeHelper.IsWeekday(new DateTime(2014, 2, 16)));
 
             Assert.AreEqual(true, new DateTime(2014, 2, 10).IsWeekday());
             Assert.AreEqual(true, new DateTime(2014, 2, 11).IsWeekday());
@@ -152,13 +152,13 @@ namespace UnitTestProject1.Dates {
         [TestMethod]
         public void IsWeekend() {
 
-            Assert.AreEqual(false, DateHelpers.IsWeekend(new DateTime(2014, 2, 10)));
-            Assert.AreEqual(false, DateHelpers.IsWeekend(new DateTime(2014, 2, 11)));
-            Assert.AreEqual(false, DateHelpers.IsWeekend(new DateTime(2014, 2, 12)));
-            Assert.AreEqual(false, DateHelpers.IsWeekend(new DateTime(2014, 2, 13)));
-            Assert.AreEqual(false, DateHelpers.IsWeekend(new DateTime(2014, 2, 14)));
-            Assert.AreEqual(true, DateHelpers.IsWeekend(new DateTime(2014, 2, 15)));
-            Assert.AreEqual(true, DateHelpers.IsWeekend(new DateTime(2014, 2, 16)));
+            Assert.AreEqual(false, TimeHelper.IsWeekend(new DateTime(2014, 2, 10)));
+            Assert.AreEqual(false, TimeHelper.IsWeekend(new DateTime(2014, 2, 11)));
+            Assert.AreEqual(false, TimeHelper.IsWeekend(new DateTime(2014, 2, 12)));
+            Assert.AreEqual(false, TimeHelper.IsWeekend(new DateTime(2014, 2, 13)));
+            Assert.AreEqual(false, TimeHelper.IsWeekend(new DateTime(2014, 2, 14)));
+            Assert.AreEqual(true, TimeHelper.IsWeekend(new DateTime(2014, 2, 15)));
+            Assert.AreEqual(true, TimeHelper.IsWeekend(new DateTime(2014, 2, 16)));
 
             Assert.AreEqual(false, new DateTime(2014, 2, 10).IsWeekend());
             Assert.AreEqual(false, new DateTime(2014, 2, 11).IsWeekend());
@@ -210,9 +210,9 @@ namespace UnitTestProject1.Dates {
 
                 DateTime dt = new DateTime(sample.Year, 1, 1);
 
-                Assert.AreEqual(sample.IsLeapYear, DateHelpers.IsLeapYear(sample.Year), "\n\n" + sample.Year + " (DateTimeHelpers)");
-                Assert.AreEqual(sample.IsLeapYear, DateHelpers.IsLeapYear(dt), "\n\n" + sample.Year + " (DateTimeHelpers)");
-                Assert.AreEqual(sample.IsLeapYear, dt.IsLeapYear(), "\n\n" + sample.Year + " (DateExtensions)");
+                Assert.AreEqual(sample.IsLeapYear, TimeHelper.IsLeapYear(sample.Year), "\n\n" + sample.Year + " (DateTimeHelpers)");
+                Assert.AreEqual(sample.IsLeapYear, TimeHelper.IsLeapYear(dt), "\n\n" + sample.Year + " (DateTimeHelpers)");
+                Assert.AreEqual(sample.IsLeapYear, dt.IsLeapYear(), "\n\n" + sample.Year + " (DateTimeExtensions)");
             
             }
 
@@ -235,8 +235,8 @@ namespace UnitTestProject1.Dates {
 
                 DateTime date = DateTime.Parse(sample.Text);
 
-                int local = DateHelpers.GetUnixTimeFromDateTime(date);
-                int utc = DateHelpers.GetUnixTimeFromDateTime(date.ToUniversalTime());
+                int local = TimeHelper.GetUnixTimeFromDateTime(date);
+                int utc = TimeHelper.GetUnixTimeFromDateTime(date.ToUniversalTime());
 
                 Assert.AreEqual(sample.Timestamp, local);
                 Assert.AreEqual(sample.Timestamp, utc);
@@ -264,13 +264,13 @@ namespace UnitTestProject1.Dates {
 
             foreach (var sample in samples) {
 
-                DateTime date = DateHelpers.GetDateTimeFromUnixTime(sample.Timestamp);
+                DateTime date = TimeHelper.GetDateTimeFromUnixTime(sample.Timestamp);
 
                 // TODO: Find a way to explicitly specify the local time zone (so the Unit test will complete even when not in Danish timezone).
                 DateTime dateLocal = date;// TimeZoneInfo.ConvertTime(date, TimeZoneInfo.Utc, GetTimeZone(sample.TimeZone));
 
-                string local = dateLocal.ToLocalTime().ToString(DateHelpers.IsoDateFormat);
-                string utc = date.ToUniversalTime().ToString(DateHelpers.IsoDateFormat);
+                string local = dateLocal.ToLocalTime().ToString(TimeHelper.Iso8601DateFormat);
+                string utc = date.ToUniversalTime().ToString(TimeHelper.Iso8601DateFormat);
 
                 Assert.AreEqual(sample.TextLocal, local, "local");
                 Assert.AreEqual(sample.TextUTC, utc, "utc");
@@ -301,8 +301,8 @@ namespace UnitTestProject1.Dates {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Expected, DateHelpers.GetFirstDayOfMonth(sample.Date), "DateTimeHelpers");
-                Assert.AreEqual(sample.Expected, sample.Date.GetFirstDayOfMonth(), "DateExtensions");
+                Assert.AreEqual(sample.Expected, TimeHelper.GetFirstDayOfMonth(sample.Date), "DateTimeHelpers");
+                Assert.AreEqual(sample.Expected, sample.Date.GetFirstDayOfMonth(), "DateTimeExtensions");
             }
 
         }
@@ -328,8 +328,8 @@ namespace UnitTestProject1.Dates {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Expected, DateHelpers.GetLastDayOfMonth(sample.Date), "DateTimeHelpers");
-                Assert.AreEqual(sample.Expected, sample.Date.GetLastDayOfMonth(), "DateExtensions");
+                Assert.AreEqual(sample.Expected, TimeHelper.GetLastDayOfMonth(sample.Date), "DateTimeHelpers");
+                Assert.AreEqual(sample.Expected, sample.Date.GetLastDayOfMonth(), "DateTimeExtensions");
             }
 
         }
@@ -349,13 +349,13 @@ namespace UnitTestProject1.Dates {
 
             foreach (var sample in samples) {
 
-                Assert.AreEqual(sample.Monday, DateHelpers.GetFirstDayOfWeek(sample.Date), "\n\n" + sample.Date + " (DateTimeHelpers - implicit)");
+                Assert.AreEqual(sample.Monday, TimeHelper.GetFirstDayOfWeek(sample.Date), "\n\n" + sample.Date + " (DateTimeHelpers - implicit)");
                 Assert.AreEqual(sample.Monday, sample.Date.GetFirstDayOfWeek(), "\n\n" + sample.Date + " (DateTimeHelpers - implicit)");
 
-                Assert.AreEqual(sample.Monday, DateHelpers.GetFirstDayOfWeek(sample.Date, DayOfWeek.Monday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Monday)");
+                Assert.AreEqual(sample.Monday, TimeHelper.GetFirstDayOfWeek(sample.Date, DayOfWeek.Monday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Monday)");
                 Assert.AreEqual(sample.Monday, sample.Date.GetFirstDayOfWeek(DayOfWeek.Monday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Monday)");
 
-                Assert.AreEqual(sample.Sunday, DateHelpers.GetFirstDayOfWeek(sample.Date, DayOfWeek.Sunday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Sunday)");
+                Assert.AreEqual(sample.Sunday, TimeHelper.GetFirstDayOfWeek(sample.Date, DayOfWeek.Sunday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Sunday)");
                 Assert.AreEqual(sample.Sunday, sample.Date.GetFirstDayOfWeek(DayOfWeek.Sunday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Sunday)");
 
             }
@@ -377,13 +377,13 @@ namespace UnitTestProject1.Dates {
 
             foreach (var sample in samples) {
 
-                Assert.AreEqual(sample.Monday, DateHelpers.GetLastDayOfWeek(sample.Date), "\n\n" + sample.Date + " (DateTimeHelpers - implicit)");
+                Assert.AreEqual(sample.Monday, TimeHelper.GetLastDayOfWeek(sample.Date), "\n\n" + sample.Date + " (DateTimeHelpers - implicit)");
                 Assert.AreEqual(sample.Monday, sample.Date.GetLastDayOfWeek(), "\n\n" + sample.Date + " (DateTimeHelpers - implicit)");
 
-                Assert.AreEqual(sample.Monday, DateHelpers.GetLastDayOfWeek(sample.Date, DayOfWeek.Monday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Monday)");
+                Assert.AreEqual(sample.Monday, TimeHelper.GetLastDayOfWeek(sample.Date, DayOfWeek.Monday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Monday)");
                 Assert.AreEqual(sample.Monday, sample.Date.GetLastDayOfWeek(DayOfWeek.Monday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Monday)");
 
-                Assert.AreEqual(sample.Sunday, DateHelpers.GetLastDayOfWeek(sample.Date, DayOfWeek.Sunday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Sunday)");
+                Assert.AreEqual(sample.Sunday, TimeHelper.GetLastDayOfWeek(sample.Date, DayOfWeek.Sunday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Sunday)");
                 Assert.AreEqual(sample.Sunday, sample.Date.GetLastDayOfWeek(DayOfWeek.Sunday), "\n\n" + sample.Date + " (DateTimeHelpers - explicit: Sunday)");
 
             }
@@ -399,7 +399,7 @@ namespace UnitTestProject1.Dates {
 
             for (int i = 0; i < expected.Length; i++) {
                 DateTime dt = new DateTime(2014, i + 1, 15);
-                Assert.AreEqual(expected[i], DateHelpers.GetMonthName(dt));
+                Assert.AreEqual(expected[i], TimeHelper.GetMonthName(dt));
                 Assert.AreEqual(expected[i], dt.GetMonthName());
             }
 
@@ -418,7 +418,7 @@ namespace UnitTestProject1.Dates {
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
                 for (int i = 0; i < sample.Value.Length; i++) {
                     DateTime dt = new DateTime(2014, i + 1, 15);
-                    Assert.AreEqual(sample.Value[i], DateHelpers.GetLocalMonthName(dt));
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalMonthName(dt));
                     Assert.AreEqual(sample.Value[i], dt.GetLocalMonthName());
                 }
             }
@@ -438,7 +438,7 @@ namespace UnitTestProject1.Dates {
                 for (int i = 0; i < sample.Value.Length; i++) {
                     DateTime dt = new DateTime(2014, i + 1, 15);
                     CultureInfo culture = new CultureInfo(sample.Key);
-                    Assert.AreEqual(sample.Value[i], DateHelpers.GetLocalMonthName(dt, culture));
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalMonthName(dt, culture));
                     Assert.AreEqual(sample.Value[i], dt.GetLocalMonthName(culture));
                 }
             }
@@ -458,7 +458,7 @@ namespace UnitTestProject1.Dates {
 
             for (int i = 0; i < expected.Length; i++) {
                 DateTime dt = start.AddDays(i);
-                Assert.AreEqual(expected[i], DateHelpers.GetDayName(dt));
+                Assert.AreEqual(expected[i], TimeHelper.GetDayName(dt));
                 Assert.AreEqual(expected[i], dt.GetDayName());
             }
 
@@ -479,7 +479,7 @@ namespace UnitTestProject1.Dates {
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
                 for (int i = 0; i < sample.Value.Length; i++) {
                     DateTime dt = start.AddDays(i);
-                    Assert.AreEqual(sample.Value[i], DateHelpers.GetLocalDayName(dt));
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt));
                     Assert.AreEqual(sample.Value[i], dt.GetLocalDayName());
                 }
             }
@@ -501,7 +501,7 @@ namespace UnitTestProject1.Dates {
                 for (int i = 0; i < sample.Value.Length; i++) {
                     DateTime dt = start.AddDays(i);
                     CultureInfo culture = new CultureInfo(sample.Key);
-                    Assert.AreEqual(sample.Value[i], DateHelpers.GetLocalDayName(dt, culture));
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt, culture));
                     Assert.AreEqual(sample.Value[i], dt.GetLocalDayName(new CultureInfo(sample.Key)));
                 }
             }

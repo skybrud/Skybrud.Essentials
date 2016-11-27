@@ -1,29 +1,17 @@
 ﻿using System;
 using System.Globalization;
 
-namespace Skybrud.Essentials.Dates {
-
-    /// <summary>
-    /// Static class with helper methods for working with dates.
-    /// </summary>
-    public static partial class DateHelpers {
-
-        #region Constants
-
-        /// <summary>
-        ///     ISO 8601 date format.
-        /// </summary>
-        public const string IsoDateFormat = "yyyy'-'MM'-'dd'T'HH':'mm':'ssK";
-
-        #endregion
+namespace Skybrud.Essentials.Time.Extensions {
+    
+    public static class DateTimeExtensions {
 
         /// <summary>
         /// Gets the current age, from the specified date of birth.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <returns>Returns an instance of <see cref="Int32"/> representing the age.</returns>
-        public static int GetAge(DateTime dateOfBirth) {
-            return GetAge(dateOfBirth, DateTime.Today);
+        public static int GetAge(this DateTime dateOfBirth) {
+            return TimeHelper.GetAge(dateOfBirth);
         }
 
         /// <summary>
@@ -32,10 +20,8 @@ namespace Skybrud.Essentials.Dates {
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="dt">The date used for calculating the age.</param>
         /// <returns>Returns an instance of <see cref="Int32"/> representing the age.</returns>
-        public static int GetAge(DateTime dateOfBirth, DateTime dt) {
-            int age = dt.Year - dateOfBirth.Year;
-            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
-            return age;
+        public static int GetAge(this DateTime dateOfBirth, DateTime dt) {
+            return TimeHelper.GetAge(dateOfBirth, dt);
         }
 
         /// <summary>
@@ -43,8 +29,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The day number and ordinal suffix.</returns>
-        public static string GetDayNumberAndSuffix(DateTime date) {
-            return date.Day + GetDaySuffix(date);
+        public static string GetDayNumberAndSuffix(this DateTime date) {
+            return TimeHelper.GetDayNumberAndSuffix(date);
         }
 
         /// <summary>
@@ -52,21 +38,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The the ordinal suffix.</returns>
-        public static string GetDaySuffix(DateTime date) {
-            switch (date.Day) {
-                case 1:
-                case 21:
-                case 31:
-                    return "st";
-                case 2:
-                case 22:
-                    return "nd";
-                case 3:
-                case 23:
-                    return "rd";
-                default:
-                    return "th";
-            }
+        public static string GetDaySuffix(this DateTime date) {
+            return TimeHelper.GetDaySuffix(date);
         }
 
         /// <summary>
@@ -74,9 +47,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns an instance of <see cref="Int32"/> representing the ISO8601 week number.</returns>
-        public static int GetIso8601WeekNumber(DateTime date) {
-            int day = (int) CultureInfo.CurrentCulture.Calendar.GetDayOfWeek(date);
-            return CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(date.AddDays(4 - (day == 0 ? 7 : day)), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+        public static int GetIso8601WeekNumber(this DateTime date) {
+            return TimeHelper.GetIso8601WeekNumber(date);
         }
 
         /// <summary>
@@ -86,8 +58,8 @@ namespace Skybrud.Essentials.Dates {
         /// <returns>
         /// Returns <code>true</code> if <code>date</code> is a weekday; otherwise <code>false</code>.
         /// </returns>
-        public static bool IsWeekday(DateTime date) {
-            return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
+        public static bool IsWeekday(this DateTime date) {
+            return TimeHelper.IsWeekday(date);
         }
 
         /// <summary>
@@ -97,8 +69,8 @@ namespace Skybrud.Essentials.Dates {
         /// <returns>
         /// Returns <code>true</code> if <code>date</code> is in the weekend; otherwise <code>false</code>.
         /// </returns>
-        public static bool IsWeekend(DateTime date) {
-            return !IsWeekday(date);
+        public static bool IsWeekend(this DateTime date) {
+            return TimeHelper.IsWeekend(date);
         }
 
         /// <summary>
@@ -108,8 +80,8 @@ namespace Skybrud.Essentials.Dates {
         /// <returns>
         /// Returns <code>true</code> if the year of <code>date</code> is a leap year; otherwise <code>false</code>.
         /// </returns>
-        public static bool IsLeapYear(DateTime date) {
-            return IsLeapYear(date.Year);
+        public static bool IsLeapYear(this DateTime date) {
+            return TimeHelper.IsLeapYear(date);
         }
 
         /// <summary>
@@ -119,8 +91,8 @@ namespace Skybrud.Essentials.Dates {
         /// <returns>
         /// Returns <code>TRUE</code> if <code>year</code> is a leap year; otherwise <code>FALSE</code>.
         /// </returns>
-        public static bool IsLeapYear(int year) {
-            return (DateTime.DaysInMonth(year, 2).Equals(29));
+        public static bool IsLeapYear(this int year) {
+            return TimeHelper.IsLeapYear(year);
         }
 
 
@@ -129,8 +101,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns the elapsed seconds since the input <see cref="DateTime"/>.</returns>
-        public static double GetElapsedSeconds(DateTime date) {
-            return DateTime.Now.Subtract(date).TotalSeconds;
+        public static double GetElapsedSeconds(this DateTime date) {
+            return TimeHelper.GetElapsedSeconds(date);
         }
 
         /// <summary>
@@ -141,10 +113,8 @@ namespace Skybrud.Essentials.Dates {
         /// <returns>
         /// Returns <code>true</code> if <code>date</code> is within the last number of days, otherwise <code>false</code>.
         /// </returns>
-        public static bool IsDateWithinLastDays(DateTime date, int days) {
-            double lastDays = (double)0 - days;
-            DateTime startDate = date.AddDays(lastDays);
-            return (date >= startDate);
+        public static bool IsDateWithinLastDays(this DateTime date, int days) {
+            return TimeHelper.IsDateWithinLastDays(date, days);
         }
 
         /// <summary>
@@ -152,8 +122,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the month.</returns>
-        public static DateTime GetFirstDayOfMonth(DateTime date) {
-            return new DateTime(date.Year, date.Month, 1);
+        public static DateTime GetFirstDayOfMonth(this DateTime date) {
+            return TimeHelper.GetFirstDayOfMonth(date);
         }
 
         /// <summary>
@@ -161,9 +131,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the month.</returns>
-        public static DateTime GetLastDayOfMonth(DateTime date) {
-            int daysInMonth = DateTime.DaysInMonth(date.Year, date.Month);
-            return new DateTime(date.Year, date.Month, daysInMonth, 23, 59, 59);
+        public static DateTime GetLastDayOfMonth(this DateTime date) {
+            return TimeHelper.GetLastDayOfMonth(date);
         }
 
         /// <summary>
@@ -171,8 +140,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the week.</returns>
-        public static DateTime GetFirstDayOfWeek(DateTime date) {
-            return GetFirstDayOfWeek(date, DayOfWeek.Monday);
+        public static DateTime GetFirstDayOfWeek(this DateTime date) {
+            return TimeHelper.GetFirstDayOfWeek(date);
         }
 
         /// <summary>
@@ -181,10 +150,8 @@ namespace Skybrud.Essentials.Dates {
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the week.</returns>
-        public static DateTime GetFirstDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
-            int diff = date.DayOfWeek - startOfWeek;
-            if (diff < 0) diff += 7;
-            return date.AddDays(-1 * diff).Date;
+        public static DateTime GetFirstDayOfWeek(this DateTime date, DayOfWeek startOfWeek) {
+            return TimeHelper.GetFirstDayOfWeek(date, startOfWeek);
         }
 
         /// <summary>
@@ -192,8 +159,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the week.</returns>
-        public static DateTime GetLastDayOfWeek(DateTime date) {
-            return GetLastDayOfWeek(date, DayOfWeek.Monday);
+        public static DateTime GetLastDayOfWeek(this DateTime date) {
+            return TimeHelper.GetLastDayOfWeek(date);
         }
 
         /// <summary>
@@ -202,8 +169,8 @@ namespace Skybrud.Essentials.Dates {
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the week.</returns>
-        public static DateTime GetLastDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
-            return GetFirstDayOfWeek(date, startOfWeek).AddDays(7).AddSeconds(-1);
+        public static DateTime GetLastDayOfWeek(this DateTime date, DayOfWeek startOfWeek) {
+            return TimeHelper.GetLastDayOfWeek(date, startOfWeek);
         }
 
         /// <summary>
@@ -211,8 +178,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns the English name of the day.</returns>
-        public static string GetDayName(DateTime date) {
-            return date.ToString("dddd", CultureInfo.InvariantCulture);
+        public static string GetDayName(this DateTime date) {
+            return TimeHelper.GetDayName(date);
         }
 
         /// <summary>
@@ -220,8 +187,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns the local name of the day.</returns>
-        public static string GetLocalDayName(DateTime date) {
-            return date.ToString("dddd", CultureInfo.CurrentCulture);
+        public static string GetLocalDayName(this DateTime date) {
+            return TimeHelper.GetLocalDayName(date);
         }
 
         /// <summary>
@@ -230,8 +197,8 @@ namespace Skybrud.Essentials.Dates {
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
         /// <returns>Returns the local name of the day.</returns>
-        public static string GetLocalDayName(DateTime date, CultureInfo culture) {
-            return date.ToString("dddd", culture);
+        public static string GetLocalDayName(this DateTime date, CultureInfo culture) {
+            return TimeHelper.GetLocalDayName(date, culture);
         }
 
         /// <summary>
@@ -239,8 +206,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns the English name of the month.</returns>
-        public static string GetMonthName(DateTime date) {
-            return date.ToString("MMMM", CultureInfo.InvariantCulture);
+        public static string GetMonthName(this DateTime date) {
+            return TimeHelper.GetMonthName(date);
         }
 
         /// <summary>
@@ -248,8 +215,8 @@ namespace Skybrud.Essentials.Dates {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>Returns the local name of the month.</returns>
-        public static string GetLocalMonthName(DateTime date) {
-            return date.ToString("MMMM", CultureInfo.CurrentCulture);
+        public static string GetLocalMonthName(this DateTime date) {
+            return TimeHelper.GetLocalMonthName(date);
         }
 
         /// <summary>
@@ -258,8 +225,8 @@ namespace Skybrud.Essentials.Dates {
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
         /// <returns>Returns the local name of the month.</returns>
-        public static string GetLocalMonthName(DateTime date, CultureInfo culture) {
-            return date.ToString("MMMM", culture);
+        public static string GetLocalMonthName(this DateTime date, CultureInfo culture) {
+            return TimeHelper.GetLocalMonthName(date, culture);
         }
 
     }
