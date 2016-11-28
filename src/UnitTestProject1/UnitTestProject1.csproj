@@ -59,6 +59,7 @@
     <Compile Include="Enums\EnumHelperTests.cs" />
     <Compile Include="Json\JsonHelperTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
+    <Compile Include="Locations\LocationHelperTests.cs" />
     <Compile Include="Security\SecurityHelperTests.cs" />
     <Compile Include="Strings\StringHelperTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

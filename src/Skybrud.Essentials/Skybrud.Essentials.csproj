@@ -60,6 +60,10 @@
     <Compile Include="Json\JsonHelper.cs" />
     <Compile Include="Json\JsonHelpers.cs" />
     <Compile Include="Json\JsonObjectBase.cs" />
+    <Compile Include="Locations\EssentialsLocation.cs" />
+    <Compile Include="Locations\Extensions\LocationExtensions.cs" />
+    <Compile Include="Locations\ILocation.cs" />
+    <Compile Include="Locations\LocationHelper.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecurityHelper.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
