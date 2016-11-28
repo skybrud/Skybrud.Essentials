@@ -53,6 +53,7 @@
     <Compile Include="Json\Converters\Enums\EnumPascalCaseConverter.cs" />
     <Compile Include="Json\Converters\Enums\EnumCamelCaseConverter.cs" />
     <Compile Include="Json\Converters\Enums\EnumLowerCaseConverter.cs" />
+    <Compile Include="Json\Converters\Time\DateTimeUnixTimeConverter.cs" />
     <Compile Include="Json\Converters\Time\EssentialsDateTimeConverter.cs" />
     <Compile Include="Json\Converters\Time\EssentialsDateTimeUnixTimeConverter.cs" />
     <Compile Include="Json\Extensions\JArrayExtensions.cs" />
