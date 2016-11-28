@@ -56,7 +56,6 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Dates\DateHelperTests.cs" />
     <Compile Include="Enums\EnumHelperTests.cs" />
     <Compile Include="Json\JsonHelperTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />

@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Extensions;
@@ -382,6 +385,7 @@ namespace UnitTestProject1.Time {
 
             foreach (var sample in samples) {
                 Assert.AreEqual(sample.Expected, TimeHelper.GetLastDayOfMonth(sample.Date), "TimeHelper");
+                Assert.AreEqual(sample.Expected, sample.Date.GetLastDayOfMonth(), "Extension method");
             }
 
         }
@@ -402,10 +406,13 @@ namespace UnitTestProject1.Time {
             foreach (var sample in samples) {
 
                 Assert.AreEqual(sample.Monday, TimeHelper.GetFirstDayOfWeek(sample.Date), "\n\n" + sample.Date + " (TimeHelper - implicit)");
+                Assert.AreEqual(sample.Monday, sample.Date.GetFirstDayOfWeek(), "\n\n" + sample.Date + " (Extension method - implicit)");
 
                 Assert.AreEqual(sample.Monday, TimeHelper.GetFirstDayOfWeek(sample.Date, DayOfWeek.Monday), "\n\n" + sample.Date + " (TimeHelper - explicit: Monday)");
+                Assert.AreEqual(sample.Monday, sample.Date.GetFirstDayOfWeek(DayOfWeek.Monday), "\n\n" + sample.Date + " (Extension method - explicit: Monday)");
 
                 Assert.AreEqual(sample.Sunday, TimeHelper.GetFirstDayOfWeek(sample.Date, DayOfWeek.Sunday), "\n\n" + sample.Date + " (TimeHelper - explicit: Sunday)");
+                Assert.AreEqual(sample.Sunday, sample.Date.GetFirstDayOfWeek(DayOfWeek.Sunday), "\n\n" + sample.Date + " (Extension method - explicit: Sunday)");
 
             }
 
@@ -427,14 +434,139 @@ namespace UnitTestProject1.Time {
             foreach (var sample in samples) {
 
                 Assert.AreEqual(sample.Monday, TimeHelper.GetLastDayOfWeek(sample.Date), "\n\n" + sample.Date + " (TimeHelper - implicit)");
+                Assert.AreEqual(sample.Monday, sample.Date.GetLastDayOfWeek(), "\n\n" + sample.Date + " (Extension method - implicit)");
 
                 Assert.AreEqual(sample.Monday, TimeHelper.GetLastDayOfWeek(sample.Date, DayOfWeek.Monday), "\n\n" + sample.Date + " (TimeHelper - explicit: Monday)");
+                Assert.AreEqual(sample.Monday, sample.Date.GetLastDayOfWeek(DayOfWeek.Monday), "\n\n" + sample.Date + " (Extension method - explicit: Monday)");
 
                 Assert.AreEqual(sample.Sunday, TimeHelper.GetLastDayOfWeek(sample.Date, DayOfWeek.Sunday), "\n\n" + sample.Date + " (TimeHelper - explicit: Sunday)");
+                Assert.AreEqual(sample.Sunday, sample.Date.GetLastDayOfWeek(DayOfWeek.Sunday), "\n\n" + sample.Date + " (Extension method - explicit: Sunday)");
 
             }
 
         }
+
+
+        #region Month name
+
+        [TestMethod]
+        public void GetMonthNameEnglish() {
+
+            var expected = "January,February,March,April,May,June,July,August,September,October,November,December".Split(',');
+
+            for (int i = 0; i < expected.Length; i++) {
+                DateTime dt = new DateTime(2014, i + 1, 15);
+                Assert.AreEqual(expected[i], TimeHelper.GetMonthName(dt));
+                Assert.AreEqual(expected[i], dt.GetMonthName());
+            }
+
+        }
+
+        [TestMethod]
+        public void GetLocalMonthNameImplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "January,February,March,April,May,June,July,August,September,October,November,December".Split(',')},
+                {"da-DK", "januar,februar,marts,april,maj,juni,juli,august,september,oktober,november,december".Split(',')},
+                {"de-DE", "Januar,Februar,März,April,Mai,Juni,Juli,August,September,Oktober,November,Dezember".Split(',')}
+            };
+
+            foreach (var sample in expected) {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
+                for (int i = 0; i < sample.Value.Length; i++) {
+                    DateTime dt = new DateTime(2014, i + 1, 15);
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalMonthName(dt));
+                    Assert.AreEqual(sample.Value[i], dt.GetLocalMonthName());
+                }
+            }
+
+        }
+
+        [TestMethod]
+        public void GetLocalMonthNameExplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "January,February,March,April,May,June,July,August,September,October,November,December".Split(',')},
+                {"da-DK", "januar,februar,marts,april,maj,juni,juli,august,september,oktober,november,december".Split(',')},
+                {"de-DE", "Januar,Februar,März,April,Mai,Juni,Juli,August,September,Oktober,November,Dezember".Split(',')}
+            };
+
+            foreach (var sample in expected) {
+                for (int i = 0; i < sample.Value.Length; i++) {
+                    DateTime dt = new DateTime(2014, i + 1, 15);
+                    CultureInfo culture = new CultureInfo(sample.Key);
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalMonthName(dt, culture));
+                    Assert.AreEqual(sample.Value[i], dt.GetLocalMonthName(culture));
+                }
+            }
+
+        }
+
+        #endregion
+
+        #region Day name
+
+        [TestMethod]
+        public void GetDayNameEnglish() {
+
+            var expected = "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday".Split(',');
+
+            DateTime start = new DateTime(2014, 11, 17);
+
+            for (int i = 0; i < expected.Length; i++) {
+                DateTime dt = start.AddDays(i);
+                Assert.AreEqual(expected[i], TimeHelper.GetDayName(dt));
+                Assert.AreEqual(expected[i], dt.GetDayName());
+            }
+
+        }
+
+        [TestMethod]
+        public void GetLocalDayNameImplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday".Split(',')},
+                {"da-DK", "mandag,tirsdag,onsdag,torsdag,fredag,lørdag,søndag".Split(',')},
+                {"de-DE", "Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag,Sonntag".Split(',')}
+            };
+
+            DateTime start = new DateTime(2014, 11, 17);
+
+            foreach (var sample in expected) {
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
+                for (int i = 0; i < sample.Value.Length; i++) {
+                    DateTime dt = start.AddDays(i);
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt));
+                    Assert.AreEqual(sample.Value[i], dt.GetLocalDayName());
+                }
+            }
+
+        }
+
+        [TestMethod]
+        public void GetLocalDayNameExplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "Monday,Tuesday,Wednesday,Thursday,Friday,Saturday,Sunday".Split(',')},
+                {"da-DK", "mandag,tirsdag,onsdag,torsdag,fredag,lørdag,søndag".Split(',')},
+                {"de-DE", "Montag,Dienstag,Mittwoch,Donnerstag,Freitag,Samstag,Sonntag".Split(',')}
+            };
+
+            DateTime start = new DateTime(2014, 11, 17);
+
+            foreach (var sample in expected) {
+                for (int i = 0; i < sample.Value.Length; i++) {
+                    DateTime dt = start.AddDays(i);
+                    CultureInfo culture = new CultureInfo(sample.Key);
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt, culture));
+                    Assert.AreEqual(sample.Value[i], dt.GetLocalDayName(new CultureInfo(sample.Key)));
+                }
+            }
+
+        }
+
+        #endregion
+
 
     }
 
