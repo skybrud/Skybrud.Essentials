@@ -26,8 +26,6 @@ namespace Skybrud.Essentials.Time {
             return GetAge(dateOfBirth, DateTime.Today);
         }
 
-        // TODO: Implement GetAge for DateTimeOffset?
-
         /// <summary>
         /// Gets the current age, from the specified date of birth. The age is calculated based on <code>dt</code>.
         /// </summary>
@@ -41,6 +39,27 @@ namespace Skybrud.Essentials.Time {
         }
 
         // TODO: Implement GetAge for DateTimeOffset?
+
+        /// <summary>
+        /// Gets the current age, from the specified date of birth.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <returns>Returns the age based on the specified date of birth.</returns>
+        public static int GetAge(EssentialsDateTime dateOfBirth) {
+            return GetAge(dateOfBirth, DateTime.Today);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified date of birth. The age is calculated based on <code>dt</code>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="dt">The date used for calculating the age.</param>
+        /// <returns>Returns the age based on the specified date of birth at the moment of <code>dt</code>.</returns>
+        public static int GetAge(EssentialsDateTime dateOfBirth, DateTime dt) {
+            int age = dt.Year - dateOfBirth.Year;
+            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
+            return age;
+        }
 
         /// <summary>
         /// Gets the day of the month along with the English ordinal suffix based on the specified <code>date</code>.
