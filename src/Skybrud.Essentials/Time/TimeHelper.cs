@@ -55,7 +55,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="dt">The date used for calculating the age.</param>
         /// <returns>Returns the age based on the specified date of birth at the moment of <code>dt</code>.</returns>
-        public static int GetAge(EssentialsDateTime dateOfBirth, DateTime dt) {
+        public static int GetAge(EssentialsDateTime dateOfBirth, EssentialsDateTime dt) {
             int age = dt.Year - dateOfBirth.Year;
             if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
             return age;
