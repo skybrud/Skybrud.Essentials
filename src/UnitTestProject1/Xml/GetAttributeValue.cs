@@ -141,14 +141,14 @@ namespace UnitTestProject1.Xml {
 
             XElement root = XElement.Load(TestHelpers.MapPath("~/Xml/Hest.xml"));
 
-            bool attr1 = root.GetAttributeAsBoolean((XName) "boolean1");
-            bool attr2 = root.GetAttributeAsBoolean((XName) "boolean2");
-            bool attr3 = root.GetAttributeAsBoolean((XName) "boolean3");
-            bool attr4 = root.GetAttributeAsBoolean((XName) "boolean4");
-            string attr5 = root.GetAttributeAsBoolean((XName) "boolean1", TestHelpers.ToString);
-            string attr6 = root.GetAttributeAsBoolean((XName) "boolean2", TestHelpers.ToString);
-            string attr7 = root.GetAttributeAsBoolean((XName) "boolean3", TestHelpers.ToString);
-            string attr8 = root.GetAttributeAsBoolean((XName) "boolean4", TestHelpers.ToString);
+            bool attr1 = root.GetAttributeValueAsBoolean((XName) "boolean1");
+            bool attr2 = root.GetAttributeValueAsBoolean((XName) "boolean2");
+            bool attr3 = root.GetAttributeValueAsBoolean((XName) "boolean3");
+            bool attr4 = root.GetAttributeValueAsBoolean((XName) "boolean4");
+            string attr5 = root.GetAttributeValueAsBoolean((XName) "boolean1", TestHelpers.ToString);
+            string attr6 = root.GetAttributeValueAsBoolean((XName) "boolean2", TestHelpers.ToString);
+            string attr7 = root.GetAttributeValueAsBoolean((XName) "boolean3", TestHelpers.ToString);
+            string attr8 = root.GetAttributeValueAsBoolean((XName) "boolean4", TestHelpers.ToString);
 
             Assert.AreEqual(true, attr1, "#1");
             Assert.AreEqual(false, attr2, "#2");
@@ -167,14 +167,14 @@ namespace UnitTestProject1.Xml {
 
             XElement root = XElement.Load(TestHelpers.MapPath("~/Xml/Hest.xml"));
 
-            bool attr1 = root.GetAttributeAsBoolean("element/a/@boolean1");
-            bool attr2 = root.GetAttributeAsBoolean("element/a/@boolean2");
-            bool attr3 = root.GetAttributeAsBoolean("element/a/@boolean3");
-            bool attr4 = root.GetAttributeAsBoolean("element/a/@boolean4");
-            bool attr5 = root.GetAttributeAsBoolean("element/b/@boolean1");
-            bool attr6 = root.GetAttributeAsBoolean("element/b/@boolean2");
-            bool attr7 = root.GetAttributeAsBoolean("element/b/@boolean3");
-            bool attr8 = root.GetAttributeAsBoolean("element/b/@boolean4");
+            bool attr1 = root.GetAttributeValueAsBoolean("element/a/@boolean1");
+            bool attr2 = root.GetAttributeValueAsBoolean("element/a/@boolean2");
+            bool attr3 = root.GetAttributeValueAsBoolean("element/a/@boolean3");
+            bool attr4 = root.GetAttributeValueAsBoolean("element/a/@boolean4");
+            bool attr5 = root.GetAttributeValueAsBoolean("element/b/@boolean1");
+            bool attr6 = root.GetAttributeValueAsBoolean("element/b/@boolean2");
+            bool attr7 = root.GetAttributeValueAsBoolean("element/b/@boolean3");
+            bool attr8 = root.GetAttributeValueAsBoolean("element/b/@boolean4");
 
             Assert.AreEqual(true, attr1, "#1");
             Assert.AreEqual(false, attr2, "#2");
@@ -192,14 +192,14 @@ namespace UnitTestProject1.Xml {
 
             XElement root = XElement.Load(TestHelpers.MapPath("~/Xml/Hest.xml"));
 
-            string attr1 = root.GetAttributeAsBoolean("element/a/@boolean1", TestHelpers.ToString);
-            string attr2 = root.GetAttributeAsBoolean("element/a/@boolean2", TestHelpers.ToString);
-            string attr3 = root.GetAttributeAsBoolean("element/a/@boolean3", TestHelpers.ToString);
-            string attr4 = root.GetAttributeAsBoolean("element/a/@boolean4", TestHelpers.ToString);
-            string attr5 = root.GetAttributeAsBoolean("element/b/@boolean1", TestHelpers.ToString);
-            string attr6 = root.GetAttributeAsBoolean("element/b/@boolean2", TestHelpers.ToString);
-            string attr7 = root.GetAttributeAsBoolean("element/b/@boolean3", TestHelpers.ToString);
-            string attr8 = root.GetAttributeAsBoolean("element/b/@boolean4", TestHelpers.ToString);
+            string attr1 = root.GetAttributeValueAsBoolean("element/a/@boolean1", TestHelpers.ToString);
+            string attr2 = root.GetAttributeValueAsBoolean("element/a/@boolean2", TestHelpers.ToString);
+            string attr3 = root.GetAttributeValueAsBoolean("element/a/@boolean3", TestHelpers.ToString);
+            string attr4 = root.GetAttributeValueAsBoolean("element/a/@boolean4", TestHelpers.ToString);
+            string attr5 = root.GetAttributeValueAsBoolean("element/b/@boolean1", TestHelpers.ToString);
+            string attr6 = root.GetAttributeValueAsBoolean("element/b/@boolean2", TestHelpers.ToString);
+            string attr7 = root.GetAttributeValueAsBoolean("element/b/@boolean3", TestHelpers.ToString);
+            string attr8 = root.GetAttributeValueAsBoolean("element/b/@boolean4", TestHelpers.ToString);
 
             Assert.AreEqual("True", attr1, "#1");
             Assert.AreEqual("False", attr2, "#2");
@@ -220,14 +220,14 @@ namespace UnitTestProject1.Xml {
             XmlNamespaceManager namespaces = new XmlNamespaceManager(new NameTable());
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
-            bool attr1 = root.GetAttributeAsBoolean("test:element/test:a/@boolean1", namespaces);
-            bool attr2 = root.GetAttributeAsBoolean("test:element/test:a/@boolean2", namespaces);
-            bool attr3 = root.GetAttributeAsBoolean("test:element/test:a/@boolean3", namespaces);
-            bool attr4 = root.GetAttributeAsBoolean("test:element/test:a/@boolean4", namespaces);
-            bool attr5 = root.GetAttributeAsBoolean("test:element/test:b/@boolean1", namespaces);
-            bool attr6 = root.GetAttributeAsBoolean("test:element/test:b/@boolean2", namespaces);
-            bool attr7 = root.GetAttributeAsBoolean("test:element/test:b/@boolean3", namespaces);
-            bool attr8 = root.GetAttributeAsBoolean("test:element/test:b/@boolean4", namespaces);
+            bool attr1 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean1", namespaces);
+            bool attr2 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean2", namespaces);
+            bool attr3 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean3", namespaces);
+            bool attr4 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean4", namespaces);
+            bool attr5 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean1", namespaces);
+            bool attr6 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean2", namespaces);
+            bool attr7 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean3", namespaces);
+            bool attr8 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean4", namespaces);
 
             Assert.AreEqual(true, attr1, "#1");
             Assert.AreEqual(false, attr2, "#2");
@@ -248,14 +248,14 @@ namespace UnitTestProject1.Xml {
             XmlNamespaceManager namespaces = new XmlNamespaceManager(new NameTable());
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
-            string attr1 = root.GetAttributeAsBoolean("test:element/test:a/@boolean1", namespaces, TestHelpers.ToString);
-            string attr2 = root.GetAttributeAsBoolean("test:element/test:a/@boolean2", namespaces, TestHelpers.ToString);
-            string attr3 = root.GetAttributeAsBoolean("test:element/test:a/@boolean3", namespaces, TestHelpers.ToString);
-            string attr4 = root.GetAttributeAsBoolean("test:element/test:a/@boolean4", namespaces, TestHelpers.ToString);
-            string attr5 = root.GetAttributeAsBoolean("test:element/test:b/@boolean1", namespaces, TestHelpers.ToString);
-            string attr6 = root.GetAttributeAsBoolean("test:element/test:b/@boolean2", namespaces, TestHelpers.ToString);
-            string attr7 = root.GetAttributeAsBoolean("test:element/test:b/@boolean3", namespaces, TestHelpers.ToString);
-            string attr8 = root.GetAttributeAsBoolean("test:element/test:b/@boolean4", namespaces, TestHelpers.ToString);
+            string attr1 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean1", namespaces, TestHelpers.ToString);
+            string attr2 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean2", namespaces, TestHelpers.ToString);
+            string attr3 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean3", namespaces, TestHelpers.ToString);
+            string attr4 = root.GetAttributeValueAsBoolean("test:element/test:a/@boolean4", namespaces, TestHelpers.ToString);
+            string attr5 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean1", namespaces, TestHelpers.ToString);
+            string attr6 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean2", namespaces, TestHelpers.ToString);
+            string attr7 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean3", namespaces, TestHelpers.ToString);
+            string attr8 = root.GetAttributeValueAsBoolean("test:element/test:b/@boolean4", namespaces, TestHelpers.ToString);
 
             Assert.AreEqual("True", attr1, "#1");
             Assert.AreEqual("False", attr2, "#2");

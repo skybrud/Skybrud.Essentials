@@ -209,11 +209,11 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         #region Get attribute value as System.Boolean
 
-        public static bool GetAttributeAsBoolean(this XElement element, XName name) {
-            return GetAttributeAsBoolean(element, name, x => x);
+        public static bool GetAttributeValueAsBoolean(this XElement element, XName name) {
+            return GetAttributeValueAsBoolean(element, name, x => x);
         }
 
-        public static bool GetAttributeAsBoolean(this XElement element, XName name, out bool value) {
+        public static bool GetAttributeValueAsBoolean(this XElement element, XName name, out bool value) {
 
             // Get the attribute from the specified "element"
             XAttribute attr = GetAttribute(element, name);
@@ -226,24 +226,24 @@ namespace Skybrud.Essentials.Xml.Extensions {
         
         }
 
-        public static T GetAttributeAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
+        public static T GetAttributeValueAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
             bool value;
-            return GetAttributeAsBoolean(element, name, out value) ? callback(value) : default(T);
+            return GetAttributeValueAsBoolean(element, name, out value) ? callback(value) : default(T);
         }
 
-        public static bool GetAttributeAsBoolean(this XElement element, string expression) {
-            return GetAttributeAsBoolean(element, expression, null, x => x);
+        public static bool GetAttributeValueAsBoolean(this XElement element, string expression) {
+            return GetAttributeValueAsBoolean(element, expression, null, x => x);
         }
 
-        public static T GetAttributeAsBoolean<T>(this XElement element, string expression, Func<bool, T> callback) {
-            return GetAttributeAsBoolean(element, expression, default(IXmlNamespaceResolver), callback);
+        public static T GetAttributeValueAsBoolean<T>(this XElement element, string expression, Func<bool, T> callback) {
+            return GetAttributeValueAsBoolean(element, expression, default(IXmlNamespaceResolver), callback);
         }
 
-        public static bool GetAttributeAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver) {
-            return GetAttributeAsBoolean(element, expression, resolver, x => x);
+        public static bool GetAttributeValueAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            return GetAttributeValueAsBoolean(element, expression, resolver, x => x);
         }
 
-        public static bool GetAttributeAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver, out bool value) {
+        public static bool GetAttributeValueAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver, out bool value) {
 
             // Get the attribute from the specified "element"
             XAttribute attr = GetAttribute(element, expression, resolver);
@@ -256,9 +256,53 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         }
 
-        public static T GetAttributeAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
+        public static T GetAttributeValueAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
             bool value;
-            return GetAttributeAsBoolean(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetAttributeValueAsBoolean(element, expression, resolver, out value) ? callback(value) : default(T);
+        }
+
+        #endregion
+
+        #region Get attribute value as System.Boolean (deprecated due to wrong naming)
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static bool GetAttributeAsBoolean(this XElement element, XName name) {
+            return GetAttributeValueAsBoolean(element, name, x => x);
+        }
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static bool GetAttributeAsBoolean(this XElement element, XName name, out bool value) {
+            return GetAttributeValueAsBoolean(element, name, out value);
+        }
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static T GetAttributeAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
+            return GetAttributeValueAsBoolean(element, name, callback);
+        }
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static bool GetAttributeAsBoolean(this XElement element, string expression) {
+            return GetAttributeValueAsBoolean(element, expression, null, x => x);
+        }
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static T GetAttributeAsBoolean<T>(this XElement element, string expression, Func<bool, T> callback) {
+            return GetAttributeValueAsBoolean(element, expression, default(IXmlNamespaceResolver), callback);
+        }
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static bool GetAttributeAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+            return GetAttributeValueAsBoolean(element, expression, resolver, x => x);
+        }
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static bool GetAttributeAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver, out bool value) {
+            return GetAttributeValueAsBoolean(element, expression, resolver, out value);
+        }
+
+        [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
+        public static T GetAttributeAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
+            return GetAttributeValueAsBoolean(element, expression, resolver, callback);
         }
 
         #endregion
