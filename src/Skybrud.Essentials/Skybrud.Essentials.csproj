@@ -58,6 +58,7 @@
     <Compile Include="Json\Converters\Time\EssentialsDateTimeConverter.cs" />
     <Compile Include="Json\Converters\Time\EssentialsDateTimeUnixTimeConverter.cs" />
     <Compile Include="Json\Extensions\JArrayExtensions.cs" />
+    <Compile Include="Json\Extensions\JObjectExtension.cs" />
     <Compile Include="Json\Extensions\JObjectExtensions.cs" />
     <Compile Include="Json\JsonHelper.cs" />
     <Compile Include="Json\JsonHelpers.cs" />
