@@ -58,6 +58,7 @@
     <Compile Include="Json\Converters\Enums\EnumLowerCaseConverter.cs" />
     <Compile Include="Json\Converters\Time\DateTimeUnixTimeConverter.cs" />
     <Compile Include="Json\Converters\Time\EssentialsDateTimeConverter.cs" />
+    <Compile Include="Json\Converters\Time\UnixTimeConverter.cs" />
     <Compile Include="Json\Converters\Time\EssentialsDateTimeUnixTimeConverter.cs" />
     <Compile Include="Json\Extensions\JArrayExtensions.cs" />
     <Compile Include="Json\Extensions\JObjectExtension.cs" />
