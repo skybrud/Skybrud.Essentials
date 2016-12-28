@@ -205,7 +205,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement attr = GetElement(element, name);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : StringHelper.ParseBoolean(attr.Value);
+            value = attr == null ? default(bool) : StringUtils.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;
@@ -235,7 +235,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement attr = GetElement(element, expression, resolver);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : StringHelper.ParseBoolean(attr.Value);
+            value = attr == null ? default(bool) : StringUtils.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;

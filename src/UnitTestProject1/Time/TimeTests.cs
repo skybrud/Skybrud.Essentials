@@ -9,7 +9,7 @@ using Skybrud.Essentials.Time.Extensions;
 namespace UnitTestProject1.Time {
 
     [TestClass]
-    public class TimeHelperTests {
+    public class TimeTests {
 
         [TestMethod]
         public void GetAge() {

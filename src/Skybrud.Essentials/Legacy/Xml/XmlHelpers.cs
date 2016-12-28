@@ -2,10 +2,11 @@
 using System.Xml.Linq;
 
 namespace Skybrud.Essentials.Xml {
-    
+
     /// <summary>
     /// Static helper methods for working with XML.
     /// </summary>
+    [Obsolete("Use the XmlUtils class instead.")]
     public static class XmlHelpers {
 
         /// <summary>
@@ -14,7 +15,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="xml">The XML to be parsed.</param>
         /// <returns>Returns an instance of <see cref="XElement"/>.</returns>
         public static XElement ParseXmlElement(string xml) {
-            return XElement.Parse(xml);
+            return XmlUtils.ParseXmlElement(xml);
         }
 
         /// <summary>
@@ -26,7 +27,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="callback">The callback function used for converted the parsed <see cref="XElement"/>.</param>
         /// <returns>Returns an instance of <code>T</code> representing the specified <code>xml</code>.</returns>
         public static T ParseXmlElement<T>(string xml, Func<XElement, T> callback) {
-            return callback(XElement.Parse(xml));
+            return XmlUtils.ParseXmlElement(xml, callback);
         }
 
         /// <summary>
@@ -35,7 +36,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="xml">The XML to be parsed.</param>
         /// <returns>Returns an instance of <see cref="XDocument"/>.</returns>
         public static XDocument ParseXmlDocument(string xml) {
-            return XDocument.Parse(xml);
+            return XmlUtils.ParseXmlDocument(xml);
         }
 
         /// <summary>
@@ -47,7 +48,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="callback">The callback function used for converted the parsed <see cref="XDocument"/>.</param>
         /// <returns>Returns an instance of <code>T</code> representing the specified <code>xml</code>.</returns>
         public static T ParseXmlDocument<T>(string xml, Func<XDocument, T> callback) {
-            return callback(XDocument.Parse(xml));
+            return XmlUtils.ParseXmlDocument(xml, callback);
         }
 
         /// <summary>
@@ -57,7 +58,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="path">The path to the XML document.</param>
         /// <returns>Returns an instance of <see cref="XElement"/>.</returns>
         public static XElement LoadXmlElement(string path) {
-            return XElement.Load(path);
+            return XmlUtils.LoadXmlElement(path);
         }
 
         /// <summary>
@@ -69,7 +70,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="callback">The callback function used for converting the loaded <see cref="XElement"/>.</param>
         /// <returns>Returns an instance of <code>T</code> representing the specified <code>xml</code>.</returns>
         public static T LoadXmlElement<T>(string path, Func<XElement, T> callback) {
-            return callback(XElement.Load(path));
+            return XmlUtils.LoadXmlElement(path, callback);
         }
 
         /// <summary>
@@ -79,7 +80,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="path">The path to the XML document.</param>
         /// <returns>Returns an instance of <see cref="XDocument"/>.</returns>
         public static XDocument LoadXmlDocument(string path) {
-            return XDocument.Load(path);
+            return XmlUtils.LoadXmlDocument(path);
         }
 
         /// <summary>
@@ -91,7 +92,7 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="callback">The callback function used for converting the loaded <see cref="XDocument"/>.</param>
         /// <returns>Returns an instance of <code>T</code> representing the XML document.</returns>
         public static T LoadXmlDocument<T>(string path, Func<XDocument, T> callback) {
-            return callback(XDocument.Load(path));
+            return XmlUtils.LoadXmlDocument(path, callback);
         }
 
     }

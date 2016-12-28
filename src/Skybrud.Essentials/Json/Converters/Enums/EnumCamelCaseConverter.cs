@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
                 return;
             }
 
-            writer.WriteValue(StringHelper.ToCamelCase(value + ""));
+            writer.WriteValue(StringUtils.ToCamelCase(value + ""));
 
         }
 

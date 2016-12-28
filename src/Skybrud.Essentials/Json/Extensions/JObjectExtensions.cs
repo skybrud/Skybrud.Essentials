@@ -223,7 +223,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             if (token == null || token.Type == JTokenType.Null) return default(T);
 
             // Convert the value to a boolean
-            bool value = StringHelper.ParseBoolean(token + "");
+            bool value = StringUtils.ParseBoolean(token + "");
 
             // Invoke the callback and return the value
             return callback(value);

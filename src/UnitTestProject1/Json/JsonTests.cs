@@ -1,15 +1,11 @@
-﻿using System.Globalization;
-using System.Net;
-using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Extensions;
-using System;
+﻿using Skybrud.Essentials.Json.Extensions;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 
 namespace UnitTestProject1.Json {
 
     [TestClass]
-    public class JsonHelperTests {
+    public class JsonTests {
 
         [TestMethod]
         public void ParseJsonObject() {

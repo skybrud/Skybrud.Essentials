@@ -58,13 +58,13 @@
   <ItemGroup>
     <Compile Include="Enums\EnumPascalCaseConverterTests.cs" />
     <Compile Include="Enums\EnumLowerCaseConverterTests.cs" />
-    <Compile Include="Enums\EnumUtilsTests.cs" />
+    <Compile Include="Enums\EnumTests.cs" />
     <Compile Include="Enums\EnumCamelCaseConverterTests.cs" />
-    <Compile Include="Json\JsonHelperTests.cs" />
+    <Compile Include="Json\JsonTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
-    <Compile Include="Locations\LocationHelperTests.cs" />
-    <Compile Include="Security\SecurityHelperTests.cs" />
-    <Compile Include="Strings\StringHelperTests.cs" />
+    <Compile Include="Locations\LocationTests.cs" />
+    <Compile Include="Security\SecurityTests.cs" />
+    <Compile Include="Strings\StringTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestHelpers.cs" />
     <Compile Include="Time\Converters\UnixTimeConverterTests.cs" />
@@ -75,7 +75,7 @@
     <Compile Include="Time\National\CanadianDateTests.cs" />
     <Compile Include="Time\National\DanishDateTests.cs" />
     <Compile Include="Time\National\UnitedStatesDateTests.cs" />
-    <Compile Include="Time\TimeHelperTests.cs" />
+    <Compile Include="Time\TimeTests.cs" />
     <Compile Include="Xml\GetElement.cs" />
     <Compile Include="Xml\GetAttributeValue.cs" />
     <Compile Include="Xml\GetAttribute.cs" />

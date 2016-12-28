@@ -5,7 +5,7 @@ using Skybrud.Essentials.Security;
 namespace UnitTestProject1.Security {
 
     [TestClass]
-    public class SecurityHelperTests {
+    public class SecurityTests {
 
         [TestMethod]
         public void Base64Encode() {
@@ -17,6 +17,7 @@ namespace UnitTestProject1.Security {
 
             foreach (var sample in samples) {
                 Assert.AreEqual(sample.Expected, SecurityHelper.Base64Encode(sample.Input));
+                Assert.AreEqual(sample.Expected, SecurityUtils.Base64Encode(sample.Input));
             }
 
         }
@@ -31,6 +32,7 @@ namespace UnitTestProject1.Security {
 
             foreach (var sample in samples) {
                 Assert.AreEqual(sample.Expected, SecurityHelper.Base64Decode(sample.Input));
+                Assert.AreEqual(sample.Expected, SecurityUtils.Base64Decode(sample.Input));
             }
         
         }
@@ -44,8 +46,13 @@ namespace UnitTestProject1.Security {
             };
 
             foreach (var sample in samples) {
+
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetMd5Hash(sample.Input), "Failed hashing " + sample.Input + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetMd5Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Input + " (UTF8)");
+                
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetMd5Hash(sample.Input), "Failed hashing " + sample.Input + " (no encoding)");
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetMd5Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Input + " (UTF8)");
+            
             }
         
         }
@@ -59,8 +66,13 @@ namespace UnitTestProject1.Security {
             };
 
             foreach (var sample in samples) {
+
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha1Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha1Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
+                
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetSha1Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetSha1Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
+            
             }
         
         }
@@ -74,8 +86,13 @@ namespace UnitTestProject1.Security {
             };
 
             foreach (var sample in samples) {
+
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha256Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha256Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
+
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetSha256Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetSha256Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
+            
             }
         
         }
@@ -89,8 +106,13 @@ namespace UnitTestProject1.Security {
             };
 
             foreach (var sample in samples) {
+
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha512Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha512Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
+
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetSha512Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
+                Assert.AreEqual(sample.Expected, SecurityUtils.GetSha512Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
+            
             }
         
         }

@@ -6,7 +6,7 @@ using Skybrud.Essentials.Locations;
 namespace UnitTestProject1.Locations {
 
     [TestClass]
-    public class LocationHelperTests {
+    public class LocationTests {
 
         [TestMethod]
         public void GetDistance() {
@@ -28,6 +28,7 @@ namespace UnitTestProject1.Locations {
                 string format = "{0:0." + ("".PadLeft(sample.Decimals, '0')) + "}";
 
                 Assert.AreEqual(sample.Expected, String.Format(CultureInfo.InvariantCulture, format, LocationHelper.GetDistance(sample.From, sample.To) / 1000));
+                Assert.AreEqual(sample.Expected, String.Format(CultureInfo.InvariantCulture, format, LocationUtils.GetDistance(sample.From, sample.To) / 1000));
             
             }
 

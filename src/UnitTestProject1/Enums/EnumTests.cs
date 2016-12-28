@@ -5,7 +5,7 @@ using Skybrud.Essentials.Enums;
 namespace UnitTestProject1.Enums {
 
     [TestClass]
-    public class EnumUtilsTests {
+    public class EnumTests {
 
         [TestMethod]
         public void ParseEnum() {

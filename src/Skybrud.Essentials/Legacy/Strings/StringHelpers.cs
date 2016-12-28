@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Strings {
         /// or <code>t</code> (case insensitive).</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static bool ParseBoolean(string str) {
-            return StringHelper.ParseBoolean(str);
+            return StringUtils.ParseBoolean(str);
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Skybrud.Essentials.Strings {
         /// or <code>t</code> (case insensitive).</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static bool ParseBoolean(object value) {
-            return StringHelper.ParseBoolean(value);
+            return StringUtils.ParseBoolean(value);
         }
 
         /// <summary>
@@ -44,7 +44,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns an array of <see cref="Int32"/>.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static int[] CsvToInt(string str) {
-            return StringHelper.CsvToInt(str);
+            return StringUtils.CsvToInt(str);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the camel cased string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string ToCamelCase(string str) {
-            return StringHelper.ToCamelCase(str);
+            return StringUtils.ToCamelCase(str);
         }
 
         /// <summary>
@@ -64,7 +64,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the camel cased string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string ToCamelCase(Enum value) {
-            return StringHelper.ToCamelCase(value);
+            return StringUtils.ToCamelCase(value);
         }
 
         /// <summary>
@@ -74,7 +74,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the Pascal cased string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string ToPascalCase(string str) {
-            return StringHelper.ToPascalCase(str);
+            return StringUtils.ToPascalCase(str);
         }
 
         /// <summary>
@@ -84,7 +84,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the Pascal cased string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string ToPascalCase(Enum value) {
-            return StringHelper.ToPascalCase(value);
+            return StringUtils.ToPascalCase(value);
         }
 
         /// <summary>
@@ -94,7 +94,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the converted string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string ToUnderscore(string str) {
-            return StringHelper.ToUnderscore(str);
+            return StringUtils.ToUnderscore(str);
         }
 
         /// <summary>
@@ -104,7 +104,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the converted string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string ToUnderscore(Enum value) {
-            return StringHelper.ToUnderscore(value);
+            return StringUtils.ToUnderscore(value);
         }
 
         /// <summary>
@@ -115,7 +115,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The input string with the first character has been uppercased.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string FirstCharToUpper(string str) {
-            return StringHelper.FirstCharToUpper(str);
+            return StringUtils.FirstCharToUpper(str);
         }
 
         /// <summary>
@@ -125,7 +125,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the encoded string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string UrlEncode(string str) {
-            return StringHelper.UrlEncode(str);
+            return StringUtils.UrlEncode(str);
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>Returns the decoded string.</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static string UrlDecode(string str) {
-            return StringHelper.UrlDecode(str);
+            return StringUtils.UrlDecode(str);
         }
 
     }

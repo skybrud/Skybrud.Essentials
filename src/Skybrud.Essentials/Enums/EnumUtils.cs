@@ -48,11 +48,11 @@ namespace Skybrud.Essentials.Enums {
             if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException("str");
 
             // Convert the input string to camel case and lowercase (morel likely to get a match)
-            string enumText = StringHelper.ToCamelCase(str).ToLower();
+            string enumText = StringUtils.ToCamelCase(str).ToLower();
 
             // Look through each enum value of "enumType"
             foreach (object value in Enum.GetValues(enumType)) {
-                if (StringHelper.ToCamelCase(value.ToString()).ToLower() == enumText) return value;
+                if (StringUtils.ToCamelCase(value.ToString()).ToLower() == enumText) return value;
             }
 
             // Throw an exception if we didn't find a match
@@ -98,7 +98,7 @@ namespace Skybrud.Essentials.Enums {
             value = default(T);
 
             // Convert "str" to camel case and then lowercase
-            string modified = StringHelper.ToCamelCase(str + "").ToLowerInvariant();
+            string modified = StringUtils.ToCamelCase(str + "").ToLowerInvariant();
 
             // Parse the enum
             foreach (T v in GetEnumValues<T>()) {
