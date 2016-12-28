@@ -6,7 +6,7 @@ namespace Skybrud.Essentials.Time {
     /// <summary>
     /// Utility class with various static helper methods for working with date and time.
     /// </summary>
-    public static partial class TimeHelper {
+    public static partial class TimeUtils {
 
         #region Constants
 

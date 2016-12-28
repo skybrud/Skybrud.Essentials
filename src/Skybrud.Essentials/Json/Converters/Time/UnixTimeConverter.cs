@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
             if (value is DateTime) {
                 DateTime dt = (DateTime) value;
-                writer.WriteValue(TimeHelper.GetUnixTimeFromDateTime(dt));
+                writer.WriteValue(TimeUtils.GetUnixTimeFromDateTime(dt));
             }
 
         }
@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
             }
 
             if (objectType == typeof(EssentialsDateTime)) return EssentialsDateTime.FromUnixTimestamp(timestamp);
-            if (objectType == typeof(DateTime)) return TimeHelper.GetDateTimeFromUnixTime(timestamp);
+            if (objectType == typeof(DateTime)) return TimeUtils.GetDateTimeFromUnixTime(timestamp);
             throw new JsonSerializationException("Object type " + objectType + " is not supported");
 
         }

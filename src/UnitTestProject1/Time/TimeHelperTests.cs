@@ -567,6 +567,15 @@ namespace UnitTestProject1.Time {
 
         #endregion
 
+        #region RFC 822
+
+        public void ToRfc822() {
+            
+
+
+        }
+
+        #endregion
 
     }
 

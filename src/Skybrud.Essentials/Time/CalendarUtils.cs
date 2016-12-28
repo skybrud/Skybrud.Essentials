@@ -6,7 +6,7 @@ namespace Skybrud.Essentials.Time {
     /// <summary>
     /// Utility class used for calculating the dates of varios international and national days.
     /// </summary>
-    public class CalendarHelper {
+    public class CalendarUtils {
 
         #region Easter dates according to the Gregorian calendar
 
@@ -295,7 +295,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Labour_Day</cref>
             /// </see>
             public static DateTime GetLabourDay(int year) {
-                return TimeHelper.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.September, DayOfWeek.Monday);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.September, DayOfWeek.Monday);
             }
 
             /// <summary>
@@ -308,7 +308,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Thanksgiving_(Canada)</cref>
             /// </see>
             public static DateTime GetThanksgivingDay(int year) {
-                return TimeHelper.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.October, DayOfWeek.Monday).AddDays(7);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.October, DayOfWeek.Monday).AddDays(7);
             }
 
         }
@@ -405,7 +405,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Labor_Day</cref>
             /// </see>
             public static DateTime GetLaborDay(int year) {
-                return TimeHelper.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.September, DayOfWeek.Monday);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.September, DayOfWeek.Monday);
             }
 
             /// <summary>
@@ -420,7 +420,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Labor_Day</cref>
             /// </see>
             public static DateTime GetMemorialDay(int year) {
-                return TimeHelper.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.May, DayOfWeek.Monday);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.May, DayOfWeek.Monday);
             }
 
             /// <summary>
@@ -450,7 +450,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Thanksgiving_(United_States)</cref>
             /// </see>
             public static DateTime GetThanksgivingDay(int year) {
-                return TimeHelper.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.November, DayOfWeek.Thursday).AddDays(7 * 3);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.November, DayOfWeek.Thursday).AddDays(7 * 3);
             }
 
         }

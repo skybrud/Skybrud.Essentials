@@ -27,7 +27,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the current UNIX timestamp (amount of seconds since the start of the Unix Epoch).
         /// </summary>
         public static long CurrentUnixTimestamp {
-            get { return TimeHelper.GetUnixTimeFromDateTime(DateTime.Now); }
+            get { return TimeUtils.GetUnixTimeFromDateTime(DateTime.Now); }
         }
 
         /// <summary>
@@ -159,35 +159,35 @@ namespace Skybrud.Essentials.Time {
         /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsDateTime"/>.
         /// </summary>
         public long UnixTimestamp {
-            get { return TimeHelper.GetUnixTimeFromDateTime(DateTime); }
+            get { return TimeUtils.GetUnixTimeFromDateTime(DateTime); }
         }
 
         /// <summary>
         /// Gets whether the year of this <see cref="EssentialsDateTime"/> is a leap year.
         /// </summary>
         public bool IsLeapYear {
-            get { return TimeHelper.IsLeapYear(DateTime); }
+            get { return TimeUtils.IsLeapYear(DateTime); }
         }
 
         /// <summary>
         /// Gets whether the day of this <see cref="EssentialsDateTime"/> is within a weekend.
         /// </summary>
         public bool IsWeekend {
-            get { return TimeHelper.IsLeapYear(DateTime); }
+            get { return TimeUtils.IsLeapYear(DateTime); }
         }
 
         /// <summary>
         /// Gets whether the day of this <see cref="EssentialsDateTime"/> is a weekday.
         /// </summary>
         public bool IsWeekday {
-            get { return TimeHelper.IsWeekday(DateTime); }
+            get { return TimeUtils.IsWeekday(DateTime); }
         }
 
         /// <summary>
         /// Gets the week number the ISO8601 week of this <see cref="EssentialsDateTime"/>.
         /// </summary>
         public int WeekNumber {
-            get { return TimeHelper.GetIso8601WeekNumber(DateTime); }
+            get { return TimeUtils.GetIso8601WeekNumber(DateTime); }
         }
 
         /// <summary>
@@ -798,7 +798,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the month.</returns>
         public EssentialsDateTime GetFirstDayOfMonth() {
-            return new EssentialsDateTime(TimeHelper.GetFirstDayOfMonth(DateTime));
+            return new EssentialsDateTime(TimeUtils.GetFirstDayOfMonth(DateTime));
         }
 
         /// <summary>
@@ -806,7 +806,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>Returns an instance of <see cref="EssentialsDateTime"/> representing the last day of the month.</returns>
         public EssentialsDateTime GetLastDayOfMonth() {
-            return new EssentialsDateTime(TimeHelper.GetLastDayOfMonth(DateTime));
+            return new EssentialsDateTime(TimeUtils.GetLastDayOfMonth(DateTime));
         }
 
         /// <summary>
@@ -815,7 +815,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>Returns an instance of <see cref="EssentialsDateTime"/> representing the first day of the week.</returns>
         public EssentialsDateTime GetFirstDayOfWeek() {
-            return new EssentialsDateTime(TimeHelper.GetFirstDayOfWeek(DateTime));
+            return new EssentialsDateTime(TimeUtils.GetFirstDayOfWeek(DateTime));
         }
 
         /// <summary>
@@ -824,7 +824,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="startOfWeek">The first day of the week (eg. <code>Monday</code> or <code>Sunday</code>).</param>
         /// <returns>Returns an instance of <see cref="EssentialsDateTime"/> representing the first day of the week.</returns>
         public EssentialsDateTime GetFirstDayOfWeek(DayOfWeek startOfWeek) {
-            return new EssentialsDateTime(TimeHelper.GetFirstDayOfWeek(DateTime, startOfWeek));
+            return new EssentialsDateTime(TimeUtils.GetFirstDayOfWeek(DateTime, startOfWeek));
         }
 
         /// <summary>
@@ -833,7 +833,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>Returns an instance of <see cref="EssentialsDateTime"/> representing the last day of the week.</returns>
         public EssentialsDateTime GetLastDayOfWeek() {
-            return new EssentialsDateTime(TimeHelper.GetLastDayOfWeek(DateTime));
+            return new EssentialsDateTime(TimeUtils.GetLastDayOfWeek(DateTime));
         }
 
         /// <summary>
@@ -843,7 +843,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="startOfWeek">The first day of the week (eg. <code>Monday</code> or <code>Sunday</code>).</param>
         /// <returns>Returns an instance of <see cref="EssentialsDateTime"/> representing the last day of the week.</returns>
         public EssentialsDateTime GetLastDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
-            return new EssentialsDateTime(TimeHelper.GetLastDayOfWeek(DateTime, startOfWeek));
+            return new EssentialsDateTime(TimeUtils.GetLastDayOfWeek(DateTime, startOfWeek));
         }
 
         /// <summary>
@@ -851,7 +851,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>Returns the English name of the day.</returns>
         public string GetDayName() {
-            return TimeHelper.GetDayName(DateTime);
+            return TimeUtils.GetDayName(DateTime);
         }
 
         /// <summary>
@@ -859,7 +859,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>Returns the local name of the day.</returns>
         public string GetLocalDayName() {
-            return TimeHelper.GetLocalDayName(DateTime);
+            return TimeUtils.GetLocalDayName(DateTime);
         }
 
         /// <summary>
@@ -868,7 +868,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="culture">The culture to be used.</param>
         /// <returns>Returns the local name of the day.</returns>
         public string GetLocalDayName(CultureInfo culture) {
-            return TimeHelper.GetLocalDayName(DateTime, culture);
+            return TimeUtils.GetLocalDayName(DateTime, culture);
         }
 
         /// <summary>
@@ -876,7 +876,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>Returns the English name of the month.</returns>
         public string GetMonthName() {
-            return TimeHelper.GetMonthName(DateTime);
+            return TimeUtils.GetMonthName(DateTime);
         }
 
         /// <summary>
@@ -885,7 +885,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>Returns the local name of the month.</returns>
         public string GetLocalMonthName(DateTime date) {
-            return TimeHelper.GetLocalMonthName(DateTime);
+            return TimeUtils.GetLocalMonthName(DateTime);
         }
 
         /// <summary>
@@ -894,7 +894,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="culture">The culture to be used.</param>
         /// <returns>Returns the local name of the month.</returns>
         public string GetLocalMonthName(CultureInfo culture) {
-            return TimeHelper.GetLocalMonthName(DateTime, culture);
+            return TimeUtils.GetLocalMonthName(DateTime, culture);
         }
 
         #endregion
@@ -916,7 +916,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
         public static EssentialsDateTime FromUnixTimestamp(int timestamp) {
-            return new EssentialsDateTime(TimeHelper.GetDateTimeFromUnixTime(timestamp));
+            return new EssentialsDateTime(TimeUtils.GetDateTimeFromUnixTime(timestamp));
         }
 
         /// <summary>
@@ -925,7 +925,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
         public static EssentialsDateTime FromUnixTimestamp(long timestamp) {
-            return new EssentialsDateTime(TimeHelper.GetDateTimeFromUnixTime(timestamp));
+            return new EssentialsDateTime(TimeUtils.GetDateTimeFromUnixTime(timestamp));
         }
 
         /// <summary>
@@ -934,7 +934,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
         public static EssentialsDateTime FromUnixTimestamp(double timestamp) {
-            return new EssentialsDateTime(TimeHelper.GetDateTimeFromUnixTime(timestamp));
+            return new EssentialsDateTime(TimeUtils.GetDateTimeFromUnixTime(timestamp));
         }
 
         #endregion

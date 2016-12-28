@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the year is a leap year.
         /// </summary>
         public bool IsLeapYear {
-            get { return TimeHelper.IsLeapYear(Year); }
+            get { return TimeUtils.IsLeapYear(Year); }
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Palm_Sunday#Observance_in_the_liturgy</cref>
         /// </see>
         public DateTime PalmSunday {
-            get { return CalendarHelper.GetPalmSunday(Year); }
+            get { return CalendarUtils.GetPalmSunday(Year); }
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
         /// </see>
         public DateTime GetMoundyThursday {
-            get { return CalendarHelper.GetMoundyThursday(Year); }
+            get { return CalendarUtils.GetMoundyThursday(Year); }
         }
 
         /// <summary>
@@ -60,7 +60,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Good_Friday</cref>
         /// </see>
         public DateTime GetGoodFriday {
-            get { return CalendarHelper.GetGoodFriday(Year); }
+            get { return CalendarUtils.GetGoodFriday(Year); }
         }
 
         /// <summary>
@@ -70,7 +70,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Holy_Saturday</cref>
         /// </see>
         public DateTime GetHolySaturday {
-            get { return CalendarHelper.GetHolySaturday(Year); }
+            get { return CalendarUtils.GetHolySaturday(Year); }
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Easter#Date</cref>
         /// </see>
         public DateTime EasterSunday {
-            get { return CalendarHelper.GetEasterSunday(Year); }
+            get { return CalendarUtils.GetEasterSunday(Year); }
         }
 
         /// <summary>
@@ -93,7 +93,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Easter_Monday</cref>
         /// </see>
         public DateTime EasterMonday {
-            get { return CalendarHelper.GetEasterMonday(Year); }
+            get { return CalendarUtils.GetEasterMonday(Year); }
         }
 
         /// <summary>
@@ -107,7 +107,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Store_Bededag</cref>
         /// </see>
         public DateTime StoreBededag {
-            get { return CalendarHelper.Denmark.GetGeneralPrayerDay(Year); }
+            get { return CalendarUtils.Denmark.GetGeneralPrayerDay(Year); }
         }
 
         /// <summary>
@@ -118,7 +118,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Feast_of_the_Ascension</cref>
         /// </see>
         public DateTime AscensionDay {
-            get { return CalendarHelper.GetAscensionDay(Year); }
+            get { return CalendarUtils.GetAscensionDay(Year); }
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Whitsun</cref>
         /// </see>
         public DateTime WhitSunday {
-            get { return CalendarHelper.GetWhitSunday(Year); }
+            get { return CalendarUtils.GetWhitSunday(Year); }
         }
 
         /// <summary>
@@ -147,7 +147,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Whit_Monday</cref>
         /// </see>
         public DateTime WhitMonday {
-            get { return CalendarHelper.GetWhitMonday(Year); }
+            get { return CalendarUtils.GetWhitMonday(Year); }
         }
 
         #endregion

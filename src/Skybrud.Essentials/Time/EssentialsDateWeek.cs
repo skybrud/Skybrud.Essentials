@@ -37,9 +37,9 @@
         /// <param name="timestamp">A timestamp.</param>
         public EssentialsDateWeek(EssentialsDateTime timestamp) {
 
-            Week = TimeHelper.GetIso8601WeekNumber(timestamp.DateTime);
-            Start = TimeHelper.GetFirstDayOfWeek(timestamp.DateTime);
-            End = TimeHelper.GetLastDayOfWeek(timestamp.DateTime);
+            Week = TimeUtils.GetIso8601WeekNumber(timestamp.DateTime);
+            Start = TimeUtils.GetFirstDayOfWeek(timestamp.DateTime);
+            End = TimeUtils.GetLastDayOfWeek(timestamp.DateTime);
 
             if (End.Month == 1 && Week == 1) {
                 Year = End.Year;
