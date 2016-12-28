@@ -411,8 +411,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-        /// <returns>Returns an array of <see cref="TValue"/>. If the a matching token isn't found, an empty array will
-        /// still be returned.</returns>
+        /// <returns>Returns an array of <typeparamref name="TValue"/>. If the a matching token isn't found, an empty
+        /// array will still be returned.</returns>
         public static TValue[] GetArrayItems<TKey, TValue>(this JObject obj, string path, Func<TKey, TValue> callback) where TKey : JToken {
 
             if (obj == null) return new TValue[0];

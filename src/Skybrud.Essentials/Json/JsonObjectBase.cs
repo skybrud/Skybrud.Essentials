@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Json {
         #region Constructor
 
         /// <summary>
-        /// Parses the specified <code>obj</code> into an instance of <see cref="JsonObjectBase"/>.
+        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="JsonObjectBase"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
         /// <returns>Returns an instance of <see cref="JsonObjectBase"/>.</returns>

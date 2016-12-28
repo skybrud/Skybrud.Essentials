@@ -3,6 +3,9 @@ using System.Globalization;
 
 namespace Skybrud.Essentials.Time.Extensions {
     
+    /// <summary>
+    /// Static class with various extension methods for <see cref="DateTime"/>.
+    /// </summary>
     public static class DateTimeExtensions {
 
         /// <summary>

@@ -2,6 +2,9 @@
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
+    /// <summary>
+    /// Static class with various extension methods for <see cref="String"/>.
+    /// </summary>
     public static class StringExtensions {
 
         /// <summary>

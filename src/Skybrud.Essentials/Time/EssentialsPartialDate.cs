@@ -111,6 +111,10 @@ namespace Skybrud.Essentials.Time {
 
         #region Member methods
 
+        /// <summary>
+        /// Returns a string representation of the partial date in the format of <code>yyyy-MM-dd</code>.
+        /// </summary>
+        /// <returns>A string that represents the partial date.</returns>
         public override string ToString() {
             return String.Format("{0:0000}-{1:00}-{2:00}", Year, Month, Day);
         }

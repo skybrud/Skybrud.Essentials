@@ -1,5 +1,8 @@
 ﻿namespace Skybrud.Essentials.Locations.Extensions {
-    
+
+    /// <summary>
+    /// Static class with various extension methods for the <see cref="ILocation"/> interface.
+    /// </summary>
     public static class LocationExtensions {
 
         /// <summary>
