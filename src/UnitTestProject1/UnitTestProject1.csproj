@@ -56,7 +56,10 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Enums\EnumPascalCaseConverterTests.cs" />
+    <Compile Include="Enums\EnumLowerCaseConverterTests.cs" />
     <Compile Include="Enums\EnumUtilsTests.cs" />
+    <Compile Include="Enums\EnumCamelCaseConverterTests.cs" />
     <Compile Include="Json\JsonHelperTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
     <Compile Include="Locations\LocationHelperTests.cs" />

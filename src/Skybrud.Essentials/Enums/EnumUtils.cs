@@ -35,6 +35,32 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="str"/> into an instance of <paramref name="enumType"/>.
+        /// </summary>
+        /// <param name="str">The string value to be converted.</param>
+        /// <param name="enumType"></param>
+        /// <returns>Returns an instance of <paramref name="enumType"/>.</returns>
+        /// <exception cref="EnumParseException">If <paramref name="enumType"/> didn't match an enum value as specified
+        /// in <paramref name="str"/>.</exception>
+        public static object ParseEnum(string str, Type enumType) {
+
+            // Throw an exception if "str" isn't specified
+            if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException("str");
+
+            // Convert the input string to camel case and lowercase (morel likely to get a match)
+            string enumText = StringHelper.ToCamelCase(str).ToLower();
+
+            // Look through each enum value of "enumType"
+            foreach (object value in Enum.GetValues(enumType)) {
+                if (StringHelper.ToCamelCase(value.ToString()).ToLower() == enumText) return value;
+            }
+
+            // Throw an exception if we didn't find a match
+            throw new EnumParseException(enumType, str);
+
+        }
+
+        /// <summary>
         /// Parses the specified <code>str</code> into the enum of type <typeparamref name="T"/>. If <code>str</code>
         /// cannot be parsed, the value <code>fallback</code> will be returned instead.
         /// </summary>

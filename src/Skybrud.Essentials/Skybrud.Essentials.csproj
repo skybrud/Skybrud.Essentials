@@ -52,6 +52,7 @@
     <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
     <Compile Include="Enums\EnumParseException.cs" />
+    <Compile Include="Json\Converters\Enums\EnumBaseConverter.cs" />
     <Compile Include="Json\Converters\Enums\EnumPascalCaseConverter.cs" />
     <Compile Include="Json\Converters\Enums\EnumCamelCaseConverter.cs" />
     <Compile Include="Json\Converters\Enums\EnumLowerCaseConverter.cs" />
