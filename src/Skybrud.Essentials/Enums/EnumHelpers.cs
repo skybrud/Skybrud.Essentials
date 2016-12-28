@@ -5,7 +5,7 @@ namespace Skybrud.Essentials.Enums {
     /// <summary>
     /// Utility class with various static helper methods for working with enums.
     /// </summary>
-    [Obsolete("Use the EnumHelper class instead.")]
+    [Obsolete("Use the EnumUtils class instead.")]
     public static class EnumHelpers {
 
         /// <summary>
@@ -13,9 +13,9 @@ namespace Skybrud.Essentials.Enums {
         /// </summary>
         /// <typeparam name="T">The type of the enum class.</typeparam>
         /// <returns>Returns an array of <code>T</code>.</returns>
-        [Obsolete("Use the EnumHelper class instead.")]
+        [Obsolete("Use the EnumUtils class instead.")]
         public static T[] GetEnumValues<T>() where T : struct {
-            return EnumHelper.GetEnumValues<T>();
+            return EnumUtils.GetEnumValues<T>();
         }
 
         /// <summary>
@@ -27,9 +27,9 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="ArgumentNullException">If <code>str</code> is <code>null</code> (or white space).</exception>
         /// <exception cref="ArgumentException">If <code>T</code> is not an enum class.</exception>
         /// <exception cref="EnumParseException">If <code>str</code> doesn't match any of the values of <code>T</code>.</exception>
-        [Obsolete("Use the EnumHelper class instead.")]
+        [Obsolete("Use the EnumUtils class instead.")]
         public static T ParseEnum<T>(string str) where T : struct {
-            return EnumHelper.ParseEnum<T>(str);
+            return EnumUtils.ParseEnum<T>(str);
         }
 
         /// <summary>
@@ -40,9 +40,9 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="fallback">The fallback if the enum could not be parsed.</param>
         /// <returns>Returns an enum of type <code>T</code> from the specified <code>str</code>.</returns>
         /// <exception cref="ArgumentException">If <code>T</code> is not an enum class.</exception>
-        [Obsolete("Use the EnumHelper class instead.")]
+        [Obsolete("Use the EnumUtils class instead.")]
         public static T ParseEnum<T>(string str, T fallback) where T : struct {
-            return EnumHelper.ParseEnum(str, fallback);
+            return EnumUtils.ParseEnum(str, fallback);
         }
 
     }

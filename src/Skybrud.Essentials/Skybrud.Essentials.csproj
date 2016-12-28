@@ -48,6 +48,7 @@
     <Compile Include="Collections\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Collections\SortOrder.cs" />
     <Compile Include="Common\PropertyNotSetException.cs" />
+    <Compile Include="Enums\EnumUtils.cs" />
     <Compile Include="Enums\EnumHelper.cs" />
     <Compile Include="Enums\EnumHelpers.cs" />
     <Compile Include="Enums\EnumParseException.cs" />

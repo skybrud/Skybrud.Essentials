@@ -256,7 +256,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>Returns an instance of <code>T</code>.</returns>
         [Obsolete]
         public static T GetEnum<T>(JObject obj, string path) where T : struct {
-            return EnumHelper.ParseEnum<T>(GetString(obj, path));
+            return EnumUtils.ParseEnum<T>(GetString(obj, path));
         }
 
         /// <summary>
@@ -269,7 +269,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         [Obsolete]
         public static T GetEnum<T>(JObject obj, string path, T fallback) where T : struct {
             string value = GetString(obj, path);
-            return String.IsNullOrWhiteSpace(value) ? fallback : EnumHelper.ParseEnum(value, fallback);
+            return String.IsNullOrWhiteSpace(value) ? fallback : EnumUtils.ParseEnum(value, fallback);
         }
 
         /// <summary>

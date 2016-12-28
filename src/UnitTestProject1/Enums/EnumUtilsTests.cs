@@ -5,7 +5,7 @@ using Skybrud.Essentials.Enums;
 namespace UnitTestProject1.Enums {
 
     [TestClass]
-    public class EnumHelperTests {
+    public class EnumUtilsTests {
 
         [TestMethod]
         public void ParseEnum() {
@@ -23,7 +23,7 @@ namespace UnitTestProject1.Enums {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Expected, EnumHelper.ParseEnum(sample.Input, HttpStatusCode.OK));
+                Assert.AreEqual(sample.Expected, EnumUtils.ParseEnum(sample.Input, HttpStatusCode.OK));
             }
 
         }

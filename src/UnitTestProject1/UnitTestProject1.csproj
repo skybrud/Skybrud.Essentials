@@ -56,7 +56,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
-    <Compile Include="Enums\EnumHelperTests.cs" />
+    <Compile Include="Enums\EnumUtilsTests.cs" />
     <Compile Include="Json\JsonHelperTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
     <Compile Include="Locations\LocationHelperTests.cs" />

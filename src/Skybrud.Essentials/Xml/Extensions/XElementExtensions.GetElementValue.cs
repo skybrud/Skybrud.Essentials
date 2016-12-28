@@ -253,12 +253,12 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static T GetElementValueAsEnum<T>(this XElement element, XName name) where T : struct {
             XAttribute child = element == null ? null : element.Attribute(name);
-            return child == null ? default(T) : EnumHelper.ParseEnum<T>(child.Value);
+            return child == null ? default(T) : EnumUtils.ParseEnum<T>(child.Value);
         }
 
         public static T GetElementValueAsEnum<T>(this XElement element, XName name, T fallback) where T : struct {
             XAttribute child = element == null ? null : element.Attribute(name);
-            return child == null ? fallback : EnumHelper.ParseEnum(child.Value, fallback);
+            return child == null ? fallback : EnumUtils.ParseEnum(child.Value, fallback);
         }
 
         public static T GetElementValueAsEnum<T>(this XElement element, string expression) where T : struct {
@@ -271,12 +271,12 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         public static T GetElementValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver resolver) where T : struct {
             XElement attr = GetElement(element, expression, resolver);
-            return attr == null ? default(T) : EnumHelper.ParseEnum<T>(attr.Value);
+            return attr == null ? default(T) : EnumUtils.ParseEnum<T>(attr.Value);
         }
 
         public static T GetElementValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, T fallback) where T : struct {
             XElement attr = GetElement(element, expression, resolver);
-            return attr == null ? fallback : EnumHelper.ParseEnum(attr.Value, fallback);
+            return attr == null ? fallback : EnumUtils.ParseEnum(attr.Value, fallback);
         }
 
         #endregion
