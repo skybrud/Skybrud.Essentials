@@ -66,6 +66,28 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Initializes a new instance from the specified <code>date</code>.
         /// </summary>
+        /// <param name="date">An instance of <see cref="DateTime"/> representing the full date.</param>
+        public EssentialsPartialDate(DateTime date) {
+            Year = date.Year;
+            Month = date.Month;
+            Day = date.Day;
+            DateTime = new DateTime(Year, Month, Day);
+        }
+
+        /// <summary>
+        /// Initializes a new instance from the specified <code>date</code>.
+        /// </summary>
+        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the full date.</param>
+        public EssentialsPartialDate(DateTimeOffset date) {
+            Year = date.Year;
+            Month = date.Month;
+            Day = date.Day;
+            DateTime = new DateTime(Year, Month, Day);
+        }
+
+        /// <summary>
+        /// Initializes a new instance from the specified <code>date</code>.
+        /// </summary>
         /// <param name="date">An instance of <see cref="EssentialsDateTime"/> representing the full date.</param>
         public EssentialsPartialDate(EssentialsDateTime date) {
             Year = date == null ? 0 : date.Year;
@@ -164,6 +186,37 @@ namespace Skybrud.Essentials.Time {
 
             return date != null;
 
+        }
+
+        #endregion
+
+        #region Operator overloading
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EssentialsPartialDate"/> from the specified <code>timestamp</code>.
+        /// </summary>
+        /// <param name="timestamp">An instance of <see cref="DateTime"/>.</param>
+        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
+        public static implicit operator EssentialsPartialDate(DateTime timestamp) {
+            return new EssentialsPartialDate(timestamp);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EssentialsPartialDate"/> from the specified <code>timestamp</code>.
+        /// </summary>
+        /// <param name="timestamp">An instance of <see cref="DateTimeOffset"/>.</param>
+        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
+        public static implicit operator EssentialsPartialDate(DateTimeOffset timestamp) {
+            return new EssentialsPartialDate(timestamp);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EssentialsPartialDate"/> from the specified <code>timestamp</code>.
+        /// </summary>
+        /// <param name="timestamp">An instance of <see cref="EssentialsDateTime"/>.</param>
+        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
+        public static implicit operator EssentialsPartialDate(EssentialsDateTime timestamp) {
+            return new EssentialsPartialDate(timestamp);
         }
 
         #endregion

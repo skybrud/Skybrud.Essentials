@@ -585,11 +585,75 @@ namespace UnitTestProject1.Time {
 
         #endregion
 
-        #region RFC 822
+        #region EssentialsPartialDate
 
-        public void ToRfc822() {
-            
+        public void EssentialsPartialDateFromDateTime() {
 
+            var samples = new[] {
+                new { Date = new DateTime(2014, 12, 29) },
+                new { Date = new DateTime(2014, 12, 30) },
+                new { Date = new DateTime(2014, 12, 31) },
+                new { Date = new DateTime(2015,  1,  1) },
+                new { Date = new DateTime(2015,  1,  2) },
+                new { Date = new DateTime(2015,  1,  3) },
+                new { Date = new DateTime(2015,  1,  4) }
+            };
+
+            foreach (var sample in samples) {
+                EssentialsPartialDate partial = sample.Date;
+                Assert.AreEqual(sample.Date.Year, partial.Year);
+                Assert.AreEqual(sample.Date.Month, partial.Month);
+                Assert.AreEqual(sample.Date.Day, partial.Day);
+            }
+
+        }
+
+        public void EssentialsPartialDateFromDateTimeOffset() {
+
+            var samples = new[] {
+                new { Date = new DateTimeOffset(2014, 12, 29, 0, 0, 0, TimeSpan.FromHours(0)) },
+                new { Date = new DateTimeOffset(2014, 12, 30, 0, 0, 0, TimeSpan.FromHours(0)) },
+                new { Date = new DateTimeOffset(2014, 12, 31, 0, 0, 0, TimeSpan.FromHours(0)) },
+                new { Date = new DateTimeOffset(2015,  1,  1, 0, 0, 0, TimeSpan.FromHours(0)) },
+                new { Date = new DateTimeOffset(2015,  1,  2, 0, 0, 0, TimeSpan.FromHours(0)) },
+                new { Date = new DateTimeOffset(2015,  1,  3, 0, 0, 0, TimeSpan.FromHours(0)) },
+                new { Date = new DateTimeOffset(2015,  1,  4, 0, 0, 0, TimeSpan.FromHours(0)) },
+                new { Date = new DateTimeOffset(2014, 12, 29, 0, 0, 0, TimeSpan.FromHours(1)) },
+                new { Date = new DateTimeOffset(2014, 12, 30, 0, 0, 0, TimeSpan.FromHours(2)) },
+                new { Date = new DateTimeOffset(2014, 12, 31, 0, 0, 0, TimeSpan.FromHours(3)) },
+                new { Date = new DateTimeOffset(2015,  1,  1, 0, 0, 0, TimeSpan.FromHours(4)) },
+                new { Date = new DateTimeOffset(2015,  1,  2, 0, 0, 0, TimeSpan.FromHours(5)) },
+                new { Date = new DateTimeOffset(2015,  1,  3, 0, 0, 0, TimeSpan.FromHours(6)) },
+                new { Date = new DateTimeOffset(2015,  1,  4, 0, 0, 0, TimeSpan.FromHours(7)) }
+            };
+
+            foreach (var sample in samples) {
+                EssentialsPartialDate partial = sample.Date;
+                Assert.AreEqual(sample.Date.Year, partial.Year);
+                Assert.AreEqual(sample.Date.Month, partial.Month);
+                Assert.AreEqual(sample.Date.Day, partial.Day);
+            }
+
+        }
+        
+        public void EssentialsPartialDateFromEssentialsDateTime() {
+
+            var samples = new[] {
+                new { Date = new EssentialsDateTime(2014, 12, 29) },
+                new { Date = new EssentialsDateTime(2014, 12, 30) },
+                new { Date = new EssentialsDateTime(2014, 12, 31) },
+                new { Date = new EssentialsDateTime(2015,  1,  1) },
+                new { Date = new EssentialsDateTime(2015,  1,  2) },
+                new { Date = new EssentialsDateTime(2015,  1,  3) },
+                new { Date = new EssentialsDateTime(2015,  1,  4) }
+            };
+
+            foreach (var sample in samples) {
+                EssentialsPartialDate partial = sample.Date;
+                Assert.AreEqual(sample.Date.Year, partial.Year);
+                Assert.AreEqual(sample.Date.Month, partial.Month);
+                Assert.AreEqual(sample.Date.Day, partial.Day);
+            }
 
         }
 
