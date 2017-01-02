@@ -72,6 +72,7 @@
     <Compile Include="Time\Converters\EssentialsDateTimeConverterTests.cs" />
     <Compile Include="Time\EasterDateTests.cs" />
     <Compile Include="Time\Converters\DateTimeUnixTimeConverterTests.cs" />
+    <Compile Include="Time\Formats\UnixtimeTests.cs" />
     <Compile Include="Time\National\CanadianDateTests.cs" />
     <Compile Include="Time\National\DanishDateTests.cs" />
     <Compile Include="Time\National\UnitedStatesDateTests.cs" />
