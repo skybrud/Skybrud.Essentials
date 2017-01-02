@@ -3,8 +3,8 @@
   "description": "Library with common purpose functionality for working with .NET.",
   "company": "Skybrud.dk",
   "product": "Skybrud.Essentials",
-  "copyright": "Copyright © 2016",
-  "version": "1.0.5.0",
-  "informationalVersion": "1.0.5",
-  "fileVersion": "1.0.5.0"
+  "copyright": "Copyright © 2017",
+  "version": "1.0.6.0",
+  "informationalVersion": "1.0.6",
+  "fileVersion": "1.0.6.0"
 }
