@@ -56,7 +56,19 @@ namespace UnitTestProject1.Strings {
                 new { Input = "helloWorld", Expected = "hello_world" },
                 new { Input = "HELLO_WORLD", Expected = "hello_world" },
                 new { Input = "HelloWorld", Expected = "hello_world" },
-                new { Input = "Hello World", Expected = "hello_world" }
+                new { Input = "Hello World", Expected = "hello_world" },
+                new { Input = "Hello (World)", Expected = "hello_world" },
+                new { Input = "Hello / World", Expected = "hello_world" },
+                new { Input = "Hello % World", Expected = "hello_world" },
+                new { Input = "      Hello World", Expected = "hello_world" },
+                new { Input = "Hello World      ", Expected = "hello_world" },
+                new { Input = "Hello      World", Expected = "hello_world" },
+                new { Input = "______Hello World", Expected = "hello_world" },
+                new { Input = "Hello World______", Expected = "hello_world" },
+                new { Input = "Hello______World", Expected = "hello_world" },
+                new { Input = "Rød grød med fløde", Expected = "rød_grød_med_fløde" },
+                new { Input = "øv bøv", Expected = "øv_bøv" },
+                new { Input = "Øv bøv", Expected = "øv_bøv" }
             };
 
             var samples2 = new[] {
@@ -86,7 +98,19 @@ namespace UnitTestProject1.Strings {
                 new { Input = "hello_world", Expected = "helloWorld" },
                 new { Input = "HELLO_WORLD", Expected = "helloWorld" },
                 new { Input = "HelloWorld", Expected = "helloWorld" },
-                new { Input = "Hello World", Expected = "helloWorld" }
+                new { Input = "Hello World", Expected = "helloWorld" },
+                new { Input = "Hello (World)", Expected = "helloWorld" },
+                new { Input = "Hello / World", Expected = "helloWorld" },
+                new { Input = "Hello % World", Expected = "helloWorld" },
+                new { Input = "      Hello World", Expected = "helloWorld" },
+                new { Input = "Hello World      ", Expected = "helloWorld" },
+                new { Input = "Hello      World", Expected = "helloWorld" },
+                new { Input = "______Hello World", Expected = "helloWorld" },
+                new { Input = "Hello World______", Expected = "helloWorld" },
+                new { Input = "Hello______World", Expected = "helloWorld" },
+                new { Input = "Rød grød med fløde", Expected = "rødGrødMedFløde" },
+                new { Input = "øv bøv", Expected = "øvBøv" },
+                new { Input = "Øv bøv", Expected = "øvBøv" }
             };
 
             var samples2 = new[] {
@@ -116,7 +140,19 @@ namespace UnitTestProject1.Strings {
                 new { Input = "hello_world", Expected = "HelloWorld" },
                 new { Input = "HELLO_WORLD", Expected = "HelloWorld" },
                 new { Input = "HelloWorld", Expected = "HelloWorld" },
-                new { Input = "Hello World", Expected = "HelloWorld" }
+                new { Input = "Hello World", Expected = "HelloWorld" },
+                new { Input = "Hello (World)", Expected = "HelloWorld" },
+                new { Input = "Hello / World", Expected = "HelloWorld" },
+                new { Input = "Hello % World", Expected = "HelloWorld" },
+                new { Input = "      Hello World", Expected = "HelloWorld" },
+                new { Input = "Hello World      ", Expected = "HelloWorld" },
+                new { Input = "Hello      World", Expected = "HelloWorld" },
+                new { Input = "______Hello World", Expected = "HelloWorld" },
+                new { Input = "Hello World______", Expected = "HelloWorld" },
+                new { Input = "Hello______World", Expected = "HelloWorld" },
+                new { Input = "Rød grød med fløde", Expected = "RødGrødMedFløde" },
+                new { Input = "øv bøv", Expected = "ØvBøv" },
+                new { Input = "Øv bøv", Expected = "ØvBøv" }
             };
 
             var samples2 = new[] {

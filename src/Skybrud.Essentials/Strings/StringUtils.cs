@@ -57,7 +57,7 @@ namespace Skybrud.Essentials.Strings {
 
             // Convert the string to lowercase initially for better results (eg. if the string is already camel cased)
             str = ToUnderscore(str);
-
+            
             // Split the string by space or underscore
             string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
 
@@ -108,7 +108,16 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be converted.</param>
         /// <returns>Returns the converted string.</returns>
         public static string ToUnderscore(string str) {
-            return Regex.Replace(str ?? "", @"(\p{Ll})(\p{Lu})", "$1_$2").Replace(" ", "_").Replace("__", "_").ToLower();
+
+            // Replace invalid characters
+            str = Regex.Replace(str ?? "", "[\\W_]+", " ").Trim();
+
+            // Replace multiple whitespaces
+            str = Regex.Replace(str, "[ ]{2,}", " ");
+
+            // Convert to lowercase (with uppercase letters prefixed with underscore)
+            return Regex.Replace(str, @"(\p{Ll})(\p{Lu})", "$1_$2").Replace(" ", "_").Replace("__", "_").ToLower();
+
         }
 
         /// <summary>
