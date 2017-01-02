@@ -10,11 +10,6 @@ namespace Skybrud.Essentials.Time {
 
         #region Constants
 
-        /// <summary>
-        /// ISO 8601 date format.
-        /// </summary>
-        public const string Iso8601DateFormat = "yyyy-MM-ddTHH:mm:ssK";
-
         #endregion
 
         /// <summary>

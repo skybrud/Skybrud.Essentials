@@ -75,6 +75,8 @@
     <Compile Include="Time\National\CanadianDateTests.cs" />
     <Compile Include="Time\National\DanishDateTests.cs" />
     <Compile Include="Time\National\UnitedStatesDateTests.cs" />
+    <Compile Include="Time\Formats\Iso8601Tests.cs" />
+    <Compile Include="Time\Formats\Rfc822Tests.cs" />
     <Compile Include="Time\TimeTests.cs" />
     <Compile Include="Xml\GetElement.cs" />
     <Compile Include="Xml\GetAttributeValue.cs" />
@@ -95,6 +97,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

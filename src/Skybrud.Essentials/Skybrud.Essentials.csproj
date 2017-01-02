@@ -89,7 +89,9 @@
     <Compile Include="Time\EssentialsPartialDate.cs" />
     <Compile Include="Time\Extensions\DateTimeExtensions.cs" />
     <Compile Include="Time\TimeUtils.cs" />
-    <Compile Include="Time\TimeUtils.Formats.cs" />
+    <Compile Include="Time\TimeUtils.Iso8601.cs" />
+    <Compile Include="Time\TimeUtils.Rfc2822.cs" />
+    <Compile Include="Time\TimeUtils.Rfc822.cs" />
     <Compile Include="Time\TimeUtils.UnixTime.cs" />
     <Compile Include="Legacy\Time\TimeHelper.UnixTime.cs" />
     <Compile Include="Legacy\Time\TimeHelper.cs" />
