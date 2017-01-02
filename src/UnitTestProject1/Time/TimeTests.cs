@@ -30,6 +30,24 @@ namespace UnitTestProject1.Time {
         }
 
         [TestMethod]
+        public void GetAge_DateTimeOffset() {
+
+            // Since the age doesn't have a fixed value, we fake the value of "now"
+            DateTimeOffset fakeNow = new DateTimeOffset(2014, 02, 15, 0, 0, 0, TimeSpan.FromHours(0));
+
+            var samples = new[] {
+                new { Date = new DateTimeOffset(1970, 01, 01, 0, 0, 0, TimeSpan.FromHours(0)), Age = 44 },
+                new { Date = new DateTimeOffset(1988, 08, 17, 0, 0, 0, TimeSpan.FromHours(0)), Age = 25 }
+            };
+
+            foreach (var sample in samples) {
+                Assert.AreEqual(sample.Age, TimeUtils.GetAge(sample.Date, fakeNow), "\n\n" + sample.Date + " (TimeUtils)");
+                //Assert.AreEqual(sample.Age, sample.Date.GetAge(fakeNow), "\n\n" + sample.Date + " (extension method)");
+            }
+
+        }
+
+        [TestMethod]
         public void GetDayNumberAndSuffix() {
 
             Assert.AreEqual("1st", TimeHelper.GetDayNumberAndSuffix(new DateTime(2014, 1, 1)));

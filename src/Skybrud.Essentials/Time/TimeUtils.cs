@@ -38,6 +38,35 @@ namespace Skybrud.Essentials.Time {
             return age;
         }
 
+        /// <summary>
+        /// Gets the current age, from the specified date of birth.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <returns>Returns the age based on the specified date of birth.</returns>
+        public static int GetAge(DateTimeOffset dateOfBirth) {
+            return GetAge(dateOfBirth, DateTime.UtcNow);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified date of birth. The age is calculated based on <code>dt</code>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="dt">The date used for calculating the age.</param>
+        /// <returns>Returns the age based on the specified date of birth at the moment of <code>dt</code>.</returns>
+        public static int GetAge(DateTimeOffset dateOfBirth, DateTimeOffset dt) {
+
+            // Make sure both values are converted to UTC
+            var a = dateOfBirth.ToUniversalTime();
+            var b = dt.ToUniversalTime();
+
+            // Calculate the age
+            int age = dt.Year - a.Year;
+            if (b.Month < a.Month || (b.Month == a.Month && b.Day < a.Day)) age--;
+            
+            return age;
+        
+        }
+
         // TODO: Implement GetAge for DateTimeOffset?
 
         /// <summary>
