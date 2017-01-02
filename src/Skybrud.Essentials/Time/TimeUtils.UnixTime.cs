@@ -88,8 +88,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>Returns the timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTime GetDateTimeOffsetFromUnixTime(long timestamp) {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
+        public static DateTimeOffset GetDateTimeOffsetFromUnixTime(long timestamp) {
+            return new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).AddSeconds(timestamp);
         }
 
         /// <summary>
@@ -98,8 +98,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>Returns the timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTime GetDateTimeOffsetFromUnixTime(double timestamp) {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(timestamp);
+        public static DateTimeOffset GetDateTimeOffsetFromUnixTime(double timestamp) {
+            return new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).AddSeconds(timestamp);
         }
 
         /// <summary>
@@ -108,8 +108,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>Returns the timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTime GetDateTimeOffsetFromUnixTime(string timestamp) {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(Int64.Parse(timestamp));
+        public static DateTimeOffset GetDateTimeOffsetFromUnixTime(string timestamp) {
+            return new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).AddSeconds(Int64.Parse(timestamp));
         }
 
         #endregion
@@ -157,7 +157,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
         /// <returns>Returns an instance of <see cref="System.Double"/> representing the Unix timestamp.</returns>
         public static double GetUnixTimeFromDateTimeOffsetAsDouble(DateTimeOffset date) {
-            return (date.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
+            return (date.ToUniversalTime() - new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero)).TotalSeconds;
         }
 
         #endregion
