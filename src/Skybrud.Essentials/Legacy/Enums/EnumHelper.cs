@@ -44,7 +44,7 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="ArgumentException">If <code>T</code> is not an enum class.</exception>
         [Obsolete("Use the EnumUtils class instead.")]
         public static T ParseEnum<T>(string str, T fallback) where T : struct {
-            return EnumUtils.ParseEnum<T>(str, fallback);
+            return EnumUtils.ParseEnum(str, fallback);
         }
 
         /// <summary>
