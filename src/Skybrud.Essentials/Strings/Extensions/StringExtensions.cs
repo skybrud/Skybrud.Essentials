@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -96,6 +97,41 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <returns>Returns the decoded string.</returns>
         public static string UrlDecode(this string str) {
             return StringUtils.UrlDecode(str);
+        }
+
+
+
+        /// <summary>
+        /// Counts number of words in the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to parse.</param>
+        /// <returns>An integer with the number of words found.</returns>
+        public static int WordCount(this string str) {
+            return StringUtils.WordCount(str);
+        }
+
+        /// <summary>
+        /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
+        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="className">The class name.</param>
+        /// <param name="keywords">The keywords to highlight.</param>
+        /// <returns>The input string with highlighted keywords.</returns>
+        public static string HighlightKeywords(string input, string className, IEnumerable<string> keywords) {
+            return StringUtils.HighlightKeywords(input, className, keywords);
+        }
+
+        /// <summary>
+        /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
+        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="className">The class name.</param>
+        /// <param name="keywords">The keywords to highlight.</param>
+        /// <returns>The input string with highlighted keywords.</returns>
+        public static string HighlightKeywords(string input, string className, params string[] keywords) {
+            return StringUtils.HighlightKeywords(input, className, keywords);
         }
 
     }

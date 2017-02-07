@@ -1,4 +1,5 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
 
@@ -189,6 +190,45 @@ namespace UnitTestProject1.Strings {
             }
 
         }
+
+        [TestMethod]
+        public void WordCount() {
+
+            string[] samples = {
+                "Bacon ipsum dolor amet cupim beef ribs bresaola ribeye kevin fatback bacon sirloin picanha meatball! Hamburger bacon pig shoulder? Flank strip steak shoulder, tri-tip ham hock tenderloin meatball alcatra andouille boudin pork doner turkey. Turkey andouille doner swine turducken brisket kielbasa picanha jerky meatball burgdoggen pork shoulder ribeye. Ground round ball tip tenderloin tongue beef hamburger meatball porchetta filet mignon ham hock shoulder burgdoggen pig andouille tail. Pork chop shank bacon, pastrami corned beef fatback kevin. Fatback leberkas pork kielbasa, pork chop burgdoggen picanha meatball brisket spare ribs beef ribs.\n\nTenderloin prosciutto kielbasa beef ribs turducken jowl. Ball tip leberkas capicola, frankfurter kevin bresaola swine turducken pancetta meatloaf. Beef ribs corned beef cupim venison alcatra. Bresaola jerky porchetta beef ribs meatball, ball tip cow sausage cupim kielbasa. Frankfurter sausage tail brisket tenderloin cupim ham hock ribeye sirloin. Frankfurter biltong beef turducken."
+            };
+
+            foreach (string sample in samples) {
+
+                int count1 = StringUtils.WordCount(sample);
+                int count2 = sample.Split(new[] { ' ', '.', '?', '!' }, StringSplitOptions.RemoveEmptyEntries).Length;
+
+                Assert.AreEqual(count1, count2);
+
+            }
+
+        }
+
+        [TestMethod]
+        public void HighlightKeywords() {
+
+            var samples = new [] {
+                new {
+                    Input = "Bacon ipsum dolor amet cupim beef ribs bresaola ribeye kevin fatback bacon sirloin picanha meatball.",
+                    Output = "<span class=\"highlighted\">Bacon</span> ipsum dolor amet cupim <span class=\"highlighted\">beef</span> ribs bresaola ribeye kevin fatback <span class=\"highlighted\">bacon</span> sirloin picanha meatball."
+                }
+            };
+
+            foreach (var sample in samples) {
+
+                Assert.AreEqual(sample.Output, StringUtils.HighlightKeywords(sample.Input, "highlighted", "bacon", "beef"));
+
+            }
+
+        }
+
+
+        
 
     }
 

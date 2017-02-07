@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -155,6 +156,71 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The URL decoded string.</returns>
         public static string UrlDecode(string str) {
             return HttpUtility.UrlDecode(str);
+        }
+
+        /// <summary>
+        /// Counts number of words in the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to parse.</param>
+        /// <returns>An integer with the number of words found.</returns>
+        public static int WordCount(string str) {
+
+            // See: http://stackoverflow.com/a/8784654
+
+            // Trim the text a bit
+            str = str.Trim();
+            
+            int count = 0, index = 0;
+
+            while (index < str.Length) {
+                
+                // Check if current char is part of a word
+                while (index < str.Length && !char.IsWhiteSpace(str[index])) index++;
+
+                // Increment the counter
+                count++;
+
+                // Skip whitespace until next word
+                while (index < str.Length && char.IsWhiteSpace(str[index])) index++;
+            
+            }
+
+            return count;
+        
+        }
+
+        /// <summary>
+        /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
+        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="className">The class name.</param>
+        /// <param name="keywords">The keywords to highlight.</param>
+        /// <returns>The input string with highlighted keywords.</returns>
+        public static string HighlightKeywords(string input, string className, IEnumerable<string> keywords) {
+            if (String.IsNullOrWhiteSpace(input) || keywords == null) return input;
+            return HighlightKeywords(input, className, keywords.ToArray());
+        }
+
+        /// <summary>
+        /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
+        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="className">The class name.</param>
+        /// <param name="keywords">The keywords to highlight.</param>
+        /// <returns>The input string with highlighted keywords.</returns>
+        public static string HighlightKeywords(string input, string className, params string[] keywords) {
+
+            if (String.IsNullOrWhiteSpace(input) || keywords == null) return input;
+
+            // Loop through the keywords
+            foreach (string keyword in keywords) {
+                input = Regex.Replace(input, keyword, String.Format("<span class=\"{1}\">{0}</span>", "$0", className), RegexOptions.IgnoreCase);
+            }
+
+            return input;
+
         }
 
     }
