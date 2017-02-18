@@ -1039,12 +1039,30 @@ namespace Skybrud.Essentials.Time {
         #region Operator overloading
 
         /// <summary>
-        /// Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified <code>timestamp</code>.
+        /// Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified <paramref name="timestamp"/>.
         /// </summary>
         /// <param name="timestamp">An instance of <see cref="DateTime"/>.</param>
         /// <returns>Returns an instance of <see cref="EssentialsDateTime"/>.</returns>
         public static implicit operator EssentialsDateTime(DateTime timestamp) {
             return new EssentialsDateTime(timestamp);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified <paramref name="timestamp"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp specified in seconds.</param>
+        /// <returns>Returns an instance of <see cref="EssentialsDateTime"/>.</returns>
+        public static implicit operator EssentialsDateTime(long timestamp) {
+            return FromUnixTimestamp(timestamp);
+        }
+
+        /// <summary>
+        /// Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified <paramref name="timestamp"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp specified in seconds.</param>
+        /// <returns>Returns an instance of <see cref="EssentialsDateTime"/>.</returns>
+        public static implicit operator EssentialsDateTime(double timestamp) {
+            return FromUnixTimestamp(timestamp);
         }
 
         /// <summary>
