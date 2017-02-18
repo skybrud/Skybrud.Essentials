@@ -958,6 +958,33 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsDateTime(TimeUtils.GetDateTimeFromUnixTime(timestamp));
         }
 
+        /// <summary>
+        /// Convert the specified <strong>ISO 8601</strong> string to an instance of <see cref="EssentialsDateTime"/>.
+        /// </summary>
+        /// <param name="str">The <strong>ISO 8601</strong> string to be converted.</param>
+        /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
+        public static EssentialsDateTime FromIso8601(string str) {
+            return new EssentialsDateTime(TimeUtils.Iso8601ToDateTime(str));
+        }
+
+        /// <summary>
+        /// Convert the specified <strong>RFC 822</strong> string to an instance of <see cref="EssentialsDateTime"/>.
+        /// </summary>
+        /// <param name="str">The <strong>RFC 822</strong> string to be converted.</param>
+        /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
+        public static EssentialsDateTime FromRfc822(string str) {
+            return new EssentialsDateTime(TimeUtils.Rfc822ToDateTime(str));
+        }
+
+        /// <summary>
+        /// Convert the specified <strong>RFC 2822</strong> string to an instance of <see cref="EssentialsDateTime"/>.
+        /// </summary>
+        /// <param name="str">The <strong>RFC 2822</strong> string to be converted.</param>
+        /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
+        public static EssentialsDateTime FromRfc2822(string str) {
+            return new EssentialsDateTime(TimeUtils.Rfc822ToDateTime(str));
+        }
+
         #endregion
 
         #region Operator overloading
