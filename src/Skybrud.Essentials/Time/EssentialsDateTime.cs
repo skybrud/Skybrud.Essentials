@@ -932,6 +932,55 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Converts the specified string representation of a date and time to its <see cref="EssentialsDateTime"/>
+        /// equivalent and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="str">A string containing a date and time to convert.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateTime"/> value
+        /// equivalent to the date and time contained in <paramref name="str"/>, if the conversion succeeded, or
+        /// <code>null</code> if the conversion failed. The conversion fails if the <paramref name="str"/> parameter is
+        /// <code>null</code>, is an empty string (""), or does not contain a valid string representation of a date and
+        /// time. This parameter is passed uninitialized.</param>
+        /// <returns><code>true</code> if the <paramref name="str"/> parameter was converted successfully; otherwise,
+        /// <code>false</code>.</returns>
+        public static bool TryParse(string str, out EssentialsDateTime result) {
+            DateTime dt;
+            if (DateTime.TryParse(str, out dt)) {
+                result = new EssentialsDateTime(dt);
+                return true;
+            }
+            result = null;
+            return false;
+        }
+
+        /// <summary>
+        /// Converts the specified string representation of a date and time to its <see cref="EssentialsDateTime"/>
+        /// equivalent using the specified culture-specific format information and formatting style, and returns a
+        /// value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="str">A string containing a date and time to convert.</param>
+        /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="str"/>.</param>
+        /// <param name="styles">A bitwise combination of enumeration values that defines how to interpret the parsed
+        /// date in relation to the current time zone or the current date. A typical value to specify is
+        /// <see cref="System.Globalization.DateTimeStyles.None"/>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateTime"/> value
+        /// equivalent to the date and time contained in <paramref name="str"/>, if the conversion succeeded, or
+        /// <code>null</code> if the conversion failed. The conversion fails if the <paramref name="str"/> parameter is
+        /// <code>null</code>, is an empty string (""), or does not contain a valid string representation of a date and
+        /// time. This parameter is passed uninitialized.</param>
+        /// <returns><code>true</code> if the <paramref name="str"/> parameter was converted successfully; otherwise,
+        /// <code>false</code>.</returns>
+        public static bool TryParse(string str, IFormatProvider provider, DateTimeStyles styles, out EssentialsDateTime result) {
+            DateTime dt;
+            if (DateTime.TryParse(str, provider, styles, out dt)) {
+                result = new EssentialsDateTime(dt);
+                return true;
+            }
+            result = null;
+            return false;
+        }
+
+        /// <summary>
         /// Initialize a new instance from the specified UNIX timestamp.
         /// </summary>
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
