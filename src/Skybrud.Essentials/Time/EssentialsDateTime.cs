@@ -226,6 +226,27 @@ namespace Skybrud.Essentials.Time {
             get { return UnixTimestamp > 0; }
         }
 
+        /// <summary>
+        /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
+        /// </summary>
+        public string ToIso8601 {
+            get { return TimeUtils.ToIso8601(this); }
+        }
+
+        /// <summary>
+        /// Gets a string representation of the instance as specified by the <strong>RFC 822</strong> format.
+        /// </summary>
+        public string Rfc822 {
+            get { return TimeUtils.ToRfc822(this); }
+        }
+
+        /// <summary>
+        /// Gets a string representation of the instance as specified by the <strong>RFC 2822</strong> format.
+        /// </summary>
+        public string ToRfc2822 {
+            get { return TimeUtils.ToRfc2822(this); }
+        }
+
         #endregion
 
         #region Constructors
