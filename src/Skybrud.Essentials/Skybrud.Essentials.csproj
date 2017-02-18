@@ -45,6 +45,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Assemblies\AssemblyUtils.cs" />
     <Compile Include="Collections\Extensions\EnumerableExtensions.cs" />
     <Compile Include="Collections\SortOrder.cs" />
     <Compile Include="Common\PropertyNotSetException.cs" />
