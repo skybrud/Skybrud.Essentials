@@ -1,18 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 
-<root attr="value" integer="42" long="1234567891234" pi="3.14" boolean1="true" boolean2="false" boolean3="1" boolean4="0">
-  <element>
+<root attr="value" integer="42" long="1234567891234" pi="3.14" boolean1="true" boolean2="false" boolean3="1" boolean4="0" xmlns:test="http://social.skybrud.dk/schemas/test">
+  <string>Hello World</string>
+  <integer>42</integer>
+  <float>3.14</float>
+  <double>3.14159265359</double>
+  <long>1234567891234</long>
+  <element empty="">
+    <empty></empty>
     <hello>world</hello>
     <child attribute="hejsa" number="4321" pi="3.14" double="3.14159265359" long="1234567891234"></child>
     <a boolean1="true" boolean2="false" boolean3="1" boolean4="0"></a>
     <b boolean1="True" boolean2="False" boolean3="t" boolean4="f"></b>
     <c enum1="Ok" enum2="NotFound" enum3="Not Found" enum4="not_found" />
+    <number>4321</number>
+    <float>3.14</float>
+    <double>3.14159265359</double>
+    <long>1234567891234</long>
+    <booleans>
+      <boolean1>true</boolean1>
+      <boolean2>false</boolean2>
+      <boolean3>1</boolean3>
+      <boolean4>0</boolean4>
+      <boolean5>True</boolean5>
+      <boolean6>False</boolean6>
+      <boolean7>t</boolean7>
+      <boolean8>f</boolean8>
+    </booleans>
+    <enums>
+      <enum1>Ok</enum1>
+      <enum2>NotFound</enum2>
+      <enum3>Not Found</enum3>
+      <enum4>not_found</enum4>
+      <enum5></enum5>
+    </enums>
   </element>
-  <test:element xmlns:test="http://social.skybrud.dk/schemas/test">
+  <test:string>Hello World</test:string>
+  <test:integer>42</test:integer>
+  <test:float>3.14</test:float>
+  <test:double>3.14159265359</test:double>
+  <test:long>1234567891234</test:long>
+  <test:element empty="">
+    <test:empty></test:empty>
     <test:hello>world</test:hello>
     <test:child attribute="hej" number="1234" pi="3.14" double="3.14" long="1234567891234"></test:child>
     <test:a boolean1="true" boolean2="false" boolean3="1" boolean4="0"></test:a>
     <test:b boolean1="True" boolean2="False" boolean3="t" boolean4="f"></test:b>
     <test:c enum1="Ok" enum2="NotFound" enum3="Not Found" enum4="not_found" />
+    <test:number>1234</test:number>
+    <test:float>3.14</test:float>
+    <test:double>3.14159265359</test:double>
+    <test:long>1234567891234</test:long>
+    <test:booleans>
+      <test:boolean1>true</test:boolean1>
+      <test:boolean2>false</test:boolean2>
+      <test:boolean3>1</test:boolean3>
+      <test:boolean4>0</test:boolean4>
+      <test:boolean5>True</test:boolean5>
+      <test:boolean6>False</test:boolean6>
+      <test:boolean7>t</test:boolean7>
+      <test:boolean8>f</test:boolean8>
+    </test:booleans>
+    <test:enums>
+      <test:enum1>Ok</test:enum1>
+      <test:enum2>NotFound</test:enum2>
+      <test:enum3>Not Found</test:enum3>
+      <test:enum4>not_found</test:enum4>
+      <test:enum4></test:enum4>
+    </test:enums>
   </test:element>
 </root>

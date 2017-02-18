@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
     public static partial class XElementExtensions {
 
         /// <summary>
-        /// Gets the first attribute matching the the specified <code>name</code>.
+        /// Gets the first attribute matching the the specified <paramref name="name"/>.
         /// </summary>
         /// <param name="element">The instance of <see cref="XElement"/> holding the attribute.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         /// <summary>
-        /// Gets the first attribute matching the the specified XPath <code>expression</code>.
+        /// Gets the first attribute matching the the specified XPath <paramref name="expression"/>.
         /// </summary>
         /// <param name="element">An instance of <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression to match.</param>
@@ -30,7 +30,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         /// <summary>
-        /// Gets the first attribute matching the the specified XPath <code>expression</code>.
+        /// Gets the first attribute matching the the specified XPath <paramref name="expression"/>.
         /// </summary>
         /// <param name="element">An instance of <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression to match.</param>

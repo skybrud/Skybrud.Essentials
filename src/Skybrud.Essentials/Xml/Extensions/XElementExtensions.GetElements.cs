@@ -76,17 +76,36 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return element == null ? new T[0] : element.XPathSelectElements(expression, resolver).Select(callback).ToArray();
         }
 
-        public static T[] GetElements<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> func, IXmlNamespaceResolver resolver) {
+        /// <summary>
+        /// Gets an array of <typeparamref name="T"/> representing the elelement matching the specified XPath <paramref name="expression"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the items to be returned.</typeparam>
+        /// <param name="element">The parent <see cref="XElement"/>.</param>
+        /// <param name="expression">The XPath expression.</param>
+        /// <param name="callback">A callback function for parsing the elements.</param>
+        /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public static T[] GetElements<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> callback, IXmlNamespaceResolver resolver) {
             return (
                 from child in element.XPathSelectElements(expression, resolver)
-                select func(child, resolver)
+                select callback(child, resolver)
             ).ToArray();
         }
 
-        public static T[] GetElements<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> func, IXmlNamespaceResolver resolver, IXmlNamespaceResolver resolver2) {
+        /// <summary>
+        /// Gets an array of <typeparamref name="T"/> representing the elelement matching the specified XPath <paramref name="expression"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the items to be returned.</typeparam>
+        /// <param name="element">The parent <see cref="XElement"/>.</param>
+        /// <param name="expression">The XPath expression.</param>
+        /// <param name="callback">A callback function for parsing the elements.</param>
+        /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
+        /// <param name="resolver2">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public static T[] GetElements<T>(this XElement element, string expression, Func<XElement, IXmlNamespaceResolver, T> callback, IXmlNamespaceResolver resolver, IXmlNamespaceResolver resolver2) {
             return (
                 from child in element.XPathSelectElements(expression, resolver)
-                select func(child, resolver2)
+                select callback(child, resolver2)
             ).ToArray();
         }
 

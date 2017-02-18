@@ -79,6 +79,7 @@
     <Compile Include="Time\Formats\Iso8601Tests.cs" />
     <Compile Include="Time\Formats\Rfc822Tests.cs" />
     <Compile Include="Time\TimeTests.cs" />
+    <Compile Include="Xml\GetElementValue.cs" />
     <Compile Include="Xml\GetElement.cs" />
     <Compile Include="Xml\GetAttributeValue.cs" />
     <Compile Include="Xml\GetAttribute.cs" />

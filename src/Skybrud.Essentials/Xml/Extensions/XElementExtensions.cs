@@ -1,0 +1,67 @@
+﻿using System;
+using System.Xml;
+using System.Xml.Linq;
+
+namespace Skybrud.Essentials.Xml.Extensions {
+
+    /// <summary>
+    /// Static class with various extension methods for <see cref="XElement"/>.
+    /// </summary>
+    public static partial class XElementExtensions {
+
+        #region HasElementValue
+
+        /// <summary>
+        /// Gets whether the first element matching the specified <paramref name="name"/> has a value.
+        /// </summary>
+        /// <param name="element">The parent <see cref="XElement"/>.</param>
+        /// <param name="name">An instance of <see cref="XName"/> identifying the element.</param>
+        /// <returns><code>true</code> if an element was found and has a value; otherwise <code>false</code>.</returns>
+        public static bool HasElementValue(this XElement element, XName name) {
+
+            // Get the element matching "name"
+            XElement child = GetElement(element, name);
+
+            // Check whether the element was found and has a value
+            return child != null && !String.IsNullOrWhiteSpace(child.Value);
+
+        }
+
+        /// <summary>
+        /// Gets whether the first element matching the specified XPath <paramref name="expression"/> has a value.
+        /// </summary>
+        /// <param name="element">The parent <see cref="XElement"/>.</param>
+        /// <param name="expression">The XPath expression.</param>
+        /// <returns><code>true</code> if an element was found and has a value; otherwise <code>false</code>.</returns>
+        public static bool HasElementValue(this XElement element, string expression) {
+
+            // Get the element matching "name"
+            XElement child = GetElement(element, expression);
+
+            // Check whether the element was found and has a value
+            return child != null && !String.IsNullOrWhiteSpace(child.Value);
+
+        }
+
+        /// <summary>
+        /// Gets whether the first element matching the specified XPath <paramref name="expression"/> has a value.
+        /// </summary>
+        /// <param name="element">The parent <see cref="XElement"/>.</param>
+        /// <param name="expression">The XPath expression.</param>
+        /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
+        /// <returns><code>true</code> if an element was found and has a value; otherwise <code>false</code>.</returns>
+        public static bool HasElementValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+
+            // Get the element matching "name"
+            XElement child = GetElement(element, expression, resolver);
+
+            // Check whether the element was found and has a value
+            return child != null && !String.IsNullOrWhiteSpace(child.Value);
+
+        }
+
+        #endregion
+
+    }
+
+}
