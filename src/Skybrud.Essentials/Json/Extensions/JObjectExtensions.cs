@@ -458,6 +458,16 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
+        /// Gets an array of <see cref="JObject"/> from the token matching the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>Returns the token value as an array of <see cref="JObject"/>.</returns>
+        public static JObject[] GetObjectArray(this JObject obj, string path) {
+            return GetArrayItems<JObject>(obj, path);
+        }
+
+        /// <summary>
         /// Gets the <see cref="JToken"/> at the specified <code>path</code>. If the type of <code>token</code> is
         /// either <see cref="JTokenType.Object"/> or <see cref="JTokenType.Array"/>, the method will return
         /// <code>null</code> instead.
