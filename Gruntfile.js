@@ -18,7 +18,7 @@ module.exports = function(grunt) {
 		pkg: pkg,
 		clean: {
 			files: [
-				'files/**/*.*'
+				'releases/temp/'
 			]
 		},
 		copy: {
@@ -32,7 +32,7 @@ module.exports = function(grunt) {
 							pkg.name + '.xml',
 							'Newtonsoft.Json.dll',
 						],
-						dest: 'files/bin/'
+						dest: 'releases/temp/bin/'
 					}
 				]
 			}
@@ -59,7 +59,7 @@ module.exports = function(grunt) {
 	grunt.loadNpmTasks('grunt-nuget');
 	grunt.loadNpmTasks('grunt-zip');
 
-	grunt.registerTask('dev', ['copy', 'zip', 'nugetpack']);
+	grunt.registerTask('dev', ['clean', 'copy', 'zip', 'nugetpack', 'clean']);
 
 	grunt.registerTask('default', ['dev']);
 
