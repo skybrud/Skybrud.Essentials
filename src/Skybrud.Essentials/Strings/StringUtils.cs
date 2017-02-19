@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Web;
@@ -221,6 +222,64 @@ namespace Skybrud.Essentials.Strings {
 
             return input;
 
+        }
+
+        /// <summary>
+        /// Gets whether the string matches an integer (<see cref="Int32"/>).
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
+        public static bool IsInt32(string str) {
+            int result;
+            return Int32.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Alias of <see cref="IsInt32"/>. Gets whether the string matches an integer (<see cref="Int32"/>).
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
+        public static bool IsInteger(string str) {
+            return IsInt32(str);
+        }
+
+        /// <summary>
+        /// Gets whether the string matches a long (<see cref="Int64"/>).
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> matches a long; otherwise <code>false</code>.</returns>
+        public static bool IsInt64(string str) {
+            long result;
+            return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Gets whether the string matches a double (<see cref="Double"/>).
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> matches a double; otherwise <code>false</code>.</returns>
+        public static bool IsDouble(string str) {
+            double result;
+            return Double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Alias of <see cref="IsDouble"/>. Gets whether the string matches a double (<see cref="Double"/>).
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> matches a double; otherwise <code>false</code>.</returns>
+        public static bool IsNumeric(string str) {
+            long result;
+            return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Gets whether the specified string is alphanumeric - meaning it only consists of numbers and letters.
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> is alphanumeric; otherwise <code>false</code>.</returns>
+        public static bool IsAlphanumeric(string str) {
+            return Regex.IsMatch(str ?? "", "^[0-9a-zA-Z]+$");
         }
 
     }
