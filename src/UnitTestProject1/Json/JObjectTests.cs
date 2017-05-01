@@ -57,6 +57,48 @@ namespace UnitTestProject1.Json {
         }
 
         [TestMethod]
+        public void GetInt16() {
+
+            JObject obj = JObject.Parse("{\"int16\":0,\"hest\":1234,\"null\":null,\"empty\":\"\"}");
+
+            Assert.AreEqual(0, obj.GetInt16("int16"), "Check #1 failed");
+            Assert.AreEqual(1234, obj.GetInt16("hest"), "Check #2 failed");
+            Assert.AreEqual(0, obj.GetInt16("null"), "Check #3 failed");
+            Assert.AreEqual(0, obj.GetInt16("empty"), "Check #4 failed");
+            Assert.AreEqual(0, obj.GetInt16("missing"), "Check #5 failed");
+
+            Assert.AreEqual(4, obj.GetInt16("int16", x => x + 4), "Check #6 failed");
+            Assert.AreEqual(1238, obj.GetInt16("hest", x => x + 4), "Check #7 failed");
+
+            // Callback isn't invoked since the properties are empty or not found
+            Assert.AreEqual(0, obj.GetInt16("null", x => x + 4), "Check #8 failed");
+            Assert.AreEqual(0, obj.GetInt16("empty", x => x + 4), "Check #9 failed");
+            Assert.AreEqual(0, obj.GetInt16("missing", x => x + 4), "Check #10 failed");
+
+        }
+
+        [TestMethod]
+        public void GetUInt16() {
+
+            JObject obj = JObject.Parse("{\"int16\":0,\"hest\":1234,\"null\":null,\"empty\":\"\"}");
+
+            Assert.AreEqual(0, obj.GetUInt16("int16"), "Check #1 failed");
+            Assert.AreEqual(1234, obj.GetUInt16("hest"), "Check #2 failed");
+            Assert.AreEqual(0, obj.GetUInt16("null"), "Check #3 failed");
+            Assert.AreEqual(0, obj.GetUInt16("empty"), "Check #4 failed");
+            Assert.AreEqual(0, obj.GetUInt16("missing"), "Check #5 failed");
+
+            Assert.AreEqual(4, obj.GetUInt16("int16", x => x + 4), "Check #6 failed");
+            Assert.AreEqual(1238, obj.GetUInt16("hest", x => x + 4), "Check #7 failed");
+
+            // Callback isn't invoked since the properties are empty or not found
+            Assert.AreEqual(0, obj.GetInt16("null", x => x + 4), "Check #8 failed");
+            Assert.AreEqual(0, obj.GetInt16("empty", x => x + 4), "Check #9 failed");
+            Assert.AreEqual(0, obj.GetInt16("missing", x => x + 4), "Check #10 failed");
+
+        }
+
+        [TestMethod]
         public void GetInt32() {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"empty\":\"\",\"obj\":{\"value\":\"1234\",\"nothing\":\"0\",\"number\":1234}}}");
@@ -69,6 +111,27 @@ namespace UnitTestProject1.Json {
 
             Assert.AreEqual(0, obj.GetInt32("root.obj"), "Check #6 failed");
             Assert.AreEqual(0, obj.GetInt32("root.empty"), "Check #7 failed");
+
+        }
+
+        [TestMethod]
+        public void GetUInt32() {
+
+            JObject obj = JObject.Parse("{\"int32\":0,\"hest\":1234,\"null\":null,\"empty\":\"\"}");
+
+            Assert.AreEqual((uint) 0, obj.GetUInt32("int32"), "Check #1 failed");
+            Assert.AreEqual((uint) 1234, obj.GetUInt32("hest"), "Check #2 failed");
+            Assert.AreEqual((uint) 0, obj.GetUInt32("null"), "Check #3 failed");
+            Assert.AreEqual((uint) 0, obj.GetUInt32("empty"), "Check #4 failed");
+            Assert.AreEqual((uint) 0, obj.GetUInt32("missing"), "Check #5 failed");
+
+            Assert.AreEqual((uint) 4, obj.GetUInt32("int32", x => x + 4), "Check #6 failed");
+            Assert.AreEqual((uint) 1238, obj.GetUInt32("hest", x => x + 4), "Check #7 failed");
+
+            // Callback isn't invoked since the properties are empty or not found
+            Assert.AreEqual((uint) 0, obj.GetUInt32("null", x => x + 4), "Check #8 failed");
+            Assert.AreEqual((uint) 0, obj.GetUInt32("empty", x => x + 4), "Check #9 failed");
+            Assert.AreEqual((uint) 0, obj.GetUInt32("missing", x => x + 4), "Check #10 failed");
 
         }
 

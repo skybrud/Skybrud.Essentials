@@ -91,7 +91,59 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = GetSimpleTypeTokenFromPath(obj, path);
             return token == null ? default(T) : callback(token.Value<string>());
         }
-        
+
+        /// <summary>
+        /// Gets the <see cref="System.Int16"/> value of the token matching the specified <paramref name="path"/>, or
+        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="System.Int16"/>.</returns>
+        public static Int16 GetInt16(this JObject obj, string path) {
+            return GetInt16(obj, path, x => x);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="System.Int16"/> value of the token matching the specified <paramref name="path"/> and
+        /// parses it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <typeparam name="T">The type of the parsed type.</typeparam>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <param name="callback">The callback used for converting the integer value.</param>
+        /// <returns>An instance of <see cref="System.Int16"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// match a token.</returns>
+        public static T GetInt16<T>(this JObject obj, string path, Func<Int16, T> callback) {
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="System.UInt16"/> value of the token matching the specified <paramref name="path"/>, or
+        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="System.UInt16"/>.</returns>
+        public static UInt16 GetUInt16(this JObject obj, string path) {
+            return GetUInt16(obj, path, x => x);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="System.UInt16"/> value of the token matching the specified <paramref name="path"/> and
+        /// parses it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <typeparam name="T">The type of the parsed type.</typeparam>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <param name="callback">The callback used for converting the integer value.</param>
+        /// <returns>An instance of <see cref="System.UInt16"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// match a token.</returns>
+        public static T GetUInt16<T>(this JObject obj, string path, Func<UInt16, T> callback) {
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        }
+
         /// <summary>
         /// Gets the <see cref="System.Int32"/> value of the token matching the specified <code>path</code>, or
         /// <code>0</code> if <code>path</code> doesn't match a token.
@@ -119,6 +171,32 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
+        /// Gets the <see cref="System.UInt32"/> value of the token matching the specified <paramref name="path"/>, or
+        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="System.UInt32"/>.</returns>
+        public static uint GetUInt32(this JObject obj, string path) {
+            return GetUInt32(obj, path, x => x);
+        }
+
+        /// <summary>
+        /// Gets the <see cref="System.UInt32"/> value of the token matching the specified <paramref name="path"/> and
+        /// parses it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <typeparam name="T">The type of the parsed type.</typeparam>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <param name="callback">The callback used for converting the integer value.</param>
+        /// <returns>An instance of <see cref="System.UInt32"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// match a token.</returns>
+        public static T GetUInt32<T>(this JObject obj, string path, Func<uint, T> callback) {
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        }
+
+        /// <summary>
         /// Gets the <see cref="System.Int64"/> value of the token matching the specified <code>path</code>, or
         /// <code>0</code> if <code>path</code> doesn't match a token.
         /// </summary>
@@ -142,6 +220,25 @@ namespace Skybrud.Essentials.Json.Extensions {
         public static T GetInt64<T>(this JObject obj, string path, Func<long, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
+
+
+
+
+
+
+        public static ulong GetUInt64(this JObject obj, string path) {
+            return GetUInt64(obj, path, x => x);
+        }
+
+        public static T GetUInt64<T>(this JObject obj, string path, Func<ulong, T> callback) {
+            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        }
+
+
+
+
+
+
 
         /// <summary>
         /// Gets the <see cref="System.Single"/> value of the token matching the specified <code>path</code>, or
