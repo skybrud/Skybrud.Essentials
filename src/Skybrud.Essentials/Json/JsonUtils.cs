@@ -157,7 +157,7 @@ namespace Skybrud.Essentials.Json {
         public static void SaveJsonObject(string path, JObject obj, Formatting formatting) {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
             if (obj == null) throw new ArgumentNullException("obj");
-            File.WriteAllText(path, obj.ToString(formatting));
+            File.WriteAllText(path, obj.ToString(formatting), Encoding.UTF8);
         }
 
         /// <summary>
@@ -180,7 +180,7 @@ namespace Skybrud.Essentials.Json {
         public static void SaveJsonArray(string path, JArray array, Formatting formatting) {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
             if (array == null) throw new ArgumentNullException("array");
-            File.WriteAllText(path, array.ToString());
+            File.WriteAllText(path, array.ToString(), Encoding.UTF8);
         }
 
         /// <summary>
@@ -203,7 +203,7 @@ namespace Skybrud.Essentials.Json {
         public static void SaveJsonArray(string path, JToken[] array, Formatting formatting) {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
             if (array == null) throw new ArgumentNullException("array");
-            File.WriteAllText(path, JsonConvert.SerializeObject(array, formatting));
+            File.WriteAllText(path, JsonConvert.SerializeObject(array, formatting), Encoding.UTF8);
         }
 
         /// <summary>
@@ -226,7 +226,7 @@ namespace Skybrud.Essentials.Json {
         public static void SaveJsonArray(string path, JsonObjectBase[] array, Formatting formatting) {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
             if (array == null) throw new ArgumentNullException("array");
-            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item == null ? null : item.JObject, formatting));
+            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item == null ? null : item.JObject, formatting), Encoding.UTF8);
         }
     
     }
