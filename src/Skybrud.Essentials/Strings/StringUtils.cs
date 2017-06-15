@@ -218,6 +218,24 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// HTML encodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be encoded.</param>
+        /// <returns>The encoded string.</returns>
+        public static string HtmlEncode(string str) {
+            return HttpUtility.HtmlEncode(str);
+        }
+
+        /// <summary>
+        /// HTML decodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be decoded.</param>
+        /// <returns>The decoded string.</returns>
+        public static string HtmlDecode(string str) {
+            return HttpUtility.HtmlDecode(str);
+        }
+
+        /// <summary>
         /// Counts number of words in the specified <paramref name="str"/>.
         /// </summary>
         /// <param name="str">The string to parse.</param>
