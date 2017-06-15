@@ -12,21 +12,22 @@ namespace Skybrud.Essentials.Enums {
         /// Gets an array of all values of the specified enum class <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum class.</typeparam>
-        /// <returns>Returns an array of <typeparamref name="T"/>.</returns>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
         public static T[] GetEnumValues<T>() where T : struct {
             return (T[]) Enum.GetValues(typeof(T));
         }
 
         /// <summary>
-        /// Parses the specified <code>str</code> into the enum of type <typeparamref name="T"/>. If <code>str</code>
-        /// cannot be parsed, an exception of type <see cref="EnumParseException"/> will be thrown instead.
+        /// Parses the specified <paramref name="str"/> into the enum of type <typeparamref name="T"/>. If
+        /// <paramref name="str"/> cannot be parsed, an exception of type <see cref="EnumParseException"/> will be
+        /// thrown instead.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>
         /// <param name="str">The string to be parsed.</param>
-        /// <returns>Returns an enum of type <typeparamref name="T"/> from the specified <code>str</code>.</returns>
-        /// <exception cref="ArgumentNullException">If <code>str</code> is <code>null</code> (or white space).</exception>
+        /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
+        /// <exception cref="ArgumentNullException">If <paramref name="str"/> is <code>null</code> (or white space).</exception>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-        /// <exception cref="EnumParseException">If <code>str</code> doesn't match any of the values of
+        /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of
         /// <typeparamref name="T"/>.</exception>
         public static T ParseEnum<T>(string str) where T : struct {
             T value;
@@ -39,7 +40,7 @@ namespace Skybrud.Essentials.Enums {
         /// </summary>
         /// <param name="str">The string value to be converted.</param>
         /// <param name="enumType"></param>
-        /// <returns>Returns an instance of <paramref name="enumType"/>.</returns>
+        /// <returns>An instance of <paramref name="enumType"/>.</returns>
         /// <exception cref="EnumParseException">If <paramref name="enumType"/> didn't match an enum value as specified
         /// in <paramref name="str"/>.</exception>
         public static object ParseEnum(string str, Type enumType) {
@@ -61,13 +62,13 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
-        /// Parses the specified <code>str</code> into the enum of type <typeparamref name="T"/>. If <code>str</code>
-        /// cannot be parsed, the value <code>fallback</code> will be returned instead.
+        /// Parses the specified <paramref name="str"/> into the enum of type <typeparamref name="T"/>. If
+        /// <paramref name="str"/> cannot be parsed, the value <paramref name="fallback"/> will be returned instead.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>
         /// <param name="str">The string to be parsed.</param>
         /// <param name="fallback">The fallback if the enum could not be parsed.</param>
-        /// <returns>Returns an enum of type <typeparamref name="T"/> from the specified <code>str</code>.</returns>
+        /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static T ParseEnum<T>(string str, T fallback) where T : struct {
             T value;
@@ -83,8 +84,7 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="str">The string representation of the enumeration name or underlying value to convert.</param>
         /// <param name="value">When this method returns, contains an object of type <typeparamref name="T"/> whose
         /// value is represented by value. This parameter is passed uninitialized.</param>
-        /// <returns>Returns <code>true</code> if the value parameter was converted successfully; otherwise,
-        /// <code>false</code>.</returns>
+        /// <returns><code>true</code> if the value parameter was converted successfully; otherwise, <code>false</code>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static bool TryParseEnum<T>(string str, out T value) where T : struct {
 

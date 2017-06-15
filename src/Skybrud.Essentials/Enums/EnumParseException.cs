@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Enums {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new exception based on the specified <code>type</code> and <code>value</code>.
+        /// Initializes a new exception based on the specified <paramref name="type"/> and <paramref name="value"/>.
         /// </summary>
         /// <param name="type">The type of the enum.</param>
         /// <param name="value">The invalid value.</param>

@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Json {
         /// Parses the specified <paramref name="obj"/> into an instance of <see cref="JsonObjectBase"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="JsonObjectBase"/>.</returns>
+        /// <returns>An instance of <see cref="JsonObjectBase"/>.</returns>
         protected JsonObjectBase(JObject obj) {
             JObject = obj;
         }

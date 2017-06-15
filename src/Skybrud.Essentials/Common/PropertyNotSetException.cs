@@ -19,13 +19,13 @@ namespace Skybrud.Essentials.Common {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new exception for the property with the specified <code>propertyName</code>.
+        /// Initializes a new exception for the property with the specified <paramref name="propertyName"/>.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
         public PropertyNotSetException(string propertyName) : this(propertyName, "Property cannot be empty.") { }
 
         /// <summary>
-        /// Initializes a new exception for the property with the specified <code>propertyName</code>.
+        /// Initializes a new exception for the property with the specified <paramref name="propertyName"/>.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="message">The message of the exception.</param>
