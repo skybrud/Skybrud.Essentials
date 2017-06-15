@@ -37,7 +37,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The comma separated string to be converted.</param>
         /// <returns>Returns an array of <see cref="Int32"/>.</returns>
         public static int[] CsvToInt(string str) {
-            return StringUtils.CsvToInt(str);
+            return StringUtils.ParseInt32Array(str);
         }
 
         /// <summary>
