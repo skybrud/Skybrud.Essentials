@@ -6,6 +6,8 @@ namespace UnitTestProject1.Time.National {
     [TestClass]
     public class DanishDateTests {
 
+        #pragma warning disable 618
+
         [TestMethod]
         public void GetGeneralPrayerDay() {
             Assert.AreEqual("2000-05-19", CalendarHelper.Denmark.GetGeneralPrayerDay(2000).ToString("yyyy-MM-dd"));
@@ -118,7 +120,10 @@ namespace UnitTestProject1.Time.National {
             Assert.AreEqual("2023-06-05", CalendarUtils.Denmark.GetConstitutionDay(2023).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2024-06-05", CalendarUtils.Denmark.GetConstitutionDay(2024).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2025-06-05", CalendarUtils.Denmark.GetConstitutionDay(2025).ToString("yyyy-MM-dd"));
+        
         }
+
+        #pragma warning restore 618
 
     }
 

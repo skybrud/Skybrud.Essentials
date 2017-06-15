@@ -6,6 +6,8 @@ namespace UnitTestProject1.Time.National {
     [TestClass]
     public class CanadianDateTests {
 
+        #pragma warning disable 618
+
         [TestMethod]
         public void GetCanadaDay() {
             Assert.AreEqual("2000-07-01", CalendarHelper.Canada.GetCanadaDay(2000).ToString("yyyy-MM-dd"));
@@ -175,7 +177,10 @@ namespace UnitTestProject1.Time.National {
             Assert.AreEqual("2023-10-09", CalendarUtils.Canada.GetThanksgivingDay(2023).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2024-10-14", CalendarUtils.Canada.GetThanksgivingDay(2024).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2025-10-13", CalendarUtils.Canada.GetThanksgivingDay(2025).ToString("yyyy-MM-dd"));
+        
         }
+
+        #pragma warning restore 618
 
     }
 

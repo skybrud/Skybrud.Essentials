@@ -8,6 +8,8 @@ namespace UnitTestProject1.Time {
     
     [TestClass]
     public class EssentialsDateTimeUnixTimeConverterTests {
+
+        #pragma warning disable 618
     
         [TestMethod]
         public void TestMethod1() {

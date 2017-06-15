@@ -7,6 +7,8 @@ namespace UnitTestProject1.Time {
     
     [TestClass]
     public class DateTimeUnixTimeConverterTests {
+
+        #pragma warning disable 618
     
         [TestMethod]
         public void TestMethod1() {
@@ -37,6 +39,8 @@ namespace UnitTestProject1.Time {
             public DateTime Timestamp { get; set; }
 
         }
+
+        #pragma warning restore 618
     
     }
 

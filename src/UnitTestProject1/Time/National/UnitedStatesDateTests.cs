@@ -6,6 +6,8 @@ namespace UnitTestProject1.Time.National {
     [TestClass]
     public class UnitedStatesDateTests {
 
+        #pragma warning disable 618
+
         [TestMethod]
         public void GetIndependenceDay() {
             Assert.AreEqual("2000-07-04", CalendarHelper.UnitedStates.GetIndependenceDay(2000).ToString("yyyy-MM-dd"));
@@ -346,7 +348,10 @@ namespace UnitTestProject1.Time.National {
             Assert.AreEqual("2023-11-11", CalendarUtils.UnitedStates.GetVeteransDay(2023).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2024-11-11", CalendarUtils.UnitedStates.GetVeteransDay(2024).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2025-11-11", CalendarUtils.UnitedStates.GetVeteransDay(2025).ToString("yyyy-MM-dd"));
+
         }
+
+        #pragma warning restore 618
 
     }
 

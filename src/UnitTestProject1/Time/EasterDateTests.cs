@@ -6,6 +6,8 @@ namespace UnitTestProject1.Time {
     [TestClass]
     public class EasterDateTests {
 
+        #pragma warning disable 618
+
         [TestMethod]
         public void GetPalmSunday() {
             Assert.AreEqual("2000-04-16", CalendarHelper.GetPalmSunday(2000).ToString("yyyy-MM-dd"));
@@ -520,7 +522,10 @@ namespace UnitTestProject1.Time {
             Assert.AreEqual("2023-05-29", CalendarUtils.GetWhitMonday(2023).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2024-05-20", CalendarUtils.GetWhitMonday(2024).ToString("yyyy-MM-dd"));
             Assert.AreEqual("2025-06-09", CalendarUtils.GetWhitMonday(2025).ToString("yyyy-MM-dd"));
+        
         }
+
+        #pragma warning restore 618
 
     }
 

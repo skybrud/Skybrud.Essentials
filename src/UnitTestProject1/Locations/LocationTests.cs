@@ -8,6 +8,8 @@ namespace UnitTestProject1.Locations {
     [TestClass]
     public class LocationTests {
 
+        #pragma warning disable 618
+
         [TestMethod]
         public void GetDistance() {
 
@@ -33,6 +35,8 @@ namespace UnitTestProject1.Locations {
             }
 
         }
+        
+        #pragma warning restore 618
 
     }
 

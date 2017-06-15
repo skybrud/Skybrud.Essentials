@@ -7,6 +7,8 @@ namespace UnitTestProject1.Security {
     [TestClass]
     public class SecurityTests {
 
+        #pragma warning disable 618
+
         [TestMethod]
         public void Base64Encode() {
 
@@ -114,8 +116,10 @@ namespace UnitTestProject1.Security {
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha512Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
             
             }
-        
+
         }
+
+        #pragma warning restore 618
 
     }
 
