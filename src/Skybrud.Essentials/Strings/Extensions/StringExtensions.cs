@@ -35,6 +35,14 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static long[] ParseInt64Array(this string str) {
             return StringUtils.ParseInt64Array(str);
         }
+
+        /// <summary>
+        /// Parses a comma separated string into an array of <see cref="Guid"/>.
+        /// </summary>
+        /// <param name="str">The comma separated string to be converted.</param>
+        /// <returns>An array of <see cref="Guid"/>.</returns>
+        public static Guid[] ParseGuidArray(this string str) {
+            return StringUtils.ParseGuidArray(str);
         }
 
         /// <summary>
