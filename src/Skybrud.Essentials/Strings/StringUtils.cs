@@ -44,7 +44,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Int32"/>.</returns>
         public static int[] CsvToInt(string str) {
             return (
-                from piece in (str ?? "").Split(new[] { ',', ' ' }, StringSplitOptions.RemoveEmptyEntries)
+                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
                 select Int32.Parse(piece)
             ).ToArray();
