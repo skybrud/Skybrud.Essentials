@@ -109,10 +109,10 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Converts the name of the specified enum <code>value</code> to a camel cased string.
+        /// Converts the name of the specified enum <paramref name="value"/> to a camel cased string.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
-        /// <returns>Returns the camel cased string.</returns>
+        /// <returns>The camel cased string.</returns>
         public static string ToCamelCase(Enum value) {
             return ToCamelCase(value.ToString());
         }
@@ -136,7 +136,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Converts the name of the specified enum <code>value</code> to a Pascal cased string.
+        /// Converts the name of the specified enum <paramref name="value"/> to a Pascal cased string.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The Pascal cased string.</returns>
@@ -166,7 +166,7 @@ namespace Skybrud.Essentials.Strings {
         /// Converts the specified enum value to a lower case string with words separated by underscores.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
-        /// <returns>Returns the converted string.</returns>
+        /// <returns>The converted string.</returns>
         public static string ToUnderscore(Enum value) {
             return ToUnderscore(value.ToString());
         }

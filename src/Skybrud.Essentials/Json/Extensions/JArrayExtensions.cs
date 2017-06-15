@@ -10,23 +10,23 @@ namespace Skybrud.Essentials.Json.Extensions {
     public static class JArrayExtensions {
 
         /// <summary>
-        /// Gets an object from the item at the specified <code>index</code> in the array.
+        /// Gets an object from the item at the specified <paramref name="index"/> in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>Returns an instance of <see cref="JObject"/>, or <code>null</code> if not found.</returns>
+        /// <returns>An instance of <see cref="JObject"/>, or <code>null</code> if not found.</returns>
         public static JObject GetObject(this JArray array, int index) {
             if (array == null) return null;
             return array[index] as JObject;
         }
-
+        
         /// <summary>
-        /// Gets an object from the item at the specified <code>index</code> in the array. If an object is found, it is
-        /// parsed to the type of <code>T</code>.
+        /// Gets an object from the item at the specified <paramref name="index"/> in the array. If an object is found, it is
+        /// parsed to the type of <typeparamref name="T"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>Returns an instance of <code>T</code>, or the default value of <code>T</code> if not found.</returns>
+        /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not found.</returns>
         public static T GetObject<T>(this JArray array, int index) {
             if (array == null) return default(T);
             JObject child = array[0] as JObject;
@@ -34,35 +34,35 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an object from the item at the specified <code>index</code> in the array. If an object is found, the
-        /// object is parsed using the specified delegate <code>func</code>.
+        /// Gets an object from the item at the specified <paramref name="index"/> in the array. If an object is found, the
+        /// object is parsed using the specified delegate <paramref name="func"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
         /// <param name="func">The delegate (callback method) used for parsing the object.</param>
-        /// <returns>Returns an instance of <code>T</code>.</returns>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T GetObject<T>(this JArray array, int index, Func<JObject, T> func) {
             return func(array == null ? null : array[index] as JObject);
         }
 
         /// <summary>
-        /// Gets an object from token matching the specified <code>path</code>.
+        /// Gets an object from token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <see cref="JObject"/>, or <code>null</code> if not found.</returns>
+        /// <returns>An instance of <see cref="JObject"/>, or <code>null</code> if not found.</returns>
         public static JObject GetObject(this JArray array, string path) {
             if (array == null) return null;
             return array.SelectToken(path) as JObject;
         }
 
         /// <summary>
-        /// Gets an object from token matching the specified <code>path</code>. If an object is found, it is
-        /// parsed to the type of <code>T</code>.
+        /// Gets an object from token matching the specified <paramref name="path"/>. If an object is found, it is
+        /// parsed to the type of <typeparamref name="T"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <code>T</code>, or the default value of <code>T</code> if not found.</returns>
+        /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not found.</returns>
         public static T GetObject<T>(this JArray array, string path) {
             if (array == null) return default(T);
             JObject child = array.SelectToken(path) as JObject;
@@ -70,19 +70,19 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an object from token matching the specified <code>path</code>. If an object is found, the object is
-        /// parsed using the specified delegate <code>func</code>.
+        /// Gets an object from token matching the specified <paramref name="path"/>. If an object is found, the object is
+        /// parsed using the specified delegate <paramref name="func"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="func">The delegate (callback method) used for parsing the object.</param>
-        /// <returns>Returns an instance of <code>T</code>.</returns>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T GetObject<T>(this JArray array, string path, Func<JObject, T> func) {
             return func(array == null ? null : array.SelectToken(path) as JObject);
         }
 
         /// <summary>
-        /// Gets a string from the item at the specified <code>index</code> in the array.
+        /// Gets a string from the item at the specified <paramref name="index"/> in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
@@ -93,11 +93,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets a string from the token matching the specified <code>path</code>.
+        /// Gets a string from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <see cref="String"/>, or <code>null</code> if <code>path</code> didn't match any tokens.</returns>
+        /// <returns>An instance of <see cref="String"/>, or <code>null</code> if <paramref name="path"/> didn't match any tokens.</returns>
         public static string GetString(this JArray array, string path) {
             if (array == null) return null;
             JToken token = array.SelectToken(path);
@@ -105,11 +105,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int32"/> value of the item at the specified <code>index</code> in the array.
+        /// Gets the <see cref="System.Int32"/> value of the item at the specified <paramref name="index"/> in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>Returns an instance of <see cref="System.Int32"/>.</returns>
+        /// <returns>An instance of <see cref="System.Int32"/>.</returns>
         public static int GetInt32(this JArray array, int index) {
             if (array == null) return default(int);
             JToken property = array[index];
@@ -117,12 +117,12 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int32"/> value of the token matching the specified <code>path</code>, or
-        /// <code>0</code> if <code>path</code> doesn't match a token.
+        /// Gets the <see cref="System.Int32"/> value of the token matching the specified <paramref name="path"/>, or
+        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <see cref="System.Int32"/>.</returns>
+        /// <returns>An instance of <see cref="System.Int32"/>.</returns>
         public static int GetInt32(this JArray array, string path) {
             if (array == null) return default(int);
             JToken token = array.SelectToken(path);
@@ -130,11 +130,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int64"/> value of the item at the specified <code>index</code> in the array.
+        /// Gets the <see cref="System.Int64"/> value of the item at the specified <paramref name="index"/> in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>Returns an instance of <see cref="System.Int64"/>.</returns>
+        /// <returns>An instance of <see cref="System.Int64"/>.</returns>
         public static long GetInt64(this JArray array, int index) {
             if (array == null) return default(long);
             JToken property = array[index];
@@ -142,11 +142,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int64"/> value of the token matching the specified <code>path</code>.
+        /// Gets the <see cref="System.Int64"/> value of the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <see cref="System.Int64"/>.</returns>
+        /// <returns>An instance of <see cref="System.Int64"/>.</returns>
         public static long GetInt64(this JArray array, string path) {
             if (array == null) return default(long);
             JToken token = array.SelectToken(path);
@@ -154,11 +154,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Double"/> value of the item at the specified <code>index</code> in the array.
+        /// Gets the <see cref="System.Double"/> value of the item at the specified <paramref name="index"/> in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>Returns an instance of <see cref="System.Double"/>.</returns>
+        /// <returns>An instance of <see cref="System.Double"/>.</returns>
         public static double GetDouble(this JArray array, int index) {
             if (array == null) return default(double);
             JToken property = array[index];
@@ -166,11 +166,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Double"/> value of the token matching the specified <code>path</code>.
+        /// Gets the <see cref="System.Double"/> value of the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <see cref="System.Double"/>.</returns>
+        /// <returns>An instance of <see cref="System.Double"/>.</returns>
         public static double GetDouble(this JArray array, string path) {
             if (array == null) return default(double);
             JToken token = array.SelectToken(path);
@@ -178,11 +178,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Boolean"/> value of the item at the specified <code>index</code> in the array.
+        /// Gets the <see cref="System.Boolean"/> value of the item at the specified <paramref name="index"/> in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>Returns an instance of <see cref="System.Boolean"/>.</returns>
+        /// <returns>An instance of <see cref="System.Boolean"/>.</returns>
         public static bool GetBoolean(this JArray array, int index) {
             if (array == null) return default(bool);
             JToken property = array[index];
@@ -190,11 +190,11 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Boolean"/> value of the token matching the specified <code>path</code>.
+        /// Gets the <see cref="System.Boolean"/> value of the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <see cref="System.Boolean"/>.</returns>
+        /// <returns>An instance of <see cref="System.Boolean"/>.</returns>
         public static bool GetBoolean(this JArray array, string path) {
             if (array == null) return default(bool);
             JToken token = array.SelectToken(path);
@@ -202,23 +202,23 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="JArray"/> from the item at the specified <code>index</code> in the array.
+        /// Gets an instance of <see cref="JArray"/> from the item at the specified <paramref name="index"/> in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>Returns an instance of <see cref="JArray"/>.</returns>
+        /// <returns>An instance of <see cref="JArray"/>.</returns>
         public static JArray GetArray(this JArray array, int index) {
             return array == null ? null : array[index] as JArray;
         }
 
         /// <summary>
-        /// Gets an array of <code>T</code> from the item at the specified <code>index</code> in the array using the
-        /// specified delegate <code>func</code> for parsing each item in the array.
+        /// Gets an array of <typeparamref name="T"/> from the item at the specified <paramref name="index"/> in the array using the
+        /// specified delegate <paramref name="func"/> for parsing each item in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
         /// <param name="func">The delegate (callback method) used for parsing each item in the array.</param>
-        /// <returns>Returns an array of <code>T</code>.</returns>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
         public static T[] GetArray<T>(this JArray array, int index, Func<JObject, T> func) {
 
             if (array == null) return null;
@@ -234,23 +234,23 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="JArray"/> from the token matching the specified <code>path</code>.
+        /// Gets an instance of <see cref="JArray"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>Returns an instance of <see cref="JArray"/>.</returns>
+        /// <returns>An instance of <see cref="JArray"/>.</returns>
         public static JArray GetArray(this JArray array, string path) {
             return array == null ? null : array.SelectToken(path) as JArray;
         }
 
         /// <summary>
-        /// Gets an array of <code>T</code> from the from the token matching the specified <code>path</code> in the array using the
-        /// specified delegate <code>func</code> for parsing each item in the array.
+        /// Gets an array of <typeparamref name="T"/> from the from the token matching the specified <paramref name="path"/> in the array using the
+        /// specified delegate <paramref name="func"/> for parsing each item in the array.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="func">The delegate (callback method) used for parsing each item in the array.</param>
-        /// <returns>Returns an array of <code>T</code>.</returns>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
         public static T[] GetArray<T>(this JArray array, string path, Func<JObject, T> func) {
 
             if (array == null) return null;
