@@ -4,7 +4,7 @@ using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time;
 
-namespace UnitTestProject1.Time {
+namespace UnitTestProject1.Time.Converters {
     
     [TestClass]
     public class EssentialsDateTimeConverterTests {
