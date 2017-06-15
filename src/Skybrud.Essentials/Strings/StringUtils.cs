@@ -42,7 +42,21 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The comma separated string to be converted.</param>
         /// <returns>An array of <see cref="Int32"/>.</returns>
+        [Obsolete("Use ParseInt32Array instead.")]
         public static int[] CsvToInt(string str) {
+            return (
+                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
+                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
+                select Int32.Parse(piece)
+            ).ToArray();
+        }
+
+        /// <summary>
+        /// Parses a comma separated string into an array of <see cref="Int32"/>.
+        /// </summary>
+        /// <param name="str">The comma separated string to be converted.</param>
+        /// <returns>An array of <see cref="Int32"/>.</returns>
+        public static int[] ParseInt32Array(string str) {
             return (
                 from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
