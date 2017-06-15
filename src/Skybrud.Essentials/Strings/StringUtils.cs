@@ -364,8 +364,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="html">The input string containing HTML.</param>
         /// <returns>The input string without any HTML markup.</returns>
         public static string StripHtml(string html) {
-            string text = Regex.Replace(html, "<.*?>", "");
-            return HttpUtility.HtmlDecode(text);
+            return HtmlDecode(Regex.Replace(html, "<.*?>", ""));
         }
 
     }
