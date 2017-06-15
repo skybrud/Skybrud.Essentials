@@ -65,6 +65,19 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Parses a comma separated string into an array of <see cref="Int64"/>.
+        /// </summary>
+        /// <param name="str">The comma separated string to be converted.</param>
+        /// <returns>An array of <see cref="Int64"/>.</returns>
+        public static long[] ParseInt64Array(string str) {
+            return (
+                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
+                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
+                select Int64.Parse(piece)
+            ).ToArray();
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="str"/> to camel case (also referred to as lower camel casing).
         /// </summary>
         /// <param name="str">The string to be converted.</param>
