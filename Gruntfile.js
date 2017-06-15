@@ -39,9 +39,9 @@ module.exports = function(grunt) {
 		},
 		zip: {
 			release: {
-				cwd: 'files/',
+				cwd: 'releases/temp/',
 				src: [
-					'files/**/*.*'
+					'releases/temp/**/*.*'
 				],
 				dest: 'releases/github/' + pkg.name + '.v' + version + '.zip'
 			}
