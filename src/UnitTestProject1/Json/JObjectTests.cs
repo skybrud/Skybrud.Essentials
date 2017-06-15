@@ -37,6 +37,7 @@ namespace UnitTestProject1.Json {
             Assert.IsNotNull(obj.GetObject("root.obj"), "Check #3 failed");
             Assert.AreEqual("1234", obj.GetObject<TestObject>("root.obj").Value, "Check #4 failed");
             Assert.AreEqual("1234", obj.GetObject("root.obj", TestObject.Parse).Value, "Check #5 failed");
+            Assert.IsNull(obj.GetObject<TestObject>("root.hest"), "Check #6 failed");
 
         }
 

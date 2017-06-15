@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
@@ -30,6 +31,15 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
+        /// Parses the specified <paramref name="json"/> string into an instance <typeparamref name="T"/>.
+        /// </summary>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <returns>An instance of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
+        public static T ParseJsonObject<T>(string json) {
+            return ParseJsonObject(json).ToObject<T>();
+        }
+
+        /// <summary>
         /// Parses the specified <code>json</code> string into an instance of <code>T</code>.
         /// </summary>
         /// <typeparam name="T">The type to be returned.</typeparam>
@@ -47,6 +57,15 @@ namespace Skybrud.Essentials.Json {
         /// <returns>Returns an instance of <see cref="JObject"/>.</returns>
         public static JObject LoadJsonObject(string path) {
             return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8));
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
+        public static T LoadJsonObject<T>(string path) {
+            return LoadJsonObject(path).ToObject<T>();
         }
 
         /// <summary>
@@ -86,6 +105,19 @@ namespace Skybrud.Essentials.Json {
             return (
                 from JObject item in ParseJsonArray(json)
                 select func(item)
+            ).ToArray();
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="json"/> string into an array of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type that each item should be parsed into.</typeparam>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <returns>An array of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
+        public static T[] ParseJsonArray<T>(string json) {
+            return (
+                from JObject item in ParseJsonArray(json)
+                select item.ToObject<T>()
             ).ToArray();
         }
 
@@ -184,6 +216,52 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
+        /// Saves the specified <paramref name="array"/> to the file at <paramref name="path"/>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JObject"/> to be saved.</param>
+        public static void SaveJsonArray(string path, JObject[] array) {
+            SaveJsonArray(path, array, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <paramref name="array"/> to the file at <paramref name="path"/>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JObject"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray(string path, JObject[] array, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (array == null) throw new ArgumentNullException("array");
+            File.WriteAllText(path, JsonConvert.SerializeObject(array, formatting), Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// Saves the specified <paramref name="collection"/> to the file at <paramref name="path"/>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="collection">The collection of <see cref="JObject"/> to be saved.</param>
+        public static void SaveJsonArray(string path, IEnumerable<JObject> collection) {
+            SaveJsonArray(path, collection, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <paramref name="collection"/> to the file at <paramref name="path"/>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="collection">The collection of <see cref="JObject"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray(string path, IEnumerable<JObject> collection, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (collection == null) throw new ArgumentNullException("collection");
+            File.WriteAllText(path, JsonConvert.SerializeObject(collection, formatting), Encoding.UTF8);
+        }
+
+        /// <summary>
         /// Saves the specified array of <see cref="JToken"/> to the file at <code>path</code>. If the file doesn't
         /// already exist, a new file will be created.
         /// </summary>
@@ -207,6 +285,29 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
+        /// Saves the specified <paramref name="collection"/> to the file at <paramref name="path"/>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="collection">The collection of <see cref="JToken"/> to be saved.</param>
+        public static void SaveJsonArray(string path, IEnumerable<JToken> collection) {
+            SaveJsonArray(path, collection, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <paramref name="collection"/> to the file at <paramref name="path"/>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="collection">The collection of <see cref="JToken"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray(string path, IEnumerable<JToken> collection, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (collection == null) throw new ArgumentNullException("collection");
+            File.WriteAllText(path, JsonConvert.SerializeObject(collection, formatting), Encoding.UTF8);
+        }
+
+        /// <summary>
         /// Saves the specified array of <see cref="JsonObjectBase"/> to the file at <code>path</code>. If the file
         /// doesn't already exist, a new file will be created.
         /// </summary>
@@ -227,6 +328,29 @@ namespace Skybrud.Essentials.Json {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
             if (array == null) throw new ArgumentNullException("array");
             File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item == null ? null : item.JObject, formatting), Encoding.UTF8);
+        }
+
+        /// <summary>
+        /// Saves the specified <paramref name="collection"/> to the file at <paramref name="path"/>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="collection">The collection of <see cref="JToken"/> to be saved.</param>
+        public static void SaveJsonArray(string path, IEnumerable<JsonObjectBase> collection) {
+            SaveJsonArray(path, collection, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <paramref name="collection"/> to the file at <paramref name="path"/>. If the file
+        /// doesn't already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="collection">The collection of <see cref="JToken"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray(string path, IEnumerable<JsonObjectBase> collection, Formatting formatting) {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException("path");
+            if (collection == null) throw new ArgumentNullException("collection");
+            File.WriteAllText(path, JsonConvert.SerializeObject(from item in collection select item == null ? null : item.JObject, formatting), Encoding.UTF8);
         }
     
     }
