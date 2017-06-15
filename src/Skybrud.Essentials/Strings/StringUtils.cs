@@ -172,6 +172,24 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Converts the specified enum <see cref="value"/> to a lower case string.
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The lower case version of <see cref="value"/>.</returns>
+        public static string ToLower(Enum value) {
+            return value.ToString().ToLower();
+        }
+
+        /// <summary>
+        /// Converts the specified enum <see cref="value"/> to an upper case string.
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The upper case version of <see cref="value"/>.</returns>
+        public static string ToUpper(Enum value) {
+            return value.ToString().ToUpper();
+        }
+
+        /// <summary>
         /// Uppercases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
         /// either <code>null</code> or empty, an empty string will be returned instead.
         /// </summary>

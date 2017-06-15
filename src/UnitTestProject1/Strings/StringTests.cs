@@ -2,6 +2,7 @@
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
 namespace UnitTestProject1.Strings {
 
@@ -170,6 +171,40 @@ namespace UnitTestProject1.Strings {
             foreach (var sample in samples2) {
                 Assert.AreEqual(sample.Expected, StringHelper.ToPascalCase(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.ToPascalCase(sample.Input));
+            }
+
+        }
+
+        [TestMethod]
+        public void ToLower() {
+
+            var samples = new[] {
+                new { Input = HttpStatusCode.Accepted, Expected = "accepted" },
+                new { Input = HttpStatusCode.InternalServerError, Expected = "internalservererror" },
+                new { Input = HttpStatusCode.OK, Expected = "ok" },
+                new { Input = HttpStatusCode.BadRequest, Expected = "badrequest" },
+            };
+
+            foreach (var sample in samples) {
+                Assert.AreEqual(sample.Expected, StringUtils.ToLower(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToLower());
+            }
+
+        }
+        
+        [TestMethod]
+        public void ToUpper() {
+
+            var samples = new[] {
+                new { Input = HttpStatusCode.Accepted, Expected = "ACCEPTED" },
+                new { Input = HttpStatusCode.InternalServerError, Expected = "INTERNALSERVERERROR" },
+                new { Input = HttpStatusCode.OK, Expected = "OK" },
+                new { Input = HttpStatusCode.BadRequest, Expected = "BADREQUEST" },
+            };
+
+            foreach (var sample in samples) {
+                Assert.AreEqual(sample.Expected, StringUtils.ToUpper(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToUpper());
             }
 
         }
