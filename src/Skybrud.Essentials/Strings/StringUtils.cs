@@ -282,6 +282,16 @@ namespace Skybrud.Essentials.Strings {
             return Regex.IsMatch(str ?? "", "^[0-9a-zA-Z]+$");
         }
 
+        /// <summary>
+        /// Strips all HTML elements from the specified <paramref name="html"/> string.
+        /// </summary>
+        /// <param name="html">The input string containing HTML.</param>
+        /// <returns>The input string without any HTML markup.</returns>
+        public static string StripHtml(string html) {
+            string text = Regex.Replace(html, "<.*?>", "");
+            return HttpUtility.HtmlDecode(text);
+        }
+
     }
 
 }

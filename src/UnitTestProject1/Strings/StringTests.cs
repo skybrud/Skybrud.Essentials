@@ -228,6 +228,21 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void StripHtml() {
+
+            var samples = new[] {
+                new { Input = "<p>Hello World</p>", Output = "Hello World" },
+                new { Input = "Hello<br />World", Output = "HelloWorld" },
+                new { Input = "<p>Hello World &amp; Goodbye World</p>", Output = "Hello World & Goodbye World" }
+            };
+
+            foreach (var sample in samples) {
+                Assert.AreEqual(sample.Output, StringUtils.StripHtml(sample.Input));
+            }
+
+        }
+
+        [TestMethod]
         public void IsInt32() {
 
             Assert.AreEqual(false, StringUtils.IsInt32(""), "#1");
