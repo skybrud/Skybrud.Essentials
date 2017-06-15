@@ -127,8 +127,6 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return StringUtils.UrlDecode(str);
         }
 
-
-
         /// <summary>
         /// Counts number of words in the specified <paramref name="str"/>.
         /// </summary>
