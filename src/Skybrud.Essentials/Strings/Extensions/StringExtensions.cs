@@ -133,6 +133,17 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string HighlightKeywords(string input, string className, params string[] keywords) {
             return StringUtils.HighlightKeywords(input, className, keywords);
         }
+        
+        /// <summary>
+        /// Removes markup from string
+        /// </summary>
+        /// <param name="html">The input string containing markup.</param>
+        /// <returns>The input string without html markup.</returns>
+        public static string RemoveMarkup(this string html)
+        {
+            string text = Regex.Replace(html, "<.*?>", "");
+            return HttpUtility.HtmlDecode(text);
+        }
 
     }
 
