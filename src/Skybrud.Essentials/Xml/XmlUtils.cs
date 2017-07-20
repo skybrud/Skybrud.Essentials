@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Skybrud.Essentials.Xml {
@@ -92,6 +93,36 @@ namespace Skybrud.Essentials.Xml {
         /// <returns>Returns an instance of <code>T</code> representing the XML document.</returns>
         public static T LoadXmlDocument<T>(string path, Func<XDocument, T> callback) {
             return callback(XDocument.Load(path));
+        }
+
+        /// <summary>
+        /// Gets the outer XML of the specified <paramref name="element"/>.
+        /// </summary>
+        /// <param name="element">The XML element.</param>
+        /// <returns>A string representing the outer XML of <paramref name="element"/>.</returns>
+        /// <see>
+        ///     <cref>https://stackoverflow.com/a/1704579</cref>
+        /// </see>
+        public static string GetOuterXml(XElement element) {
+            if (element == null) throw new ArgumentNullException("element");
+            XmlReader reader = element.CreateReader();
+            reader.MoveToContent();
+            return reader.ReadOuterXml();
+        }
+
+        /// <summary>
+        /// Gets the inner XML of the specified <paramref name="element"/>.
+        /// </summary>
+        /// <param name="element">The XML element.</param>
+        /// <returns>A string representing the inner XML of <paramref name="element"/>.</returns>
+        /// <see>
+        ///     <cref>https://stackoverflow.com/a/1704579</cref>
+        /// </see>
+        public static string GetInnerXml(XElement element) {
+            if (element == null) throw new ArgumentNullException("element");
+            XmlReader reader = element.CreateReader();
+            reader.MoveToContent();
+            return reader.ReadInnerXml();
         }
 
     }

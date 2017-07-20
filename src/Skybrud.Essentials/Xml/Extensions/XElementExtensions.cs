@@ -62,6 +62,30 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         #endregion
 
+        /// <summary>
+        /// Gets the outer XML of the specified <paramref name="element"/>.
+        /// </summary>
+        /// <param name="element">The XML element.</param>
+        /// <returns>A string representing the outer XML of <paramref name="element"/>.</returns>
+        /// <see>
+        ///     <cref>https://stackoverflow.com/a/1704579</cref>
+        /// </see>
+        public static string GetOuterXml(this XElement element) {
+            return XmlUtils.GetOuterXml(element);
+        }
+
+        /// <summary>
+        /// Gets the inner XML of the specified <paramref name="element"/>.
+        /// </summary>
+        /// <param name="element">The XML element.</param>
+        /// <returns>A string representing the inner XML of <paramref name="element"/>.</returns>
+        /// <see>
+        ///     <cref>https://stackoverflow.com/a/1704579</cref>
+        /// </see>
+        public static string GetInnerXml(this XElement element) {
+            return XmlUtils.GetInnerXml(element);
+        }
+
     }
 
 }
