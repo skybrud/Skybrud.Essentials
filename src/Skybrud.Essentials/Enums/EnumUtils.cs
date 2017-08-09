@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Enums {
@@ -111,6 +113,47 @@ namespace Skybrud.Essentials.Enums {
             }
 
             return false;
+
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> into an array of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="str">A string value containing one or more enum values.</param>
+        /// <returns>An array of <typeparamref name="T"/> with the converted values.</returns>
+        /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
+        /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
+        public static T[] ParseEnumArray<T>(string str) where T : struct {
+            return (
+                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
+                select ParseEnum<T>(piece)
+            ).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> into an array of <typeparamref name="T"/>. The return value
+        /// indicates whether the conversion succeeded.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="str">A string value containing one or more enum values.</param>
+        /// <param name="array">The array of <typeparamref name="T"/> with the converted values.</param>
+        /// <returns><code>true</code> if the value parameter was converted successfully; otherwise, <code>false</code>.</returns>
+        /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
+        public static bool TryParseEnumArray<T>(string str, out T[] array) where T : struct {
+
+            List<T> temp = new List<T>();
+            array = null;
+
+            // Iterate over and try to parse the each individual value
+            foreach (string piece in (str ?? "").Split(new[] {',', ' ', '\r', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries)) {
+                T value;
+                if (!TryParseEnum(piece, out value)) return false;
+                temp.Add(value);
+            }
+
+            array = temp.ToArray();
+            return true;
 
         }
 

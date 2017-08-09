@@ -28,6 +28,53 @@ namespace UnitTestProject1.Enums {
 
         }
 
+        [TestMethod]
+        public void ParseEnumArray() {
+
+            var samples = new[] {
+                new { Input = default(string), Expected = new HttpStatusCode[0] },
+                new { Input = "", Expected = new HttpStatusCode[0] },
+                new { Input = "ok", Expected = new [] { HttpStatusCode.OK } },
+                new { Input = "OK", Expected = new [] { HttpStatusCode.OK } },
+                new { Input = "Ok", Expected = new [] { HttpStatusCode.OK } },
+                new { Input = "notfound", Expected = new [] { HttpStatusCode.NotFound } },
+                new { Input = "NOTFOUND", Expected = new [] { HttpStatusCode.NotFound } },
+                new { Input = "NotFound", Expected = new [] { HttpStatusCode.NotFound } },
+                new { Input = "ok,notfound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK,NOTFOUND", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK,NotFound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "ok notfound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK NOTFOUND", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK NotFound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "ok\nnotfound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK\nNOTFOUND", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK\nNotFound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "ok\tnotfound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK\tNOTFOUND", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } },
+                new { Input = "OK\tNotFound", Expected = new [] { HttpStatusCode.OK, HttpStatusCode.NotFound } }
+            };
+
+            foreach (var sample in samples) {
+
+                HttpStatusCode[] array = EnumUtils.ParseEnumArray<HttpStatusCode>(sample.Input);
+
+                Assert.AreEqual(sample.Expected.Length, array.Length);
+                for (int i = 0; i < array.Length; i++) {
+                    Assert.AreEqual(sample.Expected[i], array[i]);
+                }
+
+                bool result = EnumUtils.TryParseEnumArray(sample.Input, out array);
+
+                Assert.AreEqual(true, result);
+                Assert.AreEqual(sample.Expected.Length, array.Length);
+                for (int i = 0; i < array.Length; i++) {
+                    Assert.AreEqual(sample.Expected[i], array[i]);
+                }
+
+            }
+
+        }
+
     }
 
 }
