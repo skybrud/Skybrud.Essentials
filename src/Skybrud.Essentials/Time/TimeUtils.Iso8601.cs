@@ -58,6 +58,30 @@ namespace Skybrud.Essentials.Time {
             return DateTimeOffset.ParseExact(iso8601, Iso8601DateFormat, CultureInfo.InvariantCulture);
         }
 
+        /// <summary>
+        /// Gets an instance of <see cref="DateTime"/> representing the start of the specified <strong>ISO 8601</strong> <paramref name="year"/> and <paramref name="week"/>.
+        /// </summary>
+        /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
+        /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
+        /// <returns>An instance of <see cref="DateTime"/>.</returns>
+        public static DateTime GetDateTimeFromIso8601Week(int year, int week) {
+
+            // See: https://stackoverflow.com/a/9064954
+
+            DateTime jan1 = new DateTime(year, 1, 1);
+            int daysOffset = DayOfWeek.Thursday - jan1.DayOfWeek;
+
+            DateTime firstThursday = jan1.AddDays(daysOffset);
+            Calendar cal = CultureInfo.CurrentCulture.Calendar;
+            int firstWeek = cal.GetWeekOfYear(firstThursday, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+
+            int weekNum = week;
+            if (firstWeek <= 1) weekNum -= 1;
+            DateTime result = firstThursday.AddDays(weekNum * 7);
+            return result.AddDays(-3);
+
+        }
+
     }
 
 }

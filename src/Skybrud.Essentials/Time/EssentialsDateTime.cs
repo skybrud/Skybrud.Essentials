@@ -1017,6 +1017,16 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Gets an instance of <see cref="EssentialsDateTime"/> representing the start of the specified <strong>ISO 8601</strong> <paramref name="week"/>.
+        /// </summary>
+        /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
+        /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
+        /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
+        public static EssentialsDateTime FromIso8601Week(int year, int week) {
+            return new EssentialsDateTime(TimeUtils.GetDateTimeFromIso8601Week(year, week));
+        }
+
+        /// <summary>
         /// Convert the specified <strong>RFC 822</strong> string to an instance of <see cref="EssentialsDateTime"/>.
         /// </summary>
         /// <param name="str">The <strong>RFC 822</strong> string to be converted.</param>

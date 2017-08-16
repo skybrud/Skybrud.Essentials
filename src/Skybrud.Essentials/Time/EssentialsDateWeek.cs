@@ -32,6 +32,13 @@
         #region Constructors
 
         /// <summary>
+        /// Initialize a new instance based on the specified <strong>ISO 8601</strong> <paramref name="year"/> and <paramref name="week"/>.
+        /// </summary>
+        /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
+        /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
+        public EssentialsDateWeek(int year, int week) : this(TimeUtils.GetDateTimeFromIso8601Week(year, week)) { }
+
+        /// <summary>
         /// Initialize a new instance based on the specified <code>timestamp</code>.
         /// </summary>
         /// <param name="timestamp">A timestamp.</param>
