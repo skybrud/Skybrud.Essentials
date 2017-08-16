@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
@@ -149,45 +150,111 @@ namespace Skybrud.Essentials.Time {
         #region Static methods
 
         /// <summary>
-        /// Parses the specified <code>str</code>. If the string is either <code>null</code> or whitespace,
-        /// <code>null</code> will be returned. The method will parse dates specified in the format
-        /// <code>yyyy-MM-dd</code>. If specified in any other format, an exception will be thrown.
+        /// Converts the specified <paramref name="input"/> string to its <see cref="EssentialsPartialDate"/>
+        /// equivalent.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
-        public static EssentialsPartialDate Parse(string str) {
-            if (String.IsNullOrWhiteSpace(str)) return null;
-            Match m1 = Regex.Match(str, "^([0-9]{4})$");
-            Match m2 = Regex.Match(str, "^([0-9]{4})-([0-9]{2})$");
-            Match m3 = Regex.Match(str, "^([0-9]{4})-([0-9]{2})-([0-9]{2})$");
-            if (m1.Success) return new EssentialsPartialDate(Int32.Parse(m1.Groups[1].Value));
-            if (m2.Success) return new EssentialsPartialDate(Int32.Parse(m2.Groups[1].Value), Int32.Parse(m2.Groups[2].Value));
-            if (m3.Success) return new EssentialsPartialDate(Int32.Parse(m3.Groups[1].Value), Int32.Parse(m3.Groups[2].Value), Int32.Parse(m3.Groups[3].Value));
-            throw new ArgumentException("Specified string is not a valid date", "str");
+        /// <param name="input">A string that contains the partial date to convert.</param>
+        /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
+        public static EssentialsPartialDate Parse(string input) {
+
+            if (String.IsNullOrWhiteSpace(input)) return null;
+
+            EssentialsPartialDate date;
+            if (TryParse(input, out date)) return date;
+
+            throw new ArgumentException("Specified string is not a valid date\r\n\r\n--" + input + "--", "input");
+
         }
 
         /// <summary>
-        /// Parses the specified <code>str</code>. If the string is either <code>null</code> or whitespace,
-        /// <code>null</code> will be returned. The method will parse dates specified in the format
-        /// <code>yyyy-MM-dd</code>. If specified in any other format, an exception will be thrown.
+        /// Converts the specified <paramref name="input"/> string to its <see cref="EssentialsPartialDate"/>
+        /// equivalent.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
-        /// <param name="date">The parsed date.</param>
-        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
-        public static bool TryParse(string str, out EssentialsPartialDate date) {
-            
-            // Initialize "date"
-            date = null;
-            
-            // Match various formats
-            Match m1 = Regex.Match(str ?? "", "^([0-9]{4})$");
-            Match m2 = Regex.Match(str ?? "", "^([0-9]{4})-([0-9]{2})$");
-            Match m3 = Regex.Match(str ?? "", "^([0-9]{4})-([0-9]{2})-([0-9]{2})$");
-            if (m1.Success) date = new EssentialsPartialDate(Int32.Parse(m1.Groups[1].Value));
-            if (m2.Success) date = new EssentialsPartialDate(Int32.Parse(m2.Groups[1].Value), Int32.Parse(m2.Groups[2].Value));
-            if (m3.Success) date = new EssentialsPartialDate(Int32.Parse(m3.Groups[1].Value), Int32.Parse(m3.Groups[2].Value), Int32.Parse(m3.Groups[3].Value));
+        /// <param name="input">A string that contains the partial date to convert.</param>
+        /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="input"/>.</param>
+        /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
+        public static EssentialsPartialDate Parse(string input, IFormatProvider provider) {
 
-            return date != null;
+            if (String.IsNullOrWhiteSpace(input)) return null;
+
+            EssentialsPartialDate date;
+            if (TryParse(input, provider, out date)) return date;
+
+            throw new ArgumentException("Specified string is not a valid date\r\n\r\n--" + input + "--", "input");
+
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string to its <see cref="EssentialsPartialDate"/>
+        /// equivalent and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">The input string to be converted.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsPartialDate"/> value
+        /// equivalent to the partial date and time contained in <paramref name="input"/>, if the conversion succeeded,
+        /// or <code>null</code> if the conversion failed. The conversion fails if <paramref name="input"/> is
+        /// <code>null</code>, is an empty string (""), or does not contain a valid string representation of a partial
+        /// date. This parameter is passed uninitialized.</param>
+        /// <returns><code>true</code> if <paramref name="input"/> was converted successfully; otherwise, <code>false</code>.</returns>
+        public static bool TryParse(string input, out EssentialsPartialDate result) {
+            return TryParse(input, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string to its <see cref="EssentialsPartialDate"/>
+        /// equivalent and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">The input string to be converted.</param>
+        /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="input"/>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsPartialDate"/> value
+        /// equivalent to the partial date and time contained in <paramref name="input"/>, if the conversion succeeded,
+        /// or <code>null</code> if the conversion failed. The conversion fails if <paramref name="input"/> is
+        /// <code>null</code>, is an empty string (""), or does not contain a valid string representation of a partial
+        /// date. This parameter is passed uninitialized.</param>
+        /// <returns><code>true</code> if <paramref name="input"/> was converted successfully; otherwise, <code>false</code>.</returns>
+        public static bool TryParse(string input, IFormatProvider provider, out EssentialsPartialDate result) {
+
+            // Initialize "date"
+            result = null;
+
+            // Strip all commas to make parsing easier
+            input = (input ?? "").Replace(",", "");
+
+            // Parse the string into an instance of DateTime for full dates
+            DateTime dt;
+            if (DateTime.TryParseExact(input, new[] { "yyyy-MM-dd", "d MMMM yyyy", "MMMM d yyyy" }, provider, DateTimeStyles.None, out dt)) {
+                result = new EssentialsPartialDate(dt);
+                return true;
+            }
+
+            // Match various formats
+            Match m1 = Regex.Match(input, "^([0-9]{4})$");
+            Match m2 = Regex.Match(input, "^([0-9]{4})-([0-9]{2})$");
+            Match m3 = Regex.Match(input, "^([0-9]{4})-([0-9]{2})-([0-9]{2})$");
+            Match m4 = Regex.Match(input, "^([a-zA-Z]+) ([0-9]{4})$");
+            Match m6 = Regex.Match(input, "^([a-zA-Z]+) ([0-9]{1,2})(st|nd|rd|th) ([0-9]{4})$");
+            
+            if (m1.Success) result = new EssentialsPartialDate(Int32.Parse(m1.Groups[1].Value));
+            if (m2.Success) result = new EssentialsPartialDate(Int32.Parse(m2.Groups[1].Value), Int32.Parse(m2.Groups[2].Value));
+            if (m3.Success) result = new EssentialsPartialDate(Int32.Parse(m3.Groups[1].Value), Int32.Parse(m3.Groups[2].Value), Int32.Parse(m3.Groups[3].Value));
+
+            if (m4.Success) {
+                int month;
+                if (!TimeUtils.TryParseNumberFromMonthName(m4.Groups[1].Value, provider, out month)) return false;
+                int year = Int32.Parse(m4.Groups[2].Value);
+                result = new EssentialsPartialDate(year, month);
+                return true;
+            }
+
+            if (m6.Success) {
+                int month;
+                if (!TimeUtils.TryParseNumberFromMonthName(m6.Groups[1].Value, provider, out month)) return false;
+                int year = Int32.Parse(m6.Groups[4].Value);
+                int day = Int32.Parse(m6.Groups[2].Value);
+                result = new EssentialsPartialDate(year, month, day);
+                return true;
+            }
+
+            return result != null;
 
         }
 

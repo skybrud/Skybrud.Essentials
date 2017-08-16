@@ -767,6 +767,50 @@ namespace UnitTestProject1.Time {
 
         }
 
+        [TestMethod]
+        public void EssentialsPartialDateFromString() {
+
+            CultureInfo danish = new CultureInfo("da-DK");
+
+            var samples = new[] {
+
+                new { Expected = "2017-08-00", Input = "august 2017", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2017-08-00", Input = "August, 2017", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2017-08-17", Input = "17 August, 2017", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2017-08-17", Input = "August 17, 2017", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2017-08-17", Input = "August 17th, 2017", CultureInfo = CultureInfo.InvariantCulture },
+
+                new { Expected = "2018-01-00", Input = "january 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-00", Input = "January 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-00", Input = "January, 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-00", Input = "january, 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-01", Input = "1 January, 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-01", Input = "1 january, 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-01", Input = "January 1, 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-01", Input = "january 1, 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-01", Input = "January 1st, 2018", CultureInfo = CultureInfo.InvariantCulture },
+                new { Expected = "2018-01-01", Input = "january 1st, 2018", CultureInfo = CultureInfo.InvariantCulture },
+
+                new { Expected = "2018-01-00", Input = "januar 2018", CultureInfo = danish },
+                new { Expected = "2018-01-00", Input = "Januar 2018", CultureInfo = danish },
+                new { Expected = "2018-01-00", Input = "Januar, 2018", CultureInfo = danish },
+                new { Expected = "2018-01-00", Input = "januar, 2018", CultureInfo = danish },
+                new { Expected = "2018-01-01", Input = "1 Januar, 2018", CultureInfo = danish },
+                new { Expected = "2018-01-01", Input = "1 januar, 2018", CultureInfo = danish },
+                new { Expected = "2018-01-01", Input = "Januar 1, 2018", CultureInfo = danish },
+                new { Expected = "2018-01-01", Input = "januar 1, 2018", CultureInfo = danish },
+                new { Expected = "2018-01-01", Input = "Januar 1st, 2018", CultureInfo = danish },
+                new { Expected = "2018-01-01", Input = "januar 1st, 2018", CultureInfo = danish }
+
+            };
+
+            foreach (var sample in samples) {
+                EssentialsPartialDate partial = EssentialsPartialDate.Parse(sample.Input, sample.CultureInfo);
+                Assert.AreEqual(sample.Expected, partial.ToString());
+            }
+
+        }
+
         #endregion
 
     }
