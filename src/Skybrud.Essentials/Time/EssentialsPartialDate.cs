@@ -59,7 +59,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the date is partial (missing either year, month or day).
         /// </summary>
         public bool IsPartialDate {
-            get { return HasYear && HasMonth && HasDay; }
+            get { return !(HasYear && HasMonth && HasDay); }
         }
 
         #endregion
