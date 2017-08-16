@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Skybrud.Essentials.Json.Converters.Time;
 
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
     /// Class representing a partial date (eg. only year and month).
     /// </summary>
+    [JsonConverter(typeof(EssentialsPartialDateConverter))]
     public class EssentialsPartialDate {
 
         #region Properties

@@ -50,6 +50,7 @@
     <Compile Include="Collections\SortOrder.cs" />
     <Compile Include="Common\PropertyNotSetException.cs" />
     <Compile Include="Enums\EnumUtils.cs" />
+    <Compile Include="Json\Converters\Time\EssentialsPartialDateConverter.cs" />
     <Compile Include="Json\JsonUtils.cs" />
     <Compile Include="Legacy\Enums\EnumHelper.cs" />
     <Compile Include="Legacy\Enums\EnumHelpers.cs" />
