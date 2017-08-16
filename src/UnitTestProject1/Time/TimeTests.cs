@@ -694,6 +694,7 @@ namespace UnitTestProject1.Time {
 
         #region EssentialsPartialDate
 
+        [TestMethod]
         public void EssentialsPartialDateFromDateTime() {
 
             var samples = new[] {
@@ -715,6 +716,7 @@ namespace UnitTestProject1.Time {
 
         }
 
+        [TestMethod]
         public void EssentialsPartialDateFromDateTimeOffset() {
 
             var samples = new[] {
@@ -742,7 +744,8 @@ namespace UnitTestProject1.Time {
             }
 
         }
-        
+
+        [TestMethod]
         public void EssentialsPartialDateFromEssentialsDateTime() {
 
             var samples = new[] {
