@@ -49,6 +49,118 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void ParseInt32() {
+
+            Assert.AreEqual(0, StringUtils.ParseInt32(null), "Check #1 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt32(""), "Check #2 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt32(null, 3), "Check #3 failed");
+            Assert.AreEqual(4, StringUtils.ParseInt32("", 4), "Check #4 failed");
+
+            Assert.AreEqual(1, StringUtils.ParseInt32("1"), "Check #5 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt32("2"), "Check #6 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt32(" 1 "), "Check #7 failed");
+
+            Assert.AreEqual(0, default(string).ToInt32(), "Check #8 failed");
+            Assert.AreEqual(0, "".ToInt32(), "Check #9 failed");
+
+            Assert.AreEqual(3, default(string).ToInt32(3), "Check #10 failed");
+            Assert.AreEqual(4, "".ToInt32(4), "Check #11 failed");
+
+            Assert.AreEqual(1, "1".ToInt32(), "Check #12 failed");
+            Assert.AreEqual(2, "2".ToInt32(), "Check #13 failed");
+            Assert.AreEqual(1, " 1 ".ToInt32(), "Check #14 failed");
+
+            Assert.AreEqual(Int32.MaxValue, StringUtils.ParseInt32("2147483647"), "Check #15 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt32("2147483648"), "Check #16 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseInt32Array() {
+
+            Assert.AreEqual(0, StringUtils.ParseInt32Array(null).Length, "Check #1 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt32Array("").Length, "Check #2 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt32Array("a").Length, "Check #3 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt32Array("_").Length, "Check #4 failed");
+
+            Assert.AreEqual(1, StringUtils.ParseInt32Array("42").Length, "Check #5 failed");
+            Assert.AreEqual(42, StringUtils.ParseInt32Array("42")[0], "Check #6 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt32Array("1,2,3").Length, "Check #7 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt32Array("1,2,3")[0], "Check #8 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt32Array("1,2,3")[1], "Check #9 failed");
+            Assert.AreEqual(3, StringUtils.ParseInt32Array("1,2,3")[2], "Check #10 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt32Array("1 2 3").Length, "Check #11 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt32Array("1 2 3")[0], "Check #12 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt32Array("1 2 3")[1], "Check #13 failed");
+            Assert.AreEqual(3, StringUtils.ParseInt32Array("1 2 3")[2], "Check #14 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt32Array("1_2_3", '_').Length, "Check #15 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt32Array("1_2_3", '_')[0], "Check #16 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt32Array("1_2_3", '_')[1], "Check #17 failed");
+            Assert.AreEqual(3, StringUtils.ParseInt32Array("1_2_3", '_')[2], "Check #18 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseInt64() {
+
+            Assert.AreEqual(0, StringUtils.ParseInt64(null), "Check #1 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt64(""), "Check #2 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt64(null, 3), "Check #3 failed");
+            Assert.AreEqual(4, StringUtils.ParseInt64("", 4), "Check #4 failed");
+
+            Assert.AreEqual(1, StringUtils.ParseInt64("1"), "Check #5 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt64("2"), "Check #6 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt64(" 1 "), "Check #7 failed");
+
+            Assert.AreEqual(0, default(string).ToInt64(), "Check #8 failed");
+            Assert.AreEqual(0, "".ToInt64(), "Check #9 failed");
+
+            Assert.AreEqual(3, default(string).ToInt64(3), "Check #10 failed");
+            Assert.AreEqual(4, "".ToInt64(4), "Check #11 failed");
+
+            Assert.AreEqual(1, "1".ToInt64(), "Check #12 failed");
+            Assert.AreEqual(2, "2".ToInt64(), "Check #13 failed");
+            Assert.AreEqual(1, " 1 ".ToInt64(), "Check #14 failed");
+
+            Assert.AreEqual(Int64.MaxValue, StringUtils.ParseInt64("9223372036854775807"), "Check #15 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt64("9223372036854775808"), "Check #16 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseInt64Array() {
+
+            Assert.AreEqual(0, StringUtils.ParseInt64Array(null).Length, "Check #1 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt64Array("").Length, "Check #2 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt64Array("a").Length, "Check #3 failed");
+            Assert.AreEqual(0, StringUtils.ParseInt64Array("_").Length, "Check #4 failed");
+
+            Assert.AreEqual(1, StringUtils.ParseInt64Array("42").Length, "Check #5 failed");
+            Assert.AreEqual(42, StringUtils.ParseInt64Array("42")[0], "Check #6 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt64Array("1,2,3").Length, "Check #7 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt64Array("1,2,3")[0], "Check #8 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt64Array("1,2,3")[1], "Check #9 failed");
+            Assert.AreEqual(3, StringUtils.ParseInt64Array("1,2,3")[2], "Check #10 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt64Array("1 2 3").Length, "Check #11 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt64Array("1 2 3")[0], "Check #12 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt64Array("1 2 3")[1], "Check #13 failed");
+            Assert.AreEqual(3, StringUtils.ParseInt64Array("1 2 3")[2], "Check #14 failed");
+
+            Assert.AreEqual(3, StringUtils.ParseInt64Array("1_2_3", '_').Length, "Check #15 failed");
+            Assert.AreEqual(1, StringUtils.ParseInt64Array("1_2_3", '_')[0], "Check #16 failed");
+            Assert.AreEqual(2, StringUtils.ParseInt64Array("1_2_3", '_')[1], "Check #17 failed");
+            Assert.AreEqual(3, StringUtils.ParseInt64Array("1_2_3", '_')[2], "Check #18 failed");
+
+        }
+
+        [TestMethod]
         public void ToUnderscore() {
 
             var samples1 = new[] {

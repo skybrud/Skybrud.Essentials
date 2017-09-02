@@ -80,7 +80,13 @@
     <Compile Include="Locations\LocationUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Security\SecurityUtils.cs" />
+    <Compile Include="Strings\Extensions\StringExtensions.Legacy.cs" />
+    <Compile Include="Strings\Extensions\StringExtensions.Int64.cs" />
+    <Compile Include="Strings\Extensions\StringExtensions.Int32.cs" />
     <Compile Include="Strings\Extensions\StringExtensions.cs" />
+    <Compile Include="Strings\StringUtils.Legacy.cs" />
+    <Compile Include="Strings\StringUtils.Int64.cs" />
+    <Compile Include="Strings\StringUtils.Int32.cs" />
     <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\CalendarUtils.cs" />
     <Compile Include="Legacy\Time\CalendarHelper.cs" />

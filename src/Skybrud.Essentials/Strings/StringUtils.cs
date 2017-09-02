@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Strings {
     /// <summary>
     /// Utility class with various static helper methods for working with strings.
     /// </summary>
-    public static class StringUtils {
+    public static partial class StringUtils {
 
         /// <summary>
         /// Parses the specified <paramref name="str"/> into an instance of <see cref="System.Boolean"/>. The string is
@@ -35,46 +35,6 @@ namespace Skybrud.Essentials.Strings {
         /// <code>t</code> (case insensitive).</returns>
         public static bool ParseBoolean(object value) {
             return ParseBoolean(value + "");
-        }
-
-        /// <summary>
-        /// Converts a comma separated string into an array of integers.
-        /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
-        /// <returns>An array of <see cref="Int32"/>.</returns>
-        [Obsolete("Use ParseInt32Array instead.")]
-        public static int[] CsvToInt(string str) {
-            return (
-                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select Int32.Parse(piece)
-            ).ToArray();
-        }
-
-        /// <summary>
-        /// Parses a comma separated string into an array of <see cref="Int32"/>.
-        /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
-        /// <returns>An array of <see cref="Int32"/>.</returns>
-        public static int[] ParseInt32Array(string str) {
-            return (
-                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select Int32.Parse(piece)
-            ).ToArray();
-        }
-
-        /// <summary>
-        /// Parses a comma separated string into an array of <see cref="Int64"/>.
-        /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
-        /// <returns>An array of <see cref="Int64"/>.</returns>
-        public static long[] ParseInt64Array(string str) {
-            return (
-                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select Int64.Parse(piece)
-            ).ToArray();
         }
 
         /// <summary>
@@ -298,35 +258,6 @@ namespace Skybrud.Essentials.Strings {
 
             return input;
 
-        }
-
-        /// <summary>
-        /// Gets whether the string matches an integer (<see cref="Int32"/>).
-        /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
-        public static bool IsInt32(string str) {
-            int result;
-            return Int32.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
-        }
-
-        /// <summary>
-        /// Alias of <see cref="IsInt32"/>. Gets whether the string matches an integer (<see cref="Int32"/>).
-        /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
-        public static bool IsInteger(string str) {
-            return IsInt32(str);
-        }
-
-        /// <summary>
-        /// Gets whether the string matches a long (<see cref="Int64"/>).
-        /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches a long; otherwise <code>false</code>.</returns>
-        public static bool IsInt64(string str) {
-            long result;
-            return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
         }
 
         /// <summary>

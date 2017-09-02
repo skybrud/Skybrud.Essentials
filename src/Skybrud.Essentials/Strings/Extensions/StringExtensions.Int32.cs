@@ -1,0 +1,71 @@
+﻿using System;
+using System.Globalization;
+
+namespace Skybrud.Essentials.Strings.Extensions {
+
+    public static partial class StringExtensions {
+        
+        /// <summary>
+        /// Gets whether the string matches an integer (<see cref="Int32"/>).
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
+        public static bool IsInt32(string str) {
+            int result;
+            return Int32.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Alias of <see cref="IsInt32"/>. Gets whether the string matches an integer (<see cref="Int32"/>).
+        /// </summary>
+        /// <param name="str">The string to validate.</param>
+        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
+        public static bool IsInteger(string str) {
+            return IsInt32(str);
+        }
+        
+        /// <summary>
+        /// Converts <paramref name="input"/> to an instance of <see cref="Int32"/>. If the conversion fails,
+        /// <code>0</code> will be returned instead.
+        /// </summary>
+        /// <param name="input">The input string to be converted.</param>
+        /// <returns>An instance of <see cref="Int32"/>.</returns>
+        public static int ToInt32(this string input) {
+            return StringUtils.ParseInt32(input);
+        }
+
+        /// <summary>
+        /// Converts <paramref name="input"/> to an instance of <see cref="Int32"/>. If the conversion fails,
+        /// <paramref name="fallback"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The input string to be converted.</param>
+        /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
+        /// <returns>An instance of <see cref="Int32"/>.</returns>
+        public static int ToInt32(this string input, int fallback) {
+            return StringUtils.ParseInt32(input, fallback);
+        }
+
+        /// <summary>
+        /// Parses a string of numeric values into an array of <see cref="Int32"/>. Values in the list that can't be
+        /// converted to <see cref="Int32"/> will be ignored.
+        /// </summary>
+        /// <param name="str">The comma separated string to be converted.</param>
+        /// <returns>An array of <see cref="Int32"/>.</returns>
+        public static int[] ToInt32Array(this string str) {
+            return StringUtils.ParseInt32Array(str);
+        }
+
+        /// <summary>
+        /// Parses a string of numeric values into an array of <see cref="Int32"/>. Values in the list that can't be
+        /// converted to <see cref="Int32"/> will be ignored.
+        /// </summary>
+        /// <param name="str">The comma separated string to be converted.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <see cref="Int32"/>.</returns>
+        public static int[] ToInt32Array(this string str, params char[] separators) {
+            return StringUtils.ParseInt32Array(str, separators);
+        }
+
+    }
+
+}
