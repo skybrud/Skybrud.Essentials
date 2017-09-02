@@ -361,10 +361,23 @@ namespace Skybrud.Essentials.Strings {
         /// <summary>
         /// Strips all HTML elements from the specified <paramref name="html"/> string.
         /// </summary>
-        /// <param name="html">The input string containing HTML.</param>
+        /// <param name="html">The input string containing the HTML.</param>
         /// <returns>The input string without any HTML markup.</returns>
         public static string StripHtml(string html) {
             return HtmlDecode(Regex.Replace(html, "<.*?>", ""));
+        }
+
+        /// <summary>
+        /// Strips all HTML elements from the specified <paramref name="html"/> string, but keeps the HTML tags as
+        /// specified in <paramref name="ignore"/>.
+        /// </summary>
+        /// <param name="html">The input string containing the HTML.</param>
+        /// <param name="ignore">An of tag names (without the brackets, like <code>div</code>) to ignore.</param>
+        /// <returns>The stripped result.</returns>
+        public static string StripHtml(string html, params string[] ignore) {
+            if (ignore == null || ignore.Length == 0) return StripHtml(html);
+            Regex regex = new Regex("<(?!(" + String.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
+            return HtmlDecode(regex.Replace(html, String.Empty));
         }
 
     }
