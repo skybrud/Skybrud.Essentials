@@ -162,7 +162,7 @@ namespace Skybrud.Essentials.Time {
             EssentialsPartialDate date;
             if (TryParse(input, out date)) return date;
 
-            throw new ArgumentException("Specified string is not a valid date\r\n\r\n--" + input + "--", "input");
+            throw new ArgumentException("Specified string is not a valid date", "input");
 
         }
 
