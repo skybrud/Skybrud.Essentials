@@ -29,7 +29,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
         public static string ToRfc2822(EssentialsDateTime timestamp) {
-            if (timestamp == null) throw new ArgumentNullException("timestamp");
+            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
             return ToRfc2822(timestamp.DateTime);
         }
 

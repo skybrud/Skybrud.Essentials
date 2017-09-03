@@ -20,16 +20,12 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets whether the year is a leap year.
         /// </summary>
-        public bool IsLeapYear {
-            get { return TimeUtils.IsLeapYear(Year); }
-        }
+        public bool IsLeapYear => TimeUtils.IsLeapYear(Year);
 
         /// <summary>
         /// Gets the amount of days in the yeay - <code>366</code> if <see cref="IsLeapYear"/> is <code>true</code>, otherwise <code>365</code>.
         /// </summary>
-        public int Days {
-            get { return IsLeapYear ? 366 : 365; }
-        }
+        public int Days => IsLeapYear ? 366 : 365;
 
         #region Calendar dates
 
@@ -39,9 +35,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Palm_Sunday#Observance_in_the_liturgy</cref>
         /// </see>
-        public DateTime PalmSunday {
-            get { return CalendarUtils.GetPalmSunday(Year); }
-        }
+        public DateTime PalmSunday => CalendarUtils.GetPalmSunday(Year);
 
         /// <summary>
         /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before <strong>Easter</strong>.
@@ -49,9 +43,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
         /// </see>
-        public DateTime GetMoundyThursday {
-            get { return CalendarUtils.GetMoundyThursday(Year); }
-        }
+        public DateTime GetMoundyThursday => CalendarUtils.GetMoundyThursday(Year);
 
         /// <summary>
         /// Gets the date of <strong>Good Friday</strong>, which falls on the Friday before <strong>Easter</strong>.
@@ -59,9 +51,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Good_Friday</cref>
         /// </see>
-        public DateTime GetGoodFriday {
-            get { return CalendarUtils.GetGoodFriday(Year); }
-        }
+        public DateTime GetGoodFriday => CalendarUtils.GetGoodFriday(Year);
 
         /// <summary>
         /// Gets the date of <strong>Holy Saturday</strong>, which falls on the Saturday before <strong>Easter</strong>.
@@ -69,9 +59,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Holy_Saturday</cref>
         /// </see>
-        public DateTime GetHolySaturday {
-            get { return CalendarUtils.GetHolySaturday(Year); }
-        }
+        public DateTime GetHolySaturday => CalendarUtils.GetHolySaturday(Year);
 
         /// <summary>
         /// Gets the date of <strong>Easter Sunday</strong>.
@@ -82,9 +70,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Easter#Date</cref>
         /// </see>
-        public DateTime EasterSunday {
-            get { return CalendarUtils.GetEasterSunday(Year); }
-        }
+        public DateTime EasterSunday => CalendarUtils.GetEasterSunday(Year);
 
         /// <summary>
         /// Gets the date of <strong>Easter Monday</strong>, which falls on the Monday after <strong>Easter</strong>.
@@ -92,9 +78,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Easter_Monday</cref>
         /// </see>
-        public DateTime EasterMonday {
-            get { return CalendarUtils.GetEasterMonday(Year); }
-        }
+        public DateTime EasterMonday => CalendarUtils.GetEasterMonday(Year);
 
         /// <summary>
         /// Gets the date of <strong>General Prayer Day</strong> (or <code>Store Bededag</code>in Danish) - a national
@@ -106,9 +90,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Store_Bededag</cref>
         /// </see>
-        public DateTime StoreBededag {
-            get { return CalendarUtils.Denmark.GetGeneralPrayerDay(Year); }
-        }
+        public DateTime StoreBededag => CalendarUtils.Denmark.GetGeneralPrayerDay(Year);
 
         /// <summary>
         /// Gets the date of <strong>Ascension Day</strong>, which is celebrated on a Thursday, the fortieth day of
@@ -117,9 +99,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Feast_of_the_Ascension</cref>
         /// </see>
-        public DateTime AscensionDay {
-            get { return CalendarUtils.GetAscensionDay(Year); }
-        }
+        public DateTime AscensionDay => CalendarUtils.GetAscensionDay(Year);
 
         /// <summary>
         /// Gets the date of <strong>Whit Sunday</strong>, which is celebrated on the 7th Sunday after
@@ -131,9 +111,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whitsun</cref>
         /// </see>
-        public DateTime WhitSunday {
-            get { return CalendarUtils.GetWhitSunday(Year); }
-        }
+        public DateTime WhitSunday => CalendarUtils.GetWhitSunday(Year);
 
         /// <summary>
         /// Gets the date of <strong>Whit Monday</strong>, which is celebrated the day after
@@ -146,9 +124,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whit_Monday</cref>
         /// </see>
-        public DateTime WhitMonday {
-            get { return CalendarUtils.GetWhitMonday(Year); }
-        }
+        public DateTime WhitMonday => CalendarUtils.GetWhitMonday(Year);
 
         #endregion
 
@@ -177,7 +153,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">A timestamp represented by an instance of <see cref="EssentialsDateTime"/>.</param>
         public EssentialsDateYear(EssentialsDateTime timestamp) {
-            if (timestamp == null) throw new ArgumentNullException("timestamp");
+            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
             Year = timestamp.Year;
         }
 

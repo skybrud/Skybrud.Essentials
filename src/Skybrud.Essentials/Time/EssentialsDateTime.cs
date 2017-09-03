@@ -19,51 +19,39 @@ namespace Skybrud.Essentials.Time {
         /// Gets a <see cref="EssentialsDateTime"/> object that is set to the current date and time on this computer,
         /// expressed as the local time.
         /// </summary>
-        public static EssentialsDateTime Now {
-            get { return new EssentialsDateTime(DateTime.Now); }
-        }
+        public static EssentialsDateTime Now => new EssentialsDateTime(DateTime.Now);
 
         /// <summary>
         /// Gets the current UNIX timestamp (amount of seconds since the start of the Unix Epoch).
         /// </summary>
-        public static long CurrentUnixTimestamp {
-            get { return TimeUtils.GetUnixTimeFromDateTime(DateTime.Now); }
-        }
+        public static long CurrentUnixTimestamp => TimeUtils.GetUnixTimeFromDateTime(DateTime.Now);
 
         /// <summary>
         /// Gets an instance of <see cref="EssentialsDateTime"/> representing the start of the Unix Epoch (AKA <code>0</code> seconds).
         /// </summary>
-        public static EssentialsDateTime Zero {
-            get { return FromUnixTimestamp(0); }
-        }
+        public static EssentialsDateTime Zero => FromUnixTimestamp(0);
 
         /// <summary>
         /// Gets the current date.
         /// </summary>
-        public static EssentialsDateTime Today {
-            get { return new EssentialsDateTime(DateTime.Today); }
-        }
+        public static EssentialsDateTime Today => new EssentialsDateTime(DateTime.Today);
 
         /// <summary>
         /// Gets a <see cref="EssentialsDateTime"/> object that is set to the current date and time on this computer,
         /// expressed as the Coordinated Universal Time (UTC).
         /// </summary>
-        public static EssentialsDateTime UtcNow {
-            get { return new EssentialsDateTime(DateTime.UtcNow); }
-        }
+        public static EssentialsDateTime UtcNow => new EssentialsDateTime(DateTime.UtcNow);
 
         /// <summary>
         /// Gets the wrapped <see cref="DateTime"/>.
         /// </summary>
-        public DateTime DateTime { get; private set; }
+        public DateTime DateTime { get; }
 
         /// <summary>
         /// Returns the day-of-month part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>1</code> and <code>31</code>.
         /// </summary>
-        public int Day {
-            get { return DateTime.Day; }
-        }
+        public int Day => DateTime.Day;
 
         /// <summary>
         /// Returns the day-of-week part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
@@ -72,180 +60,132 @@ namespace Skybrud.Essentials.Time {
         /// indicates <strong>Wednesday</strong>, <code>4</code> indicates <strong>Thursday</strong>, <code>5</code>
         /// indicates <strong>Friday</strong>, and <code>6</code> indicates <strong>Saturday</strong>.
         /// </summary>
-        public DayOfWeek DayOfWeek {
-            get { return DateTime.DayOfWeek; }
-        }
+        public DayOfWeek DayOfWeek => DateTime.DayOfWeek;
 
         /// <summary>
         /// Gets the day-of-year part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>1</code> and <code>366</code>.
         /// </summary>
-        public int DayOfYear {
-            get { return DateTime.DayOfYear; }
-        }
+        public int DayOfYear => DateTime.DayOfYear;
 
         /// <summary>
         /// Gets the hour part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>0</code> and <code>23</code>.
         /// </summary>
-        public int Hour {
-            get { return DateTime.Hour; }
-        }
+        public int Hour => DateTime.Hour;
 
         /// <summary>
         /// Gets the kind of the underlying <see cref="DateTime"/>.
         /// </summary>
-        public DateTimeKind Kind {
-            get { return DateTime.Kind; }
-        }
+        public DateTimeKind Kind => DateTime.Kind;
 
         /// <summary>
         /// Gets the millisecond part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>0</code> and <code>999</code>.
         /// </summary>
-        public int Millisecond {
-            get { return DateTime.Millisecond; }
-        }
+        public int Millisecond => DateTime.Millisecond;
 
         /// <summary>
         /// Gets the minute part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>0</code> and <code>59</code>.
         /// </summary>
-        public int Minute {
-            get { return DateTime.Minute; }
-        }
+        public int Minute => DateTime.Minute;
 
         /// <summary>
         /// Gets the month part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>1</code> and <code>12</code>.
         /// </summary>
-        public int Month {
-            get { return DateTime.Month; }
-        }
+        public int Month => DateTime.Month;
 
         /// <summary>
         /// Gets the second part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>0</code> and <code>59</code>.
         /// </summary>
-        public int Second {
-            get { return DateTime.Second; }
-        }
+        public int Second => DateTime.Second;
 
         /// <summary>
         /// Gets the tick count for this <see cref="EssentialsDateTime"/>. The returned value is the number of
         /// 100-nanosecond intervals that have elapsed since <code>1/1/0001 12:00am</code>.
         /// </summary>
-        public long Ticks {
-            get { return DateTime.Ticks; }
-        }
+        public long Ticks => DateTime.Ticks;
 
         /// <summary>
         /// Gets the time-of-day part of this <see cref="EssentialsDateTime"/>. The returned value is a
         /// <see cref="TimeSpan"/> that indicates the time elapsed since midnight.
         /// </summary>
-        public TimeSpan TimeOfDay {
-            get { return DateTime.TimeOfDay; }
-        }
-        
+        public TimeSpan TimeOfDay => DateTime.TimeOfDay;
+
         /// <summary>
         /// Returns the year part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
         /// <code>1</code> and <code>9999</code>.
         /// </summary>
-        public int Year {
-            get { return DateTime.Year; }
-        }
+        public int Year => DateTime.Year;
 
         /// <summary>
         /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsDateTime"/>.
         /// </summary>
-        public long UnixTimestamp {
-            get { return TimeUtils.GetUnixTimeFromDateTime(DateTime); }
-        }
+        public long UnixTimestamp => TimeUtils.GetUnixTimeFromDateTime(DateTime);
 
         /// <summary>
         /// Gets whether the year of this <see cref="EssentialsDateTime"/> is a leap year.
         /// </summary>
-        public bool IsLeapYear {
-            get { return TimeUtils.IsLeapYear(DateTime); }
-        }
+        public bool IsLeapYear => TimeUtils.IsLeapYear(DateTime);
 
         /// <summary>
         /// Gets whether the day of this <see cref="EssentialsDateTime"/> is within a weekend.
         /// </summary>
-        public bool IsWeekend {
-            get { return TimeUtils.IsLeapYear(DateTime); }
-        }
+        public bool IsWeekend => TimeUtils.IsLeapYear(DateTime);
 
         /// <summary>
         /// Gets whether the day of this <see cref="EssentialsDateTime"/> is a weekday.
         /// </summary>
-        public bool IsWeekday {
-            get { return TimeUtils.IsWeekday(DateTime); }
-        }
+        public bool IsWeekday => TimeUtils.IsWeekday(DateTime);
 
         /// <summary>
         /// Gets the week number the ISO8601 week of this <see cref="EssentialsDateTime"/>.
         /// </summary>
-        public int WeekNumber {
-            get { return TimeUtils.GetIso8601WeekNumber(DateTime); }
-        }
+        public int WeekNumber => TimeUtils.GetIso8601WeekNumber(DateTime);
 
         /// <summary>
         /// Gets a reference to an instance of <see cref="EssentialsDateWeek"/> representing the ISO8601 week of this
         /// <see cref="EssentialsDateTime"/>.
         /// </summary>
-        public EssentialsDateWeek Week {
-            get { return new EssentialsDateWeek(DateTime); }
-        }
+        public EssentialsDateWeek Week => new EssentialsDateWeek(DateTime);
 
         /// <summary>
         /// Gets the amount of days in the month.
         /// </summary>
-        public int DaysInMonth {
-            get { return DateTime.DaysInMonth(Year, Month); }
-        }
+        public int DaysInMonth => DateTime.DaysInMonth(Year, Month);
 
         /// <summary>
         /// Gets whether the Unix timestamp of this <see cref="EssentialsDateTime"/> is <code>0</code>.
         /// </summary>
-        public bool IsZero {
-            get { return UnixTimestamp == 0; }
-        }
+        public bool IsZero => UnixTimestamp == 0;
 
         /// <summary>
         /// Gets whether the Unix timestamp of this <see cref="EssentialsDateTime"/> is less than <code>0</code>.
         /// </summary>
-        public bool IsNegative {
-            get { return UnixTimestamp < 0; }
-        }
+        public bool IsNegative => UnixTimestamp < 0;
 
         /// <summary>
         /// Gets whether the Unix timestamp of this <see cref="EssentialsDateTime"/> is greater than <code>0</code>.
         /// </summary>
-        public bool IsPositive {
-            get { return UnixTimestamp > 0; }
-        }
+        public bool IsPositive => UnixTimestamp > 0;
 
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
         /// </summary>
-        public string ToIso8601 {
-            get { return TimeUtils.ToIso8601(this); }
-        }
+        public string ToIso8601 => TimeUtils.ToIso8601(this);
 
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>RFC 822</strong> format.
         /// </summary>
-        public string Rfc822 {
-            get { return TimeUtils.ToRfc822(this); }
-        }
+        public string Rfc822 => TimeUtils.ToRfc822(this);
 
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>RFC 2822</strong> format.
         /// </summary>
-        public string ToRfc2822 {
-            get { return TimeUtils.ToRfc2822(this); }
-        }
+        public string ToRfc2822 => TimeUtils.ToRfc2822(this);
 
         #endregion
 
@@ -1209,7 +1149,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Returns the <see cref="System.TypeCode"/> for value type <see cref="DateTime"/>.
         /// </summary>
-        /// <returns>The enumerated constant, <see cref="System.TypeCode.DateTime"/>.</returns>
+        /// <returns>The enumerated constant, <see cref="TypeCode.DateTime"/>.</returns>
         public TypeCode GetTypeCode() {
             return DateTime.GetTypeCode();
         }

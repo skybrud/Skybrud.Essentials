@@ -48,7 +48,7 @@ namespace Skybrud.Essentials.Enums {
         public static object ParseEnum(string str, Type enumType) {
 
             // Throw an exception if "str" isn't specified
-            if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException("str");
+            if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
 
             // Convert the input string to camel case and lowercase (morel likely to get a match)
             string enumText = StringUtils.ToCamelCase(str).ToLower();
@@ -91,7 +91,7 @@ namespace Skybrud.Essentials.Enums {
         public static bool TryParseEnum<T>(string str, out T value) where T : struct {
 
             // Check whether the specified string is NULL (or white space)
-            if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException("str");
+            if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
 
             // Check whether the type of T is an enum
             if (!typeof(T).IsEnum) throw new ArgumentException("Generic type T must be an enum");

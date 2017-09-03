@@ -106,7 +106,7 @@ namespace Skybrud.Essentials.Xml {
         ///     <cref>https://stackoverflow.com/a/1704579</cref>
         /// </see>
         public static string GetOuterXml(XElement element) {
-            if (element == null) throw new ArgumentNullException("element");
+            if (element == null) throw new ArgumentNullException(nameof(element));
             XmlReader reader = element.CreateReader();
             reader.MoveToContent();
             return reader.ReadOuterXml();
@@ -121,7 +121,7 @@ namespace Skybrud.Essentials.Xml {
         ///     <cref>https://stackoverflow.com/a/1704579</cref>
         /// </see>
         public static string GetInnerXml(XElement element) {
-            if (element == null) throw new ArgumentNullException("element");
+            if (element == null) throw new ArgumentNullException(nameof(element));
             XmlReader reader = element.CreateReader();
             reader.MoveToContent();
             return reader.ReadInnerXml();

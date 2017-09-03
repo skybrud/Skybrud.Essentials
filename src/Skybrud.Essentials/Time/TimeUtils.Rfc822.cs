@@ -30,7 +30,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
         public static string ToRfc822(EssentialsDateTime timestamp) {
-            if (timestamp == null) throw new ArgumentNullException("timestamp");
+            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
             return ToRfc822(timestamp.DateTime);
         }
 
@@ -50,7 +50,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset Rfc822ToDateTimeOffset(string rfc822) {
 
-            if (String.IsNullOrWhiteSpace(rfc822)) throw new ArgumentNullException("rfc822");
+            if (String.IsNullOrWhiteSpace(rfc822)) throw new ArgumentNullException(nameof(rfc822));
 
             Match m1 = Regex.Match(rfc822, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
 

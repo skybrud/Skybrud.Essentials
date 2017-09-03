@@ -38,30 +38,22 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets whether a year has been specified for this date.
         /// </summary>
-        public bool HasYear {
-            get { return Year > 0; }
-        }
-        
+        public bool HasYear => Year > 0;
+
         /// <summary>
         /// Gets whether a month has been specified for this date.
         /// </summary>
-        public bool HasMonth {
-            get { return Month > 0; }
-        }
-        
+        public bool HasMonth => Month > 0;
+
         /// <summary>
         /// Gets whether a day has been specified for this date.
         /// </summary>
-        public bool HasDay {
-            get { return Day > 0; }
-        }
-        
+        public bool HasDay => Day > 0;
+
         /// <summary>
         /// Gets whether the date is partial (missing either year, month or day).
         /// </summary>
-        public bool IsPartialDate {
-            get { return !(HasYear && HasMonth && HasDay); }
-        }
+        public bool IsPartialDate => !(HasYear && HasMonth && HasDay);
 
         #endregion
 
@@ -142,7 +134,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>A string that represents the partial date.</returns>
         public override string ToString() {
-            return String.Format("{0:0000}-{1:00}-{2:00}", Year, Month, Day);
+            return $"{Year:0000}-{Month:00}-{Day:00}";
         }
 
         #endregion
@@ -162,7 +154,7 @@ namespace Skybrud.Essentials.Time {
             EssentialsPartialDate date;
             if (TryParse(input, out date)) return date;
 
-            throw new ArgumentException("Specified string is not a valid date", "input");
+            throw new ArgumentException("Specified string is not a valid date", nameof(input));
 
         }
 
@@ -180,7 +172,7 @@ namespace Skybrud.Essentials.Time {
             EssentialsPartialDate date;
             if (TryParse(input, provider, out date)) return date;
 
-            throw new ArgumentException("Specified string is not a valid date", "input");
+            throw new ArgumentException("Specified string is not a valid date", nameof(input));
 
         }
 

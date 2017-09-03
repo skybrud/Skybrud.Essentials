@@ -659,7 +659,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, name);
 
             // Parse the value (if "attr" is not "null")
-            value = child == null ? default(bool) : StringUtils.ParseBoolean(child.Value);
+            value = child != null && StringUtils.ParseBoolean(child.Value);
 
             // Returns whether the element was found
             return child != null;
@@ -733,7 +733,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, expression, resolver);
 
             // Parse the value (if "attr" is not "null")
-            value = child == null ? default(bool) : StringUtils.ParseBoolean(child.Value);
+            value = child != null && StringUtils.ParseBoolean(child.Value);
 
             // Returns whether the attribute was found
             return child != null;
@@ -774,7 +774,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement attr = GetElement(element, name);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : StringUtils.ParseBoolean(attr.Value);
+            value = attr != null && StringUtils.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;
@@ -809,7 +809,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement attr = GetElement(element, expression, resolver);
 
             // Parse the value (if "attr" is not "null")
-            value = attr == null ? default(bool) : StringUtils.ParseBoolean(attr.Value);
+            value = attr != null && StringUtils.ParseBoolean(attr.Value);
 
             // Returns whether the attribute was found
             return attr != null;

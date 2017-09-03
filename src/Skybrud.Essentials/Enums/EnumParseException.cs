@@ -40,9 +40,7 @@ namespace Skybrud.Essentials.Enums {
         /// <summary>
         /// Gets the message of the exception.
         /// </summary>
-        public override string Message {
-            get {  return "Unable to parse enum of type " + Type.Name + " from value \"" + Value + "\""; }
-        }
+        public override string Message => $"Unable to parse enum of type {Type.Name} from value \"{Value}\"";
 
         #endregion
 
