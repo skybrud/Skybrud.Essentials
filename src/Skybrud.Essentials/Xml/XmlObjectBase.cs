@@ -19,12 +19,12 @@ namespace Skybrud.Essentials.Xml {
         #endregion
 
         #region Constructor
-
+        
         /// <summary>
-        /// Parses the specified <code>xml</code> into an instance of <see cref="XmlObjectBase"/>.
+        /// Initializes a new instance from the specified <paramref name="xml"/>.
         /// </summary>
-        /// <param name="xml">The instance of <see cref="XElement"/> to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="XmlObjectBase"/>.</returns>
+        /// <param name="xml">The instance of <see cref="XElement"/> representing the object.</param>
+        /// <returns>An instance of <see cref="XmlObjectBase"/>.</returns>
         protected XmlObjectBase(XElement xml) {
             XElement = xml;
         }

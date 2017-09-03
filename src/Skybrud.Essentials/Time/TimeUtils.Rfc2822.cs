@@ -6,7 +6,8 @@ namespace Skybrud.Essentials.Time {
     public static partial class TimeUtils {
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 2822</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -15,7 +16,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 2822</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -24,7 +26,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 2822</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>

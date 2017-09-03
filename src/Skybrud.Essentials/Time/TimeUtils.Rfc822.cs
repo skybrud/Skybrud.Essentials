@@ -7,7 +7,8 @@ namespace Skybrud.Essentials.Time {
     public static partial class TimeUtils {
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 822</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>RFC 822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -16,7 +17,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 822</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>RFC 822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -25,7 +27,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 822</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>RFC 822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -85,7 +88,7 @@ namespace Skybrud.Essentials.Time {
         /// so we need to convert the time zone to an offset instead - eg <code>+01:00</code>.
         /// </summary>
         /// <param name="timezone">The time zone value to be normalized.</param>
-        /// <returns>Returns the normalized time zone.</returns>
+        /// <returns>The normalized time zone.</returns>
         /// <see>
         ///     <cref>https://www.w3.org/Protocols/rfc822/#z28</cref>
         /// </see>

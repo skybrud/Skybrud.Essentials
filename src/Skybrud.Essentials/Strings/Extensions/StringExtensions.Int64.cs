@@ -9,7 +9,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <code>0</code> will be returned instead.
         /// </summary>
         /// <param name="input">The input string to be converted.</param>
-        /// <returns>An instance of <see cref="System.Int64"/>.</returns>
+        /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long ToInt64(this string input) {
             return StringUtils.ParseInt64(input);
         }
@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The input string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
-        /// <returns>An instance of <see cref="System.Int64"/>.</returns>
+        /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long ToInt64(this string input, long fallback) {
             return StringUtils.ParseInt64(input, fallback);
         }
@@ -41,7 +41,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The comma separated string to be converted.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of <see cref="Int32"/>.</returns>
+        /// <returns>An array of <see cref="Int64"/>.</returns>
         public static long[] ToInt64Array(this string str, params char[] separators) {
             return StringUtils.ParseInt64Array(str, separators);
         }

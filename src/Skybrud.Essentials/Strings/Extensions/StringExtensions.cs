@@ -18,55 +18,56 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Converts the specified <code>str</code> to camel case (also referred to as lower camel casing).
+        /// Converts the specified <paramref name="str"/> to camel case (also referred to as lower camel casing).
         /// </summary>
         /// <param name="str">The string to be converted.</param>
-        /// <returns>Returns the camel cased string.</returns>
+        /// <returns>The camel cased string.</returns>
         public static string ToCamelCase(this string str) {
             return StringUtils.ToCamelCase(str);
         }
 
         /// <summary>
-        /// Converts the name of the specified enum <code>value</code> to a camel cased string.
+        /// Converts the name of the specified enum <paramref name="value"/> to a camel cased string.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
-        /// <returns>Returns the camel cased string.</returns>
+        /// <returns>The camel cased string.</returns>
         public static string ToCamelCase(Enum value) {
             return StringUtils.ToCamelCase(value);
         }
 
         /// <summary>
-        /// Converts the specified <code>str</code> to Pascal case (also referred to as upper camel casing).
+        /// Converts the specified <paramref name="str"/> to Pascal case (also referred to as upper camel casing).
         /// </summary>
         /// <param name="str">The string to be converted.</param>
-        /// <returns>Returns the Pascal cased string.</returns>
+        /// <returns>The Pascal cased string.</returns>
         public static string ToPascalCase(this string str) {
             return StringUtils.ToPascalCase(str);
         }
 
         /// <summary>
-        /// Converts the name of the specified enum <code>value</code> to a Pascal cased string.
+        /// Converts the name of the specified enum <paramref name="value"/> to a Pascal cased string.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
-        /// <returns>Returns the Pascal cased string.</returns>
+        /// <returns>The Pascal cased string.</returns>
         public static string ToPascalCase(Enum value) {
             return StringUtils.ToPascalCase(value);
         }
 
         /// <summary>
-        /// Converts the specified <code>str</code> to a lower case string with words separated by underscores.
+        /// Converts the specified <paramref name="str"/> to a lower case string with words separated by underscores.
         /// </summary>
         /// <param name="str">The string to be converted.</param>
-        /// <returns>Returns the converted string.</returns>
+        /// <returns>The converted string.</returns>
         public static string ToUnderscore(this string str) {
             return StringUtils.ToUnderscore(str);
         }
 
         /// <summary>
-        /// Converts the specified enum value to a lower case string with words separated by underscores.
+        /// Converts the specified enum <paramref name="value"/> to a lower case string with words separated by
+        /// underscores.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
-        /// <returns>Returns the converted string.</returns>
+        /// <returns>The converted string.</returns>
         public static string ToUnderscore(this Enum value) {
             return StringUtils.ToUnderscore(value);
         }
@@ -90,8 +91,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Uppercases the first character of a the specified <code>str</code>. If <code>str</code> is either
-        /// <code>null</code> or empty, an empty string will be returned instead.
+        /// Uppercases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
+        /// either <code>null</code> or empty, an empty string will be returned instead.
         /// </summary>
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
@@ -103,7 +104,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// Encodes a URL string.
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
-        /// <returns>Returns the encoded string.</returns>
+        /// <returns>The encoded string.</returns>
         public static string UrlEncode(this string str) {
             return StringUtils.UrlEncode(str);
         }
@@ -112,7 +113,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// Decodes a URL string.
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
-        /// <returns>Returns the decoded string.</returns>
+        /// <returns>The decoded string.</returns>
         public static string UrlDecode(this string str) {
             return StringUtils.UrlDecode(str);
         }

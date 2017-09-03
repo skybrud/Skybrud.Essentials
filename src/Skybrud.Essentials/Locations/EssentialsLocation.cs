@@ -29,7 +29,7 @@
         public EssentialsLocation() { }
 
         /// <summary>
-        /// Initializes a location with the specified <code>latitude</code> and <code>longitude</code>.
+        /// Initializes a location with the specified <paramref name="latitude"/> and <paramref name="longitude"/>.
         /// </summary>
         /// <param name="latitude">The latitude of the location.</param>
         /// <param name="longitude">The longitude of the location.</param>

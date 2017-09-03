@@ -11,7 +11,8 @@ namespace Skybrud.Essentials.Time {
         public const string Iso8601DateFormat = "yyyy-MM-ddTHH:mm:ssK";
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>ISO 8601</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>ISO 8601</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -20,7 +21,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>ISO 8601</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>ISO 8601</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -29,7 +31,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>ISO 8601</strong> format.
+        /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+        /// <strong>ISO 8601</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
@@ -58,7 +61,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="DateTime"/> representing the start of the specified <strong>ISO 8601</strong> <paramref name="year"/> and <paramref name="week"/>.
+        /// Gets an instance of <see cref="DateTime"/> representing the start of the specified
+        /// <strong>ISO 8601</strong> <paramref name="year"/> and <paramref name="week"/>.
         /// </summary>
         /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
         /// <param name="week">The <strong>ISO 8601</strong> week number.</param>

@@ -13,7 +13,7 @@ namespace Skybrud.Essentials.Strings {
     public static partial class StringUtils {
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="System.Boolean"/>. The string is
+        /// Parses the specified <paramref name="str"/> into an instance of <see cref="Boolean"/>. The string is
         /// considered <code>true</code> if it matches either <code>1</code>, <code>t</code> or <code>true</code>
         /// (case insensitive).
         /// </summary>
@@ -26,7 +26,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="value"/> into an instance of <see cref="System.Boolean"/>. The value
+        /// Parses the specified <paramref name="value"/> into an instance of <see cref="Boolean"/>. The value
         /// is considered <code>true</code> if it matches either <code>1</code>, <code>t</code> or <code>true</code>
         /// (case insensitive).
         /// </summary>
@@ -123,7 +123,8 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Converts the specified enum value to a lower case string with words separated by underscores.
+        /// Converts the specified enum <paramref name="value"/> to a lower case string with words separated by
+        /// underscores.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The converted string.</returns>

@@ -13,20 +13,22 @@ namespace Skybrud.Essentials.Time {
         #endregion
 
         /// <summary>
-        /// Gets the current age, from the specified date of birth.
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>Returns the age based on the specified date of birth.</returns>
+        /// <returns>The age based on the current date and <paramref name="dateOfBirth"/>.</returns>
         public static int GetAge(DateTime dateOfBirth) {
             return GetAge(dateOfBirth, DateTime.Today);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified date of birth. The age is calculated based on <code>dt</code>.
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>Returns the age based on the specified date of birth at the moment of <code>dt</code>.</returns>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
         public static int GetAge(DateTime dateOfBirth, DateTime dt) {
             int age = dt.Year - dateOfBirth.Year;
             if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
@@ -34,20 +36,22 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the current age, from the specified date of birth.
+        /// Gets the current age, from the specified date of <paramref name="dateOfBirth"/>.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>Returns the age based on the specified date of birth.</returns>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
         public static int GetAge(DateTimeOffset dateOfBirth) {
             return GetAge(dateOfBirth, DateTime.UtcNow);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified date of birth. The age is calculated based on <code>dt</code>.
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>Returns the age based on the specified date of birth at the moment of <code>dt</code>.</returns>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
         public static int GetAge(DateTimeOffset dateOfBirth, DateTimeOffset dt) {
 
             // Make sure both values are converted to UTC
@@ -62,23 +66,23 @@ namespace Skybrud.Essentials.Time {
         
         }
 
-        // TODO: Implement GetAge for DateTimeOffset?
-
         /// <summary>
-        /// Gets the current age, from the specified date of birth.
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>Returns the age based on the specified date of birth.</returns>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
         public static int GetAge(EssentialsDateTime dateOfBirth) {
             return GetAge(dateOfBirth, DateTime.Today);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified date of birth. The age is calculated based on <code>dt</code>.
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>Returns the age based on the specified date of birth at the moment of <code>dt</code>.</returns>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
         public static int GetAge(EssentialsDateTime dateOfBirth, EssentialsDateTime dt) {
             int age = dt.Year - dateOfBirth.Year;
             if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
@@ -86,7 +90,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the day of the month along with the English ordinal suffix based on the specified <code>date</code>.
+        /// Gets the day of the month along with the English ordinal suffix based on the specified
+        /// <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The day number and ordinal suffix.</returns>
@@ -95,7 +100,8 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the day of the month along with the English ordinal suffix based on the specified <code>date</code>.
+        /// Gets the day of the month along with the English ordinal suffix based on the specified
+        /// <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The day number and ordinal suffix.</returns>
@@ -104,7 +110,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the English ordinal suffix of the day based on the specified <code>date</code>.
+        /// Gets the English ordinal suffix of the day based on the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The day ordinal suffix.</returns>
@@ -118,7 +124,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the English ordinal suffix of the day based on the specified <code>date</code>.
+        /// Gets the English ordinal suffix of the day based on the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The day ordinal suffix.</returns>
@@ -127,10 +133,10 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the week number of <code>date</code> according to the ISO8601 specification.
+        /// Gets the week number of <paramref name="date"/> according to the <strong>ISO 8601</strong> specification.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the <strong>ISO 8601</strong> week number.</returns>
+        /// <returns>The <strong>ISO 8601</strong> week number.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
@@ -140,10 +146,10 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the week number of <code>date</code> according to the ISO8601 specification.
+        /// Gets the week number of <paramref name="date"/> according to the <strong>ISO 8601</strong> specification.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the <strong>ISO 8601</strong> week number.</returns>
+        /// <returns>The <strong>ISO 8601</strong> week number.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
@@ -152,109 +158,96 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets whether the specified <code>date</code> is a weekday.
+        /// Gets whether the specified <paramref name="date"/> is a weekday.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the specified day is weekday; otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the specified day is weekday; otherwise <code>false</code>.</returns>
         public static bool IsWeekday(DateTime date) {
             return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
         }
 
         /// <summary>
-        /// Gets whether the specified <code>date</code> is a weekday.
+        /// Gets whether the specified <paramref name="date"/> is a weekday.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the specified day is weekday; otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the specified day is weekday; otherwise <code>false</code>.</returns>
         public static bool IsWeekday(DateTimeOffset date) {
             return IsWeekday(date.Date);
         }
 
         /// <summary>
-        /// Gets whether the specified <code>date</code> is in the weekend.
+        /// Gets whether the specified <paramref name="date"/> is in the weekend.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the specified day is weekend; otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the specified day is weekend; otherwise <code>false</code>.</returns>
         public static bool IsWeekend(DateTime date) {
             return !IsWeekday(date);
         }
 
         /// <summary>
-        /// Gets whether the specified <code>date</code> is in the weekend.
+        /// Gets whether the specified <paramref name="date"/> is in the weekend.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the specified day is weekend; otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the specified day is weekend; otherwise <code>false</code>.</returns>
         public static bool IsWeekend(DateTimeOffset date) {
             return IsWeekend(date.Date);
         }
 
         /// <summary>
-        /// Gets whether the specified <code>date</code> is a leap year.
+        /// Gets whether the specified <paramref name="date"/> is a leap year.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the year of the specified <code>date</code> is a leap year; otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the year of the specified <paramref name="date"/> is a leap year; otherwise
+        /// <code>false</code>.</returns>
         public static bool IsLeapYear(DateTime date) {
             return IsLeapYear(date.Year);
         }
 
         /// <summary>
-        /// Gets whether the specified <code>date</code> is a leap year.
+        /// Gets whether the specified <paramref name="date"/> is a leap year.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the year of the specified <code>date</code> is a leap year; otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the year of the specified <paramref name="date"/> is a leap year; otherwise
+        /// <code>false</code>.</returns>
         public static bool IsLeapYear(DateTimeOffset date) {
             return IsLeapYear(date.Date);
         }
 
         /// <summary>
-        /// Gets whether the specified year is a leap year.
+        /// Gets whether the specified <paramref name="year"/> is a leap year.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the specified year is a leap year; otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the specified year is a leap year; otherwise <code>false</code>.</returns>
         public static bool IsLeapYear(int year) {
             return (DateTime.DaysInMonth(year, 2).Equals(29));
         }
 
         /// <summary>
-        /// Gets the elapsed seconds since the specified <code>date</code>.
+        /// Gets the elapsed seconds since the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the elapsed seconds since <code>date</code>.</returns>
+        /// <returns>The elapsed seconds since <paramref name="date"/>.</returns>
         public static double GetElapsedSeconds(DateTime date) {
             return DateTime.Now.Subtract(date).TotalSeconds;
         }
 
         /// <summary>
-        /// Gets the elapsed seconds since the specified <code>date</code>.
+        /// Gets the elapsed seconds since the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the elapsed seconds since <code>date</code>.</returns>
+        /// <returns>The elapsed seconds since <paramref name="date"/>.</returns>
         public static double GetElapsedSeconds(DateTimeOffset date) {
             // TODO: Should this be based on DateTimeOffset? And is there a difference?
             return GetElapsedSeconds(date.DateTime);
         }
 
         /// <summary>
-        /// Returns whether <code>date</code> is within the last number of specified <code>days</code>.
+        /// Returns whether <paramref name="date"/> is within the last number of specified <paramref name="days"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="days">The number of days.</param>
-        /// <returns>
-        /// Returns <code>true</code> if the date is within the last number of days, otherwise <code>false</code>.
-        /// </returns>
+        /// <returns><code>true</code> if the <paramref name="date"/> is within the last number of
+        /// <paramref name="days"/>, otherwise <code>false</code>.</returns>
         public static bool IsDateWithinLastDays(DateTime date, int days) {
             double lastDays = (double) 0 - days;
             DateTime startDate = date.AddDays(lastDays);
@@ -262,12 +255,13 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns whether <code>date</code> is within the last number of specified <code>days</code>.
+        /// Returns whether <paramref name="date"/> is within the last number of specified <paramref name="days"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="days">The number of days.</param>
         /// <returns>
-        /// Returns <code>true</code> if the date is within the last number of days, otherwise <code>false</code>.
+        /// Returns <code>true</code> if the <paramref name="date"/> is within the last number of
+        /// <paramref name="days"/>, otherwise <code>false</code>.
         /// </returns>
         public static bool IsDateWithinLastDays(DateTimeOffset date, int days) {
             return IsDateWithinLastDays(date.DateTime, days);
@@ -276,19 +270,19 @@ namespace Skybrud.Essentials.Time {
         #region GetFirstDayOfMonth
 
         /// <summary>
-        /// Gets the first day of the month of the specified <code>date</code>.
+        /// Gets the first day of the month of the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the month.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the first day of the month.</returns>
         public static DateTime GetFirstDayOfMonth(DateTime date) {
             return new DateTime(date.Year, date.Month, 1);
         }
 
         /// <summary>
-        /// Gets the first day of the month of the specified <code>date</code>.
+        /// Gets the first day of the month of the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the first day of the month.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the month.</returns>
         public static DateTimeOffset GetFirstDayOfMonth(DateTimeOffset date) {
             return new DateTimeOffset(date.Year, date.Month, 1, 0, 0, 0, date.Offset);
         }
@@ -298,20 +292,20 @@ namespace Skybrud.Essentials.Time {
         #region GetLastDayOfMonth
 
         /// <summary>
-        /// Gets the last day of the month of the specified <code>date</code>.
+        /// Gets the last day of the month of the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the month.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the last day of the month.</returns>
         public static DateTime GetLastDayOfMonth(DateTime date) {
             int daysInMonth = DateTime.DaysInMonth(date.Year, date.Month);
             return new DateTime(date.Year, date.Month, daysInMonth, 23, 59, 59);
         }
 
         /// <summary>
-        /// Gets the last day of the month of the specified <code>date</code>.
+        /// Gets the last day of the month of the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the last day of the month.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the month.</returns>
         public static DateTimeOffset GetLastDayOfMonth(DateTimeOffset date) {
             int daysInMonth = DateTime.DaysInMonth(date.Year, date.Month);
             return new DateTimeOffset(date.Year, date.Month, daysInMonth, 23, 59, 59, date.Offset);
@@ -322,32 +316,32 @@ namespace Skybrud.Essentials.Time {
         #region GetFirstDayOfWeek
 
         /// <summary>
-        /// Gets the first day of the week of the specified <code>date</code>. Monday is considered the first day of
+        /// Gets the first day of the week of the specified <paramref name="date"/>. Monday is considered the first day of
         /// the week.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the first day of the week.</returns>
         public static DateTime GetFirstDayOfWeek(DateTime date) {
             return GetFirstDayOfWeek(date, DayOfWeek.Monday);
         }
 
         /// <summary>
-        /// Gets the first day of the week of the specified <code>date</code>. Monday is considered the first day of
+        /// Gets the first day of the week of the specified <paramref name="date"/>. Monday is considered the first day of
         /// the week.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
         public static DateTimeOffset GetFirstDayOfWeek(DateTimeOffset date) {
             return GetFirstDayOfWeek(date, DayOfWeek.Monday);
         }
 
         /// <summary>
-        /// Gets the first day of the week of the specified <code>date</code> and based on <code>startOfWeek</code>.
+        /// Gets the first day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the first day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the first day of the week.</returns>
         public static DateTime GetFirstDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
             int diff = date.DayOfWeek - startOfWeek;
             if (diff < 0) diff += 7;
@@ -355,12 +349,12 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the week of the specified <code>date</code> and based on <code>startOfWeek</code>.
+        /// Gets the first day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
         public static DateTimeOffset GetFirstDayOfWeek(DateTimeOffset date, DayOfWeek startOfWeek) {
             int diff = date.DayOfWeek - startOfWeek;
             if (diff < 0) diff += 7;
@@ -372,43 +366,43 @@ namespace Skybrud.Essentials.Time {
         #region GetLastDayOfWeek
 
         /// <summary>
-        /// Gets the last day of the week of the specified <code>date</code>. Monday is considered the first day of
+        /// Gets the last day of the week of the specified <paramref name="date"/>. Monday is considered the first day of
         /// the week.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the last day of the week.</returns>
         public static DateTime GetLastDayOfWeek(DateTime date) {
             return GetLastDayOfWeek(date, DayOfWeek.Monday);
         }
 
         /// <summary>
-        /// Gets the last day of the week of the specified <code>date</code>. Monday is considered the first day of
+        /// Gets the last day of the week of the specified <paramref name="date"/>. Monday is considered the first day of
         /// the week.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
         public static DateTimeOffset GetLastDayOfWeek(DateTimeOffset date) {
             return GetLastDayOfWeek(date, DayOfWeek.Monday);
         }
 
         /// <summary>
-        /// Gets the last day of the week of the specified <code>date</code> and based on <code>startOfWeek</code>.
+        /// Gets the last day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the last day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the last day of the week.</returns>
         public static DateTime GetLastDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
             return GetFirstDayOfWeek(date, startOfWeek).AddDays(7).AddSeconds(-1);
         }
 
         /// <summary>
-        /// Gets the last day of the week of the specified <code>date</code> and based on <code>startOfWeek</code>.
+        /// Gets the last day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
         public static DateTimeOffset GetLastDayOfWeek(DateTimeOffset date, DayOfWeek startOfWeek) {
             return GetFirstDayOfWeek(date, startOfWeek).AddDays(7).AddSeconds(-1);
         }
@@ -422,7 +416,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetFirstWeekdayOfMonth(DateTime date, DayOfWeek dayOfWeek) {
             return GetFirstWeekdayOfMonth(date.Year, date.Month, dayOfWeek);
         }
@@ -432,7 +426,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetFirstWeekdayOfMonth(DateTimeOffset date, DayOfWeek dayOfWeek) {
             return GetFirstWeekdayOfMonth(date.Year, date.Month, dayOfWeek, date.Offset);
         }
@@ -443,7 +437,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetFirstWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek) {
             return GetFirstWeekdayOfMonth(year, (int) month, dayOfWeek);
         }
@@ -454,7 +448,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         public static DateTimeOffset GetFirstWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek, TimeSpan offset) {
             return GetFirstWeekdayOfMonth(year, (int) month, dayOfWeek, offset);
@@ -466,7 +460,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetFirstWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek) {
             DateTime dt = new DateTime(year, month, 1);
             while (dt.DayOfWeek != dayOfWeek) {
@@ -482,7 +476,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetFirstWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek, TimeSpan offset) {
             DateTimeOffset dt = new DateTimeOffset(year, month, 1, 0, 0, 0, offset);
             while (dt.DayOfWeek != dayOfWeek) {
@@ -500,7 +494,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetLastWeekdayOfMonth(DateTime date, DayOfWeek dayOfWeek) {
             return GetLastWeekdayOfMonth(date.Year, date.Month, dayOfWeek);
         }
@@ -510,7 +504,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetLastWeekdayOfMonth(DateTimeOffset date, DayOfWeek dayOfWeek) {
             return GetLastWeekdayOfMonth(date.Year, date.Month, dayOfWeek, date.Offset);
         }
@@ -521,7 +515,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek) {
             return GetLastWeekdayOfMonth(year, (int) month, dayOfWeek);
         }
@@ -533,7 +527,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek, TimeSpan offset) {
             return GetLastWeekdayOfMonth(year, (int) month, dayOfWeek, offset);
         }
@@ -544,7 +538,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetLastWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek) {
             DateTime dt = new DateTime(year, month, DateTime.DaysInMonth(year, month));
             while (dt.DayOfWeek != dayOfWeek) {
@@ -560,7 +554,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
-        /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetLastWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek, TimeSpan offset) {
             DateTimeOffset dt = new DateTimeOffset(year, month, DateTime.DaysInMonth(year, month), 0, 0, 0, offset);
             while (dt.DayOfWeek != dayOfWeek) {
@@ -575,7 +569,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the English name of the day.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the English name of the day.</returns>
+        /// <returns>The English name of the day.</returns>
         public static string GetDayName(DateTime date) {
             return date.ToString("dddd", CultureInfo.InvariantCulture);
         }
@@ -584,7 +578,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the English name of the day.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the English name of the day.</returns>
+        /// <returns>The English name of the day.</returns>
         public static string GetDayName(DateTimeOffset date) {
             return date.ToString("dddd", CultureInfo.InvariantCulture);
         }
@@ -593,7 +587,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the name of the day according to the current culture.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the local name of the day.</returns>
+        /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTime date) {
             return date.ToString("dddd", CultureInfo.CurrentCulture);
         }
@@ -602,27 +596,27 @@ namespace Skybrud.Essentials.Time {
         /// Gets the name of the day according to the current culture.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the local name of the day.</returns>
+        /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTimeOffset date) {
             return date.ToString("dddd", CultureInfo.CurrentCulture);
         }
 
         /// <summary>
-        /// Gets the name of the day according to <code>culture</code>.
+        /// Gets the name of the day according to <paramref name="culture"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>Returns the local name of the day.</returns>
+        /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTime date, CultureInfo culture) {
             return date.ToString("dddd", culture);
         }
 
         /// <summary>
-        /// Gets the name of the day according to <code>culture</code>.
+        /// Gets the name of the day according to <paramref name="culture"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>Returns the local name of the day.</returns>
+        /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTimeOffset date, CultureInfo culture) {
             return date.ToString("dddd", culture);
         }
@@ -631,7 +625,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the English name of the month.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the English name of the month.</returns>
+        /// <returns>The English name of the month.</returns>
         public static string GetMonthName(DateTime date) {
             return date.ToString("MMMM", CultureInfo.InvariantCulture);
         }
@@ -640,7 +634,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the English name of the month.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the English name of the month.</returns>
+        /// <returns>The English name of the month.</returns>
         public static string GetMonthName(DateTimeOffset date) {
             return date.ToString("MMMM", CultureInfo.InvariantCulture);
         }
@@ -649,7 +643,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the name of the month according to the current culture.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the local name of the month.</returns>
+        /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTime date) {
             return date.ToString("MMMM", CultureInfo.CurrentCulture);
         }
@@ -658,27 +652,27 @@ namespace Skybrud.Essentials.Time {
         /// Gets the name of the month according to the current culture.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>Returns the local name of the month.</returns>
+        /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTimeOffset date) {
             return date.ToString("MMMM", CultureInfo.CurrentCulture);
         }
 
         /// <summary>
-        /// Gets the name of the month according to <code>culture</code>.
+        /// Gets the name of the month according to <paramref name="culture"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>Returns the local name of the month.</returns>
+        /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTime date, CultureInfo culture) {
             return date.ToString("MMMM", culture);
         }
 
         /// <summary>
-        /// Gets the name of the month according to <code>culture</code>.
+        /// Gets the name of the month according to <paramref name="culture"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>Returns the local name of the month.</returns>
+        /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTimeOffset date, CultureInfo culture) {
             return date.ToString("MMMM", culture);
         }
@@ -752,8 +746,9 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="monthName"/> into the an instance of <see cref="EssentialsDateMonth"/>
-        /// (eg. <code>August</code> will be converted to <see cref="EssentialsDateMonth.August"/>).
+        /// Converts the specified <paramref name="monthName"/> into the an instance of
+        /// <see cref="EssentialsDateMonth"/> (eg. <code>August</code> will be converted to
+        /// <see cref="EssentialsDateMonth.August"/>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
         /// <returns>An instance of <see cref="EssentialsDateMonth"/> representing the month.</returns>
@@ -763,11 +758,13 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="monthName"/> into the an instance of <see cref="EssentialsDateMonth"/>
-        /// (eg. <code>August</code> will be converted to <see cref="EssentialsDateMonth.August"/>).
+        /// Converts the specified <paramref name="monthName"/> into the an instance of
+        /// <see cref="EssentialsDateMonth"/> (eg. <code>August</code> will be converted to
+        /// <see cref="EssentialsDateMonth.August"/>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
-        /// <param name="provider">An object that supplies culture-specific format information about <paramref name="monthName"/>.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about
+        /// <paramref name="monthName"/>.</param>
         /// <returns>An instance of <see cref="EssentialsDateMonth"/> representing the month.</returns>
         public static EssentialsDateMonth ParseEnumFromMonthName(string monthName, IFormatProvider provider) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
@@ -804,9 +801,9 @@ namespace Skybrud.Essentials.Time {
         /// default value of <see cref="EssentialsDateMonth"/> if the conversion failed. The conversion fails if
         /// <paramref name="monthName"/> is <code>null</code>, is an empty string (""), or does not contain a valid
         /// month name. This parameter is passed uninitialized.</param>
-        /// <param name="provider">An object that supplies culture-specific format information about <paramref name="monthName"/>.</param>
-        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
-        /// <code>false</code>.</returns>
+        /// <param name="provider">An object that supplies culture-specific format information about
+        /// <paramref name="monthName"/>.</param> <returns><code>true</code> if <paramref name="monthName"/> was converted
+        /// successfully; otherwise, <code>false</code>.</returns>
         public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonth result) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             DateTime dt;

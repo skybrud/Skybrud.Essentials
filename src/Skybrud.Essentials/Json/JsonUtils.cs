@@ -44,7 +44,8 @@ namespace Skybrud.Essentials.Json {
         /// </summary>
         /// <typeparam name="T">The type to be returned.</typeparam>
         /// <param name="json">The JSON string to be parsed.</param>
-        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <typeparamref name="T"/>.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into
+        /// an instance of <typeparamref name="T"/>.</param>
         /// <returns>An instance of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
         public static T ParseJsonObject<T>(string json, Func<JObject, T> func) {
             return func(ParseJsonObject(json));
@@ -73,7 +74,8 @@ namespace Skybrud.Essentials.Json {
         /// </summary>
         /// <typeparam name="T">The type to be returned.</typeparam>
         /// <param name="path">The path to the JSON file.</param>
-        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <typeparamref name="T"/>.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into
+        /// an instance of <typeparamref name="T"/>.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T LoadJsonObject<T>(string path, Func<JObject, T> func) {
             return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8), func);
@@ -99,7 +101,8 @@ namespace Skybrud.Essentials.Json {
         /// Parses the specified <paramref name="json"/> string into an array of <typeparamref name="T"/>.
         /// </summary>
         /// <param name="json">The JSON string to be parsed.</param>
-        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <typeparamref name="T"/>.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into
+        /// an instance of <typeparamref name="T"/>.</param>
         /// <returns>An array of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
         public static T[] ParseJsonArray<T>(string json, Func<JObject, T> func) {
             return (
@@ -135,7 +138,8 @@ namespace Skybrud.Essentials.Json {
         /// </summary>
         /// <typeparam name="T">The type to be returned.</typeparam>
         /// <param name="path">The path to the JSON file.</param>
-        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <typeparamref name="T"/>.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into
+        /// an instance of <typeparamref name="T"/>.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T[] LoadJsonArray<T>(string path, Func<JObject, T> func) {
             return ParseJsonArray(File.ReadAllText(path, Encoding.UTF8), func);

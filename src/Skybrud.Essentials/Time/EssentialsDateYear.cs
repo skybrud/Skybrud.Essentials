@@ -23,7 +23,8 @@ namespace Skybrud.Essentials.Time {
         public bool IsLeapYear => TimeUtils.IsLeapYear(Year);
 
         /// <summary>
-        /// Gets the amount of days in the yeay - <code>366</code> if <see cref="IsLeapYear"/> is <code>true</code>, otherwise <code>365</code>.
+        /// Gets the amount of days in the yeay - <code>366</code> if <see cref="IsLeapYear"/> is <code>true</code>,
+        /// otherwise <code>365</code>.
         /// </summary>
         public int Days => IsLeapYear ? 366 : 365;
 
@@ -38,7 +39,8 @@ namespace Skybrud.Essentials.Time {
         public DateTime PalmSunday => CalendarUtils.GetPalmSunday(Year);
 
         /// <summary>
-        /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before <strong>Easter</strong>.
+        /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before
+        /// <strong>Easter</strong>.
         /// </summary>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
@@ -133,7 +135,7 @@ namespace Skybrud.Essentials.Time {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>year</code>.
+        /// Initializes a new instance from the specified <paramref name="year"/>.
         /// </summary>
         /// <param name="year">The year.</param>
         public EssentialsDateYear(int year) {
@@ -141,7 +143,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>timestamp</code>.
+        /// Initializes a new instance from the specified <paramref name="timestamp"/>.
         /// </summary>
         /// <param name="timestamp">A timestamp represented by an instance of <see cref="DateTime"/>.</param>
         public EssentialsDateYear(DateTime timestamp) {
@@ -149,7 +151,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Initializes a new instance from the specified <code>timestamp</code>.
+        /// Initializes a new instance from the specified <paramref name="timestamp"/>.
         /// </summary>
         /// <param name="timestamp">A timestamp represented by an instance of <see cref="EssentialsDateTime"/>.</param>
         public EssentialsDateYear(EssentialsDateTime timestamp) {

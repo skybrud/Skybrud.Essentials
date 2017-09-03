@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the element.</param>
-        /// <returns>Returns an instance of <see cref="XElement"/>, or <code>null</code> if <paramref name="name"/> doesn't match any elements.</returns>
+        /// <returns>An instance of <see cref="XElement"/>, or <code>null</code> if <paramref name="name"/> doesn't match any elements.</returns>
         public static XElement GetElement(this XElement element, XName name) {
             return element == null ? null : element.Element(name);
         }
@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression.</param>
-        /// <returns>Returns an instance of <see cref="XElement"/>, or <code>null</code> if <paramref name="expression"/> doesn't match any elements.</returns>
+        /// <returns>An instance of <see cref="XElement"/>, or <code>null</code> if <paramref name="expression"/> doesn't match any elements.</returns>
         public static XElement GetElement(this XElement element, string expression) {
             return element == null ? null : element.XPathSelectElement(expression);
         }

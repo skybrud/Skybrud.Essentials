@@ -21,9 +21,9 @@ namespace Skybrud.Essentials.Json {
         #region Constructor
 
         /// <summary>
-        /// Parses the specified <paramref name="obj"/> into an instance of <see cref="JsonObjectBase"/>.
+        /// Initializes a new instance from the specified <paramref name="obj"/>.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/> to be parsed.</param>
+        /// <param name="obj">The instance of <see cref="JObject"/> representing the object.</param>
         /// <returns>An instance of <see cref="JsonObjectBase"/>.</returns>
         protected JsonObjectBase(JObject obj) {
             JObject = obj;

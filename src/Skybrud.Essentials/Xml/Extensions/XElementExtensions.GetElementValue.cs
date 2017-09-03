@@ -16,7 +16,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <returns>An instance of <see cref="System.String"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="String"/> representing the element value.</returns>
         public static string GetElementValue(this XElement element, XName name) {
             XElement child = element == null ? null : element.GetElement(name);
             return child == null ? "" : child.Value;
@@ -42,7 +42,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the element should match.</param>
-        /// <returns>An instance of <see cref="System.String"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="String"/> representing the element value.</returns>
         public static string GetElementValue(this XElement element, string expression) {
             return GetElementValue(element, expression, null);
         }
@@ -68,7 +68,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <returns>An instance of <see cref="System.String"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="String"/> representing the element value.</returns>
         public static string GetElementValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             XElement attr = element == null ? null : element.GetElement(expression, resolver);
             return attr == null ? "" : attr.Value;
@@ -100,7 +100,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <returns>An instance of <see cref="System.Int32"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Int32"/> representing the element value.</returns>
         public static int GetElementValueAsInt32(this XElement element, XName name) {
             return GetElementValueAsInt32(element, name, x => x);
         }
@@ -111,7 +111,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <param name="value">An instance of <see cref="System.Int32"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsInt32(this XElement element, XName name, out int value) {
             return GetElementValue(element, name, out value);
@@ -137,7 +137,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the element should match.</param>
-        /// <returns>An instance of <see cref="System.Int32"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Int32"/> representing the element value.</returns>
         public static int GetElementValueAsInt32(this XElement element, string expression) {
             return GetElementValueAsInt32(element, expression, null, x => x);
         }
@@ -163,7 +163,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <returns>An instance of <see cref="System.Int32"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Int32"/> representing the element value.</returns>
         public static int GetElementValueAsInt32(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetElementValueAsInt32(element, expression, resolver, x => x);
         }
@@ -176,7 +176,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <param name="value">An instance of <see cref="System.Int32"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsInt32(this XElement element, string expression, IXmlNamespaceResolver resolver, out int value) {
             return GetElementValue(element, expression, resolver, out value);
@@ -208,7 +208,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <returns>An instance of <see cref="System.Int64"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Int64"/> representing the element value.</returns>
         public static long GetElementValueAsInt64(this XElement element, XName name) {
             return GetElementValueAsInt64(element, name, x => x);
         }
@@ -219,7 +219,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <param name="value">An instance of <see cref="System.Int64"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsInt64(this XElement element, XName name, out long value) {
             return GetElementValue(element, name, out value);
@@ -245,7 +245,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the element should match.</param>
-        /// <returns>An instance of <see cref="System.Int64"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Int64"/> representing the element value.</returns>
         public static long GetElementValueAsInt64(this XElement element, string expression) {
             return GetElementValueAsInt64(element, expression, null, x => x);
         }
@@ -271,7 +271,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <returns>An instance of <see cref="System.Int64"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Int64"/> representing the element value.</returns>
         public static long GetElementValueAsInt64(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetElementValueAsInt64(element, expression, resolver, x => x);
         }
@@ -284,7 +284,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <param name="value">An instance of <see cref="System.Int64"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsInt64(this XElement element, string expression, IXmlNamespaceResolver resolver, out long value) {
             return GetElementValue(element, expression, resolver, out value);
@@ -316,7 +316,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <returns>An instance of <see cref="System.Single"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
         public static float GetElementValueAsSingle(this XElement element, XName name) {
             return GetElementValueAsSingle(element, name, x => x);
         }
@@ -327,7 +327,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <param name="value">An instance of <see cref="System.Single"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsSingle(this XElement element, XName name, out float value) {
             return GetElementValue(element, name, out value);
@@ -353,7 +353,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the element should match.</param>
-        /// <returns>An instance of <see cref="System.Single"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
         public static float GetElementValueAsSingle(this XElement element, string expression) {
             return GetElementValueAsSingle(element, expression, null, x => x);
         }
@@ -379,7 +379,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <returns>An instance of <see cref="System.Single"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
         public static float GetElementValueAsSingle(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetElementValueAsSingle(element, expression, resolver, x => x);
         }
@@ -392,7 +392,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <param name="value">An instance of <see cref="System.Single"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsSingle(this XElement element, string expression, IXmlNamespaceResolver resolver, out float value) {
             return GetElementValue(element, expression, resolver, out value);
@@ -424,7 +424,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <returns>An instance of <see cref="System.Single"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
         public static float GetElementValueAsFloat(this XElement element, XName name) {
             return GetElementValueAsSingle(element, name, x => x);
         }
@@ -435,7 +435,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <param name="value">An instance of <see cref="System.Single"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsFloat(this XElement element, XName name, out float value) {
             return GetElementValue(element, name, out value);
@@ -461,7 +461,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the element should match.</param>
-        /// <returns>An instance of <see cref="System.Single"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
         public static float GetElementValueAsFloat(this XElement element, string expression) {
             return GetElementValueAsSingle(element, expression, null, x => x);
         }
@@ -487,7 +487,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <returns>An instance of <see cref="System.Single"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
         public static float GetElementValueAsFloat(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetElementValueAsSingle(element, expression, resolver, x => x);
         }
@@ -500,7 +500,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <param name="value">An instance of <see cref="System.Single"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsFloat(this XElement element, string expression, IXmlNamespaceResolver resolver, out float value) {
             return GetElementValue(element, expression, resolver, out value);
@@ -532,7 +532,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <returns>An instance of <see cref="System.Double"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Double"/> representing the element value.</returns>
         public static double GetElementValueAsDouble(this XElement element, XName name) {
             return GetElementValueAsDouble(element, name, x => x);
         }
@@ -543,7 +543,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <param name="value">An instance of <see cref="System.Double"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsDouble(this XElement element, XName name, out double value) {
             return GetElementValue(element, name, out value);
@@ -569,7 +569,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the element should match.</param>
-        /// <returns>An instance of <see cref="System.Double"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Double"/> representing the element value.</returns>
         public static double GetElementValueAsDouble(this XElement element, string expression) {
             return GetElementValueAsDouble(element, expression, null, x => x);
         }
@@ -595,7 +595,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <returns>An instance of <see cref="System.Double"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Double"/> representing the element value.</returns>
         public static double GetElementValueAsDouble(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetElementValueAsDouble(element, expression, resolver, x => x);
         }
@@ -608,7 +608,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <param name="value">An instance of <see cref="System.Double"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsDouble(this XElement element, string expression, IXmlNamespaceResolver resolver, out double value) {
             return GetElementValue(element, expression, resolver, out value);
@@ -640,7 +640,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <returns>An instance of <see cref="System.Boolean"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
         public static bool GetElementValueAsBoolean(this XElement element, XName name) {
             return GetElementValueAsBoolean(element, name, x => x);
         }
@@ -651,7 +651,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
-        /// <param name="value">An instance of <see cref="System.Boolean"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsBoolean(this XElement element, XName name, out bool value) {
 
@@ -674,7 +674,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the boolean value.</param>
-        /// <returns>An instance of <see cref="System.Boolean"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
         public static T GetElementValueAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
             bool value;
             return GetElementValueAsBoolean(element, name, out value) ? callback(value) : default(T);
@@ -686,7 +686,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the element should match.</param>
-        /// <returns>An instance of <see cref="System.Boolean"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
         public static bool GetElementValueAsBoolean(this XElement element, string expression) {
             return GetElementValueAsBoolean(element, expression, null, x => x);
         }
@@ -712,7 +712,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <returns>An instance of <see cref="System.Boolean"/> representing the element value.</returns>
+        /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
         public static bool GetElementValueAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver) {
             return GetElementValueAsBoolean(element, expression, resolver, x => x);
         }
@@ -725,7 +725,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression the element should match.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
-        /// <param name="value">An instance of <see cref="System.Boolean"/> representing the element value.</param>
+        /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
         /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
         public static bool GetElementValueAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver, out bool value) {
 

@@ -13,11 +13,13 @@ namespace Skybrud.Essentials.Json.Extensions {
     public static class JObjectExtensions {
 
         /// <summary>
-        /// Gets whether a token matching the specified <paramref name="path"/> exists and isn't <code>null</code> (or an empty string).
+        /// Gets whether a token matching the specified <paramref name="path"/> exists and isn't <code>null</code> (or
+        /// an empty string).
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns><code>true</code> if the property exists and the value isn't <code>null</code>, otherwise <code>false</code>.</returns>
+        /// <returns><code>true</code> if the property exists and the value isn't <code>null</code>, otherwise
+        /// <code>false</code>.</returns>
         public static bool HasValue(this JObject obj, string path) {
             JToken token = obj == null ? null : obj.SelectToken(path);
             return !(
@@ -49,7 +51,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not found.</returns>
+        /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
+        /// found.</returns>
         public static T GetObject<T>(this JObject obj, string path) {
             if (obj == null) return default(T);
             JObject child = obj.SelectToken(path) as JObject;
@@ -62,13 +65,15 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="func">The delegate (callback method) used for parsing the object.</param>
-        /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not found.</returns>
+        /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
+        /// found.</returns>
         public static T GetObject<T>(this JObject obj, string path, Func<JObject, T> func) {
             return obj == null ? default(T) : func(obj.SelectToken(path) as JObject);
         }
 
         /// <summary>
-        /// Gets the string value of the token matching the specified <paramref name="path"/>, or <code>null</code> if <paramref name="path"/> doesn't match a token.
+        /// Gets the string value of the token matching the specified <paramref name="path"/>, or <code>null</code> if
+        /// <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -80,7 +85,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the value of the token matching the specified <paramref name="path"/>, or <code>null</code> if <paramref name="path"/> doesn't match a token.
+        /// Gets the value of the token matching the specified <paramref name="path"/>, or <code>null</code> if
+        /// <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -93,18 +99,18 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int16"/> value of the token matching the specified <paramref name="path"/>, or
+        /// Gets the <see cref="Int16"/> value of the token matching the specified <paramref name="path"/>, or
         /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="System.Int16"/>.</returns>
+        /// <returns>An instance of <see cref="Int16"/>.</returns>
         public static Int16 GetInt16(this JObject obj, string path) {
             return GetInt16(obj, path, x => x);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int16"/> value of the token matching the specified <paramref name="path"/> and
+        /// Gets the <see cref="Int16"/> value of the token matching the specified <paramref name="path"/> and
         /// parses it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
         /// <paramref name="path"/> doesn't match a token.
         /// </summary>
@@ -112,25 +118,25 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting the integer value.</param>
-        /// <returns>An instance of <see cref="System.Int16"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// <returns>An instance of <see cref="Int16"/>, or <code>0</code> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         public static T GetInt16<T>(this JObject obj, string path, Func<Int16, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.UInt16"/> value of the token matching the specified <paramref name="path"/>, or
+        /// Gets the <see cref="UInt16"/> value of the token matching the specified <paramref name="path"/>, or
         /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="System.UInt16"/>.</returns>
+        /// <returns>An instance of <see cref="UInt16"/>.</returns>
         public static UInt16 GetUInt16(this JObject obj, string path) {
             return GetUInt16(obj, path, x => x);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.UInt16"/> value of the token matching the specified <paramref name="path"/> and
+        /// Gets the <see cref="UInt16"/> value of the token matching the specified <paramref name="path"/> and
         /// parses it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
         /// <paramref name="path"/> doesn't match a token.
         /// </summary>
@@ -138,51 +144,51 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting the integer value.</param>
-        /// <returns>An instance of <see cref="System.UInt16"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// <returns>An instance of <see cref="UInt16"/>, or <code>0</code> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         public static T GetUInt16<T>(this JObject obj, string path, Func<UInt16, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int32"/> value of the token matching the specified <paramref name="path"/>, or
+        /// Gets the <see cref="Int32"/> value of the token matching the specified <paramref name="path"/>, or
         /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="System.Int32"/>.</returns>
+        /// <returns>An instance of <see cref="Int32"/>.</returns>
         public static int GetInt32(this JObject obj, string path) {
             return GetInt32(obj, path, x => x);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int32"/> value of the token matching the specified <paramref name="path"/> and parses
-        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if <paramref name="path"/> doesn't
-        /// match a token.
+        /// Gets the <see cref="Int32"/> value of the token matching the specified <paramref name="path"/> and parses
+        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <typeparam name="T">The type of the parsed type.</typeparam>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting the integer value.</param>
-        /// <returns>An instance of <see cref="System.Int32"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// <returns>An instance of <see cref="Int32"/>, or <code>0</code> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         public static T GetInt32<T>(this JObject obj, string path, Func<int, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.UInt32"/> value of the token matching the specified <paramref name="path"/>, or
+        /// Gets the <see cref="UInt32"/> value of the token matching the specified <paramref name="path"/>, or
         /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="System.UInt32"/>.</returns>
+        /// <returns>An instance of <see cref="UInt32"/>.</returns>
         public static uint GetUInt32(this JObject obj, string path) {
             return GetUInt32(obj, path, x => x);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.UInt32"/> value of the token matching the specified <paramref name="path"/> and
+        /// Gets the <see cref="UInt32"/> value of the token matching the specified <paramref name="path"/> and
         /// parses it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
         /// <paramref name="path"/> doesn't match a token.
         /// </summary>
@@ -190,57 +196,57 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting the integer value.</param>
-        /// <returns>An instance of <see cref="System.UInt32"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// <returns>An instance of <see cref="UInt32"/>, or <code>0</code> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         public static T GetUInt32<T>(this JObject obj, string path, Func<uint, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int64"/> value of the token matching the specified <paramref name="path"/>, or
+        /// Gets the <see cref="Int64"/> value of the token matching the specified <paramref name="path"/>, or
         /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="System.Int64"/>.</returns>
+        /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long GetInt64(this JObject obj, string path) {
             return GetInt64(obj, path, x => x);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Int64"/> value of the token matching the specified <paramref name="path"/> and parses
-        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if <paramref name="path"/> doesn't
-        /// match a token.
+        /// Gets the <see cref="Int64"/> value of the token matching the specified <paramref name="path"/> and parses
+        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting the token value.</param>
-        /// <returns>An instance of <see cref="System.Int64"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// <returns>An instance of <see cref="Int64"/>, or <code>0</code> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         public static T GetInt64<T>(this JObject obj, string path, Func<long, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.UInt64"/> value of the token matching the specified <paramref name="path"/>, or
+        /// Gets the <see cref="UInt64"/> value of the token matching the specified <paramref name="path"/>, or
         /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="System.UInt64"/>.</returns>
+        /// <returns>An instance of <see cref="UInt64"/>.</returns>
         public static ulong GetUInt64(this JObject obj, string path) {
             return GetUInt64(obj, path, x => x);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.UInt64"/> value of the token matching the specified <paramref name="path"/> and parses
-        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if <paramref name="path"/> doesn't
-        /// match a token.
+        /// Gets the <see cref="UInt64"/> value of the token matching the specified <paramref name="path"/> and parses
+        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting the token value.</param>
-        /// <returns>An instance of <see cref="System.UInt64"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// <returns>An instance of <see cref="UInt64"/>, or <code>0</code> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         public static T GetUInt64<T>(this JObject obj, string path, Func<ulong, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
@@ -258,14 +264,14 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Single"/> value of the token matching the specified <paramref name="path"/> and parses
-        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if <paramref name="path"/> doesn't
-        /// match a token.
+        /// Gets the <see cref="Single"/> value of the token matching the specified <paramref name="path"/> and parses
+        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-        /// <returns>An instance of <see cref="System.Single"/>, or <code>0</code> if <paramref name="path"/> doesn't
+        /// <returns>An instance of <see cref="Single"/>, or <code>0</code> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         public static T GetFloat<T>(this JObject obj, string path, Func<float, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
@@ -283,39 +289,40 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Double"/> value of the token matching the specified <paramref name="path"/> and parses
-        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if <paramref name="path"/> doesn't
+        /// Gets the <see cref="Double"/> value of the token matching the specified <paramref name="path"/> and parses
+        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't
         /// match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-        /// <returns>An instance of <see cref="System.Double"/>, or <code>0</code> if <paramref name="path"/> doesn't
-        /// match a token.</returns>
+        /// <returns>An instance of <see cref="Double"/>, or <code>0</code> if <paramref name="path"/> doesn't match a
+        /// token.</returns>
         public static T GetDouble<T>(this JObject obj, string path, Func<double, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Boolean"/> value of the token matching the specified <paramref name="path"/>, or
+        /// Gets the <see cref="Boolean"/> value of the token matching the specified <paramref name="path"/>, or
         /// <code>0</code> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="System.Boolean"/>.</returns>
+        /// <returns>An instance of <see cref="Boolean"/>.</returns>
         public static bool GetBoolean(this JObject obj, string path) {
             return GetBoolean(obj, path, x => x);
         }
 
         /// <summary>
-        /// Gets the <see cref="System.Boolean"/> value of the token matching the specified <paramref name="path"/> and
-        /// parses it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if <paramref name="path"/>
-        /// doesn't match a token.
+        /// Gets the <see cref="Boolean"/> value of the token matching the specified <paramref name="path"/> and parses
+        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
+        /// <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-        /// <returns>An instance of <see cref="System.Boolean"/>, or <code>false</code> if <paramref name="path"/>
+        /// <returns>An instance of <see cref="Boolean"/>, or <code>false</code> if <paramref name="path"/>
         /// doesn't match a token.</returns>
         public static T GetBoolean<T>(this JObject obj, string path, Func<bool, T> callback) {
 
@@ -334,7 +341,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an enum of type <typeparamref name="T"/> from the token matching the specified <paramref name="path"/>.
+        /// Gets an enum of type <typeparamref name="T"/> from the token matching the specified
+        /// <paramref name="path"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
@@ -357,7 +365,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="DateTime"/> from the value of the token matching the specified <paramref name="path"/>.
+        /// Gets an instance of <see cref="DateTime"/> from the value of the token matching the specified
+        /// <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -370,29 +379,32 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="DateTime"/> from the value of the token matching the specified <paramref name="path"/>.
+        /// Gets an instance of <see cref="DateTime"/> from the value of the token matching the specified
+        /// <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="styles">A bitwise combination of the enumeration values that indicates the style elements that
         /// can be present in the property value for the parse operation to succeed and that defines how to interpret
         /// the parsed date in relation to the current time zone or the current date. A typical value to specify is
-        /// <see cref="System.Globalization.DateTimeStyles.None"/>.</param>
+        /// <see cref="DateTimeStyles.None"/>.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the value of the property.</returns>
         public static DateTime GetDateTime(this JObject obj, string path, DateTimeStyles styles) {
             return obj.GetString(path, x => DateTime.Parse(x, CultureInfo.InvariantCulture, styles));
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="DateTime"/> from the value of the token matching the specified <paramref name="path"/>.
+        /// Gets an instance of <see cref="DateTime"/> from the value of the token matching the specified
+        /// <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <param name="provider">An object that supplies culture-specific formatting information about the property value.</param>
-        /// <param name="styles">A bitwise combination of the enumeration values that indicates the style elements that
-        /// can be present in the property value for the parse operation to succeed and that defines how to interpret
-        /// the parsed date in relation to the current time zone or the current date. A typical value to specify is
-        /// <see cref="System.Globalization.DateTimeStyles.None"/>.</param>
+        /// <param name="provider">An object that supplies culture-specific formatting information about the property
+        /// value.</param>
+        /// <param name="styles">A bitwise combination of the enumeration values that indicates the style elements
+        /// that can be present in the property value for the parse operation to succeed and that defines how to
+        /// interpret the parsed date in relation to the current time zone or the current date. A typical value to
+        /// specify is <see cref="DateTimeStyles.None"/>.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the value of the property.</returns>
         public static DateTime GetDateTime(this JObject obj, string path, IFormatProvider provider, DateTimeStyles styles) {
             return obj.GetString(path, x => DateTime.Parse(x, provider, styles));
@@ -411,8 +423,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an array of <typeparamref name="T"/> from a property with the specified <code>propertyName</code> using the
-        /// specified delegate <code>func</code> for parsing each item in the array.
+        /// Gets an array of <typeparamref name="T"/> from the token matching the specified <paramref name="path"/>,
+        /// using the specified delegate <paramref name="callback"/> for parsing each item in the array.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -531,7 +543,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an array of <see cref="System.String"/> from the token matching the specified <paramref name="path"/>.
+        /// Gets an array of <see cref="String"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -541,21 +553,21 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets an array of <see cref="System.Int32"/> from the token matching the specified <paramref name="path"/>.
+        /// Gets an array of <see cref="Int32"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>The token value as an array of <see cref="System.Int32"/>.</returns>
+        /// <returns>The token value as an array of <see cref="Int32"/>.</returns>
         public static int[] GetInt32Array(this JObject obj, string path) {
             return GetArrayItems<int>(obj, path);
         }
 
         /// <summary>
-        /// Gets an array of <see cref="System.Int64"/> from the token matching the specified <paramref name="path"/>.
+        /// Gets an array of <see cref="Int64"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>The token value as an array of <see cref="System.Int64"/>.</returns>
+        /// <returns>The token value as an array of <see cref="Int64"/>.</returns>
         public static long[] GetInt64Array(this JObject obj, string path) {
             return GetArrayItems<long>(obj, path);
         }
@@ -571,8 +583,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="JToken"/> at the specified <paramref name="path"/>. If the type of <code>token</code> is
-        /// either <see cref="JTokenType.Object"/> or <see cref="JTokenType.Array"/>, the method will return
+        /// Gets the <see cref="JToken"/> at the specified <paramref name="path"/>. If the type of the token is either
+        /// <see cref="JTokenType.Object"/> or <see cref="JTokenType.Array"/>, the method will return
         /// <code>null</code> instead.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
