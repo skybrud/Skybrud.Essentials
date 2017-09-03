@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Assemblies {
         /// <param name="assembly">The assembly.</param>
         /// <returns>A string representing the version of the assembly.</returns>
         public static string GetVersion(Assembly assembly) {
-            if (assembly == null) throw new ArgumentNullException("assembly");
+            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
             return assembly.GetName().Version.ToString();
         }
 
@@ -25,8 +25,8 @@ namespace Skybrud.Essentials.Assemblies {
         /// <param name="assembly">The assembly.</param>
         /// <returns>A string representing the file version of the assembly.</returns>
         public static string GetFileVersion(Assembly assembly) {
-            if (assembly == null) throw new ArgumentNullException("assembly");
-            return assembly.Location == null ? null : FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
+            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
+            return FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
         }
 
         /// <summary>
@@ -35,8 +35,8 @@ namespace Skybrud.Essentials.Assemblies {
         /// <param name="assembly">The assembly.</param>
         /// <returns>A string representing the informational version of the assembly.</returns>
         public static string GetInformationalVersion(Assembly assembly) {
-            if (assembly == null) throw new ArgumentNullException("assembly");
-            return assembly.Location == null ? null : FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
+            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
+            return FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
         }
 
         /// <summary>
@@ -45,8 +45,8 @@ namespace Skybrud.Essentials.Assemblies {
         /// <param name="assembly">The assembly.</param>
         /// <returns>An instance of <see cref="FileVersionInfo"/>.</returns>
         public static FileVersionInfo GetFileVersionInfo(Assembly assembly) {
-            if (assembly == null) throw new ArgumentNullException("assembly");
-            return assembly.Location == null ? null : FileVersionInfo.GetVersionInfo(assembly.Location);
+            if (assembly == null) throw new ArgumentNullException(nameof(assembly));
+            return FileVersionInfo.GetVersionInfo(assembly.Location);
         }
 
     }
