@@ -3,7 +3,7 @@
     /// <summary>
     /// Enum class with values representing each month of a year.
     /// </summary>
-    public enum EssentialsDateMonth {
+    public enum EssentialsDateMonthName {
 
         /// <summary>
         /// Represents the month of January.

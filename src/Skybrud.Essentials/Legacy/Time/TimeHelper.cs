@@ -400,7 +400,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the day.</returns>
-        public static DateTime GetFirstWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek) {
+        public static DateTime GetFirstWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek) {
             return TimeUtils.GetFirstWeekdayOfMonth(year, month, dayOfWeek);
         }
 
@@ -412,7 +412,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
-        public static DateTimeOffset GetFirstWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek, TimeSpan offset) {
+        public static DateTimeOffset GetFirstWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek, TimeSpan offset) {
             return TimeUtils.GetFirstWeekdayOfMonth(year, month, dayOfWeek, offset);
         }
 
@@ -470,7 +470,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
-        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek) {
+        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek) {
             return TimeUtils.GetLastWeekdayOfMonth(year, month, dayOfWeek);
         }
 
@@ -482,7 +482,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         /// <returns>Returns an instance of <see cref="DateTimeOffset"/> representing the day.</returns>
-        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek, TimeSpan offset) {
+        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek, TimeSpan offset) {
             return TimeUtils.GetLastWeekdayOfMonth(year, month, dayOfWeek, offset);
         }
 

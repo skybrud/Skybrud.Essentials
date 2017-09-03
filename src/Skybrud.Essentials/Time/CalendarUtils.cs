@@ -170,7 +170,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Saint_Lucy's_Day</cref>
         /// </see>
         public static DateTime SaintLucysDay(int year) {
-            return GetDate(year, EssentialsDateMonth.December, 13);
+            return GetDate(year, EssentialsDateMonthName.December, 13);
         }
 
         /// <summary>
@@ -183,7 +183,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Christmas_Eve</cref>
         /// </see>
         public static DateTime GetChristmasEve(int year) {
-            return GetDate(year, EssentialsDateMonth.December, 24);
+            return GetDate(year, EssentialsDateMonthName.December, 24);
         }
 
         /// <summary>
@@ -196,7 +196,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Christmas_Day</cref>
         /// </see>
         public static DateTime GetChristmasDay(int year) {
-            return GetDate(year, EssentialsDateMonth.December, 25);
+            return GetDate(year, EssentialsDateMonthName.December, 25);
         }
 
         /// <summary>
@@ -209,7 +209,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Boxing_Day</cref>
         /// </see>
         public static DateTime GetBoxingDay(int year) {
-            return GetDate(year, EssentialsDateMonth.December, 26);
+            return GetDate(year, EssentialsDateMonthName.December, 26);
         }
 
         /// <summary>
@@ -222,7 +222,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/New_Year's_Eve</cref>
         /// </see>
         public static DateTime GetNewYearsEve(int year) {
-            return GetDate(year, EssentialsDateMonth.December, 31);
+            return GetDate(year, EssentialsDateMonthName.December, 31);
         }
 
         /// <summary>
@@ -235,7 +235,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/New_Year's_Day</cref>
         /// </see>
         public static DateTime GetNewYearsDay(int year) {
-            return GetDate(year, EssentialsDateMonth.January, 1);
+            return GetDate(year, EssentialsDateMonthName.January, 1);
         }
 
         #endregion
@@ -252,7 +252,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Groundhog_Day</cref>
         /// </see>
         public static DateTime GetGroundhogDay(int year) {
-            return GetDate(year, EssentialsDateMonth.February, 2);
+            return GetDate(year, EssentialsDateMonthName.February, 2);
         }
 
         /// <summary>
@@ -267,7 +267,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://en.wikipedia.org/wiki/Saint_Patrick's_Day</cref>
         /// </see>
         public static DateTime SaintPatricksDay(int year) {
-            return GetDate(year, EssentialsDateMonth.March, 17);
+            return GetDate(year, EssentialsDateMonthName.March, 17);
         }
             
         #endregion
@@ -292,7 +292,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Canada_Day</cref>
             /// </see>
             public static DateTime GetCanadaDay(int year) {
-                return GetDate(year, EssentialsDateMonth.July, 1);
+                return GetDate(year, EssentialsDateMonthName.July, 1);
             }
 
             /// <summary>
@@ -305,7 +305,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Labour_Day</cref>
             /// </see>
             public static DateTime GetLabourDay(int year) {
-                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.September, DayOfWeek.Monday);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonthName.September, DayOfWeek.Monday);
             }
 
             /// <summary>
@@ -320,7 +320,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Thanksgiving_(Canada)</cref>
             /// </see>
             public static DateTime GetThanksgivingDay(int year) {
-                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.October, DayOfWeek.Monday).AddDays(7);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonthName.October, DayOfWeek.Monday).AddDays(7);
             }
 
         }
@@ -367,7 +367,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Constitution_Day_(Denmark)</cref>
             /// </see>
             public static DateTime GetConstitutionDay(int year) {
-                return GetDate(year, EssentialsDateMonth.June, 5);
+                return GetDate(year, EssentialsDateMonthName.June, 5);
             }
 
         }
@@ -392,7 +392,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Independence_Day_(United_States)</cref>
             /// </see>
             public static DateTime GetIndependenceDay(int year) {
-                return GetDate(year, EssentialsDateMonth.July, 4);
+                return GetDate(year, EssentialsDateMonthName.July, 4);
             }
 
             /// <summary>
@@ -406,7 +406,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Patriot_Day</cref>
             /// </see>
             public static DateTime GetPatriotDay(int year) {
-                return GetDate(year, EssentialsDateMonth.September, 11);
+                return GetDate(year, EssentialsDateMonthName.September, 11);
             }
 
             /// <summary>
@@ -419,7 +419,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Labor_Day</cref>
             /// </see>
             public static DateTime GetLaborDay(int year) {
-                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.September, DayOfWeek.Monday);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonthName.September, DayOfWeek.Monday);
             }
 
             /// <summary>
@@ -433,7 +433,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Memorial_Day</cref>
             /// </see>
             public static DateTime GetMemorialDay(int year) {
-                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.May, DayOfWeek.Monday);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonthName.May, DayOfWeek.Monday);
             }
 
             /// <summary>
@@ -447,7 +447,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Veterans_Day</cref>
             /// </see>
             public static DateTime GetVeteransDay(int year) {
-                return GetDate(year, EssentialsDateMonth.November, 11);
+                return GetDate(year, EssentialsDateMonthName.November, 11);
             }
 
             /// <summary>
@@ -463,7 +463,7 @@ namespace Skybrud.Essentials.Time {
             ///     <cref>https://en.wikipedia.org/wiki/Thanksgiving_(United_States)</cref>
             /// </see>
             public static DateTime GetThanksgivingDay(int year) {
-                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonth.November, DayOfWeek.Thursday).AddDays(7 * 3);
+                return TimeUtils.GetFirstWeekdayOfMonth(year, EssentialsDateMonthName.November, DayOfWeek.Thursday).AddDays(7 * 3);
             }
 
         }
@@ -472,7 +472,7 @@ namespace Skybrud.Essentials.Time {
 
         #region Static methods
 
-        private static DateTime GetDate(int year, EssentialsDateMonth month, int day) {
+        private static DateTime GetDate(int year, EssentialsDateMonthName month, int day) {
             return new DateTime(year, (int) month, day);
         }
 

@@ -438,7 +438,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
-        public static DateTime GetFirstWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek) {
+        public static DateTime GetFirstWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek) {
             return GetFirstWeekdayOfMonth(year, (int) month, dayOfWeek);
         }
 
@@ -450,7 +450,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
-        public static DateTimeOffset GetFirstWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek, TimeSpan offset) {
+        public static DateTimeOffset GetFirstWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek, TimeSpan offset) {
             return GetFirstWeekdayOfMonth(year, (int) month, dayOfWeek, offset);
         }
 
@@ -516,7 +516,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="month">The month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
-        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek) {
+        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek) {
             return GetLastWeekdayOfMonth(year, (int) month, dayOfWeek);
         }
 
@@ -528,7 +528,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
-        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonth month, DayOfWeek dayOfWeek, TimeSpan offset) {
+        public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek, TimeSpan offset) {
             return GetLastWeekdayOfMonth(year, (int) month, dayOfWeek, offset);
         }
 
@@ -747,69 +747,69 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the an instance of
-        /// <see cref="EssentialsDateMonth"/> (eg. <code>August</code> will be converted to
-        /// <see cref="EssentialsDateMonth.August"/>).
+        /// <see cref="EssentialsDateMonthName"/> (eg. <code>August</code> will be converted to
+        /// <see cref="EssentialsDateMonthName.August"/>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
-        /// <returns>An instance of <see cref="EssentialsDateMonth"/> representing the month.</returns>
-        public static EssentialsDateMonth ParseEnumFromMonthName(string monthName) {
+        /// <returns>An instance of <see cref="EssentialsDateMonthName"/> representing the month.</returns>
+        public static EssentialsDateMonthName ParseEnumFromMonthName(string monthName) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
-            return (EssentialsDateMonth) DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
+            return (EssentialsDateMonthName) DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
         }
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the an instance of
-        /// <see cref="EssentialsDateMonth"/> (eg. <code>August</code> will be converted to
-        /// <see cref="EssentialsDateMonth.August"/>).
+        /// <see cref="EssentialsDateMonthName"/> (eg. <code>August</code> will be converted to
+        /// <see cref="EssentialsDateMonthName.August"/>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
         /// <param name="provider">An object that supplies culture-specific format information about
         /// <paramref name="monthName"/>.</param>
-        /// <returns>An instance of <see cref="EssentialsDateMonth"/> representing the month.</returns>
-        public static EssentialsDateMonth ParseEnumFromMonthName(string monthName, IFormatProvider provider) {
+        /// <returns>An instance of <see cref="EssentialsDateMonthName"/> representing the month.</returns>
+        public static EssentialsDateMonthName ParseEnumFromMonthName(string monthName, IFormatProvider provider) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
-            return (EssentialsDateMonth) DateTime.ParseExact(monthName, "MMMM", provider).Month;
+            return (EssentialsDateMonthName) DateTime.ParseExact(monthName, "MMMM", provider).Month;
         }
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into an enum representation of the month
         /// (eg. <code>August</code> is the eight month of the year, and will result in
-        /// <see cref="EssentialsDateMonth.August"/>) and returns a value that indicates whether the conversion
+        /// <see cref="EssentialsDateMonthName.August"/>) and returns a value that indicates whether the conversion
         /// succeeded.
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
-        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonth"/> value
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonthName"/> value
         /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
-        /// default value of <see cref="EssentialsDateMonth"/> if the conversion failed. The conversion fails if
+        /// default value of <see cref="EssentialsDateMonthName"/> if the conversion failed. The conversion fails if
         /// <paramref name="monthName"/> is <code>null</code>, is an empty string (""), or does not contain a valid
         /// month name. This parameter is passed uninitialized.</param>
         /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
         /// <code>false</code>.</returns>
-        public static bool TryParseEnumFromMonthName(string monthName, out EssentialsDateMonth result) {
+        public static bool TryParseEnumFromMonthName(string monthName, out EssentialsDateMonthName result) {
             return TryParseEnumFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
         }
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into an enum representation of the month
         /// (eg. <code>August</code> is the eight month of the year, and will result in
-        /// <see cref="EssentialsDateMonth.August"/>) and returns a value that indicates whether the conversion
+        /// <see cref="EssentialsDateMonthName.August"/>) and returns a value that indicates whether the conversion
         /// succeeded.
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
-        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonth"/> value
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonthName"/> value
         /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
-        /// default value of <see cref="EssentialsDateMonth"/> if the conversion failed. The conversion fails if
+        /// default value of <see cref="EssentialsDateMonthName"/> if the conversion failed. The conversion fails if
         /// <paramref name="monthName"/> is <code>null</code>, is an empty string (""), or does not contain a valid
         /// month name. This parameter is passed uninitialized.</param>
         /// <param name="provider">An object that supplies culture-specific format information about
         /// <paramref name="monthName"/>.</param> <returns><code>true</code> if <paramref name="monthName"/> was converted
         /// successfully; otherwise, <code>false</code>.</returns>
-        public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonth result) {
+        public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonthName result) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             DateTime dt;
             result = 0;
             if (DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out dt)) {
-                result = (EssentialsDateMonth) dt.Month;
+                result = (EssentialsDateMonthName) dt.Month;
                 return true;
             }
             return false;

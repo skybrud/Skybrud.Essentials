@@ -90,7 +90,7 @@
     <Compile Include="Strings\StringUtils.cs" />
     <Compile Include="Time\CalendarUtils.cs" />
     <Compile Include="Legacy\Time\CalendarHelper.cs" />
-    <Compile Include="Time\EssentialsDateMonth.cs" />
+    <Compile Include="Time\EssentialsDateMonthName.cs" />
     <Compile Include="Time\EssentialsDateTime.cs" />
     <Compile Include="Time\EssentialsDateWeek.cs" />
     <Compile Include="Time\EssentialsDateYear.cs" />

@@ -893,66 +893,66 @@ namespace UnitTestProject1.Time {
             CultureInfo danish = new CultureInfo("da-DK");
 
             var samples1 = new [] {
-                new { Input = "January", Expected = EssentialsDateMonth.January },
-                new { Input = "january", Expected = EssentialsDateMonth.January },
-                new { Input = "February", Expected = EssentialsDateMonth.February },
-                new { Input = "february", Expected = EssentialsDateMonth.February },
-                new { Input = "March", Expected = EssentialsDateMonth.March },
-                new { Input = "march", Expected = EssentialsDateMonth.March },
-                new { Input = "April", Expected = EssentialsDateMonth.April },
-                new { Input = "april", Expected = EssentialsDateMonth.April },
-                new { Input = "May", Expected = EssentialsDateMonth.May },
-                new { Input = "may", Expected = EssentialsDateMonth.May },
-                new { Input = "June", Expected = EssentialsDateMonth.June },
-                new { Input = "june", Expected = EssentialsDateMonth.June },
-                new { Input = "July", Expected = EssentialsDateMonth.July },
-                new { Input = "july", Expected = EssentialsDateMonth.July },
-                new { Input = "August", Expected = EssentialsDateMonth.August },
-                new { Input = "august", Expected = EssentialsDateMonth.August },
-                new { Input = "September", Expected = EssentialsDateMonth.September },
-                new { Input = "september", Expected = EssentialsDateMonth.September },
-                new { Input = "October", Expected = EssentialsDateMonth.October },
-                new { Input = "october", Expected = EssentialsDateMonth.October },
-                new { Input = "November", Expected = EssentialsDateMonth.November },
-                new { Input = "november", Expected = EssentialsDateMonth.November },
-                new { Input = "December", Expected = EssentialsDateMonth.December },
-                new { Input = "december", Expected = EssentialsDateMonth.December }
+                new { Input = "January", Expected = EssentialsDateMonthName.January },
+                new { Input = "january", Expected = EssentialsDateMonthName.January },
+                new { Input = "February", Expected = EssentialsDateMonthName.February },
+                new { Input = "february", Expected = EssentialsDateMonthName.February },
+                new { Input = "March", Expected = EssentialsDateMonthName.March },
+                new { Input = "march", Expected = EssentialsDateMonthName.March },
+                new { Input = "April", Expected = EssentialsDateMonthName.April },
+                new { Input = "april", Expected = EssentialsDateMonthName.April },
+                new { Input = "May", Expected = EssentialsDateMonthName.May },
+                new { Input = "may", Expected = EssentialsDateMonthName.May },
+                new { Input = "June", Expected = EssentialsDateMonthName.June },
+                new { Input = "june", Expected = EssentialsDateMonthName.June },
+                new { Input = "July", Expected = EssentialsDateMonthName.July },
+                new { Input = "july", Expected = EssentialsDateMonthName.July },
+                new { Input = "August", Expected = EssentialsDateMonthName.August },
+                new { Input = "august", Expected = EssentialsDateMonthName.August },
+                new { Input = "September", Expected = EssentialsDateMonthName.September },
+                new { Input = "september", Expected = EssentialsDateMonthName.September },
+                new { Input = "October", Expected = EssentialsDateMonthName.October },
+                new { Input = "october", Expected = EssentialsDateMonthName.October },
+                new { Input = "November", Expected = EssentialsDateMonthName.November },
+                new { Input = "november", Expected = EssentialsDateMonthName.November },
+                new { Input = "December", Expected = EssentialsDateMonthName.December },
+                new { Input = "december", Expected = EssentialsDateMonthName.December }
             };
 
             var samplesDanish = new[] {
-                new { Input = "Januar", Expected = EssentialsDateMonth.January },
-                new { Input = "januar", Expected = EssentialsDateMonth.January },
-                new { Input = "Februar", Expected = EssentialsDateMonth.February },
-                new { Input = "februar", Expected = EssentialsDateMonth.February },
-                new { Input = "Marts", Expected = EssentialsDateMonth.March },
-                new { Input = "marts", Expected = EssentialsDateMonth.March },
-                new { Input = "April", Expected = EssentialsDateMonth.April },
-                new { Input = "april", Expected = EssentialsDateMonth.April },
-                new { Input = "Maj", Expected = EssentialsDateMonth.May },
-                new { Input = "maj", Expected = EssentialsDateMonth.May },
-                new { Input = "Juni", Expected = EssentialsDateMonth.June },
-                new { Input = "juni", Expected = EssentialsDateMonth.June },
-                new { Input = "Juli", Expected = EssentialsDateMonth.July },
-                new { Input = "juli", Expected = EssentialsDateMonth.July },
-                new { Input = "August", Expected = EssentialsDateMonth.August },
-                new { Input = "august", Expected = EssentialsDateMonth.August },
-                new { Input = "September", Expected = EssentialsDateMonth.September },
-                new { Input = "september", Expected = EssentialsDateMonth.September },
-                new { Input = "Oktober", Expected = EssentialsDateMonth.October },
-                new { Input = "oktober", Expected = EssentialsDateMonth.October },
-                new { Input = "November", Expected = EssentialsDateMonth.November },
-                new { Input = "november", Expected = EssentialsDateMonth.November },
-                new { Input = "December", Expected = EssentialsDateMonth.December },
-                new { Input = "december", Expected = EssentialsDateMonth.December }
+                new { Input = "Januar", Expected = EssentialsDateMonthName.January },
+                new { Input = "januar", Expected = EssentialsDateMonthName.January },
+                new { Input = "Februar", Expected = EssentialsDateMonthName.February },
+                new { Input = "februar", Expected = EssentialsDateMonthName.February },
+                new { Input = "Marts", Expected = EssentialsDateMonthName.March },
+                new { Input = "marts", Expected = EssentialsDateMonthName.March },
+                new { Input = "April", Expected = EssentialsDateMonthName.April },
+                new { Input = "april", Expected = EssentialsDateMonthName.April },
+                new { Input = "Maj", Expected = EssentialsDateMonthName.May },
+                new { Input = "maj", Expected = EssentialsDateMonthName.May },
+                new { Input = "Juni", Expected = EssentialsDateMonthName.June },
+                new { Input = "juni", Expected = EssentialsDateMonthName.June },
+                new { Input = "Juli", Expected = EssentialsDateMonthName.July },
+                new { Input = "juli", Expected = EssentialsDateMonthName.July },
+                new { Input = "August", Expected = EssentialsDateMonthName.August },
+                new { Input = "august", Expected = EssentialsDateMonthName.August },
+                new { Input = "September", Expected = EssentialsDateMonthName.September },
+                new { Input = "september", Expected = EssentialsDateMonthName.September },
+                new { Input = "Oktober", Expected = EssentialsDateMonthName.October },
+                new { Input = "oktober", Expected = EssentialsDateMonthName.October },
+                new { Input = "November", Expected = EssentialsDateMonthName.November },
+                new { Input = "november", Expected = EssentialsDateMonthName.November },
+                new { Input = "December", Expected = EssentialsDateMonthName.December },
+                new { Input = "december", Expected = EssentialsDateMonthName.December }
             };
 
             foreach (var sample in samples1) {
-                EssentialsDateMonth month = TimeUtils.ParseEnumFromMonthName(sample.Input);
+                EssentialsDateMonthName month = TimeUtils.ParseEnumFromMonthName(sample.Input);
                 Assert.AreEqual(sample.Expected, month);
             }
 
             foreach (var sample in samplesDanish) {
-                EssentialsDateMonth month = TimeUtils.ParseEnumFromMonthName(sample.Input, danish);
+                EssentialsDateMonthName month = TimeUtils.ParseEnumFromMonthName(sample.Input, danish);
                 Assert.AreEqual(sample.Expected, month);
             }
 
@@ -965,68 +965,68 @@ namespace UnitTestProject1.Time {
             CultureInfo danish = new CultureInfo("da-DK");
 
             var samples1 = new[] {
-                new { Input = "January", Expected = true, Result = EssentialsDateMonth.January },
-                new { Input = "january", Expected = true, Result = EssentialsDateMonth.January },
-                new { Input = "February", Expected = true, Result = EssentialsDateMonth.February },
-                new { Input = "february", Expected = true, Result = EssentialsDateMonth.February },
-                new { Input = "March", Expected = true, Result = EssentialsDateMonth.March },
-                new { Input = "march", Expected = true, Result = EssentialsDateMonth.March },
-                new { Input = "April", Expected = true, Result = EssentialsDateMonth.April },
-                new { Input = "april", Expected = true, Result = EssentialsDateMonth.April },
-                new { Input = "May", Expected = true, Result = EssentialsDateMonth.May },
-                new { Input = "may", Expected = true, Result = EssentialsDateMonth.May },
-                new { Input = "June", Expected = true, Result = EssentialsDateMonth.June },
-                new { Input = "june", Expected = true, Result = EssentialsDateMonth.June },
-                new { Input = "July", Expected = true, Result = EssentialsDateMonth.July },
-                new { Input = "july", Expected = true, Result = EssentialsDateMonth.July },
-                new { Input = "August", Expected = true, Result = EssentialsDateMonth.August },
-                new { Input = "august", Expected = true, Result = EssentialsDateMonth.August },
-                new { Input = "September", Expected = true, Result = EssentialsDateMonth.September },
-                new { Input = "september", Expected = true, Result = EssentialsDateMonth.September },
-                new { Input = "October", Expected = true, Result = EssentialsDateMonth.October },
-                new { Input = "october", Expected = true, Result = EssentialsDateMonth.October },
-                new { Input = "November", Expected = true, Result = EssentialsDateMonth.November },
-                new { Input = "november", Expected = true, Result = EssentialsDateMonth.November },
-                new { Input = "December", Expected = true, Result = EssentialsDateMonth.December },
-                new { Input = "december", Expected = true, Result = EssentialsDateMonth.December }
+                new { Input = "January", Expected = true, Result = EssentialsDateMonthName.January },
+                new { Input = "january", Expected = true, Result = EssentialsDateMonthName.January },
+                new { Input = "February", Expected = true, Result = EssentialsDateMonthName.February },
+                new { Input = "february", Expected = true, Result = EssentialsDateMonthName.February },
+                new { Input = "March", Expected = true, Result = EssentialsDateMonthName.March },
+                new { Input = "march", Expected = true, Result = EssentialsDateMonthName.March },
+                new { Input = "April", Expected = true, Result = EssentialsDateMonthName.April },
+                new { Input = "april", Expected = true, Result = EssentialsDateMonthName.April },
+                new { Input = "May", Expected = true, Result = EssentialsDateMonthName.May },
+                new { Input = "may", Expected = true, Result = EssentialsDateMonthName.May },
+                new { Input = "June", Expected = true, Result = EssentialsDateMonthName.June },
+                new { Input = "june", Expected = true, Result = EssentialsDateMonthName.June },
+                new { Input = "July", Expected = true, Result = EssentialsDateMonthName.July },
+                new { Input = "july", Expected = true, Result = EssentialsDateMonthName.July },
+                new { Input = "August", Expected = true, Result = EssentialsDateMonthName.August },
+                new { Input = "august", Expected = true, Result = EssentialsDateMonthName.August },
+                new { Input = "September", Expected = true, Result = EssentialsDateMonthName.September },
+                new { Input = "september", Expected = true, Result = EssentialsDateMonthName.September },
+                new { Input = "October", Expected = true, Result = EssentialsDateMonthName.October },
+                new { Input = "october", Expected = true, Result = EssentialsDateMonthName.October },
+                new { Input = "November", Expected = true, Result = EssentialsDateMonthName.November },
+                new { Input = "november", Expected = true, Result = EssentialsDateMonthName.November },
+                new { Input = "December", Expected = true, Result = EssentialsDateMonthName.December },
+                new { Input = "december", Expected = true, Result = EssentialsDateMonthName.December }
             };
 
             var samplesDanish = new[] {
-                new { Input = "Januar", Expected = true, Result = EssentialsDateMonth.January },
-                new { Input = "januar", Expected = true, Result = EssentialsDateMonth.January },
-                new { Input = "Februar", Expected = true, Result = EssentialsDateMonth.February },
-                new { Input = "februar", Expected = true, Result = EssentialsDateMonth.February },
-                new { Input = "Marts", Expected = true, Result = EssentialsDateMonth.March },
-                new { Input = "marts", Expected = true, Result = EssentialsDateMonth.March },
-                new { Input = "April", Expected = true, Result = EssentialsDateMonth.April },
-                new { Input = "april", Expected = true, Result = EssentialsDateMonth.April },
-                new { Input = "Maj", Expected = true, Result = EssentialsDateMonth.May },
-                new { Input = "maj", Expected = true, Result = EssentialsDateMonth.May },
-                new { Input = "Juni", Expected = true, Result = EssentialsDateMonth.June },
-                new { Input = "juni", Expected = true, Result = EssentialsDateMonth.June },
-                new { Input = "Juli", Expected = true, Result = EssentialsDateMonth.July },
-                new { Input = "juli", Expected = true, Result = EssentialsDateMonth.July },
-                new { Input = "August", Expected = true, Result = EssentialsDateMonth.August },
-                new { Input = "august", Expected = true, Result = EssentialsDateMonth.August },
-                new { Input = "September", Expected = true, Result = EssentialsDateMonth.September },
-                new { Input = "september", Expected = true, Result = EssentialsDateMonth.September },
-                new { Input = "Oktober", Expected = true, Result = EssentialsDateMonth.October },
-                new { Input = "oktober", Expected = true, Result = EssentialsDateMonth.October },
-                new { Input = "November", Expected = true, Result = EssentialsDateMonth.November },
-                new { Input = "november", Expected = true, Result = EssentialsDateMonth.November },
-                new { Input = "December", Expected = true, Result = EssentialsDateMonth.December },
-                new { Input = "december", Expected = true, Result = EssentialsDateMonth.December }
+                new { Input = "Januar", Expected = true, Result = EssentialsDateMonthName.January },
+                new { Input = "januar", Expected = true, Result = EssentialsDateMonthName.January },
+                new { Input = "Februar", Expected = true, Result = EssentialsDateMonthName.February },
+                new { Input = "februar", Expected = true, Result = EssentialsDateMonthName.February },
+                new { Input = "Marts", Expected = true, Result = EssentialsDateMonthName.March },
+                new { Input = "marts", Expected = true, Result = EssentialsDateMonthName.March },
+                new { Input = "April", Expected = true, Result = EssentialsDateMonthName.April },
+                new { Input = "april", Expected = true, Result = EssentialsDateMonthName.April },
+                new { Input = "Maj", Expected = true, Result = EssentialsDateMonthName.May },
+                new { Input = "maj", Expected = true, Result = EssentialsDateMonthName.May },
+                new { Input = "Juni", Expected = true, Result = EssentialsDateMonthName.June },
+                new { Input = "juni", Expected = true, Result = EssentialsDateMonthName.June },
+                new { Input = "Juli", Expected = true, Result = EssentialsDateMonthName.July },
+                new { Input = "juli", Expected = true, Result = EssentialsDateMonthName.July },
+                new { Input = "August", Expected = true, Result = EssentialsDateMonthName.August },
+                new { Input = "august", Expected = true, Result = EssentialsDateMonthName.August },
+                new { Input = "September", Expected = true, Result = EssentialsDateMonthName.September },
+                new { Input = "september", Expected = true, Result = EssentialsDateMonthName.September },
+                new { Input = "Oktober", Expected = true, Result = EssentialsDateMonthName.October },
+                new { Input = "oktober", Expected = true, Result = EssentialsDateMonthName.October },
+                new { Input = "November", Expected = true, Result = EssentialsDateMonthName.November },
+                new { Input = "november", Expected = true, Result = EssentialsDateMonthName.November },
+                new { Input = "December", Expected = true, Result = EssentialsDateMonthName.December },
+                new { Input = "december", Expected = true, Result = EssentialsDateMonthName.December }
             };
 
             foreach (var sample in samples1) {
-                EssentialsDateMonth result;
+                EssentialsDateMonthName result;
                 bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, out result);
                 Assert.AreEqual(sample.Expected, expected);
                 Assert.AreEqual(sample.Result, result);
             }
 
             foreach (var sample in samplesDanish) {
-                EssentialsDateMonth result;
+                EssentialsDateMonthName result;
                 bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, danish, out result);
                 Assert.AreEqual(sample.Expected, expected);
                 Assert.AreEqual(sample.Result, result);
