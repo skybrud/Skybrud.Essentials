@@ -188,6 +188,26 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return StringUtils.StripHtml(html, ignore);
         }
 
+        /// <summary>
+        /// Gets whether the <paramref name="input"/> string has a value. This extension method is equal to calling
+        /// <see cref="String.IsNullOrWhiteSpace"/>.
+        /// </summary>
+        /// <param name="input">The input string to test.</param>
+        /// <returns><code>true</code> if <paramref name="input"/> has a value; otherwise <code>false</code>.</returns>
+        public static bool HasValue(this string input) {
+            return !String.IsNullOrWhiteSpace(input);
+        }
+
+        /// <summary>
+        /// Gets whether the <paramref name="input"/> string has a value. This extension method is equal to calling
+        /// <see cref="String.IsNullOrWhiteSpace"/>.
+        /// </summary>
+        /// <param name="input">The input string to test.</param>
+        /// <returns><code>true</code> if <paramref name="input"/> has a value; otherwise <code>false</code>.</returns>
+        public static bool IsNullOrWhiteSpace(this string input) {
+            return !String.IsNullOrWhiteSpace(input);
+        }
+
     }
 
 }
