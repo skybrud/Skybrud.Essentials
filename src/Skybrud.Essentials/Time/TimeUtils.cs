@@ -683,6 +683,141 @@ namespace Skybrud.Essentials.Time {
             return date.ToString("MMMM", culture);
         }
 
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
+        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>).
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <returns>An instance of <see cref="System.Int32"/> representing the month.</returns>
+        public static int ParseNumberFromMonthName(string monthName) {
+            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException("monthName");
+            return DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
+        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>).
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about
+        /// <paramref name="monthName"/>.</param>
+        /// <returns>An instance of <see cref="System.Int32"/> representing the month.</returns>
+        public static int ParseNumberFromMonthName(string monthName, IFormatProvider provider) {
+            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException("monthName");
+            return DateTime.ParseExact(monthName, "MMMM", provider).Month;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
+        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>) and returns a
+        /// value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <param name="result">When this method returns, contains the <see cref="System.Int32"/> value
+        /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
+        /// or <code>0</code> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
+        /// <code>null</code>, is an empty string (""), or does not contain a valid month name. This parameter is
+        /// passed uninitialized.</param>
+        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
+        /// <code>false</code>.</returns>
+        public static bool TryParseNumberFromMonthName(string monthName, out int result) {
+            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException("monthName");
+            return TryParseNumberFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
+        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>) and returns a
+        /// value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about
+        /// <paramref name="monthName"/>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="System.Int32"/> value
+        /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
+        /// or <code>0</code> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
+        /// <code>null</code>, is an empty string (""), or does not contain a valid month name. This parameter is
+        /// passed uninitialized.</param>
+        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
+        /// <code>false</code>.</returns>
+        public static bool TryParseNumberFromMonthName(string monthName, IFormatProvider provider, out int result) {
+            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException("monthName");
+            DateTime dt;
+            result = 0;
+            if (DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out dt)) {
+                result = dt.Month;
+                return true;
+            }
+            return false;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into the an instance of <see cref="EssentialsDateMonth"/>
+        /// (eg. <code>August</code> will be converted to <see cref="EssentialsDateMonth.August"/>).
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <returns>An instance of <see cref="EssentialsDateMonth"/> representing the month.</returns>
+        public static EssentialsDateMonth ParseEnumFromMonthName(string monthName) {
+            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException("monthName");
+            return (EssentialsDateMonth) DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into the an instance of <see cref="EssentialsDateMonth"/>
+        /// (eg. <code>August</code> will be converted to <see cref="EssentialsDateMonth.August"/>).
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about <paramref name="monthName"/>.</param>
+        /// <returns>An instance of <see cref="EssentialsDateMonth"/> representing the month.</returns>
+        public static EssentialsDateMonth ParseEnumFromMonthName(string monthName, IFormatProvider provider) {
+            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException("monthName");
+            return (EssentialsDateMonth) DateTime.ParseExact(monthName, "MMMM", provider).Month;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into an enum representation of the month
+        /// (eg. <code>August</code> is the eight month of the year, and will result in
+        /// <see cref="EssentialsDateMonth.August"/>) and returns a value that indicates whether the conversion
+        /// succeeded.
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonth"/> value
+        /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
+        /// default value of <see cref="EssentialsDateMonth"/> if the conversion failed. The conversion fails if
+        /// <paramref name="monthName"/> is <code>null</code>, is an empty string (""), or does not contain a valid
+        /// month name. This parameter is passed uninitialized.</param>
+        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
+        /// <code>false</code>.</returns>
+        public static bool TryParseEnumFromMonthName(string monthName, out EssentialsDateMonth result) {
+            return TryParseEnumFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="monthName"/> into an enum representation of the month
+        /// (eg. <code>August</code> is the eight month of the year, and will result in
+        /// <see cref="EssentialsDateMonth.August"/>) and returns a value that indicates whether the conversion
+        /// succeeded.
+        /// </summary>
+        /// <param name="monthName">The name of the month.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonth"/> value
+        /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
+        /// default value of <see cref="EssentialsDateMonth"/> if the conversion failed. The conversion fails if
+        /// <paramref name="monthName"/> is <code>null</code>, is an empty string (""), or does not contain a valid
+        /// month name. This parameter is passed uninitialized.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about <paramref name="monthName"/>.</param>
+        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
+        /// <code>false</code>.</returns>
+        public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonth result) {
+            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException("monthName");
+            DateTime dt;
+            result = 0;
+            if (DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out dt)) {
+                result = (EssentialsDateMonth) dt.Month;
+                return true;
+            }
+            return false;
+        }
+
     }
 
 }

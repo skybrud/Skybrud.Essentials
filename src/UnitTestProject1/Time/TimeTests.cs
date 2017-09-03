@@ -811,6 +811,229 @@ namespace UnitTestProject1.Time {
 
         }
 
+
+        [TestMethod]
+        public void TryParseNumberFromMonthName() {
+
+            CultureInfo danish = new CultureInfo("da-DK");
+
+            var samples1 = new[] {
+                new { Input = "January", Expected = true, Result = 1 },
+                new { Input = "january", Expected = true, Result = 1 },
+                new { Input = "February", Expected = true, Result = 2 },
+                new { Input = "february", Expected = true, Result = 2 },
+                new { Input = "March", Expected = true, Result = 3 },
+                new { Input = "march", Expected = true, Result = 3 },
+                new { Input = "April", Expected = true, Result = 4 },
+                new { Input = "april", Expected = true, Result = 4 },
+                new { Input = "May", Expected = true, Result = 5 },
+                new { Input = "may", Expected = true, Result = 5 },
+                new { Input = "June", Expected = true, Result = 6 },
+                new { Input = "june", Expected = true, Result = 6 },
+                new { Input = "July", Expected = true, Result = 7 },
+                new { Input = "july", Expected = true, Result = 7 },
+                new { Input = "August", Expected = true, Result = 8 },
+                new { Input = "august", Expected = true, Result = 8 },
+                new { Input = "September", Expected = true, Result = 9 },
+                new { Input = "september", Expected = true, Result = 9 },
+                new { Input = "October", Expected = true, Result = 10 },
+                new { Input = "october", Expected = true, Result = 10 },
+                new { Input = "November", Expected = true, Result = 11 },
+                new { Input = "november", Expected = true, Result = 11 },
+                new { Input = "December", Expected = true, Result = 12 },
+                new { Input = "december", Expected = true, Result = 12 },
+            };
+
+            var samplesDanish = new[] {
+                new { Input = "Januar", Expected = true, Result = 1 },
+                new { Input = "januar", Expected = true, Result = 1 },
+                new { Input = "Februar", Expected = true, Result = 2 },
+                new { Input = "februar", Expected = true, Result = 2 },
+                new { Input = "Marts", Expected = true, Result = 3 },
+                new { Input = "marts", Expected = true, Result = 3 },
+                new { Input = "April", Expected = true, Result = 4 },
+                new { Input = "april", Expected = true, Result = 4 },
+                new { Input = "Maj", Expected = true, Result = 5 },
+                new { Input = "maj", Expected = true, Result = 5 },
+                new { Input = "Juni", Expected = true, Result = 6 },
+                new { Input = "juni", Expected = true, Result = 6 },
+                new { Input = "Juli", Expected = true, Result = 7 },
+                new { Input = "juli", Expected = true, Result = 7 },
+                new { Input = "August", Expected = true, Result = 8 },
+                new { Input = "august", Expected = true, Result = 8 },
+                new { Input = "September", Expected = true, Result = 9 },
+                new { Input = "september", Expected = true, Result = 9 },
+                new { Input = "Oktober", Expected = true, Result = 10 },
+                new { Input = "oktober", Expected = true, Result = 10 },
+                new { Input = "November", Expected = true, Result = 11 },
+                new { Input = "november", Expected = true, Result = 11 },
+                new { Input = "December", Expected = true, Result = 12 },
+                new { Input = "december", Expected = true, Result = 12 }
+            };
+
+            foreach (var sample in samples1) {
+                int result;
+                bool expected = TimeUtils.TryParseNumberFromMonthName(sample.Input, out result);
+                Assert.AreEqual(sample.Expected, expected, sample.Input);
+                Assert.AreEqual(sample.Result, result, sample.Input);
+            }
+
+            foreach (var sample in samplesDanish) {
+                int result;
+                bool expected = TimeUtils.TryParseNumberFromMonthName(sample.Input, danish, out result);
+                Assert.AreEqual(sample.Expected, expected, sample.Input);
+                Assert.AreEqual(sample.Result, result, sample.Input);
+            }
+
+        }
+
+        [TestMethod]
+        public void ParseEnumFromMonthName() {
+
+            CultureInfo danish = new CultureInfo("da-DK");
+
+            var samples1 = new [] {
+                new { Input = "January", Expected = EssentialsDateMonth.January },
+                new { Input = "january", Expected = EssentialsDateMonth.January },
+                new { Input = "February", Expected = EssentialsDateMonth.February },
+                new { Input = "february", Expected = EssentialsDateMonth.February },
+                new { Input = "March", Expected = EssentialsDateMonth.March },
+                new { Input = "march", Expected = EssentialsDateMonth.March },
+                new { Input = "April", Expected = EssentialsDateMonth.April },
+                new { Input = "april", Expected = EssentialsDateMonth.April },
+                new { Input = "May", Expected = EssentialsDateMonth.May },
+                new { Input = "may", Expected = EssentialsDateMonth.May },
+                new { Input = "June", Expected = EssentialsDateMonth.June },
+                new { Input = "june", Expected = EssentialsDateMonth.June },
+                new { Input = "July", Expected = EssentialsDateMonth.July },
+                new { Input = "july", Expected = EssentialsDateMonth.July },
+                new { Input = "August", Expected = EssentialsDateMonth.August },
+                new { Input = "august", Expected = EssentialsDateMonth.August },
+                new { Input = "September", Expected = EssentialsDateMonth.September },
+                new { Input = "september", Expected = EssentialsDateMonth.September },
+                new { Input = "October", Expected = EssentialsDateMonth.October },
+                new { Input = "october", Expected = EssentialsDateMonth.October },
+                new { Input = "November", Expected = EssentialsDateMonth.November },
+                new { Input = "november", Expected = EssentialsDateMonth.November },
+                new { Input = "December", Expected = EssentialsDateMonth.December },
+                new { Input = "december", Expected = EssentialsDateMonth.December }
+            };
+
+            var samplesDanish = new[] {
+                new { Input = "Januar", Expected = EssentialsDateMonth.January },
+                new { Input = "januar", Expected = EssentialsDateMonth.January },
+                new { Input = "Februar", Expected = EssentialsDateMonth.February },
+                new { Input = "februar", Expected = EssentialsDateMonth.February },
+                new { Input = "Marts", Expected = EssentialsDateMonth.March },
+                new { Input = "marts", Expected = EssentialsDateMonth.March },
+                new { Input = "April", Expected = EssentialsDateMonth.April },
+                new { Input = "april", Expected = EssentialsDateMonth.April },
+                new { Input = "Maj", Expected = EssentialsDateMonth.May },
+                new { Input = "maj", Expected = EssentialsDateMonth.May },
+                new { Input = "Juni", Expected = EssentialsDateMonth.June },
+                new { Input = "juni", Expected = EssentialsDateMonth.June },
+                new { Input = "Juli", Expected = EssentialsDateMonth.July },
+                new { Input = "juli", Expected = EssentialsDateMonth.July },
+                new { Input = "August", Expected = EssentialsDateMonth.August },
+                new { Input = "august", Expected = EssentialsDateMonth.August },
+                new { Input = "September", Expected = EssentialsDateMonth.September },
+                new { Input = "september", Expected = EssentialsDateMonth.September },
+                new { Input = "Oktober", Expected = EssentialsDateMonth.October },
+                new { Input = "oktober", Expected = EssentialsDateMonth.October },
+                new { Input = "November", Expected = EssentialsDateMonth.November },
+                new { Input = "november", Expected = EssentialsDateMonth.November },
+                new { Input = "December", Expected = EssentialsDateMonth.December },
+                new { Input = "december", Expected = EssentialsDateMonth.December }
+            };
+
+            foreach (var sample in samples1) {
+                EssentialsDateMonth month = TimeUtils.ParseEnumFromMonthName(sample.Input);
+                Assert.AreEqual(sample.Expected, month);
+            }
+
+            foreach (var sample in samplesDanish) {
+                EssentialsDateMonth month = TimeUtils.ParseEnumFromMonthName(sample.Input, danish);
+                Assert.AreEqual(sample.Expected, month);
+            }
+
+
+        }
+
+        [TestMethod]
+        public void TryParseEnumFromMonthName() {
+
+            CultureInfo danish = new CultureInfo("da-DK");
+
+            var samples1 = new[] {
+                new { Input = "January", Expected = true, Result = EssentialsDateMonth.January },
+                new { Input = "january", Expected = true, Result = EssentialsDateMonth.January },
+                new { Input = "February", Expected = true, Result = EssentialsDateMonth.February },
+                new { Input = "february", Expected = true, Result = EssentialsDateMonth.February },
+                new { Input = "March", Expected = true, Result = EssentialsDateMonth.March },
+                new { Input = "march", Expected = true, Result = EssentialsDateMonth.March },
+                new { Input = "April", Expected = true, Result = EssentialsDateMonth.April },
+                new { Input = "april", Expected = true, Result = EssentialsDateMonth.April },
+                new { Input = "May", Expected = true, Result = EssentialsDateMonth.May },
+                new { Input = "may", Expected = true, Result = EssentialsDateMonth.May },
+                new { Input = "June", Expected = true, Result = EssentialsDateMonth.June },
+                new { Input = "june", Expected = true, Result = EssentialsDateMonth.June },
+                new { Input = "July", Expected = true, Result = EssentialsDateMonth.July },
+                new { Input = "july", Expected = true, Result = EssentialsDateMonth.July },
+                new { Input = "August", Expected = true, Result = EssentialsDateMonth.August },
+                new { Input = "august", Expected = true, Result = EssentialsDateMonth.August },
+                new { Input = "September", Expected = true, Result = EssentialsDateMonth.September },
+                new { Input = "september", Expected = true, Result = EssentialsDateMonth.September },
+                new { Input = "October", Expected = true, Result = EssentialsDateMonth.October },
+                new { Input = "october", Expected = true, Result = EssentialsDateMonth.October },
+                new { Input = "November", Expected = true, Result = EssentialsDateMonth.November },
+                new { Input = "november", Expected = true, Result = EssentialsDateMonth.November },
+                new { Input = "December", Expected = true, Result = EssentialsDateMonth.December },
+                new { Input = "december", Expected = true, Result = EssentialsDateMonth.December }
+            };
+
+            var samplesDanish = new[] {
+                new { Input = "Januar", Expected = true, Result = EssentialsDateMonth.January },
+                new { Input = "januar", Expected = true, Result = EssentialsDateMonth.January },
+                new { Input = "Februar", Expected = true, Result = EssentialsDateMonth.February },
+                new { Input = "februar", Expected = true, Result = EssentialsDateMonth.February },
+                new { Input = "Marts", Expected = true, Result = EssentialsDateMonth.March },
+                new { Input = "marts", Expected = true, Result = EssentialsDateMonth.March },
+                new { Input = "April", Expected = true, Result = EssentialsDateMonth.April },
+                new { Input = "april", Expected = true, Result = EssentialsDateMonth.April },
+                new { Input = "Maj", Expected = true, Result = EssentialsDateMonth.May },
+                new { Input = "maj", Expected = true, Result = EssentialsDateMonth.May },
+                new { Input = "Juni", Expected = true, Result = EssentialsDateMonth.June },
+                new { Input = "juni", Expected = true, Result = EssentialsDateMonth.June },
+                new { Input = "Juli", Expected = true, Result = EssentialsDateMonth.July },
+                new { Input = "juli", Expected = true, Result = EssentialsDateMonth.July },
+                new { Input = "August", Expected = true, Result = EssentialsDateMonth.August },
+                new { Input = "august", Expected = true, Result = EssentialsDateMonth.August },
+                new { Input = "September", Expected = true, Result = EssentialsDateMonth.September },
+                new { Input = "september", Expected = true, Result = EssentialsDateMonth.September },
+                new { Input = "Oktober", Expected = true, Result = EssentialsDateMonth.October },
+                new { Input = "oktober", Expected = true, Result = EssentialsDateMonth.October },
+                new { Input = "November", Expected = true, Result = EssentialsDateMonth.November },
+                new { Input = "november", Expected = true, Result = EssentialsDateMonth.November },
+                new { Input = "December", Expected = true, Result = EssentialsDateMonth.December },
+                new { Input = "december", Expected = true, Result = EssentialsDateMonth.December }
+            };
+
+            foreach (var sample in samples1) {
+                EssentialsDateMonth result;
+                bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, out result);
+                Assert.AreEqual(sample.Expected, expected);
+                Assert.AreEqual(sample.Result, result);
+            }
+
+            foreach (var sample in samplesDanish) {
+                EssentialsDateMonth result;
+                bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, danish, out result);
+                Assert.AreEqual(sample.Expected, expected);
+                Assert.AreEqual(sample.Result, result);
+            }
+
+        }
+
         #endregion
 
     }
