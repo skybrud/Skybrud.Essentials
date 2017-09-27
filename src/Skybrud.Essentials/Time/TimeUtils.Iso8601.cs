@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>ISO 8601</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
         public static string ToIso8601(DateTime timestamp) {
             return timestamp.ToString(Iso8601DateFormat, CultureInfo.InvariantCulture);
         }
@@ -25,7 +25,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>ISO 8601</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
         public static string ToIso8601(DateTimeOffset timestamp) {
             return timestamp.ToString(Iso8601DateFormat, CultureInfo.InvariantCulture);
         }
@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>ISO 8601</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
         public static string ToIso8601(EssentialsDateTime timestamp) {
             if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
             return ToIso8601(timestamp.DateTime);
@@ -44,7 +44,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Converts the specified <paramref name="iso8601"/> date to an instance of <see cref="DateTime"/>.
         /// </summary>
-        /// <param name="iso8601">The string with the RFC 822 formatted string.</param>
+        /// <param name="iso8601">The string with the ISO 8601 formatted string.</param>
         /// <returns>An instance of <see cref="DateTime"/>.</returns>
         public static DateTime Iso8601ToDateTime(string iso8601) {
             return Iso8601ToDateTimeOffset(iso8601).DateTime;

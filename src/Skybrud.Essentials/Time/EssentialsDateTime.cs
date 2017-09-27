@@ -8,7 +8,7 @@ namespace Skybrud.Essentials.Time {
     // ReSharper disable InconsistentNaming
     
     /// <summary>
-    /// Class wrapping an instance of <see cref="DateTimeOffset"/> (as an alternative to using <see cref="Nullable{DateTimeOffset}"/>).
+    /// Class wrapping an instance of <see cref="DateTime"/> (as an alternative to using <see cref="Nullable{DateTime}"/>).
     /// </summary>
     [JsonConverter(typeof(EssentialsDateTimeConverter))]
     public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, IComparable<DateTime> {
