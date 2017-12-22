@@ -60,6 +60,7 @@
     <Compile Include="Enums\EnumLowerCaseConverterTests.cs" />
     <Compile Include="Enums\EnumTests.cs" />
     <Compile Include="Enums\EnumCamelCaseConverterTests.cs" />
+    <Compile Include="Json\Converters\TimeSpanSecondsConverterTests.cs" />
     <Compile Include="Json\Converters\EssentialsPartialDateConverterTests.cs" />
     <Compile Include="Json\JsonTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
