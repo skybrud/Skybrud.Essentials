@@ -42,7 +42,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
                 case JsonToken.Integer:
                 case JsonToken.Float:
-                    return TimeSpan.FromSeconds((double) reader.Value);
+                    return TimeSpan.FromSeconds((double) Convert.ChangeType(reader.Value, typeof(double), CultureInfo.InvariantCulture));
 
                 default:
                     throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);
