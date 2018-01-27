@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using System.Web;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -161,42 +160,6 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// URL encodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be encoded.</param>
-        /// <returns>The URL encoded string.</returns>
-        public static string UrlEncode(string str) {
-            return HttpUtility.UrlEncode(str);
-        }
-
-        /// <summary>
-        /// URL decodes a URL string.
-        /// </summary>
-        /// <param name="str">The string to be decoded.</param>
-        /// <returns>The URL decoded string.</returns>
-        public static string UrlDecode(string str) {
-            return HttpUtility.UrlDecode(str);
-        }
-
-        /// <summary>
-        /// HTML encodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be encoded.</param>
-        /// <returns>The encoded string.</returns>
-        public static string HtmlEncode(string str) {
-            return HttpUtility.HtmlEncode(str);
-        }
-
-        /// <summary>
-        /// HTML decodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be decoded.</param>
-        /// <returns>The decoded string.</returns>
-        public static string HtmlDecode(string str) {
-            return HttpUtility.HtmlDecode(str);
-        }
-
-        /// <summary>
         /// Counts number of words in the specified <paramref name="str"/>.
         /// </summary>
         /// <param name="str">The string to parse.</param>
@@ -290,6 +253,44 @@ namespace Skybrud.Essentials.Strings {
             return Regex.IsMatch(str ?? "", "^[0-9a-zA-Z]+$");
         }
 
+#if NET_FRAMEWORK
+
+        /// <summary>
+        /// URL encodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be encoded.</param>
+        /// <returns>The URL encoded string.</returns>
+        public static string UrlEncode(string str) {
+            return System.Web.HttpUtility.UrlEncode(str);
+        }
+
+        /// <summary>
+        /// URL decodes a URL string.
+        /// </summary>
+        /// <param name="str">The string to be decoded.</param>
+        /// <returns>The URL decoded string.</returns>
+        public static string UrlDecode(string str) {
+			return System.Web.HttpUtility.UrlDecode(str);
+        }
+
+        /// <summary>
+        /// HTML encodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be encoded.</param>
+        /// <returns>The encoded string.</returns>
+        public static string HtmlEncode(string str) {
+            return System.Web.HttpUtility.HtmlEncode(str);
+        }
+
+        /// <summary>
+        /// HTML decodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be decoded.</param>
+        /// <returns>The decoded string.</returns>
+        public static string HtmlDecode(string str) {
+            return System.Web.HttpUtility.HtmlDecode(str);
+        }
+		
         /// <summary>
         /// Strips all HTML elements from the specified <paramref name="html"/> string.
         /// </summary>
@@ -311,6 +312,70 @@ namespace Skybrud.Essentials.Strings {
             Regex regex = new Regex("<(?!(" + String.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
             return HtmlDecode(regex.Replace(html, String.Empty));
         }
+
+#endif
+
+#if NET_STANDARD
+
+		/// <summary>
+		/// URL encodes the specified <paramref name="str"/>.
+		/// </summary>
+		/// <param name="str">The string to be encoded.</param>
+		/// <returns>The URL encoded string.</returns>
+        public static string UrlEncode(string str) {
+            return System.Net.WebUtility.UrlEncode(str);
+        }
+
+        /// <summary>
+        /// URL decodes a URL string.
+        /// </summary>
+        /// <param name="str">The string to be decoded.</param>
+        /// <returns>The URL decoded string.</returns>
+        public static string UrlDecode(string str) {
+			return System.Net.WebUtility.UrlDecode(str);
+        }
+
+        /// <summary>
+        /// HTML encodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be encoded.</param>
+        /// <returns>The encoded string.</returns>
+        public static string HtmlEncode(string str) {
+            return System.Net.WebUtility.HtmlEncode(str);
+        }
+
+        /// <summary>
+        /// HTML decodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be decoded.</param>
+        /// <returns>The decoded string.</returns>
+        public static string HtmlDecode(string str) {
+            return System.Net.WebUtility.HtmlDecode(str);
+        }
+		
+        /// <summary>
+        /// Strips all HTML elements from the specified <paramref name="html"/> string.
+        /// </summary>
+        /// <param name="html">The input string containing the HTML.</param>
+        /// <returns>The input string without any HTML markup.</returns>
+        public static string StripHtml(string html) {
+            return HtmlDecode(Regex.Replace(html, "<.*?>", ""));
+        }
+
+        /// <summary>
+        /// Strips all HTML elements from the specified <paramref name="html"/> string, but keeps the HTML tags as
+        /// specified in <paramref name="ignore"/>.
+        /// </summary>
+        /// <param name="html">The input string containing the HTML.</param>
+        /// <param name="ignore">An of tag names (without the brackets, like <code>div</code>) to ignore.</param>
+        /// <returns>The stripped result.</returns>
+        public static string StripHtml(string html, params string[] ignore) {
+            if (ignore == null || ignore.Length == 0) return StripHtml(html);
+            Regex regex = new Regex("<(?!(" + String.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
+            return HtmlDecode(regex.Replace(html, String.Empty));
+        }
+
+#endif
 
     }
 

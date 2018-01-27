@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.26430.14
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Skybrud.Essentials", "Skybrud.Essentials\Skybrud.Essentials.csproj", "{EDEB8F09-B293-4D1B-BC36-AD6C8EF8D9BD}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skybrud.Essentials", "Skybrud.Essentials\Skybrud.Essentials.csproj", "{EDEB8F09-B293-4D1B-BC36-AD6C8EF8D9BD}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject1", "UnitTestProject1\UnitTestProject1.csproj", "{A160E1D0-5C6E-414D-BA75-06CC12FBFCEF}"
 EndProject

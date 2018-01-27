@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Enums {
@@ -94,7 +95,12 @@ namespace Skybrud.Essentials.Enums {
             if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
 
             // Check whether the type of T is an enum
+            #if NET_FRAMEWORK
             if (!typeof(T).IsEnum) throw new ArgumentException("Generic type T must be an enum");
+            #endif
+            #if NET_STANDARD
+            if (!typeof(T).GetTypeInfo().IsEnum) throw new ArgumentException("Generic type T must be an enum");
+            #endif
 
             // Initialize "value"
             value = default(T);
@@ -104,7 +110,7 @@ namespace Skybrud.Essentials.Enums {
 
             // Parse the enum
             foreach (T v in GetEnumValues<T>()) {
-                string ordinal = Convert.ChangeType(v, TypeCode.Int32) + "";
+                string ordinal = Convert.ChangeType(v, typeof(int)) + "";
                 string name = v.ToString().ToLowerInvariant();
                 if (ordinal == modified || name == modified) {
                     value = v;

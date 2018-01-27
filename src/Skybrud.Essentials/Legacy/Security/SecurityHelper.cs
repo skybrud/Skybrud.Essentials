@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if NET_FRAMEWORK
+
+using System;
 using System.Security.Cryptography;
 using System.Text;
 
@@ -182,3 +184,5 @@ namespace Skybrud.Essentials.Security {
     }
 
 }
+
+#endif

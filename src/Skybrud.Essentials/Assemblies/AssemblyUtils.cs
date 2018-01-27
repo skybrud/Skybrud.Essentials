@@ -19,6 +19,8 @@ namespace Skybrud.Essentials.Assemblies {
             return assembly.GetName().Version.ToString();
         }
 
+#if I_CAN_HAZ_FILE_VERSION_INFO
+
         /// <summary>
         /// Gets the file version of the specified <paramref name="assembly"/>.
         /// </summary>
@@ -48,6 +50,8 @@ namespace Skybrud.Essentials.Assemblies {
             if (assembly == null) throw new ArgumentNullException(nameof(assembly));
             return FileVersionInfo.GetVersionInfo(assembly.Location);
         }
+
+#endif
 
     }
 

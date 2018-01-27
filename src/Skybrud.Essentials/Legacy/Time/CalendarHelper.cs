@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Calculates the date of <strong>Easter Sunday</strong> in the specified <code>year</code> according to
-        /// Western Christianity and the <see cref="GregorianCalendar"/>.
+        /// Western Christianity and the Gregorian calendar.
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Easter Sunday</code>.</returns>

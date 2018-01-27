@@ -1,133 +1,64 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
-  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
   <PropertyGroup>
-    <Configuration Condition=" '$(Configuration)' == '' ">Release</Configuration>
-    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{EDEB8F09-B293-4D1B-BC36-AD6C8EF8D9BD}</ProjectGuid>
-    <OutputType>Library</OutputType>
-    <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Skybrud.Essentials</RootNamespace>
-    <AssemblyName>Skybrud.Essentials</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
-    <FileAlignment>512</FileAlignment>
+    <TargetFrameworks>netstandard1.1;netstandard1.3;net45;net46</TargetFrameworks>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
-    <DebugSymbols>true</DebugSymbols>
-    <DebugType>full</DebugType>
-    <Optimize>false</Optimize>
-    <OutputPath>bin\Debug\</OutputPath>
-    <DefineConstants>DEBUG;TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
+  
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
+    <DefineConstants>NET_STANDARD</DefineConstants>
   </PropertyGroup>
-  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
-    <DebugType>pdbonly</DebugType>
-    <Optimize>true</Optimize>
-    <OutputPath>bin\Release\</OutputPath>
-    <DefineConstants>TRACE</DefineConstants>
-    <ErrorReport>prompt</ErrorReport>
-    <WarningLevel>4</WarningLevel>
-    <DocumentationFile>bin\Release\Skybrud.Essentials.xml</DocumentationFile>
+  
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH</DefineConstants>
   </PropertyGroup>
-  <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=6.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.6.0.5\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
-    </Reference>
-    <Reference Include="System" />
-    <Reference Include="System.Core" />
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
+    <DefineConstants>NET_FRAMEWORK;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAZ_FILE_VERSION_INFO</DefineConstants>
+  </PropertyGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46'">
     <Reference Include="System.Web" />
-    <Reference Include="System.Xml.Linq" />
-    <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="Microsoft.CSharp" />
-    <Reference Include="System.Data" />
-    <Reference Include="System.Xml" />
   </ItemGroup>
-  <ItemGroup>
-    <Compile Include="Assemblies\AssemblyUtils.cs" />
-    <Compile Include="Collections\Extensions\EnumerableExtensions.cs" />
-    <Compile Include="Collections\SortOrder.cs" />
-    <Compile Include="Common\PropertyNotSetException.cs" />
-    <Compile Include="Enums\EnumUtils.cs" />
-    <Compile Include="Json\Converters\Time\EssentialsPartialDateConverter.cs" />
-    <Compile Include="Json\Converters\Time\TimeSpanSecondsConverter.cs" />
-    <Compile Include="Json\JsonUtils.cs" />
-    <Compile Include="Legacy\Enums\EnumHelper.cs" />
-    <Compile Include="Legacy\Enums\EnumHelpers.cs" />
-    <Compile Include="Enums\EnumParseException.cs" />
-    <Compile Include="Json\Converters\Enums\EnumBaseConverter.cs" />
-    <Compile Include="Json\Converters\Enums\EnumPascalCaseConverter.cs" />
-    <Compile Include="Json\Converters\Enums\EnumCamelCaseConverter.cs" />
-    <Compile Include="Json\Converters\Enums\EnumLowerCaseConverter.cs" />
-    <Compile Include="Legacy\Json\Converters\Time\DateTimeUnixTimeConverter.cs" />
-    <Compile Include="Json\Converters\Time\EssentialsDateTimeConverter.cs" />
-    <Compile Include="Json\Converters\Time\UnixTimeConverter.cs" />
-    <Compile Include="Legacy\Json\Converters\Time\EssentialsDateTimeUnixTimeConverter.cs" />
-    <Compile Include="Json\Extensions\JArrayExtensions.cs" />
-    <Compile Include="Legacy\Json\Extensions\JObjectExtension.cs" />
-    <Compile Include="Json\Extensions\JObjectExtensions.cs" />
-    <Compile Include="Legacy\Json\JsonHelper.cs" />
-    <Compile Include="Legacy\Json\JsonHelpers.cs" />
-    <Compile Include="Json\JsonObjectBase.cs" />
-    <Compile Include="Legacy\Locations\LocationHelper.cs" />
-    <Compile Include="Legacy\Security\SecurityHelper.cs" />
-    <Compile Include="Legacy\Strings\StringHelper.cs" />
-    <Compile Include="Legacy\Strings\StringHelpers.cs" />
-    <Compile Include="Legacy\Xml\XmlHelpers.cs" />
-    <Compile Include="Locations\EssentialsLocation.cs" />
-    <Compile Include="Locations\Extensions\LocationExtensions.cs" />
-    <Compile Include="Locations\ILocation.cs" />
-    <Compile Include="Locations\LocationUtils.cs" />
-    <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Security\SecurityUtils.cs" />
-    <Compile Include="Strings\Extensions\StringExtensions.Legacy.cs" />
-    <Compile Include="Strings\Extensions\StringExtensions.Int64.cs" />
-    <Compile Include="Strings\Extensions\StringExtensions.Int32.cs" />
-    <Compile Include="Strings\Extensions\StringExtensions.cs" />
-    <Compile Include="Strings\StringUtils.Legacy.cs" />
-    <Compile Include="Strings\StringUtils.Int64.cs" />
-    <Compile Include="Strings\StringUtils.Int32.cs" />
-    <Compile Include="Strings\StringUtils.cs" />
-    <Compile Include="Time\CalendarUtils.cs" />
-    <Compile Include="Legacy\Time\CalendarHelper.cs" />
-    <Compile Include="Time\EssentialsDateMonthName.cs" />
-    <Compile Include="Time\EssentialsDateTime.cs" />
-    <Compile Include="Time\EssentialsDateWeek.cs" />
-    <Compile Include="Time\EssentialsDateYear.cs" />
-    <Compile Include="Time\EssentialsPartialDate.cs" />
-    <Compile Include="Time\Extensions\DateTimeExtensions.cs" />
-    <Compile Include="Time\TimeUtils.cs" />
-    <Compile Include="Time\TimeUtils.Iso8601.cs" />
-    <Compile Include="Time\TimeUtils.Rfc2822.cs" />
-    <Compile Include="Time\TimeUtils.Rfc822.cs" />
-    <Compile Include="Time\TimeUtils.UnixTime.cs" />
-    <Compile Include="Legacy\Time\TimeHelper.UnixTime.cs" />
-    <Compile Include="Legacy\Time\TimeHelper.cs" />
-    <Compile Include="Xml\Extensions\XElementExtensions.cs" />
-    <Compile Include="Xml\Extensions\XElementExtensions.GetAttribute.cs" />
-    <Compile Include="Xml\Extensions\XElementExtensions.GetAttributeValue.cs" />
-    <Compile Include="Xml\Extensions\XElementExtensions.GetElementValue.cs" />
-    <Compile Include="Xml\Extensions\XElementExtensions.GetElements.cs" />
-    <Compile Include="Xml\Extensions\XElementExtensions.GetElement.cs" />
-    <Compile Include="Xml\XmlObjectBase.cs" />
-    <Compile Include="Xml\XmlUtils.cs" />
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="packages.config" />
-    <None Include="Properties\AssemblyInfo.json" />
-    <None Include="Skybrud.Essentials.nuspec" />
-  </ItemGroup>
-  <ItemGroup />
-  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+
   <PropertyGroup>
-    <PostBuildEvent>"$(SolutionDir)build\UpdateAssemblyInfoJson.exe" "$(ProjectPath)" "$(TargetPath)"</PostBuildEvent>
+    <Version>1.1.0</Version>
+    <Authors>Anders Bjerner</Authors>
+    <Description>Library with common purpose functionality for working with .NET.</Description>
+    <Copyright>Copyright © 2018</Copyright>
   </PropertyGroup>
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
+
+  <PropertyGroup>
+    <PackageId>Skybrud.Essentials</PackageId>
+    <PackageTitle>Skybrud.Essentials</PackageTitle>
+    <PackageVersion>1.1.0</PackageVersion>
+    <PackageTags>Skybrud, Essentials</PackageTags>
+    <PackageLicenseUrl>https://github.com/skybrud/Skybrud.Essentials/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/skybrud/Skybrud.Essentials</PackageProjectUrl>
+    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.1|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.1\Skybrud.Essentials.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|netstandard1.3|AnyCPU'">
+    <DocumentationFile>bin\Release\netstandard1.3\Skybrud.Essentials.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net45|AnyCPU'">
+    <DocumentationFile>bin\Release\net45\Skybrud.Essentials.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Release|net46|AnyCPU'">
+    <DocumentationFile>bin\Release\net46\Skybrud.Essentials.xml</DocumentationFile>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="10.0.3" />
+  </ItemGroup>
+
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+    <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
+  </ItemGroup>
+
 </Project>

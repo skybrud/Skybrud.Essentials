@@ -1,12 +1,11 @@
 ﻿using System;
-using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
     /// Utility class used for calculating the dates of varios international and national days.
     /// </summary>
-    public class CalendarUtils {
+    public static class CalendarUtils {
 
         #region Easter dates according to the Gregorian calendar
 
@@ -61,7 +60,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Calculates the date of <strong>Easter Sunday</strong> in the specified <paramref name="year"/> according to
-        /// Western Christianity and the <see cref="GregorianCalendar"/>.
+        /// Western Christianity and the Gregorian calendar.
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Easter Sunday</strong>.</returns>

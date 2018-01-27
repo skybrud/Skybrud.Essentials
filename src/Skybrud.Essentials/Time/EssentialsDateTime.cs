@@ -240,18 +240,6 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="year"/>, <paramref name="month"/> and
-        /// <paramref name="day"/> for the specified <paramref name="calendar"/>.
-        /// </summary>
-        /// <param name="year">The year (<code>1</code> through <code>9999</code>).</param>
-        /// <param name="month">The month (<code>1</code> through <code>12</code>).</param>
-        /// <param name="day">The day (<code>1</code> through the number of days in month).</param>
-        /// <param name="calendar">The calendar that is used to interpret year, month, and day.</param>
-        public EssentialsDateTime(int year, int month, int day, Calendar calendar) {
-            DateTime = new DateTime(year, month, day, calendar);
-        }
-
-        /// <summary>
         /// Initializes a new instance based on the specified <paramref name="year"/>, <paramref name="month"/>,
         /// <paramref name="day"/>, <paramref name="hour"/>, <paramref name="minute"/> and <paramref name="second"/>.
         /// </summary>
@@ -280,22 +268,6 @@ namespace Skybrud.Essentials.Time {
         /// Coordinated Universal Time (UTC), or neither.</param>
         public EssentialsDateTime(int year, int month, int day, int hour, int minute, int second, DateTimeKind kind) {
             DateTime = new DateTime(year, month, day, hour, minute, second, kind);
-        }
-
-        /// <summary>
-        /// Initializes a new instance based on the specified <paramref name="year"/>, <paramref name="month"/>,
-        /// <paramref name="day"/>, <paramref name="hour"/>, <paramref name="minute"/> and <paramref name="second"/>
-        /// for the specified  <paramref name="calendar"/>.
-        /// </summary>
-        /// <param name="year">The year (<code>1</code> through <code>9999</code>).</param>
-        /// <param name="month">The month (<code>1</code> through <code>12</code>).</param>
-        /// <param name="day">The day (<code>1</code> through the number of days in month).</param>
-        /// <param name="hour">The hours (<code>0</code> through <code>23</code>).</param>
-        /// <param name="minute">The minutes (<code>0</code> through <code>59</code>).</param>
-        /// <param name="second">The seconds (<code>0</code> through <code>59</code>).</param>
-        /// <param name="calendar">The calendar that is used to interpret year, month, and day.</param>
-        public EssentialsDateTime(int year, int month, int day, int hour, int minute, int second, Calendar calendar) {
-            DateTime = new DateTime(year, month, day, hour, minute, second, calendar);
         }
 
         /// <summary>
@@ -330,6 +302,36 @@ namespace Skybrud.Essentials.Time {
         /// Coordinated Universal Time (UTC), or neither.</param>
         public EssentialsDateTime(int year, int month, int day, int hour, int minute, int second, int millisecond, DateTimeKind kind) {
             DateTime = new DateTime(year, month, day, hour, minute, second, millisecond, kind);
+        }
+
+        #if NET_FRAMEWORK
+
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="year"/>, <paramref name="month"/> and
+        /// <paramref name="day"/> for the specified <paramref name="calendar"/>.
+        /// </summary>
+        /// <param name="year">The year (<code>1</code> through <code>9999</code>).</param>
+        /// <param name="month">The month (<code>1</code> through <code>12</code>).</param>
+        /// <param name="day">The day (<code>1</code> through the number of days in month).</param>
+        /// <param name="calendar">The calendar that is used to interpret year, month, and day.</param>
+        public EssentialsDateTime(int year, int month, int day, Calendar calendar) {
+            DateTime = new DateTime(year, month, day, calendar);
+        }
+
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="year"/>, <paramref name="month"/>,
+        /// <paramref name="day"/>, <paramref name="hour"/>, <paramref name="minute"/> and <paramref name="second"/>
+        /// for the specified  <paramref name="calendar"/>.
+        /// </summary>
+        /// <param name="year">The year (<code>1</code> through <code>9999</code>).</param>
+        /// <param name="month">The month (<code>1</code> through <code>12</code>).</param>
+        /// <param name="day">The day (<code>1</code> through the number of days in month).</param>
+        /// <param name="hour">The hours (<code>0</code> through <code>23</code>).</param>
+        /// <param name="minute">The minutes (<code>0</code> through <code>59</code>).</param>
+        /// <param name="second">The seconds (<code>0</code> through <code>59</code>).</param>
+        /// <param name="calendar">The calendar that is used to interpret year, month, and day.</param>
+        public EssentialsDateTime(int year, int month, int day, int hour, int minute, int second, Calendar calendar) {
+            DateTime = new DateTime(year, month, day, hour, minute, second, calendar);
         }
 
         /// <summary>
@@ -368,6 +370,8 @@ namespace Skybrud.Essentials.Time {
         public EssentialsDateTime(int year, int month, int day, int hour, int minute, int second, int millisecond, Calendar calendar, DateTimeKind kind) {
             DateTime = new DateTime(year, month, day, hour, minute, second, millisecond, calendar, kind);
         }
+
+        #endif
 
         #endregion
 
@@ -557,7 +561,11 @@ namespace Skybrud.Essentials.Time {
         /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
         /// parameter.</returns>
         public int CompareTo(EssentialsDateTime value) {
+#if NET_FRAMEWORK
             return DateTime.CompareTo(value == null ? default(object) : value.DateTime);
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         /// <summary>
@@ -569,7 +577,11 @@ namespace Skybrud.Essentials.Time {
         /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
         /// parameter.</returns>
         public int CompareTo(object value) {
+#if NET_FRAMEWORK
             return DateTime.CompareTo(value);
+#else
+            throw new NotImplementedException();
+#endif
         }
 
         /// <summary>
@@ -673,6 +685,8 @@ namespace Skybrud.Essentials.Time {
             return DateTime.ToLocalTime();
         }
 
+        #if NET_FRAMEWORK
+
         /// <summary>
         /// Converts the value of the internal <see cref="System.DateTime"/> object to its equivalent long date string
         /// representation.
@@ -724,6 +738,8 @@ namespace Skybrud.Essentials.Time {
         public string ToShortTimeString() {
             return DateTime.ToShortTimeString();
         }
+
+        #endif
 
         /// <summary>
         /// Converts the value of the internal <see cref="System.DateTime"/> object to Coordinated Universal Time (UTC).
@@ -879,9 +895,9 @@ namespace Skybrud.Essentials.Time {
             return TimeUtils.GetLocalMonthName(DateTime, culture);
         }
 
-        #endregion
+#endregion
 
-        #region Static methods
+#region Static methods
 
         /// <summary>
         /// Parses the specified string into an instance of <see cref="EssentialsDateTime"/>.
@@ -1007,12 +1023,12 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsDateTime(TimeUtils.Rfc822ToDateTime(str));
         }
 
-        #endregion
+#endregion
 
-        #region Operator overloading
+#region Operator overloading
 
         /// <summary>
-        /// Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified
+        /// HEST Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified
         /// <paramref name="timestamp"/>.
         /// </summary>
         /// <param name="timestamp">An instance of <see cref="DateTime"/>.</param>
@@ -1179,6 +1195,8 @@ namespace Skybrud.Essentials.Time {
             return DateTime.GetHashCode();
         }
 
+#if TYPE_CODE
+
         /// <summary>
         /// Returns the <see cref="TypeCode"/> for value type <see cref="DateTime"/>.
         /// </summary>
@@ -1186,8 +1204,10 @@ namespace Skybrud.Essentials.Time {
         public TypeCode GetTypeCode() {
             return DateTime.GetTypeCode();
         }
+
+#endif
  
-        #endregion
+#endregion
 
     }
     

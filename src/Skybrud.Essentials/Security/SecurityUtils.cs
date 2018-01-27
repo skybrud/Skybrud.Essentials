@@ -1,4 +1,6 @@
-﻿using System;
+﻿#if I_CAN_HAZ_SECURITY
+
+using System;
 using System.IO;
 using System.Security.Cryptography;
 using System.Text;
@@ -189,3 +191,5 @@ namespace Skybrud.Essentials.Security {
     }
 
 }
+
+#endif

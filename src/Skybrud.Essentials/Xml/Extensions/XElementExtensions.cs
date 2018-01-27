@@ -9,8 +9,6 @@ namespace Skybrud.Essentials.Xml.Extensions {
     /// </summary>
     public static partial class XElementExtensions {
 
-        #region HasElementValue
-
         /// <summary>
         /// Gets whether the first element matching the specified <paramref name="name"/> has a value.
         /// </summary>
@@ -26,6 +24,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return child != null && !String.IsNullOrWhiteSpace(child.Value);
 
         }
+
+        #if I_CAN_HAZ_XPATH
 
         /// <summary>
         /// Gets whether the first element matching the specified XPath <paramref name="expression"/> has a value.
@@ -60,7 +60,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         }
 
-        #endregion
+        #endif
 
         /// <summary>
         /// Gets the outer XML of the specified <paramref name="element"/>.

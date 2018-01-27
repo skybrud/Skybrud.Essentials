@@ -52,36 +52,6 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
-        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
-        /// </summary>
-        /// <param name="path">The path to the JSON file.</param>
-        /// <returns>An instance of <see cref="JObject"/>.</returns>
-        public static JObject LoadJsonObject(string path) {
-            return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8));
-        }
-
-        /// <summary>
-        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
-        /// </summary>
-        /// <param name="path">The path to the JSON file.</param>
-        /// <returns>An instance of <typeparamref name="T"/>.</returns>
-        public static T LoadJsonObject<T>(string path) {
-            return LoadJsonObject(path).ToObject<T>();
-        }
-
-        /// <summary>
-        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
-        /// </summary>
-        /// <typeparam name="T">The type to be returned.</typeparam>
-        /// <param name="path">The path to the JSON file.</param>
-        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into
-        /// an instance of <typeparamref name="T"/>.</param>
-        /// <returns>An instance of <typeparamref name="T"/>.</returns>
-        public static T LoadJsonObject<T>(string path, Func<JObject, T> func) {
-            return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8), func);
-        }
-
-        /// <summary>
         /// Parses the specified <paramref name="json"/> string into an instance of <see cref="JArray"/>.
         /// </summary>
         /// <param name="json">The JSON string to be parsed.</param>
@@ -123,6 +93,39 @@ namespace Skybrud.Essentials.Json {
                 select item.ToObject<T>()
             ).ToArray();
         }
+
+#if I_CAN_HAZ_FILE
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <returns>An instance of <see cref="JObject"/>.</returns>
+        public static JObject LoadJsonObject(string path) {
+            return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8));
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
+        public static T LoadJsonObject<T>(string path) {
+            return LoadJsonObject(path).ToObject<T>();
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to be returned.</typeparam>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into
+        /// an instance of <typeparamref name="T"/>.</param>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
+        public static T LoadJsonObject<T>(string path, Func<JObject, T> func) {
+            return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8), func);
+        }
+
 
         /// <summary>
         /// Loads and parses the JSON array in the file at the specified <paramref name="path"/>.
@@ -356,7 +359,9 @@ namespace Skybrud.Essentials.Json {
             if (collection == null) throw new ArgumentNullException(nameof(collection));
             File.WriteAllText(path, JsonConvert.SerializeObject(from item in collection select item == null ? null : item.JObject, formatting), Encoding.UTF8);
         }
-    
+
+#endif
+
     }
 
 }

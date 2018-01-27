@@ -31,6 +31,29 @@ namespace Skybrud.Essentials.Json {
         public static T ParseJsonObject<T>(string json, Func<JObject, T> func) {
             return JsonUtils.ParseJsonObject(json, func);
         }
+        
+        /// <summary>
+        /// Parses the specified <code>json</code> string into an instance of <see cref="JArray"/>.
+        /// </summary>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <returns>Returns an instance of <see cref="JArray"/> parsed from the specified <code>json</code> string.</returns>
+        [Obsolete("Use the JsonUtils class instead.")]
+        public static JArray ParseJsonArray(string json) {
+            return JsonUtils.ParseJsonArray(json);
+        }
+
+        /// <summary>
+        /// Parses the specified <code>json</code> string into an array of <code>T</code>.
+        /// </summary>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <code>T</code>.</param>
+        /// <returns>Returns an array of <code>T</code> parsed from the specified <code>json</code> string.</returns>
+        [Obsolete("Use the JsonUtils class instead.")]
+        public static T[] ParseJsonArray<T>(string json, Func<JObject, T> func) {
+            return JsonUtils.ParseJsonArray(json, func);
+        }
+
+        #if I_CAN_HAZ_FILE
 
         /// <summary>
         /// Loads and parses the JSON object in the file at the specified <code>path</code>.
@@ -52,27 +75,6 @@ namespace Skybrud.Essentials.Json {
         [Obsolete("Use the JsonUtils class instead.")]
         public static T LoadJsonObject<T>(string path, Func<JObject, T> func) {
             return JsonUtils.LoadJsonObject(path, func);
-        }
-
-        /// <summary>
-        /// Parses the specified <code>json</code> string into an instance of <see cref="JArray"/>.
-        /// </summary>
-        /// <param name="json">The JSON string to be parsed.</param>
-        /// <returns>Returns an instance of <see cref="JArray"/> parsed from the specified <code>json</code> string.</returns>
-        [Obsolete("Use the JsonUtils class instead.")]
-        public static JArray ParseJsonArray(string json) {
-            return JsonUtils.ParseJsonArray(json);
-        }
-
-        /// <summary>
-        /// Parses the specified <code>json</code> string into an array of <code>T</code>.
-        /// </summary>
-        /// <param name="json">The JSON string to be parsed.</param>
-        /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into an instance of <code>T</code>.</param>
-        /// <returns>Returns an array of <code>T</code> parsed from the specified <code>json</code> string.</returns>
-        [Obsolete("Use the JsonUtils class instead.")]
-        public static T[] ParseJsonArray<T>(string json, Func<JObject, T> func) {
-            return JsonUtils.ParseJsonArray(json, func);
         }
 
         /// <summary>
@@ -142,6 +144,8 @@ namespace Skybrud.Essentials.Json {
         public static void SaveJsonObject(string path, JObject obj, Formatting formatting) {
             JsonUtils.SaveJsonObject(path, obj, formatting);
         }
+
+        #endif
     
     }
 

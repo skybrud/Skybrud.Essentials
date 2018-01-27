@@ -108,3 +108,5 @@ UpgradeLog*.XML
 nuget/archive/*/*
 node_modules/
 src/Skybrud.Essentials/Skybrud.Essentials.csproj.DotSettings
+releases/nuget/Skybrud.Essentials.*/
+releases/github/Skybrud.Essentials.*/

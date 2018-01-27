@@ -1,5 +1,4 @@
-﻿using System.Globalization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {
     
@@ -21,7 +20,7 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
                 return;
             }
 
-            writer.WriteValue((value + "").ToLower(CultureInfo.InvariantCulture));
+            writer.WriteValue((value + "").ToLower());
 
         }
 
