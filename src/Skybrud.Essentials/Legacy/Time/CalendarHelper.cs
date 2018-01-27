@@ -7,7 +7,7 @@ namespace Skybrud.Essentials.Time {
     /// Utility class used for calculating the dates of varios international and national days.
     /// </summary>
     [Obsolete("Use the CalendarUtils class instead.")]
-    public class CalendarHelper {
+    public static class CalendarHelper {
 
         #region Easter dates according to the Gregorian calendar
 
