@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
     <Authors>Anders Bjerner</Authors>
     <Description>Library with common purpose functionality for working with .NET.</Description>
     <Copyright>Copyright © 2018</Copyright>
@@ -29,8 +29,6 @@
 
   <PropertyGroup>
     <PackageId>Skybrud.Essentials</PackageId>
-    <PackageTitle>Skybrud.Essentials</PackageTitle>
-    <PackageVersion>1.1.0</PackageVersion>
     <PackageTags>Skybrud, Essentials</PackageTags>
     <PackageLicenseUrl>https://github.com/skybrud/Skybrud.Essentials/blob/master/LICENSE.md</PackageLicenseUrl>
     <PackageProjectUrl>https://github.com/skybrud/Skybrud.Essentials</PackageProjectUrl>
