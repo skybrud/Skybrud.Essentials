@@ -31,7 +31,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The camel cased string.</returns>
-        public static string ToCamelCase(Enum value) {
+        public static string ToCamelCase(this Enum value) {
             return StringUtils.ToCamelCase(value);
         }
 
@@ -49,7 +49,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The Pascal cased string.</returns>
-        public static string ToPascalCase(Enum value) {
+        public static string ToPascalCase(this Enum value) {
             return StringUtils.ToPascalCase(value);
         }
 
