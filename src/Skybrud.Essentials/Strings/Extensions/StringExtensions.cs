@@ -52,6 +52,42 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToPascalCase(this Enum value) {
             return StringUtils.ToPascalCase(value);
         }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> to a kebab cased string (lower case words separated by hyphens).
+        /// </summary>
+        /// <param name="str">The string to be converted.</param>
+        /// <returns>The kebab cased string.</returns>
+        public static string ToKebabCase(this string str) {
+            return StringUtils.ToKebabCase(str);
+        }
+
+        /// <summary>
+        /// Converts the name of the specified enum <paramref name="value"/> to a kebab cased string (lower case words separated by hyphens).
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The camel cased string.</returns>
+        public static string ToKebabCase(this Enum value) {
+            return StringUtils.ToKebabCase(value);
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> to a train cased string (upper case words separated by hyphens).
+        /// </summary>
+        /// <param name="str">The string to be converted.</param>
+        /// <returns>The train cased string.</returns>
+        public static string ToTrainCase(this string str) {
+            return StringUtils.ToTrainCase(str);
+        }
+
+        /// <summary>
+        /// Converts the name of the specified enum <paramref name="value"/> to a train cased string (upper case words separated by hyphens).
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The camel cased string.</returns>
+        public static string ToTrainCase(this Enum value) {
+            return StringUtils.ToTrainCase(value);
+        }
 
         /// <summary>
         /// Converts the specified <paramref name="str"/> to a lower case string with words separated by underscores.

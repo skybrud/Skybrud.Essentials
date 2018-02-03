@@ -104,6 +104,60 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="str"/> to a kebab cased string (lower case words separated by hyphens).
+        /// </summary>
+        /// <param name="str">The string to be converted.</param>
+        /// <returns>The kebab cased string.</returns>
+        public static string ToKebabCase(string str) {
+
+            // Replace invalid characters
+            str = Regex.Replace(str ?? "", "[\\W_]+", " ").Trim();
+
+            // Replace multiple whitespaces
+            str = Regex.Replace(str, "[ ]{2,}", " ");
+
+            // Convert to lower case (with upper case letters prefixed with hyphens)
+            return Regex.Replace(str, @"(\p{Ll})(\p{Lu})", "$1-$2").Replace(" ", "-").Replace("--", "-").ToLower();
+
+        }
+
+        /// <summary>
+        /// Converts the name of the specified enum <paramref name="value"/> to a kebab cased string (lower case words separated by hyphens).
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The camel cased string.</returns>
+        public static string ToKebabCase(Enum value) {
+            return ToKebabCase(value.ToString());
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> to a train cased string (upper case words separated by hyphens).
+        /// </summary>
+        /// <param name="str">The string to be converted.</param>
+        /// <returns>The train cased string.</returns>
+        public static string ToTrainCase(string str) {
+
+            // Replace invalid characters
+            str = Regex.Replace(str ?? "", "[\\W_]+", " ").Trim();
+
+            // Replace multiple whitespaces
+            str = Regex.Replace(str, "[ ]{2,}", " ");
+
+            // Convert to upper case (with upper case letters prefixed with hyphens)
+            return Regex.Replace(str, @"(\p{Ll})(\p{Lu})", "$1-$2").Replace(" ", "-").Replace("--", "-").ToUpper();
+
+        }
+
+        /// <summary>
+        /// Converts the name of the specified enum <paramref name="value"/> to a train cased string (upper case words separated by hyphens).
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The camel cased string.</returns>
+        public static string ToTrainCase(Enum value) {
+            return ToTrainCase(value.ToString());
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="str"/> to a lower case string with words separated by underscores.
         /// </summary>
         /// <param name="str">The string to be converted.</param>
