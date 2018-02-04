@@ -279,16 +279,6 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Gets whether the string matches a double (<see cref="Double"/>).
-        /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches a double; otherwise <code>false</code>.</returns>
-        public static bool IsDouble(string str) {
-            double result;
-            return Double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
-        }
-
-        /// <summary>
         /// Alias of <see cref="IsDouble"/>. Gets whether the string matches a double (<see cref="Double"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
