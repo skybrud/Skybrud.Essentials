@@ -5,7 +5,7 @@ using System.Linq;
 namespace Skybrud.Essentials.Collections.Extensions {
 
     /// <summary>
-    /// Static class with extensions methods for instances of <code>IEnumerable</code>.
+    /// Static class with extensions methods for instances of <see cref="IEnumerable{T}"/>.
     /// </summary>
     public static class EnumerableExtensions {
 

@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.Time {
         public DateTime EasterMonday => CalendarUtils.GetEasterMonday(Year);
 
         /// <summary>
-        /// Gets the date of <strong>General Prayer Day</strong> (or <code>Store Bededag</code>in Danish) - a national
+        /// Gets the date of <strong>General Prayer Day</strong> (or <strong>Store Bededag</strong> in Danish) - a national
         /// holiday in Denmark. It falls on the 4th Friday after <strong>Easter</strong>.
         /// </summary>
         /// <see>
@@ -108,7 +108,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>Easter</strong>.
         /// 
         /// Depending on the year, Whit Sunday falls within the period from the
-        /// <code>10th of May</code> to the <code>13th of June</code> (both inclusive).
+        /// <strong>10th of May</strong> to the <strong>13th of June</strong> (both inclusive).
         /// </summary>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whitsun</cref>
@@ -120,8 +120,8 @@ namespace Skybrud.Essentials.Time {
         /// <strong>Whit Sunday</strong>. Whit Sunday is the 7th Sunday after
         /// <strong>Easter</strong>.
         /// 
-        /// Depending on the year, Whit Monday falls within the period from the <code>11th of May</code> to the
-        /// <code>14th of June</code> (both inclusive).
+        /// Depending on the year, Whit Monday falls within the period from the <strong>11th of May</strong> to the
+        /// <strong>14th of June</strong> (both inclusive).
         /// </summary>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whit_Monday</cref>

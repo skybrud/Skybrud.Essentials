@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Palm Sunday</strong>, which falls on the Sunday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Palm Sunday</code>.</returns>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Palm Sunday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Palm_Sunday#Observance_in_the_liturgy</cref>
         /// </see>
@@ -27,7 +27,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Moundy Thursday</code>.</returns>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Moundy Thursday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
         /// </see>
@@ -39,7 +39,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Good Friday</strong>, which falls on the Friday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Good Friday</code>.</returns>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Good Friday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Good_Friday</cref>
         /// </see>
@@ -51,7 +51,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Holy Saturday</strong>, which falls on the Saturday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Holy Saturday</code>.</returns>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Holy Saturday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Holy_Saturday</cref>
         /// </see>
@@ -60,11 +60,11 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Calculates the date of <strong>Easter Sunday</strong> in the specified <code>year</code> according to
+        /// Calculates the date of <strong>Easter Sunday</strong> in the specified <paramref name="year"/> according to
         /// Western Christianity and the Gregorian calendar.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Easter Sunday</code>.</returns>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Easter Sunday</strong>.</returns>
         /// <see>
         ///     <cref>https://da.wikipedia.org/wiki/Påske#Beregning_af_p.C3.A5skedagens_dato</cref>
         /// </see>
@@ -105,10 +105,10 @@ namespace Skybrud.Essentials.Time {
         /// <strong>Easter</strong>.
         /// 
         /// Depending on the year, Whit Sunday falls within the period from the
-        /// <code>10th of May</code> to the <code>13th of June</code> (both inclusive).
+        /// <strong>10th of May</strong> to the <strong>13th of June</strong> (both inclusive).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Whit Sunday</code>.</returns>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Whit Sunday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whitsun</cref>
         /// </see>
@@ -121,11 +121,11 @@ namespace Skybrud.Essentials.Time {
         /// <strong>Whit Sunday</strong>. Whit Sunday is the 7th Sunday after
         /// <strong>Easter</strong>.
         /// 
-        /// Depending on the year, Whit Monday falls within the period from the <code>11th of May</code> to the
-        /// <code>14th of June</code> (both inclusive).
+        /// Depending on the year, Whit Monday falls within the period from the <strong>11th of May</strong> to the
+        /// <strong>14th of June</strong> (both inclusive).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <code>Whit Monday</code>.</returns>
+        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Whit Monday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whit_Monday</cref>
         /// </see>
@@ -301,7 +301,7 @@ namespace Skybrud.Essentials.Time {
         public static class Denmark {
 
             /// <summary>
-            /// Calculates the date of <strong>General Prayer Day</strong> (or <code>Store Bededag</code>in Danish)
+            /// Calculates the date of <strong>General Prayer Day</strong> (or <strong>Store Bededag</strong>in Danish)
             /// - a national holiday in Denmark. It falls on the 4th Friday after <strong>Easter</strong>.
             /// </summary>
             /// <param name="year">The year.</param>
@@ -359,7 +359,7 @@ namespace Skybrud.Essentials.Time {
 
             /// <summary>
             /// Gets an instance of <see cref="DateTime"/> representing <strong>Patriot Day</strong> also known as
-            /// <code>National Day of Service and Remembrance</code>. The day occurs on September 11 of each year
+            /// <strong>National Day of Service and Remembrance</strong>. The day occurs on September 11 of each year
             /// in memory of the 2,977 people killed in the 2001 September 11 attacks.
             /// </summary>
             /// <param name="year">The year.</param>

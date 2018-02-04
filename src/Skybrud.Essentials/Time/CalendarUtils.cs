@@ -127,7 +127,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>Easter</strong>.
         /// 
         /// Depending on the <paramref name="year"/>, Whit Sunday falls within the period from the
-        /// <code>10th of May</code> to the <code>13th of June</code> (both inclusive).
+        /// <strong>10th of May</strong> to the <strong>13th of June</strong> (both inclusive).
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Whit Sunday</strong>.</returns>
@@ -144,7 +144,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>Easter</strong>.
         /// 
         /// Depending on the <paramref name="year"/>, Whit Monday falls within the period from the
-        /// <code>11th of May</code> to the <code>14th of June</code> (both inclusive).
+        /// <strong>11th of May</strong> to the <strong>14th of June</strong> (both inclusive).
         /// </summary>
         /// <param name="year">The year.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Whit Monday</strong>.</returns>
@@ -281,7 +281,7 @@ namespace Skybrud.Essentials.Time {
             /// <summary>
             /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>Canada Day</strong>. Canada
             /// Day is the national day of Canada, a federal statutory holiday celebrating the anniversary of the
-            /// <code>July 1, 1867</code>, enactment of the Constitution Act, 1867 (then called the British North
+            /// <strong>July 1, 1867</strong>, enactment of the Constitution Act, 1867 (then called the British North
             /// America Act, 1867), which united three colonies into a single country called Canada within the British
             /// Empire.
             /// </summary>
@@ -352,7 +352,7 @@ namespace Skybrud.Essentials.Time {
 
             /// <summary>
             /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>Constitution Day</strong>
-            /// (<strong>Grundlovsdag</strong> in Danish). Constitution Day is observed on <code>5 June</code>, and
+            /// (<strong>Grundlovsdag</strong> in Danish). Constitution Day is observed on <strong>5 June</strong>, and
             /// commemorates the anniversary of the signing of the Danish Constitution of 1849, which established
             /// Denmark as a constitutional monarchy, and honors the constitution of 1953, which was adopted on the
             /// same date.
@@ -396,7 +396,7 @@ namespace Skybrud.Essentials.Time {
 
             /// <summary>
             /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>Patriot Day</strong> also
-            /// known as <code>National Day of Service and Remembrance</code>. The day occurs on September 11 of each
+            /// known as <strong>National Day of Service and Remembrance</strong>. The day occurs on September 11 of each
             /// year in memory of the 2,977 people killed in the 2001 September 11 attacks.
             /// </summary>
             /// <param name="year">The year.</param>
