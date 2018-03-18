@@ -481,7 +481,92 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(false, StringUtils.IsAlphanumeric("123.456"), "#7");
 
         }
-        
+
+        [TestMethod]
+        public void ToPlural() {
+
+            foreach (SingularPluralTestItem item in SingularPluralTestItem.Items)
+            {
+                Assert.AreEqual(item.Plural, StringUtils.ToPlural(item.Singular), item.Singular + " => " + StringUtils.ToPlural(item.Singular));
+            }
+
+        }
+
+        [TestMethod]
+        public void ToSingular() {
+
+            foreach (SingularPluralTestItem item in SingularPluralTestItem.Items) {
+                Assert.AreEqual(item.Singular, StringUtils.ToSingular(item.Plural), item.Plural + " => " + StringUtils.ToSingular(item.Plural));
+                if (item.PluralAlternatives != null) {
+                    for (int i = 0; i < item.PluralAlternatives.Length; i++) {
+                        Assert.AreEqual(item.Singular, StringUtils.ToSingular(item.PluralAlternatives[i]), item.Plural + " => " + StringUtils.ToSingular(item.PluralAlternatives[i]));
+                    }
+                }
+            }
+
+        }
+
+        public class SingularPluralTestItem {
+
+            public string Singular { get; private set; }
+
+            public string Plural { get; private set; }
+
+            public string[] PluralAlternatives { get; private set; }
+
+            public static SingularPluralTestItem[] Items = {
+                new SingularPluralTestItem { Singular = "ability", Plural = "abilities" },
+                new SingularPluralTestItem { Singular = "address", Plural = "addresses" },
+                new SingularPluralTestItem { Singular = "agency", Plural = "agencies" },
+                new SingularPluralTestItem { Singular = "baby", Plural = "babies" },
+                new SingularPluralTestItem { Singular = "bacterium", Plural = "bacteria" },
+                new SingularPluralTestItem { Singular = "basis", Plural = "bases" },
+                new SingularPluralTestItem { Singular = "bird", Plural = "birds" },
+                new SingularPluralTestItem { Singular = "box", Plural = "boxes" },
+                new SingularPluralTestItem { Singular = "bus", Plural = "buses" },
+                new SingularPluralTestItem { Singular = "cat", Plural = "cats" },
+                new SingularPluralTestItem { Singular = "chateau", Plural = "chateaux" },
+                new SingularPluralTestItem { Singular = "child", Plural = "children" },
+                new SingularPluralTestItem { Singular = "company", Plural = "companies" },
+                new SingularPluralTestItem { Singular = "country", Plural = "countries" },
+                new SingularPluralTestItem { Singular = "datum", Plural = "data" },
+                new SingularPluralTestItem { Singular = "diagnosis", Plural = "diagnoses" },
+                new SingularPluralTestItem { Singular = "dog", Plural = "dogs" },
+                new SingularPluralTestItem { Singular = "fix", Plural = "fixes" },
+                new SingularPluralTestItem { Singular = "fox", Plural = "foxes" },
+                new SingularPluralTestItem { Singular = "genre", Plural = "genres" },
+                new SingularPluralTestItem { Singular = "half", Plural = "halves" },
+                new SingularPluralTestItem { Singular = "index", Plural = "indeces" },
+                new SingularPluralTestItem { Singular = "location", Plural = "locations" },
+                new SingularPluralTestItem { Singular = "man", Plural = "men" },
+                new SingularPluralTestItem { Singular = "medium", Plural = "media" },
+                new SingularPluralTestItem { Singular = "mouse", Plural = "mice" },
+                new SingularPluralTestItem { Singular = "movie", Plural = "movies" },
+                new SingularPluralTestItem { Singular = "person", Plural = "people" },
+                new SingularPluralTestItem { Singular = "phenomenon", Plural = "phenomena" },
+                new SingularPluralTestItem { Singular = "process", Plural = "processes" },
+                new SingularPluralTestItem { Singular = "query", Plural = "queries" },
+                new SingularPluralTestItem { Singular = "quiz", Plural = "quizzes" },
+                new SingularPluralTestItem { Singular = "radius", Plural = "radii" },
+                new SingularPluralTestItem { Singular = "safe", Plural = "saves" },
+                new SingularPluralTestItem { Singular = "salesperson", Plural = "salespeople" },
+                new SingularPluralTestItem { Singular = "search", Plural = "searches" },
+                new SingularPluralTestItem { Singular = "seraph", Plural = "seraphim", PluralAlternatives = new []{ "seraphs"} },
+                new SingularPluralTestItem { Singular = "serie", Plural = "series" },
+                new SingularPluralTestItem { Singular = "show", Plural = "shows" },
+                new SingularPluralTestItem { Singular = "spokesman", Plural = "spokesmen" },
+                new SingularPluralTestItem { Singular = "spokeswoman", Plural = "spokeswomen" },
+                new SingularPluralTestItem { Singular = "status", Plural = "statuses" },
+                new SingularPluralTestItem { Singular = "trapezium", Plural = "trapezia", PluralAlternatives = new []{ "trapeziums"} },
+                new SingularPluralTestItem { Singular = "trapezoid", Plural = "trapezoids" },
+                new SingularPluralTestItem { Singular = "switch", Plural = "switches" },
+                new SingularPluralTestItem { Singular = "wife", Plural = "wives" },
+                new SingularPluralTestItem { Singular = "woman", Plural = "women" },
+                new SingularPluralTestItem { Singular = "zebra", Plural = "zebras" }
+            };
+
+        }
+
     }
 
 }

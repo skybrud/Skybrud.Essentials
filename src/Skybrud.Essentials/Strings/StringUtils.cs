@@ -213,6 +213,91 @@ namespace Skybrud.Essentials.Strings {
             return String.IsNullOrEmpty(str) ? "" : String.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
         }
 
+        
+        /// <summary>
+        /// Converts a singular word to the plural counterpart (for English words only).
+        /// </summary>
+        /// <param name="word">The singular word.</param>
+        /// <returns>The plural word.</returns>
+        public static string ToPlural(string word) {
+
+            // Declare a list of rules
+            var rules = new[] {
+                new { Pattern = "mouse$", Replacement = "mice" },
+                new { Pattern = "bus$", Replacement = "buses" },
+                new { Pattern = "index$", Replacement = "indeces" },
+                new { Pattern = "radius$", Replacement = "radii" },
+                new { Pattern = "quiz$", Replacement = "quizzes" },
+                new { Pattern = "phenomenon$", Replacement = "phenomena" },
+                new { Pattern = "bacterium$", Replacement = "bacteria" },
+                new { Pattern = "seraph$", Replacement = "seraphim" },
+                new { Pattern = "chateau$", Replacement = "chateaux" },
+                new { Pattern = "(x|ch|ss|sh)$", Replacement = "$1es" }, // search, switch, fix, box, process, address
+                new { Pattern = "series$", Replacement = "series" },
+                new { Pattern = "([^aeiouy]|qu)y$", Replacement = "$1ies" }, // query, ability, agency
+                new { Pattern = "(?:([^f])fe|([lr])f)$", Replacement = "$1$2ves" }, // half, safe, wife
+                new { Pattern = "sis$", Replacement = "ses" }, // basis, diagnosis
+                new { Pattern = "([ti])um$", Replacement = "$1a" }, // datum, medium
+                new { Pattern = "person$", Replacement = "people" }, // person, salesperson
+                new { Pattern = "man$", Replacement = "men" }, // man, woman, spokesman
+                new { Pattern = "child$", Replacement = "children" }, // child
+                new { Pattern = "(.*)status$", Replacement = "$1statuses" },
+                new { Pattern = "s$", Replacement = "s" }, // no change (compatibility)
+                new { Pattern = "$", Replacement = "s" }
+            };
+
+            // Iterate through each rule, and if it matches, do the replacement
+            foreach (var rule in rules.Where(rule => Regex.IsMatch(word, rule.Pattern))) {
+                return Regex.Replace(word, rule.Pattern, rule.Replacement);
+            }
+
+            return word;
+
+        }
+
+        /// <summary>
+        /// Converts a plural word to the singular counterpart (for English words only).
+        /// </summary>
+        /// <param name="word">The plural word.</param>
+        /// <returns>The singular word.</returns>
+        public static string ToSingular(string word) {
+
+            // Declare a list of rules
+            var rules = new[] {
+                new { Pattern = "mice$", Replacement = "mouse" },
+                new { Pattern = "indeces$", Replacement = "index" },
+                new { Pattern = "radii$", Replacement = "radius" },
+                new { Pattern = "quizzes$", Replacement = "quiz" },
+                new { Pattern = "phenomena$", Replacement = "phenomenon" },
+                new { Pattern = "bacteria$", Replacement = "bacterium" },
+                new { Pattern = "seraphim$", Replacement = "seraph" },
+                new { Pattern = "chateaux$", Replacement = "chateau" },
+                new { Pattern = "statuses", Replacement = "status" },
+                new { Pattern = "people$", Replacement = "person" },
+                new { Pattern = "(buses|busses)$", Replacement = "bus" },
+                new { Pattern = "children$", Replacement = "child" },
+                new { Pattern = "men$", Replacement = "man" }, // men, women, spokesmen
+                new { Pattern = "(halves)$", Replacement = "half" },
+                new { Pattern = "(sa|wi)ves$", Replacement = "$1fe" },
+                new { Pattern = "(mov|ser)ies$", Replacement = "$1ie" },
+                new { Pattern = "([^aeiouy]|qu)ies$", Replacement = "$1y" }, // queries, abilities, agencies
+                new { Pattern = "esses$", Replacement = "ess" },
+                new { Pattern = "ses$", Replacement = "sis" },
+                new { Pattern = "([ti])a$", Replacement = "$1um" }, // data, media
+                new { Pattern = "(x|ch|ss|sh)es$", Replacement = "$1" }, // searches, switches, fixes, boxes, processes, addresses
+                new { Pattern = "es", Replacement = "e" },
+                new { Pattern = "s$", Replacement = "" },
+            };
+
+            // Iterate through each rule, and if it matches, do the replacement
+            foreach (var rule in rules.Where(rule => Regex.IsMatch(word, rule.Pattern))) {
+                return Regex.Replace(word, rule.Pattern, rule.Replacement);
+            }
+
+            return word;
+
+        }
+
         /// <summary>
         /// Counts number of words in the specified <paramref name="str"/>.
         /// </summary>
