@@ -33,18 +33,18 @@ namespace Skybrud.Essentials.Strings {
         public static bool ParseBoolean(object value) {
             return ParseBoolean(value + "");
         }
-
+        
         /// <summary>
-        /// Parses a comma separated string into an array of <see cref="Guid"/>.
+        /// Parses string of multiple GUIDs into an array of <see cref="Guid"/>.
         /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
+        /// <param name="str">The string containing the GUIDs.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ParseGuidArray(string str) {
-            return (
-                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", RegexOptions.IgnoreCase)
-                select Guid.Parse(piece)
-            ).ToArray();
+            List<Guid> guids = new List<Guid>();
+            foreach (string piece in (str ?? "").Split(new[] {',', ' ', '\r', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries)) {
+                if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
+            }
+            return guids.ToArray();
         }
 
         /// <summary>

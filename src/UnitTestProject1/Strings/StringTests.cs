@@ -161,6 +161,26 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void ParseGuidArray() {
+
+            string input1 = "714a1347-99a3-419e-83ce-eec2d3211912 c07fe838-4584-4cef-a4cd-851ff890bf3f";
+            string input2 = "{317C35F9-2D1B-4E81-9DF3-EFA04CAE01ED} (317C35F9-2D1B-4E81-9DF3-EFA04CAE01ED) hello 16F77374E26F4F8397590A58F34211C4";
+
+            Guid[] guid1 = StringUtils.ParseGuidArray(input1);
+            Guid[] guid2 = StringUtils.ParseGuidArray(input2);
+
+            Assert.AreEqual(2, guid1.Length, "Check #1 failed");
+            Assert.AreEqual("714a1347-99a3-419e-83ce-eec2d3211912", guid1[0].ToString(), "Check #2 failed");
+            Assert.AreEqual("c07fe838-4584-4cef-a4cd-851ff890bf3f", guid1[1].ToString(), "Check #3 failed");
+
+            Assert.AreEqual(3, guid2.Length, "Check #4 failed");
+            Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid2[0].ToString(), "Check #5 failed");
+            Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid2[1].ToString(), "Check #6 failed");
+            Assert.AreEqual("16f77374-e26f-4f83-9759-0a58f34211c4", guid2[2].ToString(), "Check #7 failed"); 
+
+        }
+
+        [TestMethod]
         public void ToUnderscore() {
 
             var samples1 = new[] {
