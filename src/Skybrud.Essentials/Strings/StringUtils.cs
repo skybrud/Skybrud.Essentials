@@ -44,7 +44,7 @@ namespace Skybrud.Essentials.Strings {
         public static Guid[] ParseGuidArray(string str) {
             return (
                 from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "/^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/", RegexOptions.IgnoreCase)
+                where Regex.IsMatch(piece, "^[0-9a-f]{8}-[0-9a-f]{4}-[1-5][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$", RegexOptions.IgnoreCase)
                 select Guid.Parse(piece)
             ).ToArray();
         }
