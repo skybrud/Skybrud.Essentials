@@ -13,12 +13,11 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Parses the specified <paramref name="str"/> into an instance of <see cref="Boolean"/>. The string is
-        /// considered <code>true</code> if it matches either <code>1</code>, <code>t</code> or <code>true</code>
-        /// (case insensitive).
+        /// considered <c>true</c> if it matches either <c>1</c>, <c>t</c> or <c>true</c> (case insensitive).
         /// </summary>
         /// <param name="str">The string to be parsed.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches either <code>true</code>, <code>1</code> or
-        /// <code>t</code> (case insensitive).</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches either <c>true</c>, <c>1</c> or
+        /// <c>t</c> (case insensitive).</returns>
         public static bool ParseBoolean(string str) {
             str = (str ?? "").ToLower();
             return str == "true" || str == "1" || str == "t";
@@ -26,12 +25,11 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Parses the specified <paramref name="value"/> into an instance of <see cref="Boolean"/>. The value
-        /// is considered <code>true</code> if it matches either <code>1</code>, <code>t</code> or <code>true</code>
-        /// (case insensitive).
+        /// is considered <c>true</c> if it matches either <c>1</c>, <c>t</c> or <c>true</c> (case insensitive).
         /// </summary>
         /// <param name="value">The value to be parsed.</param>
-        /// <returns><code>true</code> if <paramref name="value"/> matches either <code>true</code>, <code>1</code> or
-        /// <code>t</code> (case insensitive).</returns>
+        /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c> or
+        /// <c>t</c> (case insensitive).</returns>
         public static bool ParseBoolean(object value) {
             return ParseBoolean(value + "");
         }
@@ -205,7 +203,7 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Uppercases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
-        /// either <code>null</code> or empty, an empty string will be returned instead.
+        /// either <c>null</c> or empty, an empty string will be returned instead.
         /// </summary>
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
@@ -331,7 +329,7 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
-        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// <paramref name="className"/> by using a <c>&lt;span&gt;</c> element.
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <param name="className">The class name.</param>
@@ -344,7 +342,7 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
-        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// <paramref name="className"/> by using a <c>&lt;span&gt;</c> element.
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <param name="className">The class name.</param>
@@ -367,7 +365,7 @@ namespace Skybrud.Essentials.Strings {
         /// Alias of <see cref="IsDouble"/>. Gets whether the string matches a double (<see cref="Double"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches a double; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
         public static bool IsNumeric(string str) {
             long result;
             return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
@@ -377,7 +375,7 @@ namespace Skybrud.Essentials.Strings {
         /// Gets whether the specified string is alphanumeric - meaning it only consists of numbers and letters.
         /// </summary>
         /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> is alphanumeric; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> is alphanumeric; otherwise <c>false</c>.</returns>
         public static bool IsAlphanumeric(string str) {
             return Regex.IsMatch(str ?? "", "^[0-9a-zA-Z]+$");
         }
@@ -434,7 +432,7 @@ namespace Skybrud.Essentials.Strings {
         /// specified in <paramref name="ignore"/>.
         /// </summary>
         /// <param name="html">The input string containing the HTML.</param>
-        /// <param name="ignore">An of tag names (without the brackets, like <code>div</code>) to ignore.</param>
+        /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
         public static string StripHtml(string html, params string[] ignore) {
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
@@ -496,7 +494,7 @@ namespace Skybrud.Essentials.Strings {
         /// specified in <paramref name="ignore"/>.
         /// </summary>
         /// <param name="html">The input string containing the HTML.</param>
-        /// <param name="ignore">An of tag names (without the brackets, like <code>div</code>) to ignore.</param>
+        /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
         public static string StripHtml(string html, params string[] ignore) {
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
