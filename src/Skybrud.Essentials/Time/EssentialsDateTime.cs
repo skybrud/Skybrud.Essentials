@@ -178,6 +178,12 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
         /// </summary>
+        public string Iso8601 => TimeUtils.ToIso8601(this);
+
+        /// <summary>
+        /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
+        /// </summary>
+        [Obsolete("Use the Iso8601 property instead.")]
         public string ToIso8601 => TimeUtils.ToIso8601(this);
 
         /// <summary>
@@ -188,6 +194,12 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>RFC 2822</strong> format.
         /// </summary>
+        public string Rfc2822 => TimeUtils.ToRfc2822(this);
+
+        /// <summary>
+        /// Gets a string representation of the instance as specified by the <strong>RFC 2822</strong> format.
+        /// </summary>
+        [Obsolete("Use the Rfc2822 property instead.")]
         public string ToRfc2822 => TimeUtils.ToRfc2822(this);
 
         #endregion
