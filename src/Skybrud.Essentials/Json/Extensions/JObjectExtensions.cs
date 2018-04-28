@@ -616,6 +616,27 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
+        /// Gets an array of <typeparamref name="T"/> from the token matching the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>The token value as an array of <typeparamref name="T"/>.</returns>
+        public static T[] GetObjectArray<T>(this JObject obj, string path) {
+            return GetArrayItems<JObject>(obj, path).Select(x => x.ToObject<T>()).ToArray();
+        }
+
+        /// <summary>
+        /// Gets an array of <typeparamref name="T"/> from the token matching the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <param name="callback">The callback function for converting <see cref="JObject"/> into <typeparamref name="T"/>.</param>
+        /// <returns>The token value as an array of <typeparamref name="T"/>.</returns>
+        public static T[] GetObjectArray<T>(this JObject obj, string path, Func<JObject, T> callback) {
+            return GetArrayItems<JObject>(obj, path).Select(callback).ToArray();
+        }
+
+        /// <summary>
         /// Gets the <see cref="JToken"/> at the specified <paramref name="path"/>. If the type of the token is either
         /// <see cref="JTokenType.Object"/> or <see cref="JTokenType.Array"/>, the method will return
         /// <c>null</c> instead.
