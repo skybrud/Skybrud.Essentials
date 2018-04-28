@@ -100,7 +100,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets the second part of this <see cref="EssentialsDateTime"/>. The returned value is an integer between
-        /// <c>0</c> and <c>59</code>.
+        /// <c>0</c> and <c>59</c>.
         /// </summary>
         public int Second => DateTime.Second;
 
