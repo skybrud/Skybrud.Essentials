@@ -10,12 +10,10 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Parses the specified <paramref name="str"/> into an instance of <see cref="System.Boolean"/>. The string is
-        /// considered <c>true</c> if it matches either <c>1</c>, <typeparamref name="T"/> or <c>true</c>
-        /// (case insensitive).
+        /// considered <c>true</c> if it matches either <c>1</c>, <c>t</c> or <c>true</c> (case insensitive).
         /// </summary>
         /// <param name="str">The string to be parsed.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches either <c>true</c>, <c>1</c>
-        /// or <typeparamref name="T"/> (case insensitive).</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches either <c>true</c>, <c>1</c> or <c>t</c> (case insensitive).</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static bool ParseBoolean(string str) {
             return StringUtils.ParseBoolean(str);
@@ -23,12 +21,10 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Parses the specified <paramref name="value"/> into an instance of <see cref="System.Boolean"/>. The value is
-        /// considered <c>true</c> if it matches either <c>1</c>, <typeparamref name="T"/> or <c>true</c>
-        /// (case insensitive).
+        /// considered <c>true</c> if it matches either <c>1</c>, <c>t</c> or <c>true</c> (case insensitive).
         /// </summary>
         /// <param name="value">The value to be parsed.</param>
-        /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>
-        /// or <typeparamref name="T"/> (case insensitive).</returns>
+        /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c> or <c>t</c> (case insensitive).</returns>
         [Obsolete("Use the StringHelper class instead.")]
         public static bool ParseBoolean(object value) {
             return StringUtils.ParseBoolean(value);

@@ -68,7 +68,7 @@ namespace Skybrud.Essentials.Xml {
         /// <typeparam name="T">The type of the instance to be returned.</typeparam>
         /// <param name="path">The path to the XML document.</param>
         /// <param name="callback">The callback function used for converting the loaded <see cref="XElement"/>.</param>
-        /// <returns>An instance of <typeparamref name="T"/> representing the specified <paramref name="xml"/>.</returns>
+        /// <returns>An instance of <typeparamref name="T"/> representing the XML.</returns>
         public static T LoadXmlElement<T>(string path, Func<XElement, T> callback) {
             return XmlUtils.LoadXmlElement(path, callback);
         }
