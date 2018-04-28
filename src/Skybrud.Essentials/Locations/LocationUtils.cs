@@ -31,6 +31,8 @@ namespace Skybrud.Essentials.Locations {
         /// <param name="loc2">The second location.</param>
         /// <returns>The distance in meters between the two locations.</returns>
         public static double GetDistance(ILocation loc1, ILocation loc2) {
+            if (loc1 == null) throw new ArgumentNullException(nameof(loc1));
+            if (loc2 == null) throw new ArgumentNullException(nameof(loc2));
             return GetDistance(loc1.Latitude, loc1.Longitude, loc2.Latitude, loc2.Longitude);
         }
 
