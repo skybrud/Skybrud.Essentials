@@ -35,6 +35,31 @@ namespace Skybrud.Essentials.Strings {
         }
         
         /// <summary>
+        /// Parses string of multiple values into an array of <see cref="String"/>. Supported separators are
+        /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+        /// 
+        /// Empty entries are automatically removed from the output array.
+        /// </summary>
+        /// <param name="str">The string containing the values.</param>
+        /// <returns>An array of <see cref="String"/>.</returns>
+        public static string[] ParseStringArray(string str) {
+            return ParseStringArray(str, ',', ' ', '\r', '\n', '\t');
+        }
+
+        /// <summary>
+        /// Parses string of multiple values into an array of <see cref="String"/>, using the specified array of
+        /// <paramref name="separators"/>.
+        /// 
+        /// Empty entries are automatically removed from the output array.
+        /// </summary>
+        /// <param name="str">The string containing the values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <see cref="String"/>.</returns>
+        public static string[] ParseStringArray(string str, params char[] separators) {
+            return str == null ? new string[0] : str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+        }
+        
+        /// <summary>
         /// Parses string of multiple GUIDs into an array of <see cref="Guid"/>.
         /// </summary>
         /// <param name="str">The string containing the GUIDs.</param>
