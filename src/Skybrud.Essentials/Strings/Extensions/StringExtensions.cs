@@ -9,15 +9,6 @@ namespace Skybrud.Essentials.Strings.Extensions {
     public static partial class StringExtensions {
 
         /// <summary>
-        /// Parses a comma separated string into an array of <see cref="Guid"/>.
-        /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
-        /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ParseGuidArray(this string str) {
-            return StringUtils.ParseGuidArray(str);
-        }
-
-        /// <summary>
         /// Converts the specified <paramref name="str"/> to camel case (also referred to as lower camel casing).
         /// </summary>
         /// <param name="str">The string to be converted.</param>
