@@ -13,7 +13,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">An instance of <see cref="XName"/> identifying the elements.</param>
         /// <returns>An array of <see cref="XElement"/>.</returns>
         public static XElement[] GetElements(this XElement element, XName name) {
-            return element == null ? new XElement[0] : element.Elements(name).ToArray();
+            return element?.Elements(name).ToArray() ?? new XElement[0];
         }
         
         /// <summary>
@@ -25,7 +25,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">A callback function for parsing the element.</param>
         /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
         public static T[] GetElements<T>(this XElement element, XName name, Func<XElement, T> callback) {
-            return element == null ? new T[0] : element.Elements(name).Select(callback).ToArray();
+            return element?.Elements(name).Select(callback).ToArray() ?? new T[0];
         }
 
     }

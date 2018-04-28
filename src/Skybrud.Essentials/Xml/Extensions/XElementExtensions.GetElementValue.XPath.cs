@@ -47,8 +47,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// in the XPath expression.</param>
         /// <returns>An instance of <see cref="String"/> representing the element value.</returns>
         public static string GetElementValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
-            XElement attr = element == null ? null : element.GetElement(expression, resolver);
-            return attr == null ? "" : attr.Value;
+            XElement attr = element?.GetElement(expression, resolver);
+            return attr?.Value ?? "";
         }
 
         /// <summary>
@@ -666,7 +666,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, expression, resolver);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (child == null || String.IsNullOrWhiteSpace(child.Value)) return default(T);
+            if (String.IsNullOrWhiteSpace(child?.Value)) return default(T);
 
             // Convert the element value to the type of T
             return (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
@@ -689,7 +689,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, expression);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (child == null || String.IsNullOrWhiteSpace(child.Value)) {
+            if (String.IsNullOrWhiteSpace(child?.Value)) {
                 value = default(T);
                 return false;
             }
@@ -718,7 +718,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, expression, resolver);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (child == null || String.IsNullOrWhiteSpace(child.Value)) {
+            if (String.IsNullOrWhiteSpace(child?.Value)) {
                 value = default(T);
                 return false;
             }
@@ -747,7 +747,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, expression, resolver);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (child == null || String.IsNullOrWhiteSpace(child.Value)) return default(TResult);
+            if (String.IsNullOrWhiteSpace(child?.Value)) return default(TResult);
 
             // Convert the element value to the type of T and invoke the callback
             return callback((T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture));

@@ -20,8 +20,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <see cref="String"/> representing the attribute value, or an empty string if
         /// a matching attribute wasn't found not found.</returns>
         public static string GetAttributeValue(this XElement element, XName name) {
-            XAttribute attr = element == null ? null : element.GetAttribute(name);
-            return attr == null ? String.Empty : attr.Value;
+            XAttribute attr = element?.GetAttribute(name);
+            return attr?.Value ?? String.Empty;
         }
 
         /// <summary>
@@ -34,7 +34,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or an empty string if
         /// a matching attribute wasn't found not found.</returns>
         public static T GetAttributeValue<T>(this XElement element, XName name, Func<string, T> callback) {
-            XAttribute attr = element == null ? null : element.GetAttribute(name);
+            XAttribute attr = element?.GetAttribute(name);
             return attr == null ? default(T) : callback(attr.Value);
         }
         
@@ -308,7 +308,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the attribute should match.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
         public static T GetAttributeValueAsEnum<T>(this XElement element, XName name) where T : struct {
-            XAttribute child = element == null ? null : element.Attribute(name);
+            XAttribute child = element?.Attribute(name);
             return child == null ? default(T) : EnumUtils.ParseEnum<T>(child.Value);
         }
 
@@ -323,7 +323,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="fallback">An instance of <typeparamref name="T"/> used as fallback.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
         public static T GetAttributeValueAsEnum<T>(this XElement element, XName name, T fallback) where T : struct {
-            XAttribute child = element == null ? null : element.Attribute(name);
+            XAttribute child = element?.Attribute(name);
             return child == null ? fallback : EnumUtils.ParseEnum(child.Value, fallback);
         }
 
@@ -362,7 +362,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XAttribute attr = GetAttribute(element, name);
 
             // Fallback to the default value if the attribute wasn't found (or doesn't have a value)
-            if (attr == null || String.IsNullOrWhiteSpace(attr.Value)) {
+            if (String.IsNullOrWhiteSpace(attr?.Value)) {
                 value = default(T);
                 return false;
             }

@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <returns>An instance of <see cref="XAttribute"/>, or <c>null</c> if no attributes were matched.</returns>
         public static XAttribute GetAttribute(this XElement element, XName name) {
-            return element == null ? null : element.Attribute(name);
+            return element?.Attribute(name);
         }
 
     }

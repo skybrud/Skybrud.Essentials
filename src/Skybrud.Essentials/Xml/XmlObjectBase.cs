@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Xml {
         /// Gets the internal <see cref="System.Xml.Linq.XElement"/> the object was created from.
         /// </summary>
         [JsonIgnore]
-        public XElement XElement { get; private set; }
+        public XElement XElement { get; }
 
         #endregion
 

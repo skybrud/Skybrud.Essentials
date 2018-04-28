@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns><c>true</c> if the property exists and the value isn't <c>null</c>, otherwise <c>false</c>.</returns>
         [Obsolete]
         public static bool HasValue(JObject obj, string path) {
-            JToken token = obj == null ? null : obj.SelectToken(path);
+            JToken token = obj?.SelectToken(path);
             return !(
                 token == null
                 ||
@@ -43,8 +43,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
         [Obsolete]
         public static JObject GetObject(JObject obj, string path) {
-            if (obj == null) return null;
-            return obj.SelectToken(path) as JObject;
+            return obj?.SelectToken(path) as JObject;
         }
 
         /// <summary>
@@ -82,7 +81,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         public static string GetString(JObject obj, string path) {
             if (obj == null) return null;
             JToken token = GetSimpleTypeTokenFromPath(obj, path);
-            return token == null ? null : token.Value<string>();
+            return token?.Value<string>();
         }
 
         /// <summary>
@@ -340,9 +339,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         [Obsolete]
         public static T[] GetArray<T>(JObject obj, string path, Func<JObject, T> callback) {
 
-            if (obj == null) return null;
-
-            JArray token = obj.SelectToken(path) as JArray;
+            JArray token = obj?.SelectToken(path) as JArray;
             if (token == null) return null;
 
             return (
@@ -362,7 +359,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         [Obsolete]
         public static JToken[] GetArrayItems(JObject obj, string path) {
             JArray array = GetArray(obj, path);
-            return array == null ? new JToken[0] : array.ToArray();
+            return array?.ToArray() ?? new JToken[0];
         }
 
         /// <summary>
@@ -498,7 +495,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="JToken"/>, or <c>null</c>.</returns>
         private static JToken GetSimpleTypeTokenFromPath(JObject obj, string path) {
-            JToken token = obj == null ? null : obj.SelectToken(path);
+            JToken token = obj?.SelectToken(path);
             return token == null || token.Type == JTokenType.Object || token.Type == JTokenType.Array ? null : token;
         }
 
