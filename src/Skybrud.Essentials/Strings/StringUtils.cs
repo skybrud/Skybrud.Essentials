@@ -60,19 +60,6 @@ namespace Skybrud.Essentials.Strings {
         }
         
         /// <summary>
-        /// Parses string of multiple GUIDs into an array of <see cref="Guid"/>.
-        /// </summary>
-        /// <param name="str">The string containing the GUIDs.</param>
-        /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ParseGuidArray(string str) {
-            List<Guid> guids = new List<Guid>();
-            foreach (string piece in (str ?? "").Split(new[] {',', ' ', '\r', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries)) {
-                if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
-            }
-            return guids.ToArray();
-        }
-
-        /// <summary>
         /// Converts the specified <paramref name="str"/> to camel case (also referred to as lower camel casing).
         /// </summary>
         /// <param name="str">The string to be converted.</param>
