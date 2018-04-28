@@ -42,6 +42,13 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(true, StringUtils.ParseBoolean("T"), "Check #9 failed");
             Assert.AreEqual(false, StringUtils.ParseBoolean("F"), "Check #10 failed");
 
+            Assert.AreEqual(true, StringUtils.ParseBoolean("on"), "Check #11 failed");
+            Assert.AreEqual(false, StringUtils.ParseBoolean("off"), "Check #12 failed");
+            Assert.AreEqual(true, StringUtils.ParseBoolean("On"), "Check #13 failed");
+            Assert.AreEqual(false, StringUtils.ParseBoolean("Off"), "Check #14 failed");
+            Assert.AreEqual(true, StringUtils.ParseBoolean("ON"), "Check #15 failed");
+            Assert.AreEqual(false, StringUtils.ParseBoolean("OFF"), "Check #16 failed");
+
             Assert.AreEqual(false, StringUtils.ParseBoolean(""));
             Assert.AreEqual(false, StringUtils.ParseBoolean(default(string)));
             Assert.AreEqual(false, StringUtils.ParseBoolean(default(object)));
