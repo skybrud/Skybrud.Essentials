@@ -63,7 +63,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsInt32(this XElement element, XName name, out int value) {
             return GetAttributeValue(element, name, out value);
         }
@@ -108,7 +108,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsInt64(this XElement element, XName name, out long value) {
             return GetAttributeValue(element, name, out value);
         }
@@ -153,7 +153,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsSingle(this XElement element, XName name, out float value) {
             return GetAttributeValue(element, name, out value);
         }
@@ -198,7 +198,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsDouble(this XElement element, XName name, out double value) {
             return GetAttributeValue(element, name, out value);
         }
@@ -243,7 +243,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
         /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsBoolean(this XElement element, XName name, out bool value) {
 
             // Get the attribute from the specified "element"
@@ -339,7 +339,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <typeparam name="T">The type to be returned.</typeparam>
         /// <param name="element">The instance of <see cref="XElement"/> holding the attribute.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
-        /// <returns>Returns an instance of <typeparamref name="T"/> represnting the attribute value, or the default
+        /// <returns>An instance of <typeparamref name="T"/> represnting the attribute value, or the default
         /// value of <typeparamref name="T"/> if not found.</returns>
         public static T GetAttributeValue<T>(this XElement element, XName name) {
             XAttribute attr = GetAttribute(element, name);
@@ -355,7 +355,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="value">The converted value.</param>
-        /// <returns><code>true</code> if the attribute was found and has a value, otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the attribute was found and has a value, otherwise <c>false</c>.</returns>
         public static bool GetAttributeValue<T>(this XElement element, XName name, out T value) {
 
             // Get the first attribute matching "name"

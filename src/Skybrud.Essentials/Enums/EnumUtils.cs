@@ -28,7 +28,7 @@ namespace Skybrud.Essentials.Enums {
         /// <typeparam name="T">The type of the enum.</typeparam>
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
-        /// <exception cref="ArgumentNullException">If <paramref name="str"/> is <code>null</code> (or white space).</exception>
+        /// <exception cref="ArgumentNullException">If <paramref name="str"/> is <c>null</c> (or white space).</exception>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of
         /// <typeparamref name="T"/>.</exception>
@@ -87,7 +87,7 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="str">The string representation of the enumeration name or underlying value to convert.</param>
         /// <param name="value">When this method returns, contains an object of type <typeparamref name="T"/> whose
         /// value is represented by value. This parameter is passed uninitialized.</param>
-        /// <returns><code>true</code> if the value parameter was converted successfully; otherwise, <code>false</code>.</returns>
+        /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static bool TryParseEnum<T>(string str, out T value) where T : struct {
 
@@ -144,7 +144,7 @@ namespace Skybrud.Essentials.Enums {
         /// <typeparam name="T">The type of the enum.</typeparam>
         /// <param name="str">A string value containing one or more enum values.</param>
         /// <param name="array">The array of <typeparamref name="T"/> with the converted values.</param>
-        /// <returns><code>true</code> if the value parameter was converted successfully; otherwise, <code>false</code>.</returns>
+        /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static bool TryParseEnumArray<T>(string str, out T[] array) where T : struct {
 

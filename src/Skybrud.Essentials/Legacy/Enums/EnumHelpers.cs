@@ -9,37 +9,37 @@ namespace Skybrud.Essentials.Enums {
     public static class EnumHelpers {
 
         /// <summary>
-        /// Gets an array of all values of the specified enum class <code>T</code>.
+        /// Gets an array of all values of the specified enum class <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum class.</typeparam>
-        /// <returns>Returns an array of <code>T</code>.</returns>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
         [Obsolete("Use the EnumUtils class instead.")]
         public static T[] GetEnumValues<T>() where T : struct {
             return EnumUtils.GetEnumValues<T>();
         }
 
         /// <summary>
-        /// Parses the specified <code>str</code> into the enum of type <code>T</code>.
+        /// Parses the specified <paramref name="str"/> into the enum of type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>
         /// <param name="str">The string to be parsed.</param>
-        /// <returns>Returns an enum of type <code>T</code> from the specified <code>str</code>.</returns>
-        /// <exception cref="ArgumentNullException">If <code>str</code> is <code>null</code> (or white space).</exception>
-        /// <exception cref="ArgumentException">If <code>T</code> is not an enum class.</exception>
-        /// <exception cref="EnumParseException">If <code>str</code> doesn't match any of the values of <code>T</code>.</exception>
+        /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
+        /// <exception cref="ArgumentNullException">If <paramref name="str"/> is <c>null</c> (or white space).</exception>
+        /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
+        /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of <typeparamref name="T"/>.</exception>
         [Obsolete("Use the EnumUtils class instead.")]
         public static T ParseEnum<T>(string str) where T : struct {
             return EnumUtils.ParseEnum<T>(str);
         }
 
         /// <summary>
-        /// Parses the specified <code>str</code> into the enum of type <code>T</code>.
+        /// Parses the specified <paramref name="str"/> into the enum of type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>
         /// <param name="str">The string to be parsed.</param>
         /// <param name="fallback">The fallback if the enum could not be parsed.</param>
-        /// <returns>Returns an enum of type <code>T</code> from the specified <code>str</code>.</returns>
-        /// <exception cref="ArgumentException">If <code>T</code> is not an enum class.</exception>
+        /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
+        /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         [Obsolete("Use the EnumUtils class instead.")]
         public static T ParseEnum<T>(string str, T fallback) where T : struct {
             return EnumUtils.ParseEnum(str, fallback);

@@ -9,7 +9,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// Gets whether the string matches an integer (<see cref="Int32"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches an integer; otherwise <c>false</c>.</returns>
         public static bool IsInt32(string str) {
             int result;
             return Int32.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
@@ -19,14 +19,14 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// Alias of <see cref="IsInt32"/>. Gets whether the string matches an integer (<see cref="Int32"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches an integer; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches an integer; otherwise <c>false</c>.</returns>
         public static bool IsInteger(string str) {
             return IsInt32(str);
         }
         
         /// <summary>
         /// Converts <paramref name="input"/> to an instance of <see cref="Int32"/>. If the conversion fails,
-        /// <code>0</code> will be returned instead.
+        /// <c>0</c> will be returned instead.
         /// </summary>
         /// <param name="input">The input string to be converted.</param>
         /// <returns>An instance of <see cref="Int32"/>.</returns>

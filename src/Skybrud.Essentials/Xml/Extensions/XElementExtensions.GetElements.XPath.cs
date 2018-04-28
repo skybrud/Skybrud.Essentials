@@ -38,7 +38,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression.</param>
         /// <param name="callback">A callback function for parsing the elements.</param>
-        /// <returns>Returns the elements as parsed by the specified <paramref name="callback"/>.</returns>
+        /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
         public static T[] GetElements<T>(this XElement element, string expression, Func<XElement, T> callback) {
             return element == null ? new T[0] : element.XPathSelectElements(expression).Select(callback).ToArray();
         }
@@ -51,7 +51,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
         /// <param name="callback">A callback function for parsing the elements.</param>
-        /// <returns>Returns the elements as parsed by the specified <paramref name="callback"/>.</returns>
+        /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
         public static T[] GetElements<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<XElement, T> callback) {
             return element == null ? new T[0] : element.XPathSelectElements(expression, resolver).Select(callback).ToArray();
         }

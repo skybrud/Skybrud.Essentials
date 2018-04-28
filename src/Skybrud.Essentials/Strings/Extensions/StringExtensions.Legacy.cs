@@ -8,7 +8,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// Converts a comma separated string into an array of integers.
         /// </summary>
         /// <param name="str">The comma separated string to be converted.</param>
-        /// <returns>Returns an array of <see cref="Int32"/>.</returns>
+        /// <returns>An array of <see cref="Int32"/>.</returns>
         [Obsolete("Use ToInt32Array instead.")]
         public static int[] CsvToInt(this string str) {
             return StringUtils.ParseInt32Array(str);

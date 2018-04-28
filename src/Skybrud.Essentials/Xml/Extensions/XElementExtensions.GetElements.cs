@@ -23,7 +23,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the elements.</param>
         /// <param name="callback">A callback function for parsing the element.</param>
-        /// <returns>Returns the elements as parsed by the specified <paramref name="callback"/>.</returns>
+        /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
         public static T[] GetElements<T>(this XElement element, XName name, Func<XElement, T> callback) {
             return element == null ? new T[0] : element.Elements(name).Select(callback).ToArray();
         }

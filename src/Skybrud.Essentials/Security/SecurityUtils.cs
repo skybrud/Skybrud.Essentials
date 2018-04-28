@@ -72,7 +72,7 @@ namespace Skybrud.Essentials.Security {
         }
 
         /// <summary>
-        /// Gets the SHA1 hash of <code>input</code>, and returns that hash. The input string is converted using
+        /// Gets the SHA1 hash of <paramref name="input"/>, and returns that hash. The input string is converted using
         /// <paramref name="encoding"/>.
         /// </summary>
         /// <param name="input">The input string</param>
@@ -134,7 +134,7 @@ namespace Skybrud.Essentials.Security {
         }
 
         /// <summary>
-        /// Gets the SHA512 hash of <code>input</code>, and returns that hash. The input string is converted using
+        /// Gets the SHA512 hash of <paramref name="input"/>, and returns that hash. The input string is converted using
         /// <paramref name="encoding"/>.
         /// </summary>
         /// <param name="input">The input string</param>

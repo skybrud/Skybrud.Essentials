@@ -30,7 +30,7 @@ namespace Skybrud.Essentials.Locations {
         /// </summary>
         /// <param name="loc1">The first location.</param>
         /// <param name="loc2">The second location.</param>
-        /// <returns>Returns the distance in meters between the two locations.</returns>
+        /// <returns>The distance in meters between the two locations.</returns>
         public static double GetDistance(ILocation loc1, ILocation loc2) {
             return LocationUtils.GetDistance(loc1.Latitude, loc1.Longitude, loc2.Latitude, loc2.Longitude);
         }
@@ -42,7 +42,7 @@ namespace Skybrud.Essentials.Locations {
         /// <param name="lng1">The longitude of the first location.</param>
         /// <param name="lat2">The latitude of the second location.</param>
         /// <param name="lng2">The longitude of the second location.</param>
-        /// <returns>Returns the distance in meters between the two locations.</returns>
+        /// <returns>The distance in meters between the two locations.</returns>
         public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {
             return LocationUtils.GetDistance(lat1, lng1, lat2, lng2);
         }

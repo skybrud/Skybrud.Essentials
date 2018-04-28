@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// Gets the current age, from the specified date of birth.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>Returns an instance of <see cref="Int32"/> representing the age.</returns>
+        /// <returns>An instance of <see cref="Int32"/> representing the age.</returns>
         public static int GetAge(this DateTime dateOfBirth) {
             return TimeUtils.GetAge(dateOfBirth);
         }
@@ -22,7 +22,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>Returns an instance of <see cref="Int32"/> representing the age.</returns>
+        /// <returns>An instance of <see cref="Int32"/> representing the age.</returns>
         public static int GetAge(this DateTime dateOfBirth, DateTime dt) {
             return TimeUtils.GetAge(dateOfBirth, dt);
         }
@@ -59,7 +59,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// Gets whether the specified <paramref name="date"/> is a weekday.
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
-        /// <returns><code>true</code> if <paramref name="date"/> is a weekday; otherwise <code>false</code>. </returns>
+        /// <returns><c>true</c> if <paramref name="date"/> is a weekday; otherwise <c>false</c>. </returns>
         public static bool IsWeekday(this DateTime date) {
             return TimeUtils.IsWeekday(date);
         }
@@ -68,7 +68,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// Gets whether the specified <paramref name="date"/> is in the weekend.
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
-        /// <returns><code>true</code> if <paramref name="date"/> is in the weekend; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="date"/> is in the weekend; otherwise <c>false</c>.</returns>
         public static bool IsWeekend(this DateTime date) {
             return TimeUtils.IsWeekend(date);
         }
@@ -77,7 +77,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// Gets whether the specified <paramref name="date"/> is a leap year.
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
-        /// <returns><code>true</code> if the year of <paramref name="date"/> is a leap year; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the year of <paramref name="date"/> is a leap year; otherwise <c>false</c>.</returns>
         public static bool IsLeapYear(this DateTime date) {
             return TimeUtils.IsLeapYear(date);
         }
@@ -86,7 +86,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// Gets whether the specified year is a leap year.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns><code>true</code> if <paramref name="year"/> is a leap year; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="year"/> is a leap year; otherwise <c>false</c>.</returns>
         public static bool IsLeapYear(this int year) {
             return TimeUtils.IsLeapYear(year);
         }
@@ -106,8 +106,8 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <param name="days">The number of days.</param>
-        /// <returns><code>true</code> if <paramref name="date"/> is within the last number of
-        /// <paramref name="days"/>, otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="date"/> is within the last number of
+        /// <paramref name="days"/>, otherwise <c>false</c>.</returns>
         public static bool IsDateWithinLastDays(this DateTime date, int days) {
             return TimeUtils.IsDateWithinLastDays(date, days);
         }

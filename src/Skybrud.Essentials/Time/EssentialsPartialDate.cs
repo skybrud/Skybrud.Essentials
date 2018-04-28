@@ -15,17 +15,17 @@ namespace Skybrud.Essentials.Time {
         #region Properties
 
         /// <summary>
-        /// Gets the year, or <code>0</code> if not specified.
+        /// Gets the year, or <c>0</c> if not specified.
         /// </summary>
         public int Year { get; private set; }
         
         /// <summary>
-        /// Gets the month, or <code>0</code> if not specified.
+        /// Gets the month, or <c>0</c> if not specified.
         /// </summary>
         public int Month { get; private set; }
         
         /// <summary>
-        /// Gets the day, or <code>0</code> if not specified.
+        /// Gets the day, or <c>0</c> if not specified.
         /// </summary>
         public int Day { get; private set; }
 
@@ -132,7 +132,7 @@ namespace Skybrud.Essentials.Time {
         #region Member methods
 
         /// <summary>
-        /// Returns a string representation of the partial date in the format of <code>yyyy-MM-dd</code>.
+        /// Returns a string representation of the partial date in the format of <c>yyyy-MM-dd</c>.
         /// </summary>
         /// <returns>A string that represents the partial date.</returns>
         public override string ToString() {
@@ -186,11 +186,11 @@ namespace Skybrud.Essentials.Time {
         /// <param name="input">The input string to be converted.</param>
         /// <param name="result">When this method returns, contains the <see cref="EssentialsPartialDate"/> value
         /// equivalent to the partial date and time contained in <paramref name="input"/>, if the conversion succeeded,
-        /// or <code>null</code> if the conversion failed. The conversion fails if <paramref name="input"/> is
-        /// <code>null</code>, is an empty string (""), or does not contain a valid string representation of a partial
+        /// or <c>null</c> if the conversion failed. The conversion fails if <paramref name="input"/> is
+        /// <c>null</c>, is an empty string (""), or does not contain a valid string representation of a partial
         /// date. This parameter is passed uninitialized.</param>
-        /// <returns><code>true</code> if <paramref name="input"/> was converted successfully; otherwise,
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise,
+        /// <c>false</c>.</returns>
         public static bool TryParse(string input, out EssentialsPartialDate result) {
             return TryParse(input, CultureInfo.InvariantCulture, out result);
         }
@@ -204,11 +204,11 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="input"/>.</param>
         /// <param name="result">When this method returns, contains the <see cref="EssentialsPartialDate"/> value
         /// equivalent to the partial date and time contained in <paramref name="input"/>, if the conversion succeeded,
-        /// or <code>null</code> if the conversion failed. The conversion fails if <paramref name="input"/> is
-        /// <code>null</code>, is an empty string (""), or does not contain a valid string representation of a partial
+        /// or <c>null</c> if the conversion failed. The conversion fails if <paramref name="input"/> is
+        /// <c>null</c>, is an empty string (""), or does not contain a valid string representation of a partial
         /// date. This parameter is passed uninitialized.</param>
-        /// <returns><code>true</code> if <paramref name="input"/> was converted successfully; otherwise,
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise,
+        /// <c>false</c>.</returns>
         public static bool TryParse(string input, IFormatProvider provider, out EssentialsPartialDate result) {
 
             // Initialize "date"
@@ -265,7 +265,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="timestamp"/>.
         /// </summary>
         /// <param name="timestamp">An instance of <see cref="DateTime"/>.</param>
-        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
+        /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
         public static implicit operator EssentialsPartialDate(DateTime timestamp) {
             return new EssentialsPartialDate(timestamp);
         }
@@ -275,7 +275,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="timestamp"/>.
         /// </summary>
         /// <param name="timestamp">An instance of <see cref="DateTimeOffset"/>.</param>
-        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
+        /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
         public static implicit operator EssentialsPartialDate(DateTimeOffset timestamp) {
             return new EssentialsPartialDate(timestamp);
         }
@@ -285,7 +285,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="timestamp"/>.
         /// </summary>
         /// <param name="timestamp">An instance of <see cref="EssentialsDateTime"/>.</param>
-        /// <returns>Returns an instance of <see cref="EssentialsPartialDate"/>.</returns>
+        /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
         public static implicit operator EssentialsPartialDate(EssentialsDateTime timestamp) {
             return new EssentialsPartialDate(timestamp);
         }

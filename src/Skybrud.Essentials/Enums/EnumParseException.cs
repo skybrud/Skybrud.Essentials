@@ -12,12 +12,12 @@ namespace Skybrud.Essentials.Enums {
         /// <summary>
         /// Gets the <see cref="Type"/> of the enum.
         /// </summary>
-        public Type Type { get; private set; }
+        public Type Type { get; }
 
         /// <summary>
         /// Gets the value.
         /// </summary>
-        public string Value { get; private set; }
+        public string Value { get; }
 
         #endregion
 

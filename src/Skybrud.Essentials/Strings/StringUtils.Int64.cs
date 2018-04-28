@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Strings {
         /// Gets whether the string matches a long (<see cref="Int64"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches a long; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches a long; otherwise <c>false</c>.</returns>
         public static bool IsInt64(string str) {
             long result;
             return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
@@ -43,7 +43,7 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Parses a string of numeric values into an array of <see cref="Int64"/>. Supported separators are
-        /// <code>,</code>, <code> </code>, <code>\r</code>, <code>\n</code> and <code>\t</code>. Values in the list
+        /// <c>,</c>, <c> </c>, <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list
         /// that can't be converted to <see cref="Int64"/> will be ignored.
         /// </summary>
         /// <param name="str">The string of numeric values to be parsed.</param>

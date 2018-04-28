@@ -6,8 +6,7 @@ using Skybrud.Essentials.Time;
 namespace Skybrud.Essentials.Json.Converters.Time {
 
     /// <summary>
-    /// Converts an instance of <see cref="EssentialsDateTime"/> to and from the ISO 8601 date format (e.g.
-    /// <code>2008-04-12T12:53Z</code>).
+    /// Converts an instance of <see cref="EssentialsDateTime"/> to and from the ISO 8601 date format (e.g. <c>2008-04-12T12:53Z</c>).
     /// </summary>
     public class EssentialsDateTimeConverter : IsoDateTimeConverter {
 
@@ -62,8 +61,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// Determines whether this instance can convert the specified object type.
         /// </summary>
         /// <param name="objectType">Type of the object.</param>
-        /// <returns><code>true</code> if this instance can convert the specified object type; otherwise,
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.</returns>
         public override bool CanConvert(Type objectType) {
             return objectType == typeof(EssentialsDateTime);
         }

@@ -125,7 +125,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the attribute should match.</param>
         /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsInt32(this XElement element, string expression, out int value) {
             return GetAttributeValue(element, expression, out value);
         }
@@ -140,7 +140,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
         /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsInt32(this XElement element, string expression, IXmlNamespaceResolver resolver, out int value) {
             return GetAttributeValue(element, expression, resolver, out value);
         }
@@ -216,7 +216,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the attribute should match.</param>
         /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsInt64(this XElement element, string expression, out long value) {
             return GetAttributeValue(element, expression, out value);
         }
@@ -231,7 +231,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
         /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsInt64(this XElement element, string expression, IXmlNamespaceResolver resolver, out long value) {
             return GetAttributeValue(element, expression, resolver, out value);
         }
@@ -307,7 +307,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the attribute should match.</param>
         /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsSingle(this XElement element, string expression, out float value) {
             return GetAttributeValue(element, expression, out value);
         }
@@ -322,7 +322,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
         /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsSingle(this XElement element, string expression, IXmlNamespaceResolver resolver, out float value) {
             return GetAttributeValue(element, expression, resolver, out value);
         }
@@ -398,7 +398,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the attribute should match.</param>
         /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsDouble(this XElement element, string expression, out double value) {
             return GetAttributeValue(element, expression, out value);
         }
@@ -413,7 +413,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
         /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsDouble(this XElement element, string expression, IXmlNamespaceResolver resolver, out double value) {
             return GetAttributeValue(element, expression, resolver, out value);
         }
@@ -489,7 +489,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression the attribute should match.</param>
         /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsBoolean(this XElement element, string expression, out bool value) {
             return GetAttributeValueAsBoolean(element, expression, default(IXmlNamespaceResolver), out value);
         }
@@ -504,7 +504,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
         /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetAttributeValueAsBoolean(this XElement element, string expression, IXmlNamespaceResolver resolver, out bool value) {
 
             // Get the attribute from the specified "element"
@@ -699,7 +699,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
         /// in the XPath expression.</param>
         /// <param name="value">The converted value.</param>
-        /// <returns><code>true</code> if the attribute was found and has a value, otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the attribute was found and has a value, otherwise <c>false</c>.</returns>
         public static bool GetAttributeValue<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, out T value) {
             XAttribute attr = GetAttribute(element, expression, resolver);
             value = attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);

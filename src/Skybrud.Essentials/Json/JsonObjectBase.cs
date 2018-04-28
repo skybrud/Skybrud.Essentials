@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Json {
         /// Gets the internal <see cref="JObject"/> the object was created from.
         /// </summary>
         [JsonIgnore]
-        public JObject JObject { get; private set; }
+        public JObject JObject { get; }
 
         #endregion
 

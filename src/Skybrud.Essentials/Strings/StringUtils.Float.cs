@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Strings {
         /// Gets whether the string matches an integer (<see cref="Single"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
-        /// <returns><code>true</code> if <paramref name="str"/> matches a long; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="str"/> matches a long; otherwise <c>false</c>.</returns>
         public static bool IsFloat(string str) {
             float result;
             return Single.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
@@ -43,7 +43,7 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Parses a string of float values into an array of <see cref="Single"/>. Supported separators are
-        /// <code>,</code>, <code> </code>, <code>\r</code>, <code>\n</code> and <code>\t</code>. Values in the list
+        /// <c>,</c>, <c> </c>, <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list
         /// that can't be converted to <see cref="Single"/> will be ignored.
         /// </summary>
         /// <param name="str">The string of float values to be parsed.</param>

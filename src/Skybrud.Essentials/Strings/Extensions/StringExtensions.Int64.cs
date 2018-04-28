@@ -6,7 +6,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Converts <paramref name="input"/> to an instance of <see cref="Int64"/>. If the conversion fails,
-        /// <code>0</code> will be returned instead.
+        /// <c>0</c> will be returned instead.
         /// </summary>
         /// <param name="input">The input string to be converted.</param>
         /// <returns>An instance of <see cref="Int64"/>.</returns>

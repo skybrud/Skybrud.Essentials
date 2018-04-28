@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="index">The index of the item.</param>
-        /// <returns>An instance of <see cref="JObject"/>, or <code>null</code> if not found.</returns>
+        /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
         public static JObject GetObject(this JArray array, int index) {
             return array?[index] as JObject;
         }
@@ -50,7 +50,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="JObject"/>, or <code>null</code> if not found.</returns>
+        /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
         public static JObject GetObject(this JArray array, string path) {
             return array?.SelectToken(path) as JObject;
         }
@@ -96,7 +96,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="String"/>, or <code>null</code> if <paramref name="path"/> didn't match
+        /// <returns>An instance of <see cref="String"/>, or <c>null</c> if <paramref name="path"/> didn't match
         /// any tokens.</returns>
         public static string GetString(this JArray array, string path) {
             JToken token = array?.SelectToken(path);
@@ -118,7 +118,7 @@ namespace Skybrud.Essentials.Json.Extensions {
 
         /// <summary>
         /// Gets the <see cref="Int16"/> value of the token matching the specified <paramref name="path"/>, or
-        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// <c>0</c> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -144,7 +144,7 @@ namespace Skybrud.Essentials.Json.Extensions {
 
         /// <summary>
         /// Gets the <see cref="UInt16"/> value of the token matching the specified <paramref name="path"/>, or
-        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// <c>0</c> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -170,7 +170,7 @@ namespace Skybrud.Essentials.Json.Extensions {
 
         /// <summary>
         /// Gets the <see cref="Int32"/> value of the token matching the specified <paramref name="path"/>, or
-        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// <c>0</c> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -196,7 +196,7 @@ namespace Skybrud.Essentials.Json.Extensions {
 
         /// <summary>
         /// Gets the <see cref="UInt32"/> value of the token matching the specified <paramref name="path"/>, or
-        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// <c>0</c> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
@@ -247,7 +247,7 @@ namespace Skybrud.Essentials.Json.Extensions {
 
         /// <summary>
         /// Gets the <see cref="UInt64"/> value of the token matching the specified <paramref name="path"/>, or
-        /// <code>0</code> if <paramref name="path"/> doesn't match a token.
+        /// <c>0</c> if <paramref name="path"/> doesn't match a token.
         /// </summary>
         /// <param name="array">The parent array.</param>
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>

@@ -82,10 +82,10 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// The RFC 822 specification describes a number of predefined time zones - eg. <code>EST</code>
-        /// (Eastern Standard Time), <code>UT</code> (Universal Time) and <code>GMT</code>
+        /// The RFC 822 specification describes a number of predefined time zones - eg. <c>EST</c>
+        /// (Eastern Standard Time), <c>UT</c> (Universal Time) and <c>GMT</c>
         /// (Greenwich Mean Time) - which <see cref="DateTimeOffset"/> isn't able to parse on it's own,
-        /// so we need to convert the time zone to an offset instead - eg <code>+01:00</code>.
+        /// so we need to convert the time zone to an offset instead - eg <c>+01:00</c>.
         /// </summary>
         /// <param name="timezone">The time zone value to be normalized.</param>
         /// <returns>The normalized time zone.</returns>

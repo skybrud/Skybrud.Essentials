@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Common {
         /// <summary>
         /// Gets the name of the property.
         /// </summary>
-        public string PropertyName { get; private set; }
+        public string PropertyName { get; }
 
         #endregion
 

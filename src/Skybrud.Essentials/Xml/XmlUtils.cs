@@ -80,7 +80,7 @@ namespace Skybrud.Essentials.Xml {
         /// <see cref="XDocument"/>.
         /// </summary>
         /// <param name="path">The path to the XML document.</param>
-        /// <returns>Returns an instance of <see cref="XDocument"/>.</returns>
+        /// <returns>An instance of <see cref="XDocument"/>.</returns>
         public static XDocument LoadXmlDocument(string path) {
             return XDocument.Load(path);
         }
@@ -92,7 +92,7 @@ namespace Skybrud.Essentials.Xml {
         /// <typeparam name="T">The type of the instance to be returned.</typeparam>
         /// <param name="path">The path to the XML document.</param>
         /// <param name="callback">The callback function used for converting the loaded <see cref="XDocument"/>.</param>
-        /// <returns>Returns an instance of <typeparamref name="T"/> representing the XML document.</returns>
+        /// <returns>An instance of <typeparamref name="T"/> representing the XML document.</returns>
         public static T LoadXmlDocument<T>(string path, Func<XDocument, T> callback) {
             return callback(XDocument.Load(path));
         }

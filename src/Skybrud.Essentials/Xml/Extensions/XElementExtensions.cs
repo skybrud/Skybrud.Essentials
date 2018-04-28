@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the element.</param>
-        /// <returns><code>true</code> if an element was found and has a value; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if an element was found and has a value; otherwise <c>false</c>.</returns>
         public static bool HasElementValue(this XElement element, XName name) {
 
             // Get the element matching "name"
@@ -32,7 +32,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression.</param>
-        /// <returns><code>true</code> if an element was found and has a value; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if an element was found and has a value; otherwise <c>false</c>.</returns>
         public static bool HasElementValue(this XElement element, string expression) {
 
             // Get the element matching "name"
@@ -49,7 +49,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
-        /// <returns><code>true</code> if an element was found and has a value; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if an element was found and has a value; otherwise <c>false</c>.</returns>
         public static bool HasElementValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
 
             // Get the element matching "name"

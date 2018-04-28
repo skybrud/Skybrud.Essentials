@@ -161,7 +161,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the specified <paramref name="date"/> is a weekday.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns><code>true</code> if the specified day is weekday; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the specified day is weekday; otherwise <c>false</c>.</returns>
         public static bool IsWeekday(DateTime date) {
             return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
         }
@@ -170,7 +170,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the specified <paramref name="date"/> is a weekday.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns><code>true</code> if the specified day is weekday; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the specified day is weekday; otherwise <c>false</c>.</returns>
         public static bool IsWeekday(DateTimeOffset date) {
             return IsWeekday(date.Date);
         }
@@ -179,7 +179,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the specified <paramref name="date"/> is in the weekend.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns><code>true</code> if the specified day is weekend; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the specified day is weekend; otherwise <c>false</c>.</returns>
         public static bool IsWeekend(DateTime date) {
             return !IsWeekday(date);
         }
@@ -188,7 +188,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the specified <paramref name="date"/> is in the weekend.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns><code>true</code> if the specified day is weekend; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the specified day is weekend; otherwise <c>false</c>.</returns>
         public static bool IsWeekend(DateTimeOffset date) {
             return IsWeekend(date.Date);
         }
@@ -197,8 +197,8 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the specified <paramref name="date"/> is a leap year.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns><code>true</code> if the year of the specified <paramref name="date"/> is a leap year; otherwise
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if the year of the specified <paramref name="date"/> is a leap year; otherwise
+        /// <c>false</c>.</returns>
         public static bool IsLeapYear(DateTime date) {
             return IsLeapYear(date.Year);
         }
@@ -207,8 +207,8 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the specified <paramref name="date"/> is a leap year.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns><code>true</code> if the year of the specified <paramref name="date"/> is a leap year; otherwise
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if the year of the specified <paramref name="date"/> is a leap year; otherwise
+        /// <c>false</c>.</returns>
         public static bool IsLeapYear(DateTimeOffset date) {
             return IsLeapYear(date.Date);
         }
@@ -217,7 +217,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the specified <paramref name="year"/> is a leap year.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns><code>true</code> if the specified year is a leap year; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the specified year is a leap year; otherwise <c>false</c>.</returns>
         public static bool IsLeapYear(int year) {
             return (DateTime.DaysInMonth(year, 2).Equals(29));
         }
@@ -246,8 +246,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="days">The number of days.</param>
-        /// <returns><code>true</code> if the <paramref name="date"/> is within the last number of
-        /// <paramref name="days"/>, otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the <paramref name="date"/> is within the last number of
+        /// <paramref name="days"/>, otherwise <c>false</c>.</returns>
         public static bool IsDateWithinLastDays(DateTime date, int days) {
             double lastDays = (double) 0 - days;
             DateTime startDate = date.AddDays(lastDays);
@@ -260,8 +260,8 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <param name="days">The number of days.</param>
         /// <returns>
-        /// Returns <code>true</code> if the <paramref name="date"/> is within the last number of
-        /// <paramref name="days"/>, otherwise <code>false</code>.
+        /// Returns <c>true</c> if the <paramref name="date"/> is within the last number of
+        /// <paramref name="days"/>, otherwise <c>false</c>.
         /// </returns>
         public static bool IsDateWithinLastDays(DateTimeOffset date, int days) {
             return IsDateWithinLastDays(date.DateTime, days);
@@ -336,7 +336,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
+        /// Gets the first day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
@@ -349,7 +349,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
+        /// Gets the first day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
@@ -386,7 +386,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
+        /// Gets the last day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
@@ -397,7 +397,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the week of the specified <paramref name="date"/> and based on <code>startOfWeek</code>.
+        /// Gets the last day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
@@ -412,7 +412,7 @@ namespace Skybrud.Essentials.Time {
         #region GetFirstWeekdayOfMonth
 
         /// <summary>
-        /// Gets the first day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the first day of the month that matches <paramref name="dayOfWeek"/>.
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
@@ -422,7 +422,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the first day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
@@ -432,7 +432,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the first day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -443,7 +443,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the first day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -455,7 +455,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the first day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -470,7 +470,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the first day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the first day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -490,7 +490,7 @@ namespace Skybrud.Essentials.Time {
         #region GetLastWeekdayOfMonth
 
         /// <summary>
-        /// Gets the last day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the last day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
@@ -500,7 +500,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the last day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="date">A date in the month.</param>
         /// <param name="dayOfWeek">The weekday to match.</param>
@@ -510,7 +510,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the last day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -521,7 +521,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the last day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -533,7 +533,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the last day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -548,7 +548,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the last day of the month that matches <code>dayOfWeek</code>.
+        /// Gets the last day of the month that matches <paramref name="dayOfWeek"/>..
         /// </summary>
         /// <param name="year">The year.</param>
         /// <param name="month">The month.</param>
@@ -679,7 +679,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
-        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>).
+        /// (eg. <c>August</c> is the eight month of the year, and will result in <c>8</c>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
         /// <returns>An instance of <see cref="System.Int32"/> representing the month.</returns>
@@ -690,7 +690,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
-        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>).
+        /// (eg. <c>August</c> is the eight month of the year, and will result in <c>8</c>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
         /// <param name="provider">An object that supplies culture-specific format information about
@@ -703,17 +703,17 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
-        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>) and returns a
+        /// (eg. <c>August</c> is the eight month of the year, and will result in <c>8</c>) and returns a
         /// value that indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
         /// <param name="result">When this method returns, contains the <see cref="System.Int32"/> value
         /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
-        /// or <code>0</code> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
-        /// <code>null</code>, is an empty string (""), or does not contain a valid month name. This parameter is
+        /// or <c>0</c> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
+        /// <c>null</c>, is an empty string (""), or does not contain a valid month name. This parameter is
         /// passed uninitialized.</param>
-        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
+        /// <c>false</c>.</returns>
         public static bool TryParseNumberFromMonthName(string monthName, out int result) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             return TryParseNumberFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
@@ -721,7 +721,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
-        /// (eg. <code>August</code> is the eight month of the year, and will result in <code>8</code>) and returns a
+        /// (eg. <c>August</c> is the eight month of the year, and will result in <c>8</c>) and returns a
         /// value that indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
@@ -729,11 +729,11 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="monthName"/>.</param>
         /// <param name="result">When this method returns, contains the <see cref="System.Int32"/> value
         /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
-        /// or <code>0</code> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
-        /// <code>null</code>, is an empty string (""), or does not contain a valid month name. This parameter is
+        /// or <c>0</c> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
+        /// <c>null</c>, is an empty string (""), or does not contain a valid month name. This parameter is
         /// passed uninitialized.</param>
-        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
+        /// <c>false</c>.</returns>
         public static bool TryParseNumberFromMonthName(string monthName, IFormatProvider provider, out int result) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             DateTime dt;
@@ -747,7 +747,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the an instance of
-        /// <see cref="EssentialsDateMonthName"/> (eg. <code>August</code> will be converted to
+        /// <see cref="EssentialsDateMonthName"/> (eg. <c>August</c> will be converted to
         /// <see cref="EssentialsDateMonthName.August"/>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
@@ -759,7 +759,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the an instance of
-        /// <see cref="EssentialsDateMonthName"/> (eg. <code>August</code> will be converted to
+        /// <see cref="EssentialsDateMonthName"/> (eg. <c>August</c> will be converted to
         /// <see cref="EssentialsDateMonthName.August"/>).
         /// </summary>
         /// <param name="monthName">The name of the month.</param>
@@ -773,7 +773,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into an enum representation of the month
-        /// (eg. <code>August</code> is the eight month of the year, and will result in
+        /// (eg. <c>August</c> is the eight month of the year, and will result in
         /// <see cref="EssentialsDateMonthName.August"/>) and returns a value that indicates whether the conversion
         /// succeeded.
         /// </summary>
@@ -781,17 +781,17 @@ namespace Skybrud.Essentials.Time {
         /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonthName"/> value
         /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
         /// default value of <see cref="EssentialsDateMonthName"/> if the conversion failed. The conversion fails if
-        /// <paramref name="monthName"/> is <code>null</code>, is an empty string (""), or does not contain a valid
+        /// <paramref name="monthName"/> is <c>null</c>, is an empty string (""), or does not contain a valid
         /// month name. This parameter is passed uninitialized.</param>
-        /// <returns><code>true</code> if <paramref name="monthName"/> was converted successfully; otherwise,
-        /// <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
+        /// <c>false</c>.</returns>
         public static bool TryParseEnumFromMonthName(string monthName, out EssentialsDateMonthName result) {
             return TryParseEnumFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
         }
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into an enum representation of the month
-        /// (eg. <code>August</code> is the eight month of the year, and will result in
+        /// (eg. <c>August</c> is the eight month of the year, and will result in
         /// <see cref="EssentialsDateMonthName.August"/>) and returns a value that indicates whether the conversion
         /// succeeded.
         /// </summary>
@@ -799,11 +799,11 @@ namespace Skybrud.Essentials.Time {
         /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonthName"/> value
         /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
         /// default value of <see cref="EssentialsDateMonthName"/> if the conversion failed. The conversion fails if
-        /// <paramref name="monthName"/> is <code>null</code>, is an empty string (""), or does not contain a valid
+        /// <paramref name="monthName"/> is <c>null</c>, is an empty string (""), or does not contain a valid
         /// month name. This parameter is passed uninitialized.</param>
         /// <param name="provider">An object that supplies culture-specific format information about
-        /// <paramref name="monthName"/>.</param> <returns><code>true</code> if <paramref name="monthName"/> was converted
-        /// successfully; otherwise, <code>false</code>.</returns>
+        /// <paramref name="monthName"/>.</param> <returns><c>true</c> if <paramref name="monthName"/> was converted
+        /// successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonthName result) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             DateTime dt;

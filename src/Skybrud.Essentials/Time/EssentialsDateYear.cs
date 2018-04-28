@@ -23,8 +23,8 @@ namespace Skybrud.Essentials.Time {
         public bool IsLeapYear => TimeUtils.IsLeapYear(Year);
 
         /// <summary>
-        /// Gets the amount of days in the yeay - <code>366</code> if <see cref="IsLeapYear"/> is <code>true</code>,
-        /// otherwise <code>365</code>.
+        /// Gets the amount of days in the yeay - <c>366</c> if <see cref="IsLeapYear"/> is <c>true</c>,
+        /// otherwise <c>365</c>.
         /// </summary>
         public int Days => IsLeapYear ? 366 : 365;
 

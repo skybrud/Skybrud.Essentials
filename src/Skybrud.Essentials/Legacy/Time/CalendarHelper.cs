@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Palm Sunday</strong>, which falls on the Sunday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Palm Sunday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Palm Sunday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Palm_Sunday#Observance_in_the_liturgy</cref>
         /// </see>
@@ -27,7 +27,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Moundy Thursday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Moundy Thursday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
         /// </see>
@@ -39,7 +39,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Good Friday</strong>, which falls on the Friday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Good Friday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Good Friday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Good_Friday</cref>
         /// </see>
@@ -51,7 +51,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Holy Saturday</strong>, which falls on the Saturday before <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Holy Saturday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Holy Saturday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Holy_Saturday</cref>
         /// </see>
@@ -64,7 +64,7 @@ namespace Skybrud.Essentials.Time {
         /// Western Christianity and the Gregorian calendar.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Easter Sunday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Easter Sunday</strong>.</returns>
         /// <see>
         ///     <cref>https://da.wikipedia.org/wiki/Påske#Beregning_af_p.C3.A5skedagens_dato</cref>
         /// </see>
@@ -79,7 +79,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Easter Monday</strong>, which falls on the Monday after <strong>Easter</strong>.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Easter Monday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Easter Monday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Easter_Monday</cref>
         /// </see>
@@ -92,7 +92,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>Easter</strong> (the 6th Thursday after <strong>Moundy Thursday</strong>).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Ascension Day</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Ascension Day</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Feast_of_the_Ascension</cref>
         /// </see>
@@ -108,7 +108,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>10th of May</strong> to the <strong>13th of June</strong> (both inclusive).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Whit Sunday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Whit Sunday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whitsun</cref>
         /// </see>
@@ -125,7 +125,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>14th of June</strong> (both inclusive).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Whit Monday</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Whit Monday</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Whit_Monday</cref>
         /// </see>
@@ -141,7 +141,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>Saint Lucy's Day</strong> (13th of December).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of Saint Lucy's Day.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of Saint Lucy's Day.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Saint_Lucy's_Day</cref>
         /// </see>
@@ -153,7 +153,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>Christmas Eve</strong> (24th of December).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of Christmas Eve.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of Christmas Eve.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Christmas_Eve</cref>
         /// </see>
@@ -165,7 +165,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>Christmas Day</strong> (25th of December).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Christmas Day</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Christmas Day</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Christmas_Day</cref>
         /// </see>
@@ -177,7 +177,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>Boxing Day</strong> (26th of December).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Boxing Day</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Boxing Day</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Boxing_Day</cref>
         /// </see>
@@ -189,7 +189,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="DateTime"/> representing the date of <strong>New Year's Eve</strong> (31st of December).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>New Year's Eve</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>New Year's Eve</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/New_Year's_Eve</cref>
         /// </see>
@@ -201,7 +201,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="DateTime"/> representing <strong>New Year's Day</strong> (1st of January).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>New Year's Day</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>New Year's Day</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/New_Year's_Day</cref>
         /// </see>
@@ -217,7 +217,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="DateTime"/> representing <strong>Groundhog Day</strong> (2nd of February).
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Groundhog Day</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Groundhog Day</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Groundhog_Day</cref>
         /// </see>
@@ -231,7 +231,7 @@ namespace Skybrud.Essentials.Time {
         /// Saint Patrick, the foremost patron saint of Ireland.
         /// </summary>
         /// <param name="year">The year.</param>
-        /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Saint Patrick's Day</strong>.</returns>
+        /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Saint Patrick's Day</strong>.</returns>
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Saint_Patrick's_Day</cref>
         /// </see>
@@ -255,7 +255,7 @@ namespace Skybrud.Essentials.Time {
             /// 1867), which united three colonies into a single country called Canada within the British Empire.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Canada Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Canada Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Canada_Day</cref>
             /// </see>
@@ -268,7 +268,7 @@ namespace Skybrud.Essentials.Time {
             /// public holiday celebrated on the first Monday in September.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Labour Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Labour Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Labour_Day</cref>
             /// </see>
@@ -281,7 +281,7 @@ namespace Skybrud.Essentials.Time {
             /// Thanksgiving Day occurs on the second Monday in October, which celebrates the harvest and other blessings of the past year.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Thanksgiving Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Thanksgiving Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Thanksgiving_(Canada)</cref>
             /// </see>
@@ -305,7 +305,7 @@ namespace Skybrud.Essentials.Time {
             /// - a national holiday in Denmark. It falls on the 4th Friday after <strong>Easter</strong>.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of Store Bededag.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of Store Bededag.</returns>
             /// <see>
             ///     <cref>https://da.wikipedia.org/wiki/Store_bededag</cref>
             /// </see>
@@ -323,7 +323,7 @@ namespace Skybrud.Essentials.Time {
             /// constitutional monarchy, and honors the constitution of 1953, which was adopted on the same date.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Independence Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Independence Day</strong>.</returns>
             /// <see>
             ///     <cref>https://da.wikipedia.org/wiki/Grundlovsdag</cref>
             /// </see>
@@ -349,7 +349,7 @@ namespace Skybrud.Essentials.Time {
             /// Gets an instance of <see cref="DateTime"/> representing <strong>Independence Day</strong> (4th of July).
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Independence Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Independence Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Independence_Day_(United_States)</cref>
             /// </see>
@@ -363,7 +363,7 @@ namespace Skybrud.Essentials.Time {
             /// in memory of the 2,977 people killed in the 2001 September 11 attacks.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of
             /// <strong>Patriot Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Patriot_Day</cref>
@@ -377,7 +377,7 @@ namespace Skybrud.Essentials.Time {
             /// public holiday celebrated on the first Monday in September.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of
             /// <strong>Patriot Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Labor_Day</cref>
@@ -392,7 +392,7 @@ namespace Skybrud.Essentials.Time {
             /// country's armed forces. The holiday is observed every year on the last Monday of May.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of
             /// <strong>Memorial Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Labor_Day</cref>
@@ -407,7 +407,7 @@ namespace Skybrud.Essentials.Time {
             /// veterans, that is, persons who served in the United States Armed Forces.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of
             /// <strong>Veterans Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Veterans_Day</cref>
@@ -423,7 +423,7 @@ namespace Skybrud.Essentials.Time {
             /// been celebrated nationally on and off since 1789, after a proclamation by George Washington.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>Returns an instance of <see cref="DateTime"/> representing the date of <strong>Thanksgiving Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Thanksgiving Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Thanksgiving_(United_States)</cref>
             /// </see>

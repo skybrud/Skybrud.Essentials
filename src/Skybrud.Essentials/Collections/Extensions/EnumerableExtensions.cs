@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
         /// <summary>
         /// Orders <paramref name="collection"/> in descending order if <paramref name="reverse"/> is
-        /// <code>true</code>, otherwise in ascending order.
+        /// <c>true</c>, otherwise in ascending order.
         /// </summary>
         /// <typeparam name="T">The type of the items in the collection.</typeparam>
         /// <typeparam name="TKey"></typeparam>

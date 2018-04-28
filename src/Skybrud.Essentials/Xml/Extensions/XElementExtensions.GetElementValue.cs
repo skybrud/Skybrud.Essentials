@@ -58,7 +58,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetElementValueAsInt32(this XElement element, XName name, out int value) {
             return GetElementValue(element, name, out value);
         }
@@ -99,7 +99,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetElementValueAsInt64(this XElement element, XName name, out long value) {
             return GetElementValue(element, name, out value);
         }
@@ -140,7 +140,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetElementValueAsSingle(this XElement element, XName name, out float value) {
             return GetElementValue(element, name, out value);
         }
@@ -181,7 +181,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetElementValueAsFloat(this XElement element, XName name, out float value) {
             return GetElementValue(element, name, out value);
         }
@@ -222,7 +222,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetElementValueAsDouble(this XElement element, XName name, out double value) {
             return GetElementValue(element, name, out value);
         }
@@ -263,7 +263,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
-        /// <returns><code>true</code> if a matching element was found; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
         public static bool GetElementValueAsBoolean(this XElement element, XName name, out bool value) {
 
             // Get the element from the specified "element"
@@ -401,7 +401,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="value">The converted value.</param>
-        /// <returns><code>true</code> if the element was found and has a value, otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if the element was found and has a value, otherwise <c>false</c>.</returns>
         public static bool GetElementValue<T>(this XElement element, XName name, out T value) {
 
             // Get the element matching "name"

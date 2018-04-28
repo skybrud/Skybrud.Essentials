@@ -55,7 +55,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
-        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// <paramref name="className"/> by using a <c>&lt;span&gt;</c> element.
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <param name="className">The class name.</param>
@@ -67,7 +67,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Highlights specified <paramref name="keywords"/> in the <paramref name="input"/> string with the specified
-        /// <paramref name="className"/> by using a <code>&lt;span&gt;</code> element.
+        /// <paramref name="className"/> by using a <c>&lt;span&gt;</c> element.
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <param name="className">The class name.</param>
@@ -91,7 +91,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// specified in <paramref name="ignore"/>.
         /// </summary>
         /// <param name="html">The input string containing the HTML.</param>
-        /// <param name="ignore">An of tag names (without the brackets, like <code>div</code>) to ignore.</param>
+        /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
         public static string StripHtml(this string html, params string[] ignore) {
             return StringUtils.StripHtml(html, ignore);
@@ -102,7 +102,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <see cref="String.IsNullOrWhiteSpace"/>.
         /// </summary>
         /// <param name="input">The input string to test.</param>
-        /// <returns><code>true</code> if <paramref name="input"/> has a value; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
         public static bool HasValue(this string input) {
             return !String.IsNullOrWhiteSpace(input);
         }
@@ -112,7 +112,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <see cref="String.IsNullOrWhiteSpace"/>.
         /// </summary>
         /// <param name="input">The input string to test.</param>
-        /// <returns><code>true</code> if <paramref name="input"/> has a value; otherwise <code>false</code>.</returns>
+        /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
         public static bool IsNullOrWhiteSpace(this string input) {
             return !String.IsNullOrWhiteSpace(input);
         }
