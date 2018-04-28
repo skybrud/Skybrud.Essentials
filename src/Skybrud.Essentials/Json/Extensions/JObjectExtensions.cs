@@ -127,9 +127,9 @@ namespace Skybrud.Essentials.Json.Extensions {
             
             // Get the string value
             string value = token.Value<string>();
-
+            
             // Parse the GUID (or return "fallback" if null)
-            return value == null ? Guid.Empty : Guid.Parse(value);
+            return Guid.TryParse(value, out Guid guid) ? guid : fallback;
 
         }
 
