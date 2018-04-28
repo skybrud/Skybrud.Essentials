@@ -214,8 +214,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
         public static bool IsNumeric(string str) {
-            long result;
-            return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+            return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long result);
         }
 
         /// <summary>

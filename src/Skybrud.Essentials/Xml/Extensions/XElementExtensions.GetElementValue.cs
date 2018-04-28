@@ -312,8 +312,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
         public static T GetElementAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
-            bool value;
-            return GetElementAsBoolean(element, name, out value) ? callback(value) : default(T);
+            return GetElementAsBoolean(element, name, out bool value) ? callback(value) : default(T);
         }
 
         #pragma warning restore 1591

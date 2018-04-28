@@ -736,13 +736,10 @@ namespace Skybrud.Essentials.Time {
         /// <c>false</c>.</returns>
         public static bool TryParseNumberFromMonthName(string monthName, IFormatProvider provider, out int result) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
-            DateTime dt;
             result = 0;
-            if (DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out dt)) {
-                result = dt.Month;
-                return true;
-            }
-            return false;
+            if (!DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out DateTime dt)) return false;
+            result = dt.Month;
+            return true;
         }
 
         /// <summary>
@@ -806,13 +803,10 @@ namespace Skybrud.Essentials.Time {
         /// successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonthName result) {
             if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
-            DateTime dt;
             result = 0;
-            if (DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out dt)) {
-                result = (EssentialsDateMonthName) dt.Month;
-                return true;
-            }
-            return false;
+            if (!DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out DateTime dt)) return false;
+            result = (EssentialsDateMonthName) dt.Month;
+            return true;
         }
 
     }

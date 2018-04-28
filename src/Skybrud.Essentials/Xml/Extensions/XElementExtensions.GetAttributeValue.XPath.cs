@@ -527,8 +527,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
         /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
         public static T GetAttributeValueAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
-            bool value;
-            return GetAttributeValueAsBoolean(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetAttributeValueAsBoolean(element, expression, resolver, out bool value) ? callback(value) : default(T);
         }
 
         #endregion

@@ -150,14 +150,9 @@ namespace Skybrud.Essentials.Time {
         /// <param name="input">A string that contains the partial date to convert.</param>
         /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
         public static EssentialsPartialDate Parse(string input) {
-
             if (String.IsNullOrWhiteSpace(input)) return null;
-
-            EssentialsPartialDate date;
-            if (TryParse(input, out date)) return date;
-
+            if (TryParse(input, out EssentialsPartialDate date)) return date;
             throw new ArgumentException("Specified string is not a valid date", nameof(input));
-
         }
 
         /// <summary>
@@ -169,14 +164,9 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="input"/>.</param>
         /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
         public static EssentialsPartialDate Parse(string input, IFormatProvider provider) {
-
             if (String.IsNullOrWhiteSpace(input)) return null;
-
-            EssentialsPartialDate date;
-            if (TryParse(input, provider, out date)) return date;
-
+            if (TryParse(input, provider, out EssentialsPartialDate date)) return date;
             throw new ArgumentException("Specified string is not a valid date", nameof(input));
-
         }
 
         /// <summary>
@@ -218,8 +208,7 @@ namespace Skybrud.Essentials.Time {
             input = (input ?? "").Replace(",", "");
 
             // Parse the string into an instance of DateTime for full dates
-            DateTime dt;
-            if (DateTime.TryParseExact(input, new[] { "yyyy-MM-dd", "d MMMM yyyy", "MMMM d yyyy" }, provider, DateTimeStyles.None, out dt)) {
+            if (DateTime.TryParseExact(input, new[] { "yyyy-MM-dd", "d MMMM yyyy", "MMMM d yyyy" }, provider, DateTimeStyles.None, out DateTime dt)) {
                 result = new EssentialsPartialDate(dt);
                 return true;
             }
@@ -236,16 +225,14 @@ namespace Skybrud.Essentials.Time {
             if (m3.Success) result = new EssentialsPartialDate(Int32.Parse(m3.Groups[1].Value), Int32.Parse(m3.Groups[2].Value), Int32.Parse(m3.Groups[3].Value));
 
             if (m4.Success) {
-                int month;
-                if (!TimeUtils.TryParseNumberFromMonthName(m4.Groups[1].Value, provider, out month)) return false;
+                if (!TimeUtils.TryParseNumberFromMonthName(m4.Groups[1].Value, provider, out int month)) return false;
                 int year = Int32.Parse(m4.Groups[2].Value);
                 result = new EssentialsPartialDate(year, month);
                 return true;
             }
 
             if (m6.Success) {
-                int month;
-                if (!TimeUtils.TryParseNumberFromMonthName(m6.Groups[1].Value, provider, out month)) return false;
+                if (!TimeUtils.TryParseNumberFromMonthName(m6.Groups[1].Value, provider, out int month)) return false;
                 int year = Int32.Parse(m6.Groups[4].Value);
                 int day = Int32.Parse(m6.Groups[2].Value);
                 result = new EssentialsPartialDate(year, month, day);

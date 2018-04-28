@@ -134,8 +134,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the integer value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsInt32<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<int, T> callback) {
-            int value;
-            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetElementValue(element, expression, resolver, out int value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -205,8 +204,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the long value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsInt64<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<long, T> callback) {
-            long value;
-            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetElementValue(element, expression, resolver, out long value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -276,8 +274,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the float value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsSingle<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<float, T> callback) {
-            float value;
-            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetElementValue(element, expression, resolver, out float value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -347,8 +344,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the float value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsFloat<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<float, T> callback) {
-            float value;
-            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetElementValue(element, expression, resolver, out float value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -418,8 +414,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the double value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsDouble<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<double, T> callback) {
-            double value;
-            return GetElementValue(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetElementValue(element, expression, resolver, out double value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -498,8 +493,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the boolean value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
-            bool value;
-            return GetElementValueAsBoolean(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetElementValueAsBoolean(element, expression, resolver, out bool value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -539,8 +533,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
         public static T GetElementAsBoolean<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<bool, T> callback) {
-            bool value;
-            return GetElementAsBoolean(element, expression, resolver, out value) ? callback(value) : default(T);
+            return GetElementAsBoolean(element, expression, resolver, out bool value) ? callback(value) : default(T);
         }
 
         #pragma warning restore 1591
