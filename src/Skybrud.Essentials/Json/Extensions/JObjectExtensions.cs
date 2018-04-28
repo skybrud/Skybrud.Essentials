@@ -99,6 +99,42 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
+        /// Gets the GUID value of the token matching the specified <paramref name="path"/>, or <see cref="Guid.Empty"/> if <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="Guid"/>.</returns>
+        public static Guid GetGuid(this JObject obj, string path) {
+            return GetGuid(obj, path, Guid.Empty);
+        }
+
+        /// <summary>
+        /// Gets the value of the token matching the specified <paramref name="path"/>, or <paramref name="fallback"/>
+        /// if <paramref name="path"/> doesn't match a token. If the property value doesn't match a valid GUID, the
+        /// value of <paramref name="fallback"/> will be returned as well.
+        /// </summary>
+        /// <param name="obj">The parent object.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>An instance of <see cref="Guid"/>.</returns>
+        public static Guid GetGuid(this JObject obj, string path, Guid fallback) {
+
+            // Return "fallback" if "obj" is null
+            if (obj == null) return fallback;
+
+            // Get the token matching "path" (or return "fallback" if not found)
+            JToken token = GetSimpleTypeTokenFromPath(obj, path);
+            if (token == null) return Guid.Empty;
+            
+            // Get the string value
+            string value = token.Value<string>();
+
+            // Parse the GUID (or return "fallback" if null)
+            return value == null ? Guid.Empty : Guid.Parse(value);
+
+        }
+
+        /// <summary>
         /// Gets the <see cref="Int16"/> value of the token matching the specified <paramref name="path"/>, or
         /// <c>0</c> if <paramref name="path"/> doesn't match a token.
         /// </summary>

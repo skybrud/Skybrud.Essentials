@@ -58,6 +58,36 @@ namespace UnitTestProject1.Json {
         }
 
         [TestMethod]
+        public void GetGuid() {
+
+            Guid expected1 = new Guid("ed377349-6946-4418-91cd-3b3ecc0b1cc6");
+            Guid expected2 = new Guid("ccecd33b-3153-486a-8a1d-2c01016a6d42");
+
+            JObject obj = new JObject {
+                {"a", "ed377349-6946-4418-91cd-3b3ecc0b1cc6" },
+                {"b", "{ed377349-6946-4418-91cd-3b3ecc0b1cc6}" },
+                {"c", "(ed377349-6946-4418-91cd-3b3ecc0b1cc6)" },
+                {"d", "ED377349-6946-4418-91CD-3B3ECC0B1CC6" },
+                {"e", "{ED377349-6946-4418-91CD-3B3ECC0B1CC6}" },
+                {"f", "(ED377349-6946-4418-91CD-3B3ECC0B1CC6)" },
+                {"g", "nope" },
+                {"h", null },
+                {"i", "" }
+            };
+
+            Assert.AreEqual(expected1, obj.GetGuid("a"), "Check #1 failed");
+            Assert.AreEqual(expected1, obj.GetGuid("b"), "Check #2 failed");
+            Assert.AreEqual(expected1, obj.GetGuid("c"), "Check #3 failed");
+            Assert.AreEqual(expected1, obj.GetGuid("d"), "Check #4 failed");
+            Assert.AreEqual(expected1, obj.GetGuid("e"), "Check #5 failed");
+            Assert.AreEqual(expected1, obj.GetGuid("f"), "Check #6 failed");
+            Assert.AreEqual(expected2, obj.GetGuid("g", expected2), "Check #7 failed");
+            Assert.AreEqual(Guid.Empty, obj.GetGuid("h"), "Check #8 failed");
+            Assert.AreEqual(expected2, obj.GetGuid("i", expected2), "Check #9 failed");
+
+        }
+
+        [TestMethod]
         public void GetInt16() {
 
             JObject obj = JObject.Parse("{\"int16\":0,\"hest\":1234,\"null\":null,\"empty\":\"\"}");

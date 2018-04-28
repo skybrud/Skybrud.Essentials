@@ -104,6 +104,62 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
+        /// Gets the GUID value from <paramref name="array"/> at the specified <paramref name="index"/>.
+        /// </summary>
+        /// <param name="array">The array.</param>
+        /// <param name="index">The index of the item holding the GUID value.</param>
+        /// <returns>An instance of <see cref="Guid"/>.</returns>
+        public static Guid GetGuid(this JArray array, int index) {
+            return GetGuid(array, index, Guid.Empty);
+        }
+
+        /// <summary>
+        /// Gets the GUID value of the token matching the specified <paramref name="path"/>, or <see cref="Guid.Empty"/> if <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <param name="array">The array.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="Guid"/>.</returns>
+        public static Guid GetGuid(this JArray array, string path) {
+            return GetGuid(array, path, Guid.Empty);
+        }
+
+        /// <summary>
+        /// Gets the GUID value from <paramref name="array"/> at the specified <paramref name="index"/>.
+        /// </summary>
+        /// <param name="array">The array.</param>
+        /// <param name="index">The index of the item holding the GUID value.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>An instance of <see cref="Guid"/>.</returns>
+        public static Guid GetGuid(this JArray array, int index, Guid fallback) {
+
+            // Get the token at "index" (or return "fallback" if not found)
+            JToken token = array?[index];
+            if (token == null) return fallback;
+
+            // Attempt to parse the GUID (or return "fallback" if the parsing fails)
+            return Guid.TryParse(token.Value<string>(), out Guid guid) ? guid : fallback;
+
+        }
+
+        /// <summary>
+        /// Gets the GUID value of the token matching the specified <paramref name="path"/>, or the value of <paramref name="fallback"/> if <paramref name="path"/> doesn't match a token.
+        /// </summary>
+        /// <param name="array">The array.</param>
+        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>An instance of <see cref="Guid"/>.</returns>
+        public static Guid GetGuid(this JArray array, string path, Guid fallback) {
+
+            // Get the token at "index" (or return "fallback" if not found)
+            JToken token = array?.SelectToken(path);
+            if (token == null) return fallback;
+            
+            // Attempt to parse the GUID (or return "fallback" if the parsing fails)
+            return Guid.TryParse(token.Value<string>(), out Guid guid) ? guid : fallback;
+
+        }
+        
+        /// <summary>
         /// Gets the <see cref="Int16"/> value of the item at the specified <paramref name="index"/> in the
         /// array.
         /// </summary>
