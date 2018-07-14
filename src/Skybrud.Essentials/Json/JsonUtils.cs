@@ -338,6 +338,29 @@ namespace Skybrud.Essentials.Json {
         }
 
         /// <summary>
+        /// Saves the specified <paramref name="array"/> to the file at <paramref name="path"/>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JsonObjectBase"/> to be saved.</param>
+        public static void SaveJsonArray<T>(string path, T[] array) where T : JsonObjectBase {
+            SaveJsonArray(path, array, Formatting.None);
+        }
+
+        /// <summary>
+        /// Saves the specified <paramref name="array"/> to the file at <paramref name="path"/>. If the file doesn't
+        /// already exist, a new file will be created.
+        /// </summary>
+        /// <param name="path">The path to the file.</param>
+        /// <param name="array">The array of <see cref="JsonObjectBase"/> to be saved.</param>
+        /// <param name="formatting">The formatting to be used when saving the object.</param>
+        public static void SaveJsonArray<T>(string path, T[] array, Formatting formatting) where T : JsonObjectBase {
+            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (array == null) throw new ArgumentNullException(nameof(array));
+            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item == null ? null : item.JObject, formatting), Encoding.UTF8);
+        }
+
+        /// <summary>
         /// Saves the specified <paramref name="collection"/> to the file at <paramref name="path"/>. If the file
         /// doesn't already exist, a new file will be created.
         /// </summary>
