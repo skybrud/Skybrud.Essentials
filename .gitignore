@@ -110,3 +110,4 @@ node_modules/
 src/Skybrud.Essentials/Skybrud.Essentials.csproj.DotSettings
 releases/nuget/Skybrud.Essentials.*/
 releases/github/Skybrud.Essentials.*/
+src/.vs/
