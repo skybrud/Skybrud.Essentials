@@ -67,4 +67,8 @@
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
 
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
+    <Exec Command="mkdir &quot;$(ProjectDir)bin\Dev\$(TargetFramework)&quot;&#xD;&#xA;xcopy &quot;$(ProjectDir)bin\$(ConfigurationName)\$(TargetFramework)\$(TargetName).*&quot; &quot;$(ProjectDir)bin\Dev\$(TargetFramework)\&quot; /y" />
+  </Target>
+
 </Project>
