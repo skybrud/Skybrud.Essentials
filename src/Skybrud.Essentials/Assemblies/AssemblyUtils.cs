@@ -51,7 +51,7 @@ namespace Skybrud.Essentials.Assemblies {
             return FileVersionInfo.GetVersionInfo(assembly.Location);
         }
 
-#endif
+        #endif
 
     }
 
