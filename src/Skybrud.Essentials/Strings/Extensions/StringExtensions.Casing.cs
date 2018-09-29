@@ -82,7 +82,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to be converted.</param>
         /// <returns>The converted string.</returns>
         public static string ToUnderscore(this string str) {
-            return StringUtils.ToTrainCase(str);
+            return StringUtils.ToUnderscore(str);
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The converted string.</returns>
         public static string ToUnderscore(this Enum value) {
-            return StringUtils.ToTrainCase(value);
+            return StringUtils.ToUnderscore(value);
         }
 
         /// <summary>

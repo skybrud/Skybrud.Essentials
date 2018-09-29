@@ -221,11 +221,13 @@ namespace UnitTestProject1.Strings {
             foreach (var sample in samples1) {
                 Assert.AreEqual(sample.Expected, StringHelper.ToUnderscore(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.ToUnderscore(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToUnderscore());
             }
 
             foreach (var sample in samples2) {
                 Assert.AreEqual(sample.Expected, StringHelper.ToUnderscore(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.ToUnderscore(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToUnderscore());
             }
 
         }
@@ -263,11 +265,13 @@ namespace UnitTestProject1.Strings {
             foreach (var sample in samples1) {
                 Assert.AreEqual(sample.Expected, StringHelper.ToCamelCase(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.ToCamelCase(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToCamelCase());
             }
 
             foreach (var sample in samples2) {
                 Assert.AreEqual(sample.Expected, StringHelper.ToCamelCase(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.ToCamelCase(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToCamelCase());
             }
 
         }
@@ -305,11 +309,13 @@ namespace UnitTestProject1.Strings {
             foreach (var sample in samples1) {
                 Assert.AreEqual(sample.Expected, StringHelper.ToPascalCase(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.ToPascalCase(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToPascalCase());
             }
 
             foreach (var sample in samples2) {
                 Assert.AreEqual(sample.Expected, StringHelper.ToPascalCase(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.ToPascalCase(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.ToPascalCase());
             }
 
         }
@@ -361,6 +367,7 @@ namespace UnitTestProject1.Strings {
             foreach (var sample in samples) {
                 Assert.AreEqual(sample.Expected, StringHelper.FirstCharToUpper(sample.Input));
                 Assert.AreEqual(sample.Expected, StringUtils.FirstCharToUpper(sample.Input));
+                Assert.AreEqual(sample.Expected, sample.Input.FirstCharToUpper());
             }
 
         }
