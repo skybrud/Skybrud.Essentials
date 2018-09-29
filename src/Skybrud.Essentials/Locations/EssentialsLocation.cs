@@ -1,8 +1,11 @@
-﻿namespace Skybrud.Essentials.Locations {
+﻿using System;
+
+namespace Skybrud.Essentials.Locations {
 
     /// <summary>
     /// Class representing a location identified by latitude and longitude.
     /// </summary>
+    [Obsolete("Use the Point class instead.")]
     public class EssentialsLocation : ILocation {
 
         #region Properties
