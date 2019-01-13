@@ -123,6 +123,28 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return String.IsNullOrEmpty(str) ? "" : String.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
         }
 
+        
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="value"/> to a string with the enum name is formatted using the specified <paramref name="casing"/>.
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <param name="casing">The casing of the output string.</param>
+        /// <returns>The output string, matching the specified <paramref name="casing"/>.</returns>
+        public static string ToCasing(this Enum value, TextCasing casing) {
+            return StringUtils.ToCasing(value, casing);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> to a new string formatted using the specified <paramref name="casing"/>.
+        /// </summary>
+        /// <param name="str">The string to be converted.</param>
+        /// <param name="casing">The casing of the output string.</param>
+        /// <returns>The output string, matching the specified <paramref name="casing"/>.</returns>
+        public static string ToCasing(this string str, TextCasing casing) {
+            return StringUtils.ToCasing(str, casing);
+        }
+
     }
 
 }

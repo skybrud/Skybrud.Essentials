@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {
@@ -6,6 +7,7 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
     /// <summary>
     /// JSON converter for serializing an enum value into a camel cased string.
     /// </summary>
+    [Obsolete("Use EnumStringConverter instead.")]
     public class EnumCamelCaseConverter : EnumBaseCaseConverter {
 
         /// <summary>
