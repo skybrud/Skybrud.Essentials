@@ -85,6 +85,27 @@ namespace Skybrud.Essentials.Time {
 
         }
 
+        /// <summary>
+        /// Gets an instance of <see cref="DateTimeOffset"/> representing the start of the specified <strong>ISO 8601</strong> <paramref name="year"/> and <paramref name="week"/>.
+        /// </summary>
+        /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
+        /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
+        /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
+        public static DateTimeOffset GetDateTimeOffsetFromIso8601Week(int year, int week) {
+            return new DateTimeOffset(GetDateTimeFromIso8601Week(year, week));
+        }
+
+        /// <summary>
+        /// Gets an instance of <see cref="DateTimeOffset"/> representing the start of the specified <strong>ISO 8601</strong> <paramref name="year"/> and <paramref name="week"/>.
+        /// </summary>
+        /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
+        /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
+        /// <param name="offset">The offset to convert the <see cref="DateTimeOffset"/> value to.</param>
+        /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
+        public static DateTimeOffset GetDateTimeOffsetFromIso8601Week(int year, int week, TimeSpan offset) {
+            return new DateTimeOffset(GetDateTimeFromIso8601Week(year, week)).ToOffset(offset);
+        }
+
     }
 
 }
