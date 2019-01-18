@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netcoreapp2.0;netstandard1.1;netstandard1.3;net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.2;netcoreapp2.1;netcoreapp2.0;netstandard1.1;netstandard1.3;net45;net46;net47</TargetFrameworks>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
@@ -12,11 +12,13 @@
     <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='netcoreapp2.0'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'
+	OR '$(TargetFramework)'=='netcoreapp2.0' OR '$(TargetFramework)'=='netcoreapp2.1' OR '$(TargetFramework)'=='netcoreapp2.2'">
     <DefineConstants>NET_FRAMEWORK;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAZ_FILE_VERSION_INFO</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='netcoreapp2.0'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'
+	OR '$(TargetFramework)'=='netcoreapp2.0' OR '$(TargetFramework)'=='netcoreapp2.1' OR '$(TargetFramework)'=='netcoreapp2.2'">
     <Reference Include="System.Web" />
   </ItemGroup>
 
