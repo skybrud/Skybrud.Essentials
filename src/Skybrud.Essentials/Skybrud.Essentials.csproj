@@ -1,7 +1,7 @@
 ﻿<Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;netstandard1.3;net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>netcoreapp2.0;netstandard1.1;netstandard1.3;net45;net46;net47</TargetFrameworks>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
@@ -12,11 +12,11 @@
     <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='netcoreapp2.0'">
     <DefineConstants>NET_FRAMEWORK;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAZ_FILE_VERSION_INFO</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='netcoreapp2.0'">
     <Reference Include="System.Web" />
   </ItemGroup>
 
@@ -65,6 +65,10 @@
 
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Newtonsoft.Json" Version="12.0.1" />
   </ItemGroup>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
