@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Globalization;
+using Newtonsoft.Json;
+using Skybrud.Essentials.Json.Converters.Time;
 
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
     /// Class wrapping an instance of <see cref="DateTimeOffset"/> (as an alternative to using <see cref="Nullable{DateTimeOffset}"/>).
     /// </summary>
+    [JsonConverter(typeof(TimeConverter))]
     public class EssentialsTime : IComparable, IComparable<EssentialsTime>, IComparable<DateTimeOffset> {
 
         #region Static properties
