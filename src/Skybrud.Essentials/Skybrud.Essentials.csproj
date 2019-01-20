@@ -21,10 +21,10 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Version>1.1.7</Version>
+    <Version>1.1.8</Version>
     <Authors>Anders Bjerner</Authors>
     <Description>Library with common purpose functionality for working with .NET.</Description>
-    <Copyright>Copyright © 2018</Copyright>
+    <Copyright>Copyright © 2019</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
