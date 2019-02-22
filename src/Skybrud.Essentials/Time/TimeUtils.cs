@@ -809,6 +809,66 @@ namespace Skybrud.Essentials.Time {
             return true;
         }
 
+        internal static object ToFormat(DateTime value, TimeFormat format) {
+
+            switch (format) {
+
+                case TimeFormat.Iso8601:
+                    return ToIso8601(value);
+
+                case TimeFormat.Rfc822:
+                    return ToRfc822(value);
+
+                case TimeFormat.Rfc2822:
+                    return ToRfc2822(value);
+
+                case TimeFormat.UnixTime:
+                    return GetUnixTimeFromDateTime(value);
+
+                default:
+                    throw new ArgumentException("Unsupported format " + format, nameof(format));
+
+            }
+
+        }
+
+        internal static object ToFormat(DateTimeOffset value, TimeFormat format) {
+
+            switch (format) {
+
+                case TimeFormat.Iso8601:
+                    return ToIso8601(value);
+
+                case TimeFormat.Rfc822:
+                    return ToRfc822(value);
+
+                case TimeFormat.Rfc2822:
+                    return ToRfc2822(value);
+
+                case TimeFormat.UnixTime:
+                    return GetUnixTimeFromDateTimeOffset(value);
+
+                default:
+                    throw new ArgumentException("Unsupported format " + format, nameof(format));
+
+            }
+
+        }
+
+        internal static object ToFormat(EssentialsPartialDate value, TimeFormat format) {
+
+            switch (format) {
+
+                case TimeFormat.Iso8601:
+                    return value.ToString();
+
+                default:
+                    throw new ArgumentException("Unsupported format " + format, nameof(format));
+
+            }
+
+        }
+
     }
 
 }

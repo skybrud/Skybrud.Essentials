@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Time {
     /// <summary>
     /// Class wrapping an instance of <see cref="DateTime"/> (as an alternative to using <see cref="Nullable{DateTime}"/>).
     /// </summary>
-    [JsonConverter(typeof(EssentialsDateTimeConverter))]
+    [JsonConverter(typeof(TimeConverter))]
     public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, IComparable<DateTime> {
 
         #region Properties

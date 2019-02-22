@@ -8,6 +8,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
     /// <summary>
     /// Converts an instance of <see cref="EssentialsDateTime"/> to and from the ISO 8601 date format (e.g. <c>2008-04-12T12:53Z</c>).
     /// </summary>
+    [Obsolete("Use TimeConverter instead.")]
     public class EssentialsDateTimeConverter : IsoDateTimeConverter {
 
         /// <summary>

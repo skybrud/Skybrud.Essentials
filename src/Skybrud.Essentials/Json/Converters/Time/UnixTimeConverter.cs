@@ -7,6 +7,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
     /// <summary>
     /// Converts an instance of either <see cref="EssentialsDateTime"/> or <see cref="DateTime"/> to and from a Unix timestamp.
     /// </summary>
+    [Obsolete("Use TimeConverter instead.")]
     public class UnixTimeConverter : JsonConverter {
 
         /// <summary>
