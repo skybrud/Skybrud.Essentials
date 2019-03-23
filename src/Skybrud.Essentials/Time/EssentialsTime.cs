@@ -512,6 +512,45 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Parses the specified string into an instance of <see cref="EssentialsTime"/>.
+        /// </summary>
+        /// <param name="input">The input string to be parsed.</param>
+        /// <param name="formatProvider">An object that provides culture-specific format information about input.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Parse(string input, IFormatProvider formatProvider) {
+            
+            // Is "input" an empty string?
+            if (String.IsNullOrWhiteSpace(input)) return null;
+
+            // Attempt to parse the date
+            DateTimeOffset dto = DateTimeOffset.Parse(input, formatProvider);
+
+            // Intialize a new instance
+            return new EssentialsTime(dto);
+
+        }
+
+        /// <summary>
+        /// Parses the specified string into an instance of <see cref="EssentialsTime"/>.
+        /// </summary>
+        /// <param name="input">The input string to be parsed.</param>
+        /// <param name="formatProvider">An object that provides culture-specific format information about input.</param>
+        /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see cref="DateTimeStyles.None"/>.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Parse(string input, IFormatProvider formatProvider, DateTimeStyles styles) {
+            
+            // Is "input" an empty string?
+            if (String.IsNullOrWhiteSpace(input)) return null;
+
+            // Attempt to parse the date
+            DateTimeOffset dto = DateTimeOffset.Parse(input, formatProvider, styles);
+
+            // Intialize a new instance
+            return new EssentialsTime(dto);
+
+        }
+
+        /// <summary>
         /// Converts the specified string representation of a date and time to its
         /// <see cref="EssentialsTime"/> equivalent and returns a value that indicates whether the conversion
         /// succeeded.
@@ -549,6 +588,35 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp));
         }
 
+        /// <summary>
+        /// Tries to convert a specified string representation of a date and time to its <see cref="EssentialsTime"/>
+        /// equivalent, and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string that contains a date and time to convert.</param>
+        /// <param name="formatProvider">An object that provides culture-specific formatting information about input.</param>
+        /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
+        /// <param name="result">When the method returns, contains the <see cref="EssentialsTime"/> value equivalent to
+        /// the date and time of input, if the conversion succeeded, or <c>null</c>, if the conversion failed. The
+        /// conversion fails if the input parameter is null or does not contain a valid string representation of a date
+        /// and time. This parameter is passed uninitialized.</param>
+        /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+        public static bool TryParse(string input, IFormatProvider formatProvider, DateTimeStyles styles, out EssentialsTime result) {
+
+            // Make sure "offset" is initialized
+            result = null;
+
+            // Is "input" an empty string?
+            if (String.IsNullOrWhiteSpace(input)) return false;
+
+            // Attempt to parse the date
+            if (DateTimeOffset.TryParse(input, out DateTimeOffset dto)) {
+                result = new EssentialsTime(dto);
+            }
+
+            return result != null;
+
+        }
+        
         /// <summary>
         /// Initialize a new instance from the specified UNIX timestamp.
         /// </summary>
