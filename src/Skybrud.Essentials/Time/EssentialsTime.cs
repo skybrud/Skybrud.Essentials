@@ -284,7 +284,7 @@ namespace Skybrud.Essentials.Time {
             DateTimeOffset dto = new DateTimeOffset(year, month, day, 0, 0, 0, timeZone.BaseUtcOffset);
 
             TimeZone = timeZone;
-            DateTimeOffset = AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
+            DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
 
         }
 
@@ -304,7 +304,7 @@ namespace Skybrud.Essentials.Time {
             DateTimeOffset dto = new DateTimeOffset(year, month, day, hour, minute, second, timeZone.BaseUtcOffset);
 
             TimeZone = timeZone;
-            DateTimeOffset = AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
+            DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
 
         }
 
@@ -325,7 +325,7 @@ namespace Skybrud.Essentials.Time {
             DateTimeOffset dto = new DateTimeOffset(year, month, day, hour, minute, second, millisecond, timeZone.BaseUtcOffset);
 
             TimeZone = timeZone;
-            DateTimeOffset = AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
+            DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
 
         }
 
@@ -703,18 +703,6 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsTime(TimeUtils.GetEndOfMonth(DateTimeOffset, timeZone), timeZone);
         }
 
-        private DateTimeOffset AdjustForTimeZoneAndDaylightSavings(DateTimeOffset time, TimeZoneInfo timeZone) {
-
-            time = TimeZoneInfo.ConvertTime(time, timeZone);
-
-            if (timeZone.IsDaylightSavingTime(time) == false) return time;
-
-            TimeSpan diff = timeZone.GetUtcOffset(time) - timeZone.BaseUtcOffset;
-
-            return time.Subtract(diff);
-
-        }
-
         #endregion
 
         #region Static methods
@@ -889,6 +877,25 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromIso8601Week(int year, int week, TimeSpan offset) {
             return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromIso8601Week(year, week, offset));
+        }
+
+        /// <summary>
+        /// Gets an instance of <see cref="EssentialsTime"/> representing the start of the specified <strong>ISO 8601</strong> <paramref name="week"/>.
+        /// </summary>
+        /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
+        /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromIso8601Week(int year, int week, TimeZoneInfo timeZone) {
+
+            // Get the start of the week
+            DateTimeOffset time = TimeUtils.GetDateTimeOffsetFromIso8601Week(year, week, timeZone.BaseUtcOffset);
+
+            // Adjust to the specified time zone
+            time = TimeUtils.AdjustForTimeZoneAndDaylightSavings(time, timeZone);
+
+            return new EssentialsTime(time, timeZone);
+
         }
 
         /// <summary>

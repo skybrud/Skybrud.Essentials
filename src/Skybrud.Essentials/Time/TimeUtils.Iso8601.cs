@@ -103,7 +103,21 @@ namespace Skybrud.Essentials.Time {
         /// <param name="offset">The offset to convert the <see cref="DateTimeOffset"/> value to.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset GetDateTimeOffsetFromIso8601Week(int year, int week, TimeSpan offset) {
-            return new DateTimeOffset(GetDateTimeFromIso8601Week(year, week)).ToOffset(offset);
+
+            // See: https://stackoverflow.com/a/9064954
+
+            DateTimeOffset jan1 = new DateTimeOffset(year, 1, 1, 0, 0, 0, offset);
+            int daysOffset = DayOfWeek.Thursday - jan1.DayOfWeek;
+
+            DateTimeOffset firstThursday = jan1.AddDays(daysOffset);
+            Calendar cal = CultureInfo.CurrentCulture.Calendar;
+            int firstWeek = cal.GetWeekOfYear(firstThursday.DateTime, CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+
+            int weekNum = week;
+            if (firstWeek <= 1) weekNum -= 1;
+            DateTimeOffset result = firstThursday.AddDays(weekNum * 7);
+            return result.AddDays(-3);
+
         }
 
     }

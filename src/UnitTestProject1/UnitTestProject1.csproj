@@ -78,6 +78,7 @@
     <Compile Include="Time\DateTimeOffsetTests.cs" />
     <Compile Include="Time\EasterDateTests.cs" />
     <Compile Include="Time\Converters\DateTimeUnixTimeConverterTests.cs" />
+    <Compile Include="Time\Time\EssentialsWeekTests.cs" />
     <Compile Include="Time\Time\EssentialsTimeTests.cs" />
     <Compile Include="Time\Formats\UnixtimeTests.cs" />
     <Compile Include="Time\National\CanadianDateTests.cs" />

@@ -809,6 +809,18 @@ namespace Skybrud.Essentials.Time {
             return true;
         }
 
+        internal static DateTimeOffset AdjustForTimeZoneAndDaylightSavings(DateTimeOffset time, TimeZoneInfo timeZone) {
+
+            time = TimeZoneInfo.ConvertTime(time, timeZone);
+
+            if (timeZone.IsDaylightSavingTime(time) == false) return time;
+
+            TimeSpan diff = timeZone.GetUtcOffset(time) - timeZone.BaseUtcOffset;
+
+            return time.Subtract(diff);
+
+        }
+
         internal static object ToFormat(DateTime value, TimeFormat format) {
 
             switch (format) {

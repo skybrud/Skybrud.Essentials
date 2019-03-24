@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 
@@ -66,6 +67,31 @@ namespace UnitTestProject1.Time.Time {
                 Assert.AreEqual(s.Expected, s.Time.ToTimeZone(s.TimeZone).ToString(Format), $"Sample at index {i} failed test");
 
             }
+
+        }
+        
+
+        [TestMethod]
+        public void FromIso8601Week() {
+
+            TimeZoneInfo utc = TimeZoneInfo.FindSystemTimeZoneById("UTC");
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsTime time1 = EssentialsTime.FromIso8601Week(2019, 12, utc);
+            EssentialsTime time2 = EssentialsTime.FromIso8601Week(2019, 13, utc);
+            EssentialsTime time3 = EssentialsTime.FromIso8601Week(2019, 14, utc);
+
+            EssentialsTime time4 = EssentialsTime.FromIso8601Week(2019, 12, romance);
+            EssentialsTime time5 = EssentialsTime.FromIso8601Week(2019, 13, romance);
+            EssentialsTime time6 = EssentialsTime.FromIso8601Week(2019, 14, romance);
+
+            Assert.AreEqual("2019-03-18 00:00:00:000 +00:00", time1.ToString(Format), "#1");
+            Assert.AreEqual("2019-03-25 00:00:00:000 +00:00", time2.ToString(Format), "#2");
+            Assert.AreEqual("2019-04-01 00:00:00:000 +00:00", time3.ToString(Format), "#3");
+
+            Assert.AreEqual("2019-03-18 00:00:00:000 +01:00", time4.ToString(Format), "#4");
+            Assert.AreEqual("2019-03-25 00:00:00:000 +01:00", time5.ToString(Format), "#5");
+            Assert.AreEqual("2019-04-01 00:00:00:000 +02:00", time6.ToString(Format), "#6");
 
         }
 
