@@ -16,18 +16,18 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets a <see cref="EssentialsTime"/> object that is set to the current date and time on this computer,  expressed as the local time.
         /// </summary>
-        public static EssentialsTime Now => new EssentialsTime(DateTimeOffset.Now);
+        public static EssentialsTime Now => new EssentialsTime(DateTimeOffset.Now, TimeZoneInfo.Local);
 
         /// <summary>
         /// Gets an instance of <see cref="EssentialsTime"/> representing the current date, according to the local time.
         /// </summary>
-        public static EssentialsTime Today => new EssentialsTime(DateTime.Today);
+        public static EssentialsTime Today => new EssentialsTime(DateTime.Today, TimeZoneInfo.Local);
 
         /// <summary>
         /// Gets a <see cref="EssentialsTime"/> object that is set to the current date and time on this computer,
         /// expressed as the Coordinated Universal Time (UTC).
         /// </summary>
-        public static EssentialsTime UtcNow => new EssentialsTime(DateTimeOffset.UtcNow);
+        public static EssentialsTime UtcNow => new EssentialsTime(DateTimeOffset.UtcNow, TimeZoneInfo.Utc);
 
         /// <summary>
         /// Represents the earliest possible <see cref="EssentialsTime"/> value.
@@ -574,6 +574,16 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Converts the value of the current <see cref="EssentialsTime"/> to the corresponding date according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An object that is equal to the original <see cref="EssentialsTime"/> object (that is, their <see cref="ToUniversalTime"/> methods return identical points in time) but whose <see cref="Offset"/> property is adjusted according to <paramref name="timeZone"/>.</returns>.
+        public EssentialsTime ToTimeZone(TimeZoneInfo timeZone) {
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+            return new EssentialsTime(DateTimeOffset, timeZone);
+        }
+
+        /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the start of the day.
         /// 
         /// If <see cref="TimeZone"/> is present, the start of the day will be adjusted according to the time zone and daylight saving.
@@ -830,7 +840,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(int timestamp) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp));
+            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
         }
 
         /// <summary>
@@ -839,7 +849,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(long timestamp) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp));
+            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
         }
 
         /// <summary>
@@ -848,7 +858,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(double timestamp) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp));
+            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
         }
 
         /// <summary>

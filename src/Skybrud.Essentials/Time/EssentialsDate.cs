@@ -27,6 +27,50 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public int Day => _dateTime.Day;
 
+        /// <summary>
+        /// Returns the day-of-week part of this <see cref="EssentialsDate"/>. The returned value is an integer
+        /// between <c>0</c> and <c>6</c>, where <c>0</c> indicates <strong>Sunday</strong>,
+        /// <c>1</c> indicates <strong>Monday</strong>, <c>2</c> indicates <strong>Tuesday</strong>,
+        /// <c>3</c> indicates <strong>Wednesday</strong>, <c>4</c> indicates <strong>Thursday</strong>,
+        /// <c>5</c> indicates <strong>Friday</strong>, and <c>6</c> indicates <strong>Saturday</strong>.
+        /// </summary>
+        public DayOfWeek DayOfWeek => _dateTime.DayOfWeek;
+
+        /// <summary>
+        /// Gets the day-of-year part of this <see cref="EssentialsDate"/>. The returned value is an integer between <c>1</c> and <c>366</c>.
+        /// </summary>
+        public int DayOfYear => _dateTime.DayOfYear;
+
+        /// <summary>
+        /// Gets whether the year of this <see cref="EssentialsDate"/> is a leap year.
+        /// </summary>
+        public bool IsLeapYear => TimeUtils.IsLeapYear(_dateTime);
+
+        /// <summary>
+        /// Gets whether the day of this <see cref="EssentialsDate"/> is within a weekend.
+        /// </summary>
+        public bool IsWeekend => TimeUtils.IsLeapYear(_dateTime);
+
+        /// <summary>
+        /// Gets whether the day of this <see cref="EssentialsDate"/> is a weekday.
+        /// </summary>
+        public bool IsWeekday => TimeUtils.IsWeekday(_dateTime);
+
+        /// <summary>
+        /// Gets the week number the <strong>ISO 8601</strong> week of this <see cref="EssentialsDate"/>.
+        /// </summary>
+        public int WeekNumber => TimeUtils.GetIso8601WeekNumber(_dateTime);
+
+        /// <summary>
+        /// Gets the amount of days in the month.
+        /// </summary>
+        public int DaysInMonth => DateTime.DaysInMonth(Year, Month);
+
+        /// <summary>
+        /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
+        /// </summary>
+        public string Iso8601 => _dateTime.ToString("yyyy-MM-dd");
+
         #endregion
 
         #region Constructors
@@ -177,6 +221,14 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetEndOfMonth(TimeZoneInfo timeZone) {
             return new EssentialsTime(Year, Month, Day, timeZone).GetEndOfMonth();
+        }
+
+        /// <summary>
+        /// Returns a string representation of the date.
+        /// </summary>
+        /// <returns>A string representation of the value of the current <see cref="EssentialsDate"/> object.</returns>
+        public override string ToString() {
+            return _dateTime.ToString("yyyy-MM-dd");
         }
 
         #endregion
