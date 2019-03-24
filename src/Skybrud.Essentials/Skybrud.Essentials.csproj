@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Version>1.1.8</Version>
+    <Version>1.1.9</Version>
     <Authors>Anders Bjerner</Authors>
     <Description>Library with common purpose functionality for working with .NET.</Description>
     <Copyright>Copyright © 2019</Copyright>
