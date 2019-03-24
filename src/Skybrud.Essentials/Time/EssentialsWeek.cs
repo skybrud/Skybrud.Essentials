@@ -34,12 +34,12 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets an instance representing the current <strong>ISO 8601</strong> week according to the local time zone.
         /// </summary>
-        public static EssentialsWeek Local => new EssentialsWeek(DateTimeOffset.Now);
+        public static EssentialsWeek Current => new EssentialsWeek(DateTimeOffset.Now);
 
         /// <summary>
         /// Gets an instance representing the current <strong>ISO 8601</strong> week according to Coordinated Universal Time (UTC).
         /// </summary>
-        public static EssentialsWeek Utc => new EssentialsWeek(DateTimeOffset.UtcNow);
+        public static EssentialsWeek CurrentUtc => new EssentialsWeek(DateTimeOffset.UtcNow);
 
         #endregion
 
