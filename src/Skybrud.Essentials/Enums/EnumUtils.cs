@@ -105,6 +105,9 @@ namespace Skybrud.Essentials.Enums {
             // Initialize "value"
             value = default(T);
 
+            // Check whether the specified string is NULL (or white space)
+            if (String.IsNullOrWhiteSpace(str)) return false;
+
             // Convert "str" to camel case and then lowercase
             string modified = StringUtils.ToCamelCase(str + "").ToLowerInvariant();
 
