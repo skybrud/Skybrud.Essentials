@@ -221,6 +221,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="dateTime">An instance <see cref="EssentialsDateTime"/> the instance should be based on.</param>
         public EssentialsTime(EssentialsDateTime dateTime) {
+            if (dateTime == null) throw new ArgumentNullException(nameof(dateTime));
             DateTimeOffset = dateTime.DateTime;
         }
 
@@ -229,6 +230,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">An instance <see cref="EssentialsDate"/> the instance should be based on.</param>
         public EssentialsTime(EssentialsDate date) {
+            if (date == null) throw new ArgumentNullException(nameof(date));
             DateTimeOffset = new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.Zero);
         }
 
@@ -238,6 +240,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">An instance <see cref="EssentialsDate"/> the instance should be based on.</param>
         /// <param name="offset">The offset to be used.</param>
         public EssentialsTime(EssentialsDate date, TimeSpan offset) {
+            if (date == null) throw new ArgumentNullException(nameof(date));
             DateTimeOffset = new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, offset);
         }
 
@@ -247,6 +250,9 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">An instance <see cref="EssentialsDate"/> the instance should be based on.</param>
         /// <param name="timeZone">The time zone.</param>
         public EssentialsTime(EssentialsDate date, TimeZoneInfo timeZone) {
+
+            if (date == null) throw new ArgumentNullException(nameof(date));
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
             DateTimeOffset dto = new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, timeZone.BaseUtcOffset);
 
@@ -271,6 +277,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="time">An instance <see cref="EssentialsTime"/> the instance should be based on.</param>
         /// <param name="timeZone">The time zone.</param>
         public EssentialsTime(EssentialsTime time, TimeZoneInfo timeZone) {
+            if (time == null) throw new ArgumentNullException(nameof(time));
             TimeZone = timeZone;
             DateTimeOffset = timeZone == null ? time.DateTimeOffset : TimeZoneInfo.ConvertTime(time.DateTimeOffset, timeZone);
         }
@@ -311,6 +318,8 @@ namespace Skybrud.Essentials.Time {
         /// <param name="day">The day (1 through the number of days in month).</param>
         /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param> 
         public EssentialsTime(int year, int month, int day, TimeZoneInfo timeZone) {
+
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
             DateTimeOffset dto = new DateTimeOffset(year, month, day, 0, 0, 0, timeZone.BaseUtcOffset);
 
