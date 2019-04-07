@@ -961,6 +961,15 @@ namespace Skybrud.Essentials.Time {
         #region Operator overloading
 
         /// <summary>
+        /// Initializes a new instance of <see cref="EssentialsTime"/> from the specified <paramref name="timestamp"/>.
+        /// </summary>
+        /// <param name="timestamp">An instance of <see cref="DateTime"/>.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static implicit operator EssentialsTime(DateTime timestamp) {
+            return new EssentialsTime(timestamp);
+        }
+
+        /// <summary>
         /// Initializes a new instance of <see cref="EssentialsTime"/> from the specified
         /// <paramref name="timestamp"/>.
         /// </summary>
