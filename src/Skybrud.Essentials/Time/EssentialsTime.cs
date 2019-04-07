@@ -225,6 +225,37 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="date"/>. The new instance will not have an offset.
+        /// </summary>
+        /// <param name="date">An instance <see cref="EssentialsDate"/> the instance should be based on.</param>
+        public EssentialsTime(EssentialsDate date) {
+            DateTimeOffset = new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, TimeSpan.Zero);
+        }
+
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="date"/> and <paramref name="offset"/>.
+        /// </summary>
+        /// <param name="date">An instance <see cref="EssentialsDate"/> the instance should be based on.</param>
+        /// <param name="offset">The offset to be used.</param>
+        public EssentialsTime(EssentialsDate date, TimeSpan offset) {
+            DateTimeOffset = new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, offset);
+        }
+
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="date"/> and <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="date">An instance <see cref="EssentialsDate"/> the instance should be based on.</param>
+        /// <param name="timeZone">The time zone.</param>
+        public EssentialsTime(EssentialsDate date, TimeZoneInfo timeZone) {
+
+            DateTimeOffset dto = new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, timeZone.BaseUtcOffset);
+
+            TimeZone = timeZone;
+            DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
+
+        }
+
+        /// <summary>
         /// Initializes a new instance based on the specified <paramref name="dateTime"/> and <paramref name="timeZone"/>.
         /// </summary>
         /// <param name="dateTime">An instance <see cref="DateTimeOffset"/> the instance should be based on.</param>
