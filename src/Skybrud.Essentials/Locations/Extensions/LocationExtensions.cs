@@ -1,4 +1,6 @@
-﻿namespace Skybrud.Essentials.Locations.Extensions {
+﻿#pragma warning disable 618
+
+namespace Skybrud.Essentials.Locations.Extensions {
 
     /// <summary>
     /// Static class with various extension methods for the <see cref="ILocation"/> interface.
