@@ -43,7 +43,7 @@ namespace Skybrud.Essentials.Maps {
         /// <param name="lng2">The longitude of the second location.</param>
         /// <returns>The distance in metres between the two locations.</returns>
         public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {
-            return GetDistance(lat1, lng2, lat2, lng2, EquatorialRadius);
+            return GetDistance(lat1, lng1, lat2, lng2, EquatorialRadius);
         }
 
         /// <summary>
