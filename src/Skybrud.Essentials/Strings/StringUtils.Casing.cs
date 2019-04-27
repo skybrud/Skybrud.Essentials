@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.Strings {
             string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Join the pieces again and uppercase the first character of each piece but the first
-            return String.Join("", pieces.Select((t, i) => i == 0 ? t : FirstCharToUpper(t)));
+            return string.Join("", pieces.Select((t, i) => i == 0 ? t : FirstCharToUpper(t)));
 
         }
 
@@ -47,7 +47,7 @@ namespace Skybrud.Essentials.Strings {
             string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Join the pieces again and uppercase the first character of each piece
-            return String.Join("", from piece in pieces select FirstCharToUpper(piece));
+            return string.Join("", from piece in pieces select FirstCharToUpper(piece));
 
         }
 

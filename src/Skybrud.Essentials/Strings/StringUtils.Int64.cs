@@ -13,8 +13,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a long; otherwise <c>false</c>.</returns>
         public static bool IsInt64(string str) {
-            long result;
-            return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+            return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
         }
         
         /// <summary>
@@ -24,8 +23,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long ParseInt64(string str) {
-            long value;
-            Int64.TryParse(str, out value);
+            long.TryParse(str, out long value);
             return value;
         }
 
@@ -37,8 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long ParseInt64(string str, long fallback) {
-            long value;
-            return Int64.TryParse(str, out value) ? value : fallback;
+            return long.TryParse(str, out long value) ? value : fallback;
         }
 
         /// <summary>
@@ -63,7 +60,7 @@ namespace Skybrud.Essentials.Strings {
             return (
                 from piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select Int64.Parse(piece)
+                select long.Parse(piece)
             ).ToArray();
         }
 

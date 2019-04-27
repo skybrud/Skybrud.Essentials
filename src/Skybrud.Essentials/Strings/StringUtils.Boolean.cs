@@ -26,7 +26,7 @@ namespace Skybrud.Essentials.Strings {
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
         public static bool ParseBoolean(string str, bool fallback) {
 
-            switch ((str ?? String.Empty).ToLower()) {
+            switch ((str ?? string.Empty).ToLower()) {
 
                 case "true":
                 case "1":
@@ -54,7 +54,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="value">The value to be parsed.</param>
         /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).</returns>
         public static bool ParseBoolean(object value) {
-            return ParseBoolean(value + String.Empty);
+            return ParseBoolean(value + string.Empty);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Skybrud.Essentials.Strings {
         /// <c>false</c> if <paramref name="value"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
         public static bool ParseBoolean(object value, bool fallback) {
-            return ParseBoolean(value + String.Empty, fallback);
+            return ParseBoolean(value + string.Empty, fallback);
         }
 
     }

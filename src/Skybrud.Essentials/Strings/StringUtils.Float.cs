@@ -13,8 +13,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a long; otherwise <c>false</c>.</returns>
         public static bool IsFloat(string str) {
-            float result;
-            return Single.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+            return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out _);
         }
         
         /// <summary>
@@ -24,8 +23,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Single"/>.</returns>
         public static float ParseFloat(string str) {
-            float value;
-            Single.TryParse(str, out value);
+            float.TryParse(str, out float value);
             return value;
         }
 
@@ -37,8 +35,18 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Single"/>.</returns>
         public static float ParseFloat(string str, int fallback) {
-            float value;
-            return Single.TryParse(str, out value) ? value : fallback;
+            return float.TryParse(str, out float value) ? value : fallback;
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="str"/> into an instance of <see cref="Single"/>. If the parsing fails,
+        /// <paramref name="fallback"/> will be returned instead.
+        /// </summary>
+        /// <param name="str">The string to be parsed.</param>
+        /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
+        /// <returns>An instance of <see cref="Single"/>.</returns>
+        public static float ParseFloat(string str, float fallback) {
+            return float.TryParse(str, out float value) ? value : fallback;
         }
 
         /// <summary>
@@ -63,7 +71,7 @@ namespace Skybrud.Essentials.Strings {
             return (
                 from piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select Single.Parse(piece)
+                select float.Parse(piece)
             ).ToArray();
         }
 

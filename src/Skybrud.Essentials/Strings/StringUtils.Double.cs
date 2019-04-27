@@ -13,8 +13,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
         public static bool IsDouble(string str) {
-            double result;
-            return Double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+            return double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out _);
         }
 
         /// <summary>
@@ -24,8 +23,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Double"/>.</returns>
         public static double ParseDouble(string str) {
-            double value;
-            Double.TryParse(str, out value);
+            double.TryParse(str, out double value);
             return value;
         }
 
@@ -37,8 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Double"/>.</returns>
         public static double ParseDouble(string str, double fallback) {
-            double value;
-            return Double.TryParse(str, out value) ? value : fallback;
+            return double.TryParse(str, out double value) ? value : fallback;
         }
 
         /// <summary>
@@ -61,9 +58,9 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Double"/>.</returns>
         public static double[] ParseDoubleArray(string str, params char[] separators) {
             return (
-                from piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select Double.Parse(piece)
+                from piece in (str ?? String.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
+                where Regex.IsMatch(piece, "^(-|)[0-9\\.]+$")
+                select double.Parse(piece)
             ).ToArray();
         }
 

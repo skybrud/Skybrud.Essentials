@@ -13,8 +13,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a long; otherwise <c>false</c>.</returns>
         public static bool IsInt32(string str) {
-            int result;
-            return Int32.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+            return int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
         }
         
         /// <summary>
@@ -24,8 +23,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Int32"/>.</returns>
         public static int ParseInt32(string str) {
-            int value;
-            Int32.TryParse(str, out value);
+            int.TryParse(str, out int value);
             return value;
         }
 
@@ -37,8 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Int32"/>.</returns>
         public static int ParseInt32(string str, int fallback) {
-            int value;
-            return Int32.TryParse(str, out value) ? value : fallback;
+            return int.TryParse(str, out int value) ? value : fallback;
         }
 
         /// <summary>
@@ -63,7 +60,7 @@ namespace Skybrud.Essentials.Strings {
             return (
                 from piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select Int32.Parse(piece)
+                select int.Parse(piece)
             ).ToArray();
         }
 
