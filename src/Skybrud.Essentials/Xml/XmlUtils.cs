@@ -1,4 +1,6 @@
 ﻿using System;
+using System.IO;
+using System.Text;
 using System.Xml;
 using System.Xml.Linq;
 
@@ -125,6 +127,20 @@ namespace Skybrud.Essentials.Xml {
             XmlReader reader = element.CreateReader();
             reader.MoveToContent();
             return reader.ReadInnerXml();
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="document"/> to an XML based string, maintaining the XML declaration of the document.
+        /// </summary>
+        /// <param name="document">The document to be converted.</param>
+        /// <returns>An XML string representation of the document.</returns>
+        public static string ToString(XDocument document) {
+            if (document == null) throw new ArgumentNullException(nameof(document));
+            StringBuilder builder = new StringBuilder();
+            using (StringWriter writer = new StringWriter(builder)) {
+                document.Save(writer);
+            }
+            return builder.ToString();
         }
 
     }
