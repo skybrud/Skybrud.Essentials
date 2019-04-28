@@ -11,8 +11,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches an integer; otherwise <c>false</c>.</returns>
         public static bool IsInt32(string str) {
-            int result;
-            return Int32.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+            return int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
         }
 
         /// <summary>

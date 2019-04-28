@@ -104,7 +104,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The input string to test.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
         public static bool HasValue(this string input) {
-            return !String.IsNullOrWhiteSpace(input);
+            return string.IsNullOrWhiteSpace(input) == false;
         }
 
         /// <summary>
@@ -114,7 +114,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The input string to test.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
         public static bool IsNullOrWhiteSpace(this string input) {
-            return !String.IsNullOrWhiteSpace(input);
+            return string.IsNullOrWhiteSpace(input);
         }
 
     }

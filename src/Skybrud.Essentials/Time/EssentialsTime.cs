@@ -499,7 +499,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="value">The value to compare to the current instance.</param>
         /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/> parameter.</returns>
         public int CompareTo(EssentialsTime value) {
-            return DateTimeOffset.CompareTo(value == null ? default(DateTimeOffset) : value.DateTimeOffset);
+            return DateTimeOffset.CompareTo(value == null ? default : value.DateTimeOffset);
         }
 
         /// <summary>
@@ -851,7 +851,7 @@ namespace Skybrud.Essentials.Time {
             result = null;
 
             // Is "input" an empty string?
-            if (String.IsNullOrWhiteSpace(input)) return false;
+            if (string.IsNullOrWhiteSpace(input)) return false;
 
             // Attempt to parse the date
             if (DateTimeOffset.TryParse(input, out DateTimeOffset dto)) {

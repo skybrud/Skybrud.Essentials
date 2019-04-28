@@ -8,7 +8,7 @@ namespace Skybrud.Essentials.Time {
     /// </summary>
     public class EssentialsDate {
 
-        private DateTime _dateTime;
+        private readonly DateTime _dateTime;
 
         #region Properties
 
@@ -254,10 +254,16 @@ namespace Skybrud.Essentials.Time {
 
         #region Static methods
 
+        /// <summary>
+        /// Converts the string representation of a date to its <see cref="EssentialsDate"/> equivalent by
+        /// using the conventions of the current thread culture.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>.</returns>
         public static EssentialsDate Parse(string input) {
             
             // Is "input" an empty string?
-            if (String.IsNullOrWhiteSpace(input)) return null;
+            if (string.IsNullOrWhiteSpace(input)) return null;
 
             // Attempt to parse the date
             DateTime dt = DateTime.Parse(input);
@@ -267,26 +273,44 @@ namespace Skybrud.Essentials.Time {
 
         }
 
-        public static EssentialsDate Parse(string input, IFormatProvider formatProvider) {
+        /// <summary>
+        /// Converts the string representation of a date to its <see cref="EssentialsDate"/> equivalent by using
+        /// culture-specific format information.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about <paramref name="input"/>.</param>
+        /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/>.</returns>
+        public static EssentialsDate Parse(string input, IFormatProvider provider) {
             
             // Is "input" an empty string?
-            if (String.IsNullOrWhiteSpace(input)) return null;
+            if (string.IsNullOrWhiteSpace(input)) return null;
 
             // Attempt to parse the date
-            DateTime dt = DateTime.Parse(input, formatProvider);
+            DateTime dt = DateTime.Parse(input, provider);
 
             // Intialize a new instance
             return new EssentialsDate(dt);
 
         }
 
-        public static EssentialsTime Parse(string input, IFormatProvider formatProvider, DateTimeStyles styles) {
+        /// <summary>
+        /// Converts the string representation of a dat to its <see cref="EssentialsDate"/> equivalent by using
+        /// culture-specific format information and a formatting style.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about <paramref name="input"/>.</param>
+        /// <param name="styles">A bitwise combination of the enumeration values that indicates the style elements that
+        /// can be present in <paramref name="input"/> for the parse operation to succeed, and that defines how to
+        /// interpret the parsed date in relation to the current time zone or the current date. A typical value to
+        /// specify is <see cref="DateTimeStyles.None"/>.</param>
+        /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/> and <paramref name="styles"/>.</returns>
+        public static EssentialsTime Parse(string input, IFormatProvider provider, DateTimeStyles styles) {
             
             // Is "input" an empty string?
-            if (String.IsNullOrWhiteSpace(input)) return null;
+            if (string.IsNullOrWhiteSpace(input)) return null;
 
             // Attempt to parse the date
-            DateTime dt = DateTime.Parse(input, formatProvider, styles);
+            DateTime dt = DateTime.Parse(input, provider, styles);
 
             // Intialize a new instance
             return new EssentialsTime(dt);
