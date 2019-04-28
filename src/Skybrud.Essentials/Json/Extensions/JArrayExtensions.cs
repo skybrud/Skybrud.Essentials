@@ -28,8 +28,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
         /// found.</returns>
         public static T GetObject<T>(this JArray array, int index) {
-            if (array == null) return default;
-            return array[index] is JObject child ? child.ToObject<T>() : default;
+            if (array == null) return default(T);
+            return array[index] is JObject child ? child.ToObject<T>() : default(T);
         }
 
         /// <summary>
@@ -63,8 +63,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
         /// found.</returns>
         public static T GetObject<T>(this JArray array, string path) {
-            if (array == null) return default;
-            return array.SelectToken(path) is JObject child ? child.ToObject<T>() : default;
+            if (array == null) return default(T);
+            return array.SelectToken(path) is JObject child ? child.ToObject<T>() : default(T);
         }
 
         /// <summary>
@@ -165,9 +165,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="Int16"/>.</returns>
         public static short GetInt16(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(short);
             JToken property = array[index];
-            return property?.Value<short>() ?? default;
+            return property?.Value<short>() ?? default(short);
         }
 
         /// <summary>
@@ -178,9 +178,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="Int16"/>.</returns>
         public static short GetInt16(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(short);
             JToken token = array.SelectToken(path);
-            return token?.Value<short>() ?? default;
+            return token?.Value<short>() ?? default(short);
         }
 
         /// <summary>
@@ -191,9 +191,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="UInt16"/>.</returns>
         public static ushort GetUInt16(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(ushort);
             JToken property = array[index];
-            return property?.Value<ushort>() ?? default;
+            return property?.Value<ushort>() ?? default(ushort);
         }
 
         /// <summary>
@@ -204,9 +204,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="UInt16"/>.</returns>
         public static ushort GetUInt16(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(ushort);
             JToken token = array.SelectToken(path);
-            return token?.Value<ushort>() ?? default;
+            return token?.Value<ushort>() ?? default(ushort);
         }
 
         /// <summary>
@@ -217,9 +217,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="Int32"/>.</returns>
         public static int GetInt32(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(int);
             JToken property = array[index];
-            return property?.Value<int>() ?? default;
+            return property?.Value<int>() ?? default(int);
         }
 
         /// <summary>
@@ -230,9 +230,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="Int32"/>.</returns>
         public static int GetInt32(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(int);
             JToken token = array.SelectToken(path);
-            return token?.Value<int>() ?? default;
+            return token?.Value<int>() ?? default(int);
         }
         
         /// <summary>
@@ -243,9 +243,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="UInt32"/>.</returns>
         public static uint GetUInt32(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(uint);
             JToken property = array[index];
-            return property?.Value<uint>() ?? default;
+            return property?.Value<uint>() ?? default(uint);
         }
 
         /// <summary>
@@ -256,9 +256,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="UInt32"/>.</returns>
         public static UInt32 GetUInt32(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(uint);
             JToken token = array.SelectToken(path);
-            return token?.Value<uint>() ?? default;
+            return token?.Value<uint>() ?? default(uint);
         }
         
         /// <summary>
@@ -269,9 +269,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long GetInt64(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(long);
             JToken property = array[index];
-            return property?.Value<long>() ?? default;
+            return property?.Value<long>() ?? default(long);
         }
 
         /// <summary>
@@ -281,9 +281,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="System.Int64"/>.</returns>
         public static long GetInt64(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(long);
             JToken token = array.SelectToken(path);
-            return token?.Value<long>() ?? default;
+            return token?.Value<long>() ?? default(long);
         }
         
         /// <summary>
@@ -294,9 +294,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="UInt64"/>.</returns>
         public static ulong GetUInt64(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(ulong);
             JToken property = array[index];
-            return property?.Value<ulong>() ?? default;
+            return property?.Value<ulong>() ?? default(ulong);
         }
 
         /// <summary>
@@ -307,9 +307,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="UInt64"/>.</returns>
         public static ulong GetUInt64(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(ulong);
             JToken token = array.SelectToken(path);
-            return token?.Value<ulong>() ?? default;
+            return token?.Value<ulong>() ?? default(ulong);
         }
         
         /// <summary>
@@ -319,9 +319,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="Double"/>.</returns>
         public static double GetDouble(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(double);
             JToken property = array[index];
-            return property?.Value<double>() ?? default;
+            return property?.Value<double>() ?? default(double);
         }
 
         /// <summary>
@@ -331,9 +331,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="Double"/>.</returns>
         public static double GetDouble(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(double);
             JToken token = array.SelectToken(path);
-            return token?.Value<double>() ?? default;
+            return token?.Value<double>() ?? default(double);
         }
 
         /// <summary>
@@ -343,7 +343,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="index">The index of the item.</param>
         /// <returns>An instance of <see cref="Boolean"/>.</returns>
         public static bool GetBoolean(this JArray array, int index) {
-            if (array == null) return default;
+            if (array == null) return default(bool);
             JToken property = array[index];
             return property != null && property.Value<bool>();
         }
@@ -355,7 +355,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="Boolean"/>.</returns>
         public static bool GetBoolean(this JArray array, string path) {
-            if (array == null) return default;
+            if (array == null) return default(bool);
             JToken token = array.SelectToken(path);
             return token != null && token.Value<bool>();
         }

@@ -32,7 +32,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValue<T>(this XElement element, XName name, Func<string, T> callback) {
             XElement child = element?.GetElement(name);
-            return child == null ? default : callback(child.Value);
+            return child == null ? default(T) : callback(child.Value);
         }
         
         #endregion
@@ -72,7 +72,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the integer value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsInt32<T>(this XElement element, XName name, Func<int, T> callback) {
-            return GetElementValue(element, name, out int value) ? callback(value) : default;
+            return GetElementValue(element, name, out int value) ? callback(value) : default(T);
         }
         
         #endregion
@@ -112,7 +112,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the long value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsInt64<T>(this XElement element, XName name, Func<long, T> callback) {
-            return GetElementValue(element, name, out long value) ? callback(value) : default;
+            return GetElementValue(element, name, out long value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -152,7 +152,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the float value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsSingle<T>(this XElement element, XName name, Func<float, T> callback) {
-            return GetElementValue(element, name, out float value) ? callback(value) : default;
+            return GetElementValue(element, name, out float value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -192,7 +192,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the float value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsFloat<T>(this XElement element, XName name, Func<float, T> callback) {
-            return GetElementValue(element, name, out float value) ? callback(value) : default;
+            return GetElementValue(element, name, out float value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -232,7 +232,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the double value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
         public static T GetElementValueAsDouble<T>(this XElement element, XName name, Func<double, T> callback) {
-            return GetElementValue(element, name, out double value) ? callback(value) : default;
+            return GetElementValue(element, name, out double value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -281,7 +281,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="callback">The callback method used for converting the boolean value.</param>
         /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
         public static T GetElementValueAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
-            return GetElementValueAsBoolean(element, name, out bool value) ? callback(value) : default;
+            return GetElementValueAsBoolean(element, name, out bool value) ? callback(value) : default(T);
         }
 
         #endregion
@@ -311,7 +311,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
         public static T GetElementAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
-            return GetElementAsBoolean(element, name, out bool value) ? callback(value) : default;
+            return GetElementAsBoolean(element, name, out bool value) ? callback(value) : default(T);
         }
 
         #pragma warning restore 1591
@@ -334,7 +334,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, name);
 
             // Convert the element value to the type of T
-            return child == null ? default : EnumUtils.ParseEnum<T>(child.Value);
+            return child == null ? default(T) : EnumUtils.ParseEnum<T>(child.Value);
         
         }
 
@@ -377,7 +377,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, name);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (string.IsNullOrWhiteSpace(child?.Value)) return default;
+            if (string.IsNullOrWhiteSpace(child?.Value)) return default(T);
 
             // Convert the element value to the type of T
             return (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
@@ -401,7 +401,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
             if (string.IsNullOrWhiteSpace(child?.Value)) {
-                value = default;
+                value = default(T);
                 return false;
             }
 
@@ -428,7 +428,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, name);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (string.IsNullOrWhiteSpace(child?.Value)) return default;
+            if (string.IsNullOrWhiteSpace(child?.Value)) return default(TResult);
 
             // Convert the element value to the type of T and invoke the callback
             return callback((T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture));

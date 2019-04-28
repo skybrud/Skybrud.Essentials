@@ -34,7 +34,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// a matching attribute wasn't found not found.</returns>
         public static T GetAttributeValue<T>(this XElement element, XName name, Func<string, T> callback) {
             XAttribute attr = element?.GetAttribute(name);
-            return attr == null ? default : callback(attr.Value);
+            return attr == null ? default(T) : callback(attr.Value);
         }
         
         #endregion
@@ -78,7 +78,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
         /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
         public static T GetAttributeValueAsInt32<T>(this XElement element, XName name, Func<int, T> callback) {
-            return GetAttributeValue(element, name, out int value) ? callback(value) : default;
+            return GetAttributeValue(element, name, out int value) ? callback(value) : default(T);
         }
         
         #endregion
@@ -122,7 +122,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
         /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
         public static T GetAttributeValueAsInt64<T>(this XElement element, XName name, Func<long, T> callback) {
-            return GetAttributeValue(element, name, out long value) ? callback(value) : default;
+            return GetAttributeValue(element, name, out long value) ? callback(value) : default(T);
         }
         
         #endregion
@@ -166,7 +166,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
         /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
         public static T GetAttributeValueAsSingle<T>(this XElement element, XName name, Func<float, T> callback) {
-            return GetAttributeValue(element, name, out float value) ? callback(value) : default;
+            return GetAttributeValue(element, name, out float value) ? callback(value) : default(T);
         }
         
         #endregion
@@ -210,7 +210,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
         /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
         public static T GetAttributeValueAsDouble<T>(this XElement element, XName name, Func<double, T> callback) {
-            return GetAttributeValue(element, name, out double value) ? callback(value) : default;
+            return GetAttributeValue(element, name, out double value) ? callback(value) : default(T);
         }
         
         #endregion
@@ -263,7 +263,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
         /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
         public static T GetAttributeValueAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
-            return GetAttributeValueAsBoolean(element, name, out bool value) ? callback(value) : default;
+            return GetAttributeValueAsBoolean(element, name, out bool value) ? callback(value) : default(T);
         }
         
         #endregion
@@ -303,7 +303,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
         public static T GetAttributeValueAsEnum<T>(this XElement element, XName name) where T : struct {
             XAttribute child = element?.Attribute(name);
-            return child == null ? default : EnumUtils.ParseEnum<T>(child.Value);
+            return child == null ? default(T) : EnumUtils.ParseEnum<T>(child.Value);
         }
 
         /// <summary>
@@ -337,7 +337,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// value of <typeparamref name="T"/> if not found.</returns>
         public static T GetAttributeValue<T>(this XElement element, XName name) {
             XAttribute attr = GetAttribute(element, name);
-            return attr == null ? default : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -357,7 +357,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
             // Fallback to the default value if the attribute wasn't found (or doesn't have a value)
             if (string.IsNullOrWhiteSpace(attr?.Value)) {
-                value = default;
+                value = default(T);
                 return false;
             }
 
@@ -380,7 +380,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
         public static TResult GetAttributeValue<T, TResult>(this XElement element, XName name, Func<T, TResult> callback) {
             XAttribute attr = GetAttribute(element, name);
-            return attr == null ? default : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
+            return attr == null ? default(TResult) : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
         }
 
         #endregion

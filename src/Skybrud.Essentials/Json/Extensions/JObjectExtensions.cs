@@ -53,7 +53,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
         /// found.</returns>
         public static T GetObject<T>(this JObject obj, string path) {
-            return !(obj?.SelectToken(path) is JObject child) ? default : child.ToObject<T>();
+            return !(obj?.SelectToken(path) is JObject child) ? default(T) : child.ToObject<T>();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
         /// found.</returns>
         public static T GetObject<T>(this JObject obj, string path, Func<JObject, T> func) {
-            return obj == null ? default : func(obj.SelectToken(path) as JObject);
+            return obj == null ? default(T) : func(obj.SelectToken(path) as JObject);
         }
 
         /// <summary>
@@ -90,9 +90,9 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="callback">The callback used for converting the string value.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c>.</returns>
         public static T GetString<T>(this JObject obj, string path, Func<string, T> callback) {
-            if (obj == null) return default;
+            if (obj == null) return default(T);
             JToken token = GetSimpleTypeTokenFromPath(obj, path);
-            return token == null ? default : callback(token.Value<string>());
+            return token == null ? default(T) : callback(token.Value<string>());
         }
 
         /// <summary>
@@ -363,7 +363,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = GetSimpleTypeTokenFromPath(obj, path);
 
             // Check whether the token is null
-            if (token == null || token.Type == JTokenType.Null) return default;
+            if (token == null || token.Type == JTokenType.Null) return default(T);
 
             // Convert the value to a boolean
             bool value = StringUtils.ParseBoolean(token + "");
@@ -406,7 +406,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="DateTime"/> representing the value of the property.</returns>
         public static DateTime GetDateTime(this JObject obj, string path) {
             JToken token = obj?.SelectToken(path);
-            if (token == null || token.Type == JTokenType.Null) return default;
+            if (token == null || token.Type == JTokenType.Null) return default(DateTime);
             return token.Type == JTokenType.Date ? token.Value<DateTime>() : DateTime.Parse(token.Value<string>());
         }
 
@@ -639,10 +639,10 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = GetSimpleTypeTokenFromPath(obj, path);
 
             // Check whether the token is null
-            if (token == null || token.Type == JTokenType.Null) return default;
+            if (token == null || token.Type == JTokenType.Null) return default(TOut);
 
             // Check whether the token is an empty string (or whitespace)
-            if (token.Type == JTokenType.String && string.IsNullOrWhiteSpace(token + "")) return default;
+            if (token.Type == JTokenType.String && string.IsNullOrWhiteSpace(token + "")) return default(TOut);
 
             // Cast/convert the value from "TIn" to "TOut"
             TIn value = token.Value<TIn>();

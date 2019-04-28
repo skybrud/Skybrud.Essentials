@@ -101,7 +101,7 @@ namespace Skybrud.Essentials.Enums {
             #endif
 
             // Initialize "value"
-            value = default;
+            value = default(T);
 
             // Check whether the specified string is NULL (or white space)
             if (string.IsNullOrWhiteSpace(str)) return false;

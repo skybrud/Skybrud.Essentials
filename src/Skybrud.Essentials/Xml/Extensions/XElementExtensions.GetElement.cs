@@ -25,7 +25,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="name"/> doesn't match any elements.</returns>
         public static T GetElement<T>(this XElement element, XName name, Func<XElement, T> callback) {
             XElement child = element?.Element(name);
-            return child == null ? default : callback(child);
+            return child == null ? default(T) : callback(child);
         }
 
     }
