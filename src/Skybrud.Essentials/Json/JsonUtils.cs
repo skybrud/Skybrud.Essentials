@@ -171,7 +171,7 @@ namespace Skybrud.Essentials.Json {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             if (obj.JObject == null) throw new PropertyNotSetException(nameof(obj.JObject));
-            SaveJsonObject(path, obj.JObject, Formatting.None);
+            SaveJsonObject(path, obj.JObject, formatting);
         }
 
         /// <summary>
@@ -219,7 +219,7 @@ namespace Skybrud.Essentials.Json {
         public static void SaveJsonArray(string path, JArray array, Formatting formatting) {
             if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (array == null) throw new ArgumentNullException(nameof(array));
-            File.WriteAllText(path, array.ToString(), Encoding.UTF8);
+            File.WriteAllText(path, array.ToString(formatting), Encoding.UTF8);
         }
 
         /// <summary>
