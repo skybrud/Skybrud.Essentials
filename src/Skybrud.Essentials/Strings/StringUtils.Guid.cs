@@ -45,11 +45,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string containing the GUIDs.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ParseGuidArray(string str) {
-            List<Guid> guids = new List<Guid>();
-            foreach (string piece in (str ?? "").Split(new[] {',', ' ', '\r', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries)) {
-                if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
-            }
-            return guids.ToArray();
+            return ParseGuidArray(str, new[] { ',', ' ', '\r', '\n', '\t' });
         }
 
         /// <summary>
@@ -63,7 +59,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ParseGuidArray(string str, params char[] separators) {
             List<Guid> guids = new List<Guid>();
-            foreach (string piece in (str ?? "").Split(new[] {',', ' ', '\r', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
             }
             return guids.ToArray();
