@@ -155,7 +155,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="path">The path to the file.</param>
         /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
         public static void SaveJsonObject(string path, JsonObjectBase obj) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             SaveJsonObject(path, obj, Formatting.None);
         }
@@ -168,7 +168,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="obj">The instance of <see cref="JsonObjectBase"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonObject(string path, JsonObjectBase obj, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             if (obj.JObject == null) throw new PropertyNotSetException(nameof(obj.JObject));
             SaveJsonObject(path, obj.JObject, formatting);
@@ -181,7 +181,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="path">The path to the file.</param>
         /// <param name="obj">The instance of <see cref="JObject"/> to be saved.</param>
         public static void SaveJsonObject(string path, JObject obj) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             SaveJsonObject(path, obj, Formatting.None);
         }
@@ -194,7 +194,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="obj">The instance of <see cref="JObject"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonObject(string path, JObject obj, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (obj == null) throw new ArgumentNullException(nameof(obj));
             File.WriteAllText(path, obj.ToString(formatting), Encoding.UTF8);
         }
@@ -217,7 +217,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="array">The instance of <see cref="JObject"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray(string path, JArray array, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (array == null) throw new ArgumentNullException(nameof(array));
             File.WriteAllText(path, array.ToString(formatting), Encoding.UTF8);
         }
@@ -240,7 +240,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="array">The array of <see cref="JObject"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray(string path, JObject[] array, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (array == null) throw new ArgumentNullException(nameof(array));
             File.WriteAllText(path, JsonConvert.SerializeObject(array, formatting), Encoding.UTF8);
         }
@@ -263,7 +263,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="collection">The collection of <see cref="JObject"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray(string path, IEnumerable<JObject> collection, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (collection == null) throw new ArgumentNullException(nameof(collection));
             File.WriteAllText(path, JsonConvert.SerializeObject(collection, formatting), Encoding.UTF8);
         }
@@ -286,7 +286,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="array">The array of <see cref="JToken"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray(string path, JToken[] array, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (array == null) throw new ArgumentNullException(nameof(array));
             File.WriteAllText(path, JsonConvert.SerializeObject(array, formatting), Encoding.UTF8);
         }
@@ -309,7 +309,7 @@ namespace Skybrud.Essentials.Json {
         /// <param name="collection">The collection of <see cref="JToken"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray(string path, IEnumerable<JToken> collection, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (collection == null) throw new ArgumentNullException(nameof(collection));
             File.WriteAllText(path, JsonConvert.SerializeObject(collection, formatting), Encoding.UTF8);
         }
@@ -332,9 +332,9 @@ namespace Skybrud.Essentials.Json {
         /// <param name="array">The array of <see cref="JsonObjectBase"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray(string path, JsonObjectBase[] array, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (array == null) throw new ArgumentNullException(nameof(array));
-            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item == null ? null : item.JObject, formatting), Encoding.UTF8);
+            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item?.JObject, formatting), Encoding.UTF8);
         }
 
         /// <summary>
@@ -355,9 +355,9 @@ namespace Skybrud.Essentials.Json {
         /// <param name="array">The array of <see cref="JsonObjectBase"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray<T>(string path, T[] array, Formatting formatting) where T : JsonObjectBase {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (array == null) throw new ArgumentNullException(nameof(array));
-            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item == null ? null : item.JObject, formatting), Encoding.UTF8);
+            File.WriteAllText(path, JsonConvert.SerializeObject(from item in array select item?.JObject, formatting), Encoding.UTF8);
         }
 
         /// <summary>
@@ -378,9 +378,9 @@ namespace Skybrud.Essentials.Json {
         /// <param name="collection">The collection of <see cref="JsonObjectBase"/> to be saved.</param>
         /// <param name="formatting">The formatting to be used when saving the object.</param>
         public static void SaveJsonArray(string path, IEnumerable<JsonObjectBase> collection, Formatting formatting) {
-            if (String.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+            if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
             if (collection == null) throw new ArgumentNullException(nameof(collection));
-            File.WriteAllText(path, JsonConvert.SerializeObject(from item in collection select item == null ? null : item.JObject, formatting), Encoding.UTF8);
+            File.WriteAllText(path, JsonConvert.SerializeObject(from item in collection select item?.JObject, formatting), Encoding.UTF8);
         }
 
 #endif

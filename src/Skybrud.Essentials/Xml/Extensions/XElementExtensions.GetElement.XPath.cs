@@ -29,7 +29,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
         public static T GetElement<T>(this XElement element, string expression, Func<XElement, T> callback) {
             XElement child = element?.XPathSelectElement(expression);
-            return child == null ? default(T) : callback(child);
+            return child == null ? default : callback(child);
         }
 
         /// <summary>
@@ -54,7 +54,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
         public static T GetElement<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<XElement, T> callback) {
             XElement child = element?.XPathSelectElement(expression, resolver);
-            return child == null ? default(T) : callback(child);
+            return child == null ? default : callback(child);
         }
 
         /// <summary>
@@ -68,7 +68,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
         public static T GetElement<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<XElement, IXmlNamespaceResolver, T> callback) {
             XElement child = element.XPathSelectElement(expression, resolver);
-            return child == null ? default(T) : callback(child, resolver);
+            return child == null ? default : callback(child, resolver);
         }
 
     }
