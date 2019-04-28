@@ -29,7 +29,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// found.</returns>
         public static T GetObject<T>(this JArray array, int index) {
             if (array == null) return default(T);
-            JObject child = array[0] as JObject;
+            JObject child = array[index] as JObject;
             return child == null ? default(T) : child.ToObject<T>();
         }
 
