@@ -917,7 +917,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
         public static EssentialsDateTime Parse(string str) {
-            return String.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(DateTime.Parse(str));
+            return string.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(DateTime.Parse(str));
         }
 
         /// <summary>
@@ -933,8 +933,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns><c>true</c> if the <paramref name="str"/> parameter was converted successfully; otherwise,
         /// <c>false</c>.</returns>
         public static bool TryParse(string str, out EssentialsDateTime result) {
-            DateTime dt;
-            if (DateTime.TryParse(str, out dt)) {
+            if (DateTime.TryParse(str, out DateTime dt)) {
                 result = new EssentialsDateTime(dt);
                 return true;
             }
@@ -961,8 +960,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns><c>true</c> if the <paramref name="str"/> parameter was converted successfully; otherwise,
         /// <c>false</c>.</returns>
         public static bool TryParse(string str, IFormatProvider provider, DateTimeStyles styles, out EssentialsDateTime result) {
-            DateTime dt;
-            if (DateTime.TryParse(str, provider, styles, out dt)) {
+            if (DateTime.TryParse(str, provider, styles, out DateTime dt)) {
                 result = new EssentialsDateTime(dt);
                 return true;
             }

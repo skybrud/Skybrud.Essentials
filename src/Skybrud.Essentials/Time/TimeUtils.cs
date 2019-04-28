@@ -55,8 +55,8 @@ namespace Skybrud.Essentials.Time {
         public static int GetAge(DateTimeOffset dateOfBirth, DateTimeOffset dt) {
 
             // Make sure both values are converted to UTC
-            var a = dateOfBirth.ToUniversalTime();
-            var b = dt.ToUniversalTime();
+            DateTimeOffset a = dateOfBirth.ToUniversalTime();
+            DateTimeOffset b = dt.ToUniversalTime();
 
             // Calculate the age
             int age = dt.Year - a.Year;
@@ -219,7 +219,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year.</param>
         /// <returns><c>true</c> if the specified year is a leap year; otherwise <c>false</c>.</returns>
         public static bool IsLeapYear(int year) {
-            return (DateTime.DaysInMonth(year, 2).Equals(29));
+            return DateTime.DaysInMonth(year, 2).Equals(29);
         }
 
         /// <summary>
@@ -251,7 +251,7 @@ namespace Skybrud.Essentials.Time {
         public static bool IsDateWithinLastDays(DateTime date, int days) {
             double lastDays = (double) 0 - days;
             DateTime startDate = date.AddDays(lastDays);
-            return (date >= startDate);
+            return date >= startDate;
         }
 
         /// <summary>
@@ -684,7 +684,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="monthName">The name of the month.</param>
         /// <returns>An instance of <see cref="System.Int32"/> representing the month.</returns>
         public static int ParseNumberFromMonthName(string monthName) {
-            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
+            if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             return DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
         }
 
@@ -697,7 +697,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="monthName"/>.</param>
         /// <returns>An instance of <see cref="System.Int32"/> representing the month.</returns>
         public static int ParseNumberFromMonthName(string monthName, IFormatProvider provider) {
-            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
+            if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             return DateTime.ParseExact(monthName, "MMMM", provider).Month;
         }
 
@@ -715,7 +715,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
         /// <c>false</c>.</returns>
         public static bool TryParseNumberFromMonthName(string monthName, out int result) {
-            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
+            if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             return TryParseNumberFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
         }
 
@@ -735,7 +735,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
         /// <c>false</c>.</returns>
         public static bool TryParseNumberFromMonthName(string monthName, IFormatProvider provider, out int result) {
-            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
+            if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             result = 0;
             if (!DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out DateTime dt)) return false;
             result = dt.Month;
@@ -750,7 +750,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="monthName">The name of the month.</param>
         /// <returns>An instance of <see cref="EssentialsDateMonthName"/> representing the month.</returns>
         public static EssentialsDateMonthName ParseEnumFromMonthName(string monthName) {
-            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
+            if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             return (EssentialsDateMonthName) DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
         }
 
@@ -764,7 +764,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="monthName"/>.</param>
         /// <returns>An instance of <see cref="EssentialsDateMonthName"/> representing the month.</returns>
         public static EssentialsDateMonthName ParseEnumFromMonthName(string monthName, IFormatProvider provider) {
-            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
+            if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             return (EssentialsDateMonthName) DateTime.ParseExact(monthName, "MMMM", provider).Month;
         }
 
@@ -802,7 +802,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="monthName"/>.</param> <returns><c>true</c> if <paramref name="monthName"/> was converted
         /// successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonthName result) {
-            if (String.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
+            if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             result = 0;
             if (!DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out DateTime dt)) return false;
             result = (EssentialsDateMonthName) dt.Month;

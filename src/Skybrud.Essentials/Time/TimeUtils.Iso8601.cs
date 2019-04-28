@@ -56,7 +56,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="iso8601">The string with the ISO 8106 formatted string.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset Iso8601ToDateTimeOffset(string iso8601) {
-            if (String.IsNullOrWhiteSpace(iso8601)) throw new ArgumentNullException(nameof(iso8601));
+            if (string.IsNullOrWhiteSpace(iso8601)) throw new ArgumentNullException(nameof(iso8601));
             return DateTimeOffset.ParseExact(iso8601, Iso8601DateFormat, CultureInfo.InvariantCulture);
         }
 

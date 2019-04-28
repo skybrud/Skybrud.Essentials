@@ -53,7 +53,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset Rfc822ToDateTimeOffset(string rfc822) {
 
-            if (String.IsNullOrWhiteSpace(rfc822)) throw new ArgumentNullException(nameof(rfc822));
+            if (string.IsNullOrWhiteSpace(rfc822)) throw new ArgumentNullException(nameof(rfc822));
 
             Match m1 = Regex.Match(rfc822, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
 
@@ -62,10 +62,10 @@ namespace Skybrud.Essentials.Time {
             // The RFC 822 specification describes a few predefined time zones, which we
             // need to convert to an offset instead, since "DateTimeOffset" can't parse the
             // time zone
-            string timezone = String.IsNullOrWhiteSpace(m1.Groups[9].Value) ? NormalizeRfc822TimeZone(m1.Groups[10].Value) : m1.Groups[9].Value.Replace(":", "");
+            string timezone = string.IsNullOrWhiteSpace(m1.Groups[9].Value) ? NormalizeRfc822TimeZone(m1.Groups[10].Value) : m1.Groups[9].Value.Replace(":", "");
 
             // Generate a new input string based on our conversions
-            string str = String.Format(
+            string str = string.Format(
                 "{0}, {1} {2} {3} {4}:{5}:{6} {7}",
                 m1.Groups[1].Value,
                 m1.Groups[2].Value.PadLeft(2, '0'),

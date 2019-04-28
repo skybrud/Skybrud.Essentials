@@ -150,7 +150,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="input">A string that contains the partial date to convert.</param>
         /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
         public static EssentialsPartialDate Parse(string input) {
-            if (String.IsNullOrWhiteSpace(input)) return null;
+            if (string.IsNullOrWhiteSpace(input)) return null;
             if (TryParse(input, out EssentialsPartialDate date)) return date;
             throw new ArgumentException("Specified string is not a valid date", nameof(input));
         }
@@ -164,7 +164,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="input"/>.</param>
         /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
         public static EssentialsPartialDate Parse(string input, IFormatProvider provider) {
-            if (String.IsNullOrWhiteSpace(input)) return null;
+            if (string.IsNullOrWhiteSpace(input)) return null;
             if (TryParse(input, provider, out EssentialsPartialDate date)) return date;
             throw new ArgumentException("Specified string is not a valid date", nameof(input));
         }
@@ -220,21 +220,21 @@ namespace Skybrud.Essentials.Time {
             Match m4 = Regex.Match(input, "^([a-zA-Z]+) ([0-9]{4})$");
             Match m6 = Regex.Match(input, "^([a-zA-Z]+) ([0-9]{1,2})(st|nd|rd|th) ([0-9]{4})$");
             
-            if (m1.Success) result = new EssentialsPartialDate(Int32.Parse(m1.Groups[1].Value));
-            if (m2.Success) result = new EssentialsPartialDate(Int32.Parse(m2.Groups[1].Value), Int32.Parse(m2.Groups[2].Value));
-            if (m3.Success) result = new EssentialsPartialDate(Int32.Parse(m3.Groups[1].Value), Int32.Parse(m3.Groups[2].Value), Int32.Parse(m3.Groups[3].Value));
+            if (m1.Success) result = new EssentialsPartialDate(int.Parse(m1.Groups[1].Value));
+            if (m2.Success) result = new EssentialsPartialDate(int.Parse(m2.Groups[1].Value), int.Parse(m2.Groups[2].Value));
+            if (m3.Success) result = new EssentialsPartialDate(int.Parse(m3.Groups[1].Value), int.Parse(m3.Groups[2].Value), int.Parse(m3.Groups[3].Value));
 
             if (m4.Success) {
                 if (!TimeUtils.TryParseNumberFromMonthName(m4.Groups[1].Value, provider, out int month)) return false;
-                int year = Int32.Parse(m4.Groups[2].Value);
+                int year = int.Parse(m4.Groups[2].Value);
                 result = new EssentialsPartialDate(year, month);
                 return true;
             }
 
             if (m6.Success) {
                 if (!TimeUtils.TryParseNumberFromMonthName(m6.Groups[1].Value, provider, out int month)) return false;
-                int year = Int32.Parse(m6.Groups[4].Value);
-                int day = Int32.Parse(m6.Groups[2].Value);
+                int year = int.Parse(m6.Groups[4].Value);
+                int day = int.Parse(m6.Groups[2].Value);
                 result = new EssentialsPartialDate(year, month, day);
                 return true;
             }

@@ -65,7 +65,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTime"/>.</returns>
         public static DateTime GetDateTimeFromUnixTime(string timestamp) {
-            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(Int64.Parse(timestamp));
+            return new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc).AddSeconds(long.Parse(timestamp));
         }
 
         #endregion
@@ -109,7 +109,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The Unix timestamp specified in seconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset GetDateTimeOffsetFromUnixTime(string timestamp) {
-            return new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).AddSeconds(Int64.Parse(timestamp));
+            return new DateTimeOffset(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero).AddSeconds(long.Parse(timestamp));
         }
 
         #endregion
