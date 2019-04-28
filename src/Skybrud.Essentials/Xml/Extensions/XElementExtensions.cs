@@ -1,5 +1,4 @@
-﻿using System;
-using System.Xml;
+﻿using System.Xml;
 using System.Xml.Linq;
 
 namespace Skybrud.Essentials.Xml.Extensions {
@@ -21,7 +20,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, name);
 
             // Check whether the element was found and has a value
-            return child != null && !String.IsNullOrWhiteSpace(child.Value);
+            return child != null && !string.IsNullOrWhiteSpace(child.Value);
 
         }
 
@@ -39,7 +38,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, expression);
 
             // Check whether the element was found and has a value
-            return child != null && !String.IsNullOrWhiteSpace(child.Value);
+            return child != null && !string.IsNullOrWhiteSpace(child.Value);
 
         }
 
@@ -56,7 +55,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = GetElement(element, expression, resolver);
 
             // Check whether the element was found and has a value
-            return child != null && !String.IsNullOrWhiteSpace(child.Value);
+            return child != null && !string.IsNullOrWhiteSpace(child.Value);
 
         }
 

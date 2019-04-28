@@ -40,7 +40,7 @@ namespace Skybrud.Essentials.Common {
         /// <summary>
         /// Gets the message of the exception.
         /// </summary>
-        public override string Message => String.IsNullOrEmpty(PropertyName) ? base.Message : base.Message + Environment.NewLine + "Property name: " + PropertyName;
+        public override string Message => string.IsNullOrEmpty(PropertyName) ? base.Message : base.Message + Environment.NewLine + "Property name: " + PropertyName;
 
         #endregion
 

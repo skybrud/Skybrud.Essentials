@@ -33,8 +33,7 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of
         /// <typeparamref name="T"/>.</exception>
         public static T ParseEnum<T>(string str) where T : struct {
-            T value;
-            if (TryParseEnum(str, out value)) return value;
+            if (TryParseEnum(str, out T value)) return value;
             throw new EnumParseException(typeof(T), str);
         }
 
@@ -49,7 +48,7 @@ namespace Skybrud.Essentials.Enums {
         public static object ParseEnum(string str, Type enumType) {
 
             // Throw an exception if "str" isn't specified
-            if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
 
             // Convert the input string to camel case and lowercase (morel likely to get a match)
             string enumText = StringUtils.ToCamelCase(str).ToLower();
@@ -74,9 +73,8 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static T ParseEnum<T>(string str, T fallback) where T : struct {
-            T value;
-            if (String.IsNullOrWhiteSpace(str)) return fallback;
-            return TryParseEnum(str, out value) ? value : fallback;
+            if (string.IsNullOrWhiteSpace(str)) return fallback;
+            return TryParseEnum(str, out T value) ? value : fallback;
         }
 
         /// <summary>
@@ -92,7 +90,7 @@ namespace Skybrud.Essentials.Enums {
         public static bool TryParseEnum<T>(string str, out T value) where T : struct {
 
             // Check whether the specified string is NULL (or white space)
-            if (String.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
 
             // Check whether the type of T is an enum
             #if NET_FRAMEWORK
@@ -103,17 +101,17 @@ namespace Skybrud.Essentials.Enums {
             #endif
 
             // Initialize "value"
-            value = default(T);
+            value = default;
 
             // Check whether the specified string is NULL (or white space)
-            if (String.IsNullOrWhiteSpace(str)) return false;
+            if (string.IsNullOrWhiteSpace(str)) return false;
 
             // Convert "str" to camel case and then lowercase
             string modified = StringUtils.ToCamelCase(str + "").ToLowerInvariant();
 
             // Parse the enum
             foreach (T v in GetEnumValues<T>()) {
-                string ordinal = Convert.ChangeType(v, typeof(int)) + "";
+                string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
                 string name = v.ToString().ToLowerInvariant();
                 if (ordinal == modified || name == modified) {
                     value = v;
@@ -135,7 +133,7 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
         public static T[] ParseEnumArray<T>(string str) where T : struct {
             return (
-                from piece in (str ?? "").Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
+                from piece in (str ?? string.Empty).Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
                 select ParseEnum<T>(piece)
             ).ToArray();
         }
@@ -155,9 +153,8 @@ namespace Skybrud.Essentials.Enums {
             array = null;
 
             // Iterate over and try to parse the each individual value
-            foreach (string piece in (str ?? "").Split(new[] {',', ' ', '\r', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries)) {
-                T value;
-                if (!TryParseEnum(piece, out value)) return false;
+            foreach (string piece in (str ?? string.Empty).Split(new[] {',', ' ', '\r', '\n', '\t'}, StringSplitOptions.RemoveEmptyEntries)) {
+                if (!TryParseEnum(piece, out T value)) return false;
                 temp.Add(value);
             }
 

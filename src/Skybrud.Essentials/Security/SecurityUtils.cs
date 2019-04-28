@@ -172,7 +172,7 @@ namespace Skybrud.Essentials.Security {
         /// <param name="encoding">The encoding to be used.</param>
         /// <returns>The hash as a hexadecimal number.</returns>
         public static string GetHash(HashAlgorithm algorithm, string input, Encoding encoding) {
-            return BitConverter.ToString(algorithm.ComputeHash(encoding.GetBytes(input))).Replace("-", "").ToLower();
+            return BitConverter.ToString(algorithm.ComputeHash(encoding.GetBytes(input))).Replace("-", string.Empty).ToLower();
         }
 
         /// <summary>
@@ -184,7 +184,7 @@ namespace Skybrud.Essentials.Security {
         /// <returns>The hash as a 64-character hexadecimal number.</returns>
         public static string GetHashFromFile(HashAlgorithm algorithm, string path) {
             using (FileStream stream = File.OpenRead(path)) {
-                return BitConverter.ToString(algorithm.ComputeHash(stream)).Replace("-", "").ToLower();
+                return BitConverter.ToString(algorithm.ComputeHash(stream)).Replace("-", string.Empty).ToLower();
             }
         }
 
