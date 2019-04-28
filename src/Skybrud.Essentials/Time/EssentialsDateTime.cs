@@ -890,10 +890,19 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the name of the month according to <see cref="CultureInfo.CurrentCulture"/>.
+        /// Gets the name of the month according to current culture.
+        /// </summary>
+        /// <returns>The local name of the month.</returns>
+        public string GetLocalMonthName() {
+            return TimeUtils.GetLocalMonthName(DateTime);
+        }
+
+        /// <summary>
+        /// Gets the name of the month according to current culture.
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The local name of the month.</returns>
+        [Obsolete("Use overload instead")]
         public string GetLocalMonthName(DateTime date) {
             return TimeUtils.GetLocalMonthName(DateTime);
         }
