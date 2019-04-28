@@ -854,7 +854,7 @@ namespace Skybrud.Essentials.Time {
             if (string.IsNullOrWhiteSpace(input)) return false;
 
             // Attempt to parse the date
-            if (DateTimeOffset.TryParse(input, out DateTimeOffset dto)) {
+            if (DateTimeOffset.TryParse(input, provider, styles, out DateTimeOffset dto)) {
                 result = new EssentialsTime(dto);
             }
 
