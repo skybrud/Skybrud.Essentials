@@ -1,4 +1,4 @@
-﻿namespace Skybrud.Essentials.Maps.Shapes {
+﻿namespace Skybrud.Essentials.Maps.Geometry {
 
     /// <summary>
     /// Class representing a point identified by latitude and longitude.

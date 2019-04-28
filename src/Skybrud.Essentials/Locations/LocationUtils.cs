@@ -1,6 +1,6 @@
 ﻿using System;
 using Skybrud.Essentials.Maps;
-using Skybrud.Essentials.Maps.Shapes;
+using Skybrud.Essentials.Maps.Geometry;
 
 namespace Skybrud.Essentials.Locations {
 
