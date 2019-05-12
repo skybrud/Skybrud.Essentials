@@ -8,7 +8,7 @@ It also contains utilities for converting string values, changing text casing an
 
 ### Installation
 
-To install the core library of Skybrud.Essentials, simply pick one of the three methods below:
+To install the Skybrud.Essentials, simply pick one of the methods below:
 
 1. [**NuGet Package**][NuGetPackage]  
    Install this NuGet package in your Visual Studio project. Makes updating easy.
