@@ -5,14 +5,14 @@ using Skybrud.Essentials.Time;
 namespace Skybrud.Essentials.Json.Converters.Time {
 
     /// <summary>
-    /// Converts a timestamp (eg. <see cref="DateTime"/> or <see cref="DateTimeOffset"/> to <see cref="Format"/>.
+    /// Converts a timestamp (eg. <see cref="DateTime"/> or <see cref="DateTimeOffset"/>) to <see cref="Format"/>.
     /// </summary>
     public class TimeConverter : JsonConverter {
 
         /// <summary>
         /// The format to be used when serializing to JSON. Default is <see cref="TimeFormat.Iso8601"/>.
         /// </summary>
-        public TimeFormat Format { get; }
+        public TimeFormat Format { get; protected set; }
 
         /// <summary>
         /// Initializes a new converter with default options.
