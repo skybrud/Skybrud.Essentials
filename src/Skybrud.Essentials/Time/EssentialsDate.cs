@@ -304,7 +304,7 @@ namespace Skybrud.Essentials.Time {
         /// interpret the parsed date in relation to the current time zone or the current date. A typical value to
         /// specify is <see cref="DateTimeStyles.None"/>.</param>
         /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/> and <paramref name="styles"/>.</returns>
-        public static EssentialsTime Parse(string input, IFormatProvider provider, DateTimeStyles styles) {
+        public static EssentialsDate Parse(string input, IFormatProvider provider, DateTimeStyles styles) {
             
             // Is "input" an empty string?
             if (string.IsNullOrWhiteSpace(input)) return null;
@@ -313,7 +313,7 @@ namespace Skybrud.Essentials.Time {
             DateTime dt = DateTime.Parse(input, provider, styles);
 
             // Intialize a new instance
-            return new EssentialsTime(dt);
+            return new EssentialsDate(dt);
 
         }
 
