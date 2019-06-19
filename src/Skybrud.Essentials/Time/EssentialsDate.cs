@@ -317,6 +317,202 @@ namespace Skybrud.Essentials.Time {
 
         }
 
+        /// <summary>
+        /// Converts the specified string representation of a date to its <see cref="EssentialsDate"/> equivalent using
+        /// the specified format and culture-specific format information. The format of the string representation must
+        /// match the specified format exactly.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <param name="format">A format specifier that defines the required format of <paramref name="input"/>.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about
+        /// <paramref name="input"/>.</param>
+        /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
+        /// <paramref name="format"/> and <paramref name="provider"/>.</returns>
+        public static EssentialsDate ParseExact(string input, string format, IFormatProvider provider) {
+
+            // Is "input" an empty string?
+            if (string.IsNullOrWhiteSpace(input)) return null;
+
+            // Attempt to parse the date
+            DateTime dt = DateTime.ParseExact(input, format, provider);
+
+            // Intialize a new instance
+            return new EssentialsDate(dt);
+
+        }
+
+        /// <summary>
+        /// Converts the specified string representation of a date to its <see cref="EssentialsDate"/> equivalent
+        /// using the specified format, culture-specific format information, and style. The format of the string
+        /// representation must match the specified format exactly or an exception is thrown.
+        /// </summary>
+        /// <param name="input">A string containing a date and time to convert.</param>
+        /// <param name="format">A format specifier that defines the required format of s.</param>
+        /// <param name="provider">An object that supplies culture-specific formatting information about <paramref name="input"/>.</param>
+        /// <param name="styles">A bitwise combination of the enumeration values that provides additional information
+        /// about <paramref name="input"/>, about style elements that may be present in <paramref name="input"/>, or
+        /// about the conversion from <paramref name="input"/> to a <see cref="EssentialsDate"/> value. A typical value
+        /// to specify is <see cref="DateTimeStyles.None"/>.</param>
+        /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
+        /// <paramref name="format"/>, <paramref name="provider"/>, and <paramref name="styles"/>.</returns>
+        public static EssentialsDate ParseExact(string input, string format, IFormatProvider provider, DateTimeStyles styles) {
+
+            // Is "input" an empty string?
+            if (string.IsNullOrWhiteSpace(input)) return null;
+
+            // Attempt to parse the date
+            DateTime dt = DateTime.ParseExact(input, format, provider, styles);
+
+            // Intialize a new instance
+            return new EssentialsDate(dt);
+
+        }
+
+        /// <summary>
+        /// Converts the specified string representation of a date to its <see cref="EssentialsDate"/> equivalent using
+        /// the specified array of formats, culture-specific format information, and style. The format of the string
+        /// representation must match at least one of the specified formats exactly or an exception is thrown.
+        /// </summary>
+        /// <param name="input">A string that contains a date and time to convert.</param>
+        /// <param name="formats">An array of allowable formats of <paramref name="input"/>.</param>
+        /// <param name="provider">An object that supplies culture-specific format information about <paramref name="input"/>.</param>
+        /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of
+        /// <paramref name="input"/>. A typical value to specify is <see cref="DateTimeStyles.None"/>.</param>
+        /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
+        /// <paramref name="formats"/>, <paramref name="provider"/>, and <paramref name="styles"/>.</returns>
+        public static EssentialsDate ParseExact(string input, string[] formats, IFormatProvider provider, DateTimeStyles styles) {
+
+            // Is "input" an empty string?
+            if (string.IsNullOrWhiteSpace(input)) return null;
+
+            // Attempt to parse the date
+            DateTime dt = DateTime.ParseExact(input, formats, provider, styles);
+
+            // Intialize a new instance
+            return new EssentialsDate(dt);
+
+        }
+
+        /// <summary>
+        /// Tries to convert a specified string representation of a date to its <see cref="EssentialsTime"/>
+        /// equivalent, and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
+        /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
+        /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+        /// parameter is passed uninitialized.</param>
+        /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+        public static bool TryParse(string input, out EssentialsDate result) {
+
+            // Make sure "result" is initialized
+            result = null;
+
+            // Is "input" an empty string?
+            if (string.IsNullOrWhiteSpace(input)) return false;
+
+            // Attempt to parse the date
+            if (DateTime.TryParse(input, out DateTime dt)) {
+                result = new EssentialsDate(dt);
+            }
+
+            return result != null;
+
+        }
+
+        /// <summary>
+        /// Tries to convert a specified string representation of a date to its <see cref="EssentialsTime"/>
+        /// equivalent, and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about input.</param>
+        /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
+        /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
+        /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
+        /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+        /// parameter is passed uninitialized.</param>
+        /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+        public static bool TryParse(string input, IFormatProvider provider, DateTimeStyles styles, out EssentialsDate result) {
+
+            // Make sure "result" is initialized
+            result = null;
+
+            // Is "input" an empty string?
+            if (string.IsNullOrWhiteSpace(input)) return false;
+
+            // Attempt to parse the date
+            if (DateTime.TryParse(input, provider, styles, out DateTime dt)) {
+                result = new EssentialsDate(dt);
+            }
+
+            return result != null;
+
+        }
+
+        /// <summary>
+        /// Converts the specified string representation of a date to its <see cref="EssentialsDate"/> equivalent using
+        /// the specified format, culture-specific format information, and style. The format of the string
+        /// representation must match the specified format exactly. The method returns a value that indicates whether
+        /// the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <param name="format">The format of <paramref name="input"/>.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about input.</param>
+        /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
+        /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
+        /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
+        /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+        /// parameter is passed uninitialized.</param>
+        /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+        public static bool TryParseExact(string input, string format, IFormatProvider provider, DateTimeStyles styles, out EssentialsDate result) {
+
+            // Make sure "result" is initialized
+            result = null;
+
+            // Is "input" an empty string?
+            if (string.IsNullOrWhiteSpace(input)) return false;
+
+            // Attempt to parse the date
+            if (DateTime.TryParseExact(input, format, provider, styles, out DateTime dt)) {
+                result = new EssentialsDate(dt);
+            }
+
+            return result != null;
+
+        }
+
+        /// <summary>
+        /// Converts the specified string representation of a date to its <see cref="EssentialsDate"/> equivalent using
+        /// the specified array of formats, culture-specific format information, and style. The format of the string
+        /// representation must match at least one of the specified formats exactly. The method returns a value that
+        /// indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string that contains a date to convert.</param>
+        /// <param name="formats">An array of allowable formats of <paramref name="input"/>.</param>
+        /// <param name="provider">An object that provides culture-specific formatting information about input.</param>
+        /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
+        /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
+        /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
+        /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+        /// parameter is passed uninitialized.</param>
+        /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+        public static bool TryParseExact(string input, string[] formats, IFormatProvider provider, DateTimeStyles styles, out EssentialsDate result) {
+
+            // Make sure "result" is initialized
+            result = null;
+
+            // Is "input" an empty string?
+            if (string.IsNullOrWhiteSpace(input)) return false;
+
+            // Attempt to parse the date
+            if (DateTime.TryParseExact(input, formats, provider, styles, out DateTime dt)) {
+                result = new EssentialsDate(dt);
+            }
+
+            return result != null;
+
+        }
+
         #endregion
 
     }
