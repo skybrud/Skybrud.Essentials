@@ -80,7 +80,7 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(2, "2".ToInt32(), "Check #13 failed");
             Assert.AreEqual(1, " 1 ".ToInt32(), "Check #14 failed");
 
-            Assert.AreEqual(Int32.MaxValue, StringUtils.ParseInt32("2147483647"), "Check #15 failed");
+            Assert.AreEqual(int.MaxValue, StringUtils.ParseInt32("2147483647"), "Check #15 failed");
             Assert.AreEqual(0, StringUtils.ParseInt32("2147483648"), "Check #16 failed");
 
         }
@@ -136,7 +136,7 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(2, "2".ToInt64(), "Check #13 failed");
             Assert.AreEqual(1, " 1 ".ToInt64(), "Check #14 failed");
 
-            Assert.AreEqual(Int64.MaxValue, StringUtils.ParseInt64("9223372036854775807"), "Check #15 failed");
+            Assert.AreEqual(long.MaxValue, StringUtils.ParseInt64("9223372036854775807"), "Check #15 failed");
             Assert.AreEqual(0, StringUtils.ParseInt64("9223372036854775808"), "Check #16 failed");
 
         }
@@ -452,11 +452,11 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(false, StringUtils.IsInt32("$1234"), "#8");
             Assert.AreEqual(false, StringUtils.IsInt32("1234kr"), "#9");
 
-            Assert.AreEqual(true, StringUtils.IsInt32(Int32.MinValue + ""), "#10");
-            Assert.AreEqual(true, StringUtils.IsInt32(Int32.MaxValue + ""), "#11");
+            Assert.AreEqual(true, StringUtils.IsInt32(int.MinValue + ""), "#10");
+            Assert.AreEqual(true, StringUtils.IsInt32(int.MaxValue + ""), "#11");
 
-            Assert.AreEqual(false, StringUtils.IsInt32(Int64.MinValue + ""), "#12");
-            Assert.AreEqual(false, StringUtils.IsInt32(Int64.MaxValue + ""), "#13");
+            Assert.AreEqual(false, StringUtils.IsInt32(long.MinValue + ""), "#12");
+            Assert.AreEqual(false, StringUtils.IsInt32(long.MaxValue + ""), "#13");
 
         }
 
@@ -473,11 +473,11 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(false, StringUtils.IsInt64("$1234"), "#8");
             Assert.AreEqual(false, StringUtils.IsInt64("1234kr"), "#9");
 
-            Assert.AreEqual(true, StringUtils.IsInt64(Int32.MinValue + ""), "#10");
-            Assert.AreEqual(true, StringUtils.IsInt64(Int32.MaxValue + ""), "#11");
+            Assert.AreEqual(true, StringUtils.IsInt64(int.MinValue + ""), "#10");
+            Assert.AreEqual(true, StringUtils.IsInt64(int.MaxValue + ""), "#11");
 
-            Assert.AreEqual(true, StringUtils.IsInt64(Int64.MinValue + ""), "#12");
-            Assert.AreEqual(true, StringUtils.IsInt64(Int64.MaxValue + ""), "#13");
+            Assert.AreEqual(true, StringUtils.IsInt64(long.MinValue + ""), "#12");
+            Assert.AreEqual(true, StringUtils.IsInt64(long.MaxValue + ""), "#13");
 
         }
 
@@ -494,11 +494,11 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(false, StringUtils.IsDouble("$1234"), "#8");
             Assert.AreEqual(false, StringUtils.IsDouble("1234kr"), "#9");
 
-            Assert.AreEqual(true, StringUtils.IsDouble(Int32.MinValue + ""), "#10");
-            Assert.AreEqual(true, StringUtils.IsDouble(Int32.MaxValue + ""), "#11");
+            Assert.AreEqual(true, StringUtils.IsDouble(int.MinValue + ""), "#10");
+            Assert.AreEqual(true, StringUtils.IsDouble(int.MaxValue + ""), "#11");
 
-            Assert.AreEqual(true, StringUtils.IsDouble(Int64.MinValue + ""), "#12");
-            Assert.AreEqual(true, StringUtils.IsDouble(Int64.MaxValue + ""), "#13");
+            Assert.AreEqual(true, StringUtils.IsDouble(long.MinValue + ""), "#12");
+            Assert.AreEqual(true, StringUtils.IsDouble(long.MaxValue + ""), "#13");
 
             Assert.AreEqual(true, StringUtils.IsDouble("-3.14159265358979"), "#14");
             Assert.AreEqual(true, StringUtils.IsDouble("+3.14159265358979"), "#15");
