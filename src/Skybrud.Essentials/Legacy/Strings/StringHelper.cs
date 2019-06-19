@@ -5,6 +5,7 @@ namespace Skybrud.Essentials.Strings {
     /// <summary>
     /// Utility class with various static helper methods for working with strings.
     /// </summary>
+    [Obsolete("Use the StringUtils class instead.")]
     public static class StringHelper {
 
         /// <summary>
@@ -13,6 +14,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be parsed.</param>
         /// <returns><c>true</c> if <c>str</c> matches either <c>true</c>, <c>1</c> or <c>t</c> (case insensitive).</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static bool ParseBoolean(string str) {
             return StringUtils.ParseBoolean(str);
         }
@@ -23,6 +25,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The value to be parsed.</param>
         /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c> or <c>t</c> (case insensitive).</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static bool ParseBoolean(object value) {
             return StringUtils.ParseBoolean(value);
         }
@@ -32,6 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The comma separated string to be converted.</param>
         /// <returns>An array of <see cref="Int32"/>.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static int[] CsvToInt(string str) {
             return StringUtils.ParseInt32Array(str);
         }
@@ -41,6 +45,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The camel cased string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string ToCamelCase(string str) {
             return StringUtils.ToCamelCase(str);
         }
@@ -50,6 +55,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The camel cased string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string ToCamelCase(Enum value) {
             return StringUtils.ToCamelCase(value);
         }
@@ -59,6 +65,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The Pascal cased string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string ToPascalCase(string str) {
             return StringUtils.ToPascalCase(str);
         }
@@ -68,6 +75,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The Pascal cased string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string ToPascalCase(Enum value) {
             return StringUtils.ToPascalCase(value);
         }
@@ -77,6 +85,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The converted string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string ToUnderscore(string str) {
             return StringUtils.ToUnderscore(str);
         }
@@ -86,6 +95,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <returns>The converted string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string ToUnderscore(Enum value) {
             return StringUtils.ToUnderscore(value);
         }
@@ -96,6 +106,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string FirstCharToUpper(string str) {
             return StringUtils.FirstCharToUpper(str);
         }
@@ -105,6 +116,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The encoded string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string UrlEncode(string str) {
             return StringUtils.UrlEncode(str);
         }
@@ -114,6 +126,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The decoded string.</returns>
+        [Obsolete("Use the StringUtils class instead.")]
         public static string UrlDecode(string str) {
             return StringUtils.UrlDecode(str);
         }
