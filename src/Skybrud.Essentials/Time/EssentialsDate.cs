@@ -6,7 +6,7 @@ namespace Skybrud.Essentials.Time {
     /// <summary>
     /// Class representing a date without a time.
     /// </summary>
-    public class EssentialsDate {
+    public class EssentialsDate : IComparable, IComparable<EssentialsDate> {
 
         private readonly DateTime _dateTime;
 
@@ -71,6 +71,11 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public string Iso8601 => _dateTime.ToString("yyyy-MM-dd");
 
+        /// <summary>
+        /// Gets whether the date is today.
+        /// </summary>
+        public bool IsToday => Iso8601 == DateTime.Now.ToString("yyyy-MM-dd");
+
         #endregion
 
         #region Constructors
@@ -120,6 +125,107 @@ namespace Skybrud.Essentials.Time {
         #endregion
 
         #region Member methods
+
+        /// <summary>
+        /// Compares the value of this instance to a specified <see cref="EssentialsDate"/> value and returns an
+        /// integer that indicates whether this instance is lower than, the same as, or greater than the specified
+        /// <see cref="EssentialsDate"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(EssentialsDate value) {
+            return value == null ? 1 : string.Compare(Iso8601, value.Iso8601, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// Compares the value of this instance to a specified <see cref="DateTime"/> value and returns an
+        /// integer that indicates whether this instance is lower than, the same as, or greater than the specified
+        /// <see cref="DateTime"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(DateTime value) {
+            return string.Compare(Iso8601, value.ToString("yyyy-MM-dd"), StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// Compares the value of this instance to a specified <see cref="DateTimeOffset"/> value and returns an
+        /// integer that indicates whether this instance is lower than, the same as, or greater than the specified
+        /// <see cref="DateTimeOffset"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(DateTimeOffset value) {
+            return string.Compare(Iso8601, value.ToString("yyyy-MM-dd"), StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// Compares the value of this instance to a specified <see cref="EssentialsTime"/> value and returns an
+        /// integer that indicates whether this instance is lower than, the same as, or greater than the specified
+        /// <see cref="EssentialsTime"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(EssentialsTime value) {
+            return value == null ? 1 : string.Compare(Iso8601, value.ToString("yyyy-MM-dd"), StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        /// <summary>
+        /// Compares the value of this instance to a specified object that contains a <see cref="EssentialsDate"/>
+        /// value, and returns an integer that indicates whether this instance is earlier than, the same as, or later
+        /// than the specified <see cref="EssentialsDate"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(object value) {
+
+            switch (value) {
+
+                case null:
+                    return 1;
+
+                case EssentialsDate date:
+                    return CompareTo(date);
+
+                default:
+                    throw new ArgumentException("Object must be of type EssentialsDate.");
+
+            }
+
+        }
+        
+        /// <summary>
+        /// Gets whether this <see cref="EssentialsDate"/> equals the specified <paramref name="date"/>.
+        /// </summary>
+        /// <param name="date">The date to compare.</param>
+        /// <returns>Whether this <see cref="EssentialsDate"/> equals the specified <paramref name="date"/>.</returns>
+        protected bool Equals(EssentialsDate date) {
+            return this == date;
+        }
+
+        /// <summary>
+        /// Gets whether this <see cref="EssentialsDate"/> equals the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <param name="obj">The object to compare.</param>
+        /// <returns>Whether this <see cref="EssentialsDate"/> equals the specified <paramref name="obj"/>.</returns>
+        public override bool Equals(object obj) {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj is EssentialsDate date && Equals(date);
+        }
+
+        /// <summary>
+        /// Gets the hash code for this <see cref="EssentialsDate"/>.
+        /// </summary>
+        /// <returns>The hash code of the object.</returns>
+        public override int GetHashCode() {
+            return _dateTime.GetHashCode();
+        }
 
         /// <summary>
         /// Gets the start of the day, according to Coordinated Universal Time (UTC).
@@ -511,6 +617,225 @@ namespace Skybrud.Essentials.Time {
 
             return result != null;
 
+        }
+
+        private static int CompareTo(EssentialsDate d1, EssentialsDate d2) {
+            return string.Compare(d1?.Iso8601, d2?.Iso8601, StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        private static int CompareTo(EssentialsDate d1, EssentialsTime d2) {
+            return string.Compare(d1?.Iso8601, d2?.ToString("yyyy-MM-dd"), StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        private static int CompareTo(EssentialsDate d1, DateTime d2) {
+            return string.Compare(d1?.Iso8601, d2.ToString("yyyy-MM-dd"), StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        private static int CompareTo(EssentialsDate d1, DateTimeOffset d2) {
+            return string.Compare(d1?.Iso8601, d2.ToString("yyyy-MM-dd"), StringComparison.CurrentCultureIgnoreCase);
+        }
+
+        #endregion
+
+        #region Operator overloading
+
+        /// <summary>
+        /// Gets whether the dates represented by two instances of <see cref="EssentialsDate"/> are equal.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
+        /// <returns><c>true</c> if the two instances represent the same date and time, otherwise
+        /// <c>false</c>.</returns>
+        public static bool operator ==(EssentialsDate d1, EssentialsDate d2) {
+            return CompareTo(d1, d2) == 0;
+        }
+
+        /// <summary>
+        /// Gets whether the dates represented by two instances of <see cref="EssentialsDate"/> are different
+        /// from each other.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
+        /// <returns><c>true</c> if the two instances represents a different date and time, otherwise
+        /// <c>false</c>.</returns>
+        public static bool operator !=(EssentialsDate d1, EssentialsDate d2) {
+            return CompareTo(d1, d2) != 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+        /// <c>false</c>.</returns>
+        public static bool operator <(EssentialsDate d1, EssentialsDate d2) {
+            return CompareTo(d1, d2) < 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+        /// <c>false</c>.</returns>
+        public static bool operator <(EssentialsDate d1, DateTime d2) {
+            return CompareTo(d1, d2) < 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+        /// <c>false</c>.</returns>
+        public static bool operator <(EssentialsDate d1, DateTimeOffset d2) {
+            return CompareTo(d1, d2) < 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+        /// <c>false</c>.</returns>
+        public static bool operator <(EssentialsDate d1, EssentialsTime d2) {
+            return CompareTo(d1, d2) < 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator <=(EssentialsDate d1, EssentialsDate d2) {
+            return CompareTo(d1, d2) <= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator <=(EssentialsDate d1, DateTime d2) {
+            return CompareTo(d1, d2) <= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator <=(EssentialsDate d1, DateTimeOffset d2) {
+            return CompareTo(d1, d2) <= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator <=(EssentialsDate d1, EssentialsTime d2) {
+            return CompareTo(d1, d2) <= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >(EssentialsDate d1, EssentialsDate d2) {
+            return CompareTo(d1, d2) > 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >(EssentialsDate d1, DateTime d2) {
+            return CompareTo(d1, d2) > 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >(EssentialsDate d1, DateTimeOffset d2) {
+            return CompareTo(d1, d2) > 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >(EssentialsDate d1, EssentialsTime d2) {
+            return CompareTo(d1, d2) > 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >=(EssentialsDate d1, EssentialsDate d2) {
+            return CompareTo(d1, d2) >= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >=(EssentialsDate d1, DateTime d2) {
+            return CompareTo(d1, d2) >= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >=(EssentialsDate d1, DateTimeOffset d2) {
+            return CompareTo(d1, d2) >= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >=(EssentialsDate d1, EssentialsTime d2) {
+            return CompareTo(d1, d2) >= 0;
         }
 
         #endregion

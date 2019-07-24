@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+// ReSharper disable ExpressionIsAlwaysNull
 
 #pragma warning disable 618
 
@@ -82,6 +83,174 @@ namespace UnitTestProject1.Time {
             Assert.AreEqual(2019, result2.Year);
             Assert.AreEqual(8, result2.Month);
             Assert.AreEqual(17, result2.Day);
+
+        }
+
+        [TestMethod]
+        public void CompareTo() {
+
+
+            EssentialsDate a = new EssentialsDate(2012, 7, 30);
+            EssentialsDate b = new EssentialsDate(2019, 8, 17);
+            EssentialsDate c = null;
+
+            var samples = new[] {
+                new { Left = a, Right = b, Expected = 1.CompareTo(2) },
+                new { Left = a, Right = a, Expected = 2.CompareTo(2) },
+                new { Left = b, Right = a, Expected = 2.CompareTo(1) },
+                new { Left = a, Right = c, Expected = 1 }
+            };
+
+            foreach (var sample in samples) {
+
+                int result = sample.Left.CompareTo(sample.Right);
+
+                Assert.AreEqual(sample.Expected, result);
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Equals() {
+
+            EssentialsDate a = new EssentialsDate(2012, 7, 30);
+            EssentialsDate b = new EssentialsDate(2019, 8, 17);
+            EssentialsDate c = null;
+
+            var samples = new[] {
+                new { Left = a, Right = a, Expected = true },
+                new { Left = a, Right = b, Expected = false },
+                new { Left = a, Right = c, Expected = false },
+                new { Left = a, Right = c, Expected = false }
+            };
+
+            foreach (var sample in samples) {
+
+                bool result = sample.Left.Equals(sample.Right);
+
+                Assert.AreEqual(sample.Expected, result);
+
+            }
+
+        }
+
+        [TestMethod]
+        public void OperatorEquals() {
+
+            EssentialsDate a = new EssentialsDate(2012, 7, 30);
+            EssentialsDate b = new EssentialsDate(2019, 8, 17);
+            EssentialsDate c = null;
+
+            var samples = new[] {
+                new { Left = a, Right = a, Expected = true },
+                new { Left = a, Right = b, Expected = false },
+                new { Left = a, Right = c, Expected = false },
+                new { Left = c, Right = a, Expected = false },
+                new { Left = c, Right = c, Expected = true }
+            };
+
+            int i = 1;
+            foreach (var sample in samples) {
+                bool result = sample.Left == sample.Right;
+                Assert.AreEqual(sample.Expected, result, "#" + i++);
+            }
+
+        }
+
+        [TestMethod]
+        public void OperatorLessThan() {
+
+            EssentialsDate a = new EssentialsDate(2012, 7, 30);
+            EssentialsDate b = new EssentialsDate(2019, 8, 17);
+            EssentialsDate c = null;
+
+            var samples = new[] {
+                new { Left = a, Right = a, Expected = false },
+                new { Left = a, Right = b, Expected = true },
+                new { Left = b, Right = a, Expected = false },
+                new { Left = a, Right = c, Expected = false },
+                new { Left = c, Right = a, Expected = true },
+                new { Left = c, Right = c, Expected = false }
+            };
+
+            int i = 1;
+            foreach (var sample in samples) {
+                bool result = sample.Left < sample.Right;
+                Assert.AreEqual(sample.Expected, result, "#" + i++);
+            }
+
+        }
+
+        [TestMethod]
+        public void OperatorLessThanOrEqualTo() {
+
+            EssentialsDate a = new EssentialsDate(2012, 7, 30);
+            EssentialsDate b = new EssentialsDate(2019, 8, 17);
+            EssentialsDate c = null;
+
+            var samples = new[] {
+                new { Left = a, Right = a, Expected = true },
+                new { Left = a, Right = b, Expected = true },
+                new { Left = b, Right = a, Expected = false },
+                new { Left = a, Right = c, Expected = false },
+                new { Left = c, Right = a, Expected = true },
+                new { Left = c, Right = c, Expected = true }
+            };
+
+            int i = 1;
+            foreach (var sample in samples) {
+                bool result = sample.Left <= sample.Right;
+                Assert.AreEqual(sample.Expected, result, "#" + i++);
+            }
+
+        }
+
+        [TestMethod]
+        public void OperatorGreatorThan() {
+
+            EssentialsDate a = new EssentialsDate(2012, 7, 30);
+            EssentialsDate b = new EssentialsDate(2019, 8, 17);
+            EssentialsDate c = null;
+
+            var samples = new[] {
+                new { Left = a, Right = a, Expected = false },
+                new { Left = a, Right = b, Expected = false },
+                new { Left = b, Right = a, Expected = true },
+                new { Left = a, Right = c, Expected = true },
+                new { Left = c, Right = a, Expected = false },
+                new { Left = c, Right = c, Expected = false }
+            };
+
+            int i = 1;
+            foreach (var sample in samples) {
+                bool result = sample.Left > sample.Right;
+                Assert.AreEqual(sample.Expected, result, "#" + i++);
+            }
+
+        }
+
+        [TestMethod]
+        public void OperatorGreaterThanOrEqualTo() {
+
+            EssentialsDate a = new EssentialsDate(2012, 7, 30);
+            EssentialsDate b = new EssentialsDate(2019, 8, 17);
+            EssentialsDate c = null;
+
+            var samples = new[] {
+                new { Left = a, Right = a, Expected = true },
+                new { Left = a, Right = b, Expected = false },
+                new { Left = b, Right = a, Expected = true },
+                new { Left = a, Right = c, Expected = true },
+                new { Left = c, Right = a, Expected = false },
+                new { Left = c, Right = c, Expected = true }
+            };
+
+            int i = 1;
+            foreach (var sample in samples) {
+                bool result = sample.Left >= sample.Right;
+                Assert.AreEqual(sample.Expected, result, "#" + i++);
+            }
 
         }
 
