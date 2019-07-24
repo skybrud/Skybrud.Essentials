@@ -21,7 +21,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Version>1.1.12</Version>
+    <Version>1.1.13</Version>
     <Authors>Anders Bjerner</Authors>
     <Company>Skybrud.dk</Company>
     <Description>Library with common purpose functionality for working with .NET.</Description>
@@ -31,7 +31,7 @@
   <PropertyGroup>
     <PackageId>Skybrud.Essentials</PackageId>
     <PackageTags>Skybrud, Essentials</PackageTags>
-    <PackageLicenseUrl>https://github.com/skybrud/Skybrud.Essentials/blob/master/LICENSE.md</PackageLicenseUrl>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/skybrud/Skybrud.Essentials</PackageProjectUrl>
     <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
     <RepositoryType>git</RepositoryType>
