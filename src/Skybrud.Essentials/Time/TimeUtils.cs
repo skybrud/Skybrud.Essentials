@@ -844,6 +844,20 @@ namespace Skybrud.Essentials.Time {
 
         }
 
+        internal static object ToFormat(EssentialsDate date, TimeFormat format) {
+
+            switch (format) {
+
+                case TimeFormat.Iso8601:
+                    return date.Iso8601;
+
+                default:
+                    throw new ArgumentException("Unsupported format " + format, nameof(format));
+
+            }
+
+        }
+
         internal static object ToFormat(DateTimeOffset value, TimeFormat format) {
 
             switch (format) {
