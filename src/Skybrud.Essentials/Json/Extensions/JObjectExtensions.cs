@@ -466,8 +466,9 @@ namespace Skybrud.Essentials.Json.Extensions {
             if (!(obj?.SelectToken(path) is JArray token)) return null;
 
             return (
-                from JObject child in token
-                select callback(child)
+                from child in token
+                where child is JObject
+                select callback((JObject)child)
             ).ToArray();
 
         }
