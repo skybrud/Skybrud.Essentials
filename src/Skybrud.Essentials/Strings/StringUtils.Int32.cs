@@ -23,7 +23,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Int32"/>.</returns>
         public static int ParseInt32(string str) {
-            int.TryParse(str, out int value);
+            int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out int value);
             return value;
         }
 
@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Int32"/>.</returns>
         public static int ParseInt32(string str, int fallback) {
-            return int.TryParse(str, out int value) ? value : fallback;
+            return int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out int value) ? value : fallback;
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Int32"/>.</returns>
         public static int[] ParseInt32Array(string str, params char[] separators) {
             return (
-                from piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)
+                from piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select int.Parse(piece)
+                select int.Parse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture)
             ).ToArray();
         }
 

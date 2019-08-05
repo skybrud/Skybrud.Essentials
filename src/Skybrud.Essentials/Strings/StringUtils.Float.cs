@@ -23,7 +23,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Single"/>.</returns>
         public static float ParseFloat(string str) {
-            float.TryParse(str, out float value);
+            float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out float value);
             return value;
         }
 
@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Single"/>.</returns>
         public static float ParseFloat(string str, int fallback) {
-            return float.TryParse(str, out float value) ? value : fallback;
+            return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out float value) ? value : fallback;
         }
 
         /// <summary>
@@ -46,7 +46,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Single"/>.</returns>
         public static float ParseFloat(string str, float fallback) {
-            return float.TryParse(str, out float value) ? value : fallback;
+            return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out float value) ? value : fallback;
         }
 
         /// <summary>
@@ -69,9 +69,9 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Single"/>.</returns>
         public static float[] ParseFloatArray(string str, params char[] separators) {
             return (
-                from piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)
+                from piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select float.Parse(piece)
+                select float.Parse(piece, NumberStyles.Any, CultureInfo.InvariantCulture)
             ).ToArray();
         }
 

@@ -23,8 +23,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Double"/>.</returns>
         public static double ParseDouble(string str) {
-            double.TryParse(str, out double value);
-            return value;
+            double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
+            return result;
         }
 
         /// <summary>
@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Double"/>.</returns>
         public static double ParseDouble(string str, double fallback) {
-            return double.TryParse(str, out double value) ? value : fallback;
+            return double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out double value) ? value : fallback;
         }
 
         /// <summary>

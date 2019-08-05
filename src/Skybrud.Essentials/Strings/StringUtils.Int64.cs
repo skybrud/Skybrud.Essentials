@@ -23,7 +23,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long ParseInt64(string str) {
-            long.TryParse(str, out long value);
+            long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long value);
             return value;
         }
 
@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="Int64"/>.</returns>
         public static long ParseInt64(string str, long fallback) {
-            return long.TryParse(str, out long value) ? value : fallback;
+            return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long value) ? value : fallback;
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Int64"/>.</returns>
         public static long[] ParseInt64Array(string str, params char[] separators) {
             return (
-                from piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)
+                from piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select long.Parse(piece)
+                select long.Parse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture)
             ).ToArray();
         }
 
