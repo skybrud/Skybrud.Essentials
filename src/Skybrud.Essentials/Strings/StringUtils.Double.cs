@@ -23,8 +23,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="Double"/>.</returns>
         public static double ParseDouble(string str) {
-            double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out double result);
-            return result;
+            double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out double value);
+            return value;
         }
 
         /// <summary>
@@ -58,9 +58,9 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Double"/>.</returns>
         public static double[] ParseDoubleArray(string str, params char[] separators) {
             return (
-                from piece in (str ?? String.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
+                from piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
                 where Regex.IsMatch(piece, "^(-|)[0-9\\.]+$")
-                select double.Parse(piece)
+                select double.Parse(piece, NumberStyles.Any, CultureInfo.InvariantCulture)
             ).ToArray();
         }
 
