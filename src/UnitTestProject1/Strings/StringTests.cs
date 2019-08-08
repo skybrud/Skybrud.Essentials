@@ -1,5 +1,7 @@
 ﻿using System;
+using System.Globalization;
 using System.Net;
+using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
@@ -166,6 +168,55 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(1, StringUtils.ParseInt64Array("1_2_3", '_')[0], "Check #16 failed");
             Assert.AreEqual(2, StringUtils.ParseInt64Array("1_2_3", '_')[1], "Check #17 failed");
             Assert.AreEqual(3, StringUtils.ParseInt64Array("1_2_3", '_')[2], "Check #18 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseDouble() {
+
+            Assert.AreEqual(0, StringUtils.ParseDouble(null), "Check #1 failed");
+            Assert.AreEqual(0, StringUtils.ParseDouble(""), "Check #2 failed");
+
+            Assert.AreEqual(3.14, StringUtils.ParseDouble("3.14"), "Check #3 failed");
+
+            // Danish decimal separator is treated as thousand separator due to invariant culture
+            Assert.AreEqual(314, StringUtils.ParseDouble("3,14"), "Check #4 failed");
+            Assert.AreEqual(3140, StringUtils.ParseDouble("3,140"), "Check #5 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseDoubleDanish() {
+
+            CultureInfo culture = CultureInfo.CurrentUICulture;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+
+            ParseDouble();
+
+            Thread.CurrentThread.CurrentCulture = culture;
+
+        }
+
+        [TestMethod]
+        public void ParseDoubleArray() {
+
+            double[] result = StringUtils.ParseDoubleArray("3.14 -1.234567");
+
+            Assert.AreEqual(2, result.Length, "Check #1 failed");
+            Assert.AreEqual(3.14, result[0], "Check #2 failed");
+            Assert.AreEqual(-1.234567, result[1], "Check #2 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseDoubleArrayDanish() {
+
+            CultureInfo culture = CultureInfo.CurrentUICulture;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+
+            ParseDoubleArray();
+
+            Thread.CurrentThread.CurrentCulture = culture;
 
         }
 
