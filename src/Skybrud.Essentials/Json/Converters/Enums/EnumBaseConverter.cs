@@ -40,7 +40,7 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
 
             // Trow an exception if the token type is NULL
             if (reader.TokenType == JsonToken.Null) {
-                throw new JsonSerializationException(String.Format(CultureInfo.InvariantCulture, "Cannot convert null value to {0}.", objectType));
+                throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, "Cannot convert null value to {0}.", objectType));
             }
 
             // Try to parse the sepcified enum value
@@ -49,12 +49,12 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
                     return EnumUtils.ParseEnum(reader.Value.ToString(), objectType);
                 }
             } catch (Exception ex) {
-                throw new JsonSerializationException(String.Format(CultureInfo.InvariantCulture, "Error converting value {0} to type '{1}'.", reader.Value, objectType), ex);
+                throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, "Error converting value {0} to type '{1}'.", reader.Value, objectType), ex);
             }
 
 
             // Trow an exception if we didn't find a match
-            throw new JsonSerializationException(String.Format(CultureInfo.InvariantCulture, "Unexpected token {0} when parsing enum.", reader.TokenType));
+            throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, "Unexpected token {0} when parsing enum.", reader.TokenType));
 
         }
 
