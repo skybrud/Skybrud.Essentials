@@ -175,6 +175,11 @@ namespace Skybrud.Essentials.Time {
         public bool IsPositive => UnixTimestamp > 0;
 
         /// <summary>
+        /// Gets hwther the date of this <see cref="EssentialsTime"/> matches the current. day.
+        /// </summary>
+        public bool IsToday => Iso8601 == DateTime.Now.ToString("yyyy-MM-dd");
+
+        /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
         /// </summary>
         public string Iso8601 => TimeUtils.ToIso8601(DateTimeOffset);
@@ -188,6 +193,26 @@ namespace Skybrud.Essentials.Time {
         /// Gets a string representation of the instance as specified by the <strong>RFC 2822</strong> format.
         /// </summary>
         public string Rfc2822 => TimeUtils.ToRfc2822(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the English name of the day.
+        /// </summary>
+        public string DayName => TimeUtils.GetDayName(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the name of the day according to the current culture.
+        /// </summary>
+        public string LocalDayName => TimeUtils.GetLocalDayName(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the English name of the month.
+        /// </summary>
+        public string MonthName => TimeUtils.GetMonthName(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the name of the month according to the current culture.
+        /// </summary>
+        public string LocalMonthName => TimeUtils.GetLocalMonthName(DateTimeOffset);
 
         #endregion
 
