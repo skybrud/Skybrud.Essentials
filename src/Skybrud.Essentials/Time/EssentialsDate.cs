@@ -76,6 +76,11 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public bool IsToday => Iso8601 == DateTime.Now.ToString("yyyy-MM-dd");
 
+        /// <summary>
+        /// Gets an instance of <see cref="EssentialsDate"/> representing the current day.
+        /// </summary>
+        public static EssentialsDate Today => new EssentialsDate(DateTime.Today);
+
         #endregion
 
         #region Constructors

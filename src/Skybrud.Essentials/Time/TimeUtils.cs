@@ -90,6 +90,52 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
+        public static int GetAge(EssentialsDate dateOfBirth) {
+            return GetAge(dateOfBirth, EssentialsDate.Today);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="dt">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
+        public static int GetAge(EssentialsDate dateOfBirth, EssentialsDate dt) {
+            int age = dt.Year - dateOfBirth.Year;
+            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
+            return age;
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
+        public static int GetAge(EssentialsTime dateOfBirth) {
+            return GetAge(dateOfBirth, DateTime.Today);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="dt">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
+        public static int GetAge(EssentialsTime dateOfBirth, EssentialsTime dt) {
+            int age = dt.Year - dateOfBirth.Year;
+            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
+            return age;
+        }
+
+        /// <summary>
         /// Gets the day of the month along with the English ordinal suffix based on the specified
         /// <paramref name="date"/>.
         /// </summary>
