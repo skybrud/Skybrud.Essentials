@@ -8,132 +8,425 @@ namespace Skybrud.Essentials.Time {
     /// </summary>
     public static partial class TimeUtils {
 
-        #region Constants
+        /// <summary>
+        /// Returns the age as calculated between <paramref name="then"/> and the date identified by the specified
+        /// <paramref name="year"/>, <paramref name="month"/> and <paramref name="day"/>.
+        /// </summary>
+        /// <param name="then">The date.</param>
+        /// <param name="year">The year of the date to compare against.</param>
+        /// <param name="month">The year of the date to compare against.</param>
+        /// <param name="day">The year of the date to compare against.</param>
+        /// <returns>The calculated age between thespecified date and the current date.</returns>
+        public static int GetAge(DateTime then, int year, int month, int day) {
+            int age = year - then.Year;
+            if (month < then.Month || month == then.Month && day < then.Day) age--;
+            return age;
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between two dates.
+        /// </summary>
+        /// <param name="year1">The year of the first date.</param>
+        /// <param name="month1">The month of the first date.</param>
+        /// <param name="day1">The day of the first date.</param>
+        /// <param name="year2">The year of the date to compare against.</param>
+        /// <param name="month2">The month of the date to compare against.</param>
+        /// <param name="day2">The day of the date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(int year1, int month1, int day1, int year2, int month2, int day2) {
+            int age = year2 - year1;
+            if (month2 < month1 || month2 == month1 && day2 < day1) age--;
+            return age;
+        }
+
+        #region GetAge/DateTime
+
+        /// <summary>
+        /// Returns the age as calculated between <paramref name="then"/> and the current date.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
+        public static int GetAge(DateTime then) {
+            return GetAge(then, DateTime.Today);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="compare">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="compare"/>.</returns>
+        public static int GetAge(DateTime dateOfBirth, DateTime compare) {
+            return GetAge(dateOfBirth, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="compare">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="compare"/>.</returns>
+        public static int GetAge(DateTime dateOfBirth, DateTimeOffset compare) {
+            return GetAge(dateOfBirth, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="dt">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
+        public static int GetAge(DateTime dateOfBirth, EssentialsDate dt) {
+            return GetAge(dateOfBirth, dt.Year, dt.Month, dt.Day);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="dt">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
+        public static int GetAge(DateTime dateOfBirth, EssentialsDateTime dt) {
+            return GetAge(dateOfBirth, dt.Year, dt.Month, dt.Day);
+        }
+
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
+        /// <paramref name="dt"/>.
+        /// </summary>
+        /// <param name="dateOfBirth">The date of birth.</param>
+        /// <param name="dt">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
+        /// <paramref name="dt"/>.</returns>
+        public static int GetAge(DateTime dateOfBirth, EssentialsTime dt) {
+            return GetAge(dateOfBirth, dt.DateTimeOffset);
+        }
 
         #endregion
 
+        #region GetAge/DateTimeOffset
+
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
+        /// Returns the age as calculated between <paramref name="then"/> and the current date.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>The age based on the current date and <paramref name="dateOfBirth"/>.</returns>
-        public static int GetAge(DateTime dateOfBirth) {
-            return GetAge(dateOfBirth, DateTime.Today);
+        /// <param name="then">The date of birth.</param>
+        /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
+        public static int GetAge(DateTimeOffset then) {
+            return GetAge(then, (DateTimeOffset) DateTime.UtcNow);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
-        /// <paramref name="dt"/>.
+        /// Returns the age, from the specified <paramref name="then"/>. The age is calculated based on
+        /// <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
-        /// <paramref name="dt"/>.</returns>
-        public static int GetAge(DateTime dateOfBirth, DateTime dt) {
-            int age = dt.Year - dateOfBirth.Year;
-            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
-            return age;
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="then"/> at the moment of
+        /// <paramref name="compare"/>.</returns>
+        public static int GetAge(DateTimeOffset then, DateTime compare) {
+            DateTimeOffset a = then.ToUniversalTime();
+            DateTimeOffset b = compare.ToUniversalTime();
+            return GetAge(a.Year, a.Month, a.Day, b.Year, b.Month, b.Day);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified date of <paramref name="dateOfBirth"/>.
+        /// Returns the age, from the specified <paramref name="then"/>. The age is calculated based on
+        /// <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
-        public static int GetAge(DateTimeOffset dateOfBirth) {
-            return GetAge(dateOfBirth, DateTime.UtcNow);
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="then"/> at the moment of
+        /// <paramref name="compare"/>.</returns>
+        public static int GetAge(DateTimeOffset then, DateTimeOffset compare) {
+            DateTimeOffset a = then.ToUniversalTime();
+            DateTimeOffset b = compare.ToUniversalTime();
+            return GetAge(a.Year, a.Month, a.Day, b.Year, b.Month, b.Day);
         }
-
-        /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
-        /// <paramref name="dt"/>.
-        /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
-        /// <paramref name="dt"/>.</returns>
-        public static int GetAge(DateTimeOffset dateOfBirth, DateTimeOffset dt) {
-
-            // Make sure both values are converted to UTC
-            DateTimeOffset a = dateOfBirth.ToUniversalTime();
-            DateTimeOffset b = dt.ToUniversalTime();
-
-            // Calculate the age
-            int age = dt.Year - a.Year;
-            if (b.Month < a.Month || (b.Month == a.Month && b.Day < a.Day)) age--;
-            
-            return age;
         
+        /// <summary>
+        /// Gets the current age, from the specified <paramref name="then"/>. The age is calculated based on
+        /// <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="then"/> at the moment of
+        /// <paramref name="compare"/>.</returns>
+        public static int GetAge(DateTimeOffset then, EssentialsDate compare) {
+            DateTimeOffset a = then.ToUniversalTime();
+            return GetAge(a.Year, a.Month, a.Day, compare.Year, compare.Month, compare.Day);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
+        /// Gets the current age, from the specified <paramref name="then"/>. The age is calculated based on
+        /// <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
-        public static int GetAge(EssentialsDateTime dateOfBirth) {
-            return GetAge(dateOfBirth, DateTime.Today);
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="then"/> at the moment of
+        /// <paramref name="compare"/>.</returns>
+        public static int GetAge(DateTimeOffset then, EssentialsDateTime compare) {
+            DateTimeOffset a = then.ToUniversalTime();
+            return GetAge(a.Year, a.Month, a.Day, compare.Year, compare.Month, compare.Day);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
-        /// <paramref name="dt"/>.
+        /// Gets the current age, from the specified <paramref name="then"/>. The age is calculated based on
+        /// <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
-        /// <paramref name="dt"/>.</returns>
-        public static int GetAge(EssentialsDateTime dateOfBirth, EssentialsDateTime dt) {
-            int age = dt.Year - dateOfBirth.Year;
-            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
-            return age;
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date used for calculating the age.</param>
+        /// <returns>The age based on the specified <paramref name="then"/> at the moment of
+        /// <paramref name="compare"/>.</returns>
+        public static int GetAge(DateTimeOffset then, EssentialsTime compare) {
+            DateTimeOffset a = then.ToUniversalTime();
+            DateTimeOffset b = compare.ToUniversalTime().DateTimeOffset;
+            return GetAge(a.Year, a.Month, a.Day, b.Year, b.Month, b.Day);
+        }
+
+        #endregion
+
+        #region GetAge/EssentialsDate
+
+        /// <summary>
+        /// Returns the age as calculated between <paramref name="then"/> and the current date.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
+        public static int GetAge(EssentialsDate then) {
+            return GetAge(then, EssentialsDate.Today);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
-        public static int GetAge(EssentialsDate dateOfBirth) {
-            return GetAge(dateOfBirth, EssentialsDate.Today);
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDate then, DateTime compare) {
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
-        /// <paramref name="dt"/>.
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
-        /// <paramref name="dt"/>.</returns>
-        public static int GetAge(EssentialsDate dateOfBirth, EssentialsDate dt) {
-            int age = dt.Year - dateOfBirth.Year;
-            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
-            return age;
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDate then, DateTimeOffset compare) {
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>.
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/>.</returns>
-        public static int GetAge(EssentialsTime dateOfBirth) {
-            return GetAge(dateOfBirth, DateTime.Today);
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDate then, EssentialsDate compare) {
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
 
         /// <summary>
-        /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
-        /// <paramref name="dt"/>.
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
         /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
-        /// <paramref name="dt"/>.</returns>
-        public static int GetAge(EssentialsTime dateOfBirth, EssentialsTime dt) {
-            int age = dt.Year - dateOfBirth.Year;
-            if (dt.Month < dateOfBirth.Month || (dt.Month == dateOfBirth.Month && dt.Day < dateOfBirth.Day)) age--;
-            return age;
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDate then, EssentialsDateTime compare) {
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDate then, EssentialsTime compare) {
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        #endregion
+
+        #region GetAge/EssentialsDateTime
+
+        /// <summary>
+        /// Returns the age as calculated between <paramref name="then"/> and the current date.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
+        public static int GetAge(EssentialsDateTime then) {
+            return GetAge(then, DateTime.Today);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDateTime then, DateTime compare) {
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDateTime then, DateTimeOffset compare) {
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDateTime then, EssentialsDate compare) {
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDateTime then, EssentialsDateTime compare) {
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsDateTime then, EssentialsTime compare) {
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        #endregion
+
+        #region GetAge/EssentialsTime
+
+        /// <summary>
+        /// Returns the age as calculated between <paramref name="then"/> and the current date.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
+        public static int GetAge(EssentialsTime then) {
+            return GetAge(then, EssentialsTime.Today);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsTime then, DateTime compare) {
+            then = then.ToUniversalTime();
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsTime then, DateTimeOffset compare) {
+            then = then.ToUniversalTime();
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsTime then, EssentialsDate compare) {
+            then = then.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsTime then, EssentialsDateTime compare) {
+            then = then.ToUniversalTime();
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        /// <summary>
+        /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
+        /// </summary>
+        /// <param name="then">The date of birth.</param>
+        /// <param name="compare">The date to compare against.</param>
+        /// <returns>The calculated age between the two dates.</returns>
+        public static int GetAge(EssentialsTime then, EssentialsTime compare) {
+            then = then.ToUniversalTime();
+            compare = compare.ToUniversalTime();
+            return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
+        }
+
+        #endregion
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// Gets the day of the month along with the English ordinal suffix based on the specified

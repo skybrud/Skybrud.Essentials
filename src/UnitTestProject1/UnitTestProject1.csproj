@@ -80,6 +80,11 @@
     <Compile Include="Time\EasterDateTests.cs" />
     <Compile Include="Time\Converters\DateTimeUnixTimeConverterTests.cs" />
     <Compile Include="Time\EssentialsDateTests.cs" />
+    <Compile Include="Time\GetAge\DateTimeTests.cs" />
+    <Compile Include="Time\GetAge\DateTimeOffsetTests.cs" />
+    <Compile Include="Time\GetAge\EssentialsDateTests.cs" />
+    <Compile Include="Time\GetAge\EssentialsDateTimeTests.cs" />
+    <Compile Include="Time\GetAge\EssentialsTimeTests.cs" />
     <Compile Include="Time\Time\EssentialsWeekTests.cs" />
     <Compile Include="Time\Time\EssentialsTimeTests.cs" />
     <Compile Include="Time\Formats\UnixtimeTests.cs" />
