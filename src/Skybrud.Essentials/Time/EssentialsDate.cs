@@ -1,11 +1,14 @@
 ﻿using System;
 using System.Globalization;
+using Newtonsoft.Json;
+using Skybrud.Essentials.Json.Converters.Time;
 
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
     /// Class representing a date without a time.
     /// </summary>
+    [JsonConverter(typeof(TimeConverter))]
     public class EssentialsDate : IComparable, IComparable<EssentialsDate> {
 
         private readonly DateTime _dateTime;
