@@ -1,11 +1,9 @@
-﻿using System;
-
-namespace Skybrud.Essentials.Strings {
+﻿namespace Skybrud.Essentials.Strings {
 
     public static partial class StringUtils {
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="Boolean"/>. The string is
+        /// Parses the specified <paramref name="str"/> into an instance of <see cref="bool"/>. The string is
         /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).
         /// </summary>
         /// <param name="str">The string to be parsed.</param>
@@ -15,7 +13,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="Boolean"/>. The string is
+        /// Parses the specified <paramref name="str"/> into an instance of <see cref="bool"/>. The string is
         /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>, or <c>false</c>
         /// if it matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. All comparisons are case insensitive.
         /// </summary>
@@ -48,7 +46,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="value"/> into an instance of <see cref="Boolean"/>. The value
+        /// Parses the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The value
         /// is considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).
         /// </summary>
         /// <param name="value">The value to be parsed.</param>
@@ -58,7 +56,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="value"/> into an instance of <see cref="Boolean"/>. The string is
+        /// Parses the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The string is
         /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>, or <c>false</c>
         /// if it matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. All comparisons are case insensitive.
         /// </summary>

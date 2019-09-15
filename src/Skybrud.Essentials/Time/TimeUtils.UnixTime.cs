@@ -10,16 +10,16 @@ namespace Skybrud.Essentials.Time {
         /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix
         /// epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
-        /// <returns>An instance of <see cref="Int32"/> representing the current Unix timestamp.</returns>
+        /// <returns>An instance of <see cref="int"/> representing the current Unix timestamp.</returns>
         public static int GetCurrentUnixTimestamp() {
             return (int) Math.Floor(GetCurrentUnixTimestampAsDouble());
         }
-        
+
         /// <summary>
         /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix
         /// epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
-        /// <returns>An instance of <see cref="Double"/> representing the current Unix timestamp.</returns>
+        /// <returns>An instance of <see cref="double"/> representing the current Unix timestamp.</returns>
         public static double GetCurrentUnixTimestampAsDouble() {
             return (DateTime.UtcNow - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
         }
@@ -121,7 +121,7 @@ namespace Skybrud.Essentials.Time {
         /// amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="date">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
-        /// <returns>An instance of <see cref="Int32"/> representing the Unix timestamp.</returns>
+        /// <returns>An instance of <see cref="int"/> representing the Unix timestamp.</returns>
         public static int GetUnixTimeFromDateTime(DateTime date) {
             return (int) GetUnixTimeFromDateTimeAsDouble(date);
         }
@@ -131,7 +131,7 @@ namespace Skybrud.Essentials.Time {
         /// amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="date">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
-        /// <returns>An instance of <see cref="Double"/> representing the Unix timestamp.</returns>
+        /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
         public static double GetUnixTimeFromDateTimeAsDouble(DateTime date) {
             return (date.ToUniversalTime() - new DateTime(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc)).TotalSeconds;
         }

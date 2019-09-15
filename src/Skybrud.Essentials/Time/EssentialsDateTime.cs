@@ -928,7 +928,7 @@ namespace Skybrud.Essentials.Time {
 
 #endregion
 
-#region Static methods
+        #region Static methods
 
         /// <summary>
         /// Parses the specified string into an instance of <see cref="EssentialsDateTime"/>.
@@ -1052,9 +1052,9 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsDateTime(TimeUtils.Rfc822ToDateTime(str));
         }
 
-#endregion
+        #endregion
 
-#region Operator overloading
+        #region Operator overloading
 
         /// <summary>
         /// HEST Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified
@@ -1235,8 +1235,8 @@ namespace Skybrud.Essentials.Time {
         }
 
 #endif
- 
-#endregion
+         
+        #endregion
 
     }
     

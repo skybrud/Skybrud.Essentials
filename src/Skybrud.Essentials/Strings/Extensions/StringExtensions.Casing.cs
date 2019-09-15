@@ -120,7 +120,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
         public static string FirstCharToUpper(this string str) {
-            return String.IsNullOrEmpty(str) ? "" : String.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
         }
 
         

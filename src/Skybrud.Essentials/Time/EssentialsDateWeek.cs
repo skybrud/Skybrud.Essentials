@@ -10,22 +10,22 @@
         /// <summary>
         /// Gets the year of the week.
         /// </summary>
-        public int Year { get; private set; }
+        public int Year { get; }
 
         /// <summary>
         /// Gets the number of the week.
         /// </summary>
-        public int Week { get; private set; }
+        public int Week { get; }
 
         /// <summary>
         /// Gets a reference to the timestamp representing the start of the week.
         /// </summary>
-        public EssentialsDateTime Start { get; private set; }
+        public EssentialsDateTime Start { get; }
 
         /// <summary>
         /// Gets a reference to the timestamp representing the end of the week.
         /// </summary>
-        public EssentialsDateTime End { get; private set; }
+        public EssentialsDateTime End { get; }
 
         #endregion
 

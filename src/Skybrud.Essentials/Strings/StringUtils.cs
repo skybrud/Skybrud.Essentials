@@ -12,26 +12,26 @@ namespace Skybrud.Essentials.Strings {
     public static partial class StringUtils {
 
         /// <summary>
-        /// Parses string of multiple values into an array of <see cref="String"/>. Supported separators are
+        /// Parses string of multiple values into an array of <see cref="string"/>. Supported separators are
         /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
         /// 
         /// Empty entries are automatically removed from the output array.
         /// </summary>
         /// <param name="str">The string containing the values.</param>
-        /// <returns>An array of <see cref="String"/>.</returns>
+        /// <returns>An array of <see cref="string"/>.</returns>
         public static string[] ParseStringArray(string str) {
             return ParseStringArray(str, ',', ' ', '\r', '\n', '\t');
         }
 
         /// <summary>
-        /// Parses string of multiple values into an array of <see cref="String"/>, using the specified array of
+        /// Parses string of multiple values into an array of <see cref="string"/>, using the specified array of
         /// <paramref name="separators"/>.
         /// 
         /// Empty entries are automatically removed from the output array.
         /// </summary>
         /// <param name="str">The string containing the values.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of <see cref="String"/>.</returns>
+        /// <returns>An array of <see cref="string"/>.</returns>
         public static string[] ParseStringArray(string str, params char[] separators) {
             return str == null ? new string[0] : str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
         }
@@ -108,7 +108,7 @@ namespace Skybrud.Essentials.Strings {
                 new { Pattern = "([ti])a$", Replacement = "$1um" }, // data, media
                 new { Pattern = "(x|ch|ss|sh)es$", Replacement = "$1" }, // searches, switches, fixes, boxes, processes, addresses
                 new { Pattern = "es", Replacement = "e" },
-                new { Pattern = "s$", Replacement = "" },
+                new { Pattern = "s$", Replacement = string.Empty },
             };
 
             // Iterate through each rule, and if it matches, do the replacement
@@ -160,7 +160,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
         public static string HighlightKeywords(string input, string className, IEnumerable<string> keywords) {
-            if (String.IsNullOrWhiteSpace(input) || keywords == null) return input;
+            if (string.IsNullOrWhiteSpace(input) || keywords == null) return input;
             return HighlightKeywords(input, className, keywords.ToArray());
         }
 
@@ -174,11 +174,11 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The input string with highlighted keywords.</returns>
         public static string HighlightKeywords(string input, string className, params string[] keywords) {
 
-            if (String.IsNullOrWhiteSpace(input) || keywords == null) return input;
+            if (string.IsNullOrWhiteSpace(input) || keywords == null) return input;
 
             // Loop through the keywords
             foreach (string keyword in keywords) {
-                input = Regex.Replace(input, keyword, String.Format("<span class=\"{1}\">{0}</span>", "$0", className), RegexOptions.IgnoreCase);
+                input = Regex.Replace(input, keyword, string.Format("<span class=\"{1}\">{0}</span>", "$0", className), RegexOptions.IgnoreCase);
             }
 
             return input;
@@ -186,12 +186,12 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Alias of <see cref="IsDouble"/>. Gets whether the string matches a double (<see cref="Double"/>).
+        /// Alias of <see cref="IsDouble"/>. Gets whether the string matches a double (<see cref="double"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
         public static bool IsNumeric(string str) {
-            return Int64.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long _);
+            return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long _);
         }
 
         /// <summary>
@@ -200,7 +200,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> is alphanumeric; otherwise <c>false</c>.</returns>
         public static bool IsAlphanumeric(string str) {
-            return Regex.IsMatch(str ?? "", "^[0-9a-zA-Z]+$");
+            return Regex.IsMatch(str ?? string.Empty, "^[0-9a-zA-Z]+$");
         }
 
 #if NET_FRAMEWORK
@@ -247,7 +247,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="html">The input string containing the HTML.</param>
         /// <returns>The input string without any HTML markup.</returns>
         public static string StripHtml(string html) {
-            return HtmlDecode(Regex.Replace(html, "<.*?>", ""));
+            return HtmlDecode(Regex.Replace(html, "<.*?>", string.Empty));
         }
 
         /// <summary>
@@ -259,8 +259,8 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The stripped result.</returns>
         public static string StripHtml(string html, params string[] ignore) {
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
-            Regex regex = new Regex("<(?!(" + String.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
-            return HtmlDecode(regex.Replace(html, String.Empty));
+            Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
+            return HtmlDecode(regex.Replace(html, string.Empty));
         }
 
 #endif
@@ -309,7 +309,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="html">The input string containing the HTML.</param>
         /// <returns>The input string without any HTML markup.</returns>
         public static string StripHtml(string html) {
-            return HtmlDecode(Regex.Replace(html, "<.*?>", ""));
+            return HtmlDecode(Regex.Replace(html, "<.*?>", string.Empty));
         }
 
         /// <summary>
@@ -321,8 +321,8 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The stripped result.</returns>
         public static string StripHtml(string html, params string[] ignore) {
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
-            Regex regex = new Regex("<(?!(" + String.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
-            return HtmlDecode(regex.Replace(html, String.Empty));
+            Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
+            return HtmlDecode(regex.Replace(html, string.Empty));
         }
 
 #endif

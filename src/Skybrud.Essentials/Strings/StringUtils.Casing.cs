@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.Strings {
             string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Join the pieces again and uppercase the first character of each piece but the first
-            return string.Join("", pieces.Select((t, i) => i == 0 ? t : FirstCharToUpper(t)));
+            return string.Join(string.Empty, pieces.Select((t, i) => i == 0 ? t : FirstCharToUpper(t)));
 
         }
 
@@ -47,7 +47,7 @@ namespace Skybrud.Essentials.Strings {
             string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
 
             // Join the pieces again and uppercase the first character of each piece
-            return string.Join("", from piece in pieces select FirstCharToUpper(piece));
+            return string.Join(string.Empty, from piece in pieces select FirstCharToUpper(piece));
 
         }
 
@@ -95,7 +95,7 @@ namespace Skybrud.Essentials.Strings {
         public static string ToTrainCase(string str) {
 
             // Replace invalid characters
-            str = Regex.Replace(str ?? "", "[\\W_]+", " ").Trim();
+            str = Regex.Replace(str ?? string.Empty, "[\\W_]+", " ").Trim();
 
             // Replace multiple whitespaces
             str = Regex.Replace(str, "[ ]{2,}", " ");
@@ -122,7 +122,7 @@ namespace Skybrud.Essentials.Strings {
         public static string ToUnderscore(string str) {
 
             // Replace invalid characters
-            str = Regex.Replace(str ?? "", "[\\W_]+", " ").Trim();
+            str = Regex.Replace(str ?? string.Empty, "[\\W_]+", " ").Trim();
 
             // Replace multiple whitespaces
             str = Regex.Replace(str, "[ ]{2,}", " ");
@@ -167,7 +167,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
         public static string FirstCharToUpper(string str) {
-            return String.IsNullOrEmpty(str) ? "" : String.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
         }
 
         /// <summary>
@@ -188,7 +188,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The output string, matching the specified <paramref name="casing"/>.</returns>
         public static string ToCasing(string str, TextCasing casing) {
             
-            if (String.IsNullOrWhiteSpace(str)) return String.Empty;
+            if (string.IsNullOrWhiteSpace(str)) return string.Empty;
 
             switch (casing) {
 

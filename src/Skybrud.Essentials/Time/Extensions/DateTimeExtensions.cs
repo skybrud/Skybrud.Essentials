@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// Gets the current age, from the specified date of birth.
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>An instance of <see cref="Int32"/> representing the age.</returns>
+        /// <returns>An instance of <see cref="int"/> representing the age.</returns>
         public static int GetAge(this DateTime dateOfBirth) {
             return TimeUtils.GetAge(dateOfBirth);
         }
@@ -22,7 +22,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// </summary>
         /// <param name="dateOfBirth">The date of birth.</param>
         /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>An instance of <see cref="Int32"/> representing the age.</returns>
+        /// <returns>An instance of <see cref="int"/> representing the age.</returns>
         public static int GetAge(this DateTime dateOfBirth, DateTime dt) {
             return TimeUtils.GetAge(dateOfBirth, dt);
         }
@@ -50,7 +50,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// specification.
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
-        /// <returns>An instance of <see cref="Int32"/> representing the <strong>ISO 8601</strong> week number.</returns>
+        /// <returns>An instance of <see cref="int"/> representing the <strong>ISO 8601</strong> week number.</returns>
         public static int GetIso8601WeekNumber(this DateTime date) {
             return TimeUtils.GetIso8601WeekNumber(date);
         }

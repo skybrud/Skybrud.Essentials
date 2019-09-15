@@ -17,10 +17,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-            if (value is TimeSpan) {
-                TimeSpan ts = (TimeSpan) value;
-                writer.WriteRawValue(ts.TotalSeconds.ToString(CultureInfo.InvariantCulture));
-            }
+            if (value is TimeSpan ts) writer.WriteRawValue(ts.TotalSeconds.ToString(CultureInfo.InvariantCulture));
         }
 
         /// <summary>

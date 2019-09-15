@@ -41,7 +41,7 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
                 return;
             }
 
-            writer.WriteValue(StringUtils.ToCasing(value + string.Empty, Casing));
+            writer.WriteValue(StringUtils.ToCasing(value.ToString(), Casing));
 
         }
 

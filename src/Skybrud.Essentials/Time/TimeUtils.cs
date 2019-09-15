@@ -395,39 +395,6 @@ namespace Skybrud.Essentials.Time {
 
         #endregion
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         /// <summary>
         /// Gets the day of the month along with the English ordinal suffix based on the specified
         /// <paramref name="date"/>.

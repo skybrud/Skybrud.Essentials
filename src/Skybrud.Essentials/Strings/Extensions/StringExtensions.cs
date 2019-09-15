@@ -99,7 +99,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Gets whether the <paramref name="input"/> string has a value. This extension method is equal to calling
-        /// <see cref="String.IsNullOrWhiteSpace"/>.
+        /// <see cref="string.IsNullOrWhiteSpace"/>.
         /// </summary>
         /// <param name="input">The input string to test.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
@@ -109,7 +109,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Gets whether the <paramref name="input"/> string has a value. This extension method is equal to calling
-        /// <see cref="String.IsNullOrWhiteSpace"/>.
+        /// <see cref="string.IsNullOrWhiteSpace"/>.
         /// </summary>
         /// <param name="input">The input string to test.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>

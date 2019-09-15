@@ -17,23 +17,23 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the year, or <c>0</c> if not specified.
         /// </summary>
-        public int Year { get; private set; }
+        public int Year { get; }
         
         /// <summary>
         /// Gets the month, or <c>0</c> if not specified.
         /// </summary>
-        public int Month { get; private set; }
+        public int Month { get; }
         
         /// <summary>
         /// Gets the day, or <c>0</c> if not specified.
         /// </summary>
-        public int Day { get; private set; }
+        public int Day { get; }
 
         /// <summary>
         /// Gets an instance of <see cref="DateTime"/> representing the publication date. This instance will not be
         /// realiable in the way that an instance of <see cref="DateTime"/> can't represent a partial date.
         /// </summary>
-        public DateTime DateTime { get; private set; }
+        public DateTime DateTime { get; }
 
         /// <summary>
         /// Gets whether a year has been specified for this date.
@@ -205,7 +205,7 @@ namespace Skybrud.Essentials.Time {
             result = null;
 
             // Strip all commas to make parsing easier
-            input = (input ?? "").Replace(",", "");
+            input = (input ?? string.Empty).Replace(",", string.Empty);
 
             // Parse the string into an instance of DateTime for full dates
             if (DateTime.TryParseExact(input, new[] { "yyyy-MM-dd", "d MMMM yyyy", "MMMM d yyyy" }, provider, DateTimeStyles.None, out DateTime dt)) {

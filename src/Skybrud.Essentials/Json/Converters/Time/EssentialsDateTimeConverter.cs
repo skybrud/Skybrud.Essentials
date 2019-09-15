@@ -41,15 +41,15 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                     return null;
 
                 case JsonToken.Date:
-                    if (reader.Value is DateTime) return new EssentialsDateTime((DateTime) reader.Value);
+                    if (reader.Value is DateTime dt) return new EssentialsDateTime(dt);
                     throw new JsonSerializationException("Value doesn't match an instance of DateTime: " + reader.Value.GetType());
 
                 case JsonToken.String:
-                    if (String.IsNullOrWhiteSpace(reader.Value + "")) return null;
-                    if (!String.IsNullOrEmpty(DateTimeFormat)) {
-                        return (EssentialsDateTime) DateTime.ParseExact(reader.Value + "", DateTimeFormat, Culture, DateTimeStyles);
+                    if (string.IsNullOrWhiteSpace(reader.Value.ToString())) return null;
+                    if (!string.IsNullOrEmpty(DateTimeFormat)) {
+                        return (EssentialsDateTime) DateTime.ParseExact(reader.Value.ToString(), DateTimeFormat, Culture, DateTimeStyles);
                     }
-                    return (EssentialsDateTime) DateTime.Parse(reader.Value + "", Culture, DateTimeStyles);
+                    return (EssentialsDateTime) DateTime.Parse(reader.Value.ToString(), Culture, DateTimeStyles);
 
                 default:
                     throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);

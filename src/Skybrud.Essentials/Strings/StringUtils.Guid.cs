@@ -59,7 +59,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ParseGuidArray(string str, params char[] separators) {
             List<Guid> guids = new List<Guid>();
-            foreach (string piece in (str ?? "").Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
             }
             return guids.ToArray();
