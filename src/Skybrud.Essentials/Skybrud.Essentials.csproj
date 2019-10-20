@@ -4,6 +4,8 @@
 
   <PropertyGroup>
     <TargetFrameworks>netstandard1.1;netstandard1.3;net45;net46;net47</TargetFrameworks>
+    <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
+    <BuildInParallel>false</BuildInParallel>
   </PropertyGroup>
   
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
@@ -55,6 +57,10 @@
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
+  
+  <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(TargetFramework)'=='netstandard1.1'">
+    <Exec Command="&quot;$(ProjectDir)../build/Skybrud.PreBuildTool.exe&quot; /date=2016-10-07 /projectPath=&quot;$(ProjectPath)&quot;" />
+  </Target>
 
   <Target Name="PostBuild" AfterTargets="PostBuildEvent">
     <Exec Command="mkdir &quot;$(ProjectDir)bin\Dev\$(TargetFramework)&quot;&#xD;&#xA;xcopy &quot;$(ProjectDir)bin\$(ConfigurationName)\$(TargetFramework)\$(TargetName).*&quot; &quot;$(ProjectDir)bin\Dev\$(TargetFramework)\&quot; /y" />
