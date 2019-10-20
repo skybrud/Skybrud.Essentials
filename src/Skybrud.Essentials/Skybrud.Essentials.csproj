@@ -62,8 +62,8 @@
     <Exec Command="&quot;$(ProjectDir)../build/Skybrud.PreBuildTool.exe&quot; /date=2016-10-07 /projectPath=&quot;$(ProjectPath)&quot;" />
   </Target>
 
-  <Target Name="PostBuild" AfterTargets="PostBuildEvent">
-    <Exec Command="mkdir &quot;$(ProjectDir)bin\Dev\$(TargetFramework)&quot;&#xD;&#xA;xcopy &quot;$(ProjectDir)bin\$(ConfigurationName)\$(TargetFramework)\$(TargetName).*&quot; &quot;$(ProjectDir)bin\Dev\$(TargetFramework)\&quot; /y" />
+  <Target Name="PostBuild" AfterTargets="PostBuildEvent" Condition="'$(ConfigurationName)'=='Release' AND '$(BuildTools)'=='1'">
+    <Exec Command="&quot;$(ProjectDir)..\build\Skybrud.BuildTools.Tasks.exe&quot; &quot;postBuild&quot; &quot;$(ConfigurationName)&quot; &quot;$(ProjectPath)&quot; &quot;$(TargetPath)&quot;" />
   </Target>
 
 </Project>
