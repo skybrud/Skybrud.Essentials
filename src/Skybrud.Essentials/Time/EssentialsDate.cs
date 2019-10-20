@@ -75,6 +75,11 @@ namespace Skybrud.Essentials.Time {
         public int DaysInMonth => DateTime.DaysInMonth(Year, Month);
 
         /// <summary>
+        /// Gets the English ordinal suffix of the day.
+        /// </summary>
+        public string DaySuffix => TimeUtils.GetDaySuffix(_dateTime);
+
+        /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
         /// </summary>
         public string Iso8601 => _dateTime.ToString("yyyy-MM-dd");

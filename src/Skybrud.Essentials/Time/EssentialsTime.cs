@@ -165,6 +165,11 @@ namespace Skybrud.Essentials.Time {
         public int DaysInMonth => DateTime.DaysInMonth(Year, Month);
 
         /// <summary>
+        /// Gets the English ordinal suffix of the day.
+        /// </summary>
+        public string DaySuffix => TimeUtils.GetDaySuffix(DateTimeOffset);
+
+        /// <summary>
         /// Gets whether the Unix timestamp of this <see cref="EssentialsTime"/> is <c>0</c>.
         /// </summary>
         public bool IsZero => UnixTimestamp == 0;
