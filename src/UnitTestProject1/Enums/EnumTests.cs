@@ -75,6 +75,28 @@ namespace UnitTestProject1.Enums {
 
         }
 
+        [TestMethod]
+        public void Min() {
+
+            var result1 = EnumUtils.Min(HttpStatusCode.OK, HttpStatusCode.NotFound);
+            var result2 = EnumUtils.Min(HttpStatusCode.NotFound, HttpStatusCode.OK);
+
+            Assert.AreEqual(HttpStatusCode.OK, result1, "#1");
+            Assert.AreEqual(HttpStatusCode.OK, result2, "#2");
+
+        }
+
+        [TestMethod]
+        public void Max() {
+
+            var result1 = EnumUtils.Max(HttpStatusCode.OK, HttpStatusCode.NotFound);
+            var result2 = EnumUtils.Max(HttpStatusCode.NotFound, HttpStatusCode.OK);
+
+            Assert.AreEqual(HttpStatusCode.NotFound, result1, "#1");
+            Assert.AreEqual(HttpStatusCode.NotFound, result2, "#2");
+
+        }
+
     }
 
 }

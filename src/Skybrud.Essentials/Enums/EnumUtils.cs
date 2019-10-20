@@ -93,12 +93,7 @@ namespace Skybrud.Essentials.Enums {
             if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
 
             // Check whether the type of T is an enum
-            #if NET_FRAMEWORK
-            if (!typeof(T).IsEnum) throw new ArgumentException("Generic type T must be an enum");
-            #endif
-            #if NET_STANDARD
-            if (!typeof(T).GetTypeInfo().IsEnum) throw new ArgumentException("Generic type T must be an enum");
-            #endif
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
 
             // Initialize "value"
             value = default(T);
@@ -160,6 +155,58 @@ namespace Skybrud.Essentials.Enums {
 
             array = temp.ToArray();
             return true;
+
+        }
+
+        /// <summary>
+        /// Returns the minimum value of the enum values <paramref name="a"/> and <paramref name="b"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="a">The first enum value.</param>
+        /// <param name="b">The second enum value.</param>
+        /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
+        public static T Min<T>(T a, T b) where T : struct {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            string name = Enum.GetName(typeof(T), Math.Min(Convert.ToInt32(a), Convert.ToInt32(b)));
+            return (T) Enum.Parse(typeof(T), name ?? throw new InvalidOperationException(), true);
+        }
+
+        /// <summary>
+        /// Returns the maximum value of the enum values <paramref name="a"/> and <paramref name="b"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="a">The first enum value.</param>
+        /// <param name="b">The second enum value.</param>
+        /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
+        public static T Max<T>(T a, T b) where T : struct {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            string name = Enum.GetName(typeof(T), Math.Max(Convert.ToInt32(a), Convert.ToInt32(b)));
+            return (T) Enum.Parse(typeof(T), name ?? throw new InvalidOperationException(), true);
+        }
+
+        /// <summary>
+        /// Returns whether <typeparamref name="T"/> is an enum.
+        /// </summary>
+        /// <typeparam name="T">The type to check.</typeparam>
+        /// <returns><c>true</c> if <typeparamref name="T"/> is an enum; otherwise <c>false</c>.</returns>
+        public static bool IsEnum<T>() {
+            return IsEnum(typeof(T));
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="type"/> is an enum.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
+        /// <returns><c>true</c> if <paramref name="type"/> is an enum; otherwise <c>false</c>.</returns>
+        public static bool IsEnum(Type type) {
+            
+            #if NET_FRAMEWORK
+            return type.IsEnum;
+            #endif
+            
+            #if NET_STANDARD
+            return type.GetTypeInfo().IsEnum;
+            #endif
 
         }
 
