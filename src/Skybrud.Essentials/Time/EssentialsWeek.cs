@@ -106,10 +106,33 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp.</param>
         public EssentialsWeek(EssentialsTime timestamp) {
-            Week = TimeUtils.GetIso8601WeekNumber(timestamp.DateTimeOffset);
-            Start = TimeUtils.GetStartOfWeek(timestamp.DateTimeOffset, timestamp.TimeZone);
-            End = TimeUtils.GetEndOfWeek(timestamp.DateTimeOffset, timestamp.TimeZone);
-            Year = GetYear();
+            Week = timestamp.WeekNumber;
+            Start = timestamp.GetStartOfWeek();
+            End = timestamp.GetEndOfWeek();
+            Year = timestamp.Year;
+        }
+
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="date"/>.
+        /// </summary>
+        /// <param name="date">The dare.</param>
+        public EssentialsWeek(EssentialsDate date) {
+            Week = date.WeekNumber;
+            Start = date.GetStartOfWeek();
+            End = date.GetEndOfWeek();
+            Year = date.Year;
+        }
+
+        /// <summary>
+        /// Initializes a new instance from the specified <paramref name="date"/> and <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="date">The dare.</param>
+        /// <param name="timeZone">The time zone.</param>
+        public EssentialsWeek(EssentialsDate date, TimeZoneInfo timeZone) {
+            Week = date.WeekNumber;
+            Start = date.GetStartOfWeek(timeZone);
+            End = date.GetEndOfWeek(timeZone);
+            Year = date.Year;
         }
 
         #endregion
