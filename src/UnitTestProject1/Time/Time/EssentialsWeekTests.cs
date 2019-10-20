@@ -23,37 +23,37 @@ namespace UnitTestProject1.Time.Time {
             EssentialsWeek week6 = new EssentialsWeek(2019, 14, TimeSpan.FromHours(1));
             EssentialsWeek week7 = new EssentialsWeek(2019, 14, TimeSpan.FromHours(2));
 
-            Assert.AreEqual(12, week1.Week, "#1");
+            Assert.AreEqual(12, week1.WeekNumber, "#1");
             Assert.AreEqual(2019, week1.Year, "#1");
             Assert.AreEqual("2019-03-18 00:00:00:000 +00:00", week1.Start.ToString(Format), "#1");
             Assert.AreEqual("2019-03-24 23:59:59:999 +00:00", week1.End.ToString(Format), "#1");
 
-            Assert.AreEqual(13, week2.Week, "#2");
+            Assert.AreEqual(13, week2.WeekNumber, "#2");
             Assert.AreEqual(2019, week2.Year, "#2");
             Assert.AreEqual("2019-03-25 00:00:00:000 +00:00", week2.Start.ToString(Format), "#2");
             Assert.AreEqual("2019-03-31 23:59:59:999 +00:00", week2.End.ToString(Format), "#2");
 
-            Assert.AreEqual(14, week3.Week, "#3");
+            Assert.AreEqual(14, week3.WeekNumber, "#3");
             Assert.AreEqual(2019, week3.Year, "#3");
             Assert.AreEqual("2019-04-01 00:00:00:000 +00:00", week3.Start.ToString(Format), "#3");
             Assert.AreEqual("2019-04-07 23:59:59:999 +00:00", week3.End.ToString(Format), "#3");
 
-            Assert.AreEqual(12, week4.Week, "#4");
+            Assert.AreEqual(12, week4.WeekNumber, "#4");
             Assert.AreEqual(2019, week4.Year, "#4");
             Assert.AreEqual("2019-03-18 00:00:00:000 +01:00", week4.Start.ToString(Format), "#4");
             Assert.AreEqual("2019-03-24 23:59:59:999 +01:00", week4.End.ToString(Format), "#4");
 
-            Assert.AreEqual(13, week5.Week, "#2");
+            Assert.AreEqual(13, week5.WeekNumber, "#2");
             Assert.AreEqual(2019, week5.Year, "#2");
             Assert.AreEqual("2019-03-25 00:00:00:000 +01:00", week5.Start.ToString(Format), "#5");
             Assert.AreEqual("2019-03-31 23:59:59:999 +01:00", week5.End.ToString(Format), "#5");
 
-            Assert.AreEqual(14, week6.Week, "#6");
+            Assert.AreEqual(14, week6.WeekNumber, "#6");
             Assert.AreEqual(2019, week6.Year, "#6");
             Assert.AreEqual("2019-04-01 00:00:00:000 +01:00", week6.Start.ToString(Format), "#6");
             Assert.AreEqual("2019-04-07 23:59:59:999 +01:00", week6.End.ToString(Format), "#6");
 
-            Assert.AreEqual(14, week7.Week, "#7");
+            Assert.AreEqual(14, week7.WeekNumber, "#7");
             Assert.AreEqual(2019, week7.Year, "#7");
             Assert.AreEqual("2019-04-01 00:00:00:000 +02:00", week7.Start.ToString(Format), "#7");
             Assert.AreEqual("2019-04-07 23:59:59:999 +02:00", week7.End.ToString(Format), "#7");
@@ -74,32 +74,32 @@ namespace UnitTestProject1.Time.Time {
             EssentialsWeek week5 = new EssentialsWeek(2019, 13, romance);
             EssentialsWeek week6 = new EssentialsWeek(2019, 14, romance);
 
-            Assert.AreEqual(12, week1.Week, "#1");
+            Assert.AreEqual(12, week1.WeekNumber, "#1");
             Assert.AreEqual(2019, week1.Year, "#1");
             Assert.AreEqual("2019-03-18 00:00:00:000 +00:00", week1.Start.ToString(Format), "#1");
             Assert.AreEqual("2019-03-24 23:59:59:999 +00:00", week1.End.ToString(Format), "#1");
 
-            Assert.AreEqual(13, week2.Week, "#2");
+            Assert.AreEqual(13, week2.WeekNumber, "#2");
             Assert.AreEqual(2019, week2.Year, "#2");
             Assert.AreEqual("2019-03-25 00:00:00:000 +00:00", week2.Start.ToString(Format), "#2");
             Assert.AreEqual("2019-03-31 23:59:59:999 +00:00", week2.End.ToString(Format), "#2");
 
-            Assert.AreEqual(14, week3.Week, "#3");
+            Assert.AreEqual(14, week3.WeekNumber, "#3");
             Assert.AreEqual(2019, week3.Year, "#3");
             Assert.AreEqual("2019-04-01 00:00:00:000 +00:00", week3.Start.ToString(Format), "#3");
             Assert.AreEqual("2019-04-07 23:59:59:999 +00:00", week3.End.ToString(Format), "#3");
 
-            Assert.AreEqual(12, week4.Week, "#4");
+            Assert.AreEqual(12, week4.WeekNumber, "#4");
             Assert.AreEqual(2019, week4.Year, "#4");
             Assert.AreEqual("2019-03-18 00:00:00:000 +01:00", week4.Start.ToString(Format), "#4");
             Assert.AreEqual("2019-03-24 23:59:59:999 +01:00", week4.End.ToString(Format), "#4");
 
-            Assert.AreEqual(13, week5.Week, "#2");
+            Assert.AreEqual(13, week5.WeekNumber, "#2");
             Assert.AreEqual(2019, week5.Year, "#2");
             Assert.AreEqual("2019-03-25 00:00:00:000 +01:00", week5.Start.ToString(Format), "#5");
             Assert.AreEqual("2019-03-31 23:59:59:999 +02:00", week5.End.ToString(Format), "#5");
 
-            Assert.AreEqual(14, week6.Week, "#6");
+            Assert.AreEqual(14, week6.WeekNumber, "#6");
             Assert.AreEqual(2019, week6.Year, "#6");
             Assert.AreEqual("2019-04-01 00:00:00:000 +02:00", week6.Start.ToString(Format), "#6");
             Assert.AreEqual("2019-04-07 23:59:59:999 +02:00", week6.End.ToString(Format), "#6");
@@ -120,32 +120,32 @@ namespace UnitTestProject1.Time.Time {
             EssentialsWeek week5 = new EssentialsWeek(2019, 13, romance).GetPreviousWeek();
             EssentialsWeek week6 = new EssentialsWeek(2019, 14, romance).GetPreviousWeek();
 
-            Assert.AreEqual(11, week1.Week, "#1");
+            Assert.AreEqual(11, week1.WeekNumber, "#1");
             Assert.AreEqual(2019, week1.Year, "#1");
             Assert.AreEqual("2019-03-11 00:00:00:000 +00:00", week1.Start.ToString(Format), "#1");
             Assert.AreEqual("2019-03-17 23:59:59:999 +00:00", week1.End.ToString(Format), "#1");
 
-            Assert.AreEqual(12, week2.Week, "#2");
+            Assert.AreEqual(12, week2.WeekNumber, "#2");
             Assert.AreEqual(2019, week2.Year, "#2");
             Assert.AreEqual("2019-03-18 00:00:00:000 +00:00", week2.Start.ToString(Format), "#2");
             Assert.AreEqual("2019-03-24 23:59:59:999 +00:00", week2.End.ToString(Format), "#2");
 
-            Assert.AreEqual(13, week3.Week, "#3");
+            Assert.AreEqual(13, week3.WeekNumber, "#3");
             Assert.AreEqual(2019, week3.Year, "#3");
             Assert.AreEqual("2019-03-25 00:00:00:000 +00:00", week3.Start.ToString(Format), "#3");
             Assert.AreEqual("2019-03-31 23:59:59:999 +00:00", week3.End.ToString(Format), "#3");
 
-            Assert.AreEqual(11, week4.Week, "#4");
+            Assert.AreEqual(11, week4.WeekNumber, "#4");
             Assert.AreEqual(2019, week4.Year, "#4");
             Assert.AreEqual("2019-03-11 00:00:00:000 +01:00", week4.Start.ToString(Format), "#4");
             Assert.AreEqual("2019-03-17 23:59:59:999 +01:00", week4.End.ToString(Format), "#4");
 
-            Assert.AreEqual(12, week5.Week, "#2");
+            Assert.AreEqual(12, week5.WeekNumber, "#2");
             Assert.AreEqual(2019, week5.Year, "#2");
             Assert.AreEqual("2019-03-18 00:00:00:000 +01:00", week5.Start.ToString(Format), "#5");
             Assert.AreEqual("2019-03-24 23:59:59:999 +01:00", week5.End.ToString(Format), "#5");
 
-            Assert.AreEqual(13, week6.Week, "#6");
+            Assert.AreEqual(13, week6.WeekNumber, "#6");
             Assert.AreEqual(2019, week6.Year, "#6");
             Assert.AreEqual("2019-03-25 00:00:00:000 +01:00", week6.Start.ToString(Format), "#6");
             Assert.AreEqual("2019-03-31 23:59:59:999 +02:00", week6.End.ToString(Format), "#6");
@@ -166,32 +166,32 @@ namespace UnitTestProject1.Time.Time {
             EssentialsWeek week5 = new EssentialsWeek(2019, 13, romance).GetNextWeek();
             EssentialsWeek week6 = new EssentialsWeek(2019, 14, romance).GetNextWeek();
 
-            Assert.AreEqual(13, week1.Week, "#1");
+            Assert.AreEqual(13, week1.WeekNumber, "#1");
             Assert.AreEqual(2019, week1.Year, "#1");
             Assert.AreEqual("2019-03-25 00:00:00:000 +00:00", week1.Start.ToString(Format), "#1");
             Assert.AreEqual("2019-03-31 23:59:59:999 +00:00", week1.End.ToString(Format), "#1");
 
-            Assert.AreEqual(14, week2.Week, "#2");
+            Assert.AreEqual(14, week2.WeekNumber, "#2");
             Assert.AreEqual(2019, week2.Year, "#2");
             Assert.AreEqual("2019-04-01 00:00:00:000 +00:00", week2.Start.ToString(Format), "#2");
             Assert.AreEqual("2019-04-07 23:59:59:999 +00:00", week2.End.ToString(Format), "#2");
 
-            Assert.AreEqual(15, week3.Week, "#3");
+            Assert.AreEqual(15, week3.WeekNumber, "#3");
             Assert.AreEqual(2019, week3.Year, "#3");
             Assert.AreEqual("2019-04-08 00:00:00:000 +00:00", week3.Start.ToString(Format), "#3");
             Assert.AreEqual("2019-04-14 23:59:59:999 +00:00", week3.End.ToString(Format), "#3");
 
-            Assert.AreEqual(13, week4.Week, "#4");
+            Assert.AreEqual(13, week4.WeekNumber, "#4");
             Assert.AreEqual(2019, week4.Year, "#4");
             Assert.AreEqual("2019-03-25 00:00:00:000 +01:00", week4.Start.ToString(Format), "#4");
             Assert.AreEqual("2019-03-31 23:59:59:999 +02:00", week4.End.ToString(Format), "#4");
 
-            Assert.AreEqual(14, week5.Week, "#2");
+            Assert.AreEqual(14, week5.WeekNumber, "#2");
             Assert.AreEqual(2019, week5.Year, "#2");
             Assert.AreEqual("2019-04-01 00:00:00:000 +02:00", week5.Start.ToString(Format), "#5");
             Assert.AreEqual("2019-04-07 23:59:59:999 +02:00", week5.End.ToString(Format), "#5");
 
-            Assert.AreEqual(15, week6.Week, "#6");
+            Assert.AreEqual(15, week6.WeekNumber, "#6");
             Assert.AreEqual(2019, week6.Year, "#6");
             Assert.AreEqual("2019-04-08 00:00:00:000 +02:00", week6.Start.ToString(Format), "#6");
             Assert.AreEqual("2019-04-14 23:59:59:999 +02:00", week6.End.ToString(Format), "#6");
