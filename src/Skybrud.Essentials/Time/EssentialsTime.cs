@@ -182,7 +182,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets hwther the date of this <see cref="EssentialsTime"/> matches the current. day.
         /// </summary>
-        public bool IsToday => Iso8601 == DateTime.Now.ToString("yyyy-MM-dd");
+        public bool IsToday => ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd");
 
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
