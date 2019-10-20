@@ -4,7 +4,7 @@ using System.Collections.Generic;
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
-    /// Class representing a range of one or more <see cref="EssentialsDateRange"/>.
+    /// Class representing a range of one or more <see cref="EssentialsDate"/>.
     /// </summary>
     public class EssentialsDateRange : IEnumerable<EssentialsDate> {
 
