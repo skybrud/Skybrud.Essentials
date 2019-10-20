@@ -45,6 +45,11 @@ namespace Skybrud.Essentials.Time {
         public int DayOfYear => _dateTime.DayOfYear;
 
         /// <summary>
+        /// Returns a numeric value representing both the year and date.
+        /// </summary>
+        public int YearAndDay => Year * 1000 + DayOfYear;
+
+        /// <summary>
         /// Gets whether the year of this <see cref="EssentialsDate"/> is a leap year.
         /// </summary>
         public bool IsLeapYear => TimeUtils.IsLeapYear(_dateTime);

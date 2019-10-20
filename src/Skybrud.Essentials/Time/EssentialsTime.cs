@@ -83,6 +83,11 @@ namespace Skybrud.Essentials.Time {
         public int DayOfYear => DateTimeOffset.DayOfYear;
 
         /// <summary>
+        /// Returns a numeric value representing both the year and date.
+        /// </summary>
+        public int YearAndDay => Year * 1000 + DayOfYear;
+
+        /// <summary>
         /// Gets the hour part of this <see cref="EssentialsTime"/>. The returned value is an integer between
         /// <c>0</c> and <c>23</c>.
         /// </summary>

@@ -95,6 +95,19 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void YearAndDay() {
+
+            EssentialsTime a = new EssentialsTime(2019, 1, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime b = new EssentialsTime(2019, 10, 20, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime c = new EssentialsTime(2019, 12, 31, 0, 0, 0, TimeSpan.Zero);
+
+            Assert.AreEqual(2019001, a.YearAndDay);
+            Assert.AreEqual(2019293, b.YearAndDay);
+            Assert.AreEqual(2019365, c.YearAndDay);
+
+        }
+
         public class Sample {
 
             public string Expected { get; }

@@ -11,6 +11,19 @@ namespace UnitTestProject1.Time {
     public class EssentialsDateTests {
 
         [TestMethod]
+        public void YearAndDay() {
+
+            EssentialsDate a = new EssentialsDate(2019, 1, 1);
+            EssentialsDate b = new EssentialsDate(2019, 10, 20);
+            EssentialsDate c = new EssentialsDate(2019, 12, 31);
+
+            Assert.AreEqual(2019001, a.YearAndDay);
+            Assert.AreEqual(2019293, b.YearAndDay);
+            Assert.AreEqual(2019365, c.YearAndDay);
+
+        }
+
+        [TestMethod]
         public void TryParse() {
 
             bool success1 = EssentialsDate.TryParse("2019-08-17", out EssentialsDate result1);
