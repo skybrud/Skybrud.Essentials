@@ -25,7 +25,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <Version>1.1.16</Version>
+    <Version>1.1.17</Version>
     <Authors>Anders Bjerner</Authors>
     <Company>Skybrud.dk</Company>
     <Description>Library with common purpose functionality for working with .NET.</Description>
