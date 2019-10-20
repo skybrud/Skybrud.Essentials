@@ -145,6 +145,15 @@ namespace Skybrud.Essentials.Time {
         #region Member methods
 
         /// <summary>
+        /// Returns a new <see cref="EssentialsDate"/> that adds the specified number of days to the value of this instance.
+        /// </summary>
+        /// <param name="value">A number of whole and fractional days. The <paramref name="value"/> parameter can be negative or positive.</param>
+        /// <returns>An object whose value is the sum of the date and time represented by this instance and the number of days represented by value.</returns>
+        public EssentialsDate AddDays(int value) {
+            return new EssentialsDate(_dateTime.AddDays(value));
+        }
+
+        /// <summary>
         /// Compares the value of this instance to a specified <see cref="EssentialsDate"/> value and returns an
         /// integer that indicates whether this instance is lower than, the same as, or greater than the specified
         /// <see cref="EssentialsDate"/> value.
