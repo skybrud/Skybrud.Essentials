@@ -177,9 +177,14 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the days of the week.</returns>
         public IEnumerator<EssentialsDate> GetEnumerator() {
-            for (EssentialsTime day = Start; day < End; day = day.AddDays(1)) {
-                yield return new EssentialsDate(day);
+
+            EssentialsDate start = new EssentialsDate(Start);
+            EssentialsDate end = new EssentialsDate(End);
+
+            for (EssentialsDate day = start; day <= end; day = day.AddDays(1)) {
+                yield return day;
             }
+
         }
 
         IEnumerator IEnumerable.GetEnumerator() {

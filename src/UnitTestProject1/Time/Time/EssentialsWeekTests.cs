@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Linq;
+using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 
@@ -195,6 +197,45 @@ namespace UnitTestProject1.Time.Time {
             Assert.AreEqual(2019, week6.Year, "#6");
             Assert.AreEqual("2019-04-08 00:00:00:000 +02:00", week6.Start.ToString(Format), "#6");
             Assert.AreEqual("2019-04-14 23:59:59:999 +02:00", week6.End.ToString(Format), "#6");
+
+        }
+
+        [TestMethod]
+        public void GetEnumerator() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            var date = new EssentialsDate(2019, 10, 24);
+
+            EssentialsWeek week = new EssentialsWeek(date, romance);
+
+            Assert.AreEqual("2019-10-21T00:00:00+02:00", week.Start.ToString(), "Start");
+            Assert.AreEqual("2019-10-27T23:59:59+01:00", week.End.ToString(), "End");
+
+            EssentialsDate[] days = week.ToArray();
+
+            Assert.AreEqual(7, days.Length);
+
+            Assert.AreEqual(DayOfWeek.Monday, days[0].DayOfWeek);
+            Assert.AreEqual("2019-10-21", days[0].ToString());
+
+            Assert.AreEqual(DayOfWeek.Tuesday, days[1].DayOfWeek);
+            Assert.AreEqual("2019-10-22", days[1].ToString());
+
+            Assert.AreEqual(DayOfWeek.Wednesday, days[2].DayOfWeek);
+            Assert.AreEqual("2019-10-23", days[2].ToString());
+
+            Assert.AreEqual(DayOfWeek.Thursday, days[3].DayOfWeek);
+            Assert.AreEqual("2019-10-24", days[3].ToString());
+
+            Assert.AreEqual(DayOfWeek.Friday, days[4].DayOfWeek);
+            Assert.AreEqual("2019-10-25", days[4].ToString());
+
+            Assert.AreEqual(DayOfWeek.Saturday, days[5].DayOfWeek);
+            Assert.AreEqual("2019-10-26", days[5].ToString());
+
+            Assert.AreEqual(DayOfWeek.Sunday, days[6].DayOfWeek);
+            Assert.AreEqual("2019-10-27", days[6].ToString());
 
         }
 
