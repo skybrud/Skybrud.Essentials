@@ -267,6 +267,16 @@ namespace UnitTestProject1.Time {
 
         }
 
+        public void GetDaysBetween() {
+
+            var jan1 = new EssentialsDate(2019, 1, 1);
+            var feb1 = new EssentialsDate(2019, 1, 1);
+
+            Assert.AreEqual(31, EssentialsDate.GetDaysBetween(jan1, feb1));
+            Assert.AreEqual(-31, EssentialsDate.GetDaysBetween(feb1, jan1));
+
+        }
+
     }
 
 }

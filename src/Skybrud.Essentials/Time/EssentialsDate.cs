@@ -388,6 +388,20 @@ namespace Skybrud.Essentials.Time {
         #region Static methods
 
         /// <summary>
+        /// Returns the amount of days between <paramref name="a"/> and <paramref name="b"/>.
+        ///
+        /// Notice: if <paramref name="b"/> is a date before <paramref name="a"/>, the result will be a negative numbers.
+        /// </summary>
+        /// <param name="a">The first date.</param>
+        /// <param name="b">The second date.</param>
+        /// <returns>The amount of days between <paramref name="a"/> and <paramref name="b"/>.</returns>
+        public static int GetDaysBetween(EssentialsDate a, EssentialsDate b) {
+            if (a == null) throw new ArgumentNullException(nameof(a));
+            if (b == null) throw new ArgumentNullException(nameof(b));
+            return (int) b.GetStartOfDay(TimeZoneInfo.Utc).Subtract(a.GetStartOfDay(TimeZoneInfo.Utc)).TotalDays;
+        }
+
+        /// <summary>
         /// Converts the string representation of a date to its <see cref="EssentialsDate"/> equivalent by
         /// using the conventions of the current thread culture.
         /// </summary>
