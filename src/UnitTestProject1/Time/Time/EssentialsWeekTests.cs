@@ -201,6 +201,71 @@ namespace UnitTestProject1.Time.Time {
         }
 
         [TestMethod]
+        public void NewYear() {
+
+            #region 2016 -> 2017
+
+            EssentialsWeek sample1 = new EssentialsWeek(2016, 12, 31);
+            Assert.AreEqual(52, sample1.WeekNumber);
+            Assert.AreEqual(2016, sample1.Year);
+
+            EssentialsWeek sample2 = new EssentialsWeek(2017, 1, 1);
+            Assert.AreEqual(52, sample2.WeekNumber);
+            Assert.AreEqual(2016, sample2.Year);
+
+            #endregion
+
+            #region 2017 -> 2018
+
+            EssentialsWeek sample3 = new EssentialsWeek(2017, 12, 31);
+            Assert.AreEqual(52, sample3.WeekNumber);
+            Assert.AreEqual(2017, sample3.Year);
+
+            EssentialsWeek sample4 = new EssentialsWeek(2018, 1, 1);
+            Assert.AreEqual(1, sample4.WeekNumber);
+            Assert.AreEqual(2018, sample4.Year);
+
+            #endregion
+
+            #region 2018 -> 2019
+
+            EssentialsWeek sample5 = new EssentialsWeek(2018, 12, 31);
+            Assert.AreEqual(1, sample5.WeekNumber);
+            Assert.AreEqual(2019, sample5.Year);
+
+            EssentialsWeek sample6 = new EssentialsWeek(2019, 1, 1);
+            Assert.AreEqual(1, sample6.WeekNumber);
+            Assert.AreEqual(2019, sample6.Year);
+
+            #endregion
+
+            #region 2019 -> 2020
+
+            EssentialsWeek sample7 = new EssentialsWeek(2019, 12, 31);
+            Assert.AreEqual(1, sample7.WeekNumber);
+            Assert.AreEqual(2020, sample7.Year);
+
+            EssentialsWeek sample8 = new EssentialsWeek(2020, 1, 1);
+            Assert.AreEqual(1, sample8.WeekNumber);
+            Assert.AreEqual(2020, sample8.Year);
+
+            #endregion
+
+            #region 2020 -> 2021
+
+            EssentialsWeek sample9 = new EssentialsWeek(2020, 12, 31);
+            Assert.AreEqual(53, sample9.WeekNumber);
+            Assert.AreEqual(2020, sample9.Year);
+
+            EssentialsWeek sample10 = new EssentialsWeek(2021, 1, 1);
+            Assert.AreEqual(53, sample10.WeekNumber);
+            Assert.AreEqual(2020, sample10.Year);
+
+            #endregion
+
+        }
+
+        [TestMethod]
         public void GetEnumerator() {
 
             TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");

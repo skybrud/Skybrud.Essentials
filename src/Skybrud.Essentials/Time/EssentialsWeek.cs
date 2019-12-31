@@ -120,7 +120,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = timestamp.WeekNumber;
             Start = timestamp.GetStartOfWeek();
             End = timestamp.GetEndOfWeek();
-            Year = timestamp.Year;
+            Year = GetYear();
         }
 
         /// <summary>
@@ -131,7 +131,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = date.WeekNumber;
             Start = date.GetStartOfWeek();
             End = date.GetEndOfWeek();
-            Year = date.Year;
+            Year = GetYear();
         }
 
         /// <summary>
@@ -143,7 +143,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = date.WeekNumber;
             Start = date.GetStartOfWeek(timeZone);
             End = date.GetEndOfWeek(timeZone);
-            Year = date.Year;
+            Year = GetYear();
         }
 
         /// <summary>
