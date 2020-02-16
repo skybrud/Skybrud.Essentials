@@ -244,6 +244,15 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="dateTime"/> and <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="dateTime">An instance <see cref="DateTime"/> the instance should be based on.</param>
+        /// <param name="timeZone">The time zone.</param>
+        public EssentialsTime(DateTime dateTime, TimeZoneInfo timeZone) {
+            DateTimeOffset = new DateTimeOffset(dateTime, timeZone.GetUtcOffset(dateTime));
+        }
+
+        /// <summary>
         /// Initializes a new instance based on the specified <paramref name="dateTimeOffset"/>.
         /// </summary>
         /// <param name="dateTimeOffset">An instance <see cref="DateTimeOffset"/> the instance should be based on.</param>
