@@ -15,6 +15,43 @@ namespace Skybrud.Essentials.Json {
     public static class JsonUtils {
 
         /// <summary>
+        /// Parses the specified <paramref name="json"/> string into an instance <see cref="JToken"/>.
+        /// </summary>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <returns>An instance of <see cref="JObject"/> parsed from the specified <paramref name="json"/> string.</returns>
+        public static JToken ParseJsonToken(string json) {
+
+            // JSON.net is automatically parsing strings that look like dates into in actual dates so that we can't
+            // really read as strings without some localization going on. Since this is kinda annoying an we don't
+            // really need it, we can luckily disable it with the lines below
+            return JToken.Load(new JsonTextReader(new StringReader(json)) {
+                DateParseHandling = DateParseHandling.None
+            });
+
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="json"/> string into an instance <typeparamref name="T"/>.
+        /// </summary>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <returns>An instance of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
+        public static T ParseJsonToken<T>(string json) {
+            return ParseJsonToken(json).ToObject<T>();
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to be returned.</typeparam>
+        /// <param name="json">The JSON string to be parsed.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JToken"/> into
+        /// an instance of <typeparamref name="T"/>.</param>
+        /// <returns>An instance of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
+        public static T ParseJsonToken<T>(string json, Func<JToken, T> func) {
+            return func(ParseJsonObject(json));
+        }
+
+        /// <summary>
         /// Parses the specified <paramref name="json"/> string into an instance <see cref="JObject"/>.
         /// </summary>
         /// <param name="json">The JSON string to be parsed.</param>
@@ -97,6 +134,36 @@ namespace Skybrud.Essentials.Json {
 #if I_CAN_HAZ_FILE
 
         /// <summary>
+        /// Loads and parses the JSON token in the file at the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <returns>An instance of <see cref="JObject"/>.</returns>
+        public static JToken LoadJsonToken(string path) {
+            return ParseJsonToken(File.ReadAllText(path, Encoding.UTF8));
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
+        public static T LoadJsonToken<T>(string path) {
+            return LoadJsonToken(path).ToObject<T>();
+        }
+
+        /// <summary>
+        /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+        /// </summary>
+        /// <typeparam name="T">The type to be returned.</typeparam>
+        /// <param name="path">The path to the JSON file.</param>
+        /// <param name="func">A callback function/method used for converting an instance of <see cref="JToken"/> into
+        /// an instance of <typeparamref name="T"/>.</param>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
+        public static T LoadJsonToken<T>(string path, Func<JToken, T> func) {
+            return ParseJsonToken(File.ReadAllText(path, Encoding.UTF8), func);
+        }
+
+        /// <summary>
         /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="path">The path to the JSON file.</param>
@@ -125,7 +192,6 @@ namespace Skybrud.Essentials.Json {
         public static T LoadJsonObject<T>(string path, Func<JObject, T> func) {
             return ParseJsonObject(File.ReadAllText(path, Encoding.UTF8), func);
         }
-
 
         /// <summary>
         /// Loads and parses the JSON array in the file at the specified <paramref name="path"/>.
