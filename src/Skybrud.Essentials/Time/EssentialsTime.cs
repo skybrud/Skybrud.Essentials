@@ -210,9 +210,19 @@ namespace Skybrud.Essentials.Time {
         public string DayName => TimeUtils.GetDayName(DateTimeOffset);
 
         /// <summary>
+        /// Gets the abbreviated English name of the day.
+        /// </summary>
+        public string AbbreviatedDayName => TimeUtils.GetAbbreviatedDayName(DateTimeOffset);
+
+        /// <summary>
         /// Gets the name of the day according to the current culture.
         /// </summary>
         public string LocalDayName => TimeUtils.GetLocalDayName(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the abbreviated name of the day according to the current culture.
+        /// </summary>
+        public string AbbreviatedLocalDayName => TimeUtils.GetAbbreviatedLocalDayName(DateTimeOffset);
 
         /// <summary>
         /// Gets the English name of the month.
@@ -220,9 +230,19 @@ namespace Skybrud.Essentials.Time {
         public string MonthName => TimeUtils.GetMonthName(DateTimeOffset);
 
         /// <summary>
+        /// Gets the abbreviated English name of the month.
+        /// </summary>
+        public string AbbreviatedMonthName => TimeUtils.GetAbbreviatedMonthName(DateTimeOffset);
+
+        /// <summary>
         /// Gets the name of the month according to the current culture.
         /// </summary>
         public string LocalMonthName => TimeUtils.GetLocalMonthName(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the abbreviated name of the month according to the current culture.
+        /// </summary>
+        public string AbbreviatedLocalMonthName => TimeUtils.GetAbbreviatedLocalMonthName(DateTimeOffset);
 
         #endregion
 

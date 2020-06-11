@@ -565,7 +565,6 @@ namespace UnitTestProject1.Time {
 
         }
 
-
         #region Month name
 
         [TestMethod]
@@ -574,10 +573,27 @@ namespace UnitTestProject1.Time {
             var expected = "January,February,March,April,May,June,July,August,September,October,November,December".Split(',');
 
             for (int i = 0; i < expected.Length; i++) {
+                
                 DateTime dt = new DateTime(2014, i + 1, 15);
+
+                DateTimeOffset dto = dt;
+
+                EssentialsTime time = new EssentialsTime(dt);
+
+                Assert.AreEqual(expected[i], TimeUtils.GetMonthName(dt.Month));
+
                 Assert.AreEqual(expected[i], TimeHelper.GetMonthName(dt));
+
                 Assert.AreEqual(expected[i], TimeUtils.GetMonthName(dt));
+                
                 Assert.AreEqual(expected[i], dt.GetMonthName());
+
+                Assert.AreEqual(expected[i], TimeUtils.GetMonthName(dto));
+
+                Assert.AreEqual(expected[i], dto.GetMonthName());
+
+                Assert.AreEqual(expected[i], time.MonthName);
+
             }
 
         }
@@ -592,13 +608,33 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in expected) {
+                
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
+                
                 for (int i = 0; i < sample.Value.Length; i++) {
+                    
                     DateTime dt = new DateTime(2014, i + 1, 15);
+
+                    DateTimeOffset dto = dt;
+
+                    EssentialsTime time = new EssentialsTime(dt);
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalMonthName(dt.Month));
+
                     Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalMonthName(dt));
+
                     Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalMonthName(dt));
+
                     Assert.AreEqual(sample.Value[i], dt.GetLocalMonthName());
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalMonthName(dto));
+
+                    Assert.AreEqual(sample.Value[i], dto.GetLocalMonthName());
+
+                    Assert.AreEqual(sample.Value[i], time.LocalMonthName);
+
                 }
+
             }
 
         }
@@ -613,13 +649,132 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in expected) {
+                
                 for (int i = 0; i < sample.Value.Length; i++) {
+                    
                     DateTime dt = new DateTime(2014, i + 1, 15);
+
+                    DateTimeOffset dto = dt;
+
                     CultureInfo culture = new CultureInfo(sample.Key);
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalMonthName(dt.Month, culture));
+
                     Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalMonthName(dt, culture));
+
                     Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalMonthName(dt, culture));
+
                     Assert.AreEqual(sample.Value[i], dt.GetLocalMonthName(culture));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalMonthName(dto, culture));
+
+                    Assert.AreEqual(sample.Value[i], dto.GetLocalMonthName(culture));
+
                 }
+
+            }
+
+        }
+        
+        [TestMethod]
+        public void GetAbbreviatedMonthNameEnglish() {
+
+            var expected = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec".Split(',');
+
+            for (int i = 0; i < expected.Length; i++) {
+                
+                DateTime dt = new DateTime(2014, i + 1, 15);
+
+                DateTimeOffset dto = dt;
+
+                EssentialsTime time = new EssentialsTime(dt);
+
+                Assert.AreEqual(expected[i], TimeUtils.GetAbbreviatedMonthName(dt.Month));
+
+                Assert.AreEqual(expected[i], TimeUtils.GetAbbreviatedMonthName(dt));
+
+                Assert.AreEqual(expected[i], dt.GetAbbreviatedMonthName());
+
+                Assert.AreEqual(expected[i], TimeUtils.GetAbbreviatedMonthName(dto));
+
+                Assert.AreEqual(expected[i], dto.GetAbbreviatedMonthName());
+
+                Assert.AreEqual(expected[i], time.AbbreviatedMonthName);
+
+            }
+
+        }
+
+        [TestMethod]
+        public void GetAbbreviatedLocalMonthNameImplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec".Split(',')},
+                {"da-DK", "jan,feb,mar,apr,maj,jun,jul,aug,sep,okt,nov,dec".Split(',')},
+                {"de-DE", "Jan,Feb,Mrz,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez".Split(',')}
+            };
+
+            foreach (var sample in expected) {
+                
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
+                
+                for (int i = 0; i < sample.Value.Length; i++) {
+                    
+                    DateTime dt = new DateTime(2014, i + 1, 15);
+
+                    DateTimeOffset dto = dt;
+
+                    EssentialsTime time = new EssentialsTime(dt);
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalMonthName(dt.Month));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalMonthName(dt));
+
+                    Assert.AreEqual(sample.Value[i], dt.GetAbbreviatedLocalMonthName());
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalMonthName(dto));
+
+                    Assert.AreEqual(sample.Value[i], dto.GetAbbreviatedLocalMonthName());
+
+                    Assert.AreEqual(sample.Value[i], time.AbbreviatedLocalMonthName);
+
+                }
+
+            }
+
+        }
+
+        [TestMethod]
+        public void GetAbbreviatedLocalMonthNameExplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec".Split(',')},
+                {"da-DK", "jan,feb,mar,apr,maj,jun,jul,aug,sep,okt,nov,dec".Split(',')},
+                {"de-DE", "Jan,Feb,Mrz,Apr,Mai,Jun,Jul,Aug,Sep,Okt,Nov,Dez".Split(',')}
+            };
+
+            foreach (var sample in expected) {
+                
+                for (int i = 0; i < sample.Value.Length; i++) {
+
+                    CultureInfo culture = new CultureInfo(sample.Key);
+                    
+                    DateTime dt = new DateTime(2014, i + 1, 15);
+
+                    DateTimeOffset dto = dt;
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalMonthName(dt.Month, culture));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalMonthName(dt, culture));
+
+                    Assert.AreEqual(sample.Value[i], dt.GetAbbreviatedLocalMonthName(culture));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalMonthName(dto, culture));
+
+                    Assert.AreEqual(sample.Value[i], dto.GetAbbreviatedLocalMonthName(culture));
+
+                }
+
             }
 
         }
@@ -636,10 +791,58 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             for (int i = 0; i < expected.Length; i++) {
+                
                 DateTime dt = start.AddDays(i);
+
+                DateTimeOffset dto = dt;
+
+                EssentialsTime time = new EssentialsTime(dt);
+
+                Assert.AreEqual(expected[i], TimeUtils.GetDayName(dt.DayOfWeek));
+
                 Assert.AreEqual(expected[i], TimeHelper.GetDayName(dt));
+
                 Assert.AreEqual(expected[i], TimeUtils.GetDayName(dt));
+
                 Assert.AreEqual(expected[i], dt.GetDayName());
+
+                Assert.AreEqual(expected[i], TimeUtils.GetDayName(dto));
+
+                Assert.AreEqual(expected[i], dto.GetDayName());
+
+                Assert.AreEqual(expected[i], time.DayName);
+
+            }
+
+        }
+
+        [TestMethod]
+        public void GetAbbreviatedDayNameEnglish() {
+
+            var expected = "Mon,Tue,Wed,Thu,Fri,Sat,Sun".Split(',');
+
+            DateTime start = new DateTime(2014, 11, 17);
+
+            for (int i = 0; i < expected.Length; i++) {
+                
+                DateTime dt = start.AddDays(i);
+
+                DateTimeOffset dto = dt;
+
+                EssentialsTime time = new EssentialsTime(dt);
+
+                Assert.AreEqual(expected[i], TimeUtils.GetAbbreviatedDayName(dt.DayOfWeek), "#1");
+
+                Assert.AreEqual(expected[i], TimeUtils.GetAbbreviatedDayName(dt), "#2");
+
+                Assert.AreEqual(expected[i], dt.GetAbbreviatedDayName(), "#3");
+
+                Assert.AreEqual(expected[i], TimeUtils.GetAbbreviatedDayName(dto), "#4");
+
+                Assert.AreEqual(expected[i], dto.GetAbbreviatedDayName(), "#5");
+
+                Assert.AreEqual(expected[i], time.AbbreviatedDayName, "#6");
+
             }
 
         }
@@ -656,13 +859,33 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             foreach (var sample in expected) {
+                
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
+                
                 for (int i = 0; i < sample.Value.Length; i++) {
+                    
                     DateTime dt = start.AddDays(i);
-                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt));
-                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt));
-                    Assert.AreEqual(sample.Value[i], dt.GetLocalDayName());
+
+                    DateTimeOffset dto = dt;
+
+                    EssentialsTime time = new EssentialsTime(dt);
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt.DayOfWeek), "#1");
+
+                    Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt), "#2");
+                    
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt), "#3");
+
+                    Assert.AreEqual(sample.Value[i], dt.GetLocalDayName(), "#4");
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dto), "#5");
+
+                    Assert.AreEqual(sample.Value[i], dto.GetLocalDayName(), "#6");
+
+                    Assert.AreEqual(sample.Value[i], time.LocalDayName);
+
                 }
+
             }
 
         }
@@ -679,13 +902,107 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             foreach (var sample in expected) {
+                
                 for (int i = 0; i < sample.Value.Length; i++) {
+                    
                     DateTime dt = start.AddDays(i);
+
+                    DateTimeOffset dto = dt;
+
                     CultureInfo culture = new CultureInfo(sample.Key);
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt.DayOfWeek, culture));
+
                     Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt, culture));
+                    
                     Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt, culture));
+
                     Assert.AreEqual(sample.Value[i], dt.GetLocalDayName(new CultureInfo(sample.Key)));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dto, culture));
+
+                    Assert.AreEqual(sample.Value[i], dto.GetLocalDayName(new CultureInfo(sample.Key)));
+
                 }
+
+            }
+
+        }
+
+        [TestMethod]
+        public void GetAbbreviatedLocalDayNameImplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "Mon,Tue,Wed,Thu,Fri,Sat,Sun".Split(',')},
+                {"da-DK", "ma,ti,on,to,fr,lø,sø".Split(',')},
+                {"de-DE", "Mo,Di,Mi,Do,Fr,Sa,So".Split(',')}
+            };
+
+            DateTime start = new DateTime(2014, 11, 17);
+
+            foreach (var sample in expected) {
+                
+                Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
+                
+                for (int i = 0; i < sample.Value.Length; i++) {
+                    
+                    DateTime dt = start.AddDays(i);
+
+                    DateTimeOffset dto = dt;
+
+                    EssentialsTime time = new EssentialsTime(dt);
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalDayName(dt.DayOfWeek));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalDayName(dt));
+
+                    Assert.AreEqual(sample.Value[i], dt.GetAbbreviatedLocalDayName());
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalDayName(dto));
+
+                    Assert.AreEqual(sample.Value[i], dto.GetAbbreviatedLocalDayName());
+
+                    Assert.AreEqual(sample.Value[i], time.AbbreviatedLocalDayName);
+
+                }
+
+            }
+
+        }
+
+        [TestMethod]
+        public void GetAbbreviatedLocalDayNameExplicit() {
+
+            var expected = new Dictionary<string, string[]> {
+                {"en-US", "Mon,Tue,Wed,Thu,Fri,Sat,Sun".Split(',')},
+                {"da-DK", "ma,ti,on,to,fr,lø,sø".Split(',')},
+                {"de-DE", "Mo,Di,Mi,Do,Fr,Sa,So".Split(',')}
+            };
+
+            DateTime start = new DateTime(2014, 11, 17);
+
+            foreach (var sample in expected) {
+                
+                for (int i = 0; i < sample.Value.Length; i++) {
+                    
+                    DateTime dt = start.AddDays(i);
+
+                    DateTimeOffset dto = dt;
+
+                    CultureInfo culture = new CultureInfo(sample.Key);
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalDayName(dt.DayOfWeek, culture));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalDayName(dt, culture));
+
+                    Assert.AreEqual(sample.Value[i], dt.GetAbbreviatedLocalDayName(culture));
+
+                    Assert.AreEqual(sample.Value[i], TimeUtils.GetAbbreviatedLocalDayName(dto, culture));
+
+                    Assert.AreEqual(sample.Value[i], dto.GetAbbreviatedLocalDayName(culture));
+
+                }
+
             }
 
         }
@@ -872,15 +1189,13 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in samples1) {
-                int result;
-                bool expected = TimeUtils.TryParseNumberFromMonthName(sample.Input, out result);
+                bool expected = TimeUtils.TryParseNumberFromMonthName(sample.Input, out int result);
                 Assert.AreEqual(sample.Expected, expected, sample.Input);
                 Assert.AreEqual(sample.Result, result, sample.Input);
             }
 
             foreach (var sample in samplesDanish) {
-                int result;
-                bool expected = TimeUtils.TryParseNumberFromMonthName(sample.Input, danish, out result);
+                bool expected = TimeUtils.TryParseNumberFromMonthName(sample.Input, danish, out int result);
                 Assert.AreEqual(sample.Expected, expected, sample.Input);
                 Assert.AreEqual(sample.Result, result, sample.Input);
             }
@@ -1019,15 +1334,13 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in samples1) {
-                EssentialsDateMonthName result;
-                bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, out result);
+                bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, out EssentialsDateMonthName result);
                 Assert.AreEqual(sample.Expected, expected);
                 Assert.AreEqual(sample.Result, result);
             }
 
             foreach (var sample in samplesDanish) {
-                EssentialsDateMonthName result;
-                bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, danish, out result);
+                bool expected = TimeUtils.TryParseEnumFromMonthName(sample.Input, danish, out EssentialsDateMonthName result);
                 Assert.AreEqual(sample.Expected, expected);
                 Assert.AreEqual(sample.Result, result);
             }

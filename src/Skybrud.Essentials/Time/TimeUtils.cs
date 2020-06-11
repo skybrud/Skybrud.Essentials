@@ -871,6 +871,8 @@ namespace Skybrud.Essentials.Time {
 
         #endregion
 
+        #region GetDayName
+
         /// <summary>
         /// Gets the English name of the day.
         /// </summary>
@@ -886,7 +888,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The English name of the day.</returns>
         public static string GetDayName(DateTime date) {
-            return date.ToString("dddd", CultureInfo.InvariantCulture);
+            return GetDayName(date.DayOfWeek);
         }
 
         /// <summary>
@@ -895,8 +897,43 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The English name of the day.</returns>
         public static string GetDayName(DateTimeOffset date) {
-            return date.ToString("dddd", CultureInfo.InvariantCulture);
+            return GetDayName(date.DayOfWeek);
         }
+
+        #endregion
+
+        #region GetAbbreviatedDayName
+
+        /// <summary>
+        /// Gets the abbreviated English name of the day.
+        /// </summary>
+        /// <param name="day">The day of the week.</param>
+        /// <returns>The English name of the day.</returns>
+        public static string GetAbbreviatedDayName(DayOfWeek day) {
+            return CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedDayName(day);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated English name of the day.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The English name of the day.</returns>
+        public static string GetAbbreviatedDayName(DateTime date) {
+            return GetAbbreviatedDayName(date.DayOfWeek);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated English name of the day.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The English name of the day.</returns>
+        public static string GetAbbreviatedDayName(DateTimeOffset date) {
+            return GetAbbreviatedDayName(date.DayOfWeek);
+        }
+
+        #endregion
+
+        #region GetLocalDayName
 
         /// <summary>
         /// Gets the name of the day according to the current culture.
@@ -913,7 +950,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTime date) {
-            return date.ToString("dddd", CultureInfo.CurrentCulture);
+            return GetLocalDayName(date.DayOfWeek);
         }
 
         /// <summary>
@@ -922,7 +959,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTimeOffset date) {
-            return date.ToString("dddd", CultureInfo.CurrentCulture);
+            return GetLocalDayName(date.DayOfWeek);
         }
 
         /// <summary>
@@ -942,7 +979,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
         /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTime date, CultureInfo culture) {
-            return date.ToString("dddd", culture);
+            return GetLocalDayName(date.DayOfWeek, culture);
         }
 
         /// <summary>
@@ -952,7 +989,81 @@ namespace Skybrud.Essentials.Time {
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
         /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTimeOffset date, CultureInfo culture) {
-            return date.ToString("dddd", culture);
+            return GetLocalDayName(date.DayOfWeek, culture);
+        }
+
+        #endregion
+
+        #region GetAbbreviatedLocalDayName
+
+        /// <summary>
+        /// Gets the abbreviated name of the day according to the current culture.
+        /// </summary>
+        /// <param name="day">The day of the week.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetAbbreviatedLocalDayName(DayOfWeek day) {
+            return CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedDayName(day);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the day according to the current culture.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetAbbreviatedLocalDayName(DateTime date) {
+            return GetAbbreviatedLocalDayName(date.DayOfWeek);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the day according to the current culture.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetAbbreviatedLocalDayName(DateTimeOffset date) {
+            return GetAbbreviatedLocalDayName(date.DayOfWeek);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the day according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="day">The day of the week.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetAbbreviatedLocalDayName(DayOfWeek day, CultureInfo culture) {
+            return culture.DateTimeFormat.GetAbbreviatedDayName(day);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the day according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetAbbreviatedLocalDayName(DateTime date, CultureInfo culture) {
+            return GetAbbreviatedLocalDayName(date.DayOfWeek, culture);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the day according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetAbbreviatedLocalDayName(DateTimeOffset date, CultureInfo culture) {
+            return GetAbbreviatedLocalDayName(date.DayOfWeek, culture);
+        }
+
+        #endregion
+
+        #region GetMonthName
+
+        /// <summary>
+        /// Gets the English name of the specified <paramref name="month"/>.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns>The English name of the month.</returns>
+        public static string GetMonthName(int month) {
+            return CultureInfo.InvariantCulture.DateTimeFormat.GetMonthName(month);
         }
 
         /// <summary>
@@ -961,7 +1072,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The English name of the month.</returns>
         public static string GetMonthName(DateTime date) {
-            return date.ToString("MMMM", CultureInfo.InvariantCulture);
+            return GetMonthName(date.Month);
         }
 
         /// <summary>
@@ -970,7 +1081,51 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The English name of the month.</returns>
         public static string GetMonthName(DateTimeOffset date) {
-            return date.ToString("MMMM", CultureInfo.InvariantCulture);
+            return GetMonthName(date.Month);
+        }
+
+        #endregion
+
+        #region GetAbbreviatedMonthName
+
+        /// <summary>
+        /// Gets the abbreviated English name of the specified <paramref name="month"/>.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns>The abbreviated English name of the month.</returns>
+        public static string GetAbbreviatedMonthName(int month) {
+            return CultureInfo.InvariantCulture.DateTimeFormat.GetAbbreviatedMonthName(month);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated English name of the month.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The abbreviated English name of the month.</returns>
+        public static string GetAbbreviatedMonthName(DateTime date) {
+            return GetAbbreviatedMonthName(date.Month);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated English name of the month.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The abbreviated English name of the month.</returns>
+        public static string GetAbbreviatedMonthName(DateTimeOffset date) {
+            return GetAbbreviatedMonthName(date.Month);
+        }
+
+        #endregion
+
+        #region GetLocalMonthName
+
+        /// <summary>
+        /// Gets the name of the <paramref name="month"/> according to the current culture.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns>The local name of the month.</returns>
+        public static string GetLocalMonthName(int month) {
+            return CultureInfo.CurrentCulture.DateTimeFormat.GetMonthName(month);
         }
 
         /// <summary>
@@ -979,7 +1134,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTime date) {
-            return date.ToString("MMMM", CultureInfo.CurrentCulture);
+            return GetLocalMonthName(date.Month);
         }
 
         /// <summary>
@@ -988,7 +1143,17 @@ namespace Skybrud.Essentials.Time {
         /// <param name="date">The date.</param>
         /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTimeOffset date) {
-            return date.ToString("MMMM", CultureInfo.CurrentCulture);
+            return GetLocalMonthName(date.Month);
+        }
+
+        /// <summary>
+        /// Gets the name of the month according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The local name of the month.</returns>
+        public static string GetLocalMonthName(int month, CultureInfo culture) {
+            return culture.DateTimeFormat.GetMonthName(month);
         }
 
         /// <summary>
@@ -998,7 +1163,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
         /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTime date, CultureInfo culture) {
-            return date.ToString("MMMM", culture);
+            return GetLocalMonthName(date.Month, culture);
         }
 
         /// <summary>
@@ -1008,8 +1173,72 @@ namespace Skybrud.Essentials.Time {
         /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
         /// <returns>The local name of the month.</returns>
         public static string GetLocalMonthName(DateTimeOffset date, CultureInfo culture) {
-            return date.ToString("MMMM", culture);
+            return GetLocalMonthName(date.Month, culture);
         }
+
+        #endregion
+
+
+        #region GetAbbreviatedLocalMonthName
+
+        /// <summary>
+        /// Gets the abbreviated name of the <paramref name="month"/> according to the current culture.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <returns>The abbreviated local name of the month.</returns>
+        public static string GetAbbreviatedLocalMonthName(int month) {
+            return CultureInfo.CurrentCulture.DateTimeFormat.GetAbbreviatedMonthName(month);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the month according to the current culture.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The abbreviated local name of the month.</returns>
+        public static string GetAbbreviatedLocalMonthName(DateTime date) {
+            return GetAbbreviatedLocalMonthName(date.Month);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the month according to the current culture.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns>The abbreviated local name of the month.</returns>
+        public static string GetAbbreviatedLocalMonthName(DateTimeOffset date) {
+            return GetAbbreviatedLocalMonthName(date.Month);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the month according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="month">The month.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The abbreviated local name of the month.</returns>
+        public static string GetAbbreviatedLocalMonthName(int month, CultureInfo culture) {
+            return culture.DateTimeFormat.GetAbbreviatedMonthName(month);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the month according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The abbreviated local name of the month.</returns>
+        public static string GetAbbreviatedLocalMonthName(DateTime date, CultureInfo culture) {
+            return GetAbbreviatedLocalMonthName(date.Month, culture);
+        }
+
+        /// <summary>
+        /// Gets the abbreviated name of the month according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The abbreviated local name of the month.</returns>
+        public static string GetAbbreviatedLocalMonthName(DateTimeOffset date, CultureInfo culture) {
+            return GetAbbreviatedLocalMonthName(date.Month, culture);
+        }
+
+        #endregion
 
         /// <summary>
         /// Converts the specified <paramref name="monthName"/> into the numerical representation of the month
