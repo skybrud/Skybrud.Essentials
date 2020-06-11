@@ -874,6 +874,15 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the English name of the day.
         /// </summary>
+        /// <param name="day">The day of the week.</param>
+        /// <returns>The English name of the day.</returns>
+        public static string GetDayName(DayOfWeek day) {
+            return CultureInfo.InvariantCulture.DateTimeFormat.GetDayName(day);
+        }
+
+        /// <summary>
+        /// Gets the English name of the day.
+        /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The English name of the day.</returns>
         public static string GetDayName(DateTime date) {
@@ -892,6 +901,15 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the name of the day according to the current culture.
         /// </summary>
+        /// <param name="day">The day of the week.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetLocalDayName(DayOfWeek day) {
+            return CultureInfo.CurrentCulture.DateTimeFormat.GetDayName(day);
+        }
+
+        /// <summary>
+        /// Gets the name of the day according to the current culture.
+        /// </summary>
         /// <param name="date">The date.</param>
         /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTime date) {
@@ -905,6 +923,16 @@ namespace Skybrud.Essentials.Time {
         /// <returns>The local name of the day.</returns>
         public static string GetLocalDayName(DateTimeOffset date) {
             return date.ToString("dddd", CultureInfo.CurrentCulture);
+        }
+
+        /// <summary>
+        /// Gets the name of the day according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="day">The day of the week.</param>
+        /// <param name="culture">The <see cref="CultureInfo"/> to be used.</param>
+        /// <returns>The local name of the day.</returns>
+        public static string GetLocalDayName(DayOfWeek day, CultureInfo culture) {
+            return culture.DateTimeFormat.GetDayName(day);
         }
 
         /// <summary>
