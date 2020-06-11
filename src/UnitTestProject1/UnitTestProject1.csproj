@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Collections\CollectionTests.cs" />
     <Compile Include="Enums\EnumPascalCaseConverterTests.cs" />
     <Compile Include="Enums\EnumLowerCaseConverterTests.cs" />
     <Compile Include="Enums\EnumTests.cs" />
@@ -115,6 +116,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>
