@@ -21,6 +21,15 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
+        /// Gets an array of all values of the specified enum <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">The type of the enum class.</param>
+        /// <returns>An array of <see cref="Enum"/>.</returns>
+        public static Enum[] GetEnumValues(Type type) {
+            return Enum.GetValues(type).Cast<Enum>().ToArray();
+        }
+
+        /// <summary>
         /// Parses the specified <paramref name="str"/> into the enum of type <typeparamref name="T"/>. If
         /// <paramref name="str"/> cannot be parsed, an exception of type <see cref="EnumParseException"/> will be
         /// thrown instead.

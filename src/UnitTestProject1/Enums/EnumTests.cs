@@ -1,11 +1,37 @@
-﻿using System.Net;
+﻿using System;
+using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Enums;
 
 namespace UnitTestProject1.Enums {
 
     [TestClass]
     public class EnumTests {
+
+        [TestMethod]
+        public void GetEnumValues() {
+
+            Enum[] values = EnumUtils.GetEnumValues(typeof(SortOrder));
+
+            Assert.AreEqual(2, values.Length);
+
+            Assert.AreEqual(values[0], SortOrder.Ascending);
+            Assert.AreEqual(values[1], SortOrder.Descending);
+
+        }
+
+        [TestMethod]
+        public void GetEnumValuesOfT() {
+
+            SortOrder[] values = EnumUtils.GetEnumValues<SortOrder>();
+
+            Assert.AreEqual(2, values.Length);
+
+            Assert.AreEqual(values[0], SortOrder.Ascending);
+            Assert.AreEqual(values[1], SortOrder.Descending);
+
+        }
 
         [TestMethod]
         public void ParseEnum() {
