@@ -3,7 +3,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;netstandard1.3;net45;net46;net47</TargetFrameworks>
+    <TargetFrameworks>netstandard1.1;netstandard1.3;netstandard2.0;net45;net46;net47;net48</TargetFrameworks>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <BuildInParallel>false</BuildInParallel>
   </PropertyGroup>
@@ -16,11 +16,15 @@
     <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
+    <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAZ_FILE_VERSION_INFO</DefineConstants>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='net48'">
     <DefineConstants>NET_FRAMEWORK;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAZ_FILE_VERSION_INFO</DefineConstants>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='net48'">
     <Reference Include="System.Web" />
   </ItemGroup>
 
@@ -46,15 +50,15 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Essentials.xml</DocumentationFile>
   </PropertyGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.1' OR '$(TargetFramework)'=='netstandard1.3'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.1' OR '$(TargetFramework)'=='netstandard1.3' OR '$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='net48'">
     <PackageReference Include="Newtonsoft.Json" Version="6.0.8" />
   </ItemGroup>
 
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3' OR '$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
   
