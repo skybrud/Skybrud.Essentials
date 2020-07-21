@@ -108,6 +108,46 @@ namespace Skybrud.Essentials.Reflection {
             return type.GetTypeInfo().IsEnum;
         }
 
+        /// <summary>
+        /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
+        /// </summary>
+        /// <param name="member">The method.</param>
+        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(MemberInfo member) {
+            return IsObsolete(member, out _);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
+        /// </summary>
+        /// <param name="member">The method.</param>
+        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the member has been marked as obsolete.</param>
+        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(MemberInfo member, out ObsoleteAttribute attribute) {
+            attribute = member.GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
+            return attribute != null;
+        }
+
+        /// <summary>
+        /// Returns whether <typeparamref name="T"/> is marked as obsolete.
+        /// </summary>
+        /// <typeparam name="T">The type to check.</typeparam>
+        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete<T>() {
+            return IsObsolete<T>(out _);
+        }
+
+        /// <summary>
+        /// Returns whether <typeparamref name="T"/> is marked as obsolete.
+        /// </summary>
+        /// <typeparam name="T">The type to check.</typeparam>
+        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the type has been marked as obsolete.</param>
+        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete<T>(out ObsoleteAttribute attribute) {
+            attribute = typeof(T).GetTypeInfo().GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
+            return attribute != null;
+        }
+
     }
 
 }
