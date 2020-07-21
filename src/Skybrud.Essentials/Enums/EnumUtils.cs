@@ -105,13 +105,13 @@ namespace Skybrud.Essentials.Enums {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
 
             // Initialize "value"
-            value = default(T);
+            value = default;
 
             // Check whether the specified string is NULL (or white space)
             if (string.IsNullOrWhiteSpace(str)) return false;
 
             // Convert "str" to camel case and then lowercase
-            string modified = StringUtils.ToCamelCase(str + "").ToLowerInvariant();
+            string modified = StringUtils.ToCamelCase(str + string.Empty).ToLowerInvariant();
 
             // Parse the enum
             foreach (T v in GetEnumValues<T>()) {
