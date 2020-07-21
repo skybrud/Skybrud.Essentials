@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Linq;
 using System.Reflection;
 
 namespace Skybrud.Essentials.Reflection {
@@ -68,15 +69,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is a class type; otherwise <c>false</c>.</returns>
         public static bool IsClass(Type type) {
-            
-#if NET_FRAMEWORK
-            return type.IsClass;
-#endif
-            
-#if NET_STANDARD
             return type.GetTypeInfo().IsClass;
-#endif
-
         }
 
         /// <summary>
@@ -94,15 +87,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is an interface type; otherwise <c>false</c>.</returns>
         public static bool IsInterface(Type type) {
-            
-#if NET_FRAMEWORK
-            return type.IsInterface;
-#endif
-            
-#if NET_STANDARD
             return type.GetTypeInfo().IsInterface;
-#endif
-
         }
 
         /// <summary>
@@ -120,15 +105,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is an enum; otherwise <c>false</c>.</returns>
         public static bool IsEnum(Type type) {
-            
-#if NET_FRAMEWORK
-            return type.IsEnum;
-#endif
-            
-#if NET_STANDARD
             return type.GetTypeInfo().IsEnum;
-#endif
-
         }
 
     }
