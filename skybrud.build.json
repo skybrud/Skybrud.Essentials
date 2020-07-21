@@ -9,8 +9,10 @@
             "source": "src/{packageName}/bin/Release/",
             "destination": "bin/",
             "patterns": [
-              "**/*.dll",
-              "**/*.xml"
+              "/Skybrud.Essentials.dll$",
+              "/Skybrud.Essentials.xml$",
+              "/Newtonsoft.Json.dll$",
+              "/Newtonsoft.Json.xml$"
             ]
           },
           {

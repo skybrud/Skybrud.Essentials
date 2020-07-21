@@ -1,4 +1,5 @@
 ﻿using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -14,7 +15,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="pattern">The regular expression pattern to match.</param>
         /// <param name="match">The match.</param>
         /// <returns><c>true</c> if the regular expression finds a match; otherwise, <c>false</c>.</returns>
-        public static bool IsMatch(string input, string pattern, out Match match) {
+        public static bool IsMatch(string input, [RegexPattern] string pattern, out Match match) {
             match = Regex.Match(input ?? string.Empty, pattern);
             return match.Success;
         }
@@ -27,7 +28,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="options">A bitwise combination of the enumeration values that provide options for matching.</param>
         /// <param name="match">The match.</param>
         /// <returns><c>true</c> if the regular expression finds a match; otherwise, <c>false</c>.</returns>
-        public static bool IsMatch(string input, string pattern, RegexOptions options, out Match match) {
+        public static bool IsMatch(string input, [RegexPattern] string pattern, RegexOptions options, out Match match) {
             match = Regex.Match(input ?? string.Empty, pattern, options);
             return match != null && match.Success;
         }
@@ -39,7 +40,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="pattern">The regular expression pattern to match.</param>
         /// <param name="matches">The matches.</param>
         /// <returns><c>true</c> if the regular expression finds any matches; otherwise, <c>false</c>.</returns>
-        public static bool IsMatch(string input, string pattern, out MatchCollection matches) {
+        public static bool IsMatch(string input, [RegexPattern] string pattern, out MatchCollection matches) {
             matches = Regex.Matches(input ?? string.Empty, pattern);
             return matches != null && matches.Count > 0;
         }
@@ -52,7 +53,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="options">A bitwise combination of the enumeration values that provide options for matching.</param>
         /// <param name="matches">The matches.</param>
         /// <returns><c>true</c> if the regular expression finds any matches; otherwise, <c>false</c>.</returns>
-        public static bool IsMatch(string input, string pattern, RegexOptions options, out MatchCollection matches) {
+        public static bool IsMatch(string input, [RegexPattern] string pattern, RegexOptions options, out MatchCollection matches) {
             matches = Regex.Matches(input ?? string.Empty, pattern, options);
             return matches != null && matches.Count > 0;
         }

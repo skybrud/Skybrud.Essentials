@@ -1,4 +1,5 @@
 ﻿using System;
+using JetBrains.Annotations;
 
 namespace Skybrud.Essentials.Common {
 
@@ -22,14 +23,14 @@ namespace Skybrud.Essentials.Common {
         /// Initializes a new exception for the property with the specified <paramref name="propertyName"/>.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
-        public PropertyNotSetException(string propertyName) : this(propertyName, "Property cannot be empty.") { }
+        public PropertyNotSetException([InvokerParameterName] string propertyName) : this(propertyName, "Property cannot be empty.") { }
 
         /// <summary>
         /// Initializes a new exception for the property with the specified <paramref name="propertyName"/>.
         /// </summary>
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="message">The message of the exception.</param>
-        public PropertyNotSetException(string propertyName, string message) : base(message) {
+        public PropertyNotSetException([InvokerParameterName] string propertyName, string message) : base(message) {
             PropertyName = propertyName;
         }
 
