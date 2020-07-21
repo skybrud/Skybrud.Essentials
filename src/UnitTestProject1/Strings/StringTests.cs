@@ -183,6 +183,9 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(314, StringUtils.ParseDouble("3,14"), "Check #4 failed");
             Assert.AreEqual(3140, StringUtils.ParseDouble("3,140"), "Check #5 failed");
 
+            Assert.AreEqual(3.14, "3.14".ToDouble());
+            Assert.AreEqual(1, "nope".ToDouble(1));
+
         }
 
         [TestMethod]
@@ -533,6 +536,36 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void IsFloat() {
+
+            Assert.AreEqual(false, StringUtils.IsFloat(""), "#1");
+            Assert.AreEqual(false, StringUtils.IsFloat("a"), "#2");
+            Assert.AreEqual(true, StringUtils.IsFloat("42"), "#3");
+            Assert.AreEqual(true, StringUtils.IsFloat("1234"), "#4");
+            Assert.AreEqual(false, StringUtils.IsFloat("a1234"), "#5");
+            Assert.AreEqual(false, StringUtils.IsFloat("a1234a"), "#6");
+            Assert.AreEqual(false, StringUtils.IsFloat("1234a"), "#7");
+            Assert.AreEqual(false, StringUtils.IsFloat("$1234"), "#8");
+            Assert.AreEqual(false, StringUtils.IsFloat("1234kr"), "#9");
+
+            Assert.AreEqual(true, StringUtils.IsFloat(int.MinValue + ""), "#10");
+            Assert.AreEqual(true, StringUtils.IsFloat(int.MaxValue + ""), "#11");
+
+            Assert.AreEqual(true, StringUtils.IsFloat(long.MinValue + ""), "#12");
+            Assert.AreEqual(true, StringUtils.IsFloat(long.MaxValue + ""), "#13");
+
+            Assert.AreEqual(true, StringUtils.IsFloat("-3.14159265358979"), "#14");
+            Assert.AreEqual(true, StringUtils.IsFloat("+3.14159265358979"), "#15");
+
+            Assert.AreEqual(true, "3.14".IsFloat(), "#16");
+            Assert.AreEqual(false, "nope".IsFloat(), "#17");
+
+            Assert.AreEqual("3.1400000", "3.14".IsFloat(out float value1) ? value1.ToString("F7") : "0", "#18");
+            Assert.AreEqual(0, "nope".IsFloat(out float value2) ? value2 : 0, "#19");
+
+        }
+
+        [TestMethod]
         public void IsDouble() {
 
             Assert.AreEqual(false, StringUtils.IsDouble(""), "#1");
@@ -553,6 +586,12 @@ namespace UnitTestProject1.Strings {
 
             Assert.AreEqual(true, StringUtils.IsDouble("-3.14159265358979"), "#14");
             Assert.AreEqual(true, StringUtils.IsDouble("+3.14159265358979"), "#15");
+
+            Assert.AreEqual(true, "3.14".IsDouble(), "#16");
+            Assert.AreEqual(false, "nope".IsDouble(), "#17");
+
+            Assert.AreEqual(3.14, "3.14".IsDouble(out double value1) ? value1 : 0, "#18");
+            Assert.AreEqual(0, "nope".IsDouble(out double value2) ? value2 : 0, "#19");
 
         }
 
