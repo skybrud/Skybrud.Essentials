@@ -70,6 +70,7 @@
     <Compile Include="Json\JObjectTests.cs" />
     <Compile Include="Maps\DistanceTests.cs" />
     <Compile Include="Locations\LocationTests.cs" />
+    <Compile Include="Maps\PointTests.cs" />
     <Compile Include="Reflection\ReflectionTests.cs" />
     <Compile Include="Security\SecurityTests.cs" />
     <Compile Include="Strings\StringTests.cs" />
