@@ -1,9 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Locations;
 using Skybrud.Essentials.Maps.Geometry;
 using Skybrud.Essentials.Reflection;
+
+using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 #pragma warning disable 618
 
@@ -65,6 +68,52 @@ namespace UnitTestProject1.Reflection {
 
             Assert.IsFalse(ReflectionUtils.IsEnum(typeof(IPoint)));
             Assert.IsFalse(ReflectionUtils.IsEnum<IPoint>());
+
+        }
+
+        [TestMethod]
+        public void HasCustomAttribute() {
+
+            bool success = ReflectionUtils.HasCustomAttribute(EnumTest.WithDescription, out DescriptionAttribute result);
+
+            Assert.AreEqual(true, success);
+            Assert.AreEqual("A description.", result.Description);
+
+        }
+
+        [TestMethod]
+        public void EnumHasCustomAttributes() {
+
+            bool success = ReflectionUtils.HasCustomAttributes(EnumTest.WithDescription, out DescriptionAttribute[] result);
+
+            Assert.AreEqual(true, success);
+            Assert.AreEqual(1, result.Length);
+            Assert.AreEqual("A description.", result[0].Description);
+
+        }
+
+        [TestMethod]
+        public void EnumGetCustomAttributes() {
+
+            DescriptionAttribute[] attributes1 = ReflectionUtils.GetCustomAttributes<DescriptionAttribute>(EnumTest.WithDescription);
+
+            ObsoleteAttribute[] attributes2 = ReflectionUtils.GetCustomAttributes<ObsoleteAttribute>(EnumTest.IsObsolete);
+
+            Assert.AreEqual(1, attributes1.Length);
+            Assert.AreEqual("A description.", attributes1[0].Description);
+
+            Assert.AreEqual(1, attributes2.Length);
+            Assert.AreEqual("This is obsolete.", attributes2[0].Message);
+
+        }
+
+        public enum EnumTest {
+
+            [Description("A description.")]
+            WithDescription,
+
+            [Obsolete("This is obsolete.")]
+            IsObsolete
 
         }
 
