@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Reflection;
 
 namespace Skybrud.Essentials.Collections.Extensions {
 
@@ -66,6 +68,49 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
         public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer, SortOrder order) {
             return order == SortOrder.Descending ? source.OrderByDescending(keySelector, comparer) : source.OrderBy(keySelector, comparer);
+        }
+
+        /// <summary>
+        /// Casts the elements of an <see cref="IEnumerable"/> to the specified <paramref name="targetType"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="IEnumerable"/> that contains the elements to be cast to <paramref name="targetType"/>.</param>
+        /// <param name="targetType"></param>
+        /// <returns>An <see cref="IEnumerable"/> that contains each element of the source sequence cast to the specified type.</returns>
+        /// <remarks>The <see cref="Enumerable.Cast{TResult}"/> method requires developers to know the target type at compile time. Using the non-generic <see cref="Cast"/> method instead, the target type can be specified at runtime.</remarks>
+        public static IEnumerable Cast(this IEnumerable source, Type targetType) {
+            return (IEnumerable) typeof(Enumerable)
+                .GetTypeInfo()
+                .GetDeclaredMethod("Cast")
+                .MakeGenericMethod(targetType)
+                .Invoke(null, new object[] { source });
+        }
+
+        /// <summary>
+        /// Creates an <see cref="IList"/> from an <see cref="IEnumerable"/>.
+        /// </summary>
+        /// <param name="source">The <see cref="IEnumerable"/> to create an <see cref="IList"/> from.</param>
+        /// <param name="targetType">The type of the elements of <paramref name="source"/>.</param>
+        /// <returns>An <see cref="IList"/> that contains elements from the input sequence.</returns>
+        public static IList ToList(this IEnumerable source, Type targetType) {
+            return (IList) typeof(Enumerable)
+                .GetTypeInfo()
+                .GetDeclaredMethod("ToList")
+                .MakeGenericMethod(targetType)
+                .Invoke(null, new object[] { source });
+        }
+
+        /// <summary>
+        /// Creates an array from a <see cref="IEnumerable"/>.
+        /// </summary>
+        /// <param name="source">An <see cref="IEnumerable"/> to create an array from.</param>
+        /// <param name="targetType">The type of the elements of <paramref name="source"/>.</param>
+        /// <returns>An array that contains the elements from the input sequence.</returns>
+        public static Array ToArray(this IEnumerable source, Type targetType) {
+            return (Array) typeof(Enumerable)
+                .GetTypeInfo()
+                .GetDeclaredMethod("ToArray")
+                .MakeGenericMethod(targetType)
+                .Invoke(null, new object[] { source });
         }
 
     }

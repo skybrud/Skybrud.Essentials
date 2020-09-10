@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
@@ -127,6 +129,52 @@ namespace UnitTestProject1.Collections {
             IOrderedEnumerable<string> result = samples.OrderBy(x => x, comparer, SortOrder.Descending);
 
             Assert.AreEqual("aand,and", string.Join(",", result));
+
+        }
+        
+        [TestMethod]
+        public void Cast() {
+
+            string[] hello = { "alpha", "bravo", "charlie" };
+
+            IEnumerable collection = hello.Cast(typeof(string));
+
+            IEnumerable<string> collectionOfT = collection as IEnumerable<string>;
+
+            Assert.IsNotNull(collectionOfT);
+            Assert.AreEqual(3, collectionOfT.Count());
+
+        }
+        
+        [TestMethod]
+        public void ToList() {
+
+            string[] hello = { "alpha", "bravo", "charlie" };
+
+            IList list = hello.ToList(typeof(string));
+
+            Assert.AreEqual(3, list.Count);
+
+            List<string> listOfT = list as List<string>;
+
+            Assert.IsNotNull(listOfT);
+            Assert.AreEqual(3, listOfT.Count);
+
+        }
+        
+        [TestMethod]
+        public void ToArray() {
+
+            List<string> hello = new List<string> { "alpha", "bravo", "charlie" };
+
+            Array array = hello.ToArray(typeof(string));
+
+            Assert.AreEqual(3, array.Length);
+
+            string[] arrayOfT = array as string[];
+
+            Assert.IsNotNull(arrayOfT);
+            Assert.AreEqual(3, arrayOfT.Length);
 
         }
 
