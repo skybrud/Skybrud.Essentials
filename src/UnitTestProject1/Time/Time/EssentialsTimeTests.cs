@@ -121,6 +121,32 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void IsTomorrow() {
+
+            EssentialsTime yesterday = EssentialsTime.Today.AddDays(-1);
+            EssentialsTime today = EssentialsTime.Today;
+            EssentialsTime tomorrow = EssentialsTime.Today.AddDays(+1);
+
+            Assert.AreEqual(false, yesterday.IsTomorrow, "#yesterday");
+            Assert.AreEqual(false, today.IsTomorrow, "#today");
+            Assert.AreEqual(true, tomorrow.IsTomorrow, "#tomorrow");
+
+        }
+
+        [TestMethod]
+        public void IsYesterday() {
+
+            EssentialsTime yesterday = EssentialsTime.Today.AddDays(-1);
+            EssentialsTime today = EssentialsTime.Today;
+            EssentialsTime tomorrow = EssentialsTime.Today.AddDays(+1);
+
+            Assert.AreEqual(true, yesterday.IsYesterday, "#yesterday");
+            Assert.AreEqual(false, today.IsYesterday, "#today");
+            Assert.AreEqual(false, tomorrow.IsYesterday, "#tomorrow");
+
+        }
+
         public class Sample {
 
             public string Expected { get; }

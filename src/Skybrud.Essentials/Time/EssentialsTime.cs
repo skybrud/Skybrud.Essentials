@@ -190,6 +190,16 @@ namespace Skybrud.Essentials.Time {
         public bool IsToday => ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd");
 
         /// <summary>
+        /// Gets whether the date of this <see cref="EssentialsTime"/> matches the day after the current day.
+        /// </summary>
+        public bool IsTomorrow => ToString("yyyy-MM-dd") == DateTime.Now.AddDays(+1).ToString("yyyy-MM-dd");
+
+        /// <summary>
+        /// Gets whether the date of this <see cref="EssentialsTime"/> matches the day before the current day.
+        /// </summary>
+        public bool IsYesterday => ToString("yyyy-MM-dd") == DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
+
+        /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
         /// </summary>
         public string Iso8601 => TimeUtils.ToIso8601(DateTimeOffset);
