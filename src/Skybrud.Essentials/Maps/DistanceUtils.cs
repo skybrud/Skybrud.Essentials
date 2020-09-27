@@ -5,16 +5,18 @@ using static Skybrud.Essentials.Maps.EarthConstants;
 namespace Skybrud.Essentials.Maps {
 
     /// <summary>
-    /// Static utility class with helper methods related to locations.
+    /// Static utility class with helper methods related to <see cref="IPoint"/>.
     /// </summary>
+    [Obsolete("Use the PointUtils class instead.")]
     public class DistanceUtils {
-        
+
         /// <summary>
         /// Calculates the distance in metres between two GPS locations.
         /// </summary>
         /// <param name="loc1">The first location.</param>
         /// <param name="loc2">The second location.</param>
         /// <returns>The distance in metres between the two locations.</returns>
+        [Obsolete("Use the PointUtils.GetDistance method instead.")]
         public static double GetDistance(IPoint loc1, IPoint loc2) {
             if (loc1 == null) throw new ArgumentNullException(nameof(loc1));
             if (loc2 == null) throw new ArgumentNullException(nameof(loc2));
@@ -28,6 +30,7 @@ namespace Skybrud.Essentials.Maps {
         /// <param name="loc2">The second location.</param>
         /// <param name="radius">The equatorial radius of the spheroid.</param>
         /// <returns>The distance in metres between the two locations.</returns>
+        [Obsolete("Use the PointUtils.GetDistance method instead.")]
         public static double GetDistance(IPoint loc1, IPoint loc2, double radius) {
             if (loc1 == null) throw new ArgumentNullException(nameof(loc1));
             if (loc2 == null) throw new ArgumentNullException(nameof(loc2));
@@ -42,6 +45,7 @@ namespace Skybrud.Essentials.Maps {
         /// <param name="lat2">The latitude of the second location.</param>
         /// <param name="lng2">The longitude of the second location.</param>
         /// <returns>The distance in metres between the two locations.</returns>
+        [Obsolete("Use the PointUtils.GetDistance method instead.")]
         public static double GetDistance(double lat1, double lng1, double lat2, double lng2) {
             return GetDistance(lat1, lng1, lat2, lng2, EquatorialRadius);
         }
@@ -55,6 +59,7 @@ namespace Skybrud.Essentials.Maps {
         /// <param name="lng2">The longitude of the second location.</param>
         /// <param name="radius">The equatorial radius of the spheroid.</param>
         /// <returns>The distance in metres between the two points.</returns>
+        [Obsolete("Use the PointUtils.GetDistance method instead.")]
         public static double GetDistance(double lat1, double lng1, double lat2, double lng2, double radius) {
 
             // Result should match: https://developers.google.com/maps/documentation/javascript/reference/3/geometry#spherical.computeDistanceBetween
