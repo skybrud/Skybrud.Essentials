@@ -240,6 +240,17 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> value to a anum of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="input">The input value to be converted.</param>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
+        public static T FromInt32<T>(int input) where T : struct {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            return (T) Enum.ToObject(typeof(T), input);
+        }
+
+        /// <summary>
         /// Returns whether <typeparamref name="T"/> is an enum.
         /// </summary>
         /// <typeparam name="T">The type to check.</typeparam>
