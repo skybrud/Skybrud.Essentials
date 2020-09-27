@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Collections;
@@ -113,10 +114,54 @@ namespace UnitTestProject1.Enums {
         }
 
         [TestMethod]
+        public void MinArray() {
+
+            var result1 = EnumUtils.Min(HttpStatusCode.OK, HttpStatusCode.NotFound, HttpStatusCode.Continue);
+            var result2 = EnumUtils.Min(HttpStatusCode.Continue, HttpStatusCode.NotFound, HttpStatusCode.OK);
+
+            Assert.AreEqual(HttpStatusCode.Continue, result1, "#1");
+            Assert.AreEqual(HttpStatusCode.Continue, result2, "#2");
+
+        }
+
+        [TestMethod]
+        public void MinList() {
+
+            var result1 = EnumUtils.Min(new List<HttpStatusCode> { HttpStatusCode.OK, HttpStatusCode.NotFound, HttpStatusCode.Continue });
+            var result2 = EnumUtils.Min(new List<HttpStatusCode> { HttpStatusCode.Continue, HttpStatusCode.NotFound, HttpStatusCode.OK });
+
+            Assert.AreEqual(HttpStatusCode.Continue, result1, "#1");
+            Assert.AreEqual(HttpStatusCode.Continue, result2, "#2");
+
+        }
+
+        [TestMethod]
         public void Max() {
 
             var result1 = EnumUtils.Max(HttpStatusCode.OK, HttpStatusCode.NotFound);
             var result2 = EnumUtils.Max(HttpStatusCode.NotFound, HttpStatusCode.OK);
+
+            Assert.AreEqual(HttpStatusCode.NotFound, result1, "#1");
+            Assert.AreEqual(HttpStatusCode.NotFound, result2, "#2");
+
+        }
+
+        [TestMethod]
+        public void MaxArray() {
+
+            var result1 = EnumUtils.Max(HttpStatusCode.OK, HttpStatusCode.NotFound, HttpStatusCode.Continue);
+            var result2 = EnumUtils.Max(HttpStatusCode.Continue, HttpStatusCode.NotFound, HttpStatusCode.OK);
+
+            Assert.AreEqual(HttpStatusCode.NotFound, result1, "#1");
+            Assert.AreEqual(HttpStatusCode.NotFound, result2, "#2");
+
+        }
+
+        [TestMethod]
+        public void MaxList() {
+
+            var result1 = EnumUtils.Max(new List<HttpStatusCode> { HttpStatusCode.OK, HttpStatusCode.NotFound, HttpStatusCode.Continue });
+            var result2 = EnumUtils.Max(new List<HttpStatusCode> { HttpStatusCode.Continue, HttpStatusCode.NotFound, HttpStatusCode.OK });
 
             Assert.AreEqual(HttpStatusCode.NotFound, result1, "#1");
             Assert.AreEqual(HttpStatusCode.NotFound, result2, "#2");
