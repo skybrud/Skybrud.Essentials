@@ -176,8 +176,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
         public static T Min<T>(T a, T b) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-            string name = Enum.GetName(typeof(T), Math.Min(Convert.ToInt32(a), Convert.ToInt32(b)));
-            return (T) Enum.Parse(typeof(T), name ?? throw new InvalidOperationException(), true);
+            return (T) Enum.ToObject(typeof(T), Math.Min(Convert.ToInt32(a), Convert.ToInt32(b)));
         }
 
         /// <summary>
@@ -213,8 +212,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
         public static T Max<T>(T a, T b) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-            string name = Enum.GetName(typeof(T), Math.Max(Convert.ToInt32(a), Convert.ToInt32(b)));
-            return (T) Enum.Parse(typeof(T), name ?? throw new InvalidOperationException(), true);
+            return (T) Enum.ToObject(typeof(T), Math.Max(Convert.ToInt32(a), Convert.ToInt32(b)));
         }
 
         /// <summary>
