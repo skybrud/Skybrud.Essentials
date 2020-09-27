@@ -279,6 +279,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dateTime">An instance <see cref="DateTime"/> the instance should be based on.</param>
         /// <param name="timeZone">The time zone.</param>
         public EssentialsTime(DateTime dateTime, TimeZoneInfo timeZone) {
+            dateTime = TimeZoneInfo.ConvertTime(dateTime, timeZone);
             DateTimeOffset = new DateTimeOffset(dateTime, timeZone.GetUtcOffset(dateTime));
         }
 

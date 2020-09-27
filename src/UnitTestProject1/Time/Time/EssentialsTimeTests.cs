@@ -14,11 +14,14 @@ namespace UnitTestProject1.Time.Time {
         [TestMethod]
         public void Constructor() {
 
-
             TimeZoneInfo utc = TimeZoneInfo.FindSystemTimeZoneById("UTC");
             TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
 
             var samples = new[] {
+
+                new Sample("2019-03-01 00:00:00:000 +00:00", new EssentialsTime(2019, 3, 1, utc)),
+                new Sample("2019-03-31 00:00:00:000 +00:00", new EssentialsTime(2019, 3, 31, utc)),
+                new Sample("2019-04-01 00:00:00:000 +00:00", new EssentialsTime(2019, 4, 1, utc)),
 
                 new Sample("2019-03-01 00:00:00:000 +01:00", new EssentialsTime(2019, 3, 1, romance)),
                 new Sample("2019-03-31 00:00:00:000 +01:00", new EssentialsTime(2019, 3, 31, romance)),
@@ -41,6 +44,59 @@ namespace UnitTestProject1.Time.Time {
                 Assert.AreEqual(s.Expected, s.Time.ToString(Format), $"Sample at index {i} failed test");
 
             }
+
+        }
+
+        [TestMethod]
+        public void ConstructorDateTimeAndTimeZoneInfo1() {
+
+            TimeZoneInfo utc = TimeZoneInfo.FindSystemTimeZoneById("UTC");
+
+            DateTime input = new DateTime(2020, 9, 27, 12, 17, 21, DateTimeKind.Utc);
+
+            EssentialsTime result = new EssentialsTime(input, utc);
+
+            Assert.AreEqual("2020-09-27 12:17:21:000 +00:00", result.ToString(Format));
+
+        }
+
+        [TestMethod]
+        public void ConstructorDateTimeAndTimeZoneInfo2() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTime input = new DateTime(2020, 9, 27, 12, 17, 21, DateTimeKind.Utc);
+
+            EssentialsTime result = new EssentialsTime(input, romance);
+
+            Assert.AreEqual("2020-09-27 14:17:21:000 +02:00", result.ToString(Format));
+
+        }
+
+        [TestMethod]
+        public void ConstructorDateTimeAndTimeZoneInfo3() {
+
+            // Convert to Eastern European Time
+            TimeZoneInfo eet = TimeZoneInfo.FindSystemTimeZoneById("E. Europe Standard Time");
+
+            DateTime input = new DateTime(2020, 9, 27, 12, 17, 21, DateTimeKind.Utc);
+
+            EssentialsTime result = new EssentialsTime(input, eet);
+
+            Assert.AreEqual("2020-09-27 15:17:21:000 +03:00", result.ToString(Format));
+
+        }
+
+        [TestMethod]
+        public void ConstructorDateTimeAndTimeZoneInfo4() {
+
+            // Notice: this test is likely fail if the local time zone isn't Romance Standard Time
+
+            DateTime input = new DateTime(2020, 9, 27, 14, 17, 21, DateTimeKind.Local);
+
+            EssentialsTime result = new EssentialsTime(input, TimeZoneInfo.Utc);
+
+            Assert.AreEqual("2020-09-27 12:17:21:000 +00:00", result.ToString(Format));
 
         }
 
