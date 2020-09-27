@@ -185,7 +185,7 @@ namespace Skybrud.Essentials.Time {
         public bool IsPositive => UnixTimestamp > 0;
 
         /// <summary>
-        /// Gets hwther the date of this <see cref="EssentialsTime"/> matches the current. day.
+        /// Gets whether the date of this <see cref="EssentialsTime"/> matches the current day.
         /// </summary>
         public bool IsToday => ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd");
 
