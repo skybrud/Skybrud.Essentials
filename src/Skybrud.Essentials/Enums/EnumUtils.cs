@@ -181,6 +181,30 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
+        /// Returns the minimum value of the specified enum <paramref name="values"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="values">The enum values to compare.</param>
+        /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
+        public static T Min<T>(params T[] values) where T : struct {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            if (values == null) throw new ArgumentNullException(nameof(values));
+            return (T) Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
+        }
+
+        /// <summary>
+        /// Returns the minimum value of the specified enum <paramref name="values"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="values">The enum values to compare.</param>
+        /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
+        public static T Min<T>(IEnumerable<T> values) where T : struct {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            if (values == null) throw new ArgumentNullException(nameof(values));
+            return (T) Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
+        }
+
+        /// <summary>
         /// Returns the maximum value of the enum values <paramref name="a"/> and <paramref name="b"/>.
         /// </summary>
         /// <typeparam name="T">The enum type.</typeparam>
@@ -191,6 +215,30 @@ namespace Skybrud.Essentials.Enums {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
             string name = Enum.GetName(typeof(T), Math.Max(Convert.ToInt32(a), Convert.ToInt32(b)));
             return (T) Enum.Parse(typeof(T), name ?? throw new InvalidOperationException(), true);
+        }
+
+        /// <summary>
+        /// Returns the maximum value of the specified enum <paramref name="values"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="values">The enum values to compare.</param>
+        /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
+        public static T Max<T>(params T[] values) where T : struct {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            if (values == null) throw new ArgumentNullException(nameof(values));
+            return (T) Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
+        }
+
+        /// <summary>
+        /// Returns the maximum value of the specified enum <paramref name="values"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="values">The enum values to compare.</param>
+        /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
+        public static T Max<T>(IEnumerable<T> values) where T : struct {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            if (values == null) throw new ArgumentNullException(nameof(values));
+            return (T) Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
         }
 
         /// <summary>
