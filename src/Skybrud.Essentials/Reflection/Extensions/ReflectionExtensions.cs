@@ -30,6 +30,16 @@ namespace Skybrud.Essentials.Reflection.Extensions {
         }
 
         /// <summary>
+        /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute to return.</typeparam>
+        /// <param name="value">The enum value to get the attribute for.</param>
+        /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
+        public static T GetCustomAttribute<T>(this Enum value) where T : Attribute {
+            return ReflectionUtils.GetCustomAttribute<T>(value);
+        }
+
+        /// <summary>
         /// Returns an array of attributes of type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the attributes to return.</typeparam>
