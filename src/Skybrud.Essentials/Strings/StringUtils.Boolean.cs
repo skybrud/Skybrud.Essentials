@@ -9,7 +9,7 @@
         /// <param name="str">The string to be parsed.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).</returns>
         public static bool ParseBoolean(string str) {
-            return ParseBoolean(str, false);
+            return TryParseBoolean(str, out bool result) ? result : default;
         }
 
         /// <summary>
@@ -23,26 +23,7 @@
         /// <c>false</c> if <paramref name="str"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
         public static bool ParseBoolean(string str, bool fallback) {
-
-            switch ((str ?? string.Empty).ToLower()) {
-
-                case "true":
-                case "1":
-                case "t":
-                case "on":
-                    return true;
-
-                case "false":
-                case "0":
-                case "f":
-                case "off":
-                    return false;
-
-                default:
-                    return fallback;
-
-            }
-
+            return TryParseBoolean(str, out bool result) ? result : fallback;
         }
 
         /// <summary>
@@ -52,7 +33,7 @@
         /// <param name="value">The value to be parsed.</param>
         /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).</returns>
         public static bool ParseBoolean(object value) {
-            return ParseBoolean(value + string.Empty);
+            return ParseBoolean(value?.ToString() ?? string.Empty);
         }
 
         /// <summary>
@@ -66,7 +47,39 @@
         /// <c>false</c> if <paramref name="value"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
         public static bool ParseBoolean(object value, bool fallback) {
-            return ParseBoolean(value + string.Empty, fallback);
+            return ParseBoolean(value?.ToString() ?? string.Empty);
+        }
+
+        /// <summary>
+        /// Tries to convert the specified string representation of a logical value to its <see cref="bool"/> equivalent.
+        /// </summary>
+        /// <param name="value">A string containing the value to convert.</param>
+        /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c></c>.</param>
+        /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool TryParseBoolean(string value, out bool result) {
+
+            switch (value?.ToLower()) {
+
+                case "true":
+                case "1":
+                case "t":
+                case "on":
+                    result = true;
+                    return true;
+
+                case "false":
+                case "0":
+                case "f":
+                case "off":
+                    result = false;
+                    return true;
+
+                default:
+                    result = false;
+                    return false;
+
+            }
+
         }
 
     }
