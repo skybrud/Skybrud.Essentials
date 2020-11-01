@@ -203,6 +203,15 @@ namespace Skybrud.Essentials.Strings {
             return Regex.IsMatch(str ?? string.Empty, "^[0-9a-zA-Z]+$");
         }
 
+        /// <summary>
+        /// Returns whether the specified <paramref name="value"/> is alphabetic - meaning it only consists of letters.
+        /// </summary>
+        /// <param name="value">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> is alphanumeric; otherwise <c>false</c>.</returns>
+        public static bool IsAlphabetic(string value)  {
+            return Regex.IsMatch(value ?? string.Empty, "^[a-zA-Z]+$");
+        }
+
 #if NET_FRAMEWORK
 
         /// <summary>
