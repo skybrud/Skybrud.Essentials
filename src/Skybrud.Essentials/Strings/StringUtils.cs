@@ -212,6 +212,49 @@ namespace Skybrud.Essentials.Strings {
             return Regex.IsMatch(value ?? string.Empty, "^[a-zA-Z]+$");
         }
 
+        /// <summary>
+        /// Computes the Levenshtein distance between two strings.
+        ///
+        /// The Levenshtein distance is defined as the minimal number of characters you have to replace, insert or delete to transform <paramref name="s"/> into <paramref name="t"/>.
+        /// </summary>
+        /// <param name="s">The first string.</param>
+        /// <param name="t">The second string.</param>
+        /// <returns>The Levenshtein distance between <paramref name="s"/> into <paramref name="t"/>.</returns>
+        /// <see>
+        ///     <cref>http://www.dotnetperls.com/levenshtein</cref>
+        /// </see>
+        public static int Levenshtein(string s, string t) {
+            
+            int n = s.Length;
+            int m = t.Length;
+            int[,] d = new int[n + 1, m + 1];
+
+            // Verify arguments
+            if (n == 0) return m;
+            if (m == 0) return n;
+
+            // Initialize arrays
+            for (int i = 0; i <= n; d[i, 0] = i++) { }
+            for (int j = 0; j <= m; d[0, j] = j++) { }
+
+            // Begin looping
+            for (int i = 1; i <= n; i++) {
+                
+                for (int j = 1; j <= m; j++) {
+
+                    // Compute the cost
+                    int cost = (t[j - 1] == s[i - 1]) ? 0 : 1;
+                    d[i, j] = Math.Min(Math.Min(d[i - 1, j] + 1, d[i, j - 1] + 1), d[i - 1, j - 1] + cost);
+
+                }
+
+            }
+
+            // Return the cost
+            return d[n, m];
+
+        }
+
 #if NET_FRAMEWORK
 
         /// <summary>
