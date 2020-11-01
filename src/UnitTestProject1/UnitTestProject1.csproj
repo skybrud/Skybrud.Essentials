@@ -59,6 +59,7 @@
   <ItemGroup>
     <Compile Include="Collections\NameValueCollectionTests.cs" />
     <Compile Include="Collections\CollectionTests.cs" />
+    <Compile Include="Enums\EnumArrayJsonConverterTests.cs" />
     <Compile Include="Enums\EnumPascalCaseConverterTests.cs" />
     <Compile Include="Enums\EnumLowerCaseConverterTests.cs" />
     <Compile Include="Enums\EnumTests.cs" />
