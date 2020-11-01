@@ -108,6 +108,19 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Gets whether the <paramref name="input"/> string has a value.
+        ///
+        /// This method may be use to improve the readability of your code - eg. instead of declaring a variable first, and then calling <see cref="HasValue(string)"/> afterwards.
+        /// </summary>
+        /// <param name="input">The input string to test.</param>
+        /// <param name="result">When this method returns, contains the input value.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
+        public static bool HasValue(this string input, out string result) {
+            result = input;
+            return string.IsNullOrWhiteSpace(input) == false;
+        }
+
+        /// <summary>
         /// Gets whether the <paramref name="input"/> string has a value. This extension method is equal to calling
         /// <see cref="string.IsNullOrWhiteSpace"/>.
         /// </summary>
