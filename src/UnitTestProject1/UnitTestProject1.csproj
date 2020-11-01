@@ -57,6 +57,7 @@
     </Otherwise>
   </Choose>
   <ItemGroup>
+    <Compile Include="Collections\NameValueCollectionTests.cs" />
     <Compile Include="Collections\CollectionTests.cs" />
     <Compile Include="Enums\EnumPascalCaseConverterTests.cs" />
     <Compile Include="Enums\EnumLowerCaseConverterTests.cs" />
