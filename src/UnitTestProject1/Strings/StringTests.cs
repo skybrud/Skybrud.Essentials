@@ -609,6 +609,57 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void IsAlphanumericExtensionMethod() {
+
+            Assert.AreEqual(false, "".IsAlphanumeric(), "#1");
+            Assert.AreEqual(true, "dQw4w9WgXcQ".IsAlphanumeric(), "#2");
+            Assert.AreEqual(true, "aaa".IsAlphanumeric(), "#3");
+            Assert.AreEqual(true, "AAA".IsAlphanumeric(), "#4");
+            Assert.AreEqual(true, "123".IsAlphanumeric(), "#5");
+            Assert.AreEqual(false, "$123".IsAlphanumeric(), "#6");
+            Assert.AreEqual(false, "123.456".IsAlphanumeric(), "#7");
+
+        }
+
+        [TestMethod]
+        public void IsAlphabetic() {
+
+            Assert.AreEqual(false, StringUtils.IsAlphabetic(null), "#1");
+            Assert.AreEqual(false, StringUtils.IsAlphabetic(""), "#2");
+            Assert.AreEqual(false, StringUtils.IsAlphabetic("dQw4w9WgXcQ"), "#3");
+            Assert.AreEqual(true, StringUtils.IsAlphabetic("dQwXwZWgXcQ"), "#4");
+            Assert.AreEqual(true, StringUtils.IsAlphabetic("aaa"), "#5");
+            Assert.AreEqual(true, StringUtils.IsAlphabetic("AAA"), "#6");
+            Assert.AreEqual(false, StringUtils.IsAlphabetic("123"), "#7");
+            Assert.AreEqual(false, StringUtils.IsAlphabetic("$123"), "#8");
+            Assert.AreEqual(false, StringUtils.IsAlphabetic("123.456"), "#9");
+
+            Assert.AreEqual(false, StringUtils.IsAlphabetic("æ"), "#10");
+            Assert.AreEqual(false, StringUtils.IsAlphabetic("ø"), "#11");
+            Assert.AreEqual(false, StringUtils.IsAlphabetic("å"), "#12");
+
+        }
+
+        [TestMethod]
+        public void IsAlphabeticExtensionMethod() {
+
+            Assert.AreEqual(false, default(string).IsAlphabetic(), "#1");
+            Assert.AreEqual(false, "".IsAlphabetic(), "#2");
+            Assert.AreEqual(false, "dQw4w9WgXcQ".IsAlphabetic(), "#3");
+            Assert.AreEqual(true, "dQwXwZWgXcQ".IsAlphabetic(), "#4");
+            Assert.AreEqual(true, "aaa".IsAlphabetic(), "#5");
+            Assert.AreEqual(true, "AAA".IsAlphabetic(), "#6");
+            Assert.AreEqual(false, "123".IsAlphabetic(), "#7");
+            Assert.AreEqual(false, "$123".IsAlphabetic(), "#8");
+            Assert.AreEqual(false, "123.456".IsAlphabetic(), "#9");
+
+            Assert.AreEqual(false, "æ".IsAlphabetic(), "#10");
+            Assert.AreEqual(false, "ø".IsAlphabetic(), "#11");
+            Assert.AreEqual(false, "å".IsAlphabetic(), "#12");
+
+        }
+
+        [TestMethod]
         public void ToPlural() {
 
             foreach (SingularPluralTestItem item in SingularPluralTestItem.Items)

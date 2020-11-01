@@ -117,6 +117,33 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return string.IsNullOrWhiteSpace(input);
         }
 
+        /// <summary>
+        /// Returns whether the specified <paramref name="input"/> string matches a double (<see cref="double"/>).
+        /// </summary>
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise <c>false</c>.</returns>
+        public static bool IsNumeric(this string input) {
+            return StringUtils.IsNumeric(input);
+        }
+
+        /// <summary>
+        /// Gets whether the specified <paramref name="input"/> string is alphanumeric - meaning it only consists of numbers and letters.
+        /// </summary>
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
+        public static bool IsAlphanumeric(this string input) {
+            return StringUtils.IsAlphanumeric(input);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="input"/> string is alphabetic - meaning it only consists of letters.
+        /// </summary>
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
+        public static bool IsAlphabetic(this string input)  {
+            return StringUtils.IsAlphabetic(input);
+        }
+
     }
 
 }
