@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Skybrud.Essentials.Collections.Extensions;
 using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Enums {
@@ -128,6 +129,44 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
+        /// Converts the string representation of the name or numeric value to an enum of the specified <paramref name="type"/>. The return value indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="str">The string representation of the enumeration name or underlying value to convert.</param>
+        /// <param name="type">The type of the enum.</param>
+        /// <param name="value">When this method returns, contains a value of type <see cref="Enum"/>. This parameter is passed uninitialized.</param>
+        /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool TryParseEnum(string str, Type type, out Enum value) {
+
+            // Check whether the specified string is NULL (or white space)
+            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+
+            // Check whether the type of T is an enum
+            if (IsEnum(type) == false) throw new ArgumentException("Specified type must be an enum.");
+
+            // Initialize "value"
+            value = default;
+
+            // Check whether the specified string is NULL (or white space)
+            if (string.IsNullOrWhiteSpace(str)) return false;
+
+            // Convert "str" to camel case and then lowercase
+            string modified = StringUtils.ToCamelCase(str + string.Empty).ToLowerInvariant();
+
+            // Parse the enum
+            foreach (Enum v in GetEnumValues(type)) {
+                string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
+                string name = v.ToString().ToLowerInvariant();
+                if (ordinal == modified || name == modified) {
+                    value = v;
+                    return true;
+                }
+            }
+
+            return false;
+
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="str"/> into an array of <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>
@@ -140,6 +179,48 @@ namespace Skybrud.Essentials.Enums {
                 from piece in (str ?? string.Empty).Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
                 select ParseEnum<T>(piece)
             ).ToArray();
+        }
+        
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> into an array of <paramref name="type"/>.
+        /// </summary>
+        /// <param name="str">A string value containing one or more enum values.</param>
+        /// <param name="type">The enum type.</param>
+        /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
+        public static Array ParseEnumArray(string str, Type type) {
+            return ParseEnumArray(str, type, new[] { ',', ' ', '\r', '\n', '\t' });
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> into an array of <paramref name="type"/>.
+        /// </summary>
+        /// <param name="str">A string value containing one or more enum values.</param>
+        /// <param name="type">The enum type.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
+        public static Array ParseEnumArray(string str, Type type, char[] separators) {
+            return ParseEnumArray((str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries), type);
+        }
+
+        /// <summary>
+        /// Converts the specified array of <paramref name="pieces"/> into an array of <paramref name="type"/>.
+        /// </summary>
+        /// <param name="pieces">Array of enum string representation.</param>
+        /// <param name="type">The enum type.</param>
+        /// <returns>An instanceo of <see cref="Array"/> containing the parsed enum values.</returns>
+        public static Array ParseEnumArray(string[] pieces, Type type) {
+
+            List<Enum> temp = new List<Enum>();
+
+            foreach (string piece in pieces) {
+                if (TryParseEnum(piece, type, out Enum value)) {
+                    temp.Add(value);
+                }
+            }
+
+            return temp.Cast(type).ToArray(type);
+
         }
 
         /// <summary>
