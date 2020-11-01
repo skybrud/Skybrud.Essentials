@@ -591,6 +591,36 @@ namespace Skybrud.Essentials.Json.Extensions {
         }
 
         /// <summary>
+        /// Gets an array of <see cref="float"/> from the token matching the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>The token value as an array of <see cref="float"/>.</returns>
+        public static float[] GetFloatArray(this JObject obj, string path) {
+            return GetArrayItems<float>(obj, path);
+        }
+
+        /// <summary>
+        /// Gets an array of <see cref="float"/> from the token matching the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>The token value as an array of <see cref="float"/>.</returns>
+        public static float[] GetSingleArray(this JObject obj, string path) {
+            return GetArrayItems<float>(obj, path);
+        }
+
+        /// <summary>
+        /// Gets an array of <see cref="double"/> from the token matching the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>The token value as an array of <see cref="double"/>.</returns>
+        public static double[] GetDoubleArray(this JObject obj, string path) {
+            return GetArrayItems<double>(obj, path);
+        }
+
+        /// <summary>
         /// Gets an array of <see cref="JObject"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
