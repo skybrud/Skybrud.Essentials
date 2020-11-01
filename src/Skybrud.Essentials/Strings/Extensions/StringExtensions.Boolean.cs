@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace Skybrud.Essentials.Strings.Extensions {
+﻿namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 
@@ -26,6 +24,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
         public static bool ParseBoolean(this string str, bool fallback) {
             return StringUtils.ParseBoolean(str, fallback);
+        }
+
+        /// <summary>
+        /// Tries to convert the specified string representation of a logical value to its <see cref="bool"/> equivalent.
+        /// </summary>
+        /// <param name="value">A string containing the value to convert.</param>
+        /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c></c>.</param>
+        /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool IsBoolean(this string value, out bool result) {
+            return StringUtils.TryParseBoolean(value, out result);
         }
 
     }

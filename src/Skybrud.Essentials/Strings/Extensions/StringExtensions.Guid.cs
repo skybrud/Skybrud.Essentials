@@ -14,6 +14,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Gets whether the specified <paramref name="value"/> matches a GUID (<see cref="Guid"/>).
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <param name="result">The converted <see cref="Guid"/> value, of <see cref="Guid.Empty"/> if <paramref name="value"/> doesn't match a GUID.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> matches a GUID; otherwise <c>false</c>.</returns>
+        public static bool IsGuid(string value, out Guid result) {
+            return Guid.TryParse(value, out result);
+        }
+
+        /// <summary>
         /// Parses <paramref name="input"/> to an instance of <see cref="Guid"/>. If the conversion fails,
         /// <see cref="Guid.Empty"/> will be returned instead.
         /// </summary>

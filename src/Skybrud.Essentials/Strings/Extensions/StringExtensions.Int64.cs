@@ -1,8 +1,27 @@
-﻿using System;
+﻿using System.Globalization;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
+
+        /// <summary>
+        /// Gets whether the string matches a long (<see cref="long"/>).
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> matches a <see cref="long"/> value; otherwise <c>false</c>.</returns>
+        public static bool IsInt64(string value) {
+            return int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="value"/> matches a <see cref="long"/> value.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <param name="result">The converted <see cref="long"/> value, of <c>0</c> if <paramref name="value"/> doesn't match a <see cref="long"/> value.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> matches an <see cref="long"/> value; otherwise <c>false</c>.</returns>
+        public static bool IsInt64(string value, out long result) {
+            return long.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+        }
 
         /// <summary>
         /// Converts <paramref name="input"/> to an instance of <see cref="long"/>. If the conversion fails,

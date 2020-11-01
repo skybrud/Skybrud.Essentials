@@ -1,5 +1,4 @@
-﻿using System;
-using System.Globalization;
+﻿using System.Globalization;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -15,12 +14,22 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Alias of <see cref="IsInt32"/>. Gets whether the string matches an integer (<see cref="int"/>).
+        /// Alias of <see cref="IsInt32(string)"/>. Gets whether the string matches an integer (<see cref="int"/>).
         /// </summary>
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches an integer; otherwise <c>false</c>.</returns>
         public static bool IsInteger(string str) {
             return IsInt32(str);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="value"/> matches an integer.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <param name="result">The converted <see cref="int"/> value, of <c>0</c> if <paramref name="value"/> doesn't match an integer.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> matches an integer; otherwise <c>false</c>.</returns>
+        public static bool IsInt32(string value, out int result) {
+            return int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
         }
         
         /// <summary>
