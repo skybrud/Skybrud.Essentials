@@ -1031,6 +1031,78 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsTime(TimeUtils.Rfc822ToDateTimeOffset(str));
         }
 
+        /// <summary>
+        /// Converts the specified <paramref name="year"/>, <paramref name="month"/>, <paramref name="day"/> and
+        /// <strong>Swatch Internet Time </strong> <paramref name="beats"/> into an instance of <see cref="EssentialsTime"/>.
+        /// </summary>
+        /// <param name="year">The year of the date.</param>
+        /// <param name="month">The month of the date.</param>
+        /// <param name="day">The day of the date.</param>
+        /// <param name="beats">The amount of beats, according to <strong>Swatch Internet Time</strong>.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the converted time and date.</returns>
+        /// <see>
+        ///     <cref>https://en.wikipedia.org/wiki/Swatch_Internet_Time</cref>
+        /// </see>
+        public static EssentialsTime FromSwatchInternetTime(int year, int month, int day, double beats) {
+            return FromSwatchInternetTime(year, month, day, beats, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="year"/>, <paramref name="month"/>, <paramref name="day"/> and
+        /// <strong>Swatch Internet Time </strong> <paramref name="beats"/> into an instance of <see cref="EssentialsTime"/>.
+        /// </summary>
+        /// <param name="year">The year of the date.</param>
+        /// <param name="month">The month of the date.</param>
+        /// <param name="day">The day of the date.</param>
+        /// <param name="beats">The amount of beats, according to <strong>Swatch Internet Time</strong>.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the converted time and date.</returns>
+        /// <see>
+        ///     <cref>https://en.wikipedia.org/wiki/Swatch_Internet_Time</cref>
+        /// </see>
+        public static EssentialsTime FromSwatchInternetTime(int year, int month, int day, double beats, TimeZoneInfo timeZone) {
+
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+
+            DateTimeOffset dto = new DateTimeOffset(year, month, day, 0, 0, 0, TimeSpan.FromHours(1))
+                .Add(TimeUtils.ParseSwatchInternetTime(beats));
+
+            return new EssentialsTime(dto).ToTimeZone(timeZone);
+
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="date"/> and <strong>Swatch Internet Time </strong>
+        /// <paramref name="beats"/> into an instance of <see cref="EssentialsTime"/>.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <param name="beats">The amount of beats, according to <strong>Swatch Internet Time</strong>.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the converted time and date.</returns>
+        /// <see>
+        ///     <cref>https://en.wikipedia.org/wiki/Swatch_Internet_Time</cref>
+        /// </see>
+        public static EssentialsTime FromSwatchInternetTime(EssentialsDate date, double beats) {
+            if (date == null) throw new ArgumentNullException(nameof(date));
+            return FromSwatchInternetTime(date.Year, date.Month, date.Day, beats, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="date"/> and <strong>Swatch Internet Time </strong>
+        /// <paramref name="beats"/> into an instance of <see cref="EssentialsTime"/>.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <param name="beats">The amount of beats, according to <strong>Swatch Internet Time</strong>.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the converted time and date.</returns>
+        /// <see>
+        ///     <cref>https://en.wikipedia.org/wiki/Swatch_Internet_Time</cref>
+        /// </see>
+        public static EssentialsTime FromSwatchInternetTime(EssentialsDate date, double beats, TimeZoneInfo timeZone) {
+            if (date == null) throw new ArgumentNullException(nameof(date));
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+            return FromSwatchInternetTime(date.Year, date.Month, date.Day, beats, timeZone);
+        }
+
         #endregion
 
         #region Operator overloading
