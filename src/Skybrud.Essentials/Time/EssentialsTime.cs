@@ -1065,7 +1065,7 @@ namespace Skybrud.Essentials.Time {
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
             DateTimeOffset dto = new DateTimeOffset(year, month, day, 0, 0, 0, TimeSpan.FromHours(1))
-                .Add(TimeUtils.ParseSwatchInternetTime(beats));
+                .Add(TimeUtils.Swatch.ToTimeSpan(beats));
 
             return new EssentialsTime(dto).ToTimeZone(timeZone);
 
