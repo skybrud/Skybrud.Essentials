@@ -94,7 +94,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp.</param>
         public EssentialsWeek(DateTimeOffset timestamp) {
-            WeekNumber = TimeUtils.GetIso8601WeekNumber(timestamp);
+            WeekNumber = TimeUtils.Iso8601.GetWeekNumber(timestamp);
             Start = TimeUtils.GetStartOfWeek(timestamp);
             End = TimeUtils.GetEndOfWeek(timestamp);
             Year = GetYear();
@@ -106,7 +106,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         public EssentialsWeek(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
-            WeekNumber = TimeUtils.GetIso8601WeekNumber(timestamp);
+            WeekNumber = TimeUtils.Iso8601.GetWeekNumber(timestamp);
             Start = TimeUtils.GetStartOfWeek(timestamp, timeZone);
             End = TimeUtils.GetEndOfWeek(timestamp, timeZone);
             Year = GetYear();

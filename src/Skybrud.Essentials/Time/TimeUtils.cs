@@ -446,9 +446,9 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
+        [Obsolete("Use Iso8601.GetWeekNumber method instead.")]
         public static int GetIso8601WeekNumber(DateTime date) {
-            int day = (int) CultureInfo.CurrentCulture.Calendar.GetDayOfWeek(date);
-            return CultureInfo.CurrentCulture.Calendar.GetWeekOfYear(date.AddDays(4 - (day == 0 ? 7 : day)), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
+            return Iso8601.GetWeekNumber(date);
         }
 
         /// <summary>
@@ -459,8 +459,9 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
+        [Obsolete("Use Iso8601.GetWeekNumber method instead.")]
         public static int GetIso8601WeekNumber(DateTimeOffset date) {
-            return GetIso8601WeekNumber(date.Date);
+            return Iso8601.GetWeekNumber(date.DateTime);
         }
 
         /// <summary>

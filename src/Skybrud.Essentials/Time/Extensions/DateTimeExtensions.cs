@@ -52,7 +52,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
         /// <returns>An instance of <see cref="int"/> representing the <strong>ISO 8601</strong> week number.</returns>
         public static int GetIso8601WeekNumber(this DateTime date) {
-            return TimeUtils.GetIso8601WeekNumber(date);
+            return TimeUtils.Iso8601.GetWeekNumber(date);
         }
 
         /// <summary>

@@ -67,7 +67,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the week number the <strong>ISO 8601</strong> week of this <see cref="EssentialsDate"/>.
         /// </summary>
-        public int WeekNumber => TimeUtils.GetIso8601WeekNumber(_dateTime);
+        public int WeekNumber => TimeUtils.Iso8601.GetWeekNumber(_dateTime);
 
         /// <summary>
         /// Gets the amount of days in the month.

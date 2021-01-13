@@ -45,7 +45,7 @@
         /// <param name="timestamp">A timestamp.</param>
         public EssentialsDateWeek(EssentialsDateTime timestamp) {
 
-            Week = TimeUtils.GetIso8601WeekNumber(timestamp.DateTime);
+            Week = TimeUtils.Iso8601.GetWeekNumber(timestamp.DateTime);
             Start = TimeUtils.GetFirstDayOfWeek(timestamp.DateTime);
             End = TimeUtils.GetLastDayOfWeek(timestamp.DateTime);
 

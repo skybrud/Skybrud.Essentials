@@ -146,7 +146,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the week number the ISO8601 week of this <see cref="EssentialsDateTime"/>.
         /// </summary>
-        public int WeekNumber => TimeUtils.GetIso8601WeekNumber(DateTime);
+        public int WeekNumber => TimeUtils.Iso8601.GetWeekNumber(DateTime);
 
         /// <summary>
         /// Gets a reference to an instance of <see cref="EssentialsDateWeek"/> representing the
