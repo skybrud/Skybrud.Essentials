@@ -292,28 +292,6 @@ namespace Skybrud.Essentials.Strings {
         public static string HtmlDecode(string str) {
             return System.Web.HttpUtility.HtmlDecode(str);
         }
-		
-        /// <summary>
-        /// Strips all HTML elements from the specified <paramref name="html"/> string.
-        /// </summary>
-        /// <param name="html">The input string containing the HTML.</param>
-        /// <returns>The input string without any HTML markup.</returns>
-        public static string StripHtml(string html) {
-            return HtmlDecode(Regex.Replace(html, "<.*?>", string.Empty));
-        }
-
-        /// <summary>
-        /// Strips all HTML elements from the specified <paramref name="html"/> string, but keeps the HTML tags as
-        /// specified in <paramref name="ignore"/>.
-        /// </summary>
-        /// <param name="html">The input string containing the HTML.</param>
-        /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
-        /// <returns>The stripped result.</returns>
-        public static string StripHtml(string html, params string[] ignore) {
-            if (ignore == null || ignore.Length == 0) return StripHtml(html);
-            Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
-            return HtmlDecode(regex.Replace(html, string.Empty));
-        }
 
 #endif
 
@@ -354,6 +332,8 @@ namespace Skybrud.Essentials.Strings {
         public static string HtmlDecode(string str) {
             return System.Net.WebUtility.HtmlDecode(str);
         }
+
+#endif
 		
         /// <summary>
         /// Strips all HTML elements from the specified <paramref name="html"/> string.
@@ -376,8 +356,6 @@ namespace Skybrud.Essentials.Strings {
             Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
             return HtmlDecode(regex.Replace(html, string.Empty));
         }
-
-#endif
 
     }
 
