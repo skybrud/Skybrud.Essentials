@@ -1,4 +1,6 @@
-﻿namespace Skybrud.Essentials.Time {
+﻿using System;
+
+namespace Skybrud.Essentials.Time {
     
     /// <summary>
     /// Class describing a period defined by a <see cref="Start"/> date and <see cref="End"/> date.
@@ -13,9 +15,19 @@
         public EssentialsTime Start { get; protected set; }
 
         /// <summary>
+        /// Gets whether the <see cref="Start"/> property has a value.
+        /// </summary>
+        public bool HasStart => Start != null;
+
+        /// <summary>
         /// Gets a reference to the timestamp representing the end of the period.
         /// </summary>
         public EssentialsTime End { get; protected set; }
+
+        /// <summary>
+        /// Gets whether the <see cref="End"/> property has a value.
+        /// </summary>
+        public bool HasEnd => End != null;
 
         #endregion
 
@@ -34,6 +46,253 @@
         public EssentialsPeriod(EssentialsTime start, EssentialsTime end) {
             Start = start;
             End = end;
+        }
+
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="start"/> and <paramref name="end"/>
+        /// dates. Both dates will be adjusted according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="start">The start date.</param>
+        /// <param name="end">The end date.</param>
+        /// <param name="timeZone">The time zone.</param>
+        public EssentialsPeriod(DateTimeOffset start, DateTimeOffset end, TimeZoneInfo timeZone) {
+            Start = new EssentialsTime(start, timeZone ?? TimeZoneInfo.Local);
+            End = new EssentialsTime(end, timeZone ?? TimeZoneInfo.Local);
+        }
+
+        #endregion
+
+        #region Static methods
+
+        private static EssentialsPeriod GetFromDate(DateTimeOffset dto, TimeZoneInfo timeZone)  {
+
+            DateTimeOffset start = TimeUtils.GetStartOfDay(dto, timeZone);
+            DateTimeOffset end = TimeUtils.GetEndOfDay(dto, timeZone);
+
+            return new EssentialsPeriod(start, end, timeZone);
+
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the current day from start to end, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Today() {
+            return GetFromDate(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the current day from start to end, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Today(TimeZoneInfo timeZone) {
+            return GetFromDate(DateTimeOffset.UtcNow, timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the day of <paramref name="timestamp"/> from start to
+        /// end, according to <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Today(DateTimeOffset timestamp, TimeZoneInfo timeZone)  {
+            return GetFromDate(timestamp, timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the the day before the current day and according to
+        /// the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Yesterday()  {
+            return Yesterday(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the the day before the current day and according to
+        /// the <paramref name="timeZone"/>.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Yesterday(TimeZoneInfo timeZone)  {
+            return Yesterday(DateTimeOffset.UtcNow, timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the the day before the day of
+        /// <paramref name="timestamp"/> and according to the <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Yesterday(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+            return GetFromDate(timestamp.AddDays(-1), timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the the day after the current day and according to
+        /// the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Tomorrow()  {
+            return Tomorrow(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the the day after the current day and according to
+        /// the <paramref name="timeZone"/>.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Tomorrow(TimeZoneInfo timeZone)  {
+            return Tomorrow(DateTimeOffset.UtcNow, timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the the day after the day of
+        /// <paramref name="timestamp"/> and according to the <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod Tomorrow(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+            return GetFromDate(timestamp.AddDays(1), timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the upcoming weekend relative to the current day and
+        /// according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod NextWeekend() {
+            return NextWeekend(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the upcoming weekend relative to the current day and
+        /// according to <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod NextWeekend(TimeZoneInfo timeZone) {
+            return NextWeekend(DateTimeOffset.UtcNow, timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the upcoming weekend relative to the specified
+        /// <paramref name="timestamp"/> and according to <paramref name="timeZone"/>.
+        ///
+        /// If <paramref name="timestamp"/> represents a Saturday or a Sunday, the returned period will representing
+        /// the weekend of the next week instead.
+        /// </summary>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod NextWeekend(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+
+            // Time zone may not be null
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+
+            // Convert "timestamp" to same offset as "timeZone"
+            timestamp = TimeZoneInfo.ConvertTime(timestamp, timeZone);
+
+            // If "dto" is already within a weekend, we jump to the next week instead
+            if (timestamp.DayOfWeek == DayOfWeek.Saturday || timestamp.DayOfWeek == DayOfWeek.Sunday) {
+                
+                // Adjust to UTC and add seven days (aka a full week)
+                timestamp = timestamp.ToUniversalTime().AddDays(7);
+
+                // Adjust back to the input time zone
+                timestamp = TimeZoneInfo.ConvertTime(timestamp, timeZone);
+
+            }
+
+            DateTimeOffset start = TimeUtils.GetStartOfWeek(timestamp, timeZone).AddDays(5);
+            DateTimeOffset end = TimeUtils.GetEndOfWeek(timestamp, timeZone);
+            
+            // Wrap the result in a new EssentialsPeriod
+            return new EssentialsPeriod(start, end, timeZone);
+
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the current week, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod ThisWeek() {
+            return ThisWeek(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the current week, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod ThisWeek(TimeZoneInfo timeZone) {
+            return ThisWeek(DateTimeOffset.UtcNow, timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the week of <paramref name="timestamp"/> and according to <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod ThisWeek(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+
+            // Time zone may not be null
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+
+            // Wrap the input "timestamp"
+            EssentialsTime time = new EssentialsTime(timestamp);
+
+            // Calculate start and end
+            EssentialsTime start = time.GetStartOfWeek(timeZone);
+            EssentialsTime end = time.GetEndOfWeek(timeZone);
+            
+            // Wrap the result in a new EssentialsPeriod
+            return new EssentialsPeriod(start, end);
+
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the current month, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod ThisMonth() {
+            return ThisMonth(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the current month, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod ThisMonth(TimeZoneInfo timeZone) {
+            return ThisMonth(DateTimeOffset.UtcNow, timeZone);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="EssentialsPeriod"/> representing the month of <paramref name="dto"/> and according to <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="dto">The timestamp.</param>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
+        public static EssentialsPeriod ThisMonth(DateTimeOffset dto, TimeZoneInfo timeZone) {
+
+            // Time zone may not be null
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+
+            // Wrap the input "dto"
+            EssentialsTime time = new EssentialsTime(dto);
+
+            // Calculate start and end
+            EssentialsTime start = time.GetStartOfMonth(timeZone);
+            EssentialsTime end = time.GetEndOfMonth(timeZone);
+            
+            // Wrap the result in a new EssentialsPeriod
+            return new EssentialsPeriod(start, end);
+
         }
 
         #endregion
