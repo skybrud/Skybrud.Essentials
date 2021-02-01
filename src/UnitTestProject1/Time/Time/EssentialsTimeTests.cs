@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Globalization;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 
@@ -200,6 +199,43 @@ namespace UnitTestProject1.Time.Time {
             Assert.AreEqual(true, yesterday.IsYesterday, "#yesterday");
             Assert.AreEqual(false, today.IsYesterday, "#today");
             Assert.AreEqual(false, tomorrow.IsYesterday, "#tomorrow");
+
+        }
+
+        [TestMethod]
+        public void FromTicksLocal() {
+
+            DateTime dt = new DateTime(2021, 1, 13, 22, 00, 00, DateTimeKind.Local);
+            Assert.AreEqual(637461720000000000, dt.Ticks, "#1");
+
+            // We can't use a format with offset or time zone, as it may differ depending on the environment
+            Assert.AreEqual("2021-01-13T22:00:00", dt.ToString("yyyy-MM-ddTHH:mm:ss"), "#2");
+
+            // Convert to EssentialsTime
+            EssentialsTime time = EssentialsTime.FromTicks(dt.Ticks);
+
+            Assert.AreEqual(637461720000000000, time.Ticks, "#3");
+            Assert.AreEqual("2021-01-13T22:00:00", time.ToString("yyyy-MM-ddTHH:mm:ss"), "#4");
+
+        }
+
+        [TestMethod]
+        public void FromTicksLocalUtc() {
+
+            DateTime dt = new DateTime(2021, 1, 13, 22, 00, 00, DateTimeKind.Utc);
+            Assert.AreEqual(637461720000000000, dt.Ticks, "#1");
+
+            // We can't use a format with offset or time zone, as it may differ depending on the environment
+            Assert.AreEqual("2021-01-13T22:00:00Z", dt.ToString("yyyy-MM-ddTHH:mm:ssK"), "#2");
+
+            // Convert to EssentialsTime
+            EssentialsTime time = EssentialsTime.FromTicks(dt.Ticks, TimeSpan.Zero);
+
+            // Same as DateTime
+            Assert.AreEqual(637461720000000000, time.Ticks, "#3");
+            
+            // Offset is now +00:00 instead of Z (difference between DateTimeOffset and DateTime)
+            Assert.AreEqual("2021-01-13T22:00:00+00:00", time.ToString("yyyy-MM-ddTHH:mm:ssK"), "#4");
 
         }
 

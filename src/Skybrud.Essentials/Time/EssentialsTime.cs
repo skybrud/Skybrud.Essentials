@@ -1103,6 +1103,26 @@ namespace Skybrud.Essentials.Time {
             return FromSwatchInternetTime(date.Year, date.Month, date.Day, beats, timeZone);
         }
 
+        /// <summary>
+        /// Creates a new <see cref="EssentialsTime"/> instance from the specified amount of <paramref name="ticks"/>.
+        /// </summary>
+        /// <param name="ticks">The amount of ticks.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromTicks(long ticks) {
+            DateTime time = new DateTime(ticks);
+            return new EssentialsTime(time, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="EssentialsTime"/> instance from the specified amount of <paramref name="ticks"/> and <paramref name="offset"/>.
+        /// </summary>
+        /// <param name="ticks">The amount of ticks.</param>
+        /// <param name="offset">The offset to UTC.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromTicks(long ticks, TimeSpan offset) {
+            return new EssentialsTime(new DateTimeOffset(ticks, offset));
+        }
+
         #endregion
 
         #region Operator overloading
