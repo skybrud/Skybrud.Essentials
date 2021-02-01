@@ -93,6 +93,7 @@
     <Compile Include="Time\GetAge\EssentialsTimeTests.cs" />
     <Compile Include="Time\SwatchInternetTimeTests.cs" />
     <Compile Include="Time\TimeUtilsTests.cs" />
+    <Compile Include="Time\Time\EssentialMonthTests.cs" />
     <Compile Include="Time\Time\EssentialsPeriodTests.cs" />
     <Compile Include="Time\Time\EssentialsWeekTests.cs" />
     <Compile Include="Time\Time\EssentialsTimeTests.cs" />
