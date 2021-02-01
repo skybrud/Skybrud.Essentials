@@ -95,6 +95,7 @@
     <Compile Include="Time\TimeUtilsTests.cs" />
     <Compile Include="Time\Time\EssentialMonthTests.cs" />
     <Compile Include="Time\Time\EssentialsPeriodTests.cs" />
+    <Compile Include="Time\Time\EssentialsYearTests.cs" />
     <Compile Include="Time\Time\EssentialsWeekTests.cs" />
     <Compile Include="Time\Time\EssentialsTimeTests.cs" />
     <Compile Include="Time\Formats\UnixtimeTests.cs" />

@@ -1,24 +1,18 @@
 ﻿using System;
 
-#pragma warning disable 618
-
 namespace Skybrud.Essentials.Time {
-
+    
     /// <summary>
-    /// Class representing a year in the Gregorian calendar.
+    /// Class describing a year.
     /// </summary>
-    /// <see>
-    ///     <cref>https://en.wikipedia.org/wiki/Gregorian_calendar</cref>
-    /// </see>
-    [Obsolete("Use the EssentialsYear class instead.")]
-    public class EssentialsDateYear {
+    public class EssentialsYear : EssentialsPeriod {
 
         #region Properties
 
         /// <summary>
-        /// Gets the year of this instance.
+        /// Gets the year.
         /// </summary>
-        public int Year { get; private set; }
+        public int Year { get; }
 
         /// <summary>
         /// Gets whether the year is a leap year.
@@ -30,7 +24,7 @@ namespace Skybrud.Essentials.Time {
         /// otherwise <c>365</c>.
         /// </summary>
         public int Days => IsLeapYear ? 366 : 365;
-
+        
         #region Calendar dates
 
         /// <summary>
@@ -138,28 +132,62 @@ namespace Skybrud.Essentials.Time {
         #region Constructors
 
         /// <summary>
-        /// Initializes a new instance from the specified <paramref name="year"/>.
+        /// Initializes a new year based on the specified <paramref name="year"/>.
+        ///
+        /// Timestamps for start and end will be calculated using <see cref="TimeZoneInfo.Local"/>.
         /// </summary>
         /// <param name="year">The year.</param>
-        public EssentialsDateYear(int year) {
+        public EssentialsYear(int year) : this(year, TimeZoneInfo.Local) { }
+
+        /// <summary>
+        /// Initializes a new year based on the specified <paramref name="year"/>.
+        ///
+        /// Timestamps for start and end will be calculated using <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="year">The year.</param>
+        /// <param name="timeZone">The time zone used for calculating the start and end of the year.</param>
+        public EssentialsYear(int year, TimeZoneInfo timeZone) {
             Year = year;
+            Start = new EssentialsTime(year, 1, 1, timeZone);
+            End = new EssentialsTime(year, 12, 31, timeZone).GetEndOfDay();
         }
 
         /// <summary>
-        /// Initializes a new instance from the specified <paramref name="timestamp"/>.
+        /// Initializes a new instance for the year containing the specified <paramref name="timestamp"/>.
+        ///
+        /// If <paramref name="timestamp"/> doesn't specify a timestamp (eg. only an offset), the timestamp will be converted to <see cref="TimeZoneInfo.Local"/>.
         /// </summary>
-        /// <param name="timestamp">A timestamp represented by an instance of <see cref="DateTime"/>.</param>
-        public EssentialsDateYear(DateTime timestamp) {
-            Year = timestamp.Year;
-        }
-
-        /// <summary>
-        /// Initializes a new instance from the specified <paramref name="timestamp"/>.
-        /// </summary>
-        /// <param name="timestamp">A timestamp represented by an instance of <see cref="EssentialsDateTime"/>.</param>
-        public EssentialsDateYear(EssentialsDateTime timestamp) {
+        /// <param name="timestamp">A timestamp representing the year to be created.</param>
+        public EssentialsYear(EssentialsTime timestamp) {
+            
             if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
+
+            if (timestamp.TimeZone == null) timestamp = timestamp.ToTimeZone(TimeZoneInfo.Local);
+
             Year = timestamp.Year;
+            Start = new EssentialsTime(timestamp.Year, 1, 1, timestamp.TimeZone);
+            End = new EssentialsTime(timestamp.Year, 12, 31, timestamp.TimeZone).GetEndOfDay();
+
+        }
+
+        /// <summary>
+        /// Initializes a new instance for the year containing the specified <paramref name="timestamp"/>.
+        ///
+        /// <paramref name="timestamp"/> will be converted to <see cref="TimeZoneInfo.Local"/> prior to calculating the start and end of the year.
+        /// </summary>
+        /// <param name="timestamp">A timestamp representing the year to be created.</param>
+        /// <param name="timeZone">The time zone used for calculating the start and end of the year.</param>
+        public EssentialsYear(EssentialsTime timestamp, TimeZoneInfo timeZone)  {
+            
+            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
+            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+
+            timestamp = timestamp.ToTimeZone(timeZone);
+
+            Year = timestamp.Year;
+            Start = new EssentialsTime(timestamp.Year, 1, 1, timeZone);
+            End = new EssentialsTime(timestamp.Year, 12, 31, timeZone).GetEndOfDay();
+
         }
 
         #endregion
