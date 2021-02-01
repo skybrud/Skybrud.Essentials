@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time.Extensions {
     
@@ -52,7 +53,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
         /// <returns>An instance of <see cref="int"/> representing the <strong>ISO 8601</strong> week number.</returns>
         public static int GetIso8601WeekNumber(this DateTimeOffset date) {
-            return TimeUtils.Iso8601.GetWeekNumber(date);
+            return Iso8601Utils.GetWeekNumber(date);
         }
 
         /// <summary>

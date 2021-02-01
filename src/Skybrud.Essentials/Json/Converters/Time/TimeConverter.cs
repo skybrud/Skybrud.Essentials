@@ -1,6 +1,11 @@
 ﻿using System;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Time;
+using Skybrud.Essentials.Time.Iso8601;
+using Skybrud.Essentials.Time.Rfc2822;
+using Skybrud.Essentials.Time.Rfc822;
+
+#pragma warning disable 618
 
 namespace Skybrud.Essentials.Json.Converters.Time {
 
@@ -141,7 +146,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
                 // Return the default value of DateTime of the JSON value is NULL
                 case JsonToken.Null:
-                    return default(DateTime);
+                    return default;
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Integer:
@@ -176,13 +181,13 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                     switch (Format) {
 
                         case TimeFormat.Iso8601:
-                            return TimeUtils.Iso8601ToDateTime(value);
+                            return Iso8601Utils.Parse(value).DateTime;
 
                         case TimeFormat.Rfc822:
-                            return TimeUtils.Rfc822ToDateTime(value);
+                            return Rfc822Utils.Parse(value).DateTime;
 
                         case TimeFormat.Rfc2822:
-                            return TimeUtils.Rfc822ToDateTime(value);
+                            return Rfc2822Utils.Parse(value).DateTime;
 
                         case TimeFormat.UnixTime:
                             return TimeUtils.GetDateTimeFromUnixTime(value);
@@ -205,7 +210,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
                 // Return the default value of DateTimeOffset of the JSON value is NULL
                 case JsonToken.Null:
-                    return default(DateTimeOffset);
+                    return default;
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Integer:
@@ -240,13 +245,13 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                     switch (Format) {
 
                         case TimeFormat.Iso8601:
-                            return TimeUtils.Iso8601ToDateTimeOffset(value);
+                            return Iso8601Utils.Parse(value);
 
                         case TimeFormat.Rfc822:
-                            return TimeUtils.Rfc822ToDateTimeOffset(value);
+                            return Rfc822Utils.Parse(value);
 
                         case TimeFormat.Rfc2822:
-                            return TimeUtils.Rfc822ToDateTimeOffset(value);
+                            return Rfc2822Utils.Parse(value);
 
                         case TimeFormat.UnixTime:
                             return TimeUtils.GetDateTimeOffsetFromUnixTime(value);

@@ -1,8 +1,12 @@
-﻿namespace Skybrud.Essentials.Time {
+﻿using System;
+using Skybrud.Essentials.Time.Iso8601;
+
+namespace Skybrud.Essentials.Time {
 
     /// <summary>
     /// Class representing a week as defined by the <strong>ISO 8601</strong> specification.
     /// </summary>
+    [Obsolete("Use the EssentialsWeek class instead.")]
     public class EssentialsDateWeek {
 
         #region Properties
@@ -37,7 +41,7 @@
         /// </summary>
         /// <param name="year">The <strong>ISO 8601</strong> year of the week.</param>
         /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
-        public EssentialsDateWeek(int year, int week) : this(TimeUtils.GetDateTimeFromIso8601Week(year, week)) { }
+        public EssentialsDateWeek(int year, int week) : this(Iso8601Utils.FromWeekNumber(year, week).DateTime) { }
 
         /// <summary>
         /// Initialize a new instance based on the specified <paramref name="timestamp"/>.
@@ -45,7 +49,7 @@
         /// <param name="timestamp">A timestamp.</param>
         public EssentialsDateWeek(EssentialsDateTime timestamp) {
 
-            Week = TimeUtils.Iso8601.GetWeekNumber(timestamp.DateTime);
+            Week = Iso8601Utils.GetWeekNumber(timestamp.DateTime);
             Start = TimeUtils.GetFirstDayOfWeek(timestamp.DateTime);
             End = TimeUtils.GetLastDayOfWeek(timestamp.DateTime);
 

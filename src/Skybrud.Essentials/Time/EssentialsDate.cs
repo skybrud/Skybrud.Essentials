@@ -2,6 +2,7 @@
 using System.Globalization;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time {
 
@@ -67,7 +68,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the week number the <strong>ISO 8601</strong> week of this <see cref="EssentialsDate"/>.
         /// </summary>
-        public int WeekNumber => TimeUtils.Iso8601.GetWeekNumber(_dateTime);
+        public int WeekNumber => Iso8601Utils.GetWeekNumber(_dateTime);
 
         /// <summary>
         /// Gets the amount of days in the month.
@@ -118,6 +119,7 @@ namespace Skybrud.Essentials.Time {
         /// Initializes a new instance from the specified <paramref name="time"/>.
         /// </summary>
         /// <param name="time">An instance of <see cref="EssentialsDateTime"/>.</param>
+        [Obsolete("Use EssentialsTime class instead of EssentialsDateTime.")]
         public EssentialsDate(EssentialsDateTime time) {
             _dateTime = time.DateTime;
         }

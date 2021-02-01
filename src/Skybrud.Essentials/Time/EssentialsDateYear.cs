@@ -1,5 +1,7 @@
 ﻿using System;
 
+#pragma warning disable 618
+
 namespace Skybrud.Essentials.Time {
     
     /// <summary>

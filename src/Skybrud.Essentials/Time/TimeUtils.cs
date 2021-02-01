@@ -1,5 +1,8 @@
 ﻿using System;
 using System.Globalization;
+using Skybrud.Essentials.Time.Iso8601;
+using Skybrud.Essentials.Time.Rfc2822;
+using Skybrud.Essentials.Time.Rfc822;
 
 namespace Skybrud.Essentials.Time {
 
@@ -94,6 +97,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dt">The date used for calculating the age.</param>
         /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
         /// <paramref name="dt"/>.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(DateTime dateOfBirth, EssentialsDateTime dt) {
             return GetAge(dateOfBirth, dt.Year, dt.Month, dt.Day);
         }
@@ -172,6 +176,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="compare">The date used for calculating the age.</param>
         /// <returns>The age based on the specified <paramref name="then"/> at the moment of
         /// <paramref name="compare"/>.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(DateTimeOffset then, EssentialsDateTime compare) {
             DateTimeOffset a = then.ToUniversalTime();
             return GetAge(a.Year, a.Month, a.Day, compare.Year, compare.Month, compare.Day);
@@ -241,6 +246,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <param name="compare">The date to compare against.</param>
         /// <returns>The calculated age between the two dates.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsDate then, EssentialsDateTime compare) {
             return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
@@ -265,6 +271,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="then">The date of birth.</param>
         /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsDateTime then) {
             return GetAge(then, DateTime.Today);
         }
@@ -275,6 +282,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <param name="compare">The date to compare against.</param>
         /// <returns>The calculated age between the two dates.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsDateTime then, DateTime compare) {
             return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
@@ -285,6 +293,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <param name="compare">The date to compare against.</param>
         /// <returns>The calculated age between the two dates.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsDateTime then, DateTimeOffset compare) {
             compare = compare.ToUniversalTime();
             return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
@@ -296,6 +305,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <param name="compare">The date to compare against.</param>
         /// <returns>The calculated age between the two dates.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsDateTime then, EssentialsDate compare) {
             return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
@@ -306,6 +316,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <param name="compare">The date to compare against.</param>
         /// <returns>The calculated age between the two dates.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsDateTime then, EssentialsDateTime compare) {
             return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
         }
@@ -316,6 +327,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <param name="compare">The date to compare against.</param>
         /// <returns>The calculated age between the two dates.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsDateTime then, EssentialsTime compare) {
             compare = compare.ToUniversalTime();
             return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
@@ -375,6 +387,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <param name="compare">The date to compare against.</param>
         /// <returns>The calculated age between the two dates.</returns>
+        [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
         public static int GetAge(EssentialsTime then, EssentialsDateTime compare) {
             then = then.ToUniversalTime();
             compare = compare.ToUniversalTime();
@@ -446,9 +459,9 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
-        [Obsolete("Use Iso8601.GetWeekNumber method instead.")]
+        [Obsolete("Use Iso8601Utils.GetWeekNumber method instead.")]
         public static int GetIso8601WeekNumber(DateTime date) {
-            return Iso8601.GetWeekNumber(date);
+            return Iso8601Utils.GetWeekNumber(date);
         }
 
         /// <summary>
@@ -459,9 +472,9 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
-        [Obsolete("Use Iso8601.GetWeekNumber method instead.")]
+        [Obsolete("Use Iso8601Utils.GetWeekNumber method instead.")]
         public static int GetIso8601WeekNumber(DateTimeOffset date) {
-            return Iso8601.GetWeekNumber(date.DateTime);
+            return Iso8601Utils.GetWeekNumber(date.DateTime);
         }
 
         /// <summary>
@@ -1390,13 +1403,13 @@ namespace Skybrud.Essentials.Time {
             switch (format) {
 
                 case TimeFormat.Iso8601:
-                    return ToIso8601(value);
+                    return Iso8601Utils.ToString(value);
 
                 case TimeFormat.Rfc822:
-                    return ToRfc822(value);
+                    return Rfc822Utils.ToString(value);
 
                 case TimeFormat.Rfc2822:
-                    return ToRfc2822(value);
+                    return Rfc2822Utils.ToString(value);
 
                 case TimeFormat.UnixTime:
                     return GetUnixTimeFromDateTime(value);
@@ -1427,13 +1440,13 @@ namespace Skybrud.Essentials.Time {
             switch (format) {
 
                 case TimeFormat.Iso8601:
-                    return ToIso8601(value);
+                    return Iso8601Utils.ToString(value);
 
                 case TimeFormat.Rfc822:
-                    return ToRfc822(value);
+                    return Rfc822Utils.ToString(value);
 
                 case TimeFormat.Rfc2822:
-                    return ToRfc2822(value);
+                    return Rfc2822Utils.ToString(value);
 
                 case TimeFormat.UnixTime:
                     return GetUnixTimeFromDateTimeOffset(value);

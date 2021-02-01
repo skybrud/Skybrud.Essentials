@@ -1,5 +1,5 @@
 ﻿using System;
-using System.Globalization;
+using Skybrud.Essentials.Time.Rfc2822;
 
 namespace Skybrud.Essentials.Time {
 
@@ -11,8 +11,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        [Obsolete("use Rfc2822Utils.ToString(DateTime) method instead.")]
         public static string ToRfc2822(DateTime timestamp) {
-            return timestamp.ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture) + " " + timestamp.ToString("zzzz", CultureInfo.InvariantCulture).Replace(":", "");
+            return Rfc2822Utils.ToString(timestamp);
         }
 
         /// <summary>
@@ -21,8 +22,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        [Obsolete("use Rfc2822Utils.ToString(DateTimeOffset) method instead.")]
         public static string ToRfc2822(DateTimeOffset timestamp) {
-            return timestamp.ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture) + " " + timestamp.ToString("zzzz", CultureInfo.InvariantCulture).Replace(":", "");
+            return Rfc2822Utils.ToString(timestamp);
         }
 
         /// <summary>
@@ -31,9 +33,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        [Obsolete("use Rfc2822Utils.ToString(EssentialsDateTime) method instead.")]
         public static string ToRfc2822(EssentialsDateTime timestamp) {
-            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
-            return ToRfc2822(timestamp.DateTime);
+            return Rfc2822Utils.ToString(timestamp);
         }
 
     }

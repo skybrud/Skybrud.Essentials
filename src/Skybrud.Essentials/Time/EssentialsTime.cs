@@ -2,6 +2,9 @@
 using System.Globalization;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Time.Iso8601;
+using Skybrud.Essentials.Time.Rfc2822;
+using Skybrud.Essentials.Time.Rfc822;
 
 namespace Skybrud.Essentials.Time {
 
@@ -157,7 +160,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the week number the <strong>ISO 8601</strong> week of this <see cref="EssentialsTime"/>.
         /// </summary>
-        public int WeekNumber => TimeUtils.Iso8601.GetWeekNumber(DateTimeOffset);
+        public int WeekNumber => Iso8601Utils.GetWeekNumber(DateTimeOffset);
 
         /// <summary>
         /// Gets the amount of days in the month.
@@ -202,17 +205,17 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
         /// </summary>
-        public string Iso8601 => TimeUtils.ToIso8601(DateTimeOffset);
+        public string Iso8601 => Iso8601Utils.ToString(DateTimeOffset);
 
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>RFC 822</strong> format.
         /// </summary>
-        public string Rfc822 => TimeUtils.ToRfc822(DateTimeOffset);
+        public string Rfc822 => Rfc822Utils.ToString(DateTimeOffset);
 
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>RFC 2822</strong> format.
         /// </summary>
-        public string Rfc2822 => TimeUtils.ToRfc2822(DateTimeOffset);
+        public string Rfc2822 => Rfc2822Utils.ToString(DateTimeOffset);
 
         /// <summary>
         /// Gets the English name of the day.
@@ -295,7 +298,9 @@ namespace Skybrud.Essentials.Time {
         /// Initializes a new instance based on the specified <paramref name="dateTime"/>.
         /// </summary>
         /// <param name="dateTime">An instance <see cref="EssentialsDateTime"/> the instance should be based on.</param>
+#pragma warning disable CS0618 // Type or member is obsolete
         public EssentialsTime(EssentialsDateTime dateTime) {
+#pragma warning restore CS0618 // Type or member is obsolete
             if (dateTime == null) throw new ArgumentNullException(nameof(dateTime));
             DateTimeOffset = dateTime.DateTime;
         }
@@ -574,7 +579,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="value">The value to compare to the current instance.</param>
         /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/> parameter.</returns>
         public int CompareTo(EssentialsTime value) {
-            return DateTimeOffset.CompareTo(value == null ? default(DateTimeOffset) : value.DateTimeOffset);
+            return DateTimeOffset.CompareTo(value == null ? default : value.DateTimeOffset);
         }
 
         /// <summary>
@@ -936,6 +941,69 @@ namespace Skybrud.Essentials.Time {
             return result != null;
 
         }
+
+        /// <summary>
+        /// Converts the specified <paramref name="iso8601"/> formatted date and time to its <see cref="EssentialsTime"/>
+        /// equivalent and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="iso8601">The string with the ISO 8601 formatted date and time.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsTime"/> value
+        /// equivalent to the date and time contained in <paramref name="iso8601"/>, if the conversion succeeded, or
+        /// <c>null</c> if the conversion failed.</param>
+        /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool TryParseIso8601(string iso8601, out EssentialsTime result) {
+
+            if (Iso8601Utils.TryParse(iso8601, out DateTimeOffset dto)) {
+                result = new EssentialsTime(dto);
+                return true;
+            }
+
+            result = null;
+            return false;
+
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="rfc822"/> formatted date and time to its <see cref="EssentialsTime"/>
+        /// equivalent and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="rfc822">The string with the RFC 822 formatted date.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsTime"/> value
+        /// equivalent to the date and time contained in <paramref name="rfc822"/>, if the conversion succeeded, or
+        /// <c>null</c> if the conversion failed.</param>
+        /// <returns><c>true</c> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool TryParseRfc822(string rfc822, out EssentialsTime result) {
+
+            if (Rfc822Utils.TryParse(rfc822, out DateTimeOffset dto)) {
+                result = new EssentialsTime(dto);
+                return true;
+            }
+
+            result = null;
+            return false;
+
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="rfc2822"/> formatted date and time to its <see cref="EssentialsTime"/>
+        /// equivalent and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="rfc2822">The string with the RFC 2822 formatted date.</param>
+        /// <param name="result">When this method returns, contains the <see cref="EssentialsTime"/> value
+        /// equivalent to the date and time contained in <paramref name="rfc2822"/>, if the conversion succeeded, or
+        /// <c>null</c> if the conversion failed.</param>
+        /// <returns><c>true</c> if the <paramref name="rfc2822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool TryParseRfc2822(string rfc2822, out EssentialsTime result) {
+
+            if (Rfc2822Utils.TryParse(rfc2822, out DateTimeOffset dto)) {
+                result = new EssentialsTime(dto);
+                return true;
+            }
+
+            result = null;
+            return false;
+
+        }
         
         /// <summary>
         /// Initialize a new instance from the specified UNIX timestamp.
@@ -950,7 +1018,7 @@ namespace Skybrud.Essentials.Time {
         /// Initialize a new instance from the specified UNIX timestamp.
         /// </summary>
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
-        /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(long timestamp) {
             return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
         }
@@ -959,7 +1027,7 @@ namespace Skybrud.Essentials.Time {
         /// Initialize a new instance from the specified UNIX timestamp.
         /// </summary>
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
-        /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(double timestamp) {
             return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
         }
@@ -970,7 +1038,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="value">The <strong>ISO 8601</strong> string to be converted.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromIso8601(string value) {
-            return new EssentialsTime(TimeUtils.Iso8601ToDateTimeOffset(value));
+            return new EssentialsTime(Iso8601Utils.Parse(value));
         }
 
         /// <summary>
@@ -980,7 +1048,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromIso8601Week(int year, int week) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromIso8601Week(year, week));
+            return new EssentialsTime(Iso8601Utils.FromWeekNumber(year, week));
         }
 
         /// <summary>
@@ -991,7 +1059,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="offset">The offset to convert the <see cref="EssentialsTime"/> value to.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromIso8601Week(int year, int week, TimeSpan offset) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromIso8601Week(year, week, offset));
+            return new EssentialsTime(Iso8601Utils.FromWeekNumber(year, week, offset));
         }
 
         /// <summary>
@@ -1002,15 +1070,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromIso8601Week(int year, int week, TimeZoneInfo timeZone) {
-
-            // Get the start of the week
-            DateTimeOffset time = TimeUtils.GetDateTimeOffsetFromIso8601Week(year, week, timeZone.BaseUtcOffset);
-
-            // Adjust to the specified time zone
-            time = TimeUtils.AdjustForTimeZoneAndDaylightSavings(time, timeZone);
-
-            return new EssentialsTime(time, timeZone);
-
+            return new EssentialsTime(Iso8601Utils.FromWeekNumber(year, week, timeZone), timeZone);
         }
 
         /// <summary>
@@ -1019,7 +1079,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="str">The <strong>RFC 822</strong> string to be converted.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromRfc822(string str) {
-            return new EssentialsTime(TimeUtils.Rfc822ToDateTimeOffset(str));
+            return new EssentialsTime(Rfc822Utils.Parse(str));
         }
 
         /// <summary>
@@ -1028,7 +1088,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="str">The <strong>RFC 2822</strong> string to be converted.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromRfc2822(string str) {
-            return new EssentialsTime(TimeUtils.Rfc822ToDateTimeOffset(str));
+            return new EssentialsTime(Rfc2822Utils.Parse(str));
         }
 
         /// <summary>

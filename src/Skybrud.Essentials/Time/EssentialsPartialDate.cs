@@ -86,7 +86,9 @@ namespace Skybrud.Essentials.Time {
         /// Initializes a new instance from the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">An instance of <see cref="EssentialsDateTime"/> representing the full date.</param>
+#pragma warning disable 618
         public EssentialsPartialDate(EssentialsDateTime date) {
+#pragma warning restore 618
             Year = date == null ? 0 : date.Year;
             Month = date == null ? 0 : date.Month;
             Day = date == null ? 0 : date.Day;
@@ -273,7 +275,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">An instance of <see cref="EssentialsDateTime"/>.</param>
         /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
+#pragma warning disable 618
         public static implicit operator EssentialsPartialDate(EssentialsDateTime timestamp) {
+#pragma warning restore 618
             return new EssentialsPartialDate(timestamp);
         }
 

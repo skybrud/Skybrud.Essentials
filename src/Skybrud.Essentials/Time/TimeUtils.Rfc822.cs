@@ -1,6 +1,7 @@
 ﻿using System;
-using System.Globalization;
-using System.Text.RegularExpressions;
+using Skybrud.Essentials.Time.Rfc822;
+
+// ReSharper disable MemberHidesStaticFromOuterClass
 
 namespace Skybrud.Essentials.Time {
 
@@ -12,8 +13,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        [Obsolete("Use Rfc822Utils.ToString(DateTime) method instead.")]
         public static string ToRfc822(DateTime timestamp) {
-            return timestamp.ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture) + " " + timestamp.ToString("zzzz", CultureInfo.InvariantCulture).Replace(":", "");
+            return Rfc822Utils.ToString(timestamp);
         }
 
         /// <summary>
@@ -22,8 +24,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        [Obsolete("Use Rfc822Utils.ToString(DateTimeOffset) method instead.")]
         public static string ToRfc822(DateTimeOffset timestamp) {
-            return timestamp.ToString("ddd, dd MMM yyyy HH:mm:ss", CultureInfo.InvariantCulture) + " " + timestamp.ToString("zzzz", CultureInfo.InvariantCulture).Replace(":", "");
+            return Rfc822Utils.ToString(timestamp);
         }
 
         /// <summary>
@@ -32,9 +35,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        [Obsolete("use Rfc822Utils.ToString(EssentialsDateTime) method instead.")]
         public static string ToRfc822(EssentialsDateTime timestamp) {
-            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
-            return ToRfc822(timestamp.DateTime);
+            return Rfc822Utils.ToString(timestamp.DateTime);
         }
 
         /// <summary>
@@ -42,8 +45,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="rfc822">The string with the RFC 822 formatted string.</param>
         /// <returns>An instance of <see cref="DateTime"/>.</returns>
+        [Obsolete("Use Rfc822Utils.Parse(string) method instead.")]
         public static DateTime Rfc822ToDateTime(string rfc822) {
-            return Rfc822ToDateTimeOffset(rfc822).DateTime;
+            return Rfc822Utils.Parse(rfc822).DateTime;
         }
 
         /// <summary>
@@ -51,34 +55,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="rfc822">The string with the RFC 822 formatted string.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
+        [Obsolete("Use Rfc822Utils.Parse(string) method instead.")]
         public static DateTimeOffset Rfc822ToDateTimeOffset(string rfc822) {
-
-            if (string.IsNullOrWhiteSpace(rfc822)) throw new ArgumentNullException(nameof(rfc822));
-
-            Match m1 = Regex.Match(rfc822, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
-
-            if (!m1.Success) return DateTimeOffset.ParseExact(rfc822, "ddd, dd MMM yyyy HH:mm:ss K", CultureInfo.InvariantCulture).ToLocalTime();
-
-            // The RFC 822 specification describes a few predefined time zones, which we
-            // need to convert to an offset instead, since "DateTimeOffset" can't parse the
-            // time zone
-            string timezone = string.IsNullOrWhiteSpace(m1.Groups[9].Value) ? NormalizeRfc822TimeZone(m1.Groups[10].Value) : m1.Groups[9].Value.Replace(":", "");
-
-            // Generate a new input string based on our conversions
-            string str = string.Format(
-                "{0}, {1} {2} {3} {4}:{5}:{6} {7}",
-                m1.Groups[1].Value,
-                m1.Groups[2].Value.PadLeft(2, '0'),
-                m1.Groups[3].Value,
-                m1.Groups[4].Value,
-                m1.Groups[5].Value,
-                m1.Groups[6].Value,
-                m1.Groups[7].Value,
-                timezone
-            );
-
-            return DateTimeOffset.ParseExact(str, "ddd, dd MMM yyyy HH:mm:ss K", CultureInfo.InvariantCulture);
-
+            return Rfc822Utils.Parse(rfc822);
         }
 
         /// <summary>
@@ -92,73 +71,9 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://www.w3.org/Protocols/rfc822/#z28</cref>
         /// </see>
+        [Obsolete("Use Rfc822Utils.NormalizeTimeZone(string) method instead.")]
         public static string NormalizeRfc822TimeZone(string timezone) {
-            switch (timezone) {
-                case "UT":
-                case "UTC":
-                case "Z":
-                case "GMT":
-                    return "+0000";
-                case "A":
-                    return "-0100";
-                case "B":
-                    return "-0200";
-                case "C":
-                    return "-0300";
-                case "D":
-                case "EDT":
-                    return "-0400";
-                case "E":
-                case "EST":
-                case "CDT":
-                    return "-0500";
-                case "F":
-                case "CST":
-                case "MDT":
-                    return "-0600";
-                case "G":
-                case "MST":
-                case "PDT":
-                    return "-0700";
-                case "H":
-                case "PST":
-                    return "-0800";
-                case "I":
-                    return "-0900";
-                case "K":
-                    return "-1000";
-                case "L":
-                    return "-1100";
-                case "M":
-                    return "-1200";
-                case "N":
-                    return "+0100";
-                case "O":
-                    return "+0200";
-                case "P":
-                    return "+0300";
-                case "Q":
-                    return "+0400";
-                case "R":
-                    return "+0500";
-                case "S":
-                    return "+0600";
-                case "T":
-                    return "+0700";
-                case "U":
-                    return "+0800";
-                case "V":
-                    return "+0900";
-                case "W":
-                    return "+1000";
-                case "X":
-                    return "+1100";
-                case "Y":
-                    return "+1200";
-                default:
-                    return "";
-            }
-        
+            return Rfc822Utils.NormalizeTimeZone(timezone);
         }
 
     }

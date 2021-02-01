@@ -10,6 +10,8 @@ namespace UnitTestProject1.Time.GetAge {
         [TestMethod]
         public void DateTime() {
 
+            #pragma warning disable 618
+
             EssentialsDateTime t = new EssentialsDateTime(2019, 9, 14);
 
             DateTime a = new DateTime(2020, 9, 13);
@@ -20,10 +22,14 @@ namespace UnitTestProject1.Time.GetAge {
             Assert.AreEqual(1, TimeUtils.GetAge(t, b));
             Assert.AreEqual(1, TimeUtils.GetAge(t, c));
 
+            #pragma warning restore 618
+
         }
 
         [TestMethod]
         public void DateTimeOffset() {
+
+            #pragma warning disable 618
 
             EssentialsDateTime t = new EssentialsDateTime(2019, 9, 14);
 
@@ -35,10 +41,14 @@ namespace UnitTestProject1.Time.GetAge {
             Assert.AreEqual(1, TimeUtils.GetAge(t, b));
             Assert.AreEqual(1, TimeUtils.GetAge(t, c));
 
+            #pragma warning restore 618
+
         }
 
         [TestMethod]
         public void EssentialsDate() {
+
+            #pragma warning disable 618
 
             EssentialsDateTime t = new EssentialsDateTime(2019, 9, 14);
 
@@ -50,10 +60,14 @@ namespace UnitTestProject1.Time.GetAge {
             Assert.AreEqual(1, TimeUtils.GetAge(t, b));
             Assert.AreEqual(1, TimeUtils.GetAge(t, c));
 
+            #pragma warning restore 618
+
         }
 
         [TestMethod]
         public void EssentialsDateTime() {
+
+            #pragma warning disable 618
 
             EssentialsDateTime t = new EssentialsDateTime(2019, 9, 14);
 
@@ -65,10 +79,14 @@ namespace UnitTestProject1.Time.GetAge {
             Assert.AreEqual(1, TimeUtils.GetAge(t, b));
             Assert.AreEqual(1, TimeUtils.GetAge(t, c));
 
+#pragma warning restore 618
+
         }
 
         [TestMethod]
         public void EssentialsTime() {
+
+            #pragma warning disable 618
 
             EssentialsDateTime t = new EssentialsDateTime(2019, 9, 14);
 
@@ -79,6 +97,8 @@ namespace UnitTestProject1.Time.GetAge {
             Assert.AreEqual(0, TimeUtils.GetAge(t, a));
             Assert.AreEqual(1, TimeUtils.GetAge(t, b));
             Assert.AreEqual(1, TimeUtils.GetAge(t, c));
+
+            #pragma warning restore 618
 
         }
 

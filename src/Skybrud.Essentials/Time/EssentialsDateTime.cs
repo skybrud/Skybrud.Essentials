@@ -2,6 +2,7 @@
 using System.Globalization;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time {
 
@@ -11,6 +12,7 @@ namespace Skybrud.Essentials.Time {
     /// Class wrapping an instance of <see cref="DateTime"/> (as an alternative to using <see cref="Nullable{DateTime}"/>).
     /// </summary>
     [JsonConverter(typeof(TimeConverter))]
+    [Obsolete("Use EssentialsTime class instead.")]
     public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, IComparable<DateTime> {
 
         #region Properties
@@ -146,7 +148,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the week number the ISO8601 week of this <see cref="EssentialsDateTime"/>.
         /// </summary>
-        public int WeekNumber => TimeUtils.Iso8601.GetWeekNumber(DateTime);
+        public int WeekNumber => Iso8601Utils.GetWeekNumber(DateTime);
 
         /// <summary>
         /// Gets a reference to an instance of <see cref="EssentialsDateWeek"/> representing the

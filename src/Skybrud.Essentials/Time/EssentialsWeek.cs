@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time {
 
@@ -72,7 +73,7 @@ namespace Skybrud.Essentials.Time {
         public EssentialsWeek(int year, int week, TimeSpan offset) {
             WeekNumber = week;
             Year = year;
-            Start = TimeUtils.GetDateTimeOffsetFromIso8601Week(year, week, offset);
+            Start = Iso8601Utils.FromWeekNumber(year, week, offset);
             End = Start.GetEndOfWeek();
         }
 
@@ -94,7 +95,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp.</param>
         public EssentialsWeek(DateTimeOffset timestamp) {
-            WeekNumber = TimeUtils.Iso8601.GetWeekNumber(timestamp);
+            WeekNumber = Iso8601Utils.GetWeekNumber(timestamp);
             Start = TimeUtils.GetStartOfWeek(timestamp);
             End = TimeUtils.GetEndOfWeek(timestamp);
             Year = GetYear();
@@ -106,7 +107,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         public EssentialsWeek(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
-            WeekNumber = TimeUtils.Iso8601.GetWeekNumber(timestamp);
+            WeekNumber = Iso8601Utils.GetWeekNumber(timestamp);
             Start = TimeUtils.GetStartOfWeek(timestamp, timeZone);
             End = TimeUtils.GetEndOfWeek(timestamp, timeZone);
             Year = GetYear();

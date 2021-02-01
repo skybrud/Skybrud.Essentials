@@ -5,6 +5,7 @@ using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Extensions;
+using Skybrud.Essentials.Time.Iso8601;
 
 #pragma warning disable 618
 
@@ -1353,103 +1354,103 @@ namespace UnitTestProject1.Time {
         public void GetIso8601Year() {
 
             // Week 52, 2016
-            Assert.AreEqual(2016, TimeUtils.Iso8601.GetYear(new DateTime(2016, 12, 26)));
-            Assert.AreEqual(2016, TimeUtils.Iso8601.GetYear(new DateTime(2016, 12, 27)));
-            Assert.AreEqual(2016, TimeUtils.Iso8601.GetYear(new DateTime(2016, 12, 28)));
-            Assert.AreEqual(2016, TimeUtils.Iso8601.GetYear(new DateTime(2016, 12, 29)));
-            Assert.AreEqual(2016, TimeUtils.Iso8601.GetYear(new DateTime(2016, 12, 30)));
-            Assert.AreEqual(2016, TimeUtils.Iso8601.GetYear(new DateTime(2016, 12, 31)));
-            Assert.AreEqual(2016, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 1)));
+            Assert.AreEqual(2016, Iso8601Utils.GetYear(new DateTime(2016, 12, 26)));
+            Assert.AreEqual(2016, Iso8601Utils.GetYear(new DateTime(2016, 12, 27)));
+            Assert.AreEqual(2016, Iso8601Utils.GetYear(new DateTime(2016, 12, 28)));
+            Assert.AreEqual(2016, Iso8601Utils.GetYear(new DateTime(2016, 12, 29)));
+            Assert.AreEqual(2016, Iso8601Utils.GetYear(new DateTime(2016, 12, 30)));
+            Assert.AreEqual(2016, Iso8601Utils.GetYear(new DateTime(2016, 12, 31)));
+            Assert.AreEqual(2016, Iso8601Utils.GetYear(new DateTime(2017, 1, 1)));
 
             // Week 1, 2017
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 2)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 3)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 4)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 5)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 6)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 7)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 1, 8)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 1, 2)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 1, 3)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 1, 4)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 1, 5)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 1, 6)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 1, 7)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 1, 8)));
 
             // Week 52, 2017
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 12, 25)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 12, 26)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 12, 27)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 12, 28)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 12, 29)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 12, 30)));
-            Assert.AreEqual(2017, TimeUtils.Iso8601.GetYear(new DateTime(2017, 12, 31)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 12, 25)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 12, 26)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 12, 27)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 12, 28)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 12, 29)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 12, 30)));
+            Assert.AreEqual(2017, Iso8601Utils.GetYear(new DateTime(2017, 12, 31)));
 
             // Week 1, 2018
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 1, 1)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 1, 2)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 1, 3)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 1, 4)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 1, 5)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 1, 6)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 1, 7)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 1, 1)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 1, 2)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 1, 3)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 1, 4)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 1, 5)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 1, 6)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 1, 7)));
 
             // Week 52, 2018
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 24)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 25)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 26)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 27)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 28)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 29)));
-            Assert.AreEqual(2018, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 30)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 24)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 25)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 26)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 27)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 28)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 29)));
+            Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 30)));
             
             // Week 1, 2019
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2018, 12, 31)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 1, 1)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 1, 2)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 1, 3)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 1, 4)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 1, 5)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 1, 6)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2018, 12, 31)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 1, 1)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 1, 2)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 1, 3)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 1, 4)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 1, 5)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 1, 6)));
 
             // Week 52, 2019
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 23)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 24)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 25)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 26)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 27)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 28)));
-            Assert.AreEqual(2019, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 29)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 12, 23)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 12, 24)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 12, 25)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 12, 26)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 12, 27)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 12, 28)));
+            Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 12, 29)));
 
             // Week 1, 2020
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 30)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2019, 12, 31)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 1, 1)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 1, 2)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 1, 3)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 1, 4)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 1, 5)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2019, 12, 30)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2019, 12, 31)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 1, 1)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 1, 2)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 1, 3)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 1, 4)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 1, 5)));
 
             // Week 52, 2020
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 21)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 22)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 23)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 24)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 25)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 26)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 27)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 21)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 22)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 23)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 24)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 25)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 26)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 27)));
 
             // Week 53, 2020
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 28)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 29)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 30)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2020, 12, 31)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 1)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 2)));
-            Assert.AreEqual(2020, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 3)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 28)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 29)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 30)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2020, 12, 31)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2021, 1, 1)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2021, 1, 2)));
+            Assert.AreEqual(2020, Iso8601Utils.GetYear(new DateTime(2021, 1, 3)));
 
             // Week 1, 2021
-            Assert.AreEqual(2021, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 4)));
-            Assert.AreEqual(2021, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 5)));
-            Assert.AreEqual(2021, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 6)));
-            Assert.AreEqual(2021, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 7)));
-            Assert.AreEqual(2021, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 8)));
-            Assert.AreEqual(2021, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 9)));
-            Assert.AreEqual(2021, TimeUtils.Iso8601.GetYear(new DateTime(2021, 1, 10)));
+            Assert.AreEqual(2021, Iso8601Utils.GetYear(new DateTime(2021, 1, 4)));
+            Assert.AreEqual(2021, Iso8601Utils.GetYear(new DateTime(2021, 1, 5)));
+            Assert.AreEqual(2021, Iso8601Utils.GetYear(new DateTime(2021, 1, 6)));
+            Assert.AreEqual(2021, Iso8601Utils.GetYear(new DateTime(2021, 1, 7)));
+            Assert.AreEqual(2021, Iso8601Utils.GetYear(new DateTime(2021, 1, 8)));
+            Assert.AreEqual(2021, Iso8601Utils.GetYear(new DateTime(2021, 1, 9)));
+            Assert.AreEqual(2021, Iso8601Utils.GetYear(new DateTime(2021, 1, 10)));
 
 
         }
