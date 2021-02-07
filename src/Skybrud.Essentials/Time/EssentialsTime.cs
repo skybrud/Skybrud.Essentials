@@ -5,6 +5,7 @@ using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
+using Skybrud.Essentials.Time.Swatch;
 using Skybrud.Essentials.Time.UnixTime;
 
 namespace Skybrud.Essentials.Time {
@@ -1126,7 +1127,7 @@ namespace Skybrud.Essentials.Time {
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
             DateTimeOffset dto = new DateTimeOffset(year, month, day, 0, 0, 0, TimeSpan.FromHours(1))
-                .Add(TimeUtils.Swatch.ToTimeSpan(beats));
+                .Add(SwatchUtils.ToTimeSpan(beats));
 
             return new EssentialsTime(dto).ToTimeZone(timeZone);
 
