@@ -17,7 +17,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
-        [Obsolete("Use Iso8601Utils.ToString(Datetime) method instead.")]
+        [Obsolete("Use Iso8601Utils.ToString(DateTime) method instead.")]
         public static string ToIso8601(DateTime timestamp) {
             return Iso8601Utils.ToString(timestamp);
         }
@@ -28,7 +28,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
-        [Obsolete("Use Iso8601Utils.ToString(DatetimeOffset) method instead.")]
+        [Obsolete("Use Iso8601Utils.ToString(DateTimeOffset) method instead.")]
         public static string ToIso8601(DateTimeOffset timestamp) {
             return Iso8601Utils.ToString(timestamp);
         }

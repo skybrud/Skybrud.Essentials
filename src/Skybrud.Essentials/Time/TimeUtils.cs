@@ -459,7 +459,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
-        [Obsolete("Use Iso8601Utils.GetWeekNumber method instead.")]
+        [Obsolete("Use Iso8601Utils.GetWeekNumber(DateTime) method instead.")]
         public static int GetIso8601WeekNumber(DateTime date) {
             return Iso8601Utils.GetWeekNumber(date);
         }
@@ -472,7 +472,7 @@ namespace Skybrud.Essentials.Time {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
-        [Obsolete("Use Iso8601Utils.GetWeekNumber method instead.")]
+        [Obsolete("Use Iso8601Utils.GetWeekNumber(DateTimeOffset) method instead.")]
         public static int GetIso8601WeekNumber(DateTimeOffset date) {
             return Iso8601Utils.GetWeekNumber(date.DateTime);
         }
