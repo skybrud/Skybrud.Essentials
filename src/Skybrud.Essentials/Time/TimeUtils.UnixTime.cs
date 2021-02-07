@@ -39,7 +39,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>The timestamp as an instance of <see cref="DateTime"/>.</returns>
         [Obsolete("Use UnixTimeUtils.FromSeconds(int) method instead.")]
         public static DateTime GetDateTimeFromUnixTime(int timestamp) {
-            return UnixTimeUtils.FromSeconds(timestamp).DateTime;
+            return UnixTimeUtils.FromSeconds(timestamp).UtcDateTime.ToUniversalTime();
         }
 
         /// <summary>
@@ -50,7 +50,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>The timestamp as an instance of <see cref="DateTime"/>.</returns>
         [Obsolete("Use UnixTimeUtils.FromSeconds(long) method instead.")]
         public static DateTime GetDateTimeFromUnixTime(long timestamp) {
-            return UnixTimeUtils.FromSeconds(timestamp).DateTime;
+            return UnixTimeUtils.FromSeconds(timestamp).UtcDateTime.ToUniversalTime();
         }
 
         /// <summary>
@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>The timestamp as an instance of <see cref="DateTime"/>.</returns>
         [Obsolete("Use UnixTimeUtils.FromSeconds(double) method instead.")]
         public static DateTime GetDateTimeFromUnixTime(double timestamp) {
-            return UnixTimeUtils.FromSeconds(timestamp).DateTime;
+            return UnixTimeUtils.FromSeconds(timestamp).UtcDateTime.ToUniversalTime();
         }
 
         /// <summary>
@@ -72,7 +72,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>The timestamp as an instance of <see cref="DateTime"/>.</returns>
         [Obsolete("Use UnixTimeUtils.FromSeconds(string) method instead.")]
         public static DateTime GetDateTimeFromUnixTime(string timestamp) {
-            return UnixTimeUtils.FromSeconds(timestamp).DateTime;
+            return UnixTimeUtils.FromSeconds(timestamp).UtcDateTime.ToUniversalTime();
         }
 
         #endregion
