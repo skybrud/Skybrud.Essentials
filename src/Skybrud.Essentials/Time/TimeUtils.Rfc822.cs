@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
-        [Obsolete("use Rfc822Utils.ToString(EssentialsDateTime) method instead.")]
+        [Obsolete("Use Rfc822Utils.ToString(EssentialsDateTime) method instead.")]
         public static string ToRfc822(EssentialsDateTime timestamp) {
             return Rfc822Utils.ToString(timestamp.DateTime);
         }
