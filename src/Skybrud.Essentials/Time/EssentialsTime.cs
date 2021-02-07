@@ -5,6 +5,7 @@ using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
+using Skybrud.Essentials.Time.UnixTime;
 
 namespace Skybrud.Essentials.Time {
 
@@ -135,7 +136,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
-        public long UnixTimestamp => TimeUtils.GetUnixTimeFromDateTimeOffset(DateTimeOffset);
+        public long UnixTimestamp => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the time's offset from Coordinated Universal Time (UTC).
@@ -1011,7 +1012,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(int timestamp) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
         }
 
         /// <summary>
@@ -1020,7 +1021,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(long timestamp) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
         }
 
         /// <summary>
@@ -1029,7 +1030,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromUnixTimestamp(double timestamp) {
-            return new EssentialsTime(TimeUtils.GetDateTimeOffsetFromUnixTime(timestamp), TimeZoneInfo.Utc);
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
         }
 
         /// <summary>

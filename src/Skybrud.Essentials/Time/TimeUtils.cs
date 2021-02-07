@@ -3,6 +3,7 @@ using System.Globalization;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
+using Skybrud.Essentials.Time.UnixTime;
 
 namespace Skybrud.Essentials.Time {
 
@@ -1412,7 +1413,7 @@ namespace Skybrud.Essentials.Time {
                     return Rfc2822Utils.ToString(value);
 
                 case TimeFormat.UnixTime:
-                    return GetUnixTimeFromDateTime(value);
+                    return (long) UnixTimeUtils.ToSeconds(value);
 
                 default:
                     throw new ArgumentException("Unsupported format " + format, nameof(format));
@@ -1449,7 +1450,7 @@ namespace Skybrud.Essentials.Time {
                     return Rfc2822Utils.ToString(value);
 
                 case TimeFormat.UnixTime:
-                    return GetUnixTimeFromDateTimeOffset(value);
+                    return (long) UnixTimeUtils.ToSeconds(value);
 
                 default:
                     throw new ArgumentException("Unsupported format " + format, nameof(format));
