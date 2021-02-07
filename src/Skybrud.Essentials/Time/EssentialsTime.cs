@@ -1214,6 +1214,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
+        [Obsolete("Use FromUnixTimestamp(long) method instead.")]
         public static implicit operator EssentialsTime(long timestamp) {
             return FromUnixTimestamp(timestamp);
         }
@@ -1224,6 +1225,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        [Obsolete("Use FromUnixTimestamp(double) method instead.")]
         public static implicit operator EssentialsTime(double timestamp) {
             return FromUnixTimestamp(timestamp);
         }
