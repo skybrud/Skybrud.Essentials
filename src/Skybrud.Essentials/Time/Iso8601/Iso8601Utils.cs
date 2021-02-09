@@ -166,7 +166,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset Parse(string iso8601) {
             if (string.IsNullOrWhiteSpace(iso8601)) throw new ArgumentNullException(nameof(iso8601));
-            return DateTimeOffset.ParseExact(iso8601, DateTimeFormat, CultureInfo.InvariantCulture);
+            return DateTimeOffset.ParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None);
         }
         
         /// <summary>
@@ -180,7 +180,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParse(string iso8601, out DateTime result) {
-            return DateTime.TryParseExact(iso8601, DateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+            return DateTime.TryParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
         }
 
         /// <summary>
@@ -194,7 +194,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParse(string iso8601, out DateTimeOffset result) {
-            return DateTimeOffset.TryParseExact(iso8601, DateTimeFormat, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+            return DateTimeOffset.TryParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
         }
 
     }

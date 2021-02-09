@@ -3,10 +3,9 @@ using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
-
 using static Skybrud.Essentials.Time.Iso8601.Iso8601Constants;
 
-namespace UnitTestProject1.Time.Time.Iso8601 {
+namespace UnitTestProject1.Time.Formats {
     
     [TestClass]
     public class Iso8601Tests {
@@ -311,6 +310,77 @@ namespace UnitTestProject1.Time.Time.Iso8601 {
             Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T03:33:38+10:00"));
             Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T04:33:38+11:00"));
             Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T05:33:38+12:00"));
+
+        }
+
+        [TestMethod]
+        public void ParseWithMilliseconds() {
+
+            // Initialize some reference timestamps
+            DateTimeOffset reference1 = new DateTime(2013, 08, 07, 21, 07, 24, 123, DateTimeKind.Utc);
+            DateTimeOffset reference2 = new DateTime(2016, 10, 07, 17, 33, 38, 456, DateTimeKind.Utc);
+
+            //var dto = Iso8601Utils.Parse("2016-10-07T16:33:38.456-01:00");
+
+            //throw new Exception(reference2.ToString("yyyy-MM-ddTHH:mm:ss.fffK") + " vs " + dto.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+
+            // Universal time
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T21:07:24.123Z"), "Reference 1 - UTC +00");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T21:07:24.123+00:00"), "Reference 1 - UTC +01");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T17:33:38.456Z"), "Reference 1 - UTC +02");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T17:33:38.456+00:00"), "Reference 1 - UTC +02");
+
+            // Offset (reference 1)
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T20:07:24.123-01:00"), "Reference 1 - UTC -01");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T19:07:24.123-02:00"), "Reference 1 - UTC -02");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T18:07:24.123-03:00"), "Reference 1 - UTC -03");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T17:07:24.123-04:00"), "Reference 1 - UTC -04");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T16:07:24.123-05:00"), "Reference 1 - UTC -05");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T15:07:24.123-06:00"), "Reference 1 - UTC -05");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T14:07:24.123-07:00"), "Reference 1 - UTC -07");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T13:07:24.123-08:00"), "Reference 1 - UTC -08");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T12:07:24.123-09:00"), "Reference 1 - UTC -09");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T11:07:24.123-10:00"), "Reference 1 - UTC -10");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T10:07:24.123-11:00"), "Reference 1 - UTC -11");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T09:07:24.123-12:00"), "Reference 1 - UTC -12");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T22:07:24.123+01:00"), "Reference 1 - UTC +01");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-07T23:07:24.123+02:00"), "Reference 1 - UTC +02");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T00:07:24.123+03:00"), "Reference 1 - UTC +03");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T01:07:24.123+04:00"), "Reference 1 - UTC +04");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T02:07:24.123+05:00"), "Reference 1 - UTC +05");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T03:07:24.123+06:00"), "Reference 1 - UTC +06");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T04:07:24.123+07:00"), "Reference 1 - UTC +07");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T05:07:24.123+08:00"), "Reference 1 - UTC +08");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T06:07:24.123+09:00"), "Reference 1 - UTC +09");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T07:07:24.123+10:00"), "Reference 1 - UTC +10");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T08:07:24.123+11:00"), "Reference 1 - UTC +11");
+            Assert.AreEqual(reference1, Iso8601Utils.Parse("2013-08-08T09:07:24.123+12:00"), "Reference 1 - UTC +12");
+
+            // Offset (reference 2)
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T16:33:38.456-01:00"), "Reference 2 - UTC -01");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T15:33:38.456-02:00"), "Reference 2 - UTC -02");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T14:33:38.456-03:00"), "Reference 2 - UTC -03");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T13:33:38.456-04:00"), "Reference 2 - UTC -04");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T12:33:38.456-05:00"), "Reference 2 - UTC -05");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T11:33:38.456-06:00"), "Reference 2 - UTC -06");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T10:33:38.456-07:00"), "Reference 2 - UTC -07");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T09:33:38.456-08:00"), "Reference 2 - UTC -08");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T08:33:38.456-09:00"), "Reference 2 - UTC -09");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T07:33:38.456-10:00"), "Reference 2 - UTC -10");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T06:33:38.456-11:00"), "Reference 2 - UTC -11");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T05:33:38.456-12:00"), "Reference 2 - UTC -12");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T18:33:38.456+01:00"), "Reference 2 - UTC +01");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T19:33:38.456+02:00"), "Reference 2 - UTC +02");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T20:33:38.456+03:00"), "Reference 2 - UTC +03");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T21:33:38.456+04:00"), "Reference 2 - UTC +04");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T22:33:38.456+05:00"), "Reference 2 - UTC +05");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-07T23:33:38.456+06:00"), "Reference 2 - UTC +06");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T00:33:38.456+07:00"), "Reference 2 - UTC +07");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T01:33:38.456+08:00"), "Reference 2 - UTC +08");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T02:33:38.456+09:00"), "Reference 2 - UTC +09");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T03:33:38.456+10:00"), "Reference 2 - UTC +10");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T04:33:38.456+11:00"), "Reference 2 - UTC +11");
+            Assert.AreEqual(reference2, Iso8601Utils.Parse("2016-10-08T05:33:38.456+12:00"), "Reference 2 - UTC +12");
 
         }
 

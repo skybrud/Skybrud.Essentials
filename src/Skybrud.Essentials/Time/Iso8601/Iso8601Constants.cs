@@ -15,6 +15,13 @@
         /// </summary>
         public const string DateTimeFormat = "yyyy-MM-ddTHH:mm:ssK";
 
+        internal static readonly string[] DateTimeFormats = {
+            "yyyy-MM-ddTHH:mm:ssZ",
+            "yyyy-MM-ddTHH:mm:ssK",
+            "yyyy-MM-ddTHH:mm:ss.fffZ",
+            "yyyy-MM-ddTHH:mm:ss.fffK"
+        };
+
     }
 
 }
