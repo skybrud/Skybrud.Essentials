@@ -88,6 +88,53 @@ namespace UnitTestProject1.Json {
         }
 
         [TestMethod]
+        public void GetGuidArray() {
+
+            Guid expected1 = new Guid("ed377349-6946-4418-91cd-3b3ecc0b1cc6");
+            Guid expected2 = new Guid("ccecd33b-3153-486a-8a1d-2c01016a6d42");
+
+            JObject sample1 = new JObject {
+                {"array", new JArray { "ed377349-6946-4418-91cd-3b3ecc0b1cc6", "ccecd33b-3153-486a-8a1d-2c01016a6d42" } },
+                {"number", 1},
+                {"string", "nope" },
+                {"string2", "ed377349-6946-4418-91cd-3b3ecc0b1cc6,ccecd33b-3153-486a-8a1d-2c01016a6d42" },
+                {"guid", expected1 }
+            };
+
+            JObject sample2 = new JObject {
+                {"array", new JArray { "nope", "ed377349-6946-4418-91cd-3b3ecc0b1cc6", "ccecd33b-3153-486a-8a1d-2c01016a6d42" } }
+            };
+
+            Guid[] array1 = sample1.GetGuidArray("array");
+            Guid[] array2 = sample2.GetGuidArray("array");
+            Guid[] array3 = sample1.GetGuidArray("nope");
+            Guid[] array4 = sample1.GetGuidArray("number");
+            Guid[] array5 = sample1.GetGuidArray("string");
+            Guid[] array6 = sample1.GetGuidArray("string2");
+            Guid[] array7 = sample1.GetGuidArray("guid");
+
+            Assert.AreEqual(2, array1.Length, "#1");
+            Assert.AreEqual(expected1, array1[0], "#1");
+            Assert.AreEqual(expected2, array1[1], "#1");
+
+            Assert.AreEqual(2, array2.Length, "#2");
+            Assert.AreEqual(expected1, array2[0], "#2");
+            Assert.AreEqual(expected2, array2[1], "#2");
+
+            Assert.AreEqual(0, array3.Length, "Array 3");
+            Assert.AreEqual(0, array4.Length, "Array 4");
+            Assert.AreEqual(0, array5.Length, "Array 5");
+
+            Assert.AreEqual(2, array6.Length, "Array 6");
+            Assert.AreEqual(expected1, array6[0], "Array 6");
+            Assert.AreEqual(expected2, array6[1], "Array 6");
+
+            Assert.AreEqual(1, array7.Length, "Array 7");
+            Assert.AreEqual(expected1, array7[0], "Array 7");
+
+        }
+
+        [TestMethod]
         public void GetInt16() {
 
             JObject obj = JObject.Parse("{\"int16\":0,\"hest\":1234,\"null\":null,\"empty\":\"\"}");

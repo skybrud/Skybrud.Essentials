@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json.Linq;
@@ -128,6 +129,47 @@ namespace Skybrud.Essentials.Json.Extensions {
             
             // Parse the GUID (or return "fallback" if null)
             return Guid.TryParse(value, out Guid guid) ? guid : fallback;
+
+        }
+        
+        /// <summary>
+        /// Gets an array of <see cref="Guid"/> from the token matching the specified <paramref name="path"/>.
+        /// </summary>
+        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>The token value as an array of <see cref="Guid"/>.</returns>
+        public static Guid[] GetGuidArray(this JObject obj, string path) {
+
+            JToken token = obj?.SelectToken(path);
+
+            switch (token) {
+
+                case null:
+                    return new Guid[0];
+
+                case JArray array:
+
+                    List<Guid> temp = new List<Guid>();
+
+                    foreach (JToken t in array) {
+
+                        // Attempt to parse the individual tokens in the array, ensuring invalid values doesn't trigger an exception
+                        if (t != null && Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
+
+                    }
+
+                    return temp.ToArray();
+
+                default:
+
+                    // Be friendly to other formats
+                    return token.Type switch {
+                        JTokenType.String => StringUtils.ParseGuidArray(token.Value<string>()),
+                        JTokenType.Guid => new[] {token.Value<Guid>()},
+                        _ => new Guid[0]
+                    };
+
+            }
 
         }
 
