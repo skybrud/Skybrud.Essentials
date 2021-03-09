@@ -11,7 +11,7 @@ using Skybrud.Essentials.Time.UnixTime;
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
-    /// Class wrapping an instance of <see cref="DateTimeOffset"/> (as an alternative to using <see cref="Nullable{DateTimeOffset}"/>).
+    /// Class wrapping an instance of <see cref="System.DateTimeOffset"/> (as an alternative to using <see cref="Nullable{DateTimeOffset}"/>).
     /// </summary>
     [JsonConverter(typeof(TimeConverter))]
     public class EssentialsTime : IComparable, IComparable<EssentialsTime>, IComparable<DateTimeOffset> {
