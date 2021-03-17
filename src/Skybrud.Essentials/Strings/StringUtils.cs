@@ -356,6 +356,24 @@ namespace Skybrud.Essentials.Strings {
             Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
             return HtmlDecode(regex.Replace(html, string.Empty));
         }
+        
+        /// <summary>
+        /// HTML encodes the text and replaces text line breaks with HTML line breaks.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns> The HTML encoded text with text line breaks replaced with HTML line breaks (<c>&lt;br /&gt;</c>).</returns>
+        public static string ReplaceLineBreaks(string input) {
+
+            // See: https://github.com/umbraco/Umbraco-CMS/blob/release-8.12.0/src/Umbraco.Web/HtmlStringUtilities.cs#L38
+
+            string value = HtmlEncode(input)?
+                .Replace("\r\n", "<br />")
+                .Replace("\r", "<br />")
+                .Replace("\n", "<br />");
+
+            return value;
+
+        }
 
     }
 
