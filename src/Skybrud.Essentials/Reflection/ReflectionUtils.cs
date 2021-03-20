@@ -129,6 +129,26 @@ namespace Skybrud.Essentials.Reflection {
         }
 
         /// <summary>
+        /// Returns whether <paramref name="type"/> is marked as obsolete.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
+        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(Type type) {
+            return IsObsolete(type, out _);
+        }
+
+        /// <summary>
+        /// Returns whether <paramref name="type"/> is marked as obsolete.
+        /// </summary>
+        /// <param name="type">The type to check.</param>
+        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the type has been marked as obsolete.</param>
+        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(Type type, out ObsoleteAttribute attribute) {
+            attribute = type?.GetTypeInfo().GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
+            return attribute != null;
+        }
+
+        /// <summary>
         /// Returns whether <typeparamref name="T"/> is marked as obsolete.
         /// </summary>
         /// <typeparam name="T">The type to check.</typeparam>
@@ -146,6 +166,16 @@ namespace Skybrud.Essentials.Reflection {
         public static bool IsObsolete<T>(out ObsoleteAttribute attribute) {
             attribute = typeof(T).GetTypeInfo().GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
             return attribute != null;
+        }
+
+        /// <summary>
+        /// Returns whether the specified enum <paramref name="value"/> has an attribute of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute.</typeparam>
+        /// <param name="value">The enum value.</param>
+        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+        public static bool HasCustomAttribute<T>(Enum value) where T : Attribute {
+            return HasCustomAttribute<T>(value, out _);
         }
 
         /// <summary>
@@ -214,6 +244,16 @@ namespace Skybrud.Essentials.Reflection {
         /// </summary>
         /// <typeparam name="T">The type of the attribute.</typeparam>
         /// <param name="member">The member.</param>
+        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+        public static bool HasCustomAttribute<T>(MemberInfo member) where T : Attribute {
+            return HasCustomAttribute<T>(member, out _);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="member"/> has an attribute of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute.</typeparam>
+        /// <param name="member">The member.</param>
         /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
         /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
         public static bool HasCustomAttribute<T>(MemberInfo member, out T result) where T : Attribute {
@@ -234,10 +274,44 @@ namespace Skybrud.Essentials.Reflection {
         }
 
         /// <summary>
+        /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute to return.</typeparam>
+        /// <param name="member">The member holding the attribute.</param>
+        /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
+        public static T GetCustomAttribute<T>(MemberInfo member) where T : Attribute {
+            return member?
+                .GetCustomAttributes<T>(false)
+                .FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Returns an array of attributes of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attributes to return.</typeparam>
+        /// <param name="member">The member holding the attributes.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public static T[] GetCustomAttributes<T>(MemberInfo member) where T : Attribute {
+            return member?
+                .GetCustomAttributes<T>(false)
+                .ToArray() ?? new T[0];
+        }
+
+        /// <summary>
         /// Returns whether the specified <paramref name="type"/> has an attribute of type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the attribute.</typeparam>
-        /// <param name="type">The type.</param>
+        /// <param name="type">The type to check.</param>
+        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+        public static bool HasCustomAttribute<T>(Type type) where T : Attribute {
+            return HasCustomAttribute<T>(type, out _);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="type"/> has an attribute of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute.</typeparam>
+        /// <param name="type">The type to check.</param>
         /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
         /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
         public static bool HasCustomAttribute<T>(Type type, out T result) where T : Attribute {
@@ -249,12 +323,38 @@ namespace Skybrud.Essentials.Reflection {
         /// Returns whether the specified <paramref name="type"/> has one or more attributes of type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the attributes.</typeparam>
-        /// <param name="type">The type.</param>
+        /// <param name="type">The type to check.</param>
         /// <param name="result">When this method returns, an array containing the matched attributes.</param>
         /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
         public static bool HasCustomAttributes<T>(Type type, out T[] result) where T : Attribute {
             result = type?.GetTypeInfo().GetCustomAttributes<T>(false).ToArray() ?? new T[0];
             return result.Length > 0;
+        }
+
+        /// <summary>
+        /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute to return.</typeparam>
+        /// <param name="type">The type holding the attribute.</param>
+        /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
+        public static T GetCustomAttribute<T>(Type type) where T : Attribute {
+            return type?
+                .GetTypeInfo()
+                .GetCustomAttributes<T>(false)
+                .FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Returns an array of attributes of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attributes to return.</typeparam>
+        /// <param name="type">The type holding the attributes.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public static T[] GetCustomAttributes<T>(Type type) where T : Attribute {
+            return type?
+                .GetTypeInfo()
+                .GetCustomAttributes<T>(false)
+                .ToArray() ?? new T[0];
         }
 
     }
