@@ -1,11 +1,12 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Assemblies;
 using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Locations;
 using Skybrud.Essentials.Maps.Geometry;
 using Skybrud.Essentials.Reflection;
-
+using Skybrud.Essentials.Reflection.Extensions;
 using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 #pragma warning disable 618
@@ -114,6 +115,88 @@ namespace UnitTestProject1.Reflection {
 
             [Obsolete("This is obsolete.")]
             IsObsolete
+
+        }
+
+        [TestMethod]
+        public void TypeHasCustomAttribute() {
+
+            var type1 = typeof(AssemblyUtils);
+            var type2 = typeof(ReflectionUtils);
+
+            Assert.IsTrue(ReflectionUtils.HasCustomAttribute<ObsoleteAttribute>(type1));
+            Assert.IsTrue(type1.HasCustomAttribute<ObsoleteAttribute>());
+
+            Assert.IsTrue(ReflectionUtils.HasCustomAttribute(type1, out ObsoleteAttribute obsolete));
+            Assert.IsNotNull(obsolete);
+            Assert.AreEqual("Use static methods in the ReflectionUtils class instead.", obsolete.Message);
+
+            Assert.IsTrue(type1.HasCustomAttribute(out obsolete));
+            Assert.IsNotNull(obsolete);
+            Assert.AreEqual("Use static methods in the ReflectionUtils class instead.", obsolete.Message);
+
+            Assert.IsFalse(ReflectionUtils.HasCustomAttribute<ObsoleteAttribute>(type2));
+            Assert.IsFalse(type2.HasCustomAttribute<ObsoleteAttribute>());
+
+            Assert.IsFalse(ReflectionUtils.HasCustomAttribute(type2, out obsolete));
+            Assert.IsNull(obsolete);
+
+            Assert.IsFalse(type2.HasCustomAttribute(out obsolete));
+            Assert.IsNull(obsolete);
+
+        }
+
+        [TestMethod]
+        public void TypeGetCustomAttribute() {
+
+            var type1 = typeof(AssemblyUtils);
+            var type2 = typeof(ReflectionUtils);
+
+            ObsoleteAttribute attribute1 = ReflectionUtils.GetCustomAttribute<ObsoleteAttribute>(type1);
+            ObsoleteAttribute attribute2 = type1.GetCustomAttribute<ObsoleteAttribute>();
+
+            ObsoleteAttribute attribute3 = ReflectionUtils.GetCustomAttribute<ObsoleteAttribute>(type2);
+            ObsoleteAttribute attribute4 = type2.GetCustomAttribute<ObsoleteAttribute>();
+
+            Assert.IsNotNull(attribute1, "#1");
+            Assert.AreEqual("Use static methods in the ReflectionUtils class instead.", attribute1.Message, "#1");
+
+            Assert.IsNotNull(attribute2, "#2");
+            Assert.AreEqual("Use static methods in the ReflectionUtils class instead.", attribute2.Message, "#2");
+
+            Assert.IsNull(attribute3, "#4");
+
+            Assert.IsNull(attribute4, "#4");
+
+        }
+
+        [TestMethod]
+        public void TypeGetCustomAttributes() {
+
+            var type1 = typeof(AssemblyUtils);
+            var type2 = typeof(ReflectionUtils);
+
+            ObsoleteAttribute[] attributes1 = ReflectionUtils.GetCustomAttributes<ObsoleteAttribute>(type1);
+            ObsoleteAttribute[] attributes2 = type1.GetCustomAttributes<ObsoleteAttribute>();
+
+            ObsoleteAttribute[] attributes3 = ReflectionUtils.GetCustomAttributes<ObsoleteAttribute>(type2);
+            ObsoleteAttribute[] attributes4 = type2.GetCustomAttributes<ObsoleteAttribute>();
+
+            Assert.IsNotNull(attributes1, "#1");
+            Assert.AreEqual(1, attributes1.Length, "#1");
+            Assert.IsNotNull(attributes1[0], "#1");
+            Assert.AreEqual("Use static methods in the ReflectionUtils class instead.", attributes1[0].Message, "#1");
+
+            Assert.IsNotNull(attributes2, "#2");
+            Assert.AreEqual(1, attributes2.Length, "#2");
+            Assert.IsNotNull(attributes2[0], "#2");
+            Assert.AreEqual("Use static methods in the ReflectionUtils class instead.", attributes2[0].Message, "#2");
+
+            Assert.IsNotNull(attributes3, "#3");
+            Assert.AreEqual(0, attributes3.Length, "#3");
+
+            Assert.IsNotNull(attributes4, "#4");
+            Assert.AreEqual(0, attributes4.Length, "#4");
 
         }
 
