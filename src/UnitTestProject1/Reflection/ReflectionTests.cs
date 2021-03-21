@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Assemblies;
 using Skybrud.Essentials.Collections;
@@ -59,7 +60,33 @@ namespace UnitTestProject1.Reflection {
         }
 
         [TestMethod]
-        public void IsObsolete() {
+        public void EnumIsObsolete() {
+
+            Assert.IsFalse(ReflectionUtils.IsObsolete(EnumTest.WithDescription));
+            Assert.IsTrue(ReflectionUtils.IsObsolete(EnumTest.IsObsolete));
+
+            Assert.IsFalse(EnumTest.WithDescription.IsObsolete());
+            Assert.IsTrue(EnumTest.IsObsolete.IsObsolete());
+
+            Assert.IsFalse(ReflectionUtils.IsObsolete(EnumTest.WithDescription, out ObsoleteAttribute result1));
+            Assert.IsNull(result1);
+
+            Assert.IsTrue(ReflectionUtils.IsObsolete(EnumTest.IsObsolete, out ObsoleteAttribute result2));
+            Assert.IsNotNull(result2);
+            Assert.AreEqual("This is obsolete.", result2.Message);
+
+
+            Assert.IsFalse(EnumTest.WithDescription.IsObsolete(out ObsoleteAttribute result3));
+            Assert.IsNull(result3);
+
+            Assert.IsTrue(EnumTest.IsObsolete.IsObsolete(out ObsoleteAttribute result4));
+            Assert.IsNotNull(result4);
+            Assert.AreEqual("This is obsolete.", result4.Message);
+
+        }
+
+        [TestMethod]
+        public void MemberIsObsolete() {
 
             Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(JsonObjectBase)));
             Assert.IsFalse(ReflectionUtils.IsObsolete<JsonObjectBase>());
@@ -73,12 +100,35 @@ namespace UnitTestProject1.Reflection {
         }
 
         [TestMethod]
-        public void HasCustomAttribute() {
+        public void TypeIsObsolete() {
 
-            bool success = ReflectionUtils.HasCustomAttribute(EnumTest.WithDescription, out DescriptionAttribute result);
+            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(JsonObjectBase)));
+            Assert.IsFalse(ReflectionUtils.IsObsolete<JsonObjectBase>());
 
-            Assert.AreEqual(true, success);
-            Assert.AreEqual("A description.", result.Description);
+            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(EssentialsLocation)));
+            Assert.IsTrue(ReflectionUtils.IsObsolete<EssentialsLocation>());
+
+            Assert.IsFalse(ReflectionUtils.IsEnum(typeof(IPoint)));
+            Assert.IsFalse(ReflectionUtils.IsEnum<IPoint>());
+
+        }
+
+        [TestMethod]
+        public void EnumHasCustomAttribute() {
+
+            bool success1 = ReflectionUtils.HasCustomAttribute<DescriptionAttribute>(EnumTest.WithDescription);
+            Assert.AreEqual(true, success1);
+
+            bool success2 = EnumTest.WithDescription.HasCustomAttribute<DescriptionAttribute>();
+            Assert.AreEqual(true, success2);
+
+            bool success3 = ReflectionUtils.HasCustomAttribute(EnumTest.WithDescription, out DescriptionAttribute result3);
+            Assert.AreEqual(true, success3);
+            Assert.AreEqual("A description.", result3.Description);
+
+            bool success4 = EnumTest.WithDescription.HasCustomAttribute(out DescriptionAttribute result4);
+            Assert.AreEqual(true, success4);
+            Assert.AreEqual("A description.", result4.Description);
 
         }
 
@@ -117,6 +167,108 @@ namespace UnitTestProject1.Reflection {
             IsObsolete
 
         }
+
+        [TestMethod]
+        public void MemberHasCustomAttribute() {
+
+            var member1 = typeof(AssemblyUtils).GetMember("GetVersion").First();
+            var member2 = typeof(ReflectionUtils).GetMember("GetVersion").First();
+
+            Assert.IsTrue(ReflectionUtils.HasCustomAttribute<ObsoleteAttribute>(member1));
+            Assert.IsTrue(member1.HasCustomAttribute<ObsoleteAttribute>());
+
+            Assert.IsTrue(ReflectionUtils.HasCustomAttribute(member1, out ObsoleteAttribute obsolete));
+            Assert.IsNotNull(obsolete);
+            Assert.AreEqual("Use ReflectionUtils.GetVersion() method instead.", obsolete.Message);
+
+            Assert.IsTrue(member1.HasCustomAttribute(out obsolete));
+            Assert.IsNotNull(obsolete);
+            Assert.AreEqual("Use ReflectionUtils.GetVersion() method instead.", obsolete.Message);
+
+            Assert.IsFalse(ReflectionUtils.HasCustomAttribute<ObsoleteAttribute>(member2));
+            Assert.IsFalse(member2.HasCustomAttribute<ObsoleteAttribute>());
+
+            Assert.IsFalse(ReflectionUtils.HasCustomAttribute(member2, out obsolete));
+            Assert.IsNull(obsolete);
+
+            Assert.IsFalse(member2.HasCustomAttribute(out obsolete));
+            Assert.IsNull(obsolete);
+
+        }
+
+        [TestMethod]
+        public void MemberGetCustomAttribute() {
+
+            var member1 = typeof(AssemblyUtils).GetMember("GetVersion").First();
+            var member2 = typeof(ReflectionUtils).GetMember("GetVersion").First();
+
+            ObsoleteAttribute attribute1 = ReflectionUtils.GetCustomAttribute<ObsoleteAttribute>(member1);
+            ObsoleteAttribute attribute2 = member1.GetCustomAttribute<ObsoleteAttribute>();
+
+            ObsoleteAttribute attribute3 = ReflectionUtils.GetCustomAttribute<ObsoleteAttribute>(member2);
+            ObsoleteAttribute attribute4 = member2.GetCustomAttribute<ObsoleteAttribute>();
+
+            Assert.IsNotNull(attribute1, "#1");
+            Assert.AreEqual("Use ReflectionUtils.GetVersion() method instead.", attribute1.Message, "#1");
+
+            Assert.IsNotNull(attribute2, "#2");
+            Assert.AreEqual("Use ReflectionUtils.GetVersion() method instead.", attribute2.Message, "#2");
+
+            Assert.IsNull(attribute3, "#4");
+
+            Assert.IsNull(attribute4, "#4");
+
+        }
+
+        [TestMethod]
+        public void MemberGetCustomAttributes() {
+
+            var member1 = typeof(AssemblyUtils).GetMember("GetVersion").First();
+            var member2 = typeof(ReflectionUtils).GetMember("GetVersion").First();
+
+            ObsoleteAttribute[] attributes1 = ReflectionUtils.GetCustomAttributes<ObsoleteAttribute>(member1);
+            ObsoleteAttribute[] attributes2 = member1.GetCustomAttributes<ObsoleteAttribute>();
+
+            ObsoleteAttribute[] attributes3 = ReflectionUtils.GetCustomAttributes<ObsoleteAttribute>(member2);
+            ObsoleteAttribute[] attributes4 = member2.GetCustomAttributes<ObsoleteAttribute>();
+
+            Assert.IsNotNull(attributes1, "#1");
+            Assert.AreEqual(1, attributes1.Length, "#1");
+            Assert.IsNotNull(attributes1[0], "#1");
+            Assert.AreEqual("Use ReflectionUtils.GetVersion() method instead.", attributes1[0].Message, "#1");
+
+            Assert.IsNotNull(attributes2, "#2");
+            Assert.AreEqual(1, attributes2.Length, "#2");
+            Assert.IsNotNull(attributes2[0], "#2");
+            Assert.AreEqual("Use ReflectionUtils.GetVersion() method instead.", attributes2[0].Message, "#2");
+
+            Assert.IsNotNull(attributes3, "#3");
+            Assert.AreEqual(0, attributes3.Length, "#3");
+
+            Assert.IsNotNull(attributes4, "#4");
+            Assert.AreEqual(0, attributes4.Length, "#4");
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         [TestMethod]
         public void TypeHasCustomAttribute() {

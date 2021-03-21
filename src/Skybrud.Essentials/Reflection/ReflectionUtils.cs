@@ -129,6 +129,26 @@ namespace Skybrud.Essentials.Reflection {
         }
 
         /// <summary>
+        /// Returns whether the specified enum <paramref name="value" /> is marked as obsolete.
+        /// </summary>
+        /// <param name="value">The enum value.</param>
+        /// <returns><c>true</c> if the enum value has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(Enum value) {
+            return IsObsolete(value, out _);
+        }
+
+        /// <summary>
+        /// Returns whether the specified enum <paramref name="value" /> is marked as obsolete.
+        /// </summary>
+        /// <param name="value">The enum value.</param>
+        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the member has been marked as obsolete.</param>
+        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(Enum value, out ObsoleteAttribute attribute) {
+            attribute = GetCustomAttribute<ObsoleteAttribute>(value);
+            return attribute != null;
+        }
+
+        /// <summary>
         /// Returns whether <paramref name="type"/> is marked as obsolete.
         /// </summary>
         /// <param name="type">The type to check.</param>

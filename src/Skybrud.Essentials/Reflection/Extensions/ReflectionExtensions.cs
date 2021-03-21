@@ -182,7 +182,26 @@ namespace Skybrud.Essentials.Reflection.Extensions {
         public static bool IsObsolete(MemberInfo member, out ObsoleteAttribute attribute) {
             return ReflectionUtils.IsObsolete(member, out attribute);
         }
-        
+
+        /// <summary>
+        /// Returns whether the specified enum <paramref name="value" /> is marked as obsolete.
+        /// </summary>
+        /// <param name="value">The enum value.</param>
+        /// <returns><c>true</c> if the enum value has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(this Enum value) {
+            return ReflectionUtils.IsObsolete(value, out _);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="value" /> is marked as obsolete.
+        /// </summary>
+        /// <param name="value">The enum value.</param>
+        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the enum value has been marked as obsolete.</param>
+        /// <returns><c>true</c> if the enum value has been marked as obsolete; otherwise <c>false</c>.</returns>
+        public static bool IsObsolete(this Enum value, out ObsoleteAttribute attribute) {
+            return ReflectionUtils.IsObsolete(value, out attribute);
+        }
+
         /// <summary>
         /// Returns whether the specified <paramref name="type" /> is marked as obsolete.
         /// </summary>
