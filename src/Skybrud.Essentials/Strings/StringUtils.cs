@@ -341,7 +341,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="html">The input string containing the HTML.</param>
         /// <returns>The input string without any HTML markup.</returns>
         public static string StripHtml(string html) {
-            return html == null ? string.Empty : HtmlDecode(Regex.Replace(html, "<.*?>", string.Empty));
+            return html == null ? null : HtmlDecode(Regex.Replace(html, "<.*?>", string.Empty));
         }
 
         /// <summary>
@@ -352,7 +352,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
         public static string StripHtml(string html, params string[] ignore) {
-            if (html == null) return string.Empty;
+            if (html == null) return null;
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
             Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
             return HtmlDecode(regex.Replace(html, string.Empty));

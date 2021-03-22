@@ -10,7 +10,7 @@ namespace UnitTestProject1.Strings {
         public void StripHtml() {
 
             var samples = new[] {
-                new { Input = default(string), Output = "" },
+                new { Input = default(string), Output = default(string) },
                 new { Input = "", Output = "" },
                 new { Input = "<p>Hello World</p>", Output = "Hello World" },
                 new { Input = "Hello<br />World", Output = "HelloWorld" },
@@ -27,7 +27,7 @@ namespace UnitTestProject1.Strings {
         public void StripHtmlIgnore() {
 
             var samples = new[] {
-                new { Input = default(string), Output = "", Ignore = new []{"strong"} },
+                new { Input = default(string), Output = default(string), Ignore = new []{"strong"} },
                 new { Input = "", Output = "", Ignore = new []{"strong"} },
                 new { Input = "<p>Hello <strong>World</strong></p>", Output = "Hello <strong>World</strong>", Ignore = new []{"strong"} },
                 new { Input = "<ul><li><a href=\"#hest\"><strong>Hest</strong><br /></a></li></ul>", Output = "<a href=\"#hest\">Hest</a>", Ignore = new []{"a"} }
@@ -35,6 +35,23 @@ namespace UnitTestProject1.Strings {
 
             foreach (var sample in samples) {
                 Assert.AreEqual(sample.Output, StringUtils.StripHtml(sample.Input, sample.Ignore));
+            }
+
+        }
+
+        [TestMethod]
+        public void ReplaceLineBreaks() {
+
+            var samples = new[] {
+                new { Input = default(string), Output = default(string) },
+                new { Input = "", Output = "" },
+                new { Input = "Hello\rWorld", Output = "Hello<br />World" },
+                new { Input = "Hello\nWorld", Output = "Hello<br />World" },
+                new { Input = "Hello\r\nWorld", Output = "Hello<br />World" }
+            };
+
+            foreach (var sample in samples) {
+                Assert.AreEqual(sample.Output, StringUtils.ReplaceLineBreaks(sample.Input));
             }
 
         }
