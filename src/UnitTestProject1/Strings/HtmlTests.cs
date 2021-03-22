@@ -1,5 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
 namespace UnitTestProject1.Strings {
     
@@ -18,7 +19,11 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples) {
+                
                 Assert.AreEqual(sample.Output, StringUtils.StripHtml(sample.Input));
+
+                Assert.AreEqual(sample.Output, sample.Input.StripHtml());
+
             }
 
         }
@@ -34,7 +39,11 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples) {
+
                 Assert.AreEqual(sample.Output, StringUtils.StripHtml(sample.Input, sample.Ignore));
+
+                Assert.AreEqual(sample.Output, sample.Input.StripHtml(sample.Ignore));
+
             }
 
         }
@@ -51,7 +60,11 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples) {
+
                 Assert.AreEqual(sample.Output, StringUtils.ReplaceLineBreaks(sample.Input));
+
+                Assert.AreEqual(sample.Output, sample.Input.ReplaceLineBreaks());
+
             }
 
         }

@@ -22,6 +22,19 @@
             return StringUtils.StripHtml(html, ignore);
         }
 
+
+
+        /// <summary>
+        /// HTML encodes the text and replaces text line breaks with HTML line breaks.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns> The HTML encoded text with text line breaks replaced with HTML line breaks (<c>&lt;br /&gt;</c>).</returns>
+        public static string ReplaceLineBreaks(this string input) {
+            return StringUtils.ReplaceLineBreaks(input);
+        }
+
+
+
     }
 
 }
