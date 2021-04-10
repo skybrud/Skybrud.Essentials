@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Skybrud.Essentials.Time {
     
@@ -94,6 +95,87 @@ namespace Skybrud.Essentials.Time {
             Month = timestamp.Month;
             Start = timestamp.GetStartOfMonth();
             End = timestamp.GetEndOfMonth();
+
+        }
+
+        #endregion
+
+        #region Member methods
+
+        /// <summary>
+        /// Returns a new instance representing the previous month, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public EssentialsMonth GetPrevious() {
+            return new EssentialsMonth(Start.GetStartOfMonth(TimeZoneInfo.Local).AddDays(-1));
+        }
+
+        /// <summary>
+        /// Returns a new instance representing the previous month, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used for calculating the start and end dates.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public EssentialsMonth GetPrevious(TimeZoneInfo timeZone) {
+            return new EssentialsMonth(Start.GetStartOfMonth(timeZone).AddDays(-1));
+        }
+
+        /// <summary>
+        /// Returns a new instance representing the next month, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public EssentialsMonth GetNext() {
+            return new EssentialsMonth(End.GetEndOfMonth(TimeZoneInfo.Local).AddDays(+1));
+        }
+
+        /// <summary>
+        /// Returns a new instance representing the next month, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used for calculating the start and end dates.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public EssentialsMonth GetNext(TimeZoneInfo timeZone) {
+            return new EssentialsMonth(End.GetEndOfMonth(timeZone).AddDays(+1));
+        }
+
+        #endregion
+
+        #region Static methods
+
+        /// <summary>
+        /// Returns an array with the months from <paramref name="startYear"/> and <paramref name="startMonth"/>.
+        ///
+        /// Start and end dates of each month are calculated based on <see cref="TimeZoneInfo.Local"/>.
+        /// </summary>
+        /// <param name="startYear">The year of the starting month.</param>
+        /// <param name="startMonth">The starting month.</param>
+        /// <param name="months">The amount of month, including the start month.</param>
+        /// <returns>An array of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth[] GetMonths(int startYear, int startMonth, int months) {
+            return GetMonths(startYear, startMonth, months, TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns an array with the months from <paramref name="startYear"/> and <paramref name="startMonth"/>.
+        ///
+        /// Start and end dates of each month are calculated based on <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="startYear">The year of the starting month.</param>
+        /// <param name="startMonth">The starting month.</param>
+        /// <param name="months">The amount of month, including the start month.</param>
+        /// <param name="timeZone">The time zone to be used for calculating the start and end dates.</param>
+        /// <returns>An array of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth[] GetMonths(int startYear, int startMonth, int months, TimeZoneInfo timeZone) {
+
+            List<EssentialsMonth> temp = new List<EssentialsMonth>();
+
+            int year = startYear;
+
+            for (int i = 0; i < months; i++) {
+                int month = (startMonth + i - 1) % 12 + 1;
+                if (i > 0 && month == 1) year++;
+                temp.Add(new EssentialsMonth(year, month, timeZone));
+            }
+
+            return temp.ToArray();
 
         }
 

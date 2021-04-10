@@ -76,6 +76,134 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void GetPrevious1() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsMonth month = new EssentialsMonth(2021, 4, romance);
+
+            Assert.AreEqual("2021-04-01T00:00:00+02:00", month.Start.Iso8601);
+            Assert.AreEqual("2021-04-30T23:59:59+02:00", month.End.Iso8601);
+
+            EssentialsMonth previous = month.GetPrevious(romance);
+
+            Assert.AreEqual("2021-03-01T00:00:00+01:00", previous.Start.Iso8601);
+            Assert.AreEqual("2021-03-31T23:59:59+02:00", previous.End.Iso8601);
+
+        }
+
+        [TestMethod]
+        public void GetNext1() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsMonth month = new EssentialsMonth(2021, 3, romance);
+
+            Assert.AreEqual("2021-03-01T00:00:00+01:00", month.Start.Iso8601);
+            Assert.AreEqual("2021-03-31T23:59:59+02:00", month.End.Iso8601);
+
+            EssentialsMonth next = month.GetNext(romance);
+
+            Assert.AreEqual("2021-04-01T00:00:00+02:00", next.Start.Iso8601);
+            Assert.AreEqual("2021-04-30T23:59:59+02:00", next.End.Iso8601);
+
+        }
+
+        [TestMethod]
+        public void GetMonths1() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            var period = EssentialsMonth.GetMonths(2021, 1, 12, romance);
+
+            Assert.AreEqual(12, period.Length);
+
+            Assert.AreEqual(2021, period[0].Year);
+            Assert.AreEqual(1, period[0].Month);
+
+            Assert.AreEqual(2021, period[1].Year);
+            Assert.AreEqual(2, period[1].Month);
+
+            Assert.AreEqual(2021, period[2].Year);
+            Assert.AreEqual(3, period[2].Month);
+
+            Assert.AreEqual(2021, period[3].Year);
+            Assert.AreEqual(4, period[3].Month);
+
+            Assert.AreEqual(2021, period[4].Year);
+            Assert.AreEqual(5, period[4].Month);
+
+            Assert.AreEqual(2021, period[5].Year);
+            Assert.AreEqual(6, period[5].Month);
+
+            Assert.AreEqual(2021, period[6].Year);
+            Assert.AreEqual(7, period[6].Month);
+
+            Assert.AreEqual(2021, period[7].Year);
+            Assert.AreEqual(8, period[7].Month);
+
+            Assert.AreEqual(2021, period[8].Year);
+            Assert.AreEqual(9, period[8].Month);
+
+            Assert.AreEqual(2021, period[9].Year);
+            Assert.AreEqual(10, period[9].Month);
+
+            Assert.AreEqual(2021, period[10].Year);
+            Assert.AreEqual(11, period[10].Month);
+
+            Assert.AreEqual(2021, period[11].Year);
+            Assert.AreEqual(12, period[11].Month);
+
+        }
+
+        [TestMethod]
+        public void GetMonths2() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            var period = EssentialsMonth.GetMonths(2021, 7, 12, romance);
+
+            Assert.AreEqual(12, period.Length);
+
+            Assert.AreEqual(2021, period[0].Year);
+            Assert.AreEqual(7, period[0].Month);
+
+            Assert.AreEqual(2021, period[1].Year);
+            Assert.AreEqual(8, period[1].Month);
+
+            Assert.AreEqual(2021, period[2].Year);
+            Assert.AreEqual(9, period[2].Month);
+
+            Assert.AreEqual(2021, period[3].Year);
+            Assert.AreEqual(10, period[3].Month);
+
+            Assert.AreEqual(2021, period[4].Year);
+            Assert.AreEqual(11, period[4].Month);
+
+            Assert.AreEqual(2021, period[5].Year);
+            Assert.AreEqual(12, period[5].Month);
+
+            Assert.AreEqual(2022, period[6].Year);
+            Assert.AreEqual(1, period[6].Month);
+
+            Assert.AreEqual(2022, period[7].Year);
+            Assert.AreEqual(2, period[7].Month);
+
+            Assert.AreEqual(2022, period[8].Year);
+            Assert.AreEqual(3, period[8].Month);
+
+            Assert.AreEqual(2022, period[9].Year);
+            Assert.AreEqual(4, period[9].Month);
+
+            Assert.AreEqual(2022, period[10].Year);
+            Assert.AreEqual(5, period[10].Month);
+
+            Assert.AreEqual(2022, period[11].Year);
+            Assert.AreEqual(6, period[11].Month);
+
+        }
+
     }
 
 }
