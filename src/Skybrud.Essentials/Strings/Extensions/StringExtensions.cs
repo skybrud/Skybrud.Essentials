@@ -137,6 +137,31 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return StringUtils.IsAlphabetic(input);
         }
 
+        /// <summary>
+        /// Parses string of multiple values into an array of <see cref="string"/>. Supported separators are
+        /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+        /// 
+        /// Empty entries are automatically removed from the output array.
+        /// </summary>
+        /// <param name="input">The input string containing the values.</param>
+        /// <returns>An array of <see cref="string"/>.</returns>
+        public static string[] ToStringArray(this string input) {
+            return StringUtils.ParseStringArray(input);
+        }
+
+        /// <summary>
+        /// Parses string of multiple values into an array of <see cref="string"/>, using the specified array of
+        /// <paramref name="separators"/>.
+        /// 
+        /// Empty entries are automatically removed from the output array.
+        /// </summary>
+        /// <param name="input">The input string containing the values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <see cref="string"/>.</returns>
+        public static string[] ToStringArray(this string input, char[] separators) {
+            return StringUtils.ParseStringArray(input, separators);
+        }
+
     }
 
 }
