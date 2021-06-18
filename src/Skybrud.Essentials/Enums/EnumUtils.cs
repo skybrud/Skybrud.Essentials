@@ -321,7 +321,7 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="input"/> value to a anum of type <typeparamref name="T"/>.
+        /// Converts the specified <paramref name="input"/> value to an enum of type <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The enum type.</typeparam>
         /// <param name="input">The input value to be converted.</param>
@@ -329,6 +329,27 @@ namespace Skybrud.Essentials.Enums {
         public static T FromInt32<T>(int input) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
             return (T) Enum.ToObject(typeof(T), input);
+        }
+        
+        internal static T FromInt32WhereTIsEnum<T>(int input) where T : Enum {
+
+            // This method is internal for now. Ideally the "FromInt32" method above should have a constraint on T as
+            // an Enum instead of struct, but changing this may be a breaking change.
+
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            return (T) Enum.ToObject(typeof(T), input);
+
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> value to a enum of type <paramref name="type"/>.
+        /// </summary>
+        /// <param name="input">The input value to be converted.</param>
+        /// <param name="type">The enum type.</param>
+        /// <returns>An instance of <see cref="Enum"/>.</returns>
+        public static Enum FromInt32(int input, Type type) {
+            if (IsEnum(type) == false) throw new ArgumentException("Specified type must be an enum.");
+            return (Enum) Enum.ToObject(type, input);
         }
 
         /// <summary>
