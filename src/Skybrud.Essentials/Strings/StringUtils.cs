@@ -17,7 +17,7 @@ namespace Skybrud.Essentials.Strings {
         /// 
         /// Empty entries are automatically removed from the output array.
         /// </summary>
-        /// <param name="str">The string containing the values.</param>
+        /// <param name="str">The input string containing the values.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
         public static string[] ParseStringArray(string str) {
             return ParseStringArray(str, ',', ' ', '\r', '\n', '\t');
@@ -29,7 +29,7 @@ namespace Skybrud.Essentials.Strings {
         /// 
         /// Empty entries are automatically removed from the output array.
         /// </summary>
-        /// <param name="str">The string containing the values.</param>
+        /// <param name="str">The input string containing the values.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
         public static string[] ParseStringArray(string str, params char[] separators) {
