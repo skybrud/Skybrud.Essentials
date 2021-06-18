@@ -99,9 +99,6 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static bool TryParseEnum<T>(string str, out T value) where T : struct {
 
-            // Check whether the specified string is NULL (or white space)
-            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
-
             // Check whether the type of T is an enum
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
 

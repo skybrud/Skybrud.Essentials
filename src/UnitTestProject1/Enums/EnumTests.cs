@@ -103,6 +103,48 @@ namespace UnitTestProject1.Enums {
         }
 
         [TestMethod]
+        public void TryParseEnum() {
+            
+            bool status1 = EnumUtils.TryParseEnum(null, out HttpStatusCode result1);
+            bool status2 = EnumUtils.TryParseEnum("", out HttpStatusCode result2);
+            bool status3 = EnumUtils.TryParseEnum("ok", out HttpStatusCode result3);
+            bool status4 = EnumUtils.TryParseEnum("OK", out HttpStatusCode result4);
+            bool status5 = EnumUtils.TryParseEnum("Ok", out HttpStatusCode result5);
+            bool status6 = EnumUtils.TryParseEnum("Not found", out HttpStatusCode result6);
+            bool status7 = EnumUtils.TryParseEnum("NOT FOUND", out HttpStatusCode result7);
+            bool status8 = EnumUtils.TryParseEnum("NotFound", out HttpStatusCode result8);
+            bool status9 = EnumUtils.TryParseEnum("not found", out HttpStatusCode result9);
+
+            Assert.IsFalse(status1);
+            Assert.AreEqual(result1, default);
+
+            Assert.IsFalse(status2);
+            Assert.AreEqual(result2, default);
+
+            Assert.IsTrue(status3);
+            Assert.AreEqual(result3, HttpStatusCode.OK);
+
+            Assert.IsTrue(status4);
+            Assert.AreEqual(result4, HttpStatusCode.OK);
+
+            Assert.IsTrue(status5);
+            Assert.AreEqual(result5, HttpStatusCode.OK);
+
+            Assert.IsTrue(status6);
+            Assert.AreEqual(result6, HttpStatusCode.NotFound);
+
+            Assert.IsTrue(status7);
+            Assert.AreEqual(result7, HttpStatusCode.NotFound);
+
+            Assert.IsTrue(status8);
+            Assert.AreEqual(result8, HttpStatusCode.NotFound);
+
+            Assert.IsTrue(status9);
+            Assert.AreEqual(result9, HttpStatusCode.NotFound);
+
+        }
+
+        [TestMethod]
         public void Min() {
 
             var result1 = EnumUtils.Min(HttpStatusCode.OK, HttpStatusCode.NotFound);
