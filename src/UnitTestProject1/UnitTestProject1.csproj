@@ -68,6 +68,8 @@
     <Compile Include="Json\Converters\TimeConverterTests.cs" />
     <Compile Include="Json\Converters\TimeSpanSecondsConverterTests.cs" />
     <Compile Include="Json\Converters\EssentialsPartialDateConverterTests.cs" />
+    <Compile Include="Json\JArrayExtensionTests.cs" />
+    <Compile Include="Json\JObjectExtensionTests.cs" />
     <Compile Include="Json\JsonTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
     <Compile Include="Maps\DistanceTests.cs" />

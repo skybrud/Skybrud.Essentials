@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Json.Extensions {
     /// <summary>
     /// Various extensions methods for <see cref="JObject"/> that makes manual parsing easier.
     /// </summary>
-    public static class JObjectExtensions {
+    public static partial class JObjectExtensions {
 
         /// <summary>
         /// Gets whether a token matching the specified <paramref name="path"/> exists and isn't <c>null</c> (or
@@ -376,43 +376,6 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// token.</returns>
         public static T GetDouble<T>(this JObject obj, string path, Func<double, T> callback) {
             return GetSimpleTypeTokenValueFromPath(obj, path, callback);
-        }
-
-        /// <summary>
-        /// Gets the <see cref="bool"/> value of the token matching the specified <paramref name="path"/>, or
-        /// <c>0</c> if <paramref name="path"/> doesn't match a token.
-        /// </summary>
-        /// <param name="obj">The parent object.</param>
-        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="bool"/>.</returns>
-        public static bool GetBoolean(this JObject obj, string path) {
-            return GetBoolean(obj, path, x => x);
-        }
-
-        /// <summary>
-        /// Gets the <see cref="bool"/> value of the token matching the specified <paramref name="path"/> and parses
-        /// it into an instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if
-        /// <paramref name="path"/> doesn't match a token.
-        /// </summary>
-        /// <param name="obj">The parent object.</param>
-        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-        /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-        /// <returns>An instance of <see cref="bool"/>, or <c>false</c> if <paramref name="path"/>
-        /// doesn't match a token.</returns>
-        public static T GetBoolean<T>(this JObject obj, string path, Func<bool, T> callback) {
-
-            // Get the token from the path
-            JToken token = GetSimpleTypeTokenFromPath(obj, path);
-
-            // Check whether the token is null
-            if (token == null || token.Type == JTokenType.Null) return default(T);
-
-            // Convert the value to a boolean
-            bool value = StringUtils.ParseBoolean(token.ToString());
-
-            // Invoke the callback and return the value
-            return callback(value);
-
         }
 
         /// <summary>

@@ -7,7 +7,7 @@ namespace Skybrud.Essentials.Json.Extensions {
     /// <summary>
     /// Various extensions methods for <see cref="JArray"/> that makes manual parsing easier.
     /// </summary>
-    public static class JArrayExtensions {
+    public static partial class JArrayExtensions {
 
         /// <summary>
         /// Gets an object from the item at the specified <paramref name="index"/> in the array.
@@ -335,31 +335,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = array.SelectToken(path);
             return token?.Value<double>() ?? default(double);
         }
-
-        /// <summary>
-        /// Gets the <see cref="bool"/> value of the item at the specified <paramref name="index"/> in the array.
-        /// </summary>
-        /// <param name="array">The parent array.</param>
-        /// <param name="index">The index of the item.</param>
-        /// <returns>An instance of <see cref="bool"/>.</returns>
-        public static bool GetBoolean(this JArray array, int index) {
-            if (array == null) return default(bool);
-            JToken property = array[index];
-            return property != null && property.Value<bool>();
-        }
-
-        /// <summary>
-        /// Gets the <see cref="bool"/> value of the token matching the specified <paramref name="path"/>.
-        /// </summary>
-        /// <param name="array">The parent array.</param>
-        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="bool"/>.</returns>
-        public static bool GetBoolean(this JArray array, string path) {
-            if (array == null) return default(bool);
-            JToken token = array.SelectToken(path);
-            return token != null && token.Value<bool>();
-        }
-
+        
         /// <summary>
         /// Gets an instance of <see cref="JArray"/> from the item at the specified <paramref name="index"/> in the
         /// array.

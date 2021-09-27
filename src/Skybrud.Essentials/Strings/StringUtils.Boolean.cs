@@ -54,7 +54,7 @@
         /// Tries to convert the specified string representation of a logical value to its <see cref="bool"/> equivalent.
         /// </summary>
         /// <param name="value">A string containing the value to convert.</param>
-        /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c></c>.</param>
+        /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseBoolean(string value, out bool result) {
 
