@@ -32,17 +32,17 @@
   <PropertyGroup>
     <Version>1.1.29</Version>
     <Authors>Anders Bjerner</Authors>
-    <Company>Skybrud.dk</Company>
+    <Company>Limbo</Company>
     <Description>Library with common purpose functionality for working with .NET.</Description>
     <Copyright>Copyright © 2021</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
     <PackageId>Skybrud.Essentials</PackageId>
-    <PackageTags>Skybrud, Essentials</PackageTags>
+    <PackageTags>Skybrud, Limbo, Essentials</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://packages.skybrud.dk/skybrud.essentials/</PackageProjectUrl>
-    <PackageIconUrl>http://www.skybrud.dk/img/5431sk/icon/favicon.ico</PackageIconUrl>
+    <PackageIcon>Limbo.png</PackageIcon>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/skybrud/Skybrud.Essentials</RepositoryUrl>
   </PropertyGroup>
@@ -67,6 +67,11 @@
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" PrivateAssets="All" />
   </ItemGroup>
   
+  <ItemGroup>
+    <None Include="../build/Limbo.png" Pack="true" PackagePath="\"/>
+  </ItemGroup>
+
+
   <Target Name="PreBuild" BeforeTargets="PreBuildEvent" Condition="'$(TargetFramework)'=='netstandard1.1'">
     <Exec Command="&quot;$(ProjectDir)../build/Skybrud.PreBuildTool.exe&quot; /date=2016-10-07 /projectPath=&quot;$(ProjectPath)&quot;" />
   </Target>
