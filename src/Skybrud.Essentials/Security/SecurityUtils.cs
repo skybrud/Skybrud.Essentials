@@ -30,6 +30,33 @@ namespace Skybrud.Essentials.Security {
             return Encoding.UTF8.GetString(Convert.FromBase64String(input));
         }
 
+#if I_CAN_HAS_ENCODING
+
+        /// <summary>
+        /// Gets the MD5 hash of <paramref name="input"/>, and returns that hash. The input string is converted using
+        /// <see cref="Encoding.UTF8"/>.
+        /// </summary>
+        /// <param name="input">The input string</param>
+        /// <returns>The hash as a 32-character hexadecimal number.</returns>
+        public static Guid GetMd5Guid(string input) {
+            using MD5 md5 = MD5.Create();
+            return new Guid(md5.ComputeHash(Encoding.Default.GetBytes(input)));
+        }
+
+        /// <summary>
+        /// Gets the MD5 hash of <paramref name="input"/>, and returns that hash. The input string is converted using
+        /// <paramref name="encoding"/>.
+        /// </summary>
+        /// <param name="input">The input string</param>
+        /// <param name="encoding">The encoding to be used for the conversion.</param>
+        /// <returns>The hash as a 32-character hexadecimal number.</returns>
+        public static Guid GetMd5Guid(string input, Encoding encoding) {
+            using MD5 md5 = MD5.Create();
+            return new Guid(md5.ComputeHash(encoding.GetBytes(input)));
+        }
+
+#endif
+
         /// <summary>
         /// Gets the MD5 hash of <paramref name="input"/>, and returns that hash. The input string is converted using
         /// <see cref="Encoding.UTF8"/>.
