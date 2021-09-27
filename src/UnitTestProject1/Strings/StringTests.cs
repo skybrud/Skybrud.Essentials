@@ -531,7 +531,7 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(true, "3.14".IsFloat(), "#16");
             Assert.AreEqual(false, "nope".IsFloat(), "#17");
 
-            Assert.AreEqual("3.1400000", "3.14".IsFloat(out float value1) ? value1.ToString("F7") : "0", "#18");
+            Assert.AreEqual("3.1400000", "3.14".IsFloat(out float value1) ? value1.ToString("F7", CultureInfo.InvariantCulture) : "0", "#18");
             Assert.AreEqual(0, "nope".IsFloat(out float value2) ? value2 : 0, "#19");
 
         }
