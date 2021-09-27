@@ -152,7 +152,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets whether the day of this <see cref="EssentialsTime"/> is within a weekend.
         /// </summary>
-        public bool IsWeekend => TimeUtils.IsLeapYear(DateTimeOffset);
+        public bool IsWeekend => TimeUtils.IsWeekend(DateTimeOffset);
 
         /// <summary>
         /// Gets whether the day of this <see cref="EssentialsTime"/> is a weekday.
