@@ -47,7 +47,7 @@ namespace Skybrud.Essentials.Strings {
             var rules = new[] {
                 new { Pattern = "mouse$", Replacement = "mice" },
                 new { Pattern = "bus$", Replacement = "buses" },
-                new { Pattern = "index$", Replacement = "indeces" },
+                new { Pattern = "index$", Replacement = "indices" },
                 new { Pattern = "radius$", Replacement = "radii" },
                 new { Pattern = "quiz$", Replacement = "quizzes" },
                 new { Pattern = "phenomenon$", Replacement = "phenomena" },
@@ -87,7 +87,7 @@ namespace Skybrud.Essentials.Strings {
             // Declare a list of rules
             var rules = new[] {
                 new { Pattern = "mice$", Replacement = "mouse" },
-                new { Pattern = "indeces$", Replacement = "index" },
+                new { Pattern = "indices$", Replacement = "index" },
                 new { Pattern = "radii$", Replacement = "radius" },
                 new { Pattern = "quizzes$", Replacement = "quiz" },
                 new { Pattern = "phenomena$", Replacement = "phenomenon" },

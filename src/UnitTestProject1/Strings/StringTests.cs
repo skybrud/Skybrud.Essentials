@@ -684,7 +684,7 @@ namespace UnitTestProject1.Strings {
                 new SingularPluralTestItem { Singular = "fox", Plural = "foxes" },
                 new SingularPluralTestItem { Singular = "genre", Plural = "genres" },
                 new SingularPluralTestItem { Singular = "half", Plural = "halves" },
-                new SingularPluralTestItem { Singular = "index", Plural = "indeces" },
+                new SingularPluralTestItem { Singular = "index", Plural = "indices", PluralAlternatives = new []{ "indexes"} },
                 new SingularPluralTestItem { Singular = "location", Plural = "locations" },
                 new SingularPluralTestItem { Singular = "man", Plural = "men" },
                 new SingularPluralTestItem { Singular = "medium", Plural = "media" },
