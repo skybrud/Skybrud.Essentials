@@ -113,6 +113,31 @@ namespace Skybrud.Essentials.Collections.Extensions {
                 .Invoke(null, new object[] { source });
         }
 
+        /// <summary>
+        /// Creates a <see cref="HashSet{TResult}"/> from an <see cref="IEnumerable{T}"/> according to specified selector function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> to create a <see cref="HashSet{TResult}"/> from.</param>
+        /// <param name="selector">A function to extract a key from each element.</param>
+        /// <returns>A <see cref="HashSet{TResult}"/> that contains values of type <typeparamref name="TResult"/> selected from the input sequence.</returns>
+        public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
+            return new HashSet<TResult>(source.Select(selector));
+        }
+
+        /// <summary>
+        /// Creates a <see cref="HashSet{TResult}"/> from an <see cref="IEnumerable{T}"/> according to specified selector function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> to create a <see cref="HashSet{TResult}"/> from.</param>
+        /// <param name="selector">A function to extract a key from each element.</param>
+        /// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing values in the set, or null to use the default <see cref="EqualityComparer{T}"/> implementation for the set type.</param>
+        /// <returns>A <see cref="HashSet{TResult}"/> that contains values of type <typeparamref name="TResult"/> selected from the input sequence.</returns>
+        public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector, IEqualityComparer<TResult> comparer) {
+            return new HashSet<TResult>(source.Select(selector), comparer);
+        }
+
     }
 
 }
