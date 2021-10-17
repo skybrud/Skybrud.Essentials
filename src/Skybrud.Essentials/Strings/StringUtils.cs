@@ -376,6 +376,28 @@ namespace Skybrud.Essentials.Strings {
 
         }
 
+        /// <summary>
+        /// Returns the value of the first parameter that has a value (not null or white space). If all parameter
+        /// values are empty, <see cref="string.Empty"/> is returned instead.
+        /// instead.
+        /// </summary>
+        /// Returns the value of the first parameter that has a value (not null or white space). If all parameter
+        /// values are empty, <see cref="string.Empty"/> is returned instead.
+        /// <returns>Returns the value of </returns>
+        public static string FirstWithValue(string value1, string value2) {
+            return string.IsNullOrWhiteSpace(value1) ? value2 ?? string.Empty : value1;
+        }
+
+        /// <summary>
+        /// Returns the first item in <paramref name="values"/> that has a value (validated using
+        /// <see cref="string.IsNullOrWhiteSpace"/>), or <see cref="string.Empty"/> if no value is found.
+        /// </summary>
+        /// <param name="values">Array of string values.</param>
+        /// <returns>The first value or <see cref="string.Empty"/>.</returns>
+        public static string FirstWithValue(params string[] values) {
+            return values?.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? string.Empty;
+        }
+
     }
 
 }
