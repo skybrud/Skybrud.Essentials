@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.Enums {
     
@@ -34,6 +37,23 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <see cref="int"/> representing the ordinal value of the enum.</returns>
         public static int ToInt32(this Enum value) {
             return Convert.ToInt32(value);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="value"/> into the individual flags that it represents.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="value">The enum value.</param>
+        /// <returns>An instance of <see cref="IEnumerable{TEnum}"/>.</returns>
+        public static IEnumerable<TEnum> GetFlags<TEnum>(this TEnum value) where TEnum : Enum {
+            // ReSharper disable once LoopCanBeConvertedToQuery
+            if (Convert.ToInt32(value) == 0) {
+                yield return default;
+            } else {
+                foreach (Enum flag in Enum.GetValues(value.GetType())) {
+                    if (Convert.ToInt32(flag) > 0 && value.HasFlag(flag)) yield return (TEnum) flag;
+                }
+            }
         }
 
     }

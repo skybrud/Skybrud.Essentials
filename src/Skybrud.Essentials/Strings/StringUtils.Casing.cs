@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 
@@ -32,6 +33,18 @@ namespace Skybrud.Essentials.Strings {
         public static string ToCamelCase(Enum value) {
             return ToCamelCase(value.ToString());
         }
+        
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a camel cased string (also referred to as lower
+        /// camel casing). If <paramref name="values"/> contains more than one enum value, the names will be separated
+        /// by commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToCamelCase<TEnum>(IEnumerable<TEnum> values) where TEnum : Enum {
+            return string.Join(",", from e in values select ToCamelCase(e));
+        }
 
         /// <summary>
         /// Converts the specified <paramref name="str"/> to Pascal case (also referred to as upper camel casing).
@@ -58,6 +71,18 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The Pascal cased string.</returns>
         public static string ToPascalCase(Enum value) {
             return ToPascalCase(value.ToString());
+        }
+        
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a Pascal cased string (also referred to as upper
+        /// camel casing). If <paramref name="values"/> contains more than one enum value, the names will be separated
+        /// by commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToPascalCase<TEnum>(IEnumerable<TEnum> values) where TEnum : Enum {
+            return string.Join(",", from e in values select ToPascalCase(e));
         }
 
         /// <summary>
@@ -88,6 +113,18 @@ namespace Skybrud.Essentials.Strings {
         }
         
         /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a kebab cased string (lower case words separated
+        /// by hyphens). If <paramref name="values"/> contains more than one enum value, the names will be separated by
+        /// commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToKebabCase<TEnum>(IEnumerable<TEnum> values) where TEnum : Enum {
+            return string.Join(",", from e in values select ToKebabCase(e));
+        }
+        
+        /// <summary>
         /// Converts the specified <paramref name="str"/> to a train cased string (upper case words separated by hyphens).
         /// </summary>
         /// <param name="str">The string to be converted.</param>
@@ -112,6 +149,18 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The camel cased string.</returns>
         public static string ToTrainCase(Enum value) {
             return ToTrainCase(value.ToString());
+        }
+        
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a train cased string (upper case words separated
+        /// by hyphens). If <paramref name="values"/> contains more than one enum value, the names will be separated by
+        /// commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToTrainCase<TEnum>(IEnumerable<TEnum> values) where TEnum : Enum {
+            return string.Join(",", from e in values select ToTrainCase(e));
         }
 
         /// <summary>
@@ -141,6 +190,18 @@ namespace Skybrud.Essentials.Strings {
         public static string ToUnderscore(Enum value) {
             return ToUnderscore(value.ToString());
         }
+        
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a lower case string with words separated by
+        /// underscores. If <paramref name="values"/> contains more than one enum value, the names will be separated by
+        /// commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToUnderscore<TEnum>(IEnumerable<TEnum> values) where TEnum : Enum {
+            return string.Join(",", from e in values select ToUnderscore(e));
+        }
 
         /// <summary>
         /// Converts the specified enum <paramref name="value"/> to a lower case string.
@@ -150,6 +211,17 @@ namespace Skybrud.Essentials.Strings {
         public static string ToLower(Enum value) {
             return value.ToString().ToLower();
         }
+        
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a lower case string. If <paramref name="values"/>
+        /// contains more than one enum value, the names will be separated by commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The lower case version of <paramref name="values"/>.</returns>
+        public static string ToLower<TEnum>(IEnumerable<TEnum> values) where TEnum : Enum {
+            return string.Join(",", from e in values select ToLower(e));
+        }
 
         /// <summary>
         /// Converts the specified enum <paramref name="value"/> to an upper case string.
@@ -158,6 +230,17 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The upper case version of <paramref name="value"/>.</returns>
         public static string ToUpper(Enum value) {
             return value.ToString().ToUpper();
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to an upper case string. If <paramref name="values"/>
+        /// contains more than one enum value, the names will be separated by commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The upper case version of <paramref name="values"/>.</returns>
+        public static string ToUpper<TEnum>(IEnumerable<TEnum> values) where TEnum : Enum {
+            return string.Join(",", from e in values select ToUpper(e));
         }
 
         /// <summary>
@@ -171,13 +254,24 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Converts the specified enum <paramref name="value"/> to a string with the enum name is formatted using the specified <paramref name="casing"/>.
+        /// Converts the specified enum <paramref name="value"/> to a string where the enum name is formatted using the specified <paramref name="casing"/>.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
         /// <param name="casing">The casing of the output string.</param>
         /// <returns>The output string, matching the specified <paramref name="casing"/>.</returns>
         public static string ToCasing(Enum value, TextCasing casing) {
             return ToCasing(value.ToString(), casing);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a string where the enum names are formatted using the specified <paramref name="casing"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <param name="casing">The casing of the output string.</param>
+        /// <returns>The output string, matching the specified <paramref name="casing"/>.</returns>
+        public static string ToCasing<TEnum>(IEnumerable<TEnum> values, TextCasing casing) where TEnum : Enum {
+            return string.Join(",", from e in values select ToCasing(e, casing));
         }
 
         /// <summary>
