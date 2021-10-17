@@ -89,6 +89,16 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the date is today.
         /// </summary>
         public bool IsToday => Iso8601 == DateTime.Now.ToString("yyyy-MM-dd");
+        
+        /// <summary>
+        /// Gets whether the date matches the day after the current day.
+        /// </summary>
+        public bool IsTomorrow => Iso8601 == DateTime.Now.AddDays(+1).ToString("yyyy-MM-dd");
+
+        /// <summary>
+        /// Gets whether the date matches the day before the current day.
+        /// </summary>
+        public bool IsYesterday => Iso8601 == DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
 
         /// <summary>
         /// Gets an instance of <see cref="EssentialsDate"/> representing the current day.
