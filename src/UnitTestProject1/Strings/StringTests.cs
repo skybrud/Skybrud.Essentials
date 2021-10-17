@@ -641,6 +641,30 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void ToPluralWithCount() {
+            
+            Assert.AreEqual("dogs", StringUtils.ToPlural("dog", 0), "#1");
+            Assert.AreEqual("dog", StringUtils.ToPlural("dog", 1), "#2");
+            Assert.AreEqual("dogs", StringUtils.ToPlural("dog", 2), "#3");
+            
+            Assert.AreEqual("indices", StringUtils.ToPlural("index", 0), "#4");
+            Assert.AreEqual("index", StringUtils.ToPlural("index", 1), "#5");
+            Assert.AreEqual("indices", StringUtils.ToPlural("index", 2), "#6");
+
+        }
+
+        [TestMethod]
+        public void ToPluralWithCondition() {
+            
+            Assert.AreEqual("dogs", StringUtils.ToPlural("dog", true), "#1");
+            Assert.AreEqual("dog", StringUtils.ToPlural("dog", false), "#2");
+            
+            Assert.AreEqual("indices", StringUtils.ToPlural("index", true), "#3");
+            Assert.AreEqual("index", StringUtils.ToPlural("index", false), "#4");
+
+        }
+
+        [TestMethod]
         public void ToSingular() {
 
             foreach (SingularPluralTestItem item in SingularPluralTestItem.Items) {

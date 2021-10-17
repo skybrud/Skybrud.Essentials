@@ -78,6 +78,26 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="count"/> is exactly <c>1</c>. Works only with English words.
+        /// </summary>
+        /// <param name="singular">The singular word.</param>
+        /// <param name="count">The count.</param>
+        /// <returns>The plural word if <paramref name="count"/> is exactly <c>1</c>; otherwise <paramref name="singular"/>.</returns>
+        public static string ToPlural(string singular, int count) {
+            return count == 1 ? singular : ToPlural(singular);
+        }
+        
+        /// <summary>
+        /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <c>true</c>. Works only with English words.
+        /// </summary>
+        /// <param name="singular">The singular word.</param>
+        /// <param name="condition">A boolean value.</param>
+        /// <returns>The plural word if <paramref name="condition"/> is <c>true</c>; otherwise <paramref name="singular"/>.</returns>
+        public static string ToPlural(string singular, bool condition) {
+            return condition ? ToPlural(singular) : singular;
+        }
+
+        /// <summary>
         /// Converts a plural word to the singular counterpart (for English words only).
         /// </summary>
         /// <param name="word">The plural word.</param>
