@@ -678,6 +678,23 @@ namespace UnitTestProject1.Strings {
 
         }
 
+        [TestMethod]
+        public void FirstWithValue() {
+            
+            Assert.AreEqual("", StringUtils.FirstWithValue(), "#1");
+            Assert.AreEqual("", StringUtils.FirstWithValue(null, null), "#2");
+            Assert.AreEqual("", StringUtils.FirstWithValue(null, null, null), "#3");
+            
+            Assert.AreEqual("a", StringUtils.FirstWithValue("a"), "#4");
+            Assert.AreEqual("a", StringUtils.FirstWithValue("a", null), "#5");
+            Assert.AreEqual("b", StringUtils.FirstWithValue("b", null, null), "#6");
+            
+            Assert.AreEqual("a", StringUtils.FirstWithValue("a"), "#7");
+            Assert.AreEqual("b", StringUtils.FirstWithValue(null, "b"), "#8");
+            Assert.AreEqual("c", StringUtils.FirstWithValue(null, null, "c"), "#9");
+
+        }
+
         public class SingularPluralTestItem {
 
             public string Singular { get; private set; }
