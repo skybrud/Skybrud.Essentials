@@ -138,6 +138,15 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return new HashSet<TResult>(source.Select(selector), comparer);
         }
 
+        /// <summary>
+        /// Returns the reverse/opposite sort order of <paramref name="order"/>.
+        /// </summary>
+        /// <param name="order">The sort order.</param>
+        /// <returns>An instance of <see cref="SortOrder"/>.</returns>
+        public static SortOrder GetReverse(this SortOrder order) {
+            return order == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
+        }
+
     }
 
 }
