@@ -1,6 +1,7 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
+using System.Web;
 
 namespace UnitTestProject1.Strings {
     
@@ -64,6 +65,25 @@ namespace UnitTestProject1.Strings {
                 Assert.AreEqual(sample.Output, StringUtils.ReplaceLineBreaks(sample.Input));
 
                 Assert.AreEqual(sample.Output, sample.Input.ReplaceLineBreaks());
+
+            }
+
+        }
+
+        [TestMethod]
+        public void ToHtmlString() {
+
+            var samples = new[] {
+                new { Input = default(string), Output = "" },
+                new { Input = "", Output = "" },
+                new { Input = "<div>Hello World</div>", Output = "<div>Hello World</div>" }
+            };
+
+            foreach (var sample in samples) {
+
+                IHtmlString html = sample.Input.ToHtmlString();
+
+                Assert.AreEqual(sample.Output, html.ToHtmlString());
 
             }
 

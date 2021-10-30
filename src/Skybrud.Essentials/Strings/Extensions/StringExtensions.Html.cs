@@ -22,8 +22,6 @@
             return StringUtils.StripHtml(html, ignore);
         }
 
-
-
         /// <summary>
         /// HTML encodes the text and replaces text line breaks with HTML line breaks.
         /// </summary>
@@ -32,8 +30,19 @@
         public static string ReplaceLineBreaks(this string input) {
             return StringUtils.ReplaceLineBreaks(input);
         }
+        
+#if NET_FRAMEWORK
 
+        /// <summary>
+        /// Returns a new <see cref="System.Web.IHtmlString"/> wrapping the specified <paramref name="input"/> string.
+        /// </summary>
+        /// <param name="input">The input string to be wrapped.</param>
+        /// <returns>An instance of <see cref="System.Web.IHtmlString"/>.</returns>
+        public static System.Web.IHtmlString ToHtmlString(this string input) {
+            return new  System.Web.HtmlString(input ?? string.Empty);
+        }
 
+#endif
 
     }
 
