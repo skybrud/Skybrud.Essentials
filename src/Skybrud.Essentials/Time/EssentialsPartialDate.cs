@@ -96,6 +96,17 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Initializes a new instance from the specified <paramref name="date"/>.
+        /// </summary>
+        /// <param name="date">An instance of <see cref="EssentialsTime"/> representing the full date.</param>
+        public EssentialsPartialDate(EssentialsTime date) {
+            Year = date == null ? 0 : date.Year;
+            Month = date == null ? 0 : date.Month;
+            Day = date == null ? 0 : date.Day;
+            DateTime = new DateTime(Year == 0 ? 1 : Year, Month == 0 ? 1 : Month, Day == 0 ? 1 : Day);
+        }
+
+        /// <summary>
         /// Initializes a new instance from the specified <paramref name="year"/>.
         /// </summary>
         /// <param name="year">The year of the date.</param>
