@@ -7,6 +7,7 @@ namespace Skybrud.Essentials.Json.Converters {
     /// <summary>
     /// JSON converter for serializing objects into their <see cref="object.ToString"/> equivalent.
     /// </summary>
+    [Obsolete("Use the 'StringJsonConverter' class instead.")]
     public class ToStringJsonConverter : JsonConverter {
         
         /// <inheritdoc />
