@@ -178,7 +178,6 @@ namespace UnitTestProject1.Guids {
             Guid guid1 = new Guid("00000000-0000-0000-0000-000000000000");
             Guid guid2 = new Guid("00000400-0000-0000-0000-000000000000");
             Guid guid3 = new Guid("7fffffff-0000-0000-0000-000000000000");
-            Guid guid4 = new Guid("ffffffff-ffff-7fff-0000-000000000000");
             
             Assert.AreEqual(0, GuidUtils.ToInt32(guid1), "#1A");
             Assert.AreEqual(0, guid1.ToInt32(), "#1B");
