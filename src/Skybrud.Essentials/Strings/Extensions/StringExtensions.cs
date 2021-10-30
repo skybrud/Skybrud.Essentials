@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.Specialized;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -43,6 +44,28 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string HtmlDecode(this string str) {
             return StringUtils.HtmlDecode(str);
         }
+
+#if I_CAN_HAS_NAME_VALUE_COLLECTION
+
+        /// <summary>
+        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <returns>The URL encoded string.</returns>
+        public static string ToUrlEncodedString(this NameValueCollection collection) {
+            return StringUtils.ToUrlEncodedString(collection);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="NameValueCollection"/> from the specified URL <paramref name="encoded"/> string.
+        /// </summary>
+        /// <param name="encoded">The URL encoded string.</param>
+        /// <returns>The name value colection.</returns>
+        public static NameValueCollection ToNameValueCollection(this string encoded) {
+            return string.IsNullOrWhiteSpace(encoded) ? new NameValueCollection() : System.Web.HttpUtility.ParseQueryString(encoded);
+        }
+
+#endif
 
         /// <summary>
         /// Counts number of words in the specified <paramref name="str"/>.

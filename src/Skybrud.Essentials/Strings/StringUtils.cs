@@ -315,6 +315,19 @@ namespace Skybrud.Essentials.Strings {
 
 #endif
 
+#if I_CAN_HAS_NAME_VALUE_COLLECTION
+
+        /// <summary>
+        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <returns>The URL encoded string.</returns>
+        public static string ToUrlEncodedString(System.Collections.Specialized.NameValueCollection collection) {
+            return collection == null ? string.Empty : string.Join("&", from string key in collection.Keys select $"{UrlEncode(key)}={UrlEncode(collection[key])}");
+        }
+
+#endif
+
 #if NET_STANDARD
 
 		/// <summary>
