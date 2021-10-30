@@ -695,6 +695,31 @@ namespace UnitTestProject1.Strings {
 
         }
 
+        [TestMethod]
+        public void Truncate() {
+
+            var samples = new[] {
+                new { Max = 8, Input = default(string), Expected = default(string) },
+                new { Max = 8, Input = "", Expected = "" },
+                new { Max = 8, Input = "Hello World", Expected = "Hello..." },
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                string result1 = StringUtils.Truncate(sample.Input, sample.Max);
+                string result2 = sample.Input.Truncate(sample.Max);
+                
+                Assert.AreEqual(sample.Expected, result1, $"{n}A");
+                Assert.AreEqual(sample.Expected, result2, $"{n}B");
+
+                n++;
+
+            }
+
+        }
+
         public class SingularPluralTestItem {
 
             public string Singular { get; private set; }

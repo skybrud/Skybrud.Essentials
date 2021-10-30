@@ -410,6 +410,35 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// If <paramref name="input"/> is longer than <paramref name="maxCharacters"/>, this method will return a
+        /// truncated version of <paramref name="input"/> with <c>...</c> appended to the end, and where the overall
+        /// length is exactly <paramref name="maxCharacters"/>. If the length <paramref name="input"/> is lower than or
+        /// equal to <paramref name="maxCharacters"/>, <paramref name="input"/> os returned unmodified.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
+        /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
+        public static string Truncate(string input, int maxCharacters) {
+            return Truncate(input, maxCharacters, "...");
+        }
+
+        /// <summary>
+        /// If <paramref name="input"/> is longer than <paramref name="maxCharacters"/>, this method will return a
+        /// truncated version of <paramref name="input"/> with <paramref name="end"/> appended to the end, and where the overall
+        /// length is exactly <paramref name="maxCharacters"/>. If the length <paramref name="input"/> is lower than or
+        /// equal to <paramref name="maxCharacters"/>, <paramref name="input"/> os returned unmodified.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
+        /// <param name="end">The text to be appended to the end of the truncated string - eg. <c>...</c>.</param>
+        /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
+        public static string Truncate(string input, int maxCharacters, string end) {
+            if (string.IsNullOrWhiteSpace(input)) return input;
+            if (end == null) end = string.Empty;
+            return input.Length > maxCharacters ? input.Substring(0, maxCharacters - end.Length) + end : input;
+        }
+
+        /// <summary>
         /// Returns the value of the first parameter that has a value (not null or white space). If all parameter
         /// values are empty, <see cref="string.Empty"/> is returned instead.
         /// instead.

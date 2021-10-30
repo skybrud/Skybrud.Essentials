@@ -184,6 +184,33 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string[] ToStringArray(this string input, char[] separators) {
             return StringUtils.ParseStringArray(input, separators);
         }
+        
+        /// <summary>
+        /// If <paramref name="input"/> is longer than <paramref name="maxCharacters"/>, this method will return a
+        /// truncated version of <paramref name="input"/> with <c>...</c> appended to the end, and where the overall
+        /// length is exactly <paramref name="maxCharacters"/>. If the length <paramref name="input"/> is lower than or
+        /// equal to <paramref name="maxCharacters"/>, <paramref name="input"/> os returned unmodified.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
+        /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
+        public static string Truncate(this string input, int maxCharacters) {
+            return StringUtils.Truncate(input, maxCharacters);
+        }
+
+        /// <summary>
+        /// If <paramref name="input"/> is longer than <paramref name="maxCharacters"/>, this method will return a
+        /// truncated version of <paramref name="input"/> with <paramref name="end"/> appended to the end, and where the overall
+        /// length is exactly <paramref name="maxCharacters"/>. If the length <paramref name="input"/> is lower than or
+        /// equal to <paramref name="maxCharacters"/>, <paramref name="input"/> os returned unmodified.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
+        /// <param name="end">The text to be appended to the end of the truncated string - eg. <c>...</c>.</param>
+        /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
+        public static string Truncate(this string input, int maxCharacters, string end) {
+            return StringUtils.Truncate(input, maxCharacters, end);
+        }
 
         /// <summary>
         /// Concatenates the string representations of each item in <paramref name="values"/>, using the specified
