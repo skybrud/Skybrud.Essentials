@@ -65,6 +65,7 @@
     <Compile Include="Enums\EnumLowerCaseConverterTests.cs" />
     <Compile Include="Enums\EnumTests.cs" />
     <Compile Include="Enums\EnumCamelCaseConverterTests.cs" />
+    <Compile Include="Guids\GuidTests.cs" />
     <Compile Include="Json\Converters\EnumStringConverterTests.cs" />
     <Compile Include="Json\Converters\NameValueCollectionTests.cs" />
     <Compile Include="Json\Converters\StringJsonConverterTests.cs" />
