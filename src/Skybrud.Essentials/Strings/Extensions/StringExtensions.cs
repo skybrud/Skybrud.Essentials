@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        public static string HighlightKeywords(string input, string className, IEnumerable<string> keywords) {
+        public static string HighlightKeywords(this string input, string className, IEnumerable<string> keywords) {
             return StringUtils.HighlightKeywords(input, className, keywords);
         }
 
@@ -73,7 +73,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        public static string HighlightKeywords(string input, string className, params string[] keywords) {
+        public static string HighlightKeywords(this string input, string className, params string[] keywords) {
             return StringUtils.HighlightKeywords(input, className, keywords);
         }
 
@@ -171,7 +171,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// the returned string only if value has more than one element.</param>
         /// <returns>A string that consists of the elements of <paramref name="values"/> delimited by the
         /// <paramref name="separator"/> character, <see cref="string.Empty"/> if values has zero elements.</returns>
-        public static string Join(IEnumerable<object> values, string separator) {
+        public static string Join(this IEnumerable<object> values, string separator) {
             return string.Join(separator, values);
         }
         
@@ -184,8 +184,46 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// the returned string only if value has more than one element.</param>
         /// <returns>A string that consists of the elements of <paramref name="values"/> delimited by the
         /// <paramref name="separator"/> character, <see cref="string.Empty"/> if values has zero elements.</returns>
-        public static string Join(IEnumerable<object> values, char separator) {
+        public static string Join(this IEnumerable<object> values, char separator) {
             return string.Join(separator.ToString(), values);
+        }
+
+        /// <summary>
+        /// Converts a singular word to the plural counterpart (for English words only).
+        /// </summary>
+        /// <param name="word">The singular word.</param>
+        /// <returns>The plural word.</returns>
+        public static string ToPlural(this string word) {
+            return StringUtils.ToPlural(word);
+        }
+
+        /// <summary>
+        /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="count"/> is exactly <c>1</c>. Works only with English words.
+        /// </summary>
+        /// <param name="singular">The singular word.</param>
+        /// <param name="count">The count.</param>
+        /// <returns>The plural word if <paramref name="count"/> is exactly <c>1</c>; otherwise <paramref name="singular"/>.</returns>
+        public static string ToPlural(this string singular, int count) {
+            return StringUtils.ToPlural(singular, count);
+        }
+        
+        /// <summary>
+        /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <c>true</c>. Works only with English words.
+        /// </summary>
+        /// <param name="singular">The singular word.</param>
+        /// <param name="condition">A boolean value.</param>
+        /// <returns>The plural word if <paramref name="condition"/> is <c>true</c>; otherwise <paramref name="singular"/>.</returns>
+        public static string ToPlural(this string singular, bool condition) {
+            return StringUtils.ToPlural(singular, condition);
+        }
+
+        /// <summary>
+        /// Converts a plural word to the singular counterpart (for English words only).
+        /// </summary>
+        /// <param name="word">The plural word.</param>
+        /// <returns>The singular word.</returns>
+        public static string ToSingular(this string word) {
+            return StringUtils.ToSingular(word);
         }
 
     }
