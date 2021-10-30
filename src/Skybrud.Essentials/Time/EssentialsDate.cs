@@ -14,6 +14,20 @@ namespace Skybrud.Essentials.Time {
 
         private readonly DateTime _dateTime;
 
+        #region Fields
+        
+        /// <summary>
+        /// Gets the minimum date that can be represented by an <see cref="EssentialsDate"/>.
+        /// </summary>
+        public static readonly EssentialsDate MinValue = new(DateTime.MinValue);
+        
+        /// <summary>
+        /// Gets the maximum date that can be represented by an <see cref="EssentialsDate"/>.
+        /// </summary>
+        public static readonly EssentialsDate MaxValue = new(DateTime.MaxValue);
+
+        #endregion
+
         #region Properties
 
         /// <summary>
