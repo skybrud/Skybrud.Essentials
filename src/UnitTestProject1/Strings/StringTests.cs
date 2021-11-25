@@ -60,6 +60,37 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void ParseBoolean2() {
+
+            var samples = new [] {
+                new { Input = default(string), Fallback = false, Expected = false },
+                new { Input = default(string), Fallback = true, Expected = true },
+                new { Input = "", Fallback = false, Expected = false },
+                new { Input = "", Fallback = true, Expected = true },
+                new { Input = "true", Fallback = false, Expected = true },
+                new { Input = "true", Fallback = true, Expected = true },
+                new { Input = "True", Fallback = false, Expected = true },
+                new { Input = "True", Fallback = true, Expected = true },
+                new { Input = "false", Fallback = false, Expected = false },
+                new { Input = "false", Fallback = true, Expected = false },
+                new { Input = "False", Fallback = false, Expected = false },
+                new { Input = "False", Fallback = true, Expected = false }
+            };
+
+            for (int i = 0; i < samples.Length; i++) {
+
+                int n = i + 1;
+
+                var sample = samples[i];
+                
+                Assert.AreEqual(sample.Expected, StringUtils.ParseBoolean(sample.Input, sample.Fallback), $"Check #{n} failed");
+                Assert.AreEqual(sample.Expected, sample.Input.ToBoolean(sample.Fallback), $"Check #{n} failed");
+
+            }
+
+        }
+
+        [TestMethod]
         public void ParseInt32() {
 
             Assert.AreEqual(0, StringUtils.ParseInt32(null), "Check #1 failed");
