@@ -727,6 +727,23 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void IfNullOrWhiteSpace() {
+
+            string n = null;
+            
+            Assert.AreEqual("fallback", n.IfNullOrWhiteSpace("fallback"), "#1");
+            Assert.AreEqual("fallback", "".IfNullOrWhiteSpace("fallback"), "#2");
+            Assert.AreEqual("fallback", "    ".IfNullOrWhiteSpace("fallback"), "#3");
+            Assert.AreEqual("value", "value".IfNullOrWhiteSpace("fallback"), "#4");
+            
+            Assert.AreEqual("fallback", n.IfNullOrWhiteSpace(() => "fallback"), "#5");
+            Assert.AreEqual("fallback", "".IfNullOrWhiteSpace(() => "fallback"), "#6");
+            Assert.AreEqual("fallback", "    ".IfNullOrWhiteSpace(() => "fallback"), "#7");
+            Assert.AreEqual("value", "value".IfNullOrWhiteSpace(() => "fallback"), "#8");
+
+        }
+
+        [TestMethod]
         public void Truncate() {
 
             var samples = new[] {

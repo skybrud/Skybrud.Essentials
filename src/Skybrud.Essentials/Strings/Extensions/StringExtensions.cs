@@ -275,6 +275,30 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToSingular(this string word) {
             return StringUtils.ToSingular(word);
         }
+        
+        /// <summary>
+        /// If the specified <paramref name="input"/> string is either <c>null</c> or white space, this method returns
+        /// the specified <paramref name="fallback"/> value; otherwise returns the <paramref name="input"/> string
+        /// untouched.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns><paramref name="fallback"/> if <paramref name="input"/> is <c>null</c> or white space; otherwise <paramref name="input"/>.</returns>
+        public static string IfNullOrWhiteSpace(this string input, string fallback) {
+            return string.IsNullOrWhiteSpace(input) ? fallback : input;
+        }
+	
+        /// <summary>
+        /// If the specified <paramref name="input"/> string is either <c>null</c> or white space, this method returns
+        /// value of the specified <paramref name="fallback"/> function; otherwise returns the <paramref name="input"/>
+        /// string untouched.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <param name="fallback">The fallback function.</param>
+        /// <returns>The value returned by <paramref name="fallback"/> if <paramref name="input"/> is <c>null</c> or white space; otherwise <paramref name="input"/>.</returns>
+        public static string IfNullOrWhiteSpace(this string input, Func<string> fallback) {
+            return string.IsNullOrWhiteSpace(input) ? fallback() : input;
+        }
 
     }
 
