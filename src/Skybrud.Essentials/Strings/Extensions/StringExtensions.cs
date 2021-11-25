@@ -300,6 +300,15 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return string.IsNullOrWhiteSpace(input) ? fallback() : input;
         }
 
+        /// <summary>
+        /// Returns <c>null</c> if the specified <paramref name="input"/> string is empty or white space.
+        /// </summary>
+        /// <param name="input">The input string.</param>
+        /// <returns><c>null</c> if <paramref name="input"/> is empty or white space; otherwise <paramref name="input"/>.</returns>
+        public static string NullIfWhiteSpace(this string input) {
+            return string.IsNullOrWhiteSpace(input) ? null : input;
+        }
+
     }
 
 }

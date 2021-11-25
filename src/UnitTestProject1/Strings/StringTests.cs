@@ -6,6 +6,8 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
+// ReSharper disable ExpressionIsAlwaysNull
+
 #pragma warning disable 618
 
 namespace UnitTestProject1.Strings {
@@ -740,6 +742,18 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual("fallback", "".IfNullOrWhiteSpace(() => "fallback"), "#6");
             Assert.AreEqual("fallback", "    ".IfNullOrWhiteSpace(() => "fallback"), "#7");
             Assert.AreEqual("value", "value".IfNullOrWhiteSpace(() => "fallback"), "#8");
+
+        }
+
+        [TestMethod]
+        public void NullIfWhiteSpace() {
+
+            string n = null;
+            
+            Assert.AreEqual(null, n.NullIfWhiteSpace(), "#1");
+            Assert.AreEqual(null, "".NullIfWhiteSpace(), "#2");
+            Assert.AreEqual(null, "    ".NullIfWhiteSpace(), "#3");
+            Assert.AreEqual("value", "value".NullIfWhiteSpace(), "#4");
 
         }
 
