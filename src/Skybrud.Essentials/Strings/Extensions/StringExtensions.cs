@@ -239,6 +239,32 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Concatenates the string representations of each item in <paramref name="values"/>, using the specified
+        /// <paramref name="separator"/> between each member.
+        /// </summary>
+        /// <param name="values">A collection of objects whose string representations will be concatenated.</param>
+        /// <param name="separator">The character to use as a separator. <paramref name="separator"/> is included in
+        /// the returned string only if value has more than one element.</param>
+        /// <returns>A string that consists of the elements of <paramref name="values"/> delimited by the
+        /// <paramref name="separator"/> character, <see cref="string.Empty"/> if values has zero elements.</returns>
+        public static string Join<T>(this IEnumerable<T> values, string separator) {
+            return string.Join(separator, values);
+        }
+
+        /// <summary>
+        /// Concatenates the string representations of each item in <paramref name="values"/>, using the specified
+        /// <paramref name="separator"/> between each member.
+        /// </summary>
+        /// <param name="values">A collection of objects whose string representations will be concatenated.</param>
+        /// <param name="separator">The character to use as a separator. <paramref name="separator"/> is included in
+        /// the returned string only if value has more than one element.</param>
+        /// <returns>A string that consists of the elements of <paramref name="values"/> delimited by the
+        /// <paramref name="separator"/> character, <see cref="string.Empty"/> if values has zero elements.</returns>
+        public static string Join<T>(this IEnumerable<T> values, char separator) {
+            return string.Join(separator.ToString(), values);
+        }
+
+        /// <summary>
         /// Converts a singular word to the plural counterpart (for English words only).
         /// </summary>
         /// <param name="word">The singular word.</param>
