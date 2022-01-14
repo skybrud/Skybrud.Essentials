@@ -1,6 +1,7 @@
 ﻿using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Security;
+using Skybrud.Essentials.Strings;
 
 namespace UnitTestProject1.Security {
 
@@ -116,6 +117,117 @@ namespace UnitTestProject1.Security {
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha512Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
             
             }
+
+        }
+
+        [TestMethod]
+        public void GetHmacSha1Hash() {
+
+            string key = "hi";
+            string value = "hello world";
+
+            string expected1 = "164bdb73753c4f950472e58354d20badfca10ed5";
+            string expected2 = expected1;
+            string expected3 = expected1.ToUpper();
+
+            string result1 = SecurityUtils.GetHmacSha1Hash(key, value);
+            Assert.AreEqual(expected1, result1, "#1");
+
+            string result2 = SecurityUtils.GetHmacSha1Hash(key, value, HexFormat.LowerCase);
+            Assert.AreEqual(expected2, result2, "#2");
+
+            string result3 = SecurityUtils.GetHmacSha1Hash(key, value, HexFormat.UpperCase);
+            Assert.AreEqual(expected3, result3, "#3");
+
+            key = "rødbede";
+            value = "rød grød med fløde";
+
+            expected1 = "d2fcbbcc313efab5c36e6583a9d7738b84e744fa";
+            expected2 = expected1;
+            expected3 = expected1.ToUpper();
+            
+            string result4 = SecurityUtils.GetHmacSha1Hash(key, value, Encoding.UTF8);
+            Assert.AreEqual(expected1, result4, "#4");
+
+            string result5 = SecurityUtils.GetHmacSha1Hash(key, value, HexFormat.LowerCase, Encoding.UTF8);
+            Assert.AreEqual(expected2, result5, "#5");
+
+            string result6 = SecurityUtils.GetHmacSha1Hash(key, value, HexFormat.UpperCase, Encoding.UTF8);
+            Assert.AreEqual(expected3, result6, "#6");
+
+        }
+
+        [TestMethod]
+        public void GetHmacSha256Hash() {
+
+            string key = "hi";
+            string value = "hello world";
+
+            string expected1 = "88970eda57442ac99f3d44d3494fb883e23715c742ecd192083e28b8c6232a4c";
+            string expected2 = expected1;
+            string expected3 = expected1.ToUpper();
+
+            string result1 = SecurityUtils.GetHmacSha256Hash(key, value);
+            Assert.AreEqual(expected1, result1, "#1");
+
+            string result2 = SecurityUtils.GetHmacSha256Hash(key, value, HexFormat.LowerCase);
+            Assert.AreEqual(expected2, result2, "#2");
+
+            string result3 = SecurityUtils.GetHmacSha256Hash(key, value, HexFormat.UpperCase);
+            Assert.AreEqual(expected3, result3, "#3");
+
+            key = "rødbede";
+            value = "rød grød med fløde";
+
+            expected1 = "05ae05d0750939c579dee0948a81cd80cb205f3bbb19d7153015573f28cd0e55";
+            expected2 = expected1;
+            expected3 = expected1.ToUpper();
+            
+            string result4 = SecurityUtils.GetHmacSha256Hash(key, value, Encoding.UTF8);
+            Assert.AreEqual(expected1, result4, "#4");
+
+            string result5 = SecurityUtils.GetHmacSha256Hash(key, value, HexFormat.LowerCase, Encoding.UTF8);
+            Assert.AreEqual(expected2, result5, "#5");
+
+            string result6 = SecurityUtils.GetHmacSha256Hash(key, value, HexFormat.UpperCase, Encoding.UTF8);
+            Assert.AreEqual(expected3, result6, "#6");
+
+        }
+
+        [TestMethod]
+        public void GetHmacSha512Hash() {
+
+            string key = "hi";
+            string value = "hello world";
+
+            string expected1 = "9d4b7aec5e364bdafada54d18ec7ba858b2eabf92a39cb5ca64baedae67b659c2a826aa919c2d4b19fe6c3fdc3bf1b82c7b5b11a9bcfe3eb0c1cbff71cc8e106";
+            string expected2 = expected1;
+            string expected3 = expected1.ToUpper();
+
+            string result1 = SecurityUtils.GetHmacSha512Hash(key, value);
+            Assert.AreEqual(expected1, result1, "#1");
+
+            string result2 = SecurityUtils.GetHmacSha512Hash(key, value, HexFormat.LowerCase);
+            Assert.AreEqual(expected2, result2, "#2");
+
+            string result3 = SecurityUtils.GetHmacSha512Hash(key, value, HexFormat.UpperCase);
+            Assert.AreEqual(expected3, result3, "#3");
+
+            key = "rødbede";
+            value = "rød grød med fløde";
+
+            expected1 = "0e9c50aeabe283b108ff6253c7542c7171f18e830a6d2ca5e4190d8f7ff526bdf6805a736afe0d65f7a296efca46882efb59d01563d7a549473964e72e79a70b";
+            expected2 = expected1;
+            expected3 = expected1.ToUpper();
+            
+            string result4 = SecurityUtils.GetHmacSha512Hash(key, value, Encoding.UTF8);
+            Assert.AreEqual(expected1, result4, "#4");
+
+            string result5 = SecurityUtils.GetHmacSha512Hash(key, value, HexFormat.LowerCase, Encoding.UTF8);
+            Assert.AreEqual(expected2, result5, "#5");
+
+            string result6 = SecurityUtils.GetHmacSha512Hash(key, value, HexFormat.UpperCase, Encoding.UTF8);
+            Assert.AreEqual(expected3, result6, "#6");
 
         }
 
