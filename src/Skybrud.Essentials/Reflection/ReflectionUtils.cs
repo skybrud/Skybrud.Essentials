@@ -20,6 +20,15 @@ namespace Skybrud.Essentials.Reflection {
             return assembly.GetName().Version.ToString();
         }
 
+        /// <summary>
+        /// Returns the version of the assembly of the specified <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">A type used for finding the underlying assembly.</typeparam>
+        /// <returns>A string representing the version of the assembly.</returns>
+        public static string GetVersion<T>() {
+            return GetVersion(typeof(T).Assembly);
+        }
+
 #if I_CAN_HAZ_FILE_VERSION_INFO
 
         /// <summary>
@@ -33,6 +42,15 @@ namespace Skybrud.Essentials.Reflection {
         }
 
         /// <summary>
+        /// Returns the file version of the assembly of the specified <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">A type used for finding the underlying assembly.</typeparam>
+        /// <returns>A string representing the file version of the assembly.</returns>
+        public static string GetFileVersion<T>() {
+            return GetFileVersion(typeof(T).Assembly);
+        }
+
+        /// <summary>
         /// Returns the informational version of the specified <paramref name="assembly"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
@@ -43,6 +61,15 @@ namespace Skybrud.Essentials.Reflection {
         }
 
         /// <summary>
+        /// Returns the informational version of the assembly of the specified <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">A type used for finding the underlying assembly.</typeparam>
+        /// <returns>A string representing the informational version of the assembly.</returns>
+        public static string GetInformationalVersion<T>() {
+            return GetInformationalVersion(typeof(T).Assembly);
+        }
+
+        /// <summary>
         /// Returns an instance of <see cref="FileVersionInfo"/> with information about the specified <paramref name="assembly"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
@@ -50,6 +77,15 @@ namespace Skybrud.Essentials.Reflection {
         public static FileVersionInfo GetFileVersionInfo(Assembly assembly) {
             if (assembly == null) throw new ArgumentNullException(nameof(assembly));
             return FileVersionInfo.GetVersionInfo(assembly.Location);
+        }
+
+        /// <summary>
+        /// Returns an instance of <see cref="FileVersionInfo"/> with information about the assembly of the specified <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">A type used for finding the underlying assembly.</typeparam>
+        /// <returns>An instance of <see cref="FileVersionInfo"/>.</returns>
+        public static FileVersionInfo GetFileVersionInfo<T>() {
+            return GetFileVersionInfo(typeof(T).Assembly);
         }
 
 #endif
