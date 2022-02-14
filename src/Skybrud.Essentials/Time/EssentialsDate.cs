@@ -585,7 +585,7 @@ namespace Skybrud.Essentials.Time {
             if (string.IsNullOrWhiteSpace(input)) return false;
 
             // Attempt to parse the date
-            if (DateTime.TryParse(input, out DateTime dt)) {
+            if (DateTime.TryParse(input, CultureInfo.InvariantCulture, DateTimeStyles.None, out DateTime dt)) {
                 result = new EssentialsDate(dt);
             }
 

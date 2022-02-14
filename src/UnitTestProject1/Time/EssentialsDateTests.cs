@@ -24,6 +24,29 @@ namespace UnitTestProject1.Time {
         }
 
         [TestMethod]
+        public void TryParse1() {
+
+            bool success1 = EssentialsDate.TryParse("2019-08-17", out EssentialsDate result1);
+            bool success2 = EssentialsDate.TryParse("08/17/2019", out EssentialsDate result2);
+            bool success3 = EssentialsDate.TryParse("17/08/2019", out EssentialsDate result3);
+
+            Assert.AreEqual(true, success1, "#1");
+            Assert.AreEqual(true, success2, "#2");
+            Assert.AreEqual(false, success3, "#3");
+
+            Assert.AreEqual(2019, result1.Year);
+            Assert.AreEqual(8, result1.Month);
+            Assert.AreEqual(17, result1.Day);
+
+            Assert.AreEqual(2019, result2.Year);
+            Assert.AreEqual(8, result2.Month);
+            Assert.AreEqual(17, result2.Day);
+
+            Assert.IsNull(result3);
+
+        }
+
+        [TestMethod]
         public void TryParse() {
 
             bool success1 = EssentialsDate.TryParse("2019-08-17", CultureInfo.InvariantCulture, DateTimeStyles.None, out EssentialsDate result1);
