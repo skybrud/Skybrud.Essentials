@@ -29,13 +29,13 @@ namespace UnitTestProject1.Time {
             DateTimeOffset start6 = TimeUtils.GetStartOfWeek(day6, romance);
             DateTimeOffset start7 = TimeUtils.GetStartOfWeek(day7, romance);
 
-            Assert.AreEqual("2019-03-25T00:00:00+01:00", start1.ToString(Iso8601Constants.DateTimeFormat), "Day 1");
-            Assert.AreEqual("2019-03-25T00:00:00+01:00", start2.ToString(Iso8601Constants.DateTimeFormat), "Day 2");
-            Assert.AreEqual("2019-03-25T00:00:00+01:00", start3.ToString(Iso8601Constants.DateTimeFormat), "Day 3");
-            Assert.AreEqual("2019-03-25T00:00:00+01:00", start4.ToString(Iso8601Constants.DateTimeFormat), "Day 4");
-            Assert.AreEqual("2019-03-25T00:00:00+01:00", start5.ToString(Iso8601Constants.DateTimeFormat), "Day 5");
-            Assert.AreEqual("2019-03-25T00:00:00+01:00", start6.ToString(Iso8601Constants.DateTimeFormat), "Day 6");
-            Assert.AreEqual("2019-03-25T00:00:00+01:00", start7.ToString(Iso8601Constants.DateTimeFormat), "Day 7");
+            Assert.AreEqual("2019-03-25T00:00:00+01:00", start1.ToString(Iso8601Constants.DateTimeSeconds), "Day 1");
+            Assert.AreEqual("2019-03-25T00:00:00+01:00", start2.ToString(Iso8601Constants.DateTimeSeconds), "Day 2");
+            Assert.AreEqual("2019-03-25T00:00:00+01:00", start3.ToString(Iso8601Constants.DateTimeSeconds), "Day 3");
+            Assert.AreEqual("2019-03-25T00:00:00+01:00", start4.ToString(Iso8601Constants.DateTimeSeconds), "Day 4");
+            Assert.AreEqual("2019-03-25T00:00:00+01:00", start5.ToString(Iso8601Constants.DateTimeSeconds), "Day 5");
+            Assert.AreEqual("2019-03-25T00:00:00+01:00", start6.ToString(Iso8601Constants.DateTimeSeconds), "Day 6");
+            Assert.AreEqual("2019-03-25T00:00:00+01:00", start7.ToString(Iso8601Constants.DateTimeSeconds), "Day 7");
 
         }
 
@@ -60,13 +60,13 @@ namespace UnitTestProject1.Time {
             DateTimeOffset end6 = TimeUtils.GetEndOfWeek(day6, romance);
             DateTimeOffset end7 = TimeUtils.GetEndOfWeek(day7, romance);
 
-            Assert.AreEqual("2019-03-31T23:59:59+02:00", end1.ToString(Iso8601Constants.DateTimeFormat), "Day 1");
-            Assert.AreEqual("2019-03-31T23:59:59+02:00", end2.ToString(Iso8601Constants.DateTimeFormat), "Day 2");
-            Assert.AreEqual("2019-03-31T23:59:59+02:00", end3.ToString(Iso8601Constants.DateTimeFormat), "Day 3");
-            Assert.AreEqual("2019-03-31T23:59:59+02:00", end4.ToString(Iso8601Constants.DateTimeFormat), "Day 4");
-            Assert.AreEqual("2019-03-31T23:59:59+02:00", end5.ToString(Iso8601Constants.DateTimeFormat), "Day 5");
-            Assert.AreEqual("2019-03-31T23:59:59+02:00", end6.ToString(Iso8601Constants.DateTimeFormat), "Day 6");
-            Assert.AreEqual("2019-03-31T23:59:59+02:00", end7.ToString(Iso8601Constants.DateTimeFormat), "Day 7");
+            Assert.AreEqual("2019-03-31T23:59:59+02:00", end1.ToString(Iso8601Constants.DateTimeSeconds), "Day 1");
+            Assert.AreEqual("2019-03-31T23:59:59+02:00", end2.ToString(Iso8601Constants.DateTimeSeconds), "Day 2");
+            Assert.AreEqual("2019-03-31T23:59:59+02:00", end3.ToString(Iso8601Constants.DateTimeSeconds), "Day 3");
+            Assert.AreEqual("2019-03-31T23:59:59+02:00", end4.ToString(Iso8601Constants.DateTimeSeconds), "Day 4");
+            Assert.AreEqual("2019-03-31T23:59:59+02:00", end5.ToString(Iso8601Constants.DateTimeSeconds), "Day 5");
+            Assert.AreEqual("2019-03-31T23:59:59+02:00", end6.ToString(Iso8601Constants.DateTimeSeconds), "Day 6");
+            Assert.AreEqual("2019-03-31T23:59:59+02:00", end7.ToString(Iso8601Constants.DateTimeSeconds), "Day 7");
 
         }
 

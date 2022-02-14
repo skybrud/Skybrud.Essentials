@@ -25,12 +25,12 @@ namespace UnitTestProject1.Time.Formats {
 
             DateTimeOffset week52 = Iso8601Utils.FromWeekNumber(2021, 52, utc);
 
-            Assert.AreEqual("2021-01-04T00:00:00+00:00", week1.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 1");
-            Assert.AreEqual("2021-03-22T00:00:00+00:00", week12.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 12");
-            Assert.AreEqual("2021-03-29T00:00:00+00:00", week13.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 13");
-            Assert.AreEqual("2021-10-25T00:00:00+00:00", week43.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 43");
-            Assert.AreEqual("2021-11-01T00:00:00+00:00", week44.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 44");
-            Assert.AreEqual("2021-12-27T00:00:00+00:00", week52.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 52");
+            Assert.AreEqual("2021-01-04T00:00:00+00:00", week1.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 1");
+            Assert.AreEqual("2021-03-22T00:00:00+00:00", week12.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 12");
+            Assert.AreEqual("2021-03-29T00:00:00+00:00", week13.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 13");
+            Assert.AreEqual("2021-10-25T00:00:00+00:00", week43.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 43");
+            Assert.AreEqual("2021-11-01T00:00:00+00:00", week44.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 44");
+            Assert.AreEqual("2021-12-27T00:00:00+00:00", week52.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 52");
 
         }
 
@@ -49,12 +49,12 @@ namespace UnitTestProject1.Time.Formats {
 
             DateTimeOffset week52 = Iso8601Utils.FromWeekNumber(2021, 52, romance);
 
-            Assert.AreEqual("2021-01-04T00:00:00+01:00", week1.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 1");
-            Assert.AreEqual("2021-03-22T00:00:00+01:00", week12.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 12");
-            Assert.AreEqual("2021-03-29T00:00:00+02:00", week13.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 13");
-            Assert.AreEqual("2021-10-25T00:00:00+02:00", week43.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 43");
-            Assert.AreEqual("2021-11-01T00:00:00+01:00", week44.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 44");
-            Assert.AreEqual("2021-12-27T00:00:00+01:00", week52.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 52");
+            Assert.AreEqual("2021-01-04T00:00:00+01:00", week1.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 1");
+            Assert.AreEqual("2021-03-22T00:00:00+01:00", week12.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 12");
+            Assert.AreEqual("2021-03-29T00:00:00+02:00", week13.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 13");
+            Assert.AreEqual("2021-10-25T00:00:00+02:00", week43.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 43");
+            Assert.AreEqual("2021-11-01T00:00:00+01:00", week44.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 44");
+            Assert.AreEqual("2021-12-27T00:00:00+01:00", week52.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 52");
 
         }
 
@@ -74,12 +74,12 @@ namespace UnitTestProject1.Time.Formats {
 
             DateTimeOffset week52 = Iso8601Utils.FromWeekNumber(2021, 52, gmt1);
 
-            Assert.AreEqual("2021-01-04T00:00:00+01:00", week1.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 1");
-            Assert.AreEqual("2021-03-22T00:00:00+01:00", week12.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 12");
-            Assert.AreEqual("2021-03-29T00:00:00+02:00", week13.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 13");
-            Assert.AreEqual("2021-10-25T00:00:00+02:00", week43.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 43");
-            Assert.AreEqual("2021-11-01T00:00:00+01:00", week44.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 44");
-            Assert.AreEqual("2021-12-27T00:00:00+01:00", week52.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 52");
+            Assert.AreEqual("2021-01-04T00:00:00+01:00", week1.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 1");
+            Assert.AreEqual("2021-03-22T00:00:00+01:00", week12.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 12");
+            Assert.AreEqual("2021-03-29T00:00:00+02:00", week13.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 13");
+            Assert.AreEqual("2021-10-25T00:00:00+02:00", week43.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 43");
+            Assert.AreEqual("2021-11-01T00:00:00+01:00", week44.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 44");
+            Assert.AreEqual("2021-12-27T00:00:00+01:00", week52.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 52");
 
         }
 
@@ -103,12 +103,12 @@ namespace UnitTestProject1.Time.Formats {
 
 #pragma warning restore 618
 
-            Assert.AreEqual("2021-01-04T00:00:00+01:00", week1.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 1");
-            Assert.AreEqual("2021-03-22T00:00:00+01:00", week12.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 12");
-            Assert.AreEqual("2021-03-29T00:00:00+02:00", week13.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 13");
-            Assert.AreEqual("2021-10-25T00:00:00+02:00", week43.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 43");
-            Assert.AreEqual("2021-11-01T00:00:00+01:00", week44.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 44");
-            Assert.AreEqual("2021-12-27T00:00:00+01:00", week52.ToString(DateTimeFormat, CultureInfo.InvariantCulture), "Week 52");
+            Assert.AreEqual("2021-01-04T00:00:00+01:00", week1.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 1");
+            Assert.AreEqual("2021-03-22T00:00:00+01:00", week12.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 12");
+            Assert.AreEqual("2021-03-29T00:00:00+02:00", week13.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 13");
+            Assert.AreEqual("2021-10-25T00:00:00+02:00", week43.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 43");
+            Assert.AreEqual("2021-11-01T00:00:00+01:00", week44.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 44");
+            Assert.AreEqual("2021-12-27T00:00:00+01:00", week52.ToString(DateTimeSeconds, CultureInfo.InvariantCulture), "Week 52");
 
         }
 
