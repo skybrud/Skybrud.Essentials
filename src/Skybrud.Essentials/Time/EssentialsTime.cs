@@ -48,6 +48,16 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="EssentialsTime"/> representing the start of the Unix Epoch (AKA <c>0</c> seconds).
         /// </summary>
         public static EssentialsTime Zero => FromUnixTimeSeconds(0);
+        
+        /// <summary>
+        /// Returns the amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// </summary>
+        public static long CurrentUnixTimeSeconds => (long) UnixTimeUtils.CurrentSeconds;
+
+        /// <summary>
+        /// Returns the amount of milliseconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// </summary>
+        public static long CurrentUnixTimeMilliseconds => (long) UnixTimeUtils.CurrentMilliseconds;
 
         #endregion
 
@@ -137,7 +147,18 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
+        [Obsolete("Use 'UnixTimeSeconds' instead.")]
         public long UnixTimestamp => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the UNIX timestamp in seconds (amount of time the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
+        /// </summary>
+        public long UnixTimeSeconds => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
+
+        /// <summary>
+        /// Gets the UNIX timestamp in milliseconds (amount of time the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
+        /// </summary>
+        public long UnixTimeMilliseconds => (long) UnixTimeUtils.ToMilliseconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the time's offset from Coordinated Universal Time (UTC).
@@ -177,17 +198,17 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets whether the Unix timestamp of this <see cref="EssentialsTime"/> is <c>0</c>.
         /// </summary>
-        public bool IsZero => UnixTimestamp == 0;
+        public bool IsZero => UnixTimeSeconds == 0;
 
         /// <summary>
         /// Gets whether the Unix timestamp of this <see cref="EssentialsTime"/> is less than <c>0</c>.
         /// </summary>
-        public bool IsNegative => UnixTimestamp < 0;
+        public bool IsNegative => UnixTimeSeconds < 0;
 
         /// <summary>
         /// Gets whether the Unix timestamp of this <see cref="EssentialsTime"/> is greater than <c>0</c>.
         /// </summary>
-        public bool IsPositive => UnixTimestamp > 0;
+        public bool IsPositive => UnixTimeSeconds > 0;
 
         /// <summary>
         /// Gets whether the date of this <see cref="EssentialsTime"/> matches the current day.
@@ -703,6 +724,28 @@ namespace Skybrud.Essentials.Time {
         public EssentialsTime ToTimeZone(TimeZoneInfo timeZone) {
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
             return new EssentialsTime(DateTimeOffset, timeZone);
+        }
+
+        /// <summary>
+        /// Returns the number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).
+        /// </summary>
+        /// <returns>The number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).</returns>
+        /// <seealso>
+        ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimeseconds?view=netstandard-2.0</cref>
+        /// </seealso>
+        public long ToUnixTimeSeconds() {
+            return (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
+        }
+
+        /// <summary>
+        /// Returns the number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).
+        /// </summary>
+        /// <returns>The number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).</returns>
+        /// <seealso>
+        ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimemilliseconds?view=netstandard-2.0</cref>
+        /// </seealso>
+        public long ToUnixTimeMilliseconds() {
+            return (long) UnixTimeUtils.ToMilliseconds(DateTimeOffset);
         }
 
         /// <summary>

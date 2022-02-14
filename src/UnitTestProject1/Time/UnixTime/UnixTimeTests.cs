@@ -1,4 +1,5 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.UnixTime;
 using System;
@@ -261,6 +262,46 @@ namespace UnitTestProject1.Time.UnixTime {
             // Do we have a match?
             Assert.AreEqual(1643886000123, result1);
             Assert.AreEqual(1643886000123, result2);
+
+        }
+        
+        [TestMethod]
+        public void GetCurrentSeconds() {
+
+            // DateTimeOffset offers similar logic, but only in newer versions of .NET, which is why we're not using it
+            // internally. But insce it's available here in the test project, we can use it for validating our own values :D
+
+            // NOTICE: Working with current time is always a bit tricky, so if we're unlucky, "result1" may be a second
+            // ahead of the other result. This is not an error!
+
+            long result1 = DateTimeOffset.Now.ToUnixTimeSeconds();
+            long result2 = (long) UnixTimeUtils.CurrentSeconds;
+            long result3 = EssentialsTime.CurrentUnixTimeSeconds;
+            long result4 = EssentialsTime.Now.UnixTimeSeconds;
+            
+            Assert.AreEqual(result1, result2, "#2");
+            Assert.AreEqual(result1, result3, "#3");
+            Assert.AreEqual(result1, result4, "#4");
+
+        }
+        
+        [TestMethod]
+        public void GetCurrentMilliseconds() {
+
+            // DateTimeOffset offers similar logic, but only in newer versions of .NET, which is why we're not using it
+            // internally. But insce it's available here in the test project, we can use it for validating our own values :D
+
+            // NOTICE: Working with current time is always a bit tricky, so if we're unlucky, "result1" may be a second
+            // ahead of the other result. This is not an error!
+
+            long result1 = DateTimeOffset.Now.ToUnixTimeMilliseconds();
+            long result2 = (long) UnixTimeUtils.CurrentMilliseconds;
+            long result3 = EssentialsTime.CurrentUnixTimeMilliseconds;
+            long result4 = EssentialsTime.Now.UnixTimeMilliseconds;
+            
+            Assert.AreEqual(result1, result2, "#2");
+            Assert.AreEqual(result1, result3, "#3");
+            Assert.AreEqual(result1, result4, "#4");
 
         }
 
