@@ -1,0 +1,269 @@
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Time.Iso8601;
+using Skybrud.Essentials.Time.UnixTime;
+using System;
+
+namespace UnitTestProject1.Time.UnixTime {
+    
+    [TestClass]
+    public class UnixTimeTests {
+
+        [TestMethod]
+        public void FromSecondsInt32_NormalTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds(1643886000);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2022-02-03T11:00:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2022-02-03T12:00:00+01:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+        [TestMethod]
+        public void FromSecondsInt32_SummerTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds(1629182100);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2021-08-17T06:35:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2021-08-17T08:35:00+02:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+        [TestMethod]
+        public void FromSecondsInt64_NormalTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds(1643886000L);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2022-02-03T11:00:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2022-02-03T12:00:00+01:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+        [TestMethod]
+        public void FromSecondsInt64_SummerTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds(1629182100L);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2021-08-17T06:35:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2021-08-17T08:35:00+02:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+        [TestMethod]
+        public void FromSecondsDouble_NormalTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds(1643886000d);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2022-02-03T11:00:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2022-02-03T12:00:00+01:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+        [TestMethod]
+        public void FromSecondsDouble_SummerTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds(1629182100d);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2021-08-17T06:35:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2021-08-17T08:35:00+02:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+        [TestMethod]
+        public void FromSecondsString_NormalTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds("1643886000");
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2022-02-03T11:00:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2022-02-03T12:00:00+01:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+        [TestMethod]
+        public void FromSecondsString_SummerTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromSeconds("1629182100");
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2021-08-17T06:35:00+00:00", resultUtc.ToString(Iso8601Constants.DateTimeSeconds));
+            Assert.AreEqual("2021-08-17T08:35:00+02:00", resultDenmark.ToString(Iso8601Constants.DateTimeSeconds));
+
+        }
+
+
+
+
+
+
+
+
+
+
+
+        
+
+        [TestMethod]
+        public void FromMillisecondsInt64_NormalTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromMilliseconds(1643886000123);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2022-02-03T11:00:00.123+00:00", resultUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+            Assert.AreEqual("2022-02-03T12:00:00.123+01:00", resultDenmark.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+
+        }
+
+        [TestMethod]
+        public void FromMillisecondsInt64_SummerTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromMilliseconds(1629182100123);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2021-08-17T06:35:00.123+00:00", resultUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+            Assert.AreEqual("2021-08-17T08:35:00.123+02:00", resultDenmark.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+
+        }
+
+        [TestMethod]
+        public void FromMillisecondsDouble_NormalTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromMilliseconds(1643886000123d);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2022-02-03T11:00:00.123+00:00", resultUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+            Assert.AreEqual("2022-02-03T12:00:00.123+01:00", resultDenmark.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+
+        }
+
+        [TestMethod]
+        public void FromMillisecondsDouble_SummerTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromMilliseconds(1629182100123d);
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2021-08-17T06:35:00.123+00:00", resultUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+            Assert.AreEqual("2021-08-17T08:35:00.123+02:00", resultDenmark.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+
+        }
+
+        [TestMethod]
+        public void FromMillisecondsString_NormalTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromMilliseconds("1643886000123");
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2022-02-03T11:00:00.123+00:00", resultUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+            Assert.AreEqual("2022-02-03T12:00:00.123+01:00", resultDenmark.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+
+        }
+
+        [TestMethod]
+        public void FromMillisecondsString_SummerTime() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            DateTimeOffset resultUtc = UnixTimeUtils.FromMilliseconds("1629182100123");
+            DateTimeOffset resultDenmark = TimeZoneInfo.ConvertTime(resultUtc, romance);
+            
+            Assert.AreEqual("2021-08-17T06:35:00.123+00:00", resultUtc.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+            Assert.AreEqual("2021-08-17T08:35:00.123+02:00", resultDenmark.ToString("yyyy-MM-ddTHH:mm:ss.fffK"));
+
+        }
+        
+        [TestMethod]
+        public void ToSecondsDateTime() {
+
+            // Must be UTC as we really can't rely on anything else when unit testing DateTime
+            DateTime dt = new DateTime(2022, 2, 3, 11, 0, 0, DateTimeKind.Utc);
+
+            // Cast to int as we don't really care about the milliseconds here
+            int result = (int) UnixTimeUtils.ToSeconds(dt);
+            
+            // Do we have a match?
+            Assert.AreEqual(1643886000, result);
+
+        }
+
+        [TestMethod]
+        public void ToSecondsDateTimeOffset() {
+
+            // Initialize to different DateTimeOffset representing the same point in time, but with different offsets
+            DateTimeOffset dto1 = new DateTimeOffset(2022, 2, 3, 11, 0, 0, TimeSpan.Zero);
+            DateTimeOffset dto2 = new DateTimeOffset(2022, 2, 3, 12, 0, 0, TimeSpan.FromHours(1));
+
+            // Cast to int as we don't really care about the milliseconds here
+            int result1 = (int) UnixTimeUtils.ToSeconds(dto1);
+            int result2 = (int) UnixTimeUtils.ToSeconds(dto2);
+            
+            // Do we have a match?
+            Assert.AreEqual(1643886000, result1);
+            Assert.AreEqual(1643886000, result2);
+
+        }
+        
+        [TestMethod]
+        public void ToMillisecondsDateTime() {
+
+            // Must be UTC as we really can't rely on anything else when unit testing DateTime
+            DateTime dt = new DateTime(2022, 2, 3, 11, 0, 0, 123, DateTimeKind.Utc);
+
+            // Cast to long as we don't really care about any decimals
+            long result = (long) UnixTimeUtils.ToMilliseconds(dt);
+            
+            // Do we have a match?
+            Assert.AreEqual(1643886000123, result);
+
+        }
+
+        [TestMethod]
+        public void ToMillisecondsDateTimeOffset() {
+
+            // Initialize to different DateTimeOffset representing the same point in time, but with different offsets
+            DateTimeOffset dto1 = new DateTimeOffset(2022, 2, 3, 11, 0, 0, 123, TimeSpan.Zero);
+            DateTimeOffset dto2 = new DateTimeOffset(2022, 2, 3, 12, 0, 0, 123, TimeSpan.FromHours(1));
+            
+            // Cast to long as we don't really care about any decimals
+            long result1 = (long) UnixTimeUtils.ToMilliseconds(dto1);
+            long result2 = (long) UnixTimeUtils.ToMilliseconds(dto2);
+            
+            // Do we have a match?
+            Assert.AreEqual(1643886000123, result1);
+            Assert.AreEqual(1643886000123, result2);
+
+        }
+
+    }
+
+}

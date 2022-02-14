@@ -11,7 +11,7 @@ namespace UnitTestProject1.Time {
         [TestMethod]
         public void GetSwatchInternetTime() {
 
-            var t1 = EssentialsTime.FromUnixTimestamp(1605361960);
+            var t1 = EssentialsTime.FromUnixTimeSeconds(1605361960);
             var r1 = (int) SwatchUtils.ToDouble(t1);
 
             var t2 = new DateTime(2020, 11, 14, 13, 52, 40, DateTimeKind.Utc);
@@ -20,7 +20,7 @@ namespace UnitTestProject1.Time {
             var t3 = new DateTimeOffset(2020, 11, 14, 14, 52, 40, TimeSpan.FromHours(1));
             var r3 = (int) SwatchUtils.ToDouble(t3);
 
-            var t4 = EssentialsTime.FromUnixTimestamp(1597646100);
+            var t4 = EssentialsTime.FromUnixTimeSeconds(1597646100);
             var r4 = (int) SwatchUtils.ToDouble(t4);
 
             var t5 = new DateTime(2020, 8, 17, 6, 35, 00, DateTimeKind.Utc);

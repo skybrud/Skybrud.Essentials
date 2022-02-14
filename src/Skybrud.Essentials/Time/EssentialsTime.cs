@@ -47,7 +47,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets an instance of <see cref="EssentialsTime"/> representing the start of the Unix Epoch (AKA <c>0</c> seconds).
         /// </summary>
-        public static EssentialsTime Zero => FromUnixTimestamp(0);
+        public static EssentialsTime Zero => FromUnixTimeSeconds(0);
 
         #endregion
 
@@ -1012,6 +1012,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        [Obsolete("Use 'FromUnixTimeSeconds' method instead.")]
         public static EssentialsTime FromUnixTimestamp(int timestamp) {
             return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
         }
@@ -1021,6 +1022,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        [Obsolete("Use 'FromUnixTimeSeconds' method instead.")]
         public static EssentialsTime FromUnixTimestamp(long timestamp) {
             return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
         }
@@ -1030,7 +1032,62 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        [Obsolete("Use 'FromUnixTimeSeconds' method instead.")]
         public static EssentialsTime FromUnixTimestamp(double timestamp) {
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
+        }
+
+        /// <summary>
+        /// Initialize a new instance from the specified UNIX timestamp.
+        /// </summary>
+        /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromUnixTimeSeconds(int timestamp) {
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
+        }
+
+        /// <summary>
+        /// Initialize a new instance from the specified UNIX timestamp.
+        /// </summary>
+        /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromUnixTimeSeconds(long timestamp) {
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
+        }
+
+        /// <summary>
+        /// Initialize a new instance from the specified UNIX timestamp.
+        /// </summary>
+        /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromUnixTimeSeconds(double timestamp) {
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
+        }
+        
+        /// <summary>
+        /// Initialize a new instance from the specified UNIX timestamp.
+        /// </summary>
+        /// <param name="timestamp">The UNIX timestamp specified in milliseconds.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromUnixTimeMilliseconds(int timestamp) {
+            return new EssentialsTime(UnixTimeUtils.FromMilliseconds(timestamp), TimeZoneInfo.Utc);
+        }
+
+        /// <summary>
+        /// Initialize a new instance from the specified UNIX timestamp.
+        /// </summary>
+        /// <param name="timestamp">The UNIX timestamp specified in milliseconds.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromUnixTimeMilliseconds(long timestamp) {
+            return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
+        }
+
+        /// <summary>
+        /// Initialize a new instance from the specified UNIX timestamp.
+        /// </summary>
+        /// <param name="timestamp">The UNIX timestamp specified in milliseconds.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromUnixTimeMilliseconds(double timestamp) {
             return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
         }
 
