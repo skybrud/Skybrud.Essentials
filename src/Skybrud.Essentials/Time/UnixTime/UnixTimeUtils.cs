@@ -97,6 +97,8 @@ namespace Skybrud.Essentials.Time.UnixTime {
             return (timestamp.ToUniversalTime() - DateTimeOffsetUnixTimeStartUtc).TotalSeconds;
         }
 
+        #endregion
+
     }
 
 }
