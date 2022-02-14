@@ -82,6 +82,7 @@
     <Compile Include="Maps\PointTests.cs" />
     <Compile Include="Reflection\ReflectionTests.cs" />
     <Compile Include="Security\SecurityTests.cs" />
+    <Compile Include="Strings\HexTests.cs" />
     <Compile Include="Strings\HtmlTests.cs" />
     <Compile Include="Strings\NameValueCollectionTests.cs" />
     <Compile Include="Strings\StringTests.cs" />

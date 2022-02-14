@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Linq;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -25,6 +26,25 @@ namespace Skybrud.Essentials.Strings {
                 HexFormat.UpperCase => BitConverter.ToString(bytes).Replace("-", string.Empty),
                 _ => throw new Exception($"Unsupported format: {format}")
             };
+        }
+        
+        /// <summary>
+        /// Parse the specified HEX string into a corresponding array of <see cref="byte"/>.
+        /// </summary>
+        /// <param name="hex">The HEX string to parse.</param>
+        /// <returns></returns>
+        public static byte[] ParseHexString(string hex) {
+            
+            if (string.IsNullOrWhiteSpace(hex)) throw new ArgumentNullException(nameof(hex));
+            
+            // Detect whether the HEX string uses hyphens
+            int mod = hex.Length > 2 && hex[2] == '-' ? 3 : 2;
+            
+            return Enumerable.Range(0, hex.Length)
+                .Where(x => x % mod == 0)
+                .Select(x => Convert.ToByte(hex.Substring(x, 2), 16))
+                .ToArray();
+
         }
 
     }
