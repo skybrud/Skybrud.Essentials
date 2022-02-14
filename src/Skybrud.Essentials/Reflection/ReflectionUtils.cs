@@ -20,6 +20,8 @@ namespace Skybrud.Essentials.Reflection {
             return assembly.GetName().Version.ToString();
         }
 
+#if I_CAN_HAZ_FILE_VERSION_INFO
+
         /// <summary>
         /// Returns the version of the assembly of the specified <typeparamref name="T"/>.
         /// </summary>
@@ -28,8 +30,6 @@ namespace Skybrud.Essentials.Reflection {
         public static string GetVersion<T>() {
             return GetVersion(typeof(T).Assembly);
         }
-
-#if I_CAN_HAZ_FILE_VERSION_INFO
 
         /// <summary>
         /// Returns the file version of the specified <paramref name="assembly"/>.
