@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
+using System;
 using System.Globalization;
 using System.Net;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
-    
+
     [TestClass]
     public class GetAttributeValue {
 
@@ -141,14 +141,14 @@ namespace UnitTestProject1.Xml {
 
             XElement root = XElement.Load(TestHelpers.MapPath("~/Xml/Hest.xml"));
 
-            bool attr1 = root.GetAttributeValueAsBoolean((XName) "boolean1");
-            bool attr2 = root.GetAttributeValueAsBoolean((XName) "boolean2");
-            bool attr3 = root.GetAttributeValueAsBoolean((XName) "boolean3");
-            bool attr4 = root.GetAttributeValueAsBoolean((XName) "boolean4");
-            string attr5 = root.GetAttributeValueAsBoolean((XName) "boolean1", TestHelpers.ToString);
-            string attr6 = root.GetAttributeValueAsBoolean((XName) "boolean2", TestHelpers.ToString);
-            string attr7 = root.GetAttributeValueAsBoolean((XName) "boolean3", TestHelpers.ToString);
-            string attr8 = root.GetAttributeValueAsBoolean((XName) "boolean4", TestHelpers.ToString);
+            bool attr1 = root.GetAttributeValueAsBoolean((XName)"boolean1");
+            bool attr2 = root.GetAttributeValueAsBoolean((XName)"boolean2");
+            bool attr3 = root.GetAttributeValueAsBoolean((XName)"boolean3");
+            bool attr4 = root.GetAttributeValueAsBoolean((XName)"boolean4");
+            string attr5 = root.GetAttributeValueAsBoolean((XName)"boolean1", TestHelpers.ToString);
+            string attr6 = root.GetAttributeValueAsBoolean((XName)"boolean2", TestHelpers.ToString);
+            string attr7 = root.GetAttributeValueAsBoolean((XName)"boolean3", TestHelpers.ToString);
+            string attr8 = root.GetAttributeValueAsBoolean((XName)"boolean4", TestHelpers.ToString);
 
             Assert.AreEqual(true, attr1, "#1");
             Assert.AreEqual(false, attr2, "#2");
@@ -296,7 +296,7 @@ namespace UnitTestProject1.Xml {
             Assert.AreEqual(HttpStatusCode.NoContent, attr9, "#9");
 
         }
-        
+
         [TestMethod]
         public void AsEnum2() {
 

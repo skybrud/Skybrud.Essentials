@@ -1,8 +1,8 @@
-﻿using System;
-using Skybrud.Essentials.Maps.Geometry;
+﻿using Skybrud.Essentials.Maps.Geometry;
+using System;
 
 namespace Skybrud.Essentials.Maps {
-    
+
     /// <summary>
     /// Class with various extension methods for and related to <see cref="IPoint"/>.
     /// </summary>
@@ -29,7 +29,7 @@ namespace Skybrud.Essentials.Maps {
         public static double GetDistance(this IPoint point, IPoint otherPoint, double radius) {
             return PointUtils.GetDistance(point, otherPoint, radius);
         }
-        
+
         /// <summary>
         /// Returns whether the specified <paramref name="point"/> is equal to <strong>Null Island</strong>, that is
         /// where both <see cref="IPoint.Latitude"/> and <see cref="IPoint.Longitude"/> are <c>0</c>.

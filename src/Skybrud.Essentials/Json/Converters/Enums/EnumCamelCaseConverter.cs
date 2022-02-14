@@ -1,7 +1,7 @@
 ﻿using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {
-    
+
     /// <summary>
     /// JSON converter for serializing an enum value into a camel cased string.
     /// </summary>

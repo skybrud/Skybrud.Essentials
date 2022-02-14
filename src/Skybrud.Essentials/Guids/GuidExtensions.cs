@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Skybrud.Essentials.Guids {
-   
+
     /// <summary>
     /// Static class with various extension methods for or in relation to the <see cref="Guid"/>.
     /// </summary>
@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Guids {
         public static Guid ToGuid(this long value) {
             return GuidUtils.ToGuid(value);
         }
-        
+
         /// <summary>
         /// Converts the specified array of numeric <paramref name="values"/> to a corresponding <see cref="Guid"/> array.
         /// </summary>
@@ -70,7 +70,7 @@ namespace Skybrud.Essentials.Guids {
         public static Guid[] ToGuidArray(this int[] values) {
             return GuidUtils.ToGuidArray(values);
         }
-        
+
         /// <summary>
         /// Converts the specified array of numeric <paramref name="values"/> to a corresponding <see cref="Guid"/> array.
         /// </summary>
@@ -79,7 +79,7 @@ namespace Skybrud.Essentials.Guids {
         public static Guid[] ToGuidArray(this IEnumerable<int> values) {
             return GuidUtils.ToGuidArray(values);
         }
-        
+
         /// <summary>
         /// Converts the specified array of numeric <paramref name="values"/> to a corresponding <see cref="Guid"/> array.
         /// </summary>
@@ -88,7 +88,7 @@ namespace Skybrud.Essentials.Guids {
         public static Guid[] ToGuidArray(this long[] values) {
             return GuidUtils.ToGuidArray(values);
         }
-        
+
         /// <summary>
         /// Converts the specified array of numeric <paramref name="values"/> to a corresponding <see cref="Guid"/> array.
         /// </summary>
@@ -97,7 +97,7 @@ namespace Skybrud.Essentials.Guids {
         public static Guid[] ToGuidArray(this IEnumerable<long> values) {
             return GuidUtils.ToGuidArray(values);
         }
-        
+
         /// <summary>
         /// Converts the specified GUID <paramref name="value"/> to a numerical representation.
         /// </summary>
@@ -106,7 +106,7 @@ namespace Skybrud.Essentials.Guids {
         public static int ToInt32(this Guid value) {
             return GuidUtils.ToInt32(value);
         }
-        
+
         /// <summary>
         /// Converts the specified GUID <paramref name="values"/> to their numerical representations.
         /// </summary>
@@ -115,7 +115,7 @@ namespace Skybrud.Essentials.Guids {
         public static int[] ToInt32Array(this Guid[] values) {
             return GuidUtils.ToInt32Array(values);
         }
-        
+
         /// <summary>
         /// Converts the specified GUID <paramref name="values"/> to their numerical representations.
         /// </summary>
@@ -124,7 +124,7 @@ namespace Skybrud.Essentials.Guids {
         public static int[] ToInt32Array(this IEnumerable<Guid> values) {
             return GuidUtils.ToInt32Array(values);
         }
-        
+
         /// <summary>
         /// Converts the specified GUID <paramref name="value"/> to a numerical representation.
         /// </summary>
@@ -133,7 +133,7 @@ namespace Skybrud.Essentials.Guids {
         public static long ToInt64(this Guid value) {
             return GuidUtils.ToInt64(value);
         }
-        
+
         /// <summary>
         /// Converts the specified GUID <paramref name="values"/> to their numerical representations.
         /// </summary>
@@ -142,7 +142,7 @@ namespace Skybrud.Essentials.Guids {
         public static long[] ToInt64Array(this Guid[] values) {
             return GuidUtils.ToInt64Array(values);
         }
-        
+
         /// <summary>
         /// Converts the specified GUID <paramref name="values"/> to their numerical representations.
         /// </summary>

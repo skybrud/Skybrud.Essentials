@@ -1,7 +1,7 @@
 ﻿namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
-      
+
         /// <summary>
         /// Strips all HTML elements from the specified <paramref name="html"/> string.
         /// </summary>
@@ -30,7 +30,7 @@
         public static string ReplaceLineBreaks(this string input) {
             return StringUtils.ReplaceLineBreaks(input);
         }
-        
+
 #if NET_FRAMEWORK
 
         /// <summary>

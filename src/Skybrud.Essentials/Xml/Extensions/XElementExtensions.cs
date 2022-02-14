@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         }
 
-        #if I_CAN_HAZ_XPATH
+#if I_CAN_HAZ_XPATH
 
         /// <summary>
         /// Gets whether the first element matching the specified XPath <paramref name="expression"/> has a value.
@@ -59,7 +59,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         }
 
-        #endif
+#endif
 
         /// <summary>
         /// Gets the outer XML of the specified <paramref name="element"/>.

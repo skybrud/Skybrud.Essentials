@@ -1,12 +1,12 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
 
 namespace UnitTestProject1.Enums {
 
@@ -107,7 +107,7 @@ namespace UnitTestProject1.Enums {
 
         [TestMethod]
         public void TryParseEnum() {
-            
+
             bool status1 = EnumUtils.TryParseEnum(null, out HttpStatusCode result1);
             bool status2 = EnumUtils.TryParseEnum("", out HttpStatusCode result2);
             bool status3 = EnumUtils.TryParseEnum("ok", out HttpStatusCode result3);
@@ -218,7 +218,7 @@ namespace UnitTestProject1.Enums {
 
             PizzaIngredients ingredients1 = default;
             PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             IEnumerable<PizzaIngredients> flags1 = ingredients1.GetFlags();
             IEnumerable<PizzaIngredients> flags2 = ingredients2.GetFlags();
 
@@ -232,7 +232,7 @@ namespace UnitTestProject1.Enums {
 
             const PizzaIngredients ingredients1 = default;
             const PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             const string expected1 = "none";
             const string expected2 = "pizzaSauce,kebab,bacon,salad,dressing,cheese";
 
@@ -258,7 +258,7 @@ namespace UnitTestProject1.Enums {
 
             const PizzaIngredients ingredients1 = default;
             const PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             const string expected1 = "None";
             const string expected2 = "PizzaSauce,Kebab,Bacon,Salad,Dressing,Cheese";
 
@@ -284,7 +284,7 @@ namespace UnitTestProject1.Enums {
 
             const PizzaIngredients ingredients1 = default;
             const PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             const string expected1 = "none";
             const string expected2 = "pizza-sauce,kebab,bacon,salad,dressing,cheese";
 
@@ -310,7 +310,7 @@ namespace UnitTestProject1.Enums {
 
             const PizzaIngredients ingredients1 = default;
             const PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             const string expected1 = "NONE";
             const string expected2 = "PIZZA-SAUCE,KEBAB,BACON,SALAD,DRESSING,CHEESE";
 
@@ -336,7 +336,7 @@ namespace UnitTestProject1.Enums {
 
             const PizzaIngredients ingredients1 = default;
             const PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             const string expected1 = "none";
             const string expected2 = "pizza_sauce,kebab,bacon,salad,dressing,cheese";
 
@@ -362,7 +362,7 @@ namespace UnitTestProject1.Enums {
 
             const PizzaIngredients ingredients1 = default;
             const PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             const string expected1 = "none";
             const string expected2 = "pizzasauce,kebab,bacon,salad,dressing,cheese";
 
@@ -388,7 +388,7 @@ namespace UnitTestProject1.Enums {
 
             const PizzaIngredients ingredients1 = default;
             const PizzaIngredients ingredients2 = PizzaIngredients.PizzaSauce | PizzaIngredients.Cheese | PizzaIngredients.Kebab | PizzaIngredients.Bacon | PizzaIngredients.Salad | PizzaIngredients.Dressing;
-            
+
             const string expected1 = "NONE";
             const string expected2 = "PIZZASAUCE,KEBAB,BACON,SALAD,DRESSING,CHEESE";
 

@@ -1,5 +1,5 @@
-﻿using System;
-using Skybrud.Essentials.Time.Rfc822;
+﻿using Skybrud.Essentials.Time.Rfc822;
+using System;
 
 // ReSharper disable MemberHidesStaticFromOuterClass
 

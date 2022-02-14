@@ -1,5 +1,5 @@
-﻿using System;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
+using System;
 
 namespace Skybrud.Essentials.Json.Extensions {
 
@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         public static bool GetBoolean(this JObject obj, string path) {
             return JsonTokenUtils.GetBoolean(obj?.SelectToken(path), false);
         }
-        
+
         /// <summary>
         /// Gets the <see cref="bool"/> value of the token matching the specified <paramref name="path"/>, or
         /// <paramref name="fallback"/> if <paramref name="path"/> doesn't match a token.
@@ -41,7 +41,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         public static T GetBoolean<T>(this JObject obj, string path, Func<bool, T> callback) {
             return JsonTokenUtils.TryGetBoolean(obj?.SelectToken(path), out bool result) ? callback(result) : default;
         }
-        
+
         /// <summary>
         /// Attempts to get a boolean value from the token with the specified <paramref name="path"/>.
         /// </summary>

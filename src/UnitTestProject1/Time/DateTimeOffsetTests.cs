@@ -1,7 +1,7 @@
-﻿using System;
-using System.Globalization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+using System;
+using System.Globalization;
 
 namespace UnitTestProject1.Time {
 
@@ -66,7 +66,7 @@ namespace UnitTestProject1.Time {
             }
 
         }
-        
+
         [TestMethod]
         public void GetEndOfDay() {
 
@@ -180,7 +180,7 @@ namespace UnitTestProject1.Time {
             }
 
         }
-        
+
         [TestMethod]
         public void GetEndOfWeek() {
 
@@ -237,7 +237,7 @@ namespace UnitTestProject1.Time {
             }
 
         }
-        
+
         [TestMethod]
         public void GetStartOfMonth() {
 
@@ -294,7 +294,7 @@ namespace UnitTestProject1.Time {
             }
 
         }
-        
+
         [TestMethod]
         public void GetEndOfMonth() {
 

@@ -1,12 +1,12 @@
-﻿using System;
-using System.Globalization;
-using System.Linq;
-using Newtonsoft.Json.Linq;
+﻿using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
+using System;
+using System.Globalization;
+using System.Linq;
 
 namespace Skybrud.Essentials.Json.Extensions {
-    
+
     /// <summary>
     /// Various extensions methods for <see cref="JObject"/> that makes manual parsing easier.
     /// </summary>
@@ -97,7 +97,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = GetSimpleTypeTokenFromPath(obj, path);
             return token == null ? default(T) : callback(token.Value<string>());
         }
-        
+
         /// <summary>
         /// Gets the <see cref="System.Int32"/> value of the token matching the specified <paramref name="path"/>, or
         /// <c>0</c> if <paramref name="path"/> doesn't match a token.
@@ -450,7 +450,7 @@ namespace Skybrud.Essentials.Json.Extensions {
                 from TKey child in token
                 select callback(child)
             ).ToArray();
-        
+
         }
 
         /// <summary>

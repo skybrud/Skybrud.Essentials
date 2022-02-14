@@ -8,7 +8,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
     /// Static class with various extension methods for <see cref="String"/>.
     /// </summary>
     public static partial class StringExtensions {
-        
+
         /// <summary>
         /// Encodes a URL string.
         /// </summary>
@@ -156,7 +156,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
-        public static bool IsAlphabetic(this string input)  {
+        public static bool IsAlphabetic(this string input) {
             return StringUtils.IsAlphabetic(input);
         }
 
@@ -184,7 +184,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string[] ToStringArray(this string input, char[] separators) {
             return StringUtils.ParseStringArray(input, separators);
         }
-        
+
         /// <summary>
         /// If <paramref name="input"/> is longer than <paramref name="maxCharacters"/>, this method will return a
         /// truncated version of <paramref name="input"/> with <c>...</c> appended to the end, and where the overall
@@ -224,7 +224,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string Join(this IEnumerable<object> values, string separator) {
             return string.Join(separator, values);
         }
-        
+
         /// <summary>
         /// Concatenates the string representations of each item in <paramref name="values"/>, using the specified
         /// <paramref name="separator"/> between each member.
@@ -282,7 +282,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToPlural(this string singular, int count) {
             return StringUtils.ToPlural(singular, count);
         }
-        
+
         /// <summary>
         /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <c>true</c>. Works only with English words.
         /// </summary>
@@ -301,7 +301,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToSingular(this string word) {
             return StringUtils.ToSingular(word);
         }
-        
+
         /// <summary>
         /// If the specified <paramref name="input"/> string is either <c>null</c> or white space, this method returns
         /// the specified <paramref name="fallback"/> value; otherwise returns the <paramref name="input"/> string
@@ -313,7 +313,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string IfNullOrWhiteSpace(this string input, string fallback) {
             return string.IsNullOrWhiteSpace(input) ? fallback : input;
         }
-	
+
         /// <summary>
         /// If the specified <paramref name="input"/> string is either <c>null</c> or white space, this method returns
         /// value of the specified <paramref name="fallback"/> function; otherwise returns the <paramref name="input"/>

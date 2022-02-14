@@ -1,11 +1,11 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
+using System;
 
 #pragma warning disable 618
 
@@ -16,7 +16,7 @@ namespace UnitTestProject1.Json.Converters {
 
         [TestMethod]
         public void ToJson() {
-            
+
             EssentialsTime time1 = new EssentialsTime(2019, 01, 20, 12, 22, 35, TimeSpan.FromHours(1));
             Sample sample1 = new Sample(time1);
 
@@ -43,10 +43,10 @@ namespace UnitTestProject1.Json.Converters {
 
         [TestMethod]
         public void FromJson() {
-            
+
             EssentialsTime time1 = new EssentialsTime(2019, 01, 20, 12, 22, 35, TimeSpan.FromHours(1));
             Sample sample1 = new Sample(time1);
-            
+
             string source = new JObject {
                 {"time", "2019-01-20T12:22:35+01:00"},
                 {"time1", "2019-01-20T12:22:35+01:00"},
@@ -121,7 +121,7 @@ namespace UnitTestProject1.Json.Converters {
         }
 
         public class Sample {
-            
+
             [JsonProperty("time")]
             public EssentialsTime Time { get; set; }
 

@@ -1,8 +1,8 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
+using System;
+using System.Globalization;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {
 

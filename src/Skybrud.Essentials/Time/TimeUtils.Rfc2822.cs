@@ -1,5 +1,5 @@
-﻿using System;
-using Skybrud.Essentials.Time.Rfc2822;
+﻿using Skybrud.Essentials.Time.Rfc2822;
+using System;
 
 namespace Skybrud.Essentials.Time {
 

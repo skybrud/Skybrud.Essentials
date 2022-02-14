@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
+using System;
 using System.Globalization;
 using System.Net;
 using System.Xml;
 using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
-    
+
     [TestClass]
     public class GetElementValue {
 
@@ -375,7 +375,7 @@ namespace UnitTestProject1.Xml {
             Assert.AreEqual(HttpStatusCode.NoContent, attr9, "#9");
 
         }
-        
+
         [TestMethod]
         public void AsEnum3() {
 

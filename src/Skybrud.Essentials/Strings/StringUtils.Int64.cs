@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Strings {
         public static bool IsInt64(string str) {
             return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
         }
-        
+
         /// <summary>
         /// Parses the specified <paramref name="str"/> into an instance of <see cref="long"/>. If the parsing fails,
         /// the default value of <see cref="long"/> will be returned instead.

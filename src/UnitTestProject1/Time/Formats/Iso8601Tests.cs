@@ -1,12 +1,12 @@
-﻿using System;
-using System.Globalization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
+using System;
+using System.Globalization;
 using static Skybrud.Essentials.Time.Iso8601.Iso8601Constants;
 
 namespace UnitTestProject1.Time.Formats {
-    
+
     [TestClass]
     public class Iso8601Tests {
 
@@ -148,7 +148,7 @@ namespace UnitTestProject1.Time.Formats {
             TimeZoneInfo utcMinus10 = TimeZoneInfo.CreateCustomTimeZone("UTC -10", TimeSpan.FromHours(-10), "UTC -10", "UTC -10");
             TimeZoneInfo utcMinus11 = TimeZoneInfo.CreateCustomTimeZone("UTC -11", TimeSpan.FromHours(-11), "UTC -11", "UTC -11");
             TimeZoneInfo utcMinus12 = TimeZoneInfo.CreateCustomTimeZone("UTC -12", TimeSpan.FromHours(-12), "UTC -12", "UTC -12");
-            
+
             // Offset
             Assert.AreEqual("2013-08-07T22:07:24+01:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus01)));
             Assert.AreEqual("2013-08-07T23:07:24+02:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus02)));
@@ -180,7 +180,7 @@ namespace UnitTestProject1.Time.Formats {
         [TestMethod]
         public void ToStringLegacy() {
 
-            #pragma warning disable 618
+#pragma warning disable 618
 
             // Initialize some reference timestamps
             DateTimeOffset reference1 = new DateTime(2013, 08, 07, 21, 07, 24, DateTimeKind.Utc);
@@ -215,7 +215,7 @@ namespace UnitTestProject1.Time.Formats {
             TimeZoneInfo utcMinus10 = TimeZoneInfo.CreateCustomTimeZone("UTC -10", TimeSpan.FromHours(-10), "UTC -10", "UTC -10");
             TimeZoneInfo utcMinus11 = TimeZoneInfo.CreateCustomTimeZone("UTC -11", TimeSpan.FromHours(-11), "UTC -11", "UTC -11");
             TimeZoneInfo utcMinus12 = TimeZoneInfo.CreateCustomTimeZone("UTC -12", TimeSpan.FromHours(-12), "UTC -12", "UTC -12");
-            
+
             // Offset
             Assert.AreEqual("2013-08-07T22:07:24+01:00", TimeUtils.ToIso8601(TimeZoneInfo.ConvertTime(reference1, utcPlus01)));
             Assert.AreEqual("2013-08-07T23:07:24+02:00", TimeUtils.ToIso8601(TimeZoneInfo.ConvertTime(reference1, utcPlus02)));
@@ -242,7 +242,7 @@ namespace UnitTestProject1.Time.Formats {
             Assert.AreEqual("2013-08-07T10:07:24-11:00", TimeUtils.ToIso8601(TimeZoneInfo.ConvertTime(reference1, utcMinus11)));
             Assert.AreEqual("2013-08-07T09:07:24-12:00", TimeUtils.ToIso8601(TimeZoneInfo.ConvertTime(reference1, utcMinus12)));
 
-            #pragma warning restore 618
+#pragma warning restore 618
 
         }
 
@@ -387,7 +387,7 @@ namespace UnitTestProject1.Time.Formats {
         [TestMethod]
         public void ParseLegacy() {
 
-            #pragma warning disable 618
+#pragma warning disable 618
 
             // Initialize some reference timestamps
             DateTimeOffset reference1 = new DateTime(2013, 08, 07, 21, 07, 24, DateTimeKind.Utc);
@@ -451,7 +451,7 @@ namespace UnitTestProject1.Time.Formats {
             Assert.AreEqual(reference2, TimeUtils.Iso8601ToDateTimeOffset("2016-10-08T04:33:38+11:00"));
             Assert.AreEqual(reference2, TimeUtils.Iso8601ToDateTimeOffset("2016-10-08T05:33:38+12:00"));
 
-            #pragma warning restore 618
+#pragma warning restore 618
 
         }
 

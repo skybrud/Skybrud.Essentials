@@ -2,7 +2,7 @@
 using System.Xml;
 
 namespace Skybrud.Essentials.Time.Xml {
-    
+
     /// <summary>
     /// Class with various utility methods for working with XML schema.
     /// </summary>

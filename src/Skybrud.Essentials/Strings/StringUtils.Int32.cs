@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Strings {
         public static bool IsInt32(string str) {
             return int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
         }
-        
+
         /// <summary>
         /// Parses the specified <paramref name="str"/> into an instance of <see cref="int"/>. If the parsing fails,
         /// the default value of <see cref="int"/> will be returned instead.

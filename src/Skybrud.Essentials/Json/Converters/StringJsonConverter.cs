@@ -1,8 +1,8 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
+using System;
+using System.Globalization;
 using System.Reflection;
 
 namespace Skybrud.Essentials.Json.Converters {
@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Json.Converters {
     /// JSON converter for serializing objects into their <see cref="object.ToString"/> equivalent.
     /// </summary>
     public class StringJsonConverter : JsonConverter {
-        
+
         /// <inheritdoc />
         public override bool CanRead => true;
 
@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Json.Converters {
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
 
             switch (value) {
-                
+
                 case null:
                     writer.WriteNull();
                     break;
@@ -35,9 +35,9 @@ namespace Skybrud.Essentials.Json.Converters {
                     break;
 #endif
 
-                    default:
-                        writer.WriteValue(string.Format(CultureInfo.InvariantCulture, "{0}", value));
-                        break;
+                default:
+                    writer.WriteValue(string.Format(CultureInfo.InvariantCulture, "{0}", value));
+                    break;
 
             }
 

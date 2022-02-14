@@ -6,7 +6,7 @@ using System.Collections.Specialized;
 // ReSharper disable ExpressionIsAlwaysNull
 
 namespace UnitTestProject1.Strings {
-    
+
     [TestClass]
     public class NameValueCollectionTests {
 

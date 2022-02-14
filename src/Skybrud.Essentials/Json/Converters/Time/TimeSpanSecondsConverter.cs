@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Globalization;
-using Newtonsoft.Json;
 
 namespace Skybrud.Essentials.Json.Converters.Time {
 
@@ -39,7 +39,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
                 case JsonToken.Integer:
                 case JsonToken.Float:
-                    return TimeSpan.FromSeconds((double) Convert.ChangeType(reader.Value, typeof(double), CultureInfo.InvariantCulture));
+                    return TimeSpan.FromSeconds((double)Convert.ChangeType(reader.Value, typeof(double), CultureInfo.InvariantCulture));
 
                 default:
                     throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);

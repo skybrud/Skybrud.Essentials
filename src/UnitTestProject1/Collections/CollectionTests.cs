@@ -1,17 +1,17 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Collections;
+using Skybrud.Essentials.Collections.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Collections;
-using Skybrud.Essentials.Collections.Extensions;
 
 namespace UnitTestProject1.Collections {
 
     [TestClass]
     public class CollectionTests {
-        
+
         [TestMethod]
         public void OrderByComparerBoolean() {
 
@@ -26,7 +26,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("aand,and", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void OrderByComparerEnum() {
 
@@ -41,7 +41,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("aand,and", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void OrderByComparerDanishBoolean() {
 
@@ -56,7 +56,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("and,aand", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void OrderByComparerDanishEnum() {
 
@@ -71,7 +71,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("and,aand", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void OrderByDescendingComparerBoolean() {
 
@@ -86,7 +86,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("and,aand", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void OrderByDescendingComparerEnum() {
 
@@ -101,7 +101,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("and,aand", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void OrderByDescendingComparerDanishBoolean() {
 
@@ -116,7 +116,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("aand,and", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void OrderByDescendingComparerDanishEnum() {
 
@@ -131,7 +131,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual("aand,and", string.Join(",", result));
 
         }
-        
+
         [TestMethod]
         public void Cast() {
 
@@ -145,7 +145,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(3, collectionOfT.Count());
 
         }
-        
+
         [TestMethod]
         public void ToList() {
 
@@ -161,7 +161,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(3, listOfT.Count);
 
         }
-        
+
         [TestMethod]
         public void ToArray() {
 

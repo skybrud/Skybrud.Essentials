@@ -31,21 +31,21 @@ namespace Skybrud.Essentials.Time {
             return temp;
 
         }
-        
+
         public static DateTimeOffset GetEndOfDay(DateTimeOffset time) {
 
             if (time == null) throw new ArgumentNullException(nameof(time));
 
             // Get the start of the current day
             DateTimeOffset temp = new DateTimeOffset(time.Year, time.Month, time.Day, 0, 0, 0, time.Offset);
-            
+
             // Add a day, but subtract a single tick
             temp = temp.AddDays(1).AddTicks(-1);
 
             return temp;
 
         }
-        
+
         public static DateTimeOffset GetEndOfDay(DateTimeOffset time, TimeZoneInfo timeZone) {
 
             if (time == null) throw new ArgumentNullException(nameof(time));
@@ -98,7 +98,7 @@ namespace Skybrud.Essentials.Time {
             time = GetStartOfWeek(time, startOfWeek);
 
             // Adjust to the specified time zone
-            time = timeZone == null ? time :  TimeZoneInfo.ConvertTime(time, timeZone);
+            time = timeZone == null ? time : TimeZoneInfo.ConvertTime(time, timeZone);
 
             // Adjust for dayligt savings
             if (time.Hour == 23) time = time.AddHours(+1);
@@ -150,7 +150,7 @@ namespace Skybrud.Essentials.Time {
             time = GetStartOfMonth(time);
 
             // Adjust to the specified time zone
-            time = timeZone == null ? time :  TimeZoneInfo.ConvertTime(time, timeZone);
+            time = timeZone == null ? time : TimeZoneInfo.ConvertTime(time, timeZone);
 
             // Adjust for dayligt savings
             if (time.Hour == 23) time = time.AddHours(+1);
@@ -171,7 +171,7 @@ namespace Skybrud.Essentials.Time {
             return time;
 
         }
-        
+
         public static DateTimeOffset GetEndOfMonth(DateTimeOffset time, TimeZoneInfo timeZone) {
 
             // Get the end of the month

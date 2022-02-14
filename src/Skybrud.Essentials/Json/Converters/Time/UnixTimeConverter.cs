@@ -1,7 +1,7 @@
 ﻿using Newtonsoft.Json;
-using System;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.UnixTime;
+using System;
 using System.Globalization;
 
 #pragma warning disable CS0618
@@ -109,9 +109,9 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
             // Read/parse the timestamp from the reader
             double timestamp = reader.TokenType switch {
-                JsonToken.Integer => (long) reader.Value,
-                JsonToken.Float => (double) reader.Value,
-                JsonToken.String => double.Parse((string) reader.Value, CultureInfo.InvariantCulture),
+                JsonToken.Integer => (long)reader.Value,
+                JsonToken.Float => (double)reader.Value,
+                JsonToken.String => double.Parse((string)reader.Value, CultureInfo.InvariantCulture),
                 _ => throw new JsonSerializationException($"Unsupported value {reader.Value}"),
             };
 
@@ -126,7 +126,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
             };
 
         }
-        
+
         /// <summary>
         /// Determines whether this instance can convert the specified object type.
         /// </summary>

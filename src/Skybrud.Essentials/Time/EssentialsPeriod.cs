@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Skybrud.Essentials.Time {
-    
+
     /// <summary>
     /// Class describing a period defined by a <see cref="Start"/> date and <see cref="End"/> date.
     /// </summary>
@@ -64,7 +64,7 @@ namespace Skybrud.Essentials.Time {
 
         #region Static methods
 
-        private static EssentialsPeriod GetFromDate(DateTimeOffset dto, TimeZoneInfo timeZone)  {
+        private static EssentialsPeriod GetFromDate(DateTimeOffset dto, TimeZoneInfo timeZone) {
 
             DateTimeOffset start = TimeUtils.GetStartOfDay(dto, timeZone);
             DateTimeOffset end = TimeUtils.GetEndOfDay(dto, timeZone);
@@ -97,7 +97,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Today(DateTimeOffset timestamp, TimeZoneInfo timeZone)  {
+        public static EssentialsPeriod Today(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
             return GetFromDate(timestamp, timeZone);
         }
 
@@ -106,7 +106,7 @@ namespace Skybrud.Essentials.Time {
         /// the local time zone.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Yesterday()  {
+        public static EssentialsPeriod Yesterday() {
             return Yesterday(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
         }
 
@@ -115,7 +115,7 @@ namespace Skybrud.Essentials.Time {
         /// the <paramref name="timeZone"/>.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Yesterday(TimeZoneInfo timeZone)  {
+        public static EssentialsPeriod Yesterday(TimeZoneInfo timeZone) {
             return Yesterday(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -135,7 +135,7 @@ namespace Skybrud.Essentials.Time {
         /// the local time zone.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Tomorrow()  {
+        public static EssentialsPeriod Tomorrow() {
             return Tomorrow(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
         }
 
@@ -144,7 +144,7 @@ namespace Skybrud.Essentials.Time {
         /// the <paramref name="timeZone"/>.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Tomorrow(TimeZoneInfo timeZone)  {
+        public static EssentialsPeriod Tomorrow(TimeZoneInfo timeZone) {
             return Tomorrow(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -198,7 +198,7 @@ namespace Skybrud.Essentials.Time {
 
             // If "dto" is already within a weekend, we jump to the next week instead
             if (timestamp.DayOfWeek == DayOfWeek.Saturday || timestamp.DayOfWeek == DayOfWeek.Sunday) {
-                
+
                 // Adjust to UTC and add seven days (aka a full week)
                 timestamp = timestamp.ToUniversalTime().AddDays(7);
 
@@ -209,7 +209,7 @@ namespace Skybrud.Essentials.Time {
 
             DateTimeOffset start = TimeUtils.GetStartOfWeek(timestamp, timeZone).AddDays(5);
             DateTimeOffset end = TimeUtils.GetEndOfWeek(timestamp, timeZone);
-            
+
             // Wrap the result in a new EssentialsPeriod
             return new EssentialsPeriod(start, end, timeZone);
 
@@ -249,7 +249,7 @@ namespace Skybrud.Essentials.Time {
             // Calculate start and end
             EssentialsTime start = time.GetStartOfWeek(timeZone);
             EssentialsTime end = time.GetEndOfWeek(timeZone);
-            
+
             // Wrap the result in a new EssentialsPeriod
             return new EssentialsPeriod(start, end);
 
@@ -289,7 +289,7 @@ namespace Skybrud.Essentials.Time {
             // Calculate start and end
             EssentialsTime start = time.GetStartOfMonth(timeZone);
             EssentialsTime end = time.GetEndOfMonth(timeZone);
-            
+
             // Wrap the result in a new EssentialsPeriod
             return new EssentialsPeriod(start, end);
 

@@ -1,8 +1,7 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-
+using System;
+using System.Globalization;
 using static Skybrud.Essentials.Enums.EnumUtils;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {
@@ -11,7 +10,7 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
     /// JSON converter for deserializing a string representation of multiple enum values.
     /// </summary>
     public class EnumArrayJsonConverter : JsonConverter {
-        
+
         /// <inheritdoc />
         public override bool CanWrite => false;
 

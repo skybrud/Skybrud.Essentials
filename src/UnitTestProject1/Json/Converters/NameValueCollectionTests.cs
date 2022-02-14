@@ -6,7 +6,7 @@ using Skybrud.Essentials.Json.Extensions;
 using System.Collections.Specialized;
 
 namespace UnitTestProject1.Json.Converters {
-    
+
     [TestClass]
     public class NameValueCollectionTests {
 
@@ -83,7 +83,7 @@ namespace UnitTestProject1.Json.Converters {
         }
 
         public class Sample1 {
-            
+
             [JsonProperty("query")]
             [JsonConverter(typeof(NameValueCollectionJsonConverter))]
             public NameValueCollection Query { get; set; }

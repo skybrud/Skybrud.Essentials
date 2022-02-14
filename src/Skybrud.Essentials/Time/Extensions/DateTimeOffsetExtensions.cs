@@ -1,9 +1,9 @@
-﻿using System;
+﻿using Skybrud.Essentials.Time.Iso8601;
+using System;
 using System.Globalization;
-using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time.Extensions {
-    
+
     /// <summary>
     /// Static class with various extension methods for <see cref="DateTimeOffset"/>.
     /// </summary>

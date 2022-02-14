@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
+using System;
 using System.Globalization;
 using System.Xml.Linq;
-using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Xml.Extensions {
 
@@ -34,7 +34,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XElement child = element?.GetElement(name);
             return child == null ? default(T) : callback(child.Value);
         }
-        
+
         #endregion
 
         #region Get element value as System.Int32
@@ -74,7 +74,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetElementValueAsInt32<T>(this XElement element, XName name, Func<int, T> callback) {
             return GetElementValue(element, name, out int value) ? callback(value) : default(T);
         }
-        
+
         #endregion
 
         #region Get element value as System.Int64
@@ -288,7 +288,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         #region Get element value as System.Boolean (deprecated due to wrong naming)
 
-        #pragma warning disable 1591
+#pragma warning disable 1591
 
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
         public static bool GetElementAsBoolean(this XElement element, XName name) {
@@ -314,7 +314,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementAsBoolean(element, name, out bool value) ? callback(value) : default(T);
         }
 
-        #pragma warning restore 1591
+#pragma warning restore 1591
 
         #endregion
 
@@ -335,7 +335,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
             // Convert the element value to the type of T
             return child == null ? default(T) : EnumUtils.ParseEnum<T>(child.Value);
-        
+
         }
 
         /// <summary>
@@ -355,9 +355,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
             // Convert the element value to the type of T
             return child == null ? fallback : EnumUtils.ParseEnum(child.Value, fallback);
-        
+
         }
-        
+
         #endregion
 
         #region Get element value as T
@@ -372,7 +372,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T GetElementValue<T>(this XElement element, XName name) {
-            
+
             // Get the element matching "name"
             XElement child = GetElement(element, name);
 
@@ -380,8 +380,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
             if (string.IsNullOrWhiteSpace(child?.Value)) return default(T);
 
             // Convert the element value to the type of T
-            return (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
-        
+            return (T)Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
+
         }
 
         /// <summary>
@@ -406,9 +406,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             }
 
             // Convert the element value to the type of T
-            value = (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
+            value = (T)Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
             return true;
-        
+
         }
 
         /// <summary>
@@ -431,8 +431,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
             if (string.IsNullOrWhiteSpace(child?.Value)) return default(TResult);
 
             // Convert the element value to the type of T and invoke the callback
-            return callback((T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture));
-        
+            return callback((T)Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture));
+
         }
 
         #endregion

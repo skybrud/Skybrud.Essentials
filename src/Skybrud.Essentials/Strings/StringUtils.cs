@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Strings {
         public static string[] ParseStringArray(string str, params char[] separators) {
             return str == null ? new string[0] : str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
         }
-        
+
         /// <summary>
         /// Converts a singular word to the plural counterpart (for English words only).
         /// </summary>
@@ -86,7 +86,7 @@ namespace Skybrud.Essentials.Strings {
         public static string ToPlural(string singular, int count) {
             return count == 1 ? singular : ToPlural(singular);
         }
-        
+
         /// <summary>
         /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <c>true</c>. Works only with English words.
         /// </summary>
@@ -151,11 +151,11 @@ namespace Skybrud.Essentials.Strings {
 
             // Trim the text a bit
             str = str.Trim();
-            
+
             int count = 0, index = 0;
 
             while (index < str.Length) {
-                
+
                 // Check if current char is part of a word
                 while (index < str.Length && !char.IsWhiteSpace(str[index])) index++;
 
@@ -164,11 +164,11 @@ namespace Skybrud.Essentials.Strings {
 
                 // Skip whitespace until next word
                 while (index < str.Length && char.IsWhiteSpace(str[index])) index++;
-            
+
             }
 
             return count;
-        
+
         }
 
         /// <summary>
@@ -228,7 +228,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="value"/> is alphanumeric; otherwise <c>false</c>.</returns>
-        public static bool IsAlphabetic(string value)  {
+        public static bool IsAlphabetic(string value) {
             return Regex.IsMatch(value ?? string.Empty, "^[a-zA-Z]+$");
         }
 
@@ -244,7 +244,7 @@ namespace Skybrud.Essentials.Strings {
         ///     <cref>http://www.dotnetperls.com/levenshtein</cref>
         /// </see>
         public static int Levenshtein(string s, string t) {
-            
+
             int n = s.Length;
             int m = t.Length;
             int[,] d = new int[n + 1, m + 1];
@@ -259,7 +259,7 @@ namespace Skybrud.Essentials.Strings {
 
             // Begin looping
             for (int i = 1; i <= n; i++) {
-                
+
                 for (int j = 1; j <= m; j++) {
 
                     // Compute the cost
@@ -330,11 +330,11 @@ namespace Skybrud.Essentials.Strings {
 
 #if NET_STANDARD
 
-		/// <summary>
-		/// URL encodes the specified <paramref name="str"/>.
-		/// </summary>
-		/// <param name="str">The string to be encoded.</param>
-		/// <returns>The URL encoded string.</returns>
+        /// <summary>
+        /// URL encodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be encoded.</param>
+        /// <returns>The URL encoded string.</returns>
         public static string UrlEncode(string str) {
             return System.Net.WebUtility.UrlEncode(str);
         }
@@ -345,7 +345,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The URL decoded string.</returns>
         public static string UrlDecode(string str) {
-			return System.Net.WebUtility.UrlDecode(str);
+            return System.Net.WebUtility.UrlDecode(str);
         }
 
         /// <summary>
@@ -367,7 +367,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
 #endif
-		
+
         /// <summary>
         /// Strips all HTML elements from the specified <paramref name="html"/> string.
         /// </summary>
@@ -390,7 +390,7 @@ namespace Skybrud.Essentials.Strings {
             Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
             return HtmlDecode(regex.Replace(html, string.Empty));
         }
-        
+
         /// <summary>
         /// HTML encodes the text and replaces text line breaks with HTML line breaks.
         /// </summary>

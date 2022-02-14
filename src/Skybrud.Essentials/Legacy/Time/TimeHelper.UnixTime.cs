@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Time {
         public static int GetCurrentUnixTimestamp() {
             return TimeUtils.GetCurrentUnixTimestamp();
         }
-        
+
         /// <summary>
         /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix
         /// epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
@@ -69,7 +69,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         #endregion
-        
+
         #region Unix time -> DateTimeOffset
 
         /// <summary>

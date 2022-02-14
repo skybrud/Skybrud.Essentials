@@ -1,10 +1,10 @@
-﻿using System.Globalization;
-using System.Net;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
+using System.Globalization;
+using System.Net;
 
 // ReSharper disable UseObjectOrCollectionInitializer
 
@@ -185,7 +185,7 @@ namespace UnitTestProject1.Json {
             Assert.AreEqual(1234, obj.GetInt32("root.obj.value"), "Check #2 failed");
             Assert.AreEqual(0, obj.GetInt32("root.obj.nothing"), "Check #3 failed");
             Assert.AreEqual(1234, obj.GetInt32("root.obj.number"), "Check #4 failed");
-            Assert.AreEqual(1234, obj.GetInt32("root.obj.number", x => (int) TimeSpan.FromSeconds(x).TotalSeconds), "Check #5 failed");
+            Assert.AreEqual(1234, obj.GetInt32("root.obj.number", x => (int)TimeSpan.FromSeconds(x).TotalSeconds), "Check #5 failed");
 
             Assert.AreEqual(0, obj.GetInt32("root.obj"), "Check #6 failed");
             Assert.AreEqual(0, obj.GetInt32("root.empty"), "Check #7 failed");
@@ -197,19 +197,19 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"int32\":0,\"hest\":1234,\"null\":null,\"empty\":\"\"}");
 
-            Assert.AreEqual((uint) 0, obj.GetUInt32("int32"), "Check #1 failed");
-            Assert.AreEqual((uint) 1234, obj.GetUInt32("hest"), "Check #2 failed");
-            Assert.AreEqual((uint) 0, obj.GetUInt32("null"), "Check #3 failed");
-            Assert.AreEqual((uint) 0, obj.GetUInt32("empty"), "Check #4 failed");
-            Assert.AreEqual((uint) 0, obj.GetUInt32("missing"), "Check #5 failed");
+            Assert.AreEqual((uint)0, obj.GetUInt32("int32"), "Check #1 failed");
+            Assert.AreEqual((uint)1234, obj.GetUInt32("hest"), "Check #2 failed");
+            Assert.AreEqual((uint)0, obj.GetUInt32("null"), "Check #3 failed");
+            Assert.AreEqual((uint)0, obj.GetUInt32("empty"), "Check #4 failed");
+            Assert.AreEqual((uint)0, obj.GetUInt32("missing"), "Check #5 failed");
 
-            Assert.AreEqual((uint) 4, obj.GetUInt32("int32", x => x + 4), "Check #6 failed");
-            Assert.AreEqual((uint) 1238, obj.GetUInt32("hest", x => x + 4), "Check #7 failed");
+            Assert.AreEqual((uint)4, obj.GetUInt32("int32", x => x + 4), "Check #6 failed");
+            Assert.AreEqual((uint)1238, obj.GetUInt32("hest", x => x + 4), "Check #7 failed");
 
             // Callback isn't invoked since the properties are empty or not found
-            Assert.AreEqual((uint) 0, obj.GetUInt32("null", x => x + 4), "Check #8 failed");
-            Assert.AreEqual((uint) 0, obj.GetUInt32("empty", x => x + 4), "Check #9 failed");
-            Assert.AreEqual((uint) 0, obj.GetUInt32("missing", x => x + 4), "Check #10 failed");
+            Assert.AreEqual((uint)0, obj.GetUInt32("null", x => x + 4), "Check #8 failed");
+            Assert.AreEqual((uint)0, obj.GetUInt32("empty", x => x + 4), "Check #9 failed");
+            Assert.AreEqual((uint)0, obj.GetUInt32("missing", x => x + 4), "Check #10 failed");
 
         }
 
@@ -383,7 +383,7 @@ namespace UnitTestProject1.Json {
 
         [TestMethod]
         public void GetStringArray() {
-            
+
             JObject obj = JObject.Parse("{\"null\":null,\"root\":{\"array\":[\"Alpha\",\"Bravo\",\"Charlie\"]}}");
 
             Assert.AreEqual(0, obj.GetStringArray("null").Length, "Check #1 failed");
@@ -416,7 +416,7 @@ namespace UnitTestProject1.Json {
             Assert.AreEqual("123,456,789", String.Join(",", obj.GetInt64Array("root.array")), "Check #4 failed");
 
         }
-        
+
         public class TestObject {
             [JsonProperty("value")]
             public string Value { get; set; }
@@ -424,7 +424,7 @@ namespace UnitTestProject1.Json {
                 return obj == null ? null : new TestObject { Value = obj.GetString("value") };
             }
         }
-    
+
     }
 
 }

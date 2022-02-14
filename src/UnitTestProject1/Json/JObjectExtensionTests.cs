@@ -3,7 +3,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
 namespace UnitTestProject1.Json {
-    
+
     [TestClass]
     public class JObjectExtensionTests {
 
@@ -32,7 +32,7 @@ namespace UnitTestProject1.Json {
             }.ToString();
 
             JObject json = JObject.Parse(rawJson);
-            
+
             Assert.IsFalse(json.GetBoolean("a"), "a");
             Assert.IsFalse(json.GetBoolean("b"), "b");
             Assert.IsTrue(json.GetBoolean("c"), "c");
@@ -80,7 +80,7 @@ namespace UnitTestProject1.Json {
             }.ToString();
 
             JObject json = JObject.Parse(rawJson);
-            
+
             Assert.IsFalse(json.GetBoolean("a", false), "a");
             Assert.IsFalse(json.GetBoolean("b", false), "b");
             Assert.IsTrue(json.GetBoolean("c", false), "c");
@@ -100,7 +100,7 @@ namespace UnitTestProject1.Json {
             Assert.IsFalse(json.GetBoolean("q", false), "q");
             Assert.IsFalse(json.GetBoolean("r", false), "r");
             Assert.IsFalse(json.GetBoolean("t", false), "t");
-            
+
             Assert.IsTrue(json.GetBoolean("a", true), "a");
             Assert.IsTrue(json.GetBoolean("b", true), "b");
             Assert.IsTrue(json.GetBoolean("c", true), "c");

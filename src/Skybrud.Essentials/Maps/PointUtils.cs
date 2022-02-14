@@ -1,5 +1,5 @@
-﻿using System;
-using Skybrud.Essentials.Maps.Geometry;
+﻿using Skybrud.Essentials.Maps.Geometry;
+using System;
 using static Skybrud.Essentials.Maps.EarthConstants;
 
 namespace Skybrud.Essentials.Maps {
@@ -88,7 +88,7 @@ namespace Skybrud.Essentials.Maps {
         public static bool IsNullIsland(double latitude, double longitude) {
             return Math.Abs(latitude) < double.Epsilon && Math.Abs(longitude) < double.Epsilon;
         }
-        
+
         /// <summary>
         /// Returns whether the specified <paramref name="point"/> is equal to <strong>Null Island</strong>, that is
         /// where both <see cref="IPoint.Latitude"/> and <see cref="IPoint.Longitude"/> are <c>0</c>.

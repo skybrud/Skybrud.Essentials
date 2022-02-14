@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Skybrud.Essentials.Json.Converters.Time;
+using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
-using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
 
 namespace Skybrud.Essentials.Time {
 
@@ -18,12 +18,12 @@ namespace Skybrud.Essentials.Time {
         /// Gets the year, or <c>0</c> if not specified.
         /// </summary>
         public int Year { get; }
-        
+
         /// <summary>
         /// Gets the month, or <c>0</c> if not specified.
         /// </summary>
         public int Month { get; }
-        
+
         /// <summary>
         /// Gets the day, or <c>0</c> if not specified.
         /// </summary>
@@ -232,7 +232,7 @@ namespace Skybrud.Essentials.Time {
             Match m3 = Regex.Match(input, "^([0-9]{4})-([0-9]{2})-([0-9]{2})$");
             Match m4 = Regex.Match(input, "^([a-zA-Z]+) ([0-9]{4})$");
             Match m6 = Regex.Match(input, "^([a-zA-Z]+) ([0-9]{1,2})(st|nd|rd|th) ([0-9]{4})$");
-            
+
             if (m1.Success) result = new EssentialsPartialDate(int.Parse(m1.Groups[1].Value));
             if (m2.Success) result = new EssentialsPartialDate(int.Parse(m2.Groups[1].Value), int.Parse(m2.Groups[2].Value));
             if (m3.Success) result = new EssentialsPartialDate(int.Parse(m3.Groups[1].Value), int.Parse(m3.Groups[2].Value), int.Parse(m3.Groups[3].Value));

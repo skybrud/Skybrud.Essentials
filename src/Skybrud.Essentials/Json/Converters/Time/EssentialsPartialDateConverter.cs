@@ -1,6 +1,6 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Skybrud.Essentials.Time;
+using System;
 
 namespace Skybrud.Essentials.Json.Converters.Time {
 
@@ -17,7 +17,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
             if (!(value is EssentialsPartialDate)) return;
-            EssentialsPartialDate date = (EssentialsPartialDate) value;
+            EssentialsPartialDate date = (EssentialsPartialDate)value;
             writer.WriteValue(date.ToString());
         }
 

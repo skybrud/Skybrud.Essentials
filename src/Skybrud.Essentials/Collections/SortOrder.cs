@@ -14,7 +14,7 @@
         /// Indicates that items are sorted in descending order.
         /// </summary>
         Descending
-    
+
     }
 
 }

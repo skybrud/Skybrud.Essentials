@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Common;
+using System;
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Text;
-using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Common;
 
 namespace Skybrud.Essentials.Json {
 
@@ -146,7 +146,7 @@ namespace Skybrud.Essentials.Json {
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Attempts to parse the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
         /// </summary>
@@ -163,7 +163,7 @@ namespace Skybrud.Essentials.Json {
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Attempts to parse the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
         /// </summary>
@@ -201,7 +201,7 @@ namespace Skybrud.Essentials.Json {
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Attempts to parse the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
         /// </summary>
@@ -218,7 +218,7 @@ namespace Skybrud.Essentials.Json {
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Attempts to parse the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
         /// </summary>
@@ -256,7 +256,7 @@ namespace Skybrud.Essentials.Json {
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Attempts to parse the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
         /// </summary>
@@ -273,7 +273,7 @@ namespace Skybrud.Essentials.Json {
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Attempts to parse the specified <paramref name="json"/> string into an instance of <typeparamref name="T"/>.
         /// </summary>
@@ -295,7 +295,7 @@ namespace Skybrud.Essentials.Json {
                 return false;
             }
         }
-        
+
         /// <summary>
         /// Attempts to parse the specified <paramref name="json"/> string into an array of <typeparamref name="T"/>.
         /// </summary>

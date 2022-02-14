@@ -1,10 +1,10 @@
-﻿using System.Xml;
-using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Xml.Extensions;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace UnitTestProject1.Xml {
-    
+
     [TestClass]
     public class GetElement {
 
@@ -34,7 +34,7 @@ namespace UnitTestProject1.Xml {
 
             XElement result1 = root.GetElement("element");
             Class1 result2 = root.GetElement("element", Class1.Parse);
-            
+
             XElement result3 = root.GetElement("test:element", namespaces);
             Class2 result4 = root.GetElement("test:element", namespaces, Class2.Parse);
 
@@ -71,7 +71,7 @@ namespace UnitTestProject1.Xml {
                 return xml == null ? null : new Class2(xml, resolver);
             }
         }
-    
+
     }
 
 }

@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Strings {
         public static Guid ParseGuid(string str, Guid fallback) {
             return Guid.TryParse(str, out Guid value) ? value : fallback;
         }
-		
+
         /// <summary>
         /// Parses a string of multiple GUIDs into an array of <see cref="Guid"/>. Supported separators are
         /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).

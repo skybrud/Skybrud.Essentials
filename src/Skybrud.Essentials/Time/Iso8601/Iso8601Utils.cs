@@ -76,7 +76,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
         public static int GetWeekNumber(DateTime date) {
-            int day = (int) CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
+            int day = (int)CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
             return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(date.AddDays(4 - (day == 0 ? 7 : day)), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
 
@@ -101,14 +101,14 @@ namespace Skybrud.Essentials.Time.Iso8601 {
 
             int week = GetWeekNumber(timestamp);
 
-            switch (timestamp.Month)  {
-            
+            switch (timestamp.Month) {
+
                 case 1 when week > 50:
                     return timestamp.Year - 1;
-                
+
                 case 12 when week == 1:
                     return timestamp.Year + 1;
-                
+
                 default:
                     return timestamp.Year;
 
@@ -168,7 +168,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
             if (string.IsNullOrWhiteSpace(iso8601)) throw new ArgumentNullException(nameof(iso8601));
             return DateTimeOffset.ParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="iso8601"/> formatted date and time to its <see cref="DateTime"/>
         /// equivalent and returns a value that indicates whether the conversion

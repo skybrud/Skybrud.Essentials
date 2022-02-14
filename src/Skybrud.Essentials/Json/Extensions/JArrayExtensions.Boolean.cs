@@ -1,11 +1,11 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq;
-using Newtonsoft.Json.Linq;
 
 namespace Skybrud.Essentials.Json.Extensions {
 
     public static partial class JArrayExtensions {
-        
+
         /// <summary>
         /// Returns the <see cref="bool"/> value of the item at the specified <paramref name="index"/> in the array.
         /// </summary>
@@ -51,7 +51,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         public static bool GetBoolean(this JArray array, string path, bool fallback) {
             return JsonTokenUtils.GetBoolean(array?.SelectToken(path), fallback);
         }
-        
+
         /// <summary>
         /// Attempts to get a boolean value from the token with the specified <paramref name="index"/>.
         /// </summary>
@@ -62,7 +62,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         public static bool TryGetBoolean(this JArray array, int index, out bool result) {
             return JsonTokenUtils.TryGetBoolean(array?[index], out result);
         }
-        
+
         /// <summary>
         /// Attempts to get a boolean value from the token with the specified <paramref name="path"/>.
         /// </summary>

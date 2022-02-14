@@ -1,6 +1,6 @@
-﻿using System;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using System;
 
 namespace Skybrud.Essentials.Json {
 
@@ -31,7 +31,7 @@ namespace Skybrud.Essentials.Json {
         public static T ParseJsonObject<T>(string json, Func<JObject, T> func) {
             return JsonUtils.ParseJsonObject(json, func);
         }
-        
+
         /// <summary>
         /// Parses the specified <paramref name="json"/> string into an instance of <see cref="JArray"/>.
         /// </summary>
@@ -53,7 +53,7 @@ namespace Skybrud.Essentials.Json {
             return JsonUtils.ParseJsonArray(json, func);
         }
 
-        #if I_CAN_HAZ_FILE
+#if I_CAN_HAZ_FILE
 
         /// <summary>
         /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
@@ -145,8 +145,8 @@ namespace Skybrud.Essentials.Json {
             JsonUtils.SaveJsonObject(path, obj, formatting);
         }
 
-        #endif
-    
+#endif
+
     }
 
 }

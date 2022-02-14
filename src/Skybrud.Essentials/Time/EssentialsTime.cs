@@ -1,12 +1,12 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
 using Skybrud.Essentials.Time.Swatch;
 using Skybrud.Essentials.Time.UnixTime;
+using System;
+using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
@@ -48,16 +48,16 @@ namespace Skybrud.Essentials.Time {
         /// Gets an instance of <see cref="EssentialsTime"/> representing the start of the Unix Epoch (AKA <c>0</c> seconds).
         /// </summary>
         public static EssentialsTime Zero => FromUnixTimeSeconds(0);
-        
+
         /// <summary>
         /// Returns the amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
-        public static long CurrentUnixTimeSeconds => (long) UnixTimeUtils.CurrentSeconds;
+        public static long CurrentUnixTimeSeconds => (long)UnixTimeUtils.CurrentSeconds;
 
         /// <summary>
         /// Returns the amount of milliseconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
-        public static long CurrentUnixTimeMilliseconds => (long) UnixTimeUtils.CurrentMilliseconds;
+        public static long CurrentUnixTimeMilliseconds => (long)UnixTimeUtils.CurrentMilliseconds;
 
         #endregion
 
@@ -148,17 +148,17 @@ namespace Skybrud.Essentials.Time {
         /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
         [Obsolete("Use 'UnixTimeSeconds' instead.")]
-        public long UnixTimestamp => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
+        public long UnixTimestamp => (long)UnixTimeUtils.ToSeconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the UNIX timestamp in seconds (amount of time the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
-        public long UnixTimeSeconds => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
+        public long UnixTimeSeconds => (long)UnixTimeUtils.ToSeconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the UNIX timestamp in milliseconds (amount of time the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
-        public long UnixTimeMilliseconds => (long) UnixTimeUtils.ToMilliseconds(DateTimeOffset);
+        public long UnixTimeMilliseconds => (long)UnixTimeUtils.ToMilliseconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the time's offset from Coordinated Universal Time (UTC).
@@ -734,7 +734,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimeseconds?view=netstandard-2.0</cref>
         /// </seealso>
         public long ToUnixTimeSeconds() {
-            return (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
+            return (long)UnixTimeUtils.ToSeconds(DateTimeOffset);
         }
 
         /// <summary>
@@ -745,7 +745,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimemilliseconds?view=netstandard-2.0</cref>
         /// </seealso>
         public long ToUnixTimeMilliseconds() {
-            return (long) UnixTimeUtils.ToMilliseconds(DateTimeOffset);
+            return (long)UnixTimeUtils.ToMilliseconds(DateTimeOffset);
         }
 
         /// <summary>
@@ -768,7 +768,7 @@ namespace Skybrud.Essentials.Time {
         public EssentialsTime GetStartOfDay(TimeZoneInfo timeZone) {
             return new EssentialsTime(TimeUtils.GetStartOfDay(DateTimeOffset, timeZone), timeZone);
         }
- 
+
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the end of the day.
         /// </summary>
@@ -878,7 +878,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="input">The input string to be parsed.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime Parse(string input) {
-            
+
             // Is "input" an empty string?
             if (string.IsNullOrWhiteSpace(input)) return null;
 
@@ -897,7 +897,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="provider">An object that provides culture-specific format information about input.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime Parse(string input, IFormatProvider provider) {
-            
+
             // Is "input" an empty string?
             if (string.IsNullOrWhiteSpace(input)) return null;
 
@@ -917,7 +917,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see cref="DateTimeStyles.None"/>.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime Parse(string input, IFormatProvider provider, DateTimeStyles styles) {
-            
+
             // Is "input" an empty string?
             if (string.IsNullOrWhiteSpace(input)) return null;
 
@@ -1049,7 +1049,7 @@ namespace Skybrud.Essentials.Time {
             return false;
 
         }
-        
+
         /// <summary>
         /// Initialize a new instance from the specified UNIX timestamp.
         /// </summary>
@@ -1106,7 +1106,7 @@ namespace Skybrud.Essentials.Time {
         public static EssentialsTime FromUnixTimeSeconds(double timestamp) {
             return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
         }
-        
+
         /// <summary>
         /// Initialize a new instance from the specified UNIX timestamp.
         /// </summary>

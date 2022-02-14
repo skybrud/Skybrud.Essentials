@@ -1,15 +1,15 @@
-﻿using System.Net;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Enums;
+using System.Net;
 
 #pragma warning disable 618
 
 namespace UnitTestProject1.Enums {
-    
+
     [TestClass]
     public class EnumCamelCaseConverterTests {
-    
+
         [TestMethod]
         public void TestMethod1() {
 
@@ -39,7 +39,7 @@ namespace UnitTestProject1.Enums {
             public HttpStatusCode EnumValue { get; set; }
 
         }
-    
+
     }
 
 }

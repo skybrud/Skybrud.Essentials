@@ -1,6 +1,6 @@
-﻿using System.Collections.Specialized;
+﻿using Skybrud.Essentials.Strings;
+using System.Collections.Specialized;
 using System.Linq;
-using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Collections.Extensions {
 

@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using System;
 using System.Linq;
-using Newtonsoft.Json.Linq;
 
 namespace Skybrud.Essentials.Json.Extensions {
 
@@ -18,7 +18,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         public static JObject GetObject(this JArray array, int index) {
             return array?[index] as JObject;
         }
-        
+
         /// <summary>
         /// Gets an object from the item at the specified <paramref name="index"/> in the array. If an object is found,
         /// it is parsed to the type of <typeparamref name="T"/>.
@@ -151,12 +151,12 @@ namespace Skybrud.Essentials.Json.Extensions {
             // Get the token at "index" (or return "fallback" if not found)
             JToken token = array?.SelectToken(path);
             if (token == null) return fallback;
-            
+
             // Attempt to parse the GUID (or return "fallback" if the parsing fails)
             return Guid.TryParse(token.Value<string>(), out Guid guid) ? guid : fallback;
 
         }
-        
+
         /// <summary>
         /// Gets the <see cref="short"/> value of the item at the specified <paramref name="index"/> in the
         /// array.
@@ -234,7 +234,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = array.SelectToken(path);
             return token?.Value<int>() ?? default(int);
         }
-        
+
         /// <summary>
         /// Gets the <see cref="uint"/> value of the item at the specified <paramref name="index"/> in the
         /// array.
@@ -260,7 +260,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = array.SelectToken(path);
             return token?.Value<uint>() ?? default(uint);
         }
-        
+
         /// <summary>
         /// Gets the <see cref="long"/> value of the item at the specified <paramref name="index"/> in the
         /// array.
@@ -285,7 +285,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = array.SelectToken(path);
             return token?.Value<long>() ?? default(long);
         }
-        
+
         /// <summary>
         /// Gets the <see cref="ulong"/> value of the item at the specified <paramref name="index"/> in the
         /// array.
@@ -311,7 +311,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = array.SelectToken(path);
             return token?.Value<ulong>() ?? default(ulong);
         }
-        
+
         /// <summary>
         /// Gets the <see cref="double"/> value of the item at the specified <paramref name="index"/> in the array.
         /// </summary>
@@ -335,7 +335,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             JToken token = array.SelectToken(path);
             return token?.Value<double>() ?? default(double);
         }
-        
+
         /// <summary>
         /// Gets an instance of <see cref="JArray"/> from the item at the specified <paramref name="index"/> in the
         /// array.

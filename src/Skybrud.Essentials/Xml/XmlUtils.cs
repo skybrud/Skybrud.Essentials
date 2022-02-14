@@ -5,7 +5,7 @@ using System.Xml;
 using System.Xml.Linq;
 
 namespace Skybrud.Essentials.Xml {
-    
+
     /// <summary>
     /// Static helper methods for working with XML.
     /// </summary>

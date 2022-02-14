@@ -1,14 +1,14 @@
-﻿using System.Globalization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Maps;
 using Skybrud.Essentials.Maps.Geometry;
+using System.Globalization;
 
 namespace UnitTestProject1.Maps {
 
     [TestClass]
     public class DistanceTests {
 
-        #pragma warning disable 618
+#pragma warning disable 618
 
         [TestMethod]
         public void GetDistance() {
@@ -38,8 +38,8 @@ namespace UnitTestProject1.Maps {
             }
 
         }
-        
-        #pragma warning restore 618
+
+#pragma warning restore 618
 
     }
 

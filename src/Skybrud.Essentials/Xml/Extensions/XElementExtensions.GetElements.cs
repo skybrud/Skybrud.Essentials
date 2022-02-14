@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static XElement[] GetElements(this XElement element, XName name) {
             return element?.Elements(name).ToArray() ?? new XElement[0];
         }
-        
+
         /// <summary>
         /// Gets an array of <see cref="XElement"/> matching the specified <paramref name="name"/> and parses each element using <paramref name="callback"/>.
         /// </summary>

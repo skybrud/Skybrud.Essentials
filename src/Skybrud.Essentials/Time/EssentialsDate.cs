@@ -1,8 +1,8 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
+using System;
+using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
@@ -15,12 +15,12 @@ namespace Skybrud.Essentials.Time {
         private readonly DateTime _dateTime;
 
         #region Fields
-        
+
         /// <summary>
         /// Gets the minimum date that can be represented by an <see cref="EssentialsDate"/>.
         /// </summary>
         public static readonly EssentialsDate MinValue = new(DateTime.MinValue);
-        
+
         /// <summary>
         /// Gets the maximum date that can be represented by an <see cref="EssentialsDate"/>.
         /// </summary>
@@ -103,7 +103,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets whether the date is today.
         /// </summary>
         public bool IsToday => Iso8601 == DateTime.Now.ToString("yyyy-MM-dd");
-        
+
         /// <summary>
         /// Gets whether the date matches the day after the current day.
         /// </summary>
@@ -251,7 +251,7 @@ namespace Skybrud.Essentials.Time {
             }
 
         }
-        
+
         /// <summary>
         /// Gets whether this <see cref="EssentialsDate"/> equals the specified <paramref name="date"/>.
         /// </summary>
@@ -285,7 +285,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetStartOfDay() {
-           return new EssentialsTime(Year, Month, Day, TimeSpan.Zero);
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero);
         }
 
         /// <summary>
@@ -302,7 +302,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetEndOfDay() {
-           return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetEndOfDay();
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetEndOfDay();
         }
 
         /// <summary>
@@ -319,7 +319,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetStartOfWeek() {
-           return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetStartOfWeek();
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetStartOfWeek();
         }
 
         /// <summary>
@@ -336,7 +336,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetEndOfWeek() {
-           return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetEndOfWeek();
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetEndOfWeek();
         }
 
         /// <summary>
@@ -353,7 +353,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetStartOfMonth() {
-           return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetStartOfMonth();
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetStartOfMonth();
         }
 
         /// <summary>
@@ -370,7 +370,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetEndOfMonth() {
-           return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetEndOfMonth();
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetEndOfMonth();
         }
 
         /// <summary>
@@ -424,7 +424,7 @@ namespace Skybrud.Essentials.Time {
         public static int GetDaysBetween(EssentialsDate a, EssentialsDate b) {
             if (a == null) throw new ArgumentNullException(nameof(a));
             if (b == null) throw new ArgumentNullException(nameof(b));
-            return (int) b.GetStartOfDay(TimeZoneInfo.Utc).Subtract(a.GetStartOfDay(TimeZoneInfo.Utc)).TotalDays;
+            return (int)b.GetStartOfDay(TimeZoneInfo.Utc).Subtract(a.GetStartOfDay(TimeZoneInfo.Utc)).TotalDays;
         }
 
         /// <summary>
@@ -434,7 +434,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="input">A string that contains a date to convert.</param>
         /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>.</returns>
         public static EssentialsDate Parse(string input) {
-            
+
             // Is "input" an empty string?
             if (string.IsNullOrWhiteSpace(input)) return null;
 
@@ -454,7 +454,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="provider">An object that supplies culture-specific format information about <paramref name="input"/>.</param>
         /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/>.</returns>
         public static EssentialsDate Parse(string input, IFormatProvider provider) {
-            
+
             // Is "input" an empty string?
             if (string.IsNullOrWhiteSpace(input)) return null;
 
@@ -478,7 +478,7 @@ namespace Skybrud.Essentials.Time {
         /// specify is <see cref="DateTimeStyles.None"/>.</param>
         /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/> and <paramref name="styles"/>.</returns>
         public static EssentialsDate Parse(string input, IFormatProvider provider, DateTimeStyles styles) {
-            
+
             // Is "input" an empty string?
             if (string.IsNullOrWhiteSpace(input)) return null;
 

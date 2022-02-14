@@ -1,7 +1,7 @@
-﻿using System;
+﻿using Skybrud.Essentials.Reflection;
+using System;
 using System.Diagnostics;
 using System.Reflection;
-using Skybrud.Essentials.Reflection;
 
 namespace Skybrud.Essentials.Assemblies {
 
@@ -53,7 +53,7 @@ namespace Skybrud.Essentials.Assemblies {
             return ReflectionUtils.GetFileVersionInfo(assembly);
         }
 
-        #endif
+#endif
 
     }
 

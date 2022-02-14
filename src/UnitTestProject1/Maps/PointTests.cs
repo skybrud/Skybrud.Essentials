@@ -3,7 +3,7 @@ using Skybrud.Essentials.Maps;
 using Skybrud.Essentials.Maps.Geometry;
 
 namespace UnitTestProject1.Maps {
-    
+
     [TestClass]
     public class PointTests {
 

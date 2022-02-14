@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.UnixTime;
+using System;
 
 #pragma warning disable 618
 
@@ -9,7 +9,7 @@ namespace UnitTestProject1.Time.Formats {
 
     [TestClass]
     public class UnixtimeTests {
-        
+
         #region Unix time -> DateTime
 
         [TestMethod]
@@ -67,7 +67,7 @@ namespace UnitTestProject1.Time.Formats {
             }
 
         }
-        
+
         #endregion
 
         #region Unix time -> DateTimeOffset
@@ -147,7 +147,7 @@ namespace UnitTestProject1.Time.Formats {
             }
 
         }
-        
+
         #endregion
 
         #region DateTime -> Unix time
@@ -179,7 +179,7 @@ namespace UnitTestProject1.Time.Formats {
             }
 
         }
-        
+
         #endregion
 
         #region DateTimeOffset -> Unix time

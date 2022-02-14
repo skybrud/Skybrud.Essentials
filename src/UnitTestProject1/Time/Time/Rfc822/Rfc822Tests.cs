@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Rfc822;
+using System;
 
 //#pragma warning disable 618
 
@@ -46,7 +46,7 @@ namespace UnitTestProject1.Time.Time.Rfc822 {
             TimeZoneInfo utcMinus10 = TimeZoneInfo.CreateCustomTimeZone("UTC -10", TimeSpan.FromHours(-10), "UTC -10", "UTC -10");
             TimeZoneInfo utcMinus11 = TimeZoneInfo.CreateCustomTimeZone("UTC -11", TimeSpan.FromHours(-11), "UTC -11", "UTC -11");
             TimeZoneInfo utcMinus12 = TimeZoneInfo.CreateCustomTimeZone("UTC -12", TimeSpan.FromHours(-12), "UTC -12", "UTC -12");
-            
+
             // Offset
             Assert.AreEqual("Wed, 07 Aug 2013 22:07:24 +0100", Rfc822Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus01)));
             Assert.AreEqual("Wed, 07 Aug 2013 23:07:24 +0200", Rfc822Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus02)));
@@ -78,7 +78,7 @@ namespace UnitTestProject1.Time.Time.Rfc822 {
         [TestMethod]
         public void DateTimeOffsetToRfc822() {
 
-            #pragma warning disable 618
+#pragma warning disable 618
 
             // Initialize some reference timestamps
             DateTimeOffset reference1 = new DateTime(2013, 08, 07, 21, 07, 24, DateTimeKind.Utc);
@@ -113,7 +113,7 @@ namespace UnitTestProject1.Time.Time.Rfc822 {
             TimeZoneInfo utcMinus10 = TimeZoneInfo.CreateCustomTimeZone("UTC -10", TimeSpan.FromHours(-10), "UTC -10", "UTC -10");
             TimeZoneInfo utcMinus11 = TimeZoneInfo.CreateCustomTimeZone("UTC -11", TimeSpan.FromHours(-11), "UTC -11", "UTC -11");
             TimeZoneInfo utcMinus12 = TimeZoneInfo.CreateCustomTimeZone("UTC -12", TimeSpan.FromHours(-12), "UTC -12", "UTC -12");
-            
+
             // Offset
             Assert.AreEqual("Wed, 07 Aug 2013 22:07:24 +0100", TimeUtils.ToRfc822(TimeZoneInfo.ConvertTime(reference1, utcPlus01)));
             Assert.AreEqual("Wed, 07 Aug 2013 23:07:24 +0200", TimeUtils.ToRfc822(TimeZoneInfo.ConvertTime(reference1, utcPlus02)));
@@ -140,7 +140,7 @@ namespace UnitTestProject1.Time.Time.Rfc822 {
             Assert.AreEqual("Wed, 07 Aug 2013 10:07:24 -1100", TimeUtils.ToRfc822(TimeZoneInfo.ConvertTime(reference1, utcMinus11)));
             Assert.AreEqual("Wed, 07 Aug 2013 09:07:24 -1200", TimeUtils.ToRfc822(TimeZoneInfo.ConvertTime(reference1, utcMinus12)));
 
-            #pragma warning restore 618
+#pragma warning restore 618
 
         }
 
@@ -298,7 +298,7 @@ namespace UnitTestProject1.Time.Time.Rfc822 {
         [TestMethod]
         public void ParseLegacy() {
 
-            #pragma warning disable 618
+#pragma warning disable 618
 
             // Initialize some reference timestamps
             DateTimeOffset reference1 = new DateTime(2013, 08, 07, 21, 07, 24, DateTimeKind.Utc);
@@ -446,7 +446,7 @@ namespace UnitTestProject1.Time.Time.Rfc822 {
             Assert.AreEqual(reference2, TimeUtils.Rfc822ToDateTimeOffset("Sat, 08 Oct 2016 04:33:38 +1100"));
             Assert.AreEqual(reference2, TimeUtils.Rfc822ToDateTimeOffset("Sat, 08 Oct 2016 05:33:38 +1200"));
 
-            #pragma warning restore 618
+#pragma warning restore 618
 
         }
 

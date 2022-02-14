@@ -70,7 +70,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the <see cref="EssentialsDate"/> of the range.</returns>
         public IEnumerator<EssentialsDate> GetEnumerator() {
-            return ((IEnumerable<EssentialsDate>) Days).GetEnumerator();
+            return ((IEnumerable<EssentialsDate>)Days).GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() {

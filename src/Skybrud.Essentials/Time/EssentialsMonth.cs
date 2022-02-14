@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 
 namespace Skybrud.Essentials.Time {
-    
+
     /// <summary>
     /// Class describing a month.
     /// </summary>
@@ -65,7 +65,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">A timestamp representing the month to be created.</param>
         public EssentialsMonth(EssentialsTime timestamp) {
-            
+
             if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
 
             if (timestamp.TimeZone == null) timestamp = timestamp.ToTimeZone(TimeZoneInfo.Local);
@@ -84,8 +84,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">A timestamp representing the month to be created.</param>
         /// <param name="timeZone"></param>
-        public EssentialsMonth(EssentialsTime timestamp, TimeZoneInfo timeZone)  {
-            
+        public EssentialsMonth(EssentialsTime timestamp, TimeZoneInfo timeZone) {
+
             if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 

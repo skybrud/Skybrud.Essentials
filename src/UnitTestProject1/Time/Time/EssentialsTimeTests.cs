@@ -1,7 +1,7 @@
-﻿using System;
-using System.Globalization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+using System;
+using System.Globalization;
 
 namespace UnitTestProject1.Time.Time {
 
@@ -101,7 +101,7 @@ namespace UnitTestProject1.Time.Time {
 
         [TestMethod]
         public void ToTimeZone() {
-            
+
             TimeZoneInfo utc = TimeZoneInfo.FindSystemTimeZoneById("UTC");
             TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
 
@@ -114,7 +114,7 @@ namespace UnitTestProject1.Time.Time {
                 new ToTimeZoneSample("2019-04-01 00:00:00:000 +00:00", "2019-04-01 02:00:00:000 +02:00", utc)
 
             };
-            
+
             for (int i = 0; i < samples.Length; i++) {
 
                 var s = samples[i];
@@ -124,7 +124,7 @@ namespace UnitTestProject1.Time.Time {
             }
 
         }
-        
+
 
         [TestMethod]
         public void FromIso8601Week() {
@@ -166,35 +166,35 @@ namespace UnitTestProject1.Time.Time {
         [TestMethod]
         public void GetDay() {
 
-            EssentialsTime monday    = new EssentialsTime(2021,  9, 27, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime tuesday   = new EssentialsTime(2021,  9, 28, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime wednesday = new EssentialsTime(2021,  9, 29, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime thursday  = new EssentialsTime(2021,  9, 30, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime friday    = new EssentialsTime(2021, 10,  1, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime saturday  = new EssentialsTime(2021, 10,  2, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime sunday    = new EssentialsTime(2021, 10,  3, 0, 0, 0, TimeSpan.Zero);
-            
+            EssentialsTime monday = new EssentialsTime(2021, 9, 27, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime tuesday = new EssentialsTime(2021, 9, 28, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime wednesday = new EssentialsTime(2021, 9, 29, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime thursday = new EssentialsTime(2021, 9, 30, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime friday = new EssentialsTime(2021, 10, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime saturday = new EssentialsTime(2021, 10, 2, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime sunday = new EssentialsTime(2021, 10, 3, 0, 0, 0, TimeSpan.Zero);
+
             Assert.AreEqual(27, monday.Day);
             Assert.AreEqual(28, tuesday.Day);
             Assert.AreEqual(29, wednesday.Day);
             Assert.AreEqual(30, thursday.Day);
-            Assert.AreEqual( 1, friday.Day);
-            Assert.AreEqual( 2, saturday.Day);
-            Assert.AreEqual( 3, sunday.Day);
+            Assert.AreEqual(1, friday.Day);
+            Assert.AreEqual(2, saturday.Day);
+            Assert.AreEqual(3, sunday.Day);
 
         }
 
         [TestMethod]
         public void GetDayOfWeek() {
 
-            EssentialsTime monday    = new EssentialsTime(2021,  9, 27, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime tuesday   = new EssentialsTime(2021,  9, 28, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime wednesday = new EssentialsTime(2021,  9, 29, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime thursday  = new EssentialsTime(2021,  9, 30, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime friday    = new EssentialsTime(2021, 10,  1, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime saturday  = new EssentialsTime(2021, 10,  2, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime sunday    = new EssentialsTime(2021, 10,  3, 0, 0, 0, TimeSpan.Zero);
-            
+            EssentialsTime monday = new EssentialsTime(2021, 9, 27, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime tuesday = new EssentialsTime(2021, 9, 28, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime wednesday = new EssentialsTime(2021, 9, 29, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime thursday = new EssentialsTime(2021, 9, 30, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime friday = new EssentialsTime(2021, 10, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime saturday = new EssentialsTime(2021, 10, 2, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime sunday = new EssentialsTime(2021, 10, 3, 0, 0, 0, TimeSpan.Zero);
+
             Assert.AreEqual(DayOfWeek.Monday, monday.DayOfWeek);
             Assert.AreEqual(DayOfWeek.Tuesday, tuesday.DayOfWeek);
             Assert.AreEqual(DayOfWeek.Wednesday, wednesday.DayOfWeek);
@@ -210,22 +210,22 @@ namespace UnitTestProject1.Time.Time {
 
             // 2020 was a leap year, 2021 isn't
 
-            EssentialsTime monday2020    = new EssentialsTime(2020,  9, 27, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime tuesday2020   = new EssentialsTime(2020,  9, 28, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime wednesday2020 = new EssentialsTime(2020,  9, 29, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime thursday2020  = new EssentialsTime(2020,  9, 30, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime friday2020    = new EssentialsTime(2020, 10,  1, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime saturday2020  = new EssentialsTime(2020, 10,  2, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime sunday2020    = new EssentialsTime(2020, 10,  3, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime monday2020 = new EssentialsTime(2020, 9, 27, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime tuesday2020 = new EssentialsTime(2020, 9, 28, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime wednesday2020 = new EssentialsTime(2020, 9, 29, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime thursday2020 = new EssentialsTime(2020, 9, 30, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime friday2020 = new EssentialsTime(2020, 10, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime saturday2020 = new EssentialsTime(2020, 10, 2, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime sunday2020 = new EssentialsTime(2020, 10, 3, 0, 0, 0, TimeSpan.Zero);
 
-            EssentialsTime monday2021    = new EssentialsTime(2021,  9, 27, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime tuesday2021   = new EssentialsTime(2021,  9, 28, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime wednesday2021 = new EssentialsTime(2021,  9, 29, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime thursday2021  = new EssentialsTime(2021,  9, 30, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime friday2021    = new EssentialsTime(2021, 10,  1, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime saturday2021  = new EssentialsTime(2021, 10,  2, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime sunday2021    = new EssentialsTime(2021, 10,  3, 0, 0, 0, TimeSpan.Zero);
-            
+            EssentialsTime monday2021 = new EssentialsTime(2021, 9, 27, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime tuesday2021 = new EssentialsTime(2021, 9, 28, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime wednesday2021 = new EssentialsTime(2021, 9, 29, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime thursday2021 = new EssentialsTime(2021, 9, 30, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime friday2021 = new EssentialsTime(2021, 10, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime saturday2021 = new EssentialsTime(2021, 10, 2, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime sunday2021 = new EssentialsTime(2021, 10, 3, 0, 0, 0, TimeSpan.Zero);
+
             Assert.AreEqual(271, monday2020.DayOfYear);
             Assert.AreEqual(272, tuesday2020.DayOfYear);
             Assert.AreEqual(273, wednesday2020.DayOfYear);
@@ -233,7 +233,7 @@ namespace UnitTestProject1.Time.Time {
             Assert.AreEqual(275, friday2020.DayOfYear);
             Assert.AreEqual(276, saturday2020.DayOfYear);
             Assert.AreEqual(277, sunday2020.DayOfYear);
-            
+
             Assert.AreEqual(270, monday2021.DayOfYear);
             Assert.AreEqual(271, tuesday2021.DayOfYear);
             Assert.AreEqual(272, wednesday2021.DayOfYear);
@@ -248,10 +248,10 @@ namespace UnitTestProject1.Time.Time {
         public void IsLeapYear() {
 
             // 2020 was a leap year, 2021 isn't
-            
+
             EssentialsTime y2020 = new EssentialsTime(2020, 9, 27, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime y2021 = new EssentialsTime(2021, 9, 27, 0, 0, 0, TimeSpan.Zero);
-            
+
             Assert.IsTrue(y2020.IsLeapYear);
             Assert.IsFalse(y2021.IsLeapYear);
 
@@ -261,10 +261,10 @@ namespace UnitTestProject1.Time.Time {
         public void GetDaysInMonth() {
 
             // 2020 was a leap year, 2021 isn't
-            
+
             EssentialsTime y2020 = new EssentialsTime(2020, 2, 26, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime y2021 = new EssentialsTime(2021, 2, 26, 0, 0, 0, TimeSpan.Zero);
-            
+
             Assert.AreEqual(29, y2020.DaysInMonth);
             Assert.AreEqual(28, y2021.DaysInMonth);
 
@@ -273,14 +273,14 @@ namespace UnitTestProject1.Time.Time {
         [TestMethod]
         public void IsWeekday() {
 
-            EssentialsTime monday    = new EssentialsTime(2021,  9, 27, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime tuesday   = new EssentialsTime(2021,  9, 28, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime wednesday = new EssentialsTime(2021,  9, 29, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime thursday  = new EssentialsTime(2021,  9, 30, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime friday    = new EssentialsTime(2021, 10,  1, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime saturday  = new EssentialsTime(2021, 10,  2, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime sunday    = new EssentialsTime(2021, 10,  3, 0, 0, 0, TimeSpan.Zero);
-            
+            EssentialsTime monday = new EssentialsTime(2021, 9, 27, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime tuesday = new EssentialsTime(2021, 9, 28, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime wednesday = new EssentialsTime(2021, 9, 29, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime thursday = new EssentialsTime(2021, 9, 30, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime friday = new EssentialsTime(2021, 10, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime saturday = new EssentialsTime(2021, 10, 2, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime sunday = new EssentialsTime(2021, 10, 3, 0, 0, 0, TimeSpan.Zero);
+
             Assert.IsTrue(monday.IsWeekday);
             Assert.IsTrue(tuesday.IsWeekday);
             Assert.IsTrue(wednesday.IsWeekday);
@@ -294,14 +294,14 @@ namespace UnitTestProject1.Time.Time {
         [TestMethod]
         public void IsWeekend() {
 
-            EssentialsTime monday    = new EssentialsTime(2021,  9, 27, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime tuesday   = new EssentialsTime(2021,  9, 28, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime wednesday = new EssentialsTime(2021,  9, 29, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime thursday  = new EssentialsTime(2021,  9, 30, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime friday    = new EssentialsTime(2021, 10,  1, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime saturday  = new EssentialsTime(2021, 10,  2, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime sunday    = new EssentialsTime(2021, 10,  3, 0, 0, 0, TimeSpan.Zero);
-            
+            EssentialsTime monday = new EssentialsTime(2021, 9, 27, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime tuesday = new EssentialsTime(2021, 9, 28, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime wednesday = new EssentialsTime(2021, 9, 29, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime thursday = new EssentialsTime(2021, 9, 30, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime friday = new EssentialsTime(2021, 10, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime saturday = new EssentialsTime(2021, 10, 2, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime sunday = new EssentialsTime(2021, 10, 3, 0, 0, 0, TimeSpan.Zero);
+
             Assert.IsFalse(monday.IsWeekend);
             Assert.IsFalse(tuesday.IsWeekend);
             Assert.IsFalse(wednesday.IsWeekend);
@@ -320,13 +320,13 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime dec29 = new EssentialsTime(2021, 12, 29, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime dec30 = new EssentialsTime(2021, 12, 30, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime dec31 = new EssentialsTime(2021, 12, 31, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime jan01 = new EssentialsTime(2022,  1,  1, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime jan02 = new EssentialsTime(2022,  1,  2, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime jan03 = new EssentialsTime(2022,  1,  3, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime jan04 = new EssentialsTime(2022,  1,  4, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime jan05 = new EssentialsTime(2022,  1,  5, 0, 0, 0, TimeSpan.Zero);
-            EssentialsTime jan06 = new EssentialsTime(2022,  1,  6, 0, 0, 0, TimeSpan.Zero);
-            
+            EssentialsTime jan01 = new EssentialsTime(2022, 1, 1, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime jan02 = new EssentialsTime(2022, 1, 2, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime jan03 = new EssentialsTime(2022, 1, 3, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime jan04 = new EssentialsTime(2022, 1, 4, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime jan05 = new EssentialsTime(2022, 1, 5, 0, 0, 0, TimeSpan.Zero);
+            EssentialsTime jan06 = new EssentialsTime(2022, 1, 6, 0, 0, 0, TimeSpan.Zero);
+
             // The week number is based on the year with most days of the week. The week with the days from December
             // 27th to Januar 2nd has five days in 2021 and only two days in 2020, so it becomes Week 52 of 2021. The
             // week from Januar 3rd to January 9th has all it's days in 2020, so it becomes Week 1 of 2020.
@@ -337,16 +337,16 @@ namespace UnitTestProject1.Time.Time {
             Assert.AreEqual(52, dec31.WeekNumber, "December 31st");
             Assert.AreEqual(52, jan01.WeekNumber, "January 1st");
             Assert.AreEqual(52, jan02.WeekNumber, "January 2nd");
-            Assert.AreEqual( 1, jan03.WeekNumber, "January 3rd");
-            Assert.AreEqual( 1, jan04.WeekNumber, "January 4th");
-            Assert.AreEqual( 1, jan05.WeekNumber, "January 5th");
-            Assert.AreEqual( 1, jan06.WeekNumber, "January 6th");
+            Assert.AreEqual(1, jan03.WeekNumber, "January 3rd");
+            Assert.AreEqual(1, jan04.WeekNumber, "January 4th");
+            Assert.AreEqual(1, jan05.WeekNumber, "January 5th");
+            Assert.AreEqual(1, jan06.WeekNumber, "January 6th");
 
         }
 
         [TestMethod]
         public void GetDaySuffix() {
-            
+
             EssentialsTime jan01 = new EssentialsTime(2021, 1, 1, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime jan02 = new EssentialsTime(2021, 1, 2, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime jan03 = new EssentialsTime(2021, 1, 3, 0, 0, 0, TimeSpan.Zero);
@@ -378,7 +378,7 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime jan29 = new EssentialsTime(2021, 1, 29, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime jan30 = new EssentialsTime(2021, 1, 30, 0, 0, 0, TimeSpan.Zero);
             EssentialsTime jan31 = new EssentialsTime(2021, 1, 31, 0, 0, 0, TimeSpan.Zero);
-            
+
             Assert.AreEqual("st", jan01.DaySuffix, "January 1st");
             Assert.AreEqual("nd", jan02.DaySuffix, "January 2nd");
             Assert.AreEqual("rd", jan03.DaySuffix, "January 3rd");
@@ -483,7 +483,7 @@ namespace UnitTestProject1.Time.Time {
 
             // Same as DateTime
             Assert.AreEqual(637461720000000000, time.Ticks, "#3");
-            
+
             // Offset is now +00:00 instead of Z (difference between DateTimeOffset and DateTime)
             Assert.AreEqual("2021-01-13T22:00:00+00:00", time.ToString("yyyy-MM-ddTHH:mm:ssK"), "#4");
 

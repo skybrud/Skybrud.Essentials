@@ -1,14 +1,14 @@
-﻿using System.Text;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Security;
 using Skybrud.Essentials.Strings;
+using System.Text;
 
 namespace UnitTestProject1.Security {
 
     [TestClass]
     public class SecurityTests {
 
-        #pragma warning disable 618
+#pragma warning disable 618
 
         [TestMethod]
         public void Base64Encode() {
@@ -37,7 +37,7 @@ namespace UnitTestProject1.Security {
                 Assert.AreEqual(sample.Expected, SecurityHelper.Base64Decode(sample.Input));
                 Assert.AreEqual(sample.Expected, SecurityUtils.Base64Decode(sample.Input));
             }
-        
+
         }
 
         [TestMethod]
@@ -52,12 +52,12 @@ namespace UnitTestProject1.Security {
 
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetMd5Hash(sample.Input), "Failed hashing " + sample.Input + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetMd5Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Input + " (UTF8)");
-                
+
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetMd5Hash(sample.Input), "Failed hashing " + sample.Input + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetMd5Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Input + " (UTF8)");
-            
+
             }
-        
+
         }
 
         [TestMethod]
@@ -72,12 +72,12 @@ namespace UnitTestProject1.Security {
 
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha1Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityHelper.GetSha1Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
-                
+
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha1Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha1Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
-            
+
             }
-        
+
         }
 
         [TestMethod]
@@ -95,9 +95,9 @@ namespace UnitTestProject1.Security {
 
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha256Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha256Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
-            
+
             }
-        
+
         }
 
         [TestMethod]
@@ -115,7 +115,7 @@ namespace UnitTestProject1.Security {
 
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha512Hash(sample.Input), "Failed hashing " + sample.Expected + " (no encoding)");
                 Assert.AreEqual(sample.Expected, SecurityUtils.GetSha512Hash(sample.Input, Encoding.UTF8), "Failed hashing " + sample.Expected + " (UTF8)");
-            
+
             }
 
         }
@@ -145,7 +145,7 @@ namespace UnitTestProject1.Security {
             expected1 = "d2fcbbcc313efab5c36e6583a9d7738b84e744fa";
             expected2 = expected1;
             expected3 = expected1.ToUpper();
-            
+
             string result4 = SecurityUtils.GetHmacSha1Hash(key, value, Encoding.UTF8);
             Assert.AreEqual(expected1, result4, "#4");
 
@@ -182,7 +182,7 @@ namespace UnitTestProject1.Security {
             expected1 = "05ae05d0750939c579dee0948a81cd80cb205f3bbb19d7153015573f28cd0e55";
             expected2 = expected1;
             expected3 = expected1.ToUpper();
-            
+
             string result4 = SecurityUtils.GetHmacSha256Hash(key, value, Encoding.UTF8);
             Assert.AreEqual(expected1, result4, "#4");
 
@@ -219,7 +219,7 @@ namespace UnitTestProject1.Security {
             expected1 = "0e9c50aeabe283b108ff6253c7542c7171f18e830a6d2ca5e4190d8f7ff526bdf6805a736afe0d65f7a296efca46882efb59d01563d7a549473964e72e79a70b";
             expected2 = expected1;
             expected3 = expected1.ToUpper();
-            
+
             string result4 = SecurityUtils.GetHmacSha512Hash(key, value, Encoding.UTF8);
             Assert.AreEqual(expected1, result4, "#4");
 
@@ -231,7 +231,7 @@ namespace UnitTestProject1.Security {
 
         }
 
-        #pragma warning restore 618
+#pragma warning restore 618
 
     }
 

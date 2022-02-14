@@ -238,7 +238,7 @@ namespace Skybrud.Essentials.Time {
         public static DateTime SaintPatricksDay(int year) {
             return CalendarUtils.SaintPatricksDay(year);
         }
-            
+
         #endregion
 
         #region Canada

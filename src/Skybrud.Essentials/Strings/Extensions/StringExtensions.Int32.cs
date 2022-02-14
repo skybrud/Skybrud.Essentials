@@ -3,7 +3,7 @@
 namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
-        
+
         /// <summary>
         /// Gets whether the string matches an integer (<see cref="int"/>).
         /// </summary>
@@ -31,7 +31,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static bool IsInt32(string value, out int result) {
             return int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
         }
-        
+
         /// <summary>
         /// Converts <paramref name="input"/> to an instance of <see cref="int"/>. If the conversion fails,
         /// <c>0</c> will be returned instead.

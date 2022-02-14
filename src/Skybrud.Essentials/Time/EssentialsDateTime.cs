@@ -1,13 +1,13 @@
-﻿using System;
-using System.Globalization;
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
+using System;
+using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
     // ReSharper disable InconsistentNaming
-    
+
     /// <summary>
     /// Class wrapping an instance of <see cref="DateTime"/> (as an alternative to using <see cref="Nullable{DateTime}"/>).
     /// </summary>
@@ -245,7 +245,7 @@ namespace Skybrud.Essentials.Time {
         /// Coordinated Universal Time (UTC), or neither.</param>
         public EssentialsDateTime(long ticks, DateTimeKind kind) {
             DateTime = new DateTime(ticks, kind);
-        }    
+        }
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="year"/>, <paramref name="month"/> and
@@ -323,7 +323,7 @@ namespace Skybrud.Essentials.Time {
             DateTime = new DateTime(year, month, day, hour, minute, second, millisecond, kind);
         }
 
-        #if NET_FRAMEWORK
+#if NET_FRAMEWORK
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="year"/>, <paramref name="month"/> and
@@ -390,12 +390,12 @@ namespace Skybrud.Essentials.Time {
             DateTime = new DateTime(year, month, day, hour, minute, second, millisecond, calendar, kind);
         }
 
-        #endif
+#endif
 
         #endregion
 
         #region Member methods
-        
+
         /// <summary>
         /// Converts the value of the current <see cref="EssentialsDateTime"/> to its equivalent string representation.
         /// </summary>
@@ -704,7 +704,7 @@ namespace Skybrud.Essentials.Time {
             return DateTime.ToLocalTime();
         }
 
-        #if NET_FRAMEWORK
+#if NET_FRAMEWORK
 
         /// <summary>
         /// Converts the value of the internal <see cref="System.DateTime"/> object to its equivalent long date string
@@ -758,7 +758,7 @@ namespace Skybrud.Essentials.Time {
             return DateTime.ToShortTimeString();
         }
 
-        #endif
+#endif
 
         /// <summary>
         /// Converts the value of the internal <see cref="System.DateTime"/> object to Coordinated Universal Time (UTC).
@@ -772,7 +772,7 @@ namespace Skybrud.Essentials.Time {
         public EssentialsDateTime ToUniversalTime() {
             return DateTime.ToUniversalTime();
         }
-        
+
         /// <summary>
         /// Subtracts the specified date and time from this instance.
         /// </summary>
@@ -933,7 +933,7 @@ namespace Skybrud.Essentials.Time {
             return TimeUtils.GetLocalMonthName(DateTime, culture);
         }
 
-#endregion
+        #endregion
 
         #region Static methods
 
@@ -1112,7 +1112,7 @@ namespace Skybrud.Essentials.Time {
         public static EssentialsDateTime operator -(EssentialsDateTime date, TimeSpan timespan) {
             return new EssentialsDateTime(date.DateTime - timespan);
         }
-        
+
         /// <summary>
         /// Subtracts two instances of <see cref="EssentialsDateTime"/>.
         /// </summary>
@@ -1140,7 +1140,7 @@ namespace Skybrud.Essentials.Time {
 
             // Pass the comparison on the the == operator of DateTime
             return d1.DateTime == d2.DateTime;
-        
+
         }
 
         /// <summary>
@@ -1170,7 +1170,7 @@ namespace Skybrud.Essentials.Time {
 
             // Pass the comparison on the the < operator of DateTime
             return d1.DateTime < d2.DateTime;
-        
+
         }
 
         /// <summary>
@@ -1242,11 +1242,11 @@ namespace Skybrud.Essentials.Time {
         }
 
 #endif
-         
+
         #endregion
 
     }
-    
+
     // ReSharper restore InconsistentNaming
 
 }

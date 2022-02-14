@@ -1,13 +1,13 @@
-﻿using System.Globalization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Locations;
+using System.Globalization;
 
 namespace UnitTestProject1.Locations {
 
     [TestClass]
     public class LocationTests {
 
-        #pragma warning disable 618
+#pragma warning disable 618
 
         [TestMethod]
         public void GetDistance() {
@@ -30,12 +30,12 @@ namespace UnitTestProject1.Locations {
 
                 Assert.AreEqual(sample.Expected, string.Format(CultureInfo.InvariantCulture, format, LocationHelper.GetDistance(sample.From, sample.To) / 1000), "#1");
                 Assert.AreEqual(sample.Expected, string.Format(CultureInfo.InvariantCulture, format, LocationUtils.GetDistance(sample.From, sample.To) / 1000), "#2");
-            
+
             }
 
         }
-        
-        #pragma warning restore 618
+
+#pragma warning restore 618
 
     }
 

@@ -1,10 +1,10 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
+using System;
 using System.Globalization;
 using System.Net;
 using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Strings;
-using Skybrud.Essentials.Strings.Extensions;
 
 // ReSharper disable ExpressionIsAlwaysNull
 
@@ -64,7 +64,7 @@ namespace UnitTestProject1.Strings {
         [TestMethod]
         public void ParseBoolean2() {
 
-            var samples = new [] {
+            var samples = new[] {
                 new { Input = default(string), Fallback = false, Expected = false },
                 new { Input = default(string), Fallback = true, Expected = true },
                 new { Input = "", Fallback = false, Expected = false },
@@ -84,7 +84,7 @@ namespace UnitTestProject1.Strings {
                 int n = i + 1;
 
                 var sample = samples[i];
-                
+
                 Assert.AreEqual(sample.Expected, StringUtils.ParseBoolean(sample.Input, sample.Fallback), $"Check #{n} failed");
                 Assert.AreEqual(sample.Expected, sample.Input.ToBoolean(sample.Fallback), $"Check #{n} failed");
 
@@ -272,7 +272,7 @@ namespace UnitTestProject1.Strings {
             Assert.AreEqual(3, guid2.Length, "Check #4 failed");
             Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid2[0].ToString(), "Check #5 failed");
             Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid2[1].ToString(), "Check #6 failed");
-            Assert.AreEqual("16f77374-e26f-4f83-9759-0a58f34211c4", guid2[2].ToString(), "Check #7 failed"); 
+            Assert.AreEqual("16f77374-e26f-4f83-9759-0a58f34211c4", guid2[2].ToString(), "Check #7 failed");
 
         }
 
@@ -425,7 +425,7 @@ namespace UnitTestProject1.Strings {
             }
 
         }
-        
+
         [TestMethod]
         public void ToUpper() {
 
@@ -482,7 +482,7 @@ namespace UnitTestProject1.Strings {
         [TestMethod]
         public void HighlightKeywords() {
 
-            var samples = new [] {
+            var samples = new[] {
                 new {
                     Input = "Bacon ipsum dolor amet cupim beef ribs bresaola ribeye kevin fatback bacon sirloin picanha meatball.",
                     Output = "<span class=\"highlighted\">Bacon</span> ipsum dolor amet cupim <span class=\"highlighted\">beef</span> ribs bresaola ribeye kevin fatback <span class=\"highlighted\">bacon</span> sirloin picanha meatball."
@@ -666,8 +666,7 @@ namespace UnitTestProject1.Strings {
         [TestMethod]
         public void ToPlural() {
 
-            foreach (SingularPluralTestItem item in SingularPluralTestItem.Items)
-            {
+            foreach (SingularPluralTestItem item in SingularPluralTestItem.Items) {
                 Assert.AreEqual(item.Plural, StringUtils.ToPlural(item.Singular), item.Singular + " => " + StringUtils.ToPlural(item.Singular));
             }
 
@@ -675,11 +674,11 @@ namespace UnitTestProject1.Strings {
 
         [TestMethod]
         public void ToPluralWithCount() {
-            
+
             Assert.AreEqual("dogs", StringUtils.ToPlural("dog", 0), "#1");
             Assert.AreEqual("dog", StringUtils.ToPlural("dog", 1), "#2");
             Assert.AreEqual("dogs", StringUtils.ToPlural("dog", 2), "#3");
-            
+
             Assert.AreEqual("indices", StringUtils.ToPlural("index", 0), "#4");
             Assert.AreEqual("index", StringUtils.ToPlural("index", 1), "#5");
             Assert.AreEqual("indices", StringUtils.ToPlural("index", 2), "#6");
@@ -688,10 +687,10 @@ namespace UnitTestProject1.Strings {
 
         [TestMethod]
         public void ToPluralWithCondition() {
-            
+
             Assert.AreEqual("dogs", StringUtils.ToPlural("dog", true), "#1");
             Assert.AreEqual("dog", StringUtils.ToPlural("dog", false), "#2");
-            
+
             Assert.AreEqual("indices", StringUtils.ToPlural("index", true), "#3");
             Assert.AreEqual("index", StringUtils.ToPlural("index", false), "#4");
 
@@ -713,15 +712,15 @@ namespace UnitTestProject1.Strings {
 
         [TestMethod]
         public void FirstWithValue() {
-            
+
             Assert.AreEqual("", StringUtils.FirstWithValue(), "#1");
             Assert.AreEqual("", StringUtils.FirstWithValue(null, null), "#2");
             Assert.AreEqual("", StringUtils.FirstWithValue(null, null, null), "#3");
-            
+
             Assert.AreEqual("a", StringUtils.FirstWithValue("a"), "#4");
             Assert.AreEqual("a", StringUtils.FirstWithValue("a", null), "#5");
             Assert.AreEqual("b", StringUtils.FirstWithValue("b", null, null), "#6");
-            
+
             Assert.AreEqual("a", StringUtils.FirstWithValue("a"), "#7");
             Assert.AreEqual("b", StringUtils.FirstWithValue(null, "b"), "#8");
             Assert.AreEqual("c", StringUtils.FirstWithValue(null, null, "c"), "#9");
@@ -732,12 +731,12 @@ namespace UnitTestProject1.Strings {
         public void IfNullOrWhiteSpace() {
 
             string n = null;
-            
+
             Assert.AreEqual("fallback", n.IfNullOrWhiteSpace("fallback"), "#1");
             Assert.AreEqual("fallback", "".IfNullOrWhiteSpace("fallback"), "#2");
             Assert.AreEqual("fallback", "    ".IfNullOrWhiteSpace("fallback"), "#3");
             Assert.AreEqual("value", "value".IfNullOrWhiteSpace("fallback"), "#4");
-            
+
             Assert.AreEqual("fallback", n.IfNullOrWhiteSpace(() => "fallback"), "#5");
             Assert.AreEqual("fallback", "".IfNullOrWhiteSpace(() => "fallback"), "#6");
             Assert.AreEqual("fallback", "    ".IfNullOrWhiteSpace(() => "fallback"), "#7");
@@ -749,7 +748,7 @@ namespace UnitTestProject1.Strings {
         public void NullIfWhiteSpace() {
 
             string n = null;
-            
+
             Assert.AreEqual(null, n.NullIfWhiteSpace(), "#1");
             Assert.AreEqual(null, "".NullIfWhiteSpace(), "#2");
             Assert.AreEqual(null, "    ".NullIfWhiteSpace(), "#3");
@@ -772,7 +771,7 @@ namespace UnitTestProject1.Strings {
 
                 string result1 = StringUtils.Truncate(sample.Input, sample.Max);
                 string result2 = sample.Input.Truncate(sample.Max);
-                
+
                 Assert.AreEqual(sample.Expected, result1, $"{n}A");
                 Assert.AreEqual(sample.Expected, result2, $"{n}B");
 

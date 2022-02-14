@@ -1,14 +1,14 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+using System;
 
 namespace UnitTestProject1.Time.Time {
-    
+
     [TestClass]
     public class EssentialMonthTests {
 
         [TestMethod]
-        public void ConstructorRomance()  {
+        public void ConstructorRomance() {
 
             TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
 

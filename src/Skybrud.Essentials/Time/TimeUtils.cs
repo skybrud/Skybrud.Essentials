@@ -1,9 +1,9 @@
-﻿using System;
-using System.Globalization;
-using Skybrud.Essentials.Time.Iso8601;
+﻿using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
 using Skybrud.Essentials.Time.UnixTime;
+using System;
+using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
@@ -125,7 +125,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="then">The date of birth.</param>
         /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
         public static int GetAge(DateTimeOffset then) {
-            return GetAge(then, (DateTimeOffset) DateTime.UtcNow);
+            return GetAge(then, (DateTimeOffset)DateTime.UtcNow);
         }
 
         /// <summary>
@@ -155,7 +155,7 @@ namespace Skybrud.Essentials.Time {
             DateTimeOffset b = compare.ToUniversalTime();
             return GetAge(a.Year, a.Month, a.Day, b.Year, b.Month, b.Day);
         }
-        
+
         /// <summary>
         /// Gets the current age, from the specified <paramref name="then"/>. The age is calculated based on
         /// <paramref name="compare"/>.
@@ -570,7 +570,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns><c>true</c> if the <paramref name="date"/> is within the last number of
         /// <paramref name="days"/>, otherwise <c>false</c>.</returns>
         public static bool IsDateWithinLastDays(DateTime date, int days) {
-            double lastDays = (double) 0 - days;
+            double lastDays = (double)0 - days;
             DateTime startDate = date.AddDays(lastDays);
             return date >= startDate;
         }
@@ -760,7 +760,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetFirstWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek) {
-            return GetFirstWeekdayOfMonth(year, (int) month, dayOfWeek);
+            return GetFirstWeekdayOfMonth(year, (int)month, dayOfWeek);
         }
 
         /// <summary>
@@ -772,7 +772,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         public static DateTimeOffset GetFirstWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek, TimeSpan offset) {
-            return GetFirstWeekdayOfMonth(year, (int) month, dayOfWeek, offset);
+            return GetFirstWeekdayOfMonth(year, (int)month, dayOfWeek, offset);
         }
 
         /// <summary>
@@ -838,7 +838,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek) {
-            return GetLastWeekdayOfMonth(year, (int) month, dayOfWeek);
+            return GetLastWeekdayOfMonth(year, (int)month, dayOfWeek);
         }
 
         /// <summary>
@@ -850,7 +850,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetLastWeekdayOfMonth(int year, EssentialsDateMonthName month, DayOfWeek dayOfWeek, TimeSpan offset) {
-            return GetLastWeekdayOfMonth(year, (int) month, dayOfWeek, offset);
+            return GetLastWeekdayOfMonth(year, (int)month, dayOfWeek, offset);
         }
 
         /// <summary>
@@ -1329,7 +1329,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsDateMonthName"/> representing the month.</returns>
         public static EssentialsDateMonthName ParseEnumFromMonthName(string monthName) {
             if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
-            return (EssentialsDateMonthName) DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
+            return (EssentialsDateMonthName)DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
         }
 
         /// <summary>
@@ -1343,7 +1343,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsDateMonthName"/> representing the month.</returns>
         public static EssentialsDateMonthName ParseEnumFromMonthName(string monthName, IFormatProvider provider) {
             if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
-            return (EssentialsDateMonthName) DateTime.ParseExact(monthName, "MMMM", provider).Month;
+            return (EssentialsDateMonthName)DateTime.ParseExact(monthName, "MMMM", provider).Month;
         }
 
         /// <summary>
@@ -1383,7 +1383,7 @@ namespace Skybrud.Essentials.Time {
             if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             result = 0;
             if (!DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out DateTime dt)) return false;
-            result = (EssentialsDateMonthName) dt.Month;
+            result = (EssentialsDateMonthName)dt.Month;
             return true;
         }
 
@@ -1413,7 +1413,7 @@ namespace Skybrud.Essentials.Time {
                     return Rfc2822Utils.ToString(value);
 
                 case TimeFormat.UnixTime:
-                    return (long) UnixTimeUtils.ToSeconds(value);
+                    return (long)UnixTimeUtils.ToSeconds(value);
 
                 default:
                     throw new ArgumentException("Unsupported format " + format, nameof(format));
@@ -1450,7 +1450,7 @@ namespace Skybrud.Essentials.Time {
                     return Rfc2822Utils.ToString(value);
 
                 case TimeFormat.UnixTime:
-                    return (long) UnixTimeUtils.ToSeconds(value);
+                    return (long)UnixTimeUtils.ToSeconds(value);
 
                 default:
                     throw new ArgumentException("Unsupported format " + format, nameof(format));

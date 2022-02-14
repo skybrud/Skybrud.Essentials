@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Swatch;
+using System;
 
 namespace UnitTestProject1.Time {
 
@@ -12,22 +12,22 @@ namespace UnitTestProject1.Time {
         public void GetSwatchInternetTime() {
 
             var t1 = EssentialsTime.FromUnixTimeSeconds(1605361960);
-            var r1 = (int) SwatchUtils.ToDouble(t1);
+            var r1 = (int)SwatchUtils.ToDouble(t1);
 
             var t2 = new DateTime(2020, 11, 14, 13, 52, 40, DateTimeKind.Utc);
-            var r2 = (int) SwatchUtils.ToDouble(t2);
+            var r2 = (int)SwatchUtils.ToDouble(t2);
 
             var t3 = new DateTimeOffset(2020, 11, 14, 14, 52, 40, TimeSpan.FromHours(1));
-            var r3 = (int) SwatchUtils.ToDouble(t3);
+            var r3 = (int)SwatchUtils.ToDouble(t3);
 
             var t4 = EssentialsTime.FromUnixTimeSeconds(1597646100);
-            var r4 = (int) SwatchUtils.ToDouble(t4);
+            var r4 = (int)SwatchUtils.ToDouble(t4);
 
             var t5 = new DateTime(2020, 8, 17, 6, 35, 00, DateTimeKind.Utc);
-            var r5 = (int) SwatchUtils.ToDouble(t5);
+            var r5 = (int)SwatchUtils.ToDouble(t5);
 
             var t6 = new DateTimeOffset(2020, 8, 17, 8, 35, 00, TimeSpan.FromHours(2));
-            var r6 = (int) SwatchUtils.ToDouble(t6);
+            var r6 = (int)SwatchUtils.ToDouble(t6);
 
             Assert.AreEqual(619, r1, "#1");
             Assert.AreEqual(619, r2, "#2");

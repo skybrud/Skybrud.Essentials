@@ -2,7 +2,7 @@
 using System.Reflection;
 
 namespace Skybrud.Essentials.Reflection.Extensions {
-    
+
     /// <summary>
     /// Extension methods for working with reflection.
     /// </summary>

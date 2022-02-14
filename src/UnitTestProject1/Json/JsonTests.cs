@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Json.Extensions;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 
 namespace UnitTestProject1.Json {
 
@@ -57,16 +57,16 @@ namespace UnitTestProject1.Json {
         }
 
         public class TestObject {
-            
+
             [JsonProperty("value")]
             public string Value { get; set; }
-            
+
             public static TestObject Parse(JObject obj) {
                 return obj == null ? null : new TestObject { Value = obj.GetString("value") };
             }
-        
+
         }
-    
+
     }
 
 }

@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
     public static partial class XElementExtensions {
 
-        #region Get attribute value as System.String
+#region Get attribute value as System.String
         
         /// <summary>
         /// Gets the value of the attribute matching the specified XPath <paramref name="expression"/>, or an empty
@@ -71,9 +71,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return value == null ? default(T) : callback(value);
         }
         
-        #endregion
+#endregion
 
-        #region Get attribute value as System.Int32
+#region Get attribute value as System.Int32
         
         /// <summary>
         /// Gets an instance of <see cref="Int32"/> representing the value of the attribute matching the
@@ -161,9 +161,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out int value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get attribute value as System.Int64
+#region Get attribute value as System.Int64
         
         /// <summary>
         /// Gets an instance of <see cref="Int64"/> representing the value of the attribute matching the
@@ -251,9 +251,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out long value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get attribute value as System.Single
+#region Get attribute value as System.Single
         
         /// <summary>
         /// Gets an instance of <see cref="Single"/> representing the value of the attribute matching the
@@ -341,9 +341,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out float value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get attribute value as System.Double
+#region Get attribute value as System.Double
         
         /// <summary>
         /// Gets an instance of <see cref="Double"/> representing the value of the attribute matching the
@@ -431,9 +431,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out double value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get attribute value as System.Boolean
+#region Get attribute value as System.Boolean
         
         /// <summary>
         /// Gets an instance of <see cref="Boolean"/> representing the value of the attribute matching the
@@ -530,11 +530,11 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValueAsBoolean(element, expression, resolver, out bool value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get attribute value as System.Boolean (deprecated due to wrong naming)
+#region Get attribute value as System.Boolean (deprecated due to wrong naming)
 
-        #pragma warning disable 1591
+#pragma warning disable 1591
 
         [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
         public static bool GetAttributeAsBoolean(this XElement element, string expression) {
@@ -561,11 +561,11 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValueAsBoolean(element, expression, resolver, callback);
         }
 
-        #pragma warning restore 1591
+#pragma warning restore 1591
 
-        #endregion
+#endregion
 
-        #region Get attribute value as System.Enum
+#region Get attribute value as System.Enum
         
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the first attribute matching the
@@ -635,9 +635,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         
         }
 
-        #endregion
+#endregion
 
-        #region Get attribute value as T
+#region Get attribute value as T
         
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the first attribute matching the
@@ -718,7 +718,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return attr == null ? default(TResult) : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
         }
 
-        #endregion
+#endregion
 
     }
 

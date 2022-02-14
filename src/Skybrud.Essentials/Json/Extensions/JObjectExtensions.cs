@@ -1,13 +1,13 @@
-﻿using System;
+﻿using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
+using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
-using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Extensions {
-    
+
     /// <summary>
     /// Various extensions methods for <see cref="JObject"/> that makes manual parsing easier.
     /// </summary>
@@ -123,15 +123,15 @@ namespace Skybrud.Essentials.Json.Extensions {
             // Get the token matching "path" (or return "fallback" if not found)
             JToken token = GetSimpleTypeTokenFromPath(obj, path);
             if (token == null) return Guid.Empty;
-            
+
             // Get the string value
             string value = token.Value<string>();
-            
+
             // Parse the GUID (or return "fallback" if null)
             return Guid.TryParse(value, out Guid guid) ? guid : fallback;
 
         }
-        
+
         /// <summary>
         /// Gets an array of <see cref="Guid"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
@@ -165,7 +165,7 @@ namespace Skybrud.Essentials.Json.Extensions {
                     // Be friendly to other formats
                     return token.Type switch {
                         JTokenType.String => StringUtils.ParseGuidArray(token.Value<string>()),
-                        JTokenType.Guid => new[] {token.Value<Guid>()},
+                        JTokenType.Guid => new[] { token.Value<Guid>() },
                         _ => new Guid[0]
                     };
 
@@ -498,7 +498,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An array of <typeparamref name="T"/>. If the a matching token isn't found, an empty array will
         /// still be returned.</returns>
         public static T[] GetArrayItems<T>(this JObject obj, string path) {
-            
+
             if (!(obj?.SelectToken(path) is JArray token)) return new T[0];
 
             return (
@@ -517,7 +517,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An array of <typeparamref name="T"/>. If the a matching token isn't found, an empty array will
         /// still be returned.</returns>
         public static T[] GetArrayItems<T>(this JObject obj, string path, Func<JToken, T> callback) {
-            
+
             if (!(obj?.SelectToken(path) is JArray token)) return new T[0];
 
             return (
@@ -536,7 +536,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An array of <typeparamref name="T"/>. If the a matching token isn't found, an empty array will
         /// still be returned.</returns>
         public static T[] GetArrayItems<T>(this JObject obj, string path, Func<JObject, T> callback) {
-            
+
             if (!(obj?.SelectToken(path) is JArray token)) return new T[0];
 
             return (
@@ -562,7 +562,7 @@ namespace Skybrud.Essentials.Json.Extensions {
                 from TKey child in token
                 select callback(child)
             ).ToArray();
-        
+
         }
 
         /// <summary>

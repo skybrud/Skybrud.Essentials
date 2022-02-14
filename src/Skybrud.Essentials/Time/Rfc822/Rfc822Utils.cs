@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Text.RegularExpressions;
 
 namespace Skybrud.Essentials.Time.Rfc822 {
-    
+
     /// <summary>
     /// Static class for working with date and time according to the <strong>RFC 822</strong> specification.
     /// </summary>
@@ -89,7 +89,7 @@ namespace Skybrud.Essentials.Time.Rfc822 {
         /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParse(string rfc822, out DateTime result) {
-            
+
             if (TryParse(rfc822, out DateTimeOffset dto)) {
                 result = dto.DateTime;
                 return true;

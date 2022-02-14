@@ -19,7 +19,7 @@
         /// Initializes a new point with default <see cref="Latitude"/> and <see cref="Longitude"/> (both <c>0</c>).
         /// </summary>
         public Point() { }
-        
+
         /// <summary>
         /// Initializes a new point with the specified <paramref name="latitude"/> and <paramref name="longitude"/>.
         /// </summary>

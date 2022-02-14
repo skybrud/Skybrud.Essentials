@@ -1,7 +1,7 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
+using System;
 
 namespace UnitTestProject1.Json.Converters {
 
@@ -24,7 +24,7 @@ namespace UnitTestProject1.Json.Converters {
 
         [TestMethod]
         public void Deserialize() {
-            
+
             Sample sample1 = new Sample { Duration = TimeSpan.FromSeconds(42) };
             Sample sample2 = new Sample { Duration = TimeSpan.FromSeconds(3.14) };
 

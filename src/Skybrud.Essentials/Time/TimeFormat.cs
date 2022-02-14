@@ -4,7 +4,7 @@
     /// Enum class representing a time format.
     /// </summary>
     public enum TimeFormat {
-        
+
         /// <summary>
         /// Indicates that the format is <strong>ISO 8601</strong>.
         /// </summary>

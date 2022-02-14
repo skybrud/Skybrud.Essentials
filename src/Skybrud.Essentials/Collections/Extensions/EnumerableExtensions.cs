@@ -78,7 +78,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns>An <see cref="IEnumerable"/> that contains each element of the source sequence cast to the specified type.</returns>
         /// <remarks>The <see cref="Enumerable.Cast{TResult}"/> method requires developers to know the target type at compile time. Using the non-generic <see cref="Cast"/> method instead, the target type can be specified at runtime.</remarks>
         public static IEnumerable Cast(this IEnumerable source, Type targetType) {
-            return (IEnumerable) typeof(Enumerable)
+            return (IEnumerable)typeof(Enumerable)
                 .GetTypeInfo()
                 .GetDeclaredMethod("Cast")
                 .MakeGenericMethod(targetType)
@@ -92,7 +92,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="targetType">The type of the elements of <paramref name="source"/>.</param>
         /// <returns>An <see cref="IList"/> that contains elements from the input sequence.</returns>
         public static IList ToList(this IEnumerable source, Type targetType) {
-            return (IList) typeof(Enumerable)
+            return (IList)typeof(Enumerable)
                 .GetTypeInfo()
                 .GetDeclaredMethod("ToList")
                 .MakeGenericMethod(targetType)
@@ -106,7 +106,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="targetType">The type of the elements of <paramref name="source"/>.</param>
         /// <returns>An array that contains the elements from the input sequence.</returns>
         public static Array ToArray(this IEnumerable source, Type targetType) {
-            return (Array) typeof(Enumerable)
+            return (Array)typeof(Enumerable)
                 .GetTypeInfo()
                 .GetDeclaredMethod("ToArray")
                 .MakeGenericMethod(targetType)

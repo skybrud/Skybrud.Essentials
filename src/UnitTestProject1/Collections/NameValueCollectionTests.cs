@@ -1,18 +1,18 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Collections;
+using Skybrud.Essentials.Collections.Extensions;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Collections;
-using Skybrud.Essentials.Collections.Extensions;
 
 namespace UnitTestProject1.Collections {
 
     [TestClass]
     public class NameValueCollectionTests {
-        
+
         [TestMethod]
         public void GetBoolean() {
 
@@ -27,7 +27,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(false, nvc.GetBoolean("c"), "#3");
 
         }
-        
+
         [TestMethod]
         public void GetBooleanWithFallback() {
 
@@ -42,7 +42,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(false, nvc.GetBoolean("c", true), "#3");
 
         }
-        
+
         [TestMethod]
         public void TryGetBoolean() {
 
@@ -62,7 +62,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(false, result3);
 
         }
-        
+
         [TestMethod]
         public void GetInt32() {
 
@@ -77,7 +77,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(2, nvc.GetInt32("c"), "#3");
 
         }
-        
+
         [TestMethod]
         public void GetGetInt32WithFallback() {
 
@@ -92,7 +92,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(2, nvc.GetInt32("c", 42), "#3");
 
         }
-        
+
         [TestMethod]
         public void TryGetInt32() {
 
@@ -112,7 +112,7 @@ namespace UnitTestProject1.Collections {
             Assert.AreEqual(2, result3);
 
         }
-        
+
         [TestMethod]
         public void TryGetValue() {
 

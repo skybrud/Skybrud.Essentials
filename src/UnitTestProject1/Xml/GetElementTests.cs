@@ -1,10 +1,10 @@
-﻿using System.Xml;
-using System.Xml.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Xml.Extensions;
+using System.Xml;
+using System.Xml.Linq;
 
 namespace UnitTestProject1.Xml {
-    
+
     [TestClass]
     public class GetElementTests {
 
@@ -73,7 +73,7 @@ namespace UnitTestProject1.Xml {
             Assert.AreEqual("XPath", example3[0].Value);
 
         }
-    
+
     }
 
 }

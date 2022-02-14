@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Skybrud.Essentials.Time {
-    
+
     /// <summary>
     /// Class describing a year.
     /// </summary>
@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Time {
         /// otherwise <c>365</c>.
         /// </summary>
         public int Days => IsLeapYear ? 366 : 365;
-        
+
         #region Calendar dates
 
         /// <summary>
@@ -159,7 +159,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">A timestamp representing the year to be created.</param>
         public EssentialsYear(EssentialsTime timestamp) {
-            
+
             if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
 
             if (timestamp.TimeZone == null) timestamp = timestamp.ToTimeZone(TimeZoneInfo.Local);
@@ -177,8 +177,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">A timestamp representing the year to be created.</param>
         /// <param name="timeZone">The time zone used for calculating the start and end of the year.</param>
-        public EssentialsYear(EssentialsTime timestamp, TimeZoneInfo timeZone)  {
-            
+        public EssentialsYear(EssentialsTime timestamp, TimeZoneInfo timeZone) {
+
             if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 

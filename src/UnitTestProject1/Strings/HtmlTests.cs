@@ -4,7 +4,7 @@ using Skybrud.Essentials.Strings.Extensions;
 using System.Web;
 
 namespace UnitTestProject1.Strings {
-    
+
     [TestClass]
     public class HtmlTests {
 
@@ -20,7 +20,7 @@ namespace UnitTestProject1.Strings {
             };
 
             foreach (var sample in samples) {
-                
+
                 Assert.AreEqual(sample.Output, StringUtils.StripHtml(sample.Input));
 
                 Assert.AreEqual(sample.Output, sample.Input.StripHtml());

@@ -1,5 +1,5 @@
-﻿using System.Text.RegularExpressions;
-using JetBrains.Annotations;
+﻿using JetBrains.Annotations;
+using System.Text.RegularExpressions;
 
 namespace Skybrud.Essentials.Strings {
 

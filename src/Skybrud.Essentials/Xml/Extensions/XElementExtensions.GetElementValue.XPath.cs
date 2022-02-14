@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
     public static partial class XElementExtensions {
 
-        #region Get element value as System.String
+#region Get element value as System.String
 
         /// <summary>
         /// Gets the element value representing the value of the first element matching the specified XPath
@@ -67,9 +67,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return value == null ? default(T) : callback(value);
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Int32
+#region Get element value as System.Int32
         
         /// <summary>
         /// Gets an integer value representing the value of the first element matching the specified XPath
@@ -137,9 +137,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementValue(element, expression, resolver, out int value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Int64
+#region Get element value as System.Int64
         
         /// <summary>
         /// Gets a long value representing the value of the first element matching the specified XPath
@@ -207,9 +207,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementValue(element, expression, resolver, out long value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Single
+#region Get element value as System.Single
         
         /// <summary>
         /// Gets a float value representing the value of the first element matching the specified XPath
@@ -277,9 +277,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementValue(element, expression, resolver, out float value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Single (alias GetElementValueAsFloat)
+#region Get element value as System.Single (alias GetElementValueAsFloat)
         
         /// <summary>
         /// Gets a float value representing the value of the first element matching the specified XPath
@@ -347,9 +347,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementValue(element, expression, resolver, out float value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Double
+#region Get element value as System.Double
         
         /// <summary>
         /// Gets a double value representing the value of the first element matching the specified XPath
@@ -417,9 +417,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementValue(element, expression, resolver, out double value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Boolean
+#region Get element value as System.Boolean
         
         /// <summary>
         /// Gets a boolean value representing the value of the first element matching the specified XPath
@@ -496,11 +496,11 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementValueAsBoolean(element, expression, resolver, out bool value) ? callback(value) : default(T);
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Boolean (deprecated due to wrong naming)
+#region Get element value as System.Boolean (deprecated due to wrong naming)
 
-        #pragma warning disable 1591
+#pragma warning disable 1591
         
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
         public static bool GetElementAsBoolean(this XElement element, string expression) {
@@ -536,11 +536,11 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetElementAsBoolean(element, expression, resolver, out bool value) ? callback(value) : default(T);
         }
 
-        #pragma warning restore 1591
+#pragma warning restore 1591
 
-        #endregion
+#endregion
 
-        #region Get element value as System.Enum
+#region Get element value as System.Enum
         
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the first element matching the
@@ -610,9 +610,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         
         }
 
-        #endregion
+#endregion
 
-        #region Get element value as T
+#region Get element value as T
         
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the first element matching the
@@ -747,7 +747,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         }
 
-        #endregion
+#endregion
 
     }
 

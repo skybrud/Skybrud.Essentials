@@ -1,6 +1,6 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+using System;
 
 namespace UnitTestProject1.Time.GetAge {
 
@@ -55,7 +55,7 @@ namespace UnitTestProject1.Time.GetAge {
         [TestMethod]
         public void EssentialsDateTime() {
 
-            #pragma warning disable 618
+#pragma warning disable 618
 
             EssentialsTime t = new EssentialsTime(2019, 9, 14, TimeSpan.Zero);
 
@@ -67,7 +67,7 @@ namespace UnitTestProject1.Time.GetAge {
             Assert.AreEqual(1, TimeUtils.GetAge(t, b));
             Assert.AreEqual(1, TimeUtils.GetAge(t, c));
 
-            #pragma warning restore 618
+#pragma warning restore 618
 
         }
 

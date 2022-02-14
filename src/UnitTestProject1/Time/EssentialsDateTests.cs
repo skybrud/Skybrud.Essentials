@@ -1,6 +1,6 @@
-﻿using System.Globalization;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+using System.Globalization;
 // ReSharper disable ExpressionIsAlwaysNull
 
 #pragma warning disable 618
@@ -85,7 +85,7 @@ namespace UnitTestProject1.Time {
             Assert.AreEqual(2019, result1.Year);
             Assert.AreEqual(8, result1.Month);
             Assert.AreEqual(17, result1.Day);
-            
+
             Assert.IsNull(result2);
 
             Assert.AreEqual(2019, result3.Year);
@@ -137,8 +137,8 @@ namespace UnitTestProject1.Time {
         [TestMethod]
         public void TryParseExactArray() {
 
-            bool success1 = EssentialsDate.TryParseExact("2019-08-17", new [] { "yyyy-MM-dd" }, null, DateTimeStyles.None, out EssentialsDate result1);
-            bool success2 = EssentialsDate.TryParseExact("08/17/2019", new [] { "MM/dd/yyyy" }, null, DateTimeStyles.None, out EssentialsDate result2);
+            bool success1 = EssentialsDate.TryParseExact("2019-08-17", new[] { "yyyy-MM-dd" }, null, DateTimeStyles.None, out EssentialsDate result1);
+            bool success2 = EssentialsDate.TryParseExact("08/17/2019", new[] { "MM/dd/yyyy" }, null, DateTimeStyles.None, out EssentialsDate result2);
 
             Assert.AreEqual(true, success1);
             Assert.AreEqual(true, success2);

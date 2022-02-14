@@ -1,8 +1,8 @@
-﻿using System;
+﻿using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
+using System;
 using System.Globalization;
 using System.Xml.Linq;
-using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Xml.Extensions {
 
@@ -36,7 +36,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             XAttribute attr = element?.GetAttribute(name);
             return attr == null ? default(T) : callback(attr.Value);
         }
-        
+
         #endregion
 
         #region Get attribute value as System.Int32
@@ -80,7 +80,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetAttributeValueAsInt32<T>(this XElement element, XName name, Func<int, T> callback) {
             return GetAttributeValue(element, name, out int value) ? callback(value) : default(T);
         }
-        
+
         #endregion
 
         #region Get attribute value as System.Int64
@@ -124,7 +124,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetAttributeValueAsInt64<T>(this XElement element, XName name, Func<long, T> callback) {
             return GetAttributeValue(element, name, out long value) ? callback(value) : default(T);
         }
-        
+
         #endregion
 
         #region Get attribute value as System.Single
@@ -168,7 +168,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetAttributeValueAsSingle<T>(this XElement element, XName name, Func<float, T> callback) {
             return GetAttributeValue(element, name, out float value) ? callback(value) : default(T);
         }
-        
+
         #endregion
 
         #region Get attribute value as System.Double
@@ -212,7 +212,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetAttributeValueAsDouble<T>(this XElement element, XName name, Func<double, T> callback) {
             return GetAttributeValue(element, name, out double value) ? callback(value) : default(T);
         }
-        
+
         #endregion
 
         #region Get attribute value as System.Boolean
@@ -249,7 +249,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
             // Returns whether the attribute was found
             return attr != null;
-        
+
         }
 
         /// <summary>
@@ -265,12 +265,12 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetAttributeValueAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
             return GetAttributeValueAsBoolean(element, name, out bool value) ? callback(value) : default(T);
         }
-        
+
         #endregion
 
         #region Get attribute value as System.Boolean (deprecated due to wrong naming)
 
-        #pragma warning disable 1591
+#pragma warning disable 1591
 
         [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
         public static bool GetAttributeAsBoolean(this XElement element, XName name) {
@@ -286,8 +286,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         public static T GetAttributeAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
             return GetAttributeValueAsBoolean(element, name, callback);
         }
-        
-        #pragma warning restore 1591
+
+#pragma warning restore 1591
 
         #endregion
 
@@ -337,7 +337,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// value of <typeparamref name="T"/> if not found.</returns>
         public static T GetAttributeValue<T>(this XElement element, XName name) {
             XAttribute attr = GetAttribute(element, name);
-            return attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -362,9 +362,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             }
 
             // Convert the attribute value to the type of T
-            value = (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            value = (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
             return true;
-        
+
         }
 
         /// <summary>
@@ -380,7 +380,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
         public static TResult GetAttributeValue<T, TResult>(this XElement element, XName name, Func<T, TResult> callback) {
             XAttribute attr = GetAttribute(element, name);
-            return attr == null ? default(TResult) : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
+            return attr == null ? default(TResult) : callback((T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
         }
 
         #endregion

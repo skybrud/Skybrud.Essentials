@@ -1,7 +1,7 @@
-using System;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Converters;
 using Skybrud.Essentials.Time;
+using System;
 
 namespace Skybrud.Essentials.Json.Converters.Time {
 
@@ -19,7 +19,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
             if (!(value is EssentialsDateTime)) return;
-            EssentialsDateTime dt = (EssentialsDateTime) value;
+            EssentialsDateTime dt = (EssentialsDateTime)value;
             base.WriteJson(writer, dt.DateTime, serializer);
         }
 
@@ -47,9 +47,9 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                 case JsonToken.String:
                     if (string.IsNullOrWhiteSpace(reader.Value.ToString())) return null;
                     if (!string.IsNullOrEmpty(DateTimeFormat)) {
-                        return (EssentialsDateTime) DateTime.ParseExact(reader.Value.ToString(), DateTimeFormat, Culture, DateTimeStyles);
+                        return (EssentialsDateTime)DateTime.ParseExact(reader.Value.ToString(), DateTimeFormat, Culture, DateTimeStyles);
                     }
-                    return (EssentialsDateTime) DateTime.Parse(reader.Value.ToString(), Culture, DateTimeStyles);
+                    return (EssentialsDateTime)DateTime.Parse(reader.Value.ToString(), Culture, DateTimeStyles);
 
                 default:
                     throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);

@@ -22,7 +22,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToCamelCase(this Enum value) {
             return StringUtils.ToCamelCase(value);
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to a camel cased string (also referred to as lower
         /// camel casing). If <paramref name="values"/> contains more than one enum value, the names will be separated
@@ -52,7 +52,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToPascalCase(this Enum value) {
             return StringUtils.ToPascalCase(value);
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to a Pascal cased string (also referred to as upper
         /// camel casing). If <paramref name="values"/> contains more than one enum value, the names will be separated
@@ -82,7 +82,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToKebabCase(this Enum value) {
             return StringUtils.ToKebabCase(value);
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to a kebab cased string (lower case words separated
         /// by hyphens). If <paramref name="values"/> contains more than one enum value, the names will be separated by
@@ -94,7 +94,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToKebabCase<TEnum>(this IEnumerable<TEnum> values) where TEnum : Enum {
             return StringUtils.ToKebabCase(values);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="str"/> to a train cased string (upper case words separated by hyphens).
         /// </summary>
@@ -112,7 +112,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToTrainCase(this Enum value) {
             return StringUtils.ToTrainCase(value);
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to a train cased string (upper case words separated
         /// by hyphens). If <paramref name="values"/> contains more than one enum value, the names will be separated by
@@ -143,7 +143,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToUnderscore(this Enum value) {
             return StringUtils.ToUnderscore(value);
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to a lower case string with words separated by
         /// underscores. If <paramref name="values"/> contains more than one enum value, the names will be separated by
@@ -164,7 +164,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToLower(this Enum value) {
             return value.ToString().ToLower();
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to a lower case string. If <paramref name="values"/>
         /// contains more than one enum value, the names will be separated by commas.
@@ -184,7 +184,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToUpper(this Enum value) {
             return value.ToString().ToUpper();
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to an upper case string. If <paramref name="values"/>
         /// contains more than one enum value, the names will be separated by commas.
@@ -215,7 +215,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToCasing(this Enum value, TextCasing casing) {
             return StringUtils.ToCasing(value, casing);
         }
-        
+
         /// <summary>
         /// Converts the specified enum <paramref name="values"/> to a string where the enum names are formatted using the specified <paramref name="casing"/>.
         /// </summary>

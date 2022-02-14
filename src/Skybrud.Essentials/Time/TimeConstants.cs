@@ -9,7 +9,7 @@
         /// Class with varius constants related to date and time.
         /// </summary>
         public static class DateAndTime {
-            
+
             /// <summary>
             /// Returns the <strong>ISO 8601</strong> format for specifying both date and time.
             /// </summary>

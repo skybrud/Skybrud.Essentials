@@ -1,12 +1,12 @@
-﻿using System;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
+using System;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
-    
+
     [TestClass]
     public class GetAttribute {
 
@@ -14,7 +14,7 @@ namespace UnitTestProject1.Xml {
         public void Test1() {
 
             XElement root = XElement.Load(TestHelpers.MapPath("~/Xml/Hest.xml"));
-            
+
             XmlNamespaceManager namespaces = new XmlNamespaceManager(new NameTable());
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
@@ -37,7 +37,7 @@ namespace UnitTestProject1.Xml {
             Assert.AreEqual("hej", attr4.Value, "#4");
 
         }
-    
+
     }
 
 }

@@ -1,11 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Globalization;
-using System.Threading;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Extensions;
 using Skybrud.Essentials.Time.Iso8601;
+using System;
+using System.Collections.Generic;
+using System.Globalization;
+using System.Threading;
 
 #pragma warning disable 618
 
@@ -286,7 +286,7 @@ namespace UnitTestProject1.Time {
             // Se more here: http://en.wikipedia.org/wiki/Leap_year#Algorithm
 
             var samples = new[] {
-            
+
                 new { Year = 2000, IsLeapYear = true },
                 new { Year = 2001, IsLeapYear = false },
                 new { Year = 2002, IsLeapYear = false },
@@ -302,7 +302,7 @@ namespace UnitTestProject1.Time {
                 new { Year = 2012, IsLeapYear = true },
                 new { Year = 2013, IsLeapYear = false },
                 new { Year = 2014, IsLeapYear = false },
-            
+
                 new { Year = 1500, IsLeapYear = false },
                 new { Year = 1600, IsLeapYear = true },
                 new { Year = 1700, IsLeapYear = false },
@@ -313,7 +313,7 @@ namespace UnitTestProject1.Time {
                 new { Year = 2200, IsLeapYear = false },
                 new { Year = 2300, IsLeapYear = false },
                 new { Year = 2400, IsLeapYear = true }
-            
+
             };
 
             foreach (var sample in samples) {
@@ -390,7 +390,7 @@ namespace UnitTestProject1.Time {
         public void GetDateTimeFromUnixTime() {
 
             // DateTime is bad a handling timezones besides "Local" and "Utc", so the texttual values doesn't mention the timezones
-            
+
             var samples = new[] {
                 new { Timestamp = 1408269600, TextUtc = "2014-08-17T10:00:00", TextLocal = "2014-08-17T12:00:00", TimeZone = "Romance Standard Time" },
                 new { Timestamp = 1419440400, TextUtc = "2014-12-24T17:00:00", TextLocal = "2014-12-24T18:00:00", TimeZone = "Romance Standard Time" },
@@ -574,7 +574,7 @@ namespace UnitTestProject1.Time {
             var expected = "January,February,March,April,May,June,July,August,September,October,November,December".Split(',');
 
             for (int i = 0; i < expected.Length; i++) {
-                
+
                 DateTime dt = new DateTime(2014, i + 1, 15);
 
                 DateTimeOffset dto = dt;
@@ -586,7 +586,7 @@ namespace UnitTestProject1.Time {
                 Assert.AreEqual(expected[i], TimeHelper.GetMonthName(dt));
 
                 Assert.AreEqual(expected[i], TimeUtils.GetMonthName(dt));
-                
+
                 Assert.AreEqual(expected[i], dt.GetMonthName());
 
                 Assert.AreEqual(expected[i], TimeUtils.GetMonthName(dto));
@@ -609,11 +609,11 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in expected) {
-                
+
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
-                    
+
                     DateTime dt = new DateTime(2014, i + 1, 15);
 
                     DateTimeOffset dto = dt;
@@ -650,9 +650,9 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in expected) {
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
-                    
+
                     DateTime dt = new DateTime(2014, i + 1, 15);
 
                     DateTimeOffset dto = dt;
@@ -676,14 +676,14 @@ namespace UnitTestProject1.Time {
             }
 
         }
-        
+
         [TestMethod]
         public void GetAbbreviatedMonthNameEnglish() {
 
             var expected = "Jan,Feb,Mar,Apr,May,Jun,Jul,Aug,Sep,Oct,Nov,Dec".Split(',');
 
             for (int i = 0; i < expected.Length; i++) {
-                
+
                 DateTime dt = new DateTime(2014, i + 1, 15);
 
                 DateTimeOffset dto = dt;
@@ -716,11 +716,11 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in expected) {
-                
+
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
-                    
+
                     DateTime dt = new DateTime(2014, i + 1, 15);
 
                     DateTimeOffset dto = dt;
@@ -755,11 +755,11 @@ namespace UnitTestProject1.Time {
             };
 
             foreach (var sample in expected) {
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
 
                     CultureInfo culture = new CultureInfo(sample.Key);
-                    
+
                     DateTime dt = new DateTime(2014, i + 1, 15);
 
                     DateTimeOffset dto = dt;
@@ -792,7 +792,7 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             for (int i = 0; i < expected.Length; i++) {
-                
+
                 DateTime dt = start.AddDays(i);
 
                 DateTimeOffset dto = dt;
@@ -825,7 +825,7 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             for (int i = 0; i < expected.Length; i++) {
-                
+
                 DateTime dt = start.AddDays(i);
 
                 DateTimeOffset dto = dt;
@@ -860,11 +860,11 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             foreach (var sample in expected) {
-                
+
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
-                    
+
                     DateTime dt = start.AddDays(i);
 
                     DateTimeOffset dto = dt;
@@ -874,7 +874,7 @@ namespace UnitTestProject1.Time {
                     Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt.DayOfWeek), "#1");
 
                     Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt), "#2");
-                    
+
                     Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt), "#3");
 
                     Assert.AreEqual(sample.Value[i], dt.GetLocalDayName(), "#4");
@@ -903,9 +903,9 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             foreach (var sample in expected) {
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
-                    
+
                     DateTime dt = start.AddDays(i);
 
                     DateTimeOffset dto = dt;
@@ -915,7 +915,7 @@ namespace UnitTestProject1.Time {
                     Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt.DayOfWeek, culture));
 
                     Assert.AreEqual(sample.Value[i], TimeHelper.GetLocalDayName(dt, culture));
-                    
+
                     Assert.AreEqual(sample.Value[i], TimeUtils.GetLocalDayName(dt, culture));
 
                     Assert.AreEqual(sample.Value[i], dt.GetLocalDayName(new CultureInfo(sample.Key)));
@@ -942,11 +942,11 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             foreach (var sample in expected) {
-                
+
                 Thread.CurrentThread.CurrentCulture = new CultureInfo(sample.Key);
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
-                    
+
                     DateTime dt = start.AddDays(i);
 
                     DateTimeOffset dto = dt;
@@ -983,9 +983,9 @@ namespace UnitTestProject1.Time {
             DateTime start = new DateTime(2014, 11, 17);
 
             foreach (var sample in expected) {
-                
+
                 for (int i = 0; i < sample.Value.Length; i++) {
-                    
+
                     DateTime dt = start.AddDays(i);
 
                     DateTimeOffset dto = dt;
@@ -1208,7 +1208,7 @@ namespace UnitTestProject1.Time {
 
             CultureInfo danish = new CultureInfo("da-DK");
 
-            var samples1 = new [] {
+            var samples1 = new[] {
                 new { Input = "January", Expected = EssentialsDateMonthName.January },
                 new { Input = "january", Expected = EssentialsDateMonthName.January },
                 new { Input = "February", Expected = EssentialsDateMonthName.February },
@@ -1397,7 +1397,7 @@ namespace UnitTestProject1.Time {
             Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 28)));
             Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 29)));
             Assert.AreEqual(2018, Iso8601Utils.GetYear(new DateTime(2018, 12, 30)));
-            
+
             // Week 1, 2019
             Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2018, 12, 31)));
             Assert.AreEqual(2019, Iso8601Utils.GetYear(new DateTime(2019, 1, 1)));

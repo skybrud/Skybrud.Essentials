@@ -2,7 +2,7 @@
 using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json {
-    
+
     internal static class JsonTokenUtils {
 
         internal static bool GetBoolean(JToken token) {
@@ -34,7 +34,7 @@ namespace Skybrud.Essentials.Json {
         internal static bool TryGetBoolean(JToken token, out bool result) {
 
             switch (token?.Type) {
-                
+
                 case JTokenType.Boolean:
                     result = token.Value<bool>();
                     return true;
@@ -42,15 +42,15 @@ namespace Skybrud.Essentials.Json {
                 case JTokenType.Integer:
 
                     switch (token.Value<int>()) {
-                        
+
                         case 0:
                             result = false;
                             return true;
-                        
+
                         case 1:
                             result = true;
                             return true;
-                        
+
                         default:
                             result = false;
                             return false;

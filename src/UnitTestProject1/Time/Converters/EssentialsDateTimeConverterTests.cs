@@ -1,16 +1,16 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time;
+using System;
 
 #pragma warning disable 618
 
 namespace UnitTestProject1.Time.Converters {
-    
+
     [TestClass]
     public class EssentialsDateTimeConverterTests {
-    
+
         [TestMethod]
         public void TestMethod1() {
 
@@ -40,7 +40,7 @@ namespace UnitTestProject1.Time.Converters {
             public EssentialsDateTime Timestamp { get; set; }
 
         }
-    
+
     }
 
 }

@@ -2,11 +2,11 @@
 using Skybrud.Essentials.Time;
 
 namespace UnitTestProject1.Time.National {
-    
+
     [TestClass]
     public class UnitedStatesDateTests {
 
-        #pragma warning disable 618
+#pragma warning disable 618
 
         [TestMethod]
         public void GetIndependenceDay() {
@@ -351,7 +351,7 @@ namespace UnitTestProject1.Time.National {
 
         }
 
-        #pragma warning restore 618
+#pragma warning restore 618
 
     }
 

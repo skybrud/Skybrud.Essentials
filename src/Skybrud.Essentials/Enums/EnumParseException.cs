@@ -1,7 +1,7 @@
 ﻿using System;
 
 namespace Skybrud.Essentials.Enums {
-    
+
     /// <summary>
     /// Class representing an exception for when a string cant be parsed into an enum value.
     /// </summary>
@@ -32,7 +32,7 @@ namespace Skybrud.Essentials.Enums {
             Type = type;
             Value = value;
         }
-        
+
         #endregion
 
         #region Member methods

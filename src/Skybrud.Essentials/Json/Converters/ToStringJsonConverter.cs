@@ -1,6 +1,6 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Globalization;
-using Newtonsoft.Json;
 
 namespace Skybrud.Essentials.Json.Converters {
 
@@ -9,7 +9,7 @@ namespace Skybrud.Essentials.Json.Converters {
     /// </summary>
     [Obsolete("Use the 'StringJsonConverter' class instead.")]
     public class ToStringJsonConverter : JsonConverter {
-        
+
         /// <inheritdoc />
         public override bool CanRead => false;
 

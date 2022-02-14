@@ -1,5 +1,5 @@
-﻿using System;
-using Skybrud.Essentials.Time.Iso8601;
+﻿using Skybrud.Essentials.Time.Iso8601;
+using System;
 
 namespace Skybrud.Essentials.Time {
 

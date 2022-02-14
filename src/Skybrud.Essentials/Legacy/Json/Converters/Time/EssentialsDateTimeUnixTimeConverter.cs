@@ -1,8 +1,8 @@
-﻿using System;
-using Skybrud.Essentials.Time;
+﻿using Skybrud.Essentials.Time;
+using System;
 
 namespace Skybrud.Essentials.Json.Converters.Time {
-    
+
     /// <summary>
     /// Converts an instance of <see cref="EssentialsDateTime"/> to and from a Unix timestamp.
     /// </summary>

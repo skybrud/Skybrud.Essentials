@@ -9,7 +9,7 @@ using System.Collections.Specialized;
 using System.Net;
 
 namespace UnitTestProject1.Json.Converters {
-    
+
     [TestClass]
     public class StringJsonConverterTests {
 
@@ -66,7 +66,7 @@ namespace UnitTestProject1.Json.Converters {
             };
 
             Sample2 sample = obj.ToObject<Sample2>();
-            
+
             Assert.AreEqual(HttpStatusCode.InternalServerError, sample.Value);
 
         }

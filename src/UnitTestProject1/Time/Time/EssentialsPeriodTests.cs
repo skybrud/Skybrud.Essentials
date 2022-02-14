@@ -1,9 +1,9 @@
-﻿using System;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+using System;
 
 namespace UnitTestProject1.Time.Time {
-    
+
     [TestClass]
     public class EssentialsPeriodTests {
 
@@ -34,7 +34,7 @@ namespace UnitTestProject1.Time.Time {
             Assert.AreEqual("2021-10-31T23:59:59+01:00", period.End.ToString(), "End");
 
         }
-        
+
 
         [TestMethod]
         public void Yesterday1() {
@@ -127,7 +127,7 @@ namespace UnitTestProject1.Time.Time {
 
         [TestMethod]
         public void NextWeekendRomanceStandardTime2() {
-            
+
             TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
 
             var start = new DateTimeOffset(2021, 3, 22, 0, 0, 0, TimeSpan.FromHours(1));
@@ -137,7 +137,7 @@ namespace UnitTestProject1.Time.Time {
 
                 EssentialsPeriod period = EssentialsPeriod.NextWeekend(time, romance);
 
-                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int) time.DayOfWeek})\r\n\r\n";
+                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
                 switch (time.DayOfWeek) {
 
@@ -202,7 +202,7 @@ namespace UnitTestProject1.Time.Time {
 
             var s1 = new DateTimeOffset(2021, 3, 22, 1, 0, 0, TimeSpan.FromHours(1));
             var e1 = new DateTimeOffset(2021, 3, 27, 0, 59, 59, TimeSpan.FromHours(1));
-            
+
             var s2 = new DateTimeOffset(2021, 3, 27, 1, 0, 0, TimeSpan.FromHours(1));
             var e2 = new DateTimeOffset(2021, 3, 28, 23, 59, 59, TimeSpan.FromHours(2));
 
@@ -211,7 +211,7 @@ namespace UnitTestProject1.Time.Time {
 
                 EssentialsPeriod period = EssentialsPeriod.NextWeekend(time, utc);
 
-                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int) time.DayOfWeek})\r\n\r\n";
+                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
                 Assert.AreEqual("2021-03-27T00:00:00+00:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
                 Assert.AreEqual("2021-03-28T23:59:59+00:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
@@ -223,7 +223,7 @@ namespace UnitTestProject1.Time.Time {
 
                 EssentialsPeriod period = EssentialsPeriod.NextWeekend(time, utc);
 
-                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int) time.DayOfWeek})\r\n\r\n";
+                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
                 Assert.AreEqual("2021-04-03T00:00:00+00:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
                 Assert.AreEqual("2021-04-04T23:59:59+00:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
@@ -282,7 +282,7 @@ namespace UnitTestProject1.Time.Time {
 
                 EssentialsPeriod period = EssentialsPeriod.NextWeekend(time, romance);
 
-                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int) time.DayOfWeek})\r\n\r\n";
+                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
                 Assert.AreEqual("2021-03-27T00:00:00+01:00", period.Start.ToString(), "\r\n\r\n1: START\r\n" + message);
                 Assert.AreEqual("2021-03-28T23:59:59+02:00", period.End.ToString(), "\r\n\r\n1: END\r\n" + message);
@@ -293,7 +293,7 @@ namespace UnitTestProject1.Time.Time {
 
                 EssentialsPeriod period = EssentialsPeriod.NextWeekend(time, romance);
 
-                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int) time.DayOfWeek})\r\n\r\n";
+                string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
                 Assert.AreEqual("2021-04-03T00:00:00+02:00", period.Start.ToString(), "\r\n\r\n2: START\r\n" + message);
                 Assert.AreEqual("2021-04-04T23:59:59+02:00", period.End.ToString(), "\r\n\r\n2: END\r\n" + message);
@@ -334,7 +334,7 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period2 = EssentialsPeriod.ThisWeek(sample2, romance);
             Assert.AreEqual("2021-10-25T00:00:00+02:00", period2.Start.ToString(), "#2 Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00",period2.End.ToString(), "#2 End");
+            Assert.AreEqual("2021-10-31T23:59:59+01:00", period2.End.ToString(), "#2 End");
 
         }
 
@@ -370,7 +370,7 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period2 = EssentialsPeriod.ThisMonth(sample2, romance);
             Assert.AreEqual("2021-10-01T00:00:00+02:00", period2.Start.ToString(), "#2 Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00",period2.End.ToString(), "#2 End");
+            Assert.AreEqual("2021-10-31T23:59:59+01:00", period2.End.ToString(), "#2 End");
 
         }
 

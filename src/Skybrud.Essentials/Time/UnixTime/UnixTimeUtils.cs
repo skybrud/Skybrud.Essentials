@@ -8,16 +8,16 @@ namespace Skybrud.Essentials.Time.UnixTime {
     public static class UnixTimeUtils {
 
         #region Constants
-        
+
         /// <summary>
         /// Gets an instance of <see cref="DateTime"/> representing the start of the Unix epoch.
         /// </summary>
-        private static readonly DateTime DateTimeUnixTimeStartUtc = new (1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
-        
+        private static readonly DateTime DateTimeUnixTimeStartUtc = new(1970, 1, 1, 0, 0, 0, 0, DateTimeKind.Utc);
+
         /// <summary>
         /// Gets an instance of <see cref="DateTimeOffset"/> representing the start of the Unix epoch.
         /// </summary>
-        private static readonly DateTimeOffset DateTimeOffsetUnixTimeStartUtc = new (1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
+        private static readonly DateTimeOffset DateTimeOffsetUnixTimeStartUtc = new(1970, 1, 1, 0, 0, 0, 0, TimeSpan.Zero);
 
         #endregion
 
@@ -76,7 +76,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         public static DateTimeOffset FromSeconds(string seconds) {
             return DateTimeOffsetUnixTimeStartUtc.AddSeconds(long.Parse(seconds));
         }
-        
+
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
         /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
@@ -154,9 +154,9 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
         /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
         public static long ToInt64(DateTime timestamp, UnixTimeFormat format) {
-            return (long) ToDouble(timestamp, format);
+            return (long)ToDouble(timestamp, format);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="timestamp"/> to a <see cref="long"/> according to <paramref name="format"/>.
         /// </summary>
@@ -164,9 +164,9 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
         /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
         public static long ToInt64(DateTimeOffset timestamp, UnixTimeFormat format) {
-            return (long) ToDouble(timestamp, format);
+            return (long)ToDouble(timestamp, format);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="timestamp"/> to a <see cref="long"/> according to <paramref name="format"/>.
         /// </summary>
@@ -174,9 +174,9 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
         /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
         public static long ToInt64(EssentialsTime timestamp, UnixTimeFormat format) {
-            return (long) ToDouble(timestamp.DateTimeOffset, format);
+            return (long)ToDouble(timestamp.DateTimeOffset, format);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="timestamp"/> to a <see cref="double"/> according to <paramref name="format"/>.
         /// </summary>
@@ -186,7 +186,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         public static double ToDouble(DateTime timestamp, UnixTimeFormat format) {
             return format == UnixTimeFormat.Seconds ? ToSeconds(timestamp) : ToMilliseconds(timestamp);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="timestamp"/> to a <see cref="double"/> according to <paramref name="format"/>.
         /// </summary>
@@ -196,7 +196,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         public static double ToDouble(DateTimeOffset timestamp, UnixTimeFormat format) {
             return format == UnixTimeFormat.Seconds ? ToSeconds(timestamp) : ToMilliseconds(timestamp);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="timestamp"/> to a <see cref="double"/> according to <paramref name="format"/>.
         /// </summary>
@@ -206,7 +206,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         public static double ToDouble(EssentialsTime timestamp, UnixTimeFormat format) {
             return ToDouble(timestamp.DateTimeOffset, format);
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="timestamp"/> to an instance of <see cref="DateTime"/>.
         /// </summary>
@@ -216,7 +216,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         public static DateTime ToDateTime(double timestamp, UnixTimeFormat format) {
             return (format == UnixTimeFormat.Seconds ? FromSeconds(timestamp) : FromMilliseconds(timestamp)).DateTime;
         }
-        
+
         /// <summary>
         /// Converts the specified <paramref name="timestamp"/> to an instance of <see cref="DateTime"/>.
         /// </summary>

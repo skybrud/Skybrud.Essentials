@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Strings {
         public static bool IsFloat(string str) {
             return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out _);
         }
-        
+
         /// <summary>
         /// Parses the specified <paramref name="str"/> into an instance of <see cref="float"/>. If the parsing fails,
         /// the default value of <see cref="float"/> will be returned instead.
