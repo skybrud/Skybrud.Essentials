@@ -147,6 +147,86 @@ namespace Skybrud.Essentials.Time.UnixTime {
             return (timestamp.ToUniversalTime() - DateTimeOffsetUnixTimeStartUtc).TotalMilliseconds;
         }
 
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to a <see cref="long"/> according to <paramref name="format"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
+        public static long ToInt64(DateTime timestamp, UnixTimeFormat format) {
+            return (long) ToDouble(timestamp, format);
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to a <see cref="long"/> according to <paramref name="format"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
+        public static long ToInt64(DateTimeOffset timestamp, UnixTimeFormat format) {
+            return (long) ToDouble(timestamp, format);
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to a <see cref="long"/> according to <paramref name="format"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
+        public static long ToInt64(EssentialsTime timestamp, UnixTimeFormat format) {
+            return (long) ToDouble(timestamp.DateTimeOffset, format);
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to a <see cref="double"/> according to <paramref name="format"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>The timestamp as an instance of <see cref="double"/></returns>.
+        public static double ToDouble(DateTime timestamp, UnixTimeFormat format) {
+            return format == UnixTimeFormat.Seconds ? ToSeconds(timestamp) : ToMilliseconds(timestamp);
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to a <see cref="double"/> according to <paramref name="format"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>The timestamp as an instance of <see cref="double"/></returns>.
+        public static double ToDouble(DateTimeOffset timestamp, UnixTimeFormat format) {
+            return format == UnixTimeFormat.Seconds ? ToSeconds(timestamp) : ToMilliseconds(timestamp);
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to a <see cref="double"/> according to <paramref name="format"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>The timestamp as an instance of <see cref="double"/></returns>.
+        public static double ToDouble(EssentialsTime timestamp, UnixTimeFormat format) {
+            return ToDouble(timestamp.DateTimeOffset, format);
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to an instance of <see cref="DateTime"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format of <paramref name="timestamp"/> - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>An instance of <see cref="DateTime"/>.</returns>.
+        public static DateTime ToDateTime(double timestamp, UnixTimeFormat format) {
+            return (format == UnixTimeFormat.Seconds ? FromSeconds(timestamp) : FromMilliseconds(timestamp)).DateTime;
+        }
+        
+        /// <summary>
+        /// Converts the specified <paramref name="timestamp"/> to an instance of <see cref="DateTime"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp to be converted.</param>
+        /// <param name="format">The format of <paramref name="timestamp"/> - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
+        /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>.
+        public static DateTimeOffset ToDateTimeOffset(double timestamp, UnixTimeFormat format) {
+            return format == UnixTimeFormat.Seconds ? FromSeconds(timestamp) : FromMilliseconds(timestamp);
+        }
+
         #endregion
 
     }
