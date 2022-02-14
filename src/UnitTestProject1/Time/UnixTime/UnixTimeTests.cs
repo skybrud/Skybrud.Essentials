@@ -8,6 +8,48 @@ namespace UnitTestProject1.Time.UnixTime {
     
     [TestClass]
     public class UnixTimeTests {
+        
+        [TestMethod]
+        public void CurrentSeconds() {
+
+            double actual = UnixTimeUtils.CurrentSeconds;
+            
+            // Since Unix time is calculated back to UTC, using "DateTime.Now" and "DateTime.UtcNow" should give the
+            // same result
+            double expected1 = UnixTimeUtils.ToSeconds(DateTime.Now);
+            double expected2 = UnixTimeUtils.ToSeconds(DateTime.UtcNow);
+
+            Assert.AreEqual(expected2, expected1);
+
+            // Comparing against current time is always tricky. If this is the first test to run, there may be a ~100 ms
+            // difference between the actual and expected timestamps. If other tests have run first, the two timestamps
+            // so far seem to be the same ¯\_(ツ)_/¯
+
+            // Since the important part we want to test here is that the two timestamps are based on the same timezone,
+            // we can confirm this by checking that "delta" is below 1 second.
+            
+            double delta1 = Math.Abs(actual - expected1);
+            double delta2 = Math.Abs(actual - expected2);
+            
+            Assert.IsTrue(delta1 < 1, "#1");
+            Assert.IsTrue(delta2 < 1, "#2");
+
+        }
+        
+        [TestMethod]
+        public void CurrentMilliseconds() {
+
+            double actual = UnixTimeUtils.CurrentMilliseconds;
+            
+            // Since Unix time is calculated back to UTC, using "DateTime.Now" and "DateTime.UtcNow" should give the
+            // same result
+            double expected1 = UnixTimeUtils.ToMilliseconds(DateTime.Now);
+            double expected2 = UnixTimeUtils.ToMilliseconds(DateTime.UtcNow);
+            
+            Assert.AreEqual(expected2, actual);
+            Assert.AreEqual(expected2, expected1);
+
+        }
 
         [TestMethod]
         public void FromSecondsInt32_NormalTime() {
