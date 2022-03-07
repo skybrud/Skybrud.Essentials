@@ -32,16 +32,16 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <summary>
         /// ISO 8601 date and time format, including milliseconds.
         /// </summary>
-        public const string DateTimeMilliseconds = "yyyy-MM-ddTHH:mm:ssfffK";
+        public const string DateTimeMilliseconds = "yyyy-MM-ddTHH:mm:ss.fffK";
 
         /// <summary>
         /// An array with known ISO 8601 date time formats used when attempt to parse ISO 8601 values.
         /// </summary>
         internal static readonly string[] DateTimeFormats = {
             "yyyy-MM-ddTHH:mm:ssZ",
-            "yyyy-MM-ddTHH:mm:ssK",
+            DateTimeSeconds,
             "yyyy-MM-ddTHH:mm:ss.fffZ",
-            "yyyy-MM-ddTHH:mm:ss.fffK"
+            DateTimeMilliseconds
         };
 
     }
