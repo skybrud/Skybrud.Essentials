@@ -1,7 +1,9 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
+using Skybrud.Essentials.Time.Iso8601;
 using System;
 using System.Globalization;
+using static UnitTestProject1.TestConstants;
 
 namespace UnitTestProject1.Time.Time {
 
@@ -486,6 +488,122 @@ namespace UnitTestProject1.Time.Time {
 
             // Offset is now +00:00 instead of Z (difference between DateTimeOffset and DateTime)
             Assert.AreEqual("2021-01-13T22:00:00+00:00", time.ToString("yyyy-MM-ddTHH:mm:ssK"), "#4");
+
+        }
+
+        [TestMethod]
+        public new void ToString() {
+
+            EssentialsTime time = new DateTimeOffset(2022, 3, 7, 17, 50, 23, 123, TimeSpan.FromHours(1));
+
+            // "EssentialsTime" differs from "DateTimeOffset" in the way that the "ToString" methods is based on an
+            // invariant culture if not culture is explicitly specified.
+
+            using (new CultureDisposable(InvariantCulture)) {
+                string actual = time.ToString();
+                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual, "#1");
+            }
+
+            using (new CultureDisposable(DanishCulture)) {
+                string actual = time.ToString();
+                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual, "#2");
+            }
+
+        }
+
+        [TestMethod]
+        public void ToStringFormat() {
+
+            EssentialsTime time = new DateTimeOffset(2022, 3, 7, 17, 50, 23, 123, TimeSpan.FromHours(1));
+
+            // "EssentialsTime" differs from "DateTimeOffset" in the way that the "ToString" methods is based on an
+            // invariant culture if not culture is explicitly specified.
+
+            using (new CultureDisposable(InvariantCulture)) {
+                string actual = time.ToString("F");
+                Assert.AreEqual("Monday, 07 March 2022 17:50:23", actual, "#1");
+            }
+
+            using (new CultureDisposable(DanishCulture)) {
+                string actual = time.ToString("F");
+                Assert.AreEqual("Monday, 07 March 2022 17:50:23", actual, "#2");
+            }
+
+
+        }
+
+        [TestMethod]
+        public void ToIso8601Seconds() {
+
+            DateTimeOffset dto = new DateTimeOffset(2022, 3, 7, 17, 50, 23, 123, TimeSpan.FromHours(1));
+
+            EssentialsTime time = new EssentialsTime(dto);
+
+            using (new CultureDisposable(InvariantCulture)) {
+
+                string actual1 = dto.ToString(Iso8601Constants.DateTimeSeconds, CultureInfo.InvariantCulture);
+                string actual2 = time.ToString(Iso8601Constants.DateTimeSeconds);
+
+                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual1, "#1");
+                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual2, "#2");
+
+            }
+
+            using (new CultureDisposable(DanishCulture)) {
+
+                string actual1 = dto.ToString(Iso8601Constants.DateTimeSeconds, CultureInfo.InvariantCulture);
+                string actual2 = time.ToString(Iso8601Constants.DateTimeSeconds);
+
+                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual1, "#3");
+                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual2, "#4");
+
+            }
+
+        }
+
+        [TestMethod]
+        public void ToIso8601Milliseconds() {
+
+            DateTimeOffset dto = new DateTimeOffset(2022, 3, 7, 17, 50, 23, 123, TimeSpan.FromHours(1));
+
+            EssentialsTime time = new EssentialsTime(dto);
+
+            using (new CultureDisposable(InvariantCulture)) {
+
+                string actual1 = dto.ToString(Iso8601Constants.DateTimeMilliseconds, CultureInfo.InvariantCulture);
+                string actual2 = time.ToString(Iso8601Constants.DateTimeMilliseconds);
+
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual1, "#1");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual2, "#2");
+
+            }
+
+            using (new CultureDisposable(DanishCulture)) {
+
+                string actual1 = dto.ToString(Iso8601Constants.DateTimeMilliseconds, CultureInfo.InvariantCulture);
+                string actual2 = time.ToString(Iso8601Constants.DateTimeMilliseconds);
+
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual1, "#3");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual2, "#4");
+
+            }
+
+        }
+
+        [TestMethod]
+        public void TryParseFormat() {
+
+            bool success1 = EssentialsTime.TryParse("2022-03-07T17:50:23.123+01:00", out EssentialsTime result1);
+            string actual1 = result1.ToString(Iso8601Constants.DateTimeMilliseconds);
+
+            bool success2 = EssentialsTime.TryParse("Monday, 07 March 2022 17:50:23", out EssentialsTime result2);
+            string actual2 = result2.ToString(Iso8601Constants.DateTimeMilliseconds);
+
+            Assert.IsTrue(success1);
+            Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual1);
+
+            Assert.IsTrue(success2);
+            Assert.AreEqual("2022-03-07T17:50:23.000+01:00", actual2);
 
         }
 
