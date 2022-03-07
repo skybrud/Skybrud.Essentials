@@ -678,7 +678,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="format">A standard or custom date and time format string.</param>
         /// <returns>A string representation of value of the current <see cref="EssentialsTime"/> object as specified by <paramref name="format"/>.</returns>
         public string ToString(string format) {
-            return DateTimeOffset.ToString(format);
+            return DateTimeOffset.ToString(format, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
