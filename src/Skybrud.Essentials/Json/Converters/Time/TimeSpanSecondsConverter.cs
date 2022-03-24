@@ -17,7 +17,22 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-            if (value is TimeSpan ts) writer.WriteRawValue(ts.TotalSeconds.ToString(CultureInfo.InvariantCulture));
+
+            switch (value) {
+
+                case null:
+                    writer.WriteNull();
+                    break;
+
+                case TimeSpan ts:
+                    writer.WriteRawValue(ts.TotalSeconds.ToString(CultureInfo.InvariantCulture));
+                    break;
+
+                default:
+                    throw new JsonSerializationException($"Unsupported type: {value.GetType()}");
+
+            }
+
         }
 
         /// <summary>
@@ -30,19 +45,19 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <returns>The object value.</returns>
         public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
 
-            if (objectType != typeof(TimeSpan)) throw new JsonSerializationException("Object type " + objectType + " is not supported");
+            if (objectType != typeof(TimeSpan) && objectType != typeof(TimeSpan?)) throw new JsonSerializationException($"Object type {objectType} is not supported");
 
             switch (reader.TokenType) {
 
                 case JsonToken.Null:
-                    return default(TimeSpan);
+                    return objectType != typeof(TimeSpan?) ? null : default(TimeSpan);
 
                 case JsonToken.Integer:
                 case JsonToken.Float:
-                    return TimeSpan.FromSeconds((double)Convert.ChangeType(reader.Value, typeof(double), CultureInfo.InvariantCulture));
+                    return TimeSpan.FromSeconds((double) Convert.ChangeType(reader.Value, typeof(double), CultureInfo.InvariantCulture));
 
                 default:
-                    throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);
+                    throw new JsonSerializationException($"Unexpected token type: {reader.TokenType}");
 
             }
 
@@ -54,7 +69,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="objectType">Type of the object.</param>
         /// <returns><c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.</returns>
         public override bool CanConvert(Type objectType) {
-            return objectType == typeof(TimeSpan);
+            return objectType == typeof(TimeSpan) || objectType == typeof(TimeSpan?);
         }
 
     }
