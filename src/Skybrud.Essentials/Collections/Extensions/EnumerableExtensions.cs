@@ -147,6 +147,105 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return order == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
         }
 
+        /// <summary>
+        /// Deconstructs the specified <paramref name="collection"/>.
+        /// </summary>
+        /// <typeparam name="T">The tpye of the items of the collection.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="first">When this method returns, holds the first item if the collection has at least one item;
+        /// otherwise, the default value of <typeparamref name="T"/>.</param>
+        /// <param name="second">When this method returns, holds the second item if the collection has at least two
+        /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
+        public static void Deconstruct<T>(this IEnumerable<T> collection, out T first, out T second) {
+
+            first = default;
+            second = default;
+
+            int i = 0;
+
+            foreach (T item in collection) {
+
+                switch (i) {
+                    case 0:
+                        first = item;
+                        break;
+                    case 1:
+                        second = item;
+                        break;
+                    default:
+                        return;
+                }
+
+                i++;
+
+            }
+
+        }
+
+        /// <summary>
+        /// Deconstructs the specified <paramref name="collection"/>.
+        /// </summary>
+        /// <typeparam name="T">The tpye of the items of the collection.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="first">When this method returns, holds the first item if the collection has at least one item;
+        /// otherwise, the default value of <typeparamref name="T"/>.</param>
+        /// <param name="second">When this method returns, holds the second item if the collection has at least two
+        /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
+        /// <param name="third">When this method returns, holds the third item if the collection has at least three
+        /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
+        public static void Deconstruct<T>(this IEnumerable<T> collection, out T first, out T second, out T third) {
+
+            first = default;
+            second = default;
+            third = default;
+
+            int i = 0;
+
+            foreach (T item in collection) {
+                switch (i++) {
+                    case 0: first = item; break;
+                    case 1: second = item; break;
+                    case 2: third = item; break;
+                    default: return;
+                }
+            }
+
+        }
+
+        /// <summary>
+        /// Deconstructs the specified <paramref name="collection"/>.
+        /// </summary>
+        /// <typeparam name="T">The tpye of the items of the collection.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <param name="first">When this method returns, holds the first item if the collection has at least one item;
+        /// otherwise, the default value of <typeparamref name="T"/>.</param>
+        /// <param name="second">When this method returns, holds the second item if the collection has at least two
+        /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
+        /// <param name="third">When this method returns, holds the third item if the collection has at least three
+        /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
+        /// <param name="fourth">When this method returns, holds the fourth item if the collection has at least four
+        /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
+        public static void Deconstruct<T>(this IEnumerable<T> collection, out T first, out T second, out T third, out T fourth) {
+
+            first = default;
+            second = default;
+            third = default;
+            fourth = default;
+
+            int i = 0;
+
+            foreach (T item in collection) {
+                switch (i++) {
+                    case 0: first = item; break;
+                    case 1: second = item; break;
+                    case 2: third = item; break;
+                    case 3: fourth = item; break;
+                    default: return;
+                }
+            }
+
+        }
+
     }
 
 }

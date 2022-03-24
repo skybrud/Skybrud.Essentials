@@ -178,6 +178,152 @@ namespace UnitTestProject1.Collections {
 
         }
 
+        [TestMethod]
+        public void DeconstructTwo1() {
+
+            int iterations = 0;
+
+            IEnumerable<string> GetCollection() {
+                iterations++;
+                yield return "A";
+            }
+
+            IEnumerable<string> collection = GetCollection();
+
+            (string a, string b) = collection;
+
+            Assert.AreEqual("A", a);
+            Assert.IsNull(b);
+
+            Assert.AreEqual(1, iterations);
+
+        }
+
+        [TestMethod]
+        public void DeconstructTwo2() {
+
+            int iterations = 0;
+
+            IEnumerable<string> GetCollection() {
+                iterations++;
+                yield return "A";
+                yield return "B";
+                yield return "C";
+                yield return "D";
+                yield return "E";
+            }
+
+            IEnumerable<string> collection = GetCollection();
+
+            (string a, string b) = collection;
+
+            Assert.AreEqual("A", a);
+            Assert.AreEqual("B", b);
+
+            Assert.AreEqual(1, iterations);
+
+        }
+
+        [TestMethod]
+        public void DeconstructThree1() {
+
+            int iterations = 0;
+
+            IEnumerable<string> GetCollection() {
+                iterations++;
+                yield return "A";
+                yield return "B";
+            }
+
+            IEnumerable<string> collection = GetCollection();
+
+            (string a, string b, string c) = collection;
+
+            Assert.AreEqual("A", a);
+            Assert.AreEqual("B", b);
+            Assert.IsNull(c);
+
+            Assert.AreEqual(1, iterations);
+
+        }
+
+        [TestMethod]
+        public void DeconstructThree2() {
+
+            int iterations = 0;
+
+            IEnumerable<string> GetCollection() {
+                iterations++;
+                yield return "A";
+                yield return "B";
+                yield return "C";
+                yield return "D";
+                yield return "E";
+            }
+
+            IEnumerable<string> collection = GetCollection();
+
+            (string a, string b, string c) = collection;
+
+            Assert.AreEqual("A", a);
+            Assert.AreEqual("B", b);
+            Assert.AreEqual("C", c);
+
+            Assert.AreEqual(1, iterations);
+
+        }
+
+        [TestMethod]
+        public void DeconstructFour1() {
+
+            int iterations = 0;
+
+            IEnumerable<string> GetCollection() {
+                iterations++;
+                yield return "A";
+                yield return "B";
+            }
+
+            IEnumerable<string> collection = GetCollection();
+
+            (string a, string b, string c, string d) = collection;
+
+            Assert.AreEqual("A", a);
+            Assert.AreEqual("B", b);
+            Assert.IsNull(c);
+            Assert.IsNull(d);
+
+            Assert.AreEqual(1, iterations);
+
+        }
+
+        [TestMethod]
+        public void DeconstructFour2() {
+
+            int iterations = 0;
+
+            IEnumerable<string> GetCollection() {
+                iterations++;
+                yield return "A";
+                yield return "B";
+                yield return "C";
+                yield return "D";
+                yield return "E";
+            }
+
+            IEnumerable<string> collection = GetCollection();
+
+            (string a, string b, string c, string d) = collection;
+
+            Assert.AreEqual("A", a);
+            Assert.AreEqual("B", b);
+            Assert.AreEqual("C", c);
+            Assert.AreEqual("D", d);
+
+            Assert.AreEqual(1, iterations);
+
+        }
+
     }
 
 }
