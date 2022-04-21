@@ -781,6 +781,386 @@ namespace UnitTestProject1.Strings {
 
         }
 
+        [TestMethod]
+        public void Split1() {
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(' ', out string first);
+
+                Assert.AreEqual(sample.First, first, $"{n}.");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split2() {
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(' ', out string first, out string second);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split3() {
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(' ', out string first, out string second, out string third);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+                Assert.AreEqual(sample.Third, third, $"{n}. - third");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split4() {
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(' ', out string first, out string second, out string third, out string fourth);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+                Assert.AreEqual(sample.Third, third, $"{n}. - third");
+                Assert.AreEqual(sample.Fourth, fourth, $"{n}. - fourth");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split5() {
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(' ', out string first, out string second, out string third, out string fourth, out string fifth);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+                Assert.AreEqual(sample.Third, third, $"{n}. - third");
+                Assert.AreEqual(sample.Fourth, fourth, $"{n}. - fourth");
+                Assert.AreEqual(sample.Fifth, fifth, $"{n}. - fifth");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split1_Separators() {
+
+            char[] separators = { ' ', ',', '\n' };
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3,4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1,2,3,4,5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1,2,3,4,5,6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3\n4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1\n2\n3\n4\n5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1\n2\n3\n4\n5\n6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(separators, out string first);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split2_Separators() {
+
+            char[] separators = { ' ', ',', '\n' };
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3,4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1,2,3,4,5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1,2,3,4,5,6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3\n4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1\n2\n3\n4\n5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1\n2\n3\n4\n5\n6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(separators, out string first, out string second);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split3_Separators() {
+
+            char[] separators = { ' ', ',', '\n' };
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3,4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1,2,3,4,5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1,2,3,4,5,6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3\n4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1\n2\n3\n4\n5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1\n2\n3\n4\n5\n6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(separators, out string first, out string second, out string third);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+                Assert.AreEqual(sample.Third, third, $"{n}. - third");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split4_Separators() {
+
+            char[] separators = { ' ', ',', '\n' };
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3,4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1,2,3,4,5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1,2,3,4,5,6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3\n4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1\n2\n3\n4\n5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1\n2\n3\n4\n5\n6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(separators, out string first, out string second, out string third, out string fourth);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+                Assert.AreEqual(sample.Third, third, $"{n}. - third");
+                Assert.AreEqual(sample.Fourth, fourth, $"{n}. - fourth");
+
+                n++;
+
+            }
+
+        }
+
+        [TestMethod]
+        public void Split5_Separators() {
+
+            char[] separators = { ' ', ',', '\n' };
+
+            string nope = null;
+
+            var samples = new[] {
+                new { Input = nope, First = nope, Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1 2 3 4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1 2 3 4 5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1 2 3 4 5 6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1,2,3,4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1,2,3,4,5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1,2,3,4,5,6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1", First = "1", Second = nope, Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2", First = "1", Second = "2", Third = nope, Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3", First = "1", Second = "2", Third = "3", Fourth = nope, Fifth = nope },
+                new { Input = "1\n2\n3\n4", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = nope },
+                new { Input = "1\n2\n3\n4\n5", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" },
+                new { Input = "1\n2\n3\n4\n5\n6", First = "1", Second = "2", Third = "3", Fourth = "4", Fifth = "5" }
+            };
+
+            int n = 1;
+
+            foreach (var sample in samples) {
+
+                sample.Input.Split(separators, out string first, out string second, out string third, out string fourth, out string fifth);
+
+                Assert.AreEqual(sample.First, first, $"{n}. - first");
+                Assert.AreEqual(sample.Second, second, $"{n}. - second");
+                Assert.AreEqual(sample.Third, third, $"{n}. - third");
+                Assert.AreEqual(sample.Fourth, fourth, $"{n}. - fourth");
+                Assert.AreEqual(sample.Fifth, fifth, $"{n}. - fifth");
+
+                n++;
+
+            }
+
+        }
+
         public class SingularPluralTestItem {
 
             public string Singular { get; private set; }
