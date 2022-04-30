@@ -655,6 +655,15 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Subtracts a specified time interval from the current <see cref="EssentialsTime"/> object.
+        /// </summary>
+        /// <param name="value">The time interval to subtract.</param>
+        /// <returns>An object that is equal to the date and time represented by the current DateTimeOffset object, minus the time interval represented by value.</returns>
+        public EssentialsTime Subtract(TimeSpan value) {
+            return new EssentialsTime(DateTimeOffset.Subtract(value), TimeZone);
+        }
+
+        /// <summary>
         /// Converts the value of the current <see cref="EssentialsTime"/> to its equivalent string representation.
         /// </summary>
         /// <returns>A string representation of value of the current <see cref="EssentialsTime"/> object.</returns>
