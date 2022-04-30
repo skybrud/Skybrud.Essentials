@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Net;
 using System.Xml;
 using System.Xml.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
 
@@ -20,8 +20,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            string attr1 = root.GetAttributeValue((XName)"attr");
-            int attr2 = root.GetAttributeValue((XName)"integer", Int32.Parse);
+            string attr1 = root.GetAttributeValue((XName) "attr");
+            int attr2 = root.GetAttributeValue((XName) "integer", Int32.Parse);
             string attr3 = root.GetAttributeValue("element/child/@number");
             string attr4 = root.GetAttributeValue("test:element/test:child/@number", namespaces);
             int attr5 = root.GetAttributeValue("element/child/@number", Int32.Parse);
@@ -45,8 +45,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            int attr1 = root.GetAttributeValueAsInt32((XName)"integer");
-            string attr2 = root.GetAttributeValueAsInt32((XName)"integer", TestHelpers.ToString);
+            int attr1 = root.GetAttributeValueAsInt32((XName) "integer");
+            string attr2 = root.GetAttributeValueAsInt32((XName) "integer", TestHelpers.ToString);
             int attr3 = root.GetAttributeValueAsInt32("element/child/@number");
             int attr4 = root.GetAttributeValueAsInt32("test:element/test:child/@number", namespaces);
             string attr5 = root.GetAttributeValueAsInt32("element/child/@number", TestHelpers.ToString);
@@ -70,8 +70,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            long attr1 = root.GetAttributeValueAsInt64((XName)"long");
-            string attr2 = root.GetAttributeValueAsInt64((XName)"long", TestHelpers.ToString);
+            long attr1 = root.GetAttributeValueAsInt64((XName) "long");
+            string attr2 = root.GetAttributeValueAsInt64((XName) "long", TestHelpers.ToString);
             long attr3 = root.GetAttributeValueAsInt64("element/child/@long");
             long attr4 = root.GetAttributeValueAsInt64("test:element/test:child/@long", namespaces);
             string attr5 = root.GetAttributeValueAsInt64("element/child/@long", TestHelpers.ToString);
@@ -95,8 +95,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            float attr1 = root.GetAttributeValueAsSingle((XName)"pi");
-            string attr2 = root.GetAttributeValueAsSingle((XName)"pi", TestHelpers.ToString);
+            float attr1 = root.GetAttributeValueAsSingle((XName) "pi");
+            string attr2 = root.GetAttributeValueAsSingle((XName) "pi", TestHelpers.ToString);
             float attr3 = root.GetAttributeValueAsSingle("element/child/@pi");
             float attr4 = root.GetAttributeValueAsSingle("test:element/test:child/@pi", namespaces);
             string attr5 = root.GetAttributeValueAsSingle("element/child/@pi", TestHelpers.ToString);
@@ -120,8 +120,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            double attr1 = root.GetAttributeValueAsDouble((XName)"pi");
-            string attr2 = root.GetAttributeValueAsDouble((XName)"pi", TestHelpers.ToString);
+            double attr1 = root.GetAttributeValueAsDouble((XName) "pi");
+            string attr2 = root.GetAttributeValueAsDouble((XName) "pi", TestHelpers.ToString);
             double attr3 = root.GetAttributeValueAsDouble("element/child/@double");
             double attr4 = root.GetAttributeValueAsDouble("test:element/test:child/@double", namespaces);
             string attr5 = root.GetAttributeValueAsDouble("element/child/@double", TestHelpers.ToString);
@@ -141,14 +141,14 @@ namespace UnitTestProject1.Xml {
 
             XElement root = XElement.Load(TestHelpers.MapPath("~/Xml/Hest.xml"));
 
-            bool attr1 = root.GetAttributeValueAsBoolean((XName)"boolean1");
-            bool attr2 = root.GetAttributeValueAsBoolean((XName)"boolean2");
-            bool attr3 = root.GetAttributeValueAsBoolean((XName)"boolean3");
-            bool attr4 = root.GetAttributeValueAsBoolean((XName)"boolean4");
-            string attr5 = root.GetAttributeValueAsBoolean((XName)"boolean1", TestHelpers.ToString);
-            string attr6 = root.GetAttributeValueAsBoolean((XName)"boolean2", TestHelpers.ToString);
-            string attr7 = root.GetAttributeValueAsBoolean((XName)"boolean3", TestHelpers.ToString);
-            string attr8 = root.GetAttributeValueAsBoolean((XName)"boolean4", TestHelpers.ToString);
+            bool attr1 = root.GetAttributeValueAsBoolean((XName) "boolean1");
+            bool attr2 = root.GetAttributeValueAsBoolean((XName) "boolean2");
+            bool attr3 = root.GetAttributeValueAsBoolean((XName) "boolean3");
+            bool attr4 = root.GetAttributeValueAsBoolean((XName) "boolean4");
+            string attr5 = root.GetAttributeValueAsBoolean((XName) "boolean1", TestHelpers.ToString);
+            string attr6 = root.GetAttributeValueAsBoolean((XName) "boolean2", TestHelpers.ToString);
+            string attr7 = root.GetAttributeValueAsBoolean((XName) "boolean3", TestHelpers.ToString);
+            string attr8 = root.GetAttributeValueAsBoolean((XName) "boolean4", TestHelpers.ToString);
 
             Assert.AreEqual(true, attr1, "#1");
             Assert.AreEqual(false, attr2, "#2");

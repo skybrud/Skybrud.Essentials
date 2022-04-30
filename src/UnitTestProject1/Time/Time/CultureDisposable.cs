@@ -3,7 +3,7 @@ using System.Globalization;
 using System.Threading;
 
 namespace UnitTestProject1.Time.Time {
-    
+
     public class CultureDisposable : IDisposable {
 
         public CultureInfo OldCulture { get; }
@@ -26,7 +26,7 @@ namespace UnitTestProject1.Time.Time {
             OldUICulture = Thread.CurrentThread.CurrentUICulture;
             Thread.CurrentThread.CurrentCulture = Thread.CurrentThread.CurrentUICulture = culture;
         }
-        
+
         public void Dispose() {
             Thread.CurrentThread.CurrentCulture = OldCulture;
             Thread.CurrentThread.CurrentUICulture = OldUICulture;

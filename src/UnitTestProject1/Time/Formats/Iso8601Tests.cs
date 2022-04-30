@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Globalization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
-using System;
-using System.Globalization;
 using static Skybrud.Essentials.Time.Iso8601.Iso8601Constants;
 
 namespace UnitTestProject1.Time.Formats {

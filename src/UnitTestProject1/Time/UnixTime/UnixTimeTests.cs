@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.UnixTime;
-using System;
 
 namespace UnitTestProject1.Time.UnixTime {
 
@@ -252,7 +252,7 @@ namespace UnitTestProject1.Time.UnixTime {
             DateTime dt = new DateTime(2022, 2, 3, 11, 0, 0, DateTimeKind.Utc);
 
             // Cast to int as we don't really care about the milliseconds here
-            int result = (int)UnixTimeUtils.ToSeconds(dt);
+            int result = (int) UnixTimeUtils.ToSeconds(dt);
 
             // Do we have a match?
             Assert.AreEqual(1643886000, result);
@@ -267,8 +267,8 @@ namespace UnitTestProject1.Time.UnixTime {
             DateTimeOffset dto2 = new DateTimeOffset(2022, 2, 3, 12, 0, 0, TimeSpan.FromHours(1));
 
             // Cast to int as we don't really care about the milliseconds here
-            int result1 = (int)UnixTimeUtils.ToSeconds(dto1);
-            int result2 = (int)UnixTimeUtils.ToSeconds(dto2);
+            int result1 = (int) UnixTimeUtils.ToSeconds(dto1);
+            int result2 = (int) UnixTimeUtils.ToSeconds(dto2);
 
             // Do we have a match?
             Assert.AreEqual(1643886000, result1);
@@ -283,7 +283,7 @@ namespace UnitTestProject1.Time.UnixTime {
             DateTime dt = new DateTime(2022, 2, 3, 11, 0, 0, 123, DateTimeKind.Utc);
 
             // Cast to long as we don't really care about any decimals
-            long result = (long)UnixTimeUtils.ToMilliseconds(dt);
+            long result = (long) UnixTimeUtils.ToMilliseconds(dt);
 
             // Do we have a match?
             Assert.AreEqual(1643886000123, result);
@@ -298,8 +298,8 @@ namespace UnitTestProject1.Time.UnixTime {
             DateTimeOffset dto2 = new DateTimeOffset(2022, 2, 3, 12, 0, 0, 123, TimeSpan.FromHours(1));
 
             // Cast to long as we don't really care about any decimals
-            long result1 = (long)UnixTimeUtils.ToMilliseconds(dto1);
-            long result2 = (long)UnixTimeUtils.ToMilliseconds(dto2);
+            long result1 = (long) UnixTimeUtils.ToMilliseconds(dto1);
+            long result2 = (long) UnixTimeUtils.ToMilliseconds(dto2);
 
             // Do we have a match?
             Assert.AreEqual(1643886000123, result1);
@@ -317,7 +317,7 @@ namespace UnitTestProject1.Time.UnixTime {
             // ahead of the other result. This is not an error!
 
             long result1 = DateTimeOffset.Now.ToUnixTimeSeconds();
-            long result2 = (long)UnixTimeUtils.CurrentSeconds;
+            long result2 = (long) UnixTimeUtils.CurrentSeconds;
             long result3 = EssentialsTime.CurrentUnixTimeSeconds;
             long result4 = EssentialsTime.Now.UnixTimeSeconds;
 
@@ -337,7 +337,7 @@ namespace UnitTestProject1.Time.UnixTime {
             // ahead of the other result. This is not an error!
 
             long result1 = DateTimeOffset.Now.ToUnixTimeMilliseconds();
-            long result2 = (long)UnixTimeUtils.CurrentMilliseconds;
+            long result2 = (long) UnixTimeUtils.CurrentMilliseconds;
             long result3 = EssentialsTime.CurrentUnixTimeMilliseconds;
             long result4 = EssentialsTime.Now.UnixTimeMilliseconds;
 

@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using Newtonsoft.Json;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
-using System;
 
 #pragma warning disable 618
 
@@ -150,11 +150,11 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Integer:
-                    return TimeUtils.GetDateTimeFromUnixTime((long)reader.Value);
+                    return TimeUtils.GetDateTimeFromUnixTime((long) reader.Value);
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Float:
-                    return TimeUtils.GetDateTimeFromUnixTime((double)reader.Value);
+                    return TimeUtils.GetDateTimeFromUnixTime((double) reader.Value);
 
                 // Is the value already a date? JSON.net may automatically detect and parse some date formats
                 case JsonToken.Date:
@@ -175,7 +175,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                 case JsonToken.String:
 
                     // Get the value as a string
-                    string value = (string)reader.Value;
+                    string value = (string) reader.Value;
 
                     // Parse the string using the format of the converter
                     switch (Format) {
@@ -214,11 +214,11 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Integer:
-                    return TimeUtils.GetDateTimeOffsetFromUnixTime((long)reader.Value);
+                    return TimeUtils.GetDateTimeOffsetFromUnixTime((long) reader.Value);
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Float:
-                    return TimeUtils.GetDateTimeOffsetFromUnixTime((double)reader.Value);
+                    return TimeUtils.GetDateTimeOffsetFromUnixTime((double) reader.Value);
 
                 // Is the value already a date? JSON.net may automatically detect and parse some date formats
                 case JsonToken.Date:
@@ -239,7 +239,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                 case JsonToken.String:
 
                     // Get the value as a string
-                    string value = (string)reader.Value;
+                    string value = (string) reader.Value;
 
                     // Parse the string using the format of the converter
                     switch (Format) {
@@ -278,11 +278,11 @@ namespace Skybrud.Essentials.Json.Converters.Time {
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Integer:
-                    return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((long)reader.Value));
+                    return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((long) reader.Value));
 
                 // If the token type is an integer, we assume UNIX time regardles of the format of the converter
                 case JsonToken.Float:
-                    return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((double)reader.Value));
+                    return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((double) reader.Value));
 
                 // Is the value already a date? JSON.net may automatically detect and parse some date formats
                 case JsonToken.Date:
@@ -303,7 +303,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                 case JsonToken.String:
 
                     // Get the value as a string
-                    string value = (string)reader.Value;
+                    string value = (string) reader.Value;
 
                     // Parse the string using the format of the converter
                     switch (Format) {

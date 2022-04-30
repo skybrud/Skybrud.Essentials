@@ -1,5 +1,5 @@
-﻿using Skybrud.Essentials.Time.UnixTime;
-using System;
+﻿using System;
+using Skybrud.Essentials.Time.UnixTime;
 
 namespace Skybrud.Essentials.Time {
 
@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="int"/> representing the current Unix timestamp.</returns>
         [Obsolete("Use UnixTimeUtils.CurrentSeconds property instead.")]
         public static int GetCurrentUnixTimestamp() {
-            return (int)UnixTimeUtils.CurrentSeconds;
+            return (int) UnixTimeUtils.CurrentSeconds;
         }
 
         /// <summary>
@@ -135,7 +135,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="int"/> representing the Unix timestamp.</returns>
         [Obsolete("Use UnixTimeUtils.ToSeconds(DateTime) method instead.")]
         public static int GetUnixTimeFromDateTime(DateTime date) {
-            return (int)UnixTimeUtils.ToSeconds(date);
+            return (int) UnixTimeUtils.ToSeconds(date);
         }
 
         /// <summary>
@@ -161,7 +161,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="System.Int32"/> representing the Unix timestamp.</returns>
         [Obsolete("Use UnixTimeUtils.ToSeconds(DateTimeOffset) method instead.")]
         public static int GetUnixTimeFromDateTimeOffset(DateTimeOffset date) {
-            return (int)UnixTimeUtils.ToSeconds(date);
+            return (int) UnixTimeUtils.ToSeconds(date);
         }
 
         /// <summary>

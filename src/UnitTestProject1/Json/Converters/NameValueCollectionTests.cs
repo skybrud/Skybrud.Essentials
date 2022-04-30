@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Specialized;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Converters;
 using Skybrud.Essentials.Json.Extensions;
-using System.Collections.Specialized;
 
 namespace UnitTestProject1.Json.Converters {
 

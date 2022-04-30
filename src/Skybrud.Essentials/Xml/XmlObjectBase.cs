@@ -1,5 +1,5 @@
-﻿using Newtonsoft.Json;
-using System.Xml.Linq;
+﻿using System.Xml.Linq;
+using Newtonsoft.Json;
 
 namespace Skybrud.Essentials.Xml {
 

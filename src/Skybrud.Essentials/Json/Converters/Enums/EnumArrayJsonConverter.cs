@@ -1,7 +1,7 @@
-﻿using Newtonsoft.Json;
-using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Globalization;
+using Newtonsoft.Json;
+using Newtonsoft.Json.Linq;
 using static Skybrud.Essentials.Enums.EnumUtils;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {

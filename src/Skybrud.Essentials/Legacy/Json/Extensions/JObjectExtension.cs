@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Extensions {
 

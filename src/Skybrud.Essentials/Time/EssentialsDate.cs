@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Globalization;
+using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
-using System;
-using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
@@ -424,7 +424,7 @@ namespace Skybrud.Essentials.Time {
         public static int GetDaysBetween(EssentialsDate a, EssentialsDate b) {
             if (a == null) throw new ArgumentNullException(nameof(a));
             if (b == null) throw new ArgumentNullException(nameof(b));
-            return (int)b.GetStartOfDay(TimeZoneInfo.Utc).Subtract(a.GetStartOfDay(TimeZoneInfo.Utc)).TotalDays;
+            return (int) b.GetStartOfDay(TimeZoneInfo.Utc).Subtract(a.GetStartOfDay(TimeZoneInfo.Utc)).TotalDays;
         }
 
         /// <summary>

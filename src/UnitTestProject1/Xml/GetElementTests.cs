@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
-using System.Xml;
+﻿using System.Xml;
 using System.Xml.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
 
@@ -23,7 +23,7 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Test with a normal XName parameter (element name)
-            XElement example1 = root.GetElement((XName)"example");
+            XElement example1 = root.GetElement((XName) "example");
             Assert.IsNotNull(example1);
             Assert.AreEqual("12345678", example1.Value);
 
@@ -56,7 +56,7 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Test with a normal XName parameter (element name)
-            XElement[] example1 = root.GetElements((XName)"example");
+            XElement[] example1 = root.GetElements((XName) "example");
             Assert.IsNotNull(example1);
             Assert.AreEqual("12345678", example1[0].Value);
             Assert.AreEqual("ABCDEFGH", example1[1].Value);

@@ -1,9 +1,9 @@
-﻿using Newtonsoft.Json;
-using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Reflection;
+using Newtonsoft.Json;
+using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Converters {
 

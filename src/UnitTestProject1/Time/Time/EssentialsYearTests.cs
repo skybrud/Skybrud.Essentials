@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
-using System;
 
 namespace UnitTestProject1.Time.Time {
 

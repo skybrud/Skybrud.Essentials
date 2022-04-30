@@ -1,5 +1,5 @@
-﻿using Skybrud.Essentials.Maps.Geometry;
-using System;
+﻿using System;
+using Skybrud.Essentials.Maps.Geometry;
 using static Skybrud.Essentials.Maps.EarthConstants;
 
 namespace Skybrud.Essentials.Maps {

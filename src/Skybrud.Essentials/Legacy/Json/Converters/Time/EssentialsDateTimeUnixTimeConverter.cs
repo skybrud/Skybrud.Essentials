@@ -1,5 +1,5 @@
-﻿using Skybrud.Essentials.Time;
-using System;
+﻿using System;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Essentials.Json.Converters.Time {
 

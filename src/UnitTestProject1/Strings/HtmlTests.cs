@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Web;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
-using System.Web;
 
 namespace UnitTestProject1.Strings {
 

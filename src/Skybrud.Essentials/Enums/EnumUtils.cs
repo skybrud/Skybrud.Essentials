@@ -1,9 +1,9 @@
-﻿using Skybrud.Essentials.Collections.Extensions;
-using Skybrud.Essentials.Strings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Skybrud.Essentials.Collections.Extensions;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Enums {
 
@@ -18,7 +18,7 @@ namespace Skybrud.Essentials.Enums {
         /// <typeparam name="T">The type of the enum class.</typeparam>
         /// <returns>An array of <typeparamref name="T"/>.</returns>
         public static T[] GetEnumValues<T>() where T : struct {
-            return (T[])Enum.GetValues(typeof(T));
+            return (T[]) Enum.GetValues(typeof(T));
         }
 
         /// <summary>
@@ -254,7 +254,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
         public static T Min<T>(T a, T b) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-            return (T)Enum.ToObject(typeof(T), Math.Min(Convert.ToInt32(a), Convert.ToInt32(b)));
+            return (T) Enum.ToObject(typeof(T), Math.Min(Convert.ToInt32(a), Convert.ToInt32(b)));
         }
 
         /// <summary>
@@ -266,7 +266,7 @@ namespace Skybrud.Essentials.Enums {
         public static T Min<T>(params T[] values) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
             if (values == null) throw new ArgumentNullException(nameof(values));
-            return (T)Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
+            return (T) Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
         }
 
         /// <summary>
@@ -278,7 +278,7 @@ namespace Skybrud.Essentials.Enums {
         public static T Min<T>(IEnumerable<T> values) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
             if (values == null) throw new ArgumentNullException(nameof(values));
-            return (T)Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
+            return (T) Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
         }
 
         /// <summary>
@@ -290,7 +290,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
         public static T Max<T>(T a, T b) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-            return (T)Enum.ToObject(typeof(T), Math.Max(Convert.ToInt32(a), Convert.ToInt32(b)));
+            return (T) Enum.ToObject(typeof(T), Math.Max(Convert.ToInt32(a), Convert.ToInt32(b)));
         }
 
         /// <summary>
@@ -302,7 +302,7 @@ namespace Skybrud.Essentials.Enums {
         public static T Max<T>(params T[] values) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
             if (values == null) throw new ArgumentNullException(nameof(values));
-            return (T)Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
+            return (T) Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
         }
 
         /// <summary>
@@ -314,7 +314,7 @@ namespace Skybrud.Essentials.Enums {
         public static T Max<T>(IEnumerable<T> values) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
             if (values == null) throw new ArgumentNullException(nameof(values));
-            return (T)Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
+            return (T) Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
         }
 
         /// <summary>
@@ -325,7 +325,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T FromInt32<T>(int input) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-            return (T)Enum.ToObject(typeof(T), input);
+            return (T) Enum.ToObject(typeof(T), input);
         }
 
         internal static T FromInt32WhereTIsEnum<T>(int input) where T : Enum {
@@ -334,7 +334,7 @@ namespace Skybrud.Essentials.Enums {
             // an Enum instead of struct, but changing this may be a breaking change.
 
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-            return (T)Enum.ToObject(typeof(T), input);
+            return (T) Enum.ToObject(typeof(T), input);
 
         }
 
@@ -346,7 +346,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <see cref="Enum"/>.</returns>
         public static Enum FromInt32(int input, Type type) {
             if (IsEnum(type) == false) throw new ArgumentException("Specified type must be an enum.");
-            return (Enum)Enum.ToObject(type, input);
+            return (Enum) Enum.ToObject(type, input);
         }
 
         /// <summary>

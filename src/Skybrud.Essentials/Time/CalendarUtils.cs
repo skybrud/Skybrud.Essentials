@@ -73,24 +73,24 @@ namespace Skybrud.Essentials.Time {
         public static DateTime GetEasterSunday(int year) {
 
             int a = year % 19;
-            int b = (int)Math.Floor(year / 100.00);
+            int b = (int) Math.Floor(year / 100.00);
 
             int c = year % 100;
-            int d = (int)Math.Floor(b / 4.00);
+            int d = (int) Math.Floor(b / 4.00);
 
             int e = b % 4;
-            int f = (int)Math.Floor((b + 8) / 25.00);
-            int g = (int)Math.Floor((b - f + 1) / 3.00);
+            int f = (int) Math.Floor((b + 8) / 25.00);
+            int g = (int) Math.Floor((b - f + 1) / 3.00);
 
             int h = (19 * a + b - d - g + 15) % 30;
-            int i = (int)Math.Floor(c / 4.00);
+            int i = (int) Math.Floor(c / 4.00);
 
             int k = c % 4;
             int l = (32 + 2 * e + 2 * i - h - k) % 7;
 
-            int m = (int)Math.Floor((a + 11 * h + 22 * l) / 451.00);
+            int m = (int) Math.Floor((a + 11 * h + 22 * l) / 451.00);
 
-            int n = (int)Math.Floor((h + l - 7 * m + 114) / 31.00);
+            int n = (int) Math.Floor((h + l - 7 * m + 114) / 31.00);
             int p = (h + l - 7 * m + 114) % 31 + 1;
 
             return new DateTime(year, n, p);
@@ -472,7 +472,7 @@ namespace Skybrud.Essentials.Time {
         #region Static methods
 
         private static DateTime GetDate(int year, EssentialsDateMonthName month, int day) {
-            return new DateTime(year, (int)month, day);
+            return new DateTime(year, (int) month, day);
         }
 
         #endregion

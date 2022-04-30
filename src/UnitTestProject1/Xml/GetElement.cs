@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
-using System.Xml;
+﻿using System.Xml;
 using System.Xml.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
 
@@ -13,8 +13,8 @@ namespace UnitTestProject1.Xml {
 
             XElement root = XElement.Load(TestHelpers.MapPath("~/Xml/Hest.xml"));
 
-            XElement result1 = root.GetElement((XName)"element");
-            Class1 result2 = root.GetElement((XName)"element", Class1.Parse);
+            XElement result1 = root.GetElement((XName) "element");
+            Class1 result2 = root.GetElement((XName) "element", Class1.Parse);
 
             Assert.IsNotNull(result1);
             Assert.AreEqual("world", result1.GetElement("hello").Value);

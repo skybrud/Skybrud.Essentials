@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Collections;
-using Skybrud.Essentials.Collections.Extensions;
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Globalization;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Collections;
+using Skybrud.Essentials.Collections.Extensions;
 
 namespace UnitTestProject1.Collections {
 

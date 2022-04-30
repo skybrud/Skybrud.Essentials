@@ -1,6 +1,6 @@
-﻿using Newtonsoft.Json.Linq;
-using System;
+﻿using System;
 using System.Linq;
+using Newtonsoft.Json.Linq;
 
 namespace Skybrud.Essentials.Json.Extensions {
 

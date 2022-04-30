@@ -1,12 +1,12 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Net;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Net;
 
 namespace UnitTestProject1.Enums {
 

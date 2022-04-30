@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Collections.Specialized;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings.Extensions;
-using System.Collections.Specialized;
 
 // ReSharper disable ConvertToConstant.Local
 // ReSharper disable ExpressionIsAlwaysNull

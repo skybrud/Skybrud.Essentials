@@ -1,7 +1,7 @@
-﻿using Skybrud.Essentials.Strings.Extensions;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.Enums {
 
@@ -51,7 +51,7 @@ namespace Skybrud.Essentials.Enums {
                 yield return default;
             } else {
                 foreach (Enum flag in Enum.GetValues(value.GetType())) {
-                    if (Convert.ToInt32(flag) > 0 && value.HasFlag(flag)) yield return (TEnum)flag;
+                    if (Convert.ToInt32(flag) > 0 && value.HasFlag(flag)) yield return (TEnum) flag;
                 }
             }
         }

@@ -1,11 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time.Iso8601;
-using System;
-
 using static UnitTestProject1.TestConstants;
 
 namespace UnitTestProject1.Time.Time.Iso8601 {
-    
+
     [TestClass]
     public class Iso8601Tests {
 

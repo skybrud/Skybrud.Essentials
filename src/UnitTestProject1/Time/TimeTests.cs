@@ -1,11 +1,11 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Time;
-using Skybrud.Essentials.Time.Extensions;
-using Skybrud.Essentials.Time.Iso8601;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Time;
+using Skybrud.Essentials.Time.Extensions;
+using Skybrud.Essentials.Time.Iso8601;
 
 #pragma warning disable 618
 

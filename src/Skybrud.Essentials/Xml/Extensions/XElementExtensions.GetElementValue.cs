@@ -1,8 +1,8 @@
-﻿using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Xml.Linq;
+using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Xml.Extensions {
 
@@ -380,7 +380,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             if (string.IsNullOrWhiteSpace(child?.Value)) return default(T);
 
             // Convert the element value to the type of T
-            return (T)Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
+            return (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
 
         }
 
@@ -406,7 +406,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             }
 
             // Convert the element value to the type of T
-            value = (T)Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
+            value = (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
             return true;
 
         }
@@ -431,7 +431,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             if (string.IsNullOrWhiteSpace(child?.Value)) return default(TResult);
 
             // Convert the element value to the type of T and invoke the callback
-            return callback((T)Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture));
+            return callback((T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture));
 
         }
 

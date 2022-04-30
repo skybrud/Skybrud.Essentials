@@ -154,7 +154,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
         /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
         public static long ToInt64(DateTime timestamp, UnixTimeFormat format) {
-            return (long)ToDouble(timestamp, format);
+            return (long) ToDouble(timestamp, format);
         }
 
         /// <summary>
@@ -164,7 +164,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
         /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
         public static long ToInt64(DateTimeOffset timestamp, UnixTimeFormat format) {
-            return (long)ToDouble(timestamp, format);
+            return (long) ToDouble(timestamp, format);
         }
 
         /// <summary>
@@ -174,7 +174,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// <param name="format">The format - <see cref="UnixTimeFormat.Seconds"/> or <see cref="UnixTimeFormat.Milliseconds"/>.</param>
         /// <returns>The timestamp as an instance of <see cref="long"/></returns>.
         public static long ToInt64(EssentialsTime timestamp, UnixTimeFormat format) {
-            return (long)ToDouble(timestamp.DateTimeOffset, format);
+            return (long) ToDouble(timestamp.DateTimeOffset, format);
         }
 
         /// <summary>

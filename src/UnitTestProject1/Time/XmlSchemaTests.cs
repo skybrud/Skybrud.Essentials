@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time.Xml;
-using System;
 
 namespace UnitTestProject1.Time {
 
@@ -36,14 +36,14 @@ namespace UnitTestProject1.Time {
         [TestMethod]
         public void ParseDuration() {
 
-            Assert.AreEqual(0, (int)XmlSchemaUtils.ParseDuration("PT0S").TotalSeconds, "#1");
-            Assert.AreEqual(600, (int)XmlSchemaUtils.ParseDuration("PT10M").TotalSeconds, "#2");
-            Assert.AreEqual(3600, (int)XmlSchemaUtils.ParseDuration("PT1H").TotalSeconds, "#3");
-            Assert.AreEqual(7200, (int)XmlSchemaUtils.ParseDuration("PT2H").TotalSeconds, "#4");
-            Assert.AreEqual(86400, (int)XmlSchemaUtils.ParseDuration("P1D").TotalSeconds, "#5");
-            Assert.AreEqual(2678400, (int)XmlSchemaUtils.ParseDuration("P31D").TotalSeconds, "#6");
-            Assert.AreEqual(2721600, (int)XmlSchemaUtils.ParseDuration("P31DT12H").TotalSeconds, "#7");
-            Assert.AreEqual(2723417, (int)XmlSchemaUtils.ParseDuration("P31DT12H30M17S").TotalSeconds, "#8");
+            Assert.AreEqual(0, (int) XmlSchemaUtils.ParseDuration("PT0S").TotalSeconds, "#1");
+            Assert.AreEqual(600, (int) XmlSchemaUtils.ParseDuration("PT10M").TotalSeconds, "#2");
+            Assert.AreEqual(3600, (int) XmlSchemaUtils.ParseDuration("PT1H").TotalSeconds, "#3");
+            Assert.AreEqual(7200, (int) XmlSchemaUtils.ParseDuration("PT2H").TotalSeconds, "#4");
+            Assert.AreEqual(86400, (int) XmlSchemaUtils.ParseDuration("P1D").TotalSeconds, "#5");
+            Assert.AreEqual(2678400, (int) XmlSchemaUtils.ParseDuration("P31D").TotalSeconds, "#6");
+            Assert.AreEqual(2721600, (int) XmlSchemaUtils.ParseDuration("P31DT12H").TotalSeconds, "#7");
+            Assert.AreEqual(2723417, (int) XmlSchemaUtils.ParseDuration("P31DT12H30M17S").TotalSeconds, "#8");
 
         }
 

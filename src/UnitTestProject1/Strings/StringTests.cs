@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Strings;
-using Skybrud.Essentials.Strings.Extensions;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Net;
 using System.Threading;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
 // ReSharper disable ExpressionIsAlwaysNull
 

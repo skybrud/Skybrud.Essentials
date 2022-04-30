@@ -1,6 +1,6 @@
-﻿using Skybrud.Essentials.Time.Iso8601;
-using System;
+﻿using System;
 using System.Globalization;
+using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time.Extensions {
 

@@ -1,8 +1,8 @@
-﻿using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Xml.Linq;
+using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Xml.Extensions {
 
@@ -337,7 +337,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// value of <typeparamref name="T"/> if not found.</returns>
         public static T GetAttributeValue<T>(this XElement element, XName name) {
             XAttribute attr = GetAttribute(element, name);
-            return attr == null ? default(T) : (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            return attr == null ? default(T) : (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -362,7 +362,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
             }
 
             // Convert the attribute value to the type of T
-            value = (T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
+            value = (T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture);
             return true;
 
         }
@@ -380,7 +380,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
         public static TResult GetAttributeValue<T, TResult>(this XElement element, XName name, Func<T, TResult> callback) {
             XAttribute attr = GetAttribute(element, name);
-            return attr == null ? default(TResult) : callback((T)Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
+            return attr == null ? default(TResult) : callback((T) Convert.ChangeType(attr.Value, typeof(T), CultureInfo.InvariantCulture));
         }
 
         #endregion

@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Assemblies;
 using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Json;
@@ -6,8 +8,6 @@ using Skybrud.Essentials.Locations;
 using Skybrud.Essentials.Maps.Geometry;
 using Skybrud.Essentials.Reflection;
 using Skybrud.Essentials.Reflection.Extensions;
-using System;
-using System.Linq;
 using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 #pragma warning disable 618

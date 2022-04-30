@@ -1,10 +1,10 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Net;
 using System.Xml;
 using System.Xml.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
 
@@ -20,8 +20,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an element using each overload
-            string element1 = root.GetElementValue((XName)"string");
-            int element2 = root.GetElementValue((XName)"integer", Int32.Parse);
+            string element1 = root.GetElementValue((XName) "string");
+            int element2 = root.GetElementValue((XName) "integer", Int32.Parse);
             string element3 = root.GetElementValue("element/number");
             string element4 = root.GetElementValue("test:element/test:number", namespaces);
             int element5 = root.GetElementValue("element/number", Int32.Parse);
@@ -53,8 +53,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            int attr1 = root.GetElementValueAsInt32((XName)"integer");
-            string attr2 = root.GetElementValueAsInt32((XName)"integer", TestHelpers.ToString);
+            int attr1 = root.GetElementValueAsInt32((XName) "integer");
+            string attr2 = root.GetElementValueAsInt32((XName) "integer", TestHelpers.ToString);
             int attr3 = root.GetElementValueAsInt32("element/number");
             int attr4 = root.GetElementValueAsInt32("test:element/test:number", namespaces);
             string attr5 = root.GetElementValueAsInt32("element/number", TestHelpers.ToString);
@@ -82,8 +82,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            long attr1 = root.GetElementValueAsInt64((XName)"long");
-            string attr2 = root.GetElementValueAsInt64((XName)"long", TestHelpers.ToString);
+            long attr1 = root.GetElementValueAsInt64((XName) "long");
+            string attr2 = root.GetElementValueAsInt64((XName) "long", TestHelpers.ToString);
             long attr3 = root.GetElementValueAsInt64("element/long");
             long attr4 = root.GetElementValueAsInt64("test:element/test:long", namespaces);
             string attr5 = root.GetElementValueAsInt64("element/long", TestHelpers.ToString);
@@ -111,8 +111,8 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            float attr1 = root.GetElementValueAsSingle((XName)"float");
-            string attr2 = root.GetElementValueAsSingle((XName)"float", TestHelpers.ToString);
+            float attr1 = root.GetElementValueAsSingle((XName) "float");
+            string attr2 = root.GetElementValueAsSingle((XName) "float", TestHelpers.ToString);
             float attr3 = root.GetElementValueAsSingle("element/float");
             float attr4 = root.GetElementValueAsSingle("test:element/test:float", namespaces);
             string attr5 = root.GetElementValueAsSingle("element/float", TestHelpers.ToString);
@@ -140,10 +140,10 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            double attr01 = root.GetElementValueAsDouble((XName)"float");
-            string attr02 = root.GetElementValueAsDouble((XName)"float", TestHelpers.ToString);
-            double attr03 = root.GetElementValueAsDouble((XName)"double");
-            string attr04 = root.GetElementValueAsDouble((XName)"double", TestHelpers.ToString);
+            double attr01 = root.GetElementValueAsDouble((XName) "float");
+            string attr02 = root.GetElementValueAsDouble((XName) "float", TestHelpers.ToString);
+            double attr03 = root.GetElementValueAsDouble((XName) "double");
+            string attr04 = root.GetElementValueAsDouble((XName) "double", TestHelpers.ToString);
 
             double attr05 = root.GetElementValueAsDouble("element/float");
             double attr06 = root.GetElementValueAsDouble("test:element/test:float", namespaces);
@@ -186,23 +186,23 @@ namespace UnitTestProject1.Xml {
             XElement element = root.GetElement("element");
             XElement booleans = element.GetElement("booleans");
 
-            bool attr01 = booleans.GetElementValueAsBoolean((XName)"boolean1");
-            bool attr02 = booleans.GetElementValueAsBoolean((XName)"boolean2");
-            bool attr03 = booleans.GetElementValueAsBoolean((XName)"boolean3");
-            bool attr04 = booleans.GetElementValueAsBoolean((XName)"boolean4");
-            bool attr05 = booleans.GetElementValueAsBoolean((XName)"boolean5");
-            bool attr06 = booleans.GetElementValueAsBoolean((XName)"boolean6");
-            bool attr07 = booleans.GetElementValueAsBoolean((XName)"boolean7");
-            bool attr08 = booleans.GetElementValueAsBoolean((XName)"boolean8");
+            bool attr01 = booleans.GetElementValueAsBoolean((XName) "boolean1");
+            bool attr02 = booleans.GetElementValueAsBoolean((XName) "boolean2");
+            bool attr03 = booleans.GetElementValueAsBoolean((XName) "boolean3");
+            bool attr04 = booleans.GetElementValueAsBoolean((XName) "boolean4");
+            bool attr05 = booleans.GetElementValueAsBoolean((XName) "boolean5");
+            bool attr06 = booleans.GetElementValueAsBoolean((XName) "boolean6");
+            bool attr07 = booleans.GetElementValueAsBoolean((XName) "boolean7");
+            bool attr08 = booleans.GetElementValueAsBoolean((XName) "boolean8");
 
-            string attr09 = booleans.GetElementValueAsBoolean((XName)"boolean1", TestHelpers.ToString);
-            string attr10 = booleans.GetElementValueAsBoolean((XName)"boolean2", TestHelpers.ToString);
-            string attr11 = booleans.GetElementValueAsBoolean((XName)"boolean3", TestHelpers.ToString);
-            string attr12 = booleans.GetElementValueAsBoolean((XName)"boolean4", TestHelpers.ToString);
-            string attr13 = booleans.GetElementValueAsBoolean((XName)"boolean5", TestHelpers.ToString);
-            string attr14 = booleans.GetElementValueAsBoolean((XName)"boolean6", TestHelpers.ToString);
-            string attr15 = booleans.GetElementValueAsBoolean((XName)"boolean7", TestHelpers.ToString);
-            string attr16 = booleans.GetElementValueAsBoolean((XName)"boolean8", TestHelpers.ToString);
+            string attr09 = booleans.GetElementValueAsBoolean((XName) "boolean1", TestHelpers.ToString);
+            string attr10 = booleans.GetElementValueAsBoolean((XName) "boolean2", TestHelpers.ToString);
+            string attr11 = booleans.GetElementValueAsBoolean((XName) "boolean3", TestHelpers.ToString);
+            string attr12 = booleans.GetElementValueAsBoolean((XName) "boolean4", TestHelpers.ToString);
+            string attr13 = booleans.GetElementValueAsBoolean((XName) "boolean5", TestHelpers.ToString);
+            string attr14 = booleans.GetElementValueAsBoolean((XName) "boolean6", TestHelpers.ToString);
+            string attr15 = booleans.GetElementValueAsBoolean((XName) "boolean7", TestHelpers.ToString);
+            string attr16 = booleans.GetElementValueAsBoolean((XName) "boolean8", TestHelpers.ToString);
 
             Assert.AreEqual(true, attr01, "#1");
             Assert.AreEqual(false, attr02, "#2");
@@ -321,17 +321,17 @@ namespace UnitTestProject1.Xml {
             XElement element = root.GetElement("element");
             XElement enums = element.GetElement("enums");
 
-            HttpStatusCode attr1 = enums.GetElementValueAsEnum<HttpStatusCode>((XName)"enum1");
-            HttpStatusCode attr2 = enums.GetElementValueAsEnum<HttpStatusCode>((XName)"enum2");
-            HttpStatusCode attr3 = enums.GetElementValueAsEnum<HttpStatusCode>((XName)"enum3");
-            HttpStatusCode attr4 = enums.GetElementValueAsEnum<HttpStatusCode>((XName)"enum4");
+            HttpStatusCode attr1 = enums.GetElementValueAsEnum<HttpStatusCode>((XName) "enum1");
+            HttpStatusCode attr2 = enums.GetElementValueAsEnum<HttpStatusCode>((XName) "enum2");
+            HttpStatusCode attr3 = enums.GetElementValueAsEnum<HttpStatusCode>((XName) "enum3");
+            HttpStatusCode attr4 = enums.GetElementValueAsEnum<HttpStatusCode>((XName) "enum4");
 
-            HttpStatusCode attr5 = enums.GetElementValueAsEnum((XName)"enum1", HttpStatusCode.NoContent);
-            HttpStatusCode attr6 = enums.GetElementValueAsEnum((XName)"enum2", HttpStatusCode.NoContent);
-            HttpStatusCode attr7 = enums.GetElementValueAsEnum((XName)"enum3", HttpStatusCode.NoContent);
-            HttpStatusCode attr8 = enums.GetElementValueAsEnum((XName)"enum4", HttpStatusCode.NoContent);
-            HttpStatusCode attr9 = enums.GetElementValueAsEnum((XName)"enum5", HttpStatusCode.NoContent);
-            HttpStatusCode attr10 = enums.GetElementValueAsEnum((XName)"enum6", HttpStatusCode.NoContent);
+            HttpStatusCode attr5 = enums.GetElementValueAsEnum((XName) "enum1", HttpStatusCode.NoContent);
+            HttpStatusCode attr6 = enums.GetElementValueAsEnum((XName) "enum2", HttpStatusCode.NoContent);
+            HttpStatusCode attr7 = enums.GetElementValueAsEnum((XName) "enum3", HttpStatusCode.NoContent);
+            HttpStatusCode attr8 = enums.GetElementValueAsEnum((XName) "enum4", HttpStatusCode.NoContent);
+            HttpStatusCode attr9 = enums.GetElementValueAsEnum((XName) "enum5", HttpStatusCode.NoContent);
+            HttpStatusCode attr10 = enums.GetElementValueAsEnum((XName) "enum6", HttpStatusCode.NoContent);
 
             Assert.AreEqual(HttpStatusCode.OK, attr1, "#1");
             Assert.AreEqual(HttpStatusCode.NotFound, attr2, "#2");

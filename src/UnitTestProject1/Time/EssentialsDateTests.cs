@@ -1,6 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Globalization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
-using System.Globalization;
 // ReSharper disable ExpressionIsAlwaysNull
 
 #pragma warning disable 618

@@ -1,8 +1,8 @@
-﻿using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
-using System;
+﻿using System;
 using System.Globalization;
 using System.Text.RegularExpressions;
+using Newtonsoft.Json;
+using Skybrud.Essentials.Json.Converters.Time;
 
 namespace Skybrud.Essentials.Time {
 

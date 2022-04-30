@@ -1,7 +1,7 @@
-﻿using Skybrud.Essentials.Reflection;
-using System;
+﻿using System;
 using System.Diagnostics;
 using System.Reflection;
+using Skybrud.Essentials.Reflection;
 
 namespace Skybrud.Essentials.Assemblies {
 

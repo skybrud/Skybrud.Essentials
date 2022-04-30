@@ -76,7 +76,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
         /// </see>
         public static int GetWeekNumber(DateTime date) {
-            int day = (int)CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
+            int day = (int) CultureInfo.InvariantCulture.Calendar.GetDayOfWeek(date);
             return CultureInfo.InvariantCulture.Calendar.GetWeekOfYear(date.AddDays(4 - (day == 0 ? 7 : day)), CalendarWeekRule.FirstFourDayWeek, DayOfWeek.Monday);
         }
 

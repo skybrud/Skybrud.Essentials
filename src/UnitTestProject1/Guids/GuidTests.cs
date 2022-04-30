@@ -1,8 +1,8 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Guids;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Guids;
 
 // ReSharper disable ExpressionIsAlwaysNull
 
@@ -63,15 +63,15 @@ namespace UnitTestProject1.Guids {
 
             Assert.AreEqual("00000000-0000-0000-0000-000000000000", GuidUtils.ToGuid(0).ToString(), "#1A");
             Assert.AreEqual("00000000-0000-0000-0000-000000000000", 0.ToGuid().ToString(), "#1B");
-            Assert.AreEqual("00000000-0000-0000-0000-000000000000", ((long)0).ToGuid().ToString(), "#1C");
+            Assert.AreEqual("00000000-0000-0000-0000-000000000000", ((long) 0).ToGuid().ToString(), "#1C");
 
             Assert.AreEqual("00000400-0000-0000-0000-000000000000", GuidUtils.ToGuid(1024).ToString(), "#2A");
             Assert.AreEqual("00000400-0000-0000-0000-000000000000", 1024.ToGuid().ToString(), "#2B");
-            Assert.AreEqual("00000400-0000-0000-0000-000000000000", ((long)1024).ToGuid().ToString(), "#2C");
+            Assert.AreEqual("00000400-0000-0000-0000-000000000000", ((long) 1024).ToGuid().ToString(), "#2C");
 
             Assert.AreEqual("7fffffff-0000-0000-0000-000000000000", GuidUtils.ToGuid(int.MaxValue).ToString(), "#3A");
             Assert.AreEqual("7fffffff-0000-0000-0000-000000000000", int.MaxValue.ToGuid().ToString(), "#3B");
-            Assert.AreEqual("7fffffff-0000-0000-0000-000000000000", ((long)int.MaxValue).ToGuid().ToString(), "#3C");
+            Assert.AreEqual("7fffffff-0000-0000-0000-000000000000", ((long) int.MaxValue).ToGuid().ToString(), "#3C");
 
             Assert.AreEqual("ffffffff-ffff-7fff-0000-000000000000", GuidUtils.ToGuid(long.MaxValue).ToString(), "#2A");
             Assert.AreEqual("ffffffff-ffff-7fff-0000-000000000000", long.MaxValue.ToGuid().ToString(), "#4B");

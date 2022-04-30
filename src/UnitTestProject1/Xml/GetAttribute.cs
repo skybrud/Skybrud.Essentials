@@ -1,9 +1,9 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Xml.Extensions;
-using System;
+﻿using System;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Xml.Extensions;
 
 namespace UnitTestProject1.Xml {
 
@@ -19,7 +19,7 @@ namespace UnitTestProject1.Xml {
             namespaces.AddNamespace("test", "http://social.skybrud.dk/schemas/test");
 
             // Get an attribute using each overload
-            XAttribute attr1 = root.GetAttribute((XName)"attr");
+            XAttribute attr1 = root.GetAttribute((XName) "attr");
             XAttribute attr2 = root.GetAttribute("@attr");
             XAttribute attr3 = root.GetAttribute("element/child/@attribute");
             XAttribute attr4 = root.GetAttribute("test:element/test:child/@attribute", namespaces);

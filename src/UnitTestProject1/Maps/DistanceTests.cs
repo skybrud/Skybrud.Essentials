@@ -1,7 +1,7 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System.Globalization;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Maps;
 using Skybrud.Essentials.Maps.Geometry;
-using System.Globalization;
 
 namespace UnitTestProject1.Maps {
 

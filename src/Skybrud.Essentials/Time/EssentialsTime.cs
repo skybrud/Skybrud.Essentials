@@ -1,12 +1,12 @@
-﻿using Newtonsoft.Json;
+﻿using System;
+using System.Globalization;
+using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
 using Skybrud.Essentials.Time.Swatch;
 using Skybrud.Essentials.Time.UnixTime;
-using System;
-using System.Globalization;
 
 namespace Skybrud.Essentials.Time {
 
@@ -52,12 +52,12 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Returns the amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
-        public static long CurrentUnixTimeSeconds => (long)UnixTimeUtils.CurrentSeconds;
+        public static long CurrentUnixTimeSeconds => (long) UnixTimeUtils.CurrentSeconds;
 
         /// <summary>
         /// Returns the amount of milliseconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
         /// </summary>
-        public static long CurrentUnixTimeMilliseconds => (long)UnixTimeUtils.CurrentMilliseconds;
+        public static long CurrentUnixTimeMilliseconds => (long) UnixTimeUtils.CurrentMilliseconds;
 
         #endregion
 
@@ -148,17 +148,17 @@ namespace Skybrud.Essentials.Time {
         /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
         [Obsolete("Use 'UnixTimeSeconds' instead.")]
-        public long UnixTimestamp => (long)UnixTimeUtils.ToSeconds(DateTimeOffset);
+        public long UnixTimestamp => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the UNIX timestamp in seconds (amount of time the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
-        public long UnixTimeSeconds => (long)UnixTimeUtils.ToSeconds(DateTimeOffset);
+        public long UnixTimeSeconds => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the UNIX timestamp in milliseconds (amount of time the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
         /// </summary>
-        public long UnixTimeMilliseconds => (long)UnixTimeUtils.ToMilliseconds(DateTimeOffset);
+        public long UnixTimeMilliseconds => (long) UnixTimeUtils.ToMilliseconds(DateTimeOffset);
 
         /// <summary>
         /// Gets the time's offset from Coordinated Universal Time (UTC).
@@ -742,7 +742,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimeseconds?view=netstandard-2.0</cref>
         /// </seealso>
         public long ToUnixTimeSeconds() {
-            return (long)UnixTimeUtils.ToSeconds(DateTimeOffset);
+            return (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
         }
 
         /// <summary>
@@ -753,7 +753,7 @@ namespace Skybrud.Essentials.Time {
         ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimemilliseconds?view=netstandard-2.0</cref>
         /// </seealso>
         public long ToUnixTimeMilliseconds() {
-            return (long)UnixTimeUtils.ToMilliseconds(DateTimeOffset);
+            return (long) UnixTimeUtils.ToMilliseconds(DateTimeOffset);
         }
 
         /// <summary>

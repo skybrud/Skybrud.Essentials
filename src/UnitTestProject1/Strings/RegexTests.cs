@@ -1,14 +1,14 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Strings;
-using Skybrud.Essentials.Strings.Extensions;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
 // ReSharper disable PossibleMultipleEnumeration
 
 namespace UnitTestProject1.Strings {
-    
+
     [TestClass]
     public class RegexTests {
 

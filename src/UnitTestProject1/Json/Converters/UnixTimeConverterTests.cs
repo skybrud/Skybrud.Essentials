@@ -1,4 +1,6 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using System.Text;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
@@ -7,8 +9,6 @@ using Skybrud.Essentials.Json.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.UnixTime;
-using System;
-using System.Text;
 
 #pragma warning disable 618
 

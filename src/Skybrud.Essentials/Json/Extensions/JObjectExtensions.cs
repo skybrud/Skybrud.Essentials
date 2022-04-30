@@ -1,10 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
+using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Enums;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Extensions {
 
@@ -473,7 +473,7 @@ namespace Skybrud.Essentials.Json.Extensions {
             return (
                 from child in token
                 where child is JObject
-                select callback((JObject)child)
+                select callback((JObject) child)
             ).ToArray();
 
         }
