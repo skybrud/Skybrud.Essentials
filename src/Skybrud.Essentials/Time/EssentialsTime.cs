@@ -640,7 +640,6 @@ namespace Skybrud.Essentials.Time {
         /// <returns>A time interval that is equal to the date and time represented by this instance minus the date
         /// and time represented by value.</returns>
         public TimeSpan Subtract(DateTimeOffset value) {
-            if (value == null) throw new ArgumentNullException(nameof(value));
             return DateTimeOffset.Subtract(value);
         }
 
