@@ -484,7 +484,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less than
         /// <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime Add(TimeSpan value) {
-            return new EssentialsTime(DateTimeOffset.Add(value));
+            return new EssentialsTime(DateTimeOffset.Add(value), TimeZone);
         }
 
         /// <summary>
@@ -495,7 +495,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less than
         /// <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime AddDays(double value) {
-            return new EssentialsTime(DateTimeOffset.AddDays(value));
+            return new EssentialsTime(DateTimeOffset.AddDays(value), TimeZone);
         }
 
         /// <summary>
@@ -507,7 +507,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less
         /// than <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime AddHours(double value) {
-            return new EssentialsTime(DateTimeOffset.AddHours(value));
+            return new EssentialsTime(DateTimeOffset.AddHours(value), TimeZone);
         }
 
         /// <summary>
@@ -520,7 +520,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less
         /// than <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime AddMilliseconds(double value) {
-            return new EssentialsTime(DateTimeOffset.AddMilliseconds(value));
+            return new EssentialsTime(DateTimeOffset.AddMilliseconds(value), TimeZone);
         }
 
         /// <summary>
@@ -533,7 +533,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less
         /// than <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime AddMinutes(double value) {
-            return new EssentialsTime(DateTimeOffset.AddMinutes(value));
+            return new EssentialsTime(DateTimeOffset.AddMinutes(value), TimeZone);
         }
 
         /// <summary>
@@ -545,7 +545,7 @@ namespace Skybrud.Essentials.Time {
         /// than <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>. Or
         /// <paramref name="months"/> is less than <c>-120000</c> or greater than <c>120000</c>.</exception>
         public EssentialsTime AddMonths(int months) {
-            return new EssentialsTime(DateTimeOffset.AddMonths(months));
+            return new EssentialsTime(DateTimeOffset.AddMonths(months), TimeZone);
         }
 
         /// <summary>
@@ -556,7 +556,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less
         /// than <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime AddSeconds(double value) {
-            return new EssentialsTime(DateTimeOffset.AddSeconds(value));
+            return new EssentialsTime(DateTimeOffset.AddSeconds(value), TimeZone);
         }
 
         /// <summary>
@@ -569,7 +569,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="System.ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less
         /// than <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime AddTicks(long value) {
-            return new EssentialsTime(DateTimeOffset.AddTicks(value));
+            return new EssentialsTime(DateTimeOffset.AddTicks(value), TimeZone);
         }
 
         /// <summary>
@@ -582,7 +582,7 @@ namespace Skybrud.Essentials.Time {
         /// <exception cref="System.ArgumentOutOfRangeException">The resulting <see cref="EssentialsTime"/> is less
         /// than <see cref="System.DateTimeOffset.MinValue"/> or greater than <see cref="System.DateTimeOffset.MaxValue"/>.</exception>
         public EssentialsTime AddYears(int value) {
-            return new EssentialsTime(DateTimeOffset.AddYears(value));
+            return new EssentialsTime(DateTimeOffset.AddYears(value), TimeZone);
         }
 
         /// <summary>
