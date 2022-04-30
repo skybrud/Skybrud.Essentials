@@ -16,8 +16,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period = EssentialsPeriod.Today(sample, romance);
 
-            Assert.AreEqual("2021-03-28T00:00:00+01:00", period.Start.ToString(), "Start");
-            Assert.AreEqual("2021-03-28T23:59:59+02:00", period.End.ToString(), "End");
+            Assert.AreEqual("2021-03-28T00:00:00.000+01:00", period.Start.ToString(), "Start");
+            Assert.AreEqual("2021-03-28T23:59:59.999+02:00", period.End.ToString(), "End");
 
         }
 
@@ -30,8 +30,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period = EssentialsPeriod.Today(sample, romance);
 
-            Assert.AreEqual("2021-10-31T00:00:00+02:00", period.Start.ToString(), "Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00", period.End.ToString(), "End");
+            Assert.AreEqual("2021-10-31T00:00:00.000+02:00", period.Start.ToString(), "Start");
+            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", period.End.ToString(), "End");
 
         }
 
@@ -45,8 +45,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period = EssentialsPeriod.Yesterday(sample, romance);
 
-            Assert.AreEqual("2021-03-28T00:00:00+01:00", period.Start.ToString(), "Start");
-            Assert.AreEqual("2021-03-28T23:59:59+02:00", period.End.ToString(), "End");
+            Assert.AreEqual("2021-03-28T00:00:00.000+01:00", period.Start.ToString(), "Start");
+            Assert.AreEqual("2021-03-28T23:59:59.999+02:00", period.End.ToString(), "End");
 
         }
 
@@ -59,8 +59,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period = EssentialsPeriod.Yesterday(sample, romance);
 
-            Assert.AreEqual("2021-10-31T00:00:00+02:00", period.Start.ToString(), "Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00", period.End.ToString(), "End");
+            Assert.AreEqual("2021-10-31T00:00:00.000+02:00", period.Start.ToString(), "Start");
+            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", period.End.ToString(), "End");
 
         }
 
@@ -73,8 +73,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period = EssentialsPeriod.Tomorrow(sample, romance);
 
-            Assert.AreEqual("2021-03-28T00:00:00+01:00", period.Start.ToString(), "Start");
-            Assert.AreEqual("2021-03-28T23:59:59+02:00", period.End.ToString(), "End");
+            Assert.AreEqual("2021-03-28T00:00:00.000+01:00", period.Start.ToString(), "Start");
+            Assert.AreEqual("2021-03-28T23:59:59.999+02:00", period.End.ToString(), "End");
 
         }
 
@@ -87,8 +87,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsPeriod period = EssentialsPeriod.Tomorrow(sample, romance);
 
-            Assert.AreEqual("2021-10-31T00:00:00+02:00", period.Start.ToString(), "Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00", period.End.ToString(), "End");
+            Assert.AreEqual("2021-10-31T00:00:00.000+02:00", period.Start.ToString(), "Start");
+            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", period.End.ToString(), "End");
 
         }
 
@@ -110,13 +110,13 @@ namespace UnitTestProject1.Time.Time {
 
                     case DayOfWeek.Saturday:
                     case DayOfWeek.Sunday:
-                        Assert.AreEqual("2021-02-06T00:00:00+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                        Assert.AreEqual("2021-02-07T23:59:59+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                        Assert.AreEqual("2021-02-06T00:00:00.000+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                        Assert.AreEqual("2021-02-07T23:59:59.999+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
                         break;
 
                     default:
-                        Assert.AreEqual("2021-01-30T00:00:00+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                        Assert.AreEqual("2021-01-31T23:59:59+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                        Assert.AreEqual("2021-01-30T00:00:00.000+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                        Assert.AreEqual("2021-01-31T23:59:59.999+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
                         break;
 
                 }
@@ -143,13 +143,13 @@ namespace UnitTestProject1.Time.Time {
 
                     case DayOfWeek.Saturday:
                     case DayOfWeek.Sunday:
-                        Assert.AreEqual("2021-04-03T00:00:00+02:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                        Assert.AreEqual("2021-04-04T23:59:59+02:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                        Assert.AreEqual("2021-04-03T00:00:00.000+02:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                        Assert.AreEqual("2021-04-04T23:59:59.999+02:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
                         break;
 
                     default:
-                        Assert.AreEqual("2021-03-27T00:00:00+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                        Assert.AreEqual("2021-03-28T23:59:59+02:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                        Assert.AreEqual("2021-03-27T00:00:00.000+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                        Assert.AreEqual("2021-03-28T23:59:59.999+02:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
                         break;
 
                 }
@@ -176,8 +176,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-01-30T00:00:00+00:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                Assert.AreEqual("2021-01-31T23:59:59+00:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                Assert.AreEqual("2021-01-30T00:00:00.000Z", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                Assert.AreEqual("2021-01-31T23:59:59.999Z", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
 
             }
 
@@ -188,8 +188,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-02-06T00:00:00+00:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                Assert.AreEqual("2021-02-07T23:59:59+00:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                Assert.AreEqual("2021-02-06T00:00:00.000Z", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                Assert.AreEqual("2021-02-07T23:59:59.999Z", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
 
             }
 
@@ -213,8 +213,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-03-27T00:00:00+00:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                Assert.AreEqual("2021-03-28T23:59:59+00:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                Assert.AreEqual("2021-03-27T00:00:00.000Z", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                Assert.AreEqual("2021-03-28T23:59:59.999Z", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
 
             }
 
@@ -225,8 +225,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-04-03T00:00:00+00:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                Assert.AreEqual("2021-04-04T23:59:59+00:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                Assert.AreEqual("2021-04-03T00:00:00.000Z", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                Assert.AreEqual("2021-04-04T23:59:59.999Z", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
 
             }
 
@@ -249,8 +249,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-01-30T00:00:00+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                Assert.AreEqual("2021-01-31T23:59:59+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                Assert.AreEqual("2021-01-30T00:00:00.000+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                Assert.AreEqual("2021-01-31T23:59:59.999+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
 
             }
 
@@ -260,8 +260,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-02-06T00:00:00+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
-                Assert.AreEqual("2021-02-07T23:59:59+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
+                Assert.AreEqual("2021-02-06T00:00:00.000+01:00", period.Start.ToString(), "\r\n\r\nSTART\r\n" + message);
+                Assert.AreEqual("2021-02-07T23:59:59.999+01:00", period.End.ToString(), "\r\n\r\nEND\r\n" + message);
 
             }
 
@@ -284,8 +284,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-03-27T00:00:00+01:00", period.Start.ToString(), "\r\n\r\n1: START\r\n" + message);
-                Assert.AreEqual("2021-03-28T23:59:59+02:00", period.End.ToString(), "\r\n\r\n1: END\r\n" + message);
+                Assert.AreEqual("2021-03-27T00:00:00.000+01:00", period.Start.ToString(), "\r\n\r\n1: START\r\n" + message);
+                Assert.AreEqual("2021-03-28T23:59:59.999+02:00", period.End.ToString(), "\r\n\r\n1: END\r\n" + message);
 
             }
 
@@ -295,8 +295,8 @@ namespace UnitTestProject1.Time.Time {
 
                 string message = $"Based on:       {time:yyyy-MM-ddTHH:mm:ssK}\r\nDay of week:    {time.DayOfWeek} ({(int)time.DayOfWeek})\r\n\r\n";
 
-                Assert.AreEqual("2021-04-03T00:00:00+02:00", period.Start.ToString(), "\r\n\r\n2: START\r\n" + message);
-                Assert.AreEqual("2021-04-04T23:59:59+02:00", period.End.ToString(), "\r\n\r\n2: END\r\n" + message);
+                Assert.AreEqual("2021-04-03T00:00:00.000+02:00", period.Start.ToString(), "\r\n\r\n2: START\r\n" + message);
+                Assert.AreEqual("2021-04-04T23:59:59.999+02:00", period.End.ToString(), "\r\n\r\n2: END\r\n" + message);
 
             }
 
@@ -311,12 +311,12 @@ namespace UnitTestProject1.Time.Time {
             DateTimeOffset sample2 = new DateTimeOffset(2021, 3, 28, 12, 0, 0, TimeSpan.FromHours(2));
 
             EssentialsPeriod period1 = EssentialsPeriod.ThisWeek(sample1, romance);
-            Assert.AreEqual("2021-03-22T00:00:00+01:00", period1.Start.ToString(), "#1 Start");
-            Assert.AreEqual("2021-03-28T23:59:59+02:00", period1.End.ToString(), "#1 End");
+            Assert.AreEqual("2021-03-22T00:00:00.000+01:00", period1.Start.ToString(), "#1 Start");
+            Assert.AreEqual("2021-03-28T23:59:59.999+02:00", period1.End.ToString(), "#1 End");
 
             EssentialsPeriod period2 = EssentialsPeriod.ThisWeek(sample2, romance);
-            Assert.AreEqual("2021-03-22T00:00:00+01:00", period2.Start.ToString(), "#2 Start");
-            Assert.AreEqual("2021-03-28T23:59:59+02:00", period2.End.ToString(), "#2 End");
+            Assert.AreEqual("2021-03-22T00:00:00.000+01:00", period2.Start.ToString(), "#2 Start");
+            Assert.AreEqual("2021-03-28T23:59:59.999+02:00", period2.End.ToString(), "#2 End");
 
         }
 
@@ -329,12 +329,12 @@ namespace UnitTestProject1.Time.Time {
             DateTimeOffset sample2 = new DateTimeOffset(2021, 10, 31, 12, 0, 0, TimeSpan.FromHours(1));
 
             EssentialsPeriod period1 = EssentialsPeriod.ThisWeek(sample1, romance);
-            Assert.AreEqual("2021-10-25T00:00:00+02:00", period1.Start.ToString(), "#1 Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00", period1.End.ToString(), "#1 End");
+            Assert.AreEqual("2021-10-25T00:00:00.000+02:00", period1.Start.ToString(), "#1 Start");
+            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", period1.End.ToString(), "#1 End");
 
             EssentialsPeriod period2 = EssentialsPeriod.ThisWeek(sample2, romance);
-            Assert.AreEqual("2021-10-25T00:00:00+02:00", period2.Start.ToString(), "#2 Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00", period2.End.ToString(), "#2 End");
+            Assert.AreEqual("2021-10-25T00:00:00.000+02:00", period2.Start.ToString(), "#2 Start");
+            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", period2.End.ToString(), "#2 End");
 
         }
 
@@ -347,12 +347,12 @@ namespace UnitTestProject1.Time.Time {
             DateTimeOffset sample2 = new DateTimeOffset(2021, 3, 28, 12, 0, 0, TimeSpan.FromHours(2));
 
             EssentialsPeriod period1 = EssentialsPeriod.ThisMonth(sample1, romance);
-            Assert.AreEqual("2021-03-01T00:00:00+01:00", period1.Start.ToString(), "#1 Start");
-            Assert.AreEqual("2021-03-31T23:59:59+02:00", period1.End.ToString(), "#1 End");
+            Assert.AreEqual("2021-03-01T00:00:00.000+01:00", period1.Start.ToString(), "#1 Start");
+            Assert.AreEqual("2021-03-31T23:59:59.999+02:00", period1.End.ToString(), "#1 End");
 
             EssentialsPeriod period2 = EssentialsPeriod.ThisMonth(sample2, romance);
-            Assert.AreEqual("2021-03-01T00:00:00+01:00", period2.Start.ToString(), "#2 Start");
-            Assert.AreEqual("2021-03-31T23:59:59+02:00", period2.End.ToString(), "#2 End");
+            Assert.AreEqual("2021-03-01T00:00:00.000+01:00", period2.Start.ToString(), "#2 Start");
+            Assert.AreEqual("2021-03-31T23:59:59.999+02:00", period2.End.ToString(), "#2 End");
 
         }
 
@@ -365,12 +365,12 @@ namespace UnitTestProject1.Time.Time {
             DateTimeOffset sample2 = new DateTimeOffset(2021, 10, 31, 12, 0, 0, TimeSpan.FromHours(1));
 
             EssentialsPeriod period1 = EssentialsPeriod.ThisMonth(sample1, romance);
-            Assert.AreEqual("2021-10-01T00:00:00+02:00", period1.Start.ToString(), "#1 Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00", period1.End.ToString(), "#1 End");
+            Assert.AreEqual("2021-10-01T00:00:00.000+02:00", period1.Start.ToString(), "#1 Start");
+            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", period1.End.ToString(), "#1 End");
 
             EssentialsPeriod period2 = EssentialsPeriod.ThisMonth(sample2, romance);
-            Assert.AreEqual("2021-10-01T00:00:00+02:00", period2.Start.ToString(), "#2 Start");
-            Assert.AreEqual("2021-10-31T23:59:59+01:00", period2.End.ToString(), "#2 End");
+            Assert.AreEqual("2021-10-01T00:00:00.000+02:00", period2.Start.ToString(), "#2 Start");
+            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", period2.End.ToString(), "#2 End");
 
         }
 

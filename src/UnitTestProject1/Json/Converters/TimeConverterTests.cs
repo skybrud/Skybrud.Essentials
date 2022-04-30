@@ -22,21 +22,21 @@ namespace UnitTestProject1.Json.Converters {
 
             JObject obj = JObject.FromObject(sample1);
 
-            Assert.AreEqual("2019-01-20T12:22:35+01:00", obj.GetString("time"), "Time");
-            Assert.AreEqual("2019-01-20T12:22:35+01:00", obj.GetString("time1"), "Time #1");
-            Assert.AreEqual("2019-01-20T12:22:35+01:00", obj.GetString("time2"), "Time #2");
+            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("time"), "Time");
+            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("time1"), "Time #1");
+            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("time2"), "Time #2");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("time3"), "Time #3");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("time4"), "Time #4");
             Assert.AreEqual(1547983355, obj.GetInt32("time5"), "Time #5");
             Assert.AreEqual("1547983355", obj.GetString("time6"), "Time #6");
 
-            Assert.AreEqual("2019-01-20T12:22:35+01:00", obj.GetString("offset"), "Offset");
-            Assert.AreEqual("2019-01-20T12:22:35+01:00", obj.GetString("offset1"), "Offset #1");
+            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("offset"), "Offset");
+            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("offset1"), "Offset #1");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("offset2"), "Offset #2");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("offset3"), "Offset #3");
             Assert.AreEqual(1547983355, obj.GetInt32("offset4"), "Offset #4");
             Assert.AreEqual("1547983355", obj.GetString("offset5"), "Offset #5");
-            Assert.AreEqual("2019-01-20T12:22:35+01:00", obj.GetString("offset6"), "Offset #6");
+            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("offset6"), "Offset #6");
             Assert.IsNull(obj.GetString("offset7"), "Offset #7");
 
         }
@@ -103,20 +103,20 @@ namespace UnitTestProject1.Json.Converters {
             JObject obj2 = JObject.FromObject(sample2);
             JObject obj3 = JObject.FromObject(sample3);
 
-            Assert.AreEqual("2019-01-20T14:24:12Z", obj1.GetString("Time1"));
-            Assert.AreEqual("2019-01-20T14:24:12Z", obj1.GetString("Time2"));
-            Assert.AreEqual("1547994252", obj1.GetString("Time3"));
-            Assert.AreEqual("1547994252", obj1.GetString("Time4"));
+            Assert.AreEqual("2019-01-20T14:24:12.000Z", obj1.GetString("Time1"), "#1");
+            Assert.AreEqual("2019-01-20T14:24:12Z", obj1.GetString("Time2"), "#2");
+            Assert.AreEqual("1547994252", obj1.GetString("Time3"), "#3");
+            Assert.AreEqual("1547994252", obj1.GetString("Time4"), "#4");
 
-            Assert.AreEqual("2019-01-20T14:24:12+01:00", obj2.GetString("Time1"));
-            Assert.AreEqual("2019-01-20T14:24:12+01:00", obj2.GetString("Time2"));
-            Assert.AreEqual("1547990652", obj2.GetString("Time3"));
-            Assert.AreEqual("1547990652", obj2.GetString("Time4"));
+            Assert.AreEqual("2019-01-20T14:24:12.000+01:00", obj2.GetString("Time1"), "#5");
+            Assert.AreEqual("2019-01-20T14:24:12+01:00", obj2.GetString("Time2"), "#6");
+            Assert.AreEqual("1547990652", obj2.GetString("Time3"), "#7");
+            Assert.AreEqual("1547990652", obj2.GetString("Time4"), "#8");
 
-            Assert.AreEqual("2019-01-20T14:24:12", obj3.GetString("Time1"));
-            Assert.AreEqual("2019-01-20T14:24:12", obj3.GetString("Time2"));
-            Assert.AreEqual("1547990652", obj3.GetString("Time3"));
-            Assert.AreEqual("1547990652", obj3.GetString("Time4"));
+            Assert.AreEqual("2019-01-20T14:24:12.000", obj3.GetString("Time1"), "#9");
+            Assert.AreEqual("2019-01-20T14:24:12", obj3.GetString("Time2"), "#10");
+            Assert.AreEqual("1547990652", obj3.GetString("Time3"), "#11");
+            Assert.AreEqual("1547990652", obj3.GetString("Time4"), "#12");
 
         }
 

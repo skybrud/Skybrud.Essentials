@@ -30,17 +30,33 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         public const string DateTimeSeconds = "yyyy-MM-ddTHH:mm:ssK";
 
         /// <summary>
+        /// ISO 8601 date and time format.
+        ///
+        /// A <c>Z</c> is appended to the end of the result, indicating that the timestamp is specified in
+        /// <strong>Zulu time</strong> (aka <strong>UTC</strong>).
+        /// </summary>
+        public const string DateTimeSecondsZulu = "yyyy-MM-ddTHH:mm:ssZ";
+
+        /// <summary>
         /// ISO 8601 date and time format, including milliseconds.
         /// </summary>
         public const string DateTimeMilliseconds = "yyyy-MM-ddTHH:mm:ss.fffK";
 
         /// <summary>
+        /// ISO 8601 date and time format, including milliseconds.
+        ///
+        /// A <c>Z</c> is appended to the end of the result, indicating that the timestamp is specified in
+        /// <strong>Zulu time</strong> (aka <strong>UTC</strong>).
+        /// </summary>
+        public const string DateTimeMillisecondsZulu = "yyyy-MM-ddTHH:mm:ss.fffZ";
+
+        /// <summary>
         /// An array with known ISO 8601 date time formats used when attempt to parse ISO 8601 values.
         /// </summary>
         internal static readonly string[] DateTimeFormats = {
-            "yyyy-MM-ddTHH:mm:ssZ",
+            DateTimeSecondsZulu,
             DateTimeSeconds,
-            "yyyy-MM-ddTHH:mm:ss.fffZ",
+            DateTimeMillisecondsZulu,
             DateTimeMilliseconds
         };
 

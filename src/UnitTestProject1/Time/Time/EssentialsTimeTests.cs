@@ -501,12 +501,12 @@ namespace UnitTestProject1.Time.Time {
 
             using (new CultureDisposable(InvariantCulture)) {
                 string actual = time.ToString();
-                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual, "#1");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#1");
             }
 
             using (new CultureDisposable(DanishCulture)) {
                 string actual = time.ToString();
-                Assert.AreEqual("2022-03-07T17:50:23+01:00", actual, "#2");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#2");
             }
 
         }

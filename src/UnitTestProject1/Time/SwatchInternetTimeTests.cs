@@ -68,17 +68,17 @@ namespace UnitTestProject1.Time {
             var r7 = EssentialsTime.FromSwatchInternetTime(new EssentialsDate(2020, 11, 14), 619, utc);
             var r8 = EssentialsTime.FromSwatchInternetTime(new EssentialsDate(2020, 11, 14), 619, romance);
 
-            Assert.AreEqual("2020-08-17T06:33:36+00:00", r1.Iso8601, "#1");
-            Assert.AreEqual("2020-08-17T08:33:36+02:00", r2.Iso8601, "#2");
+            Assert.AreEqual("2020-08-17T06:33:36.000Z", r1.Iso8601, "#1");
+            Assert.AreEqual("2020-08-17T08:33:36.000+02:00", r2.Iso8601, "#2");
 
-            Assert.AreEqual("2020-08-17T06:33:36+00:00", r3.Iso8601, "#1");
-            Assert.AreEqual("2020-08-17T08:33:36+02:00", r4.Iso8601, "#2");
+            Assert.AreEqual("2020-08-17T06:33:36.000Z", r3.Iso8601, "#1");
+            Assert.AreEqual("2020-08-17T08:33:36.000+02:00", r4.Iso8601, "#2");
 
-            Assert.AreEqual("2020-11-14T13:51:21+00:00", r5.Iso8601, "#5");
-            Assert.AreEqual("2020-11-14T14:51:21+01:00", r6.Iso8601, "#6");
+            Assert.AreEqual("2020-11-14T13:51:21.600Z", r5.Iso8601, "#5");
+            Assert.AreEqual("2020-11-14T14:51:21.600+01:00", r6.Iso8601, "#6");
 
-            Assert.AreEqual("2020-11-14T13:51:21+00:00", r7.Iso8601, "#5");
-            Assert.AreEqual("2020-11-14T14:51:21+01:00", r8.Iso8601, "#6");
+            Assert.AreEqual("2020-11-14T13:51:21.600Z", r7.Iso8601, "#7");
+            Assert.AreEqual("2020-11-14T14:51:21.600+01:00", r8.Iso8601, "#8");
 
         }
 

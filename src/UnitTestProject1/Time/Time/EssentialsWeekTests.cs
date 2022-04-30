@@ -274,8 +274,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsWeek week = new EssentialsWeek(date, romance);
 
-            Assert.AreEqual("2019-10-21T00:00:00+02:00", week.Start.ToString(), "Start");
-            Assert.AreEqual("2019-10-27T23:59:59+01:00", week.End.ToString(), "End");
+            Assert.AreEqual("2019-10-21T00:00:00.000+02:00", week.Start.ToString(), "Start");
+            Assert.AreEqual("2019-10-27T23:59:59.999+01:00", week.End.ToString(), "End");
 
             EssentialsDate[] days = week.ToArray();
 

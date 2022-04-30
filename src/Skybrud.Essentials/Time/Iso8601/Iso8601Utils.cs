@@ -146,7 +146,8 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
         public static string ToString(DateTime timestamp) {
-            return timestamp.ToString(DateTimeSeconds, CultureInfo.InvariantCulture);
+            string format = timestamp.Kind == DateTimeKind.Utc ? DateTimeMillisecondsZulu : DateTimeMilliseconds;
+            return timestamp.ToString(format, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -156,7 +157,8 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <param name="timestamp">The timestamp to be converted.</param>
         /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
         public static string ToString(DateTimeOffset timestamp) {
-            return timestamp.ToString(DateTimeSeconds, CultureInfo.InvariantCulture);
+            string format = timestamp.Offset == TimeSpan.Zero ? DateTimeMillisecondsZulu : DateTimeMilliseconds;
+            return timestamp.ToString(format, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
