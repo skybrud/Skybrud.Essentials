@@ -704,7 +704,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An object that represents the date and time of the current <see cref="EssentialsTime"/> object converted to local time.</returns>
         public EssentialsTime ToLocalTime() {
-            return new EssentialsTime(DateTimeOffset.ToLocalTime());
+            return new EssentialsTime(DateTimeOffset.ToLocalTime(), TimeZoneInfo.Local);
         }
 
         /// <summary>
@@ -712,7 +712,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An object that represents the date and time of the current <see cref="EssentialsTime"/> object converted to Coordinated Universal Time (UTC).</returns>
         public EssentialsTime ToUniversalTime() {
-            return new EssentialsTime(DateTimeOffset.ToUniversalTime());
+            return new EssentialsTime(DateTimeOffset.ToUniversalTime(), TimeZoneInfo.Utc);
         }
 
         /// <summary>
