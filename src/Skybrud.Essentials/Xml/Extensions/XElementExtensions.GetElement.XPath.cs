@@ -1,12 +1,12 @@
-﻿
+﻿#if I_CAN_HAZ_XPATH
+
 using System;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
 
-#if I_CAN_HAZ_XPATH
-
 namespace Skybrud.Essentials.Xml.Extensions {
+    
     public static partial class XElementExtensions {
 
         /// <summary>
