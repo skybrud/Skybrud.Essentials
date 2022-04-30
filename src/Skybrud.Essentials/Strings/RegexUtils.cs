@@ -30,7 +30,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns><c>true</c> if the regular expression finds a match; otherwise, <c>false</c>.</returns>
         public static bool IsMatch(string input, [RegexPattern] string pattern, RegexOptions options, out Match match) {
             match = Regex.Match(input ?? string.Empty, pattern, options);
-            return match != null && match.Success;
+            return match.Success;
         }
 
         /// <summary>
@@ -42,7 +42,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns><c>true</c> if the regular expression finds any matches; otherwise, <c>false</c>.</returns>
         public static bool IsMatch(string input, [RegexPattern] string pattern, out MatchCollection matches) {
             matches = Regex.Matches(input ?? string.Empty, pattern);
-            return matches != null && matches.Count > 0;
+            return matches.Count > 0;
         }
 
         /// <summary>
@@ -55,7 +55,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns><c>true</c> if the regular expression finds any matches; otherwise, <c>false</c>.</returns>
         public static bool IsMatch(string input, [RegexPattern] string pattern, RegexOptions options, out MatchCollection matches) {
             matches = Regex.Matches(input ?? string.Empty, pattern, options);
-            return matches != null && matches.Count > 0;
+            return matches.Count > 0;
         }
 
     }
