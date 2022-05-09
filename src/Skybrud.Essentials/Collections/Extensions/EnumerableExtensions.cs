@@ -10,6 +10,93 @@ namespace Skybrud.Essentials.Collections.Extensions {
     /// Static class with extensions methods for instances of <see cref="IEnumerable{T}"/>.
     /// </summary>
     public static class EnumerableExtensions {
+        
+        /// <summary>
+        /// Returns distinct elements from a sequence according to a specified key selector function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <typeparam name="TKey">The type of key to distinguish elements by.</typeparam>
+        /// <param name="source">The sequence to remove duplicate elements from.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains distinct elements from the source sequence.</returns>
+        /// <see>
+        ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L34</cref>
+        /// </see>
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) {
+            return DistinctBy(source, keySelector, null);
+        }
+
+        /// <summary>
+        /// Returns distinct elements from a sequence according to a specified key selector function.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+        /// <typeparam name="TKey">The type of key to distinguish elements by.</typeparam>
+        /// <param name="source">The sequence to remove duplicate elements from.</param>
+        /// <param name="keySelector">A function to extract the key for each element.</param>
+        /// <param name="comparer">An <see cref="IEqualityComparer{TKey}" /> to compare keys.</param>
+        /// <returns>An <see cref="IEnumerable{T}" /> that contains distinct elements from the source sequence.</returns>
+        /// <exception cref="ArgumentNullException"><paramref name="source" /> is <see langword="null" />.</exception>
+        /// <see>
+        ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L48</cref>
+        /// </see>
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) {
+            if (source is null) throw new ArgumentNullException(nameof(source));
+            if (keySelector is null) throw new ArgumentNullException(nameof(keySelector));
+            return DistinctByIterator(source, keySelector, comparer);
+        }
+
+        /// <see>
+        ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L62</cref>
+        /// </see>
+        private static IEnumerable<TSource> DistinctByIterator<TSource, TKey>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) {
+            
+            using IEnumerator<TSource> enumerator = source.GetEnumerator();
+
+            if (!enumerator.MoveNext()) yield break;
+
+            HashSet<TKey> set = new(comparer);
+            
+            do {
+                TSource element = enumerator.Current;
+                if (set.Add(keySelector(element))) {
+                    yield return element;
+                }
+            } while (enumerator.MoveNext());
+
+        }
+
+        /// <summary>
+        /// Divides and returns <paramref name="source"/> into individual groups, where each group having a maximum size of <paramref name="groupSize"/>.
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="source">The input collection to be grouped.</param>
+        /// <param name="groupSize">The maximum size of each group.</param>
+        /// <returns>A collection of indifivial <see cref="IEnumerable{TSource}"/> instances representing each group.</returns>
+        /// <exception cref="ArgumentNullException">If <paramref name="source"/> is <c>null</c>.</exception>
+        /// <exception cref="ArgumentException">If <paramref name="groupSize"/> is not greater than <c>0</c>.</exception>
+        /// <see>
+        ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L42</cref>
+        /// </see>
+        public static IEnumerable<IEnumerable<TSource>> InGroupsOf<TSource>(this IEnumerable<TSource> source, int groupSize) {
+            
+            if (source == null) throw new ArgumentNullException(nameof(source));
+            if (groupSize <= 0) throw new ArgumentException("Must be greater than zero.", nameof(groupSize));
+
+            TSource[] temp = null;
+            var count = 0;
+
+            foreach (var item in source) {
+                if (temp == null) temp = new TSource[groupSize];
+                temp[count++] = item;
+                if (count != groupSize) continue;
+                yield return temp;
+                temp = null;
+                count = 0;
+            }
+
+            if (temp != null && count > 0) yield return temp.Take(count);
+
+        }
 
         /// <summary>
         /// Orders <paramref name="collection"/> in descending order if <paramref name="reverse"/> is
@@ -68,6 +155,19 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
         public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer, SortOrder order) {
             return order == SortOrder.Descending ? source.OrderByDescending(keySelector, comparer) : source.OrderBy(keySelector, comparer);
+        }
+
+        /// <summary>
+        /// Filters a sequence of values to ignore those which are null.
+        /// </summary>
+        /// <typeparam name="TSource"></typeparam>
+        /// <param name="source">The collection to be filtered.</param>
+        /// <returns>An instanced of <see cref="IEnumerable{TSource}"/> without any null values..</returns>
+        /// <see>
+        ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L226</cref>
+        /// </see>
+        public static IEnumerable<TSource> WhereNotNull<TSource>(this IEnumerable<TSource> source) where TSource : class {
+            return source.Where(x => x != null);
         }
 
         /// <summary>
