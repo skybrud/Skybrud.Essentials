@@ -3,6 +3,7 @@ using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
+using Skybrud.Essentials.Text;
 
 namespace Skybrud.Essentials.Xml {
 
@@ -135,12 +136,30 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="document">The document to be converted.</param>
         /// <returns>An XML string representation of the document.</returns>
         public static string ToString(XDocument document) {
+            
             if (document == null) throw new ArgumentNullException(nameof(document));
+
+            // If the XML declaration of the document specifies an encoding, we try to use the same encoding
+            Encoding encoding = Encoding.Unicode;
+            if (document.Declaration != null && !string.IsNullOrEmpty(document.Declaration.Encoding)) {
+                try {
+                    encoding = Encoding.GetEncoding(document.Declaration.Encoding);
+                } catch (ArgumentException) {
+                    // ignore
+                }
+            }
+
+            // Initialize a new string builder
             StringBuilder builder = new StringBuilder();
-            using (StringWriter writer = new StringWriter(builder)) {
+            
+            // Save the XML document to the writer/builder
+            using (StringWriterWithEncoding writer = new StringWriterWithEncoding(builder, encoding)) {
                 document.Save(writer);
             }
+            
+            // Return the string builder value as a string
             return builder.ToString();
+
         }
 
     }

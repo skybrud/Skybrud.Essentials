@@ -129,6 +129,7 @@
     <Compile Include="Xml\GetAttributeValue.cs" />
     <Compile Include="Xml\GetAttribute.cs" />
     <Compile Include="Xml\GetElementTests.cs" />
+    <Compile Include="Xml\XmlUtilsTests.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Skybrud.Essentials\Skybrud.Essentials.csproj">
