@@ -39,6 +39,41 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Converts the string representation of a number to its 32-bit signed integer equivalent. A return value
+        /// indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string containing a number to convert.</param>
+        /// <param name="result">When this method returns, contains the 32-bit signed integer value equivalent of the
+        /// number contained in <paramref name="input"/>, if the conversion succeeded, or zero if the conversion
+        /// failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+        /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
+        /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool TryParseInt32(string input, out int result) {
+            return int.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+        }
+
+        /// <summary>
+        /// Converts the string representation of a number to its 32-bit signed integer equivalent. A return value
+        /// indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string containing a number to convert.</param>
+        /// <param name="result">When this method returns, contains the 32-bit signed integer value equivalent of the
+        /// number contained in <paramref name="input"/>, if the conversion succeeded, or <c>null</c> if the conversion
+        /// failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+        /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
+        /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool TryParseInt32(string input, out int? result) {
+            if (int.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out int temp)) {
+                result = temp;
+                return true;
+            }
+            result = null;
+            return false;
+        }
+
+        /// <summary>
         /// Parses a string of integer values into an array of <see cref="int"/>. Supported separators are
         /// <c>,</c>, <c> </c>, <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list
         /// that can't be converted to <see cref="int"/> will be ignored.

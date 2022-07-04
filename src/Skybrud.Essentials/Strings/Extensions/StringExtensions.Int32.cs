@@ -33,6 +33,21 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Returns whether the specified <paramref name="value"/> matches an integer.
+        /// </summary>
+        /// <param name="value">The value to check.</param>
+        /// <param name="result">The converted <see cref="int"/> value, of <c>0</c> if <paramref name="value"/> doesn't match an integer.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> matches an integer; otherwise <c>false</c>.</returns>
+        public static bool IsInt32(string value, out int? result) {
+            if (int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int v)) {
+                result = v;
+                return true;
+            }
+            result = null;
+            return false;
+        }
+
+        /// <summary>
         /// Converts <paramref name="input"/> to an instance of <see cref="int"/>. If the conversion fails,
         /// <c>0</c> will be returned instead.
         /// </summary>

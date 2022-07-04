@@ -88,6 +88,7 @@
     <Compile Include="Strings\RegexTests.cs" />
     <Compile Include="Strings\StringTests.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Strings\StringToInt32Tests.cs" />
     <Compile Include="TestConstants.cs" />
     <Compile Include="TestHelpers.cs" />
     <Compile Include="Time\Converters\UnixTimeConverterTests.cs" />
