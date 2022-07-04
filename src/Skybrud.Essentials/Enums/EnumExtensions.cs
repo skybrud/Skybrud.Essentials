@@ -1,7 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.Enums {
 
@@ -54,6 +52,34 @@ namespace Skybrud.Essentials.Enums {
                     if (Convert.ToInt32(flag) > 0 && value.HasFlag(flag)) yield return (TEnum) flag;
                 }
             }
+        }
+
+        /// <summary>
+        /// Returns whether the ordinal value of the specified enum <paramref name="value"/> is between
+        /// <paramref name="min"/> and <paramref name="max"/> (both inclusive).
+        /// </summary>
+        /// <param name="value">The enum value.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> is between <paramref name="min"/> and
+        /// <paramref name="max"/>; otherwise, <c>false</c>.</returns>
+        public static bool IsBetween(this Enum value, int min, int max) {
+            int v = Convert.ToInt32(value);
+            return v >= min && v <= max;
+        }
+
+        /// <summary>
+        /// Returns whether the ordinal value of the specified enum <paramref name="value"/> is between
+        /// <paramref name="min"/> and <paramref name="max"/> (both inclusive).
+        /// </summary>
+        /// <param name="value">The enum value.</param>
+        /// <param name="min">The minimum value.</param>
+        /// <param name="max">The maximum value.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> is between <paramref name="min"/> and
+        /// <paramref name="max"/>; otherwise, <c>false</c>.</returns>
+        public static bool IsBetween(this Enum value, Enum min, Enum max) {
+            int v = Convert.ToInt32(value);
+            return v >= Convert.ToInt32(min) && v <= Convert.ToInt32(max);
         }
 
     }

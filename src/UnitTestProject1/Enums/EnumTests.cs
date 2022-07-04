@@ -409,6 +409,29 @@ namespace UnitTestProject1.Enums {
 
         }
 
+        [TestMethod]
+        public void IsBetween() {
+
+            HttpStatusCode status1 = HttpStatusCode.Created;
+
+            bool result1 = EnumUtils.IsBetween(status1, 200, 299);
+            bool result2 = EnumUtils.IsBetween(status1, HttpStatusCode.OK, HttpStatusCode.PartialContent);
+            bool result3 = EnumUtils.IsBetween(status1, HttpStatusCode.MultipleChoices, HttpStatusCode.MovedPermanently);
+
+            Assert.IsTrue(result1, "#1");
+            Assert.IsTrue(result2, "#2");
+            Assert.IsFalse(result3, "#3");
+
+            bool result4 = status1.IsBetween(00, 299);
+            bool result5 = status1.IsBetween(HttpStatusCode.OK, HttpStatusCode.PartialContent);
+            bool result6 = status1.IsBetween(HttpStatusCode.MultipleChoices, HttpStatusCode.MovedPermanently);
+
+            Assert.IsTrue(result4, "#4");
+            Assert.IsTrue(result5, "#5");
+            Assert.IsFalse(result6, "#6");
+
+        }
+
     }
 
     [Flags]
