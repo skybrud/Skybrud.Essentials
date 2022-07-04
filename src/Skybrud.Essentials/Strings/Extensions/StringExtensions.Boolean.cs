@@ -44,12 +44,31 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Returns whether the specified string representation can be converted to a logical value <see cref="bool"/> equivalent.
+        /// </summary>
+        /// <param name="value">A string containing the value to test.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> can be converted to a <see cref="bool"/>; otherwise, <c>false</c>.</returns>
+        public static bool IsBoolean(this string value) {
+            return StringUtils.TryParseBoolean(value, out bool _);
+        }
+
+        /// <summary>
         /// Tries to convert the specified string representation of a logical value to its <see cref="bool"/> equivalent.
         /// </summary>
         /// <param name="value">A string containing the value to convert.</param>
-        /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c></c>.</param>
+        /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool IsBoolean(this string value, out bool result) {
+            return StringUtils.TryParseBoolean(value, out result);
+        }
+
+        /// <summary>
+        /// Tries to convert the specified string representation of a logical value to its <see cref="bool"/> equivalent.
+        /// </summary>
+        /// <param name="value">A string containing the value to convert.</param>
+        /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c>null</c>.</param>
+        /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+        public static bool IsBoolean(this string value, out bool? result) {
             return StringUtils.TryParseBoolean(value, out result);
         }
 
