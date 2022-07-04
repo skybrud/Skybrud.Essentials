@@ -74,6 +74,23 @@ namespace UnitTestProject1.Xml {
 
         }
 
+        [TestMethod]
+        public void ToStringUtf8DisableFormatting() {
+
+            XDocument document = new XDocument(
+                new XDeclaration("1.0", "utf-8", null),
+                new XElement(
+                    "hello",
+                    new XElement("world", "Hello World")
+                )
+            );
+
+            const string expected = "<?xml version=\"1.0\" encoding=\"utf-8\"?><hello><world>Hello World</world></hello>";
+
+            Assert.AreEqual(expected, XmlUtils.ToString(document, SaveOptions.DisableFormatting));
+
+        }
+
     }
 
 }

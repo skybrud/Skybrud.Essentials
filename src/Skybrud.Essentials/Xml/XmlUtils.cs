@@ -136,7 +136,17 @@ namespace Skybrud.Essentials.Xml {
         /// <param name="document">The document to be converted.</param>
         /// <returns>An XML string representation of the document.</returns>
         public static string ToString(XDocument document) {
-            
+            return ToString(document, default);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="document"/> to an XML based string, maintaining the XML declaration of the document.
+        /// </summary>
+        /// <param name="document">The document to be converted.</param>
+        /// <param name="options">A <see cref="SaveOptions"/> that specifies formatting behavior.</param>
+        /// <returns>An XML string representation of the document.</returns>
+        public static string ToString(XDocument document, SaveOptions options) {
+
             if (document == null) throw new ArgumentNullException(nameof(document));
 
             // If the XML declaration of the document specifies an encoding, we try to use the same encoding
@@ -151,12 +161,12 @@ namespace Skybrud.Essentials.Xml {
 
             // Initialize a new string builder
             StringBuilder builder = new StringBuilder();
-            
+
             // Save the XML document to the writer/builder
             using (StringWriterWithEncoding writer = new StringWriterWithEncoding(builder, encoding)) {
-                document.Save(writer);
+                document.Save(writer, options);
             }
-            
+
             // Return the string builder value as a string
             return builder.ToString();
 
