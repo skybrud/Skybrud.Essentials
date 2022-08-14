@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Assemblies {
     public static class AssemblyUtils {
 
         /// <summary>
-        /// Gets the version of the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetVersion"/>.
+        /// Gets the version of the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetVersion(Assembly)"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns>A string representing the version of the assembly.</returns>
@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Assemblies {
 #if I_CAN_HAZ_FILE_VERSION_INFO
 
         /// <summary>
-        /// Gets the file version of the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetFileVersion"/>.
+        /// Gets the file version of the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetFileVersion(Assembly)"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns>A string representing the file version of the assembly.</returns>
@@ -34,7 +34,7 @@ namespace Skybrud.Essentials.Assemblies {
         }
 
         /// <summary>
-        /// Gets the informational version of the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetInformationalVersion"/>.
+        /// Gets the informational version of the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetInformationalVersion(Assembly)"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns>A string representing the informational version of the assembly.</returns>
@@ -44,7 +44,7 @@ namespace Skybrud.Essentials.Assemblies {
         }
 
         /// <summary>
-        /// Gets an instance of <see cref="FileVersionInfo"/> with information about the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetFileVersionInfo"/>.
+        /// Gets an instance of <see cref="FileVersionInfo"/> with information about the specified <paramref name="assembly"/>. Alias of <see cref="ReflectionUtils.GetFileVersionInfo(Assembly)"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
         /// <returns>An instance of <see cref="FileVersionInfo"/>.</returns>
