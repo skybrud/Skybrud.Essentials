@@ -21,28 +21,28 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets a <see cref="EssentialsTime"/> object that is set to the current date and time on this computer,  expressed as the local time.
         /// </summary>
-        public static EssentialsTime Now => new EssentialsTime(DateTimeOffset.Now, TimeZoneInfo.Local);
+        public static EssentialsTime Now => new(DateTimeOffset.Now, TimeZoneInfo.Local);
 
         /// <summary>
         /// Gets an instance of <see cref="EssentialsTime"/> representing the current date, according to the local time.
         /// </summary>
-        public static EssentialsTime Today => new EssentialsTime(DateTime.Today, TimeZoneInfo.Local);
+        public static EssentialsTime Today => new(DateTime.Today, TimeZoneInfo.Local);
 
         /// <summary>
         /// Gets a <see cref="EssentialsTime"/> object that is set to the current date and time on this computer,
         /// expressed as the Coordinated Universal Time (UTC).
         /// </summary>
-        public static EssentialsTime UtcNow => new EssentialsTime(DateTimeOffset.UtcNow, TimeZoneInfo.Utc);
+        public static EssentialsTime UtcNow => new(DateTimeOffset.UtcNow, TimeZoneInfo.Utc);
 
         /// <summary>
         /// Represents the earliest possible <see cref="EssentialsTime"/> value.
         /// </summary>
-        public static EssentialsTime MinValue => new EssentialsTime(DateTimeOffset.MinValue);
+        public static EssentialsTime MinValue => new(DateTimeOffset.MinValue);
 
         /// <summary>
         /// Represents the greatest possible value of <see cref="EssentialsTime"/>.
         /// </summary>
-        public static EssentialsTime MaxValue => new EssentialsTime(DateTimeOffset.MaxValue);
+        public static EssentialsTime MaxValue => new(DateTimeOffset.MaxValue);
 
         /// <summary>
         /// Gets an instance of <see cref="EssentialsTime"/> representing the start of the Unix Epoch (AKA <c>0</c> seconds).
@@ -357,7 +357,7 @@ namespace Skybrud.Essentials.Time {
             if (date == null) throw new ArgumentNullException(nameof(date));
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
-            DateTimeOffset dto = new DateTimeOffset(date.Year, date.Month, date.Day, 0, 0, 0, timeZone.BaseUtcOffset);
+            DateTimeOffset dto = new(date.Year, date.Month, date.Day, 0, 0, 0, timeZone.BaseUtcOffset);
 
             TimeZone = timeZone;
             DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
@@ -424,7 +424,7 @@ namespace Skybrud.Essentials.Time {
 
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
-            DateTimeOffset dto = new DateTimeOffset(year, month, day, 0, 0, 0, timeZone.BaseUtcOffset);
+            DateTimeOffset dto = new(year, month, day, 0, 0, 0, timeZone.BaseUtcOffset);
 
             TimeZone = timeZone;
             DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
@@ -444,7 +444,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param> 
         public EssentialsTime(int year, int month, int day, int hour, int minute, int second, TimeZoneInfo timeZone) {
 
-            DateTimeOffset dto = new DateTimeOffset(year, month, day, hour, minute, second, timeZone.BaseUtcOffset);
+            DateTimeOffset dto = new(year, month, day, hour, minute, second, timeZone.BaseUtcOffset);
 
             TimeZone = timeZone;
             DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
@@ -465,7 +465,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param> 
         public EssentialsTime(int year, int month, int day, int hour, int minute, int second, int millisecond, TimeZoneInfo timeZone) {
 
-            DateTimeOffset dto = new DateTimeOffset(year, month, day, hour, minute, second, millisecond, timeZone.BaseUtcOffset);
+            DateTimeOffset dto = new(year, month, day, hour, minute, second, millisecond, timeZone.BaseUtcOffset);
 
             TimeZone = timeZone;
             DateTimeOffset = TimeUtils.AdjustForTimeZoneAndDaylightSavings(dto, timeZone);
@@ -1279,7 +1279,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="ticks">The amount of ticks.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromTicks(long ticks) {
-            DateTime time = new DateTime(ticks);
+            DateTime time = new(ticks);
             return new EssentialsTime(time, TimeZoneInfo.Local);
         }
 

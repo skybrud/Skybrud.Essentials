@@ -86,7 +86,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
             var count = 0;
 
             foreach (var item in source) {
-                if (temp == null) temp = new TSource[groupSize];
+                temp ??= new TSource[groupSize];
                 temp[count++] = item;
                 if (count != groupSize) continue;
                 yield return temp;

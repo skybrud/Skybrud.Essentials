@@ -2,14 +2,14 @@
 using System.Text;
 
 namespace Skybrud.Essentials.Text {
-    
+
     /// <summary>
     /// Custom string writer allowing an optional encoding to be specified via the constructor.
     /// </summary>
     public class StringWriterWithEncoding : StringWriter {
 
         #region Properties
-        
+
         /// <summary>
         /// Gets the encoding associated with the string writer.
         /// </summary>

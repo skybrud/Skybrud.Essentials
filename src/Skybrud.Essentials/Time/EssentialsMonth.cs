@@ -165,7 +165,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An array of <see cref="EssentialsMonth"/>.</returns>
         public static EssentialsMonth[] GetMonths(int startYear, int startMonth, int months, TimeZoneInfo timeZone) {
 
-            List<EssentialsMonth> temp = new List<EssentialsMonth>();
+            List<EssentialsMonth> temp = new();
 
             int year = startYear;
 

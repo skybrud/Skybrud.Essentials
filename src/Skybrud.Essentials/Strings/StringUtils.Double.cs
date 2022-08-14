@@ -46,7 +46,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string of integer values to be parsed.</param>
         /// <returns>An array of <see cref="double"/>.</returns>
         public static double[] ParseDoubleArray(string str) {
-            return ParseDoubleArray(str, ',', ' ', '\r', '\n', '\t');
+            return ParseDoubleArray(str, DefaultSeparators);
         }
 
         /// <summary>

@@ -39,26 +39,26 @@ namespace Skybrud.Essentials.Strings {
         /// <summary>
         /// Parses a string of multiple GUIDs into an array of <see cref="Guid"/>. Supported separators are
         /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
-        /// 
+        ///
         /// Values in <paramref name="str"/> that can't be converted to <see cref="Guid"/> will be ignored.
         /// </summary>
         /// <param name="str">The string containing the GUIDs.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ParseGuidArray(string str) {
-            return ParseGuidArray(str, new[] { ',', ' ', '\r', '\n', '\t' });
+            return ParseGuidArray(str, DefaultSeparators);
         }
 
         /// <summary>
         /// Parses string of multiple GUIDs into an array of <see cref="Guid"/>, using the specified array of
         /// <paramref name="separators"/>.
-        /// 
+        ///
         /// Values in <paramref name="str"/> that can't be converted to <see cref="Guid"/> will be ignored.
         /// </summary>
         /// <param name="str">The string containing the GUIDs.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ParseGuidArray(string str, params char[] separators) {
-            List<Guid> guids = new List<Guid>();
+            List<Guid> guids = new();
             foreach (string piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
             }

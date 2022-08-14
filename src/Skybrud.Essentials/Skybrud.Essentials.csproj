@@ -6,13 +6,13 @@
     <TargetFrameworks>netstandard1.1;netstandard1.3;netstandard2.0;net45;net46;net47;net48</TargetFrameworks>
     <GenerateAssemblyFileVersionAttribute>false</GenerateAssemblyFileVersionAttribute>
     <BuildInParallel>false</BuildInParallel>
-    <LangVersion>9.0</LangVersion>
+    <LangVersion>10.0</LangVersion>
   </PropertyGroup>
-  
+
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
     <DefineConstants>NET_STANDARD,JETBRAINS_ANNOTATIONS</DefineConstants>
   </PropertyGroup>
-  
+
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;JETBRAINS_ANNOTATIONS</DefineConstants>
   </PropertyGroup>
@@ -67,7 +67,7 @@
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2020.1.0" PrivateAssets="All" />
   </ItemGroup>
-  
+
   <ItemGroup>
     <None Include="../../NUGET.md" Pack="true" PackagePath="\README.md" />
     <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />

@@ -18,8 +18,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-            if (!(value is EssentialsDateTime)) return;
-            EssentialsDateTime dt = (EssentialsDateTime) value;
+            if (value is not EssentialsDateTime dt) return;
             base.WriteJson(writer, dt.DateTime, serializer);
         }
 

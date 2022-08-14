@@ -46,7 +46,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string of numeric values to be parsed.</param>
         /// <returns>An array of <see cref="long"/>.</returns>
         public static long[] ParseInt64Array(string str) {
-            return ParseInt64Array(str, ',', ' ', '\r', '\n', '\t');
+            return ParseInt64Array(str, DefaultSeparators);
         }
 
         /// <summary>

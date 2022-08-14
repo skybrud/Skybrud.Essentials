@@ -21,11 +21,11 @@ namespace Skybrud.Essentials.Json {
         #region Constructor
 
         /// <summary>
-        /// Initializes a new instance from the specified <paramref name="obj"/>.
+        /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
-        /// <param name="obj">The instance of <see cref="Newtonsoft.Json.Linq.JObject"/> representing the object.</param>
-        protected JsonObjectBase(JObject obj) {
-            JObject = obj;
+        /// <param name="json">The instance of <see cref="Newtonsoft.Json.Linq.JObject"/> representing the object.</param>
+        protected JsonObjectBase(JObject json) {
+            JObject = json;
         }
 
         #endregion

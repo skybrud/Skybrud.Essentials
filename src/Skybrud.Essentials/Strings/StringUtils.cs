@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -11,29 +12,31 @@ namespace Skybrud.Essentials.Strings {
     /// </summary>
     public static partial class StringUtils {
 
+        internal static readonly char[] DefaultSeparators = { ',', ' ', '\r', '\n', '\t' };
+
         /// <summary>
         /// Parses string of multiple values into an array of <see cref="string"/>. Supported separators are
         /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
-        /// 
+        ///
         /// Empty entries are automatically removed from the output array.
         /// </summary>
         /// <param name="str">The input string containing the values.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
         public static string[] ParseStringArray(string str) {
-            return ParseStringArray(str, ',', ' ', '\r', '\n', '\t');
+            return ParseStringArray(str, DefaultSeparators);
         }
 
         /// <summary>
         /// Parses string of multiple values into an array of <see cref="string"/>, using the specified array of
         /// <paramref name="separators"/>.
-        /// 
+        ///
         /// Empty entries are automatically removed from the output array.
         /// </summary>
         /// <param name="str">The input string containing the values.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
         public static string[] ParseStringArray(string str, params char[] separators) {
-            return str == null ? new string[0] : str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+            return str == null ? ArrayUtils.Empty<string>() : str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
         }
 
         /// <summary>
@@ -387,7 +390,7 @@ namespace Skybrud.Essentials.Strings {
         public static string StripHtml(string html, params string[] ignore) {
             if (html == null) return null;
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
-            Regex regex = new Regex("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
+            Regex regex = new("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
             return HtmlDecode(regex.Replace(html, string.Empty));
         }
 
@@ -434,7 +437,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
         public static string Truncate(string input, int maxCharacters, string end) {
             if (string.IsNullOrWhiteSpace(input)) return input;
-            if (end == null) end = string.Empty;
+            end ??= string.Empty;
             return input.Length > maxCharacters ? input.Substring(0, maxCharacters - end.Length) + end : input;
         }
 

@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
 
@@ -145,11 +146,11 @@ namespace Skybrud.Essentials.Json.Extensions {
             switch (token) {
 
                 case null:
-                    return new Guid[0];
+                    return ArrayUtils.Empty<Guid>();
 
                 case JArray array:
 
-                    List<Guid> temp = new List<Guid>();
+                    List<Guid> temp = new();
 
                     foreach (JToken t in array) {
 
@@ -166,7 +167,7 @@ namespace Skybrud.Essentials.Json.Extensions {
                     return token.Type switch {
                         JTokenType.String => StringUtils.ParseGuidArray(token.Value<string>()),
                         JTokenType.Guid => new[] { token.Value<Guid>() },
-                        _ => new Guid[0]
+                        _ => ArrayUtils.Empty<Guid>()
                     };
 
             }
@@ -468,7 +469,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
         public static T[] GetArray<T>(this JObject obj, string path, Func<JObject, T> callback) {
 
-            if (!(obj?.SelectToken(path) is JArray token)) return null;
+            if (obj?.SelectToken(path) is not JArray token) return null;
 
             return (
                 from child in token
@@ -487,7 +488,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         public static JToken[] GetArrayItems(this JObject obj, string path) {
             JArray array = GetArray(obj, path);
-            return array?.ToArray() ?? new JToken[0];
+            return array?.ToArray() ?? ArrayUtils.Empty<JToken>();
         }
 
         /// <summary>
@@ -499,7 +500,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         public static T[] GetArrayItems<T>(this JObject obj, string path) {
 
-            if (!(obj?.SelectToken(path) is JArray token)) return new T[0];
+            if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<T>();
 
             return (
                 from JToken child in token
@@ -518,7 +519,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         public static T[] GetArrayItems<T>(this JObject obj, string path, Func<JToken, T> callback) {
 
-            if (!(obj?.SelectToken(path) is JArray token)) return new T[0];
+            if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<T>();
 
             return (
                 from JObject child in token
@@ -537,7 +538,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         public static T[] GetArrayItems<T>(this JObject obj, string path, Func<JObject, T> callback) {
 
-            if (!(obj?.SelectToken(path) is JArray token)) return new T[0];
+            if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<T>();
 
             return (
                 from JObject child in token
@@ -556,7 +557,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// array will still be returned.</returns>
         public static TValue[] GetArrayItems<TKey, TValue>(this JObject obj, string path, Func<TKey, TValue> callback) where TKey : JToken {
 
-            if (!(obj?.SelectToken(path) is JArray token)) return new TValue[0];
+            if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<TValue>();
 
             return (
                 from TKey child in token

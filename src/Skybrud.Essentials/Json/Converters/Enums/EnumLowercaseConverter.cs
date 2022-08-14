@@ -1,5 +1,4 @@
-﻿using System;
-using Skybrud.Essentials.Strings;
+﻿using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {
 

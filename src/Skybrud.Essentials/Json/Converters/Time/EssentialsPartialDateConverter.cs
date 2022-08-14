@@ -16,8 +16,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
         public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
-            if (!(value is EssentialsPartialDate)) return;
-            EssentialsPartialDate date = (EssentialsPartialDate) value;
+            if (value is not EssentialsPartialDate date) return;
             writer.WriteValue(date.ToString());
         }
 

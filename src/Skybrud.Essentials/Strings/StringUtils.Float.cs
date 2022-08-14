@@ -57,7 +57,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string of float values to be parsed.</param>
         /// <returns>An array of <see cref="float"/>.</returns>
         public static float[] ParseFloatArray(string str) {
-            return ParseFloatArray(str, ',', ' ', '\r', '\n', '\t');
+            return ParseFloatArray(str, DefaultSeparators);
         }
 
         /// <summary>

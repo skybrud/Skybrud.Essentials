@@ -53,7 +53,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
 
             // See: https://stackoverflow.com/a/9064954
 
-            DateTimeOffset jan1 = new DateTimeOffset(year, 1, 1, 0, 0, 0, offset);
+            DateTimeOffset jan1 = new(year, 1, 1, 0, 0, 0, offset);
             int daysOffset = DayOfWeek.Thursday - jan1.DayOfWeek;
 
             DateTimeOffset firstThursday = jan1.AddDays(daysOffset);
@@ -98,22 +98,12 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <param name="timestamp">The timestamp.</param>
         /// <returns>An <see cref="int"/> representing the year.</returns>
         public static int GetYear(DateTime timestamp) {
-
             int week = GetWeekNumber(timestamp);
-
-            switch (timestamp.Month) {
-
-                case 1 when week > 50:
-                    return timestamp.Year - 1;
-
-                case 12 when week == 1:
-                    return timestamp.Year + 1;
-
-                default:
-                    return timestamp.Year;
-
-            }
-
+            return timestamp.Month switch {
+                1 when week > 50 => timestamp.Year - 1,
+                12 when week == 1 => timestamp.Year + 1,
+                _ => timestamp.Year
+            };
         }
 
         /// <summary>

@@ -173,7 +173,7 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
         public static T[] ParseEnumArray<T>(string str) where T : struct {
             return (
-                from piece in (str ?? string.Empty).Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)
+                from piece in (str ?? string.Empty).Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)
                 select ParseEnum<T>(piece)
             ).ToArray();
         }
@@ -186,7 +186,7 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="type">The enum type.</param>
         /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
         public static Array ParseEnumArray(string str, Type type) {
-            return ParseEnumArray(str, type, new[] { ',', ' ', '\r', '\n', '\t' });
+            return ParseEnumArray(str, type, StringUtils.DefaultSeparators);
         }
 
         /// <summary>
@@ -208,7 +208,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instanceo of <see cref="Array"/> containing the parsed enum values.</returns>
         public static Array ParseEnumArray(string[] pieces, Type type) {
 
-            List<Enum> temp = new List<Enum>();
+            List<Enum> temp = new();
 
             foreach (string piece in pieces) {
                 if (TryParseEnum(piece, type, out Enum value)) {
@@ -231,11 +231,11 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static bool TryParseEnumArray<T>(string str, out T[] array) where T : struct {
 
-            List<T> temp = new List<T>();
+            List<T> temp = new();
             array = null;
 
             // Iterate over and try to parse the each individual value
-            foreach (string piece in (str ?? string.Empty).Split(new[] { ',', ' ', '\r', '\n', '\t' }, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in (str ?? string.Empty).Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (!TryParseEnum(piece, out T value)) return false;
                 temp.Add(value);
             }

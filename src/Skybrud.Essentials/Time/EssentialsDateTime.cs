@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets a <see cref="EssentialsDateTime"/> object that is set to the current date and time on this computer,
         /// expressed as the local time.
         /// </summary>
-        public static EssentialsDateTime Now => new EssentialsDateTime(DateTime.Now);
+        public static EssentialsDateTime Now => new(DateTime.Now);
 
         /// <summary>
         /// Gets the current UNIX timestamp (amount of seconds since the start of the Unix Epoch).

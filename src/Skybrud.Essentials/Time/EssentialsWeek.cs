@@ -46,12 +46,12 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets an instance representing the current <strong>ISO 8601</strong> week according to the local time zone.
         /// </summary>
-        public static EssentialsWeek Current => new EssentialsWeek(DateTimeOffset.Now);
+        public static EssentialsWeek Current => new(DateTimeOffset.Now);
 
         /// <summary>
         /// Gets an instance representing the current <strong>ISO 8601</strong> week according to Coordinated Universal Time (UTC).
         /// </summary>
-        public static EssentialsWeek CurrentUtc => new EssentialsWeek(DateTimeOffset.UtcNow);
+        public static EssentialsWeek CurrentUtc => new(DateTimeOffset.UtcNow);
 
         #endregion
 
@@ -179,8 +179,8 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An enumerator that can be used to iterate through the days of the week.</returns>
         public IEnumerator<EssentialsDate> GetEnumerator() {
 
-            EssentialsDate start = new EssentialsDate(Start);
-            EssentialsDate end = new EssentialsDate(End);
+            EssentialsDate start = new(Start);
+            EssentialsDate end = new(End);
 
             for (EssentialsDate day = start; day <= end; day = day.AddDays(1)) {
                 yield return day;

@@ -81,7 +81,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string of integer values to be parsed.</param>
         /// <returns>An array of <see cref="int"/>.</returns>
         public static int[] ParseInt32Array(string str) {
-            return ParseInt32Array(str, ',', ' ', '\r', '\n', '\t');
+            return ParseInt32Array(str, DefaultSeparators);
         }
 
         /// <summary>

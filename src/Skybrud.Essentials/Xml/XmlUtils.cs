@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Text;
 using System.Xml;
 using System.Xml.Linq;
@@ -160,10 +159,10 @@ namespace Skybrud.Essentials.Xml {
             }
 
             // Initialize a new string builder
-            StringBuilder builder = new StringBuilder();
+            StringBuilder builder = new();
 
             // Save the XML document to the writer/builder
-            using (StringWriterWithEncoding writer = new StringWriterWithEncoding(builder, encoding)) {
+            using (StringWriterWithEncoding writer = new(builder, encoding)) {
                 document.Save(writer, options);
             }
 

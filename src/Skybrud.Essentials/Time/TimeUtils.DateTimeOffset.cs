@@ -9,13 +9,10 @@ namespace Skybrud.Essentials.Time {
         #region Get ... of day
 
         public static DateTimeOffset GetStartOfDay(DateTimeOffset time) {
-            if (time == null) throw new ArgumentNullException(nameof(time));
             return new DateTimeOffset(time.Year, time.Month, time.Day, 0, 0, 0, time.Offset);
         }
 
         public static DateTimeOffset GetStartOfDay(DateTimeOffset time, TimeZoneInfo timeZone) {
-
-            if (time == null) throw new ArgumentNullException(nameof(time));
 
             // Get the end of the day according to the current offset
             DateTimeOffset temp = GetStartOfDay(time);
@@ -34,10 +31,8 @@ namespace Skybrud.Essentials.Time {
 
         public static DateTimeOffset GetEndOfDay(DateTimeOffset time) {
 
-            if (time == null) throw new ArgumentNullException(nameof(time));
-
             // Get the start of the current day
-            DateTimeOffset temp = new DateTimeOffset(time.Year, time.Month, time.Day, 0, 0, 0, time.Offset);
+            DateTimeOffset temp = new(time.Year, time.Month, time.Day, 0, 0, 0, time.Offset);
 
             // Add a day, but subtract a single tick
             temp = temp.AddDays(1).AddTicks(-1);
@@ -47,8 +42,6 @@ namespace Skybrud.Essentials.Time {
         }
 
         public static DateTimeOffset GetEndOfDay(DateTimeOffset time, TimeZoneInfo timeZone) {
-
-            if (time == null) throw new ArgumentNullException(nameof(time));
 
             // Get the end of the day according to the current offset
             DateTimeOffset temp = GetEndOfDay(time);

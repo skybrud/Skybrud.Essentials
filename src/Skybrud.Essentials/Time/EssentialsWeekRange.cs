@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 
 namespace Skybrud.Essentials.Time {
@@ -51,7 +50,7 @@ namespace Skybrud.Essentials.Time {
             Start = start;
             End = end;
 
-            List<EssentialsWeek> temp = new List<EssentialsWeek>();
+            List<EssentialsWeek> temp = new();
 
             if (end.Start < start.Start) {
                 IsReverse = true;

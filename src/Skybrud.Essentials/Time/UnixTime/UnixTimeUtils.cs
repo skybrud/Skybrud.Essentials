@@ -1,5 +1,7 @@
 ﻿using System;
 
+// ReSharper disable InconsistentNaming
+
 namespace Skybrud.Essentials.Time.UnixTime {
 
     /// <summary>

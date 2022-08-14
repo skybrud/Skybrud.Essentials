@@ -44,7 +44,7 @@ namespace Skybrud.Essentials.Time {
             Start = start;
             End = end;
 
-            List<EssentialsDate> temp = new List<EssentialsDate>();
+            List<EssentialsDate> temp = new();
 
             if (end < start) {
                 IsReverse = true;

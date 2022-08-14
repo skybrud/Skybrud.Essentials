@@ -1,5 +1,5 @@
 ﻿namespace Skybrud.Essentials.Strings {
-    
+
     /// <summary>
     /// Enum class indicating the format in which a file size should be formatted.
     /// </summary>

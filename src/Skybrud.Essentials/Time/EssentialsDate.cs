@@ -117,7 +117,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets an instance of <see cref="EssentialsDate"/> representing the current day.
         /// </summary>
-        public static EssentialsDate Today => new EssentialsDate(DateTime.Today);
+        public static EssentialsDate Today => new(DateTime.Today);
 
         #endregion
 

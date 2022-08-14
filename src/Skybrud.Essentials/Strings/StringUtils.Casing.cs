@@ -7,6 +7,8 @@ namespace Skybrud.Essentials.Strings {
 
     public static partial class StringUtils {
 
+        private static readonly char[] _casingSeparators = { ' ', '_' };
+
         /// <summary>
         /// Converts the specified <paramref name="str"/> to camel case (also referred to as lower camel casing).
         /// </summary>
@@ -18,7 +20,7 @@ namespace Skybrud.Essentials.Strings {
             str = ToUnderscore(str);
 
             // Split the string by space or underscore
-            string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] pieces = str.Split(_casingSeparators, StringSplitOptions.RemoveEmptyEntries);
 
             // Join the pieces again and uppercase the first character of each piece but the first
             return string.Join(string.Empty, pieces.Select((t, i) => i == 0 ? t : FirstCharToUpper(t)));
@@ -57,7 +59,7 @@ namespace Skybrud.Essentials.Strings {
             str = ToUnderscore(str);
 
             // Split the string by space or underscore
-            string[] pieces = str.Split(new[] { ' ', '_' }, StringSplitOptions.RemoveEmptyEntries);
+            string[] pieces = str.Split(_casingSeparators, StringSplitOptions.RemoveEmptyEntries);
 
             // Join the pieces again and uppercase the first character of each piece
             return string.Join(string.Empty, from piece in pieces select FirstCharToUpper(piece));
@@ -93,7 +95,7 @@ namespace Skybrud.Essentials.Strings {
         public static string ToKebabCase(string str) {
 
             // Replace invalid characters
-            str = Regex.Replace(str ?? "", "[\\W_]+", " ").Trim();
+            str = Regex.Replace(str ?? string.Empty, "[\\W_]+", " ").Trim();
 
             // Replace multiple whitespaces
             str = Regex.Replace(str, "[ ]{2,}", " ");

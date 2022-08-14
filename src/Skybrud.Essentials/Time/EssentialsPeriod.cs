@@ -244,7 +244,7 @@ namespace Skybrud.Essentials.Time {
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
             // Wrap the input "timestamp"
-            EssentialsTime time = new EssentialsTime(timestamp);
+            EssentialsTime time = new(timestamp);
 
             // Calculate start and end
             EssentialsTime start = time.GetStartOfWeek(timeZone);
@@ -284,7 +284,7 @@ namespace Skybrud.Essentials.Time {
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
 
             // Wrap the input "dto"
-            EssentialsTime time = new EssentialsTime(dto);
+            EssentialsTime time = new(dto);
 
             // Calculate start and end
             EssentialsTime start = time.GetStartOfMonth(timeZone);

@@ -48,8 +48,6 @@ namespace Skybrud.Essentials.Time.Rfc822 {
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
         public static DateTimeOffset Parse(string rfc822) {
 
-            // TODO: Make public once I've settled on correct naming
-
             if (string.IsNullOrWhiteSpace(rfc822)) throw new ArgumentNullException(nameof(rfc822));
 
             Match m1 = Regex.Match(rfc822, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
