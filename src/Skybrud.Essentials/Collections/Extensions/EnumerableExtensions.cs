@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
     /// Static class with extensions methods for instances of <see cref="IEnumerable{T}"/>.
     /// </summary>
     public static class EnumerableExtensions {
-        
+
         /// <summary>
         /// Returns distinct elements from a sequence according to a specified key selector function.
         /// </summary>
@@ -49,13 +49,13 @@ namespace Skybrud.Essentials.Collections.Extensions {
         ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L62</cref>
         /// </see>
         private static IEnumerable<TSource> DistinctByIterator<TSource, TKey>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) {
-            
+
             using IEnumerator<TSource> enumerator = source.GetEnumerator();
 
             if (!enumerator.MoveNext()) yield break;
 
             HashSet<TKey> set = new(comparer);
-            
+
             do {
                 TSource element = enumerator.Current;
                 if (set.Add(keySelector(element))) {
@@ -78,7 +78,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L42</cref>
         /// </see>
         public static IEnumerable<IEnumerable<TSource>> InGroupsOf<TSource>(this IEnumerable<TSource> source, int groupSize) {
-            
+
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (groupSize <= 0) throw new ArgumentException("Must be greater than zero.", nameof(groupSize));
 
@@ -344,6 +344,45 @@ namespace Skybrud.Essentials.Collections.Extensions {
                 }
             }
 
+        }
+
+        /// <summary>
+        /// Returns a random element from the specified <paramref name="collection"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of the collection.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <returns>A random item of type <typeparamref name="TSource"/> from <paramref name="collection"/> if not empty; otherwise, the default value of <typeparamref name="TSource"/>.</returns>
+        /// <remarks>
+        ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementions, this seems to be the most random.</para>
+        /// </remarks>
+        public static TSource RandomOrDefault<TSource>(this IEnumerable<TSource> collection) {
+            return collection.OrderBy(_ => Guid.NewGuid()).FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Returns a new version of <paramref name="collection"/> whose elements are sorted in a random order.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of the collection.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <returns>A new <see cref="IOrderedEnumerable{T}"/> whose elements are sorted in a random order.</returns>
+        /// <remarks>
+        ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementions, this seems to be the most random.</para>
+        /// </remarks>
+        public static IOrderedEnumerable<TSource> OrderByRandom<TSource>(this IEnumerable<TSource> collection) {
+            return collection.OrderBy(_ => Guid.NewGuid());
+        }
+
+        /// <summary>
+        /// Returns a new version of <paramref name="collection"/> whose elements are sorted in a random order.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of the collection.</typeparam>
+        /// <param name="collection">The collection.</param>
+        /// <returns>A new <see cref="IOrderedEnumerable{T}"/> whose elements are sorted in a random order.</returns>
+        /// <remarks>
+        ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementions, this seems to be the most random.</para>
+        /// </remarks>
+        public static IOrderedEnumerable<TSource> Randomize<TSource>(this IEnumerable<TSource> collection) {
+            return collection.OrderBy(_ => Guid.NewGuid());
         }
 
     }
