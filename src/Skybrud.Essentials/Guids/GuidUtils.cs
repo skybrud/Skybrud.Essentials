@@ -38,7 +38,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">The values to be converted.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ToGuidArray(int[] values) {
-            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.EmptyGuidArray;
+            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.Empty<Guid>();
         }
 
         /// <summary>
@@ -47,7 +47,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">The values to be converted.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ToGuidArray(IEnumerable<int> values) {
-            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.EmptyGuidArray;
+            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.Empty<Guid>();
         }
 
         /// <summary>
@@ -56,7 +56,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">The values to be converted.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ToGuidArray(long[] values) {
-            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.EmptyGuidArray;
+            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.Empty<Guid>();
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">The values to be converted.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] ToGuidArray(IEnumerable<long> values) {
-            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.EmptyGuidArray;
+            return values?.Select(ToGuid).ToArray() ?? ArrayUtils.Empty<Guid>();
         }
 
         /// <summary>
@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">A collection of GUIDs to be converted.</param>
         /// <returns>An array of <see cref="int"/> representations of the specified GUIDs.</returns>
         public static int[] ToInt32Array(Guid[] values) {
-            return values?.Select(ToInt32).ToArray() ?? ArrayUtils.EmptyInt32Array;
+            return values?.Select(ToInt32).ToArray() ?? ArrayUtils.Empty<int>();
         }
 
         /// <summary>
@@ -92,7 +92,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">A collection of GUIDs to be converted.</param>
         /// <returns>An array of <see cref="int"/> representations of the specified GUIDs.</returns>
         public static int[] ToInt32Array(IEnumerable<Guid> values) {
-            return values?.Select(ToInt32).ToArray() ?? ArrayUtils.EmptyInt32Array;
+            return values?.Select(ToInt32).ToArray() ?? ArrayUtils.Empty<int>();
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">A collection of GUIDs to be converted.</param>
         /// <returns>An array of <see cref="long"/> representations of the specified GUIDs.</returns>
         public static long[] ToInt64Array(Guid[] values) {
-            return values?.Select(ToInt64).ToArray() ?? ArrayUtils.EmptyInt64Array;
+            return values?.Select(ToInt64).ToArray() ?? ArrayUtils.Empty<long>();
         }
 
         /// <summary>
@@ -119,7 +119,7 @@ namespace Skybrud.Essentials.Guids {
         /// <param name="values">A collection of GUIDs to be converted.</param>
         /// <returns>An array of <see cref="long"/> representations of the specified GUIDs.</returns>
         public static long[] ToInt64Array(IEnumerable<Guid> values) {
-            return values?.Select(ToInt64).ToArray() ?? ArrayUtils.EmptyInt64Array;
+            return values?.Select(ToInt64).ToArray() ?? ArrayUtils.Empty<long>();
         }
 
     }
