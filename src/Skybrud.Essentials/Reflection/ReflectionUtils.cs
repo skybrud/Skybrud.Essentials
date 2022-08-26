@@ -3,6 +3,7 @@ using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
+using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Essentials.Reflection {
 
@@ -324,7 +325,7 @@ namespace Skybrud.Essentials.Reflection {
 
             // Get the member of the enum value
             MemberInfo member = value.GetType().GetTypeInfo().GetDeclaredField(value.ToString());
-            if (member == null) return new T[0];
+            if (member == null) return ArrayUtils.Empty<T>();
 
             // Return an array of the found attributes
             return member
@@ -363,7 +364,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="result">When this method returns, an array containing the matched attributes.</param>
         /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
         public static bool HasCustomAttributes<T>(MemberInfo member, out T[] result) where T : Attribute {
-            result = member?.GetCustomAttributes<T>().ToArray() ?? new T[0];
+            result = member?.GetCustomAttributes<T>().ToArray() ?? ArrayUtils.Empty<T>();
             return result.Length > 0;
         }
 
@@ -388,7 +389,7 @@ namespace Skybrud.Essentials.Reflection {
         public static T[] GetCustomAttributes<T>(MemberInfo member) where T : Attribute {
             return member?
                 .GetCustomAttributes<T>(false)
-                .ToArray() ?? new T[0];
+                .ToArray() ?? ArrayUtils.Empty<T>();
         }
 
         /// <summary>
@@ -421,7 +422,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="result">When this method returns, an array containing the matched attributes.</param>
         /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
         public static bool HasCustomAttributes<T>(Type type, out T[] result) where T : Attribute {
-            result = type?.GetTypeInfo().GetCustomAttributes<T>(false).ToArray() ?? new T[0];
+            result = type?.GetTypeInfo().GetCustomAttributes<T>(false).ToArray() ?? ArrayUtils.Empty<T>();
             return result.Length > 0;
         }
 
@@ -448,7 +449,7 @@ namespace Skybrud.Essentials.Reflection {
             return type?
                 .GetTypeInfo()
                 .GetCustomAttributes<T>(false)
-                .ToArray() ?? new T[0];
+                .ToArray() ?? ArrayUtils.Empty<T>();
         }
 
 #if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER
