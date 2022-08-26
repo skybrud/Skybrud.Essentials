@@ -221,6 +221,37 @@ namespace Skybrud.Essentials.Reflection.Extensions {
             return ReflectionUtils.IsObsolete(type, out attribute);
         }
 
+#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="type"/> is an extension class.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns><c>true</c> if <paramref name="type"/> is an extension class; otherwise, <c>false</c>.</returns>
+        public static bool IsExtensionClass(this Type type) {
+            return ReflectionUtils.IsExtensionClass(type);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <typeparamref name="T"/> is an extension class.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <returns><c>true</c> if <typeparamref name="T"/> is an extension class; otherwise, <c>false</c>.</returns>
+        public static bool IsExtensionClass<T>() {
+            return ReflectionUtils.IsExtensionClass<T>();
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="method"/> is an extension method.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns><c>true</c> if <paramref name="method"/> is an extension method; otherwise, <c>false</c>.</returns>
+        public static bool IsExtensionMethod(this MethodInfo method) {
+            return ReflectionUtils.IsExtensionMethod(method);
+        }
+
+#endif
+
     }
 
 }

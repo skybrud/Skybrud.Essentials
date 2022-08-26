@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Linq;
 using System.Reflection;
+using System.Runtime.CompilerServices;
 
 namespace Skybrud.Essentials.Reflection {
 
@@ -449,6 +450,37 @@ namespace Skybrud.Essentials.Reflection {
                 .GetCustomAttributes<T>(false)
                 .ToArray() ?? new T[0];
         }
+
+#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="type"/> is an extension class.
+        /// </summary>
+        /// <param name="type">The type.</param>
+        /// <returns><c>true</c> if <paramref name="type"/> is an extension class; otherwise, <c>false</c>.</returns>
+        public static bool IsExtensionClass(Type type) {
+            return type.IsDefined(typeof(ExtensionAttribute));
+        }
+
+        /// <summary>
+        /// Returns whether the specified <typeparamref name="T"/> is an extension class.
+        /// </summary>
+        /// <typeparam name="T">The type.</typeparam>
+        /// <returns><c>true</c> if <typeparamref name="T"/> is an extension class; otherwise, <c>false</c>.</returns>
+        public static bool IsExtensionClass<T>() {
+            return typeof(T).IsDefined(typeof(ExtensionAttribute));
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="method"/> is an extension method.
+        /// </summary>
+        /// <param name="method">The method.</param>
+        /// <returns><c>true</c> if <paramref name="method"/> is an extension method; otherwise, <c>false</c>.</returns>
+        public static bool IsExtensionMethod(MethodInfo method) {
+            return method.IsDefined(typeof(ExtensionAttribute));
+        }
+
+#endif
 
     }
 
