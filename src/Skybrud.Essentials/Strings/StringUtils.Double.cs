@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -39,29 +38,61 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses a string of integer values into an array of <see cref="double"/>. Supported separators are
-        /// <c>,</c>, <c> </c>, <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list
-        /// that can't be converted to <see cref="double"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// double-precision doubleing-point values (<see cref="double"/>). Supported separators are <c>,</c>, <c> </c>,
+        /// <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list that can't be converted to <see cref="double"/> will
+        /// be ignored.
         /// </summary>
-        /// <param name="str">The string of integer values to be parsed.</param>
-        /// <returns>An array of <see cref="double"/>.</returns>
-        public static double[] ParseDoubleArray(string str) {
-            return ParseDoubleArray(str, DefaultSeparators);
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>An array of double-precision doubleing-point values (<see cref="double"/>).</returns>
+        public static double[] ParseDoubleArray(string input) {
+            return ParseDoubleArray(input, DefaultSeparators);
         }
 
         /// <summary>
-        /// Parses a string of double values into an array of <see cref="double"/>. Values in the list that can't be
-        /// converted to <see cref="double"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// double-precision doubleing-point values (<see cref="double"/>). Values in the list that can't be converted to
+        /// <see cref="double"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string of double values to be parsed.</param>
+        /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of <see cref="double"/>.</returns>
-        public static double[] ParseDoubleArray(string str, params char[] separators) {
-            return (
-                from piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^(-|)[0-9\\.]+$")
-                select double.Parse(piece, NumberStyles.Any, CultureInfo.InvariantCulture)
-            ).ToArray();
+        /// <returns>An array of double-precision doubleing-point values (<see cref="double"/>).</returns>
+        public static double[] ParseDoubleArray(string input, params char[] separators) {
+            return ParseDoubleList(input, separators).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// double-precision doubleing-point values (<see cref="double"/>). Supported separators are <c>,</c>, <c> </c>,
+        /// <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list that can't be converted to <see cref="double"/> will
+        /// be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>A list of 32-bit signed integer values (<see cref="double"/>).</returns>
+        public static List<double> ParseDoubleList(string input) {
+            return ParseDoubleList(input, DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// double-precision doubleing-point values (<see cref="double"/>). Values in the list that can't be converted to
+        /// <see cref="double"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of double-precision doubleing-point values (<see cref="double"/>).</returns>
+        public static List<double> ParseDoubleList(string input, params char[] separators) {
+
+            List<double> temp = new();
+
+            foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+                if (double.TryParse(piece, NumberStyles.Any, CultureInfo.InvariantCulture, out double result)) {
+                    temp.Add(result);
+                }
+            }
+
+            return temp;
+
         }
 
     }

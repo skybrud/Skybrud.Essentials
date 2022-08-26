@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -69,24 +70,51 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Parses a string of numeric values into an array of <see cref="int"/>. Values in the list that can't be
-        /// converted to <see cref="int"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Supported separators are <c>,</c>, <c> </c>, <c>\r</c>,
+        /// <c>\n</c> and <c>\t</c>. Values in the list
+        /// that can't be converted to <see cref="int"/> will be ignored.
         /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
-        /// <returns>An array of <see cref="int"/>.</returns>
-        public static int[] ToInt32Array(this string str) {
-            return StringUtils.ParseInt32Array(str);
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>An array of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static int[] ToInt32Array(this string input) {
+            return StringUtils.ParseInt32Array(input);
         }
 
         /// <summary>
-        /// Parses a string of numeric values into an array of <see cref="int"/>. Values in the list that can't be
-        /// converted to <see cref="int"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Values in the list that can't be converted to
+        /// <see cref="int"/> will be ignored.
         /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
+        /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of <see cref="int"/>.</returns>
-        public static int[] ToInt32Array(this string str, params char[] separators) {
-            return StringUtils.ParseInt32Array(str, separators);
+        /// <returns>An array of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static int[] ToInt32Array(this string input, params char[] separators) {
+            return StringUtils.ParseInt32Array(input, separators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Supported separators are <c>,</c>, <c> </c>, <c>\r</c>,
+        /// <c>\n</c> and <c>\t</c>. Values in the list
+        /// that can't be converted to <see cref="int"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>A list of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static List<int> ToInt32List(this string input) {
+            return StringUtils.ParseInt32List(input);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Values in the list that can't be converted to
+        /// <see cref="int"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static List<int> ToInt32List(this string input, params char[] separators) {
+            return StringUtils.ParseInt32List(input, separators);
         }
 
     }

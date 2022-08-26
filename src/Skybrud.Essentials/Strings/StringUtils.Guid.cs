@@ -37,32 +37,67 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses a string of multiple GUIDs into an array of <see cref="Guid"/>. Supported separators are
-        /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+        /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>. Supported
+        /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+        /// tab (<c>\t</c>).
         ///
-        /// Values in <paramref name="str"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string containing the GUIDs.</param>
+        /// <param name="input">The string containing the GUIDs.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ParseGuidArray(string str) {
-            return ParseGuidArray(str, DefaultSeparators);
+        public static Guid[] ParseGuidArray(string input) {
+            return ParseGuidArray(input, DefaultSeparators);
         }
 
         /// <summary>
-        /// Parses string of multiple GUIDs into an array of <see cref="Guid"/>, using the specified array of
-        /// <paramref name="separators"/>.
+        /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>, using the
+        /// specified array of <paramref name="separators"/>.
         ///
-        /// Values in <paramref name="str"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string containing the GUIDs.</param>
+        /// <param name="input">The string containing the GUIDs.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ParseGuidArray(string str, params char[] separators) {
+        public static Guid[] ParseGuidArray(string input, params char[] separators) {
             List<Guid> guids = new();
-            foreach (string piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in (input ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
             }
             return guids.ToArray();
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="input"/> string into a list of <see cref="Guid"/>. Supported
+        /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+        /// tab (<c>\t</c>).
+        ///
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string containing the GUIDs.</param>
+        /// <returns>A list of <see cref="Guid"/>.</returns>
+        public static List<Guid> ParseGuidList(string input) {
+            return ParseGuidList(input, DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="input"/> string into a list of <see cref="Guid"/>, using the specified
+        /// array of <paramref name="separators"/>.
+        ///
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string containing the GUIDs.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <see cref="Guid"/>.</returns>
+        public static List<Guid> ParseGuidList(string input, params char[] separators) {
+
+            List<Guid> temp = new();
+
+            foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+                if (Guid.TryParse(piece, out Guid result)) temp.Add(result);
+            }
+
+            return temp;
+
         }
 
     }

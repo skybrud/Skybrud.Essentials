@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System.Collections.Generic;
+using System.Globalization;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -45,24 +46,51 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Parses a string of numeric values into an array of <see cref="long"/>. Values in the list that can't be
-        /// converted to <see cref="long"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// 64-bit signed integer values (<see cref="long"/>). Supported separators are <c>,</c>, <c> </c>, <c>\r</c>,
+        /// <c>\n</c> and <c>\t</c>. Values in the list
+        /// that can't be converted to <see cref="long"/> will be ignored.
         /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
-        /// <returns>An array of <see cref="long"/>.</returns>
-        public static long[] ToInt64Array(this string str) {
-            return StringUtils.ParseInt64Array(str);
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>An array of 64-bit signed integer values (<see cref="long"/>).</returns>
+        public static long[] ToInt64Array(this string input) {
+            return StringUtils.ParseInt64Array(input);
         }
 
         /// <summary>
-        /// Parses a string of numeric values into an array of <see cref="long"/>. Values in the list that can't be
-        /// converted to <see cref="long"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// 64-bit signed integer values (<see cref="long"/>). Values in the list that can't be converted to
+        /// <see cref="long"/> will be ignored.
         /// </summary>
-        /// <param name="str">The comma separated string to be converted.</param>
+        /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of <see cref="long"/>.</returns>
-        public static long[] ToInt64Array(this string str, params char[] separators) {
-            return StringUtils.ParseInt64Array(str, separators);
+        /// <returns>An array of 64-bit signed integer values (<see cref="long"/>).</returns>
+        public static long[] ToInt64Array(this string input, params char[] separators) {
+            return StringUtils.ParseInt64Array(input, separators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// 64-bit signed integer values (<see cref="long"/>). Supported separators are <c>,</c>, <c> </c>, <c>\r</c>,
+        /// <c>\n</c> and <c>\t</c>. Values in the list
+        /// that can't be converted to <see cref="long"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>A list of 64-bit signed integer values (<see cref="long"/>).</returns>
+        public static List<long> ToInt64List(this string input) {
+            return StringUtils.ParseInt64List(input);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// 64-bit signed integer values (<see cref="long"/>). Values in the list that can't be converted to
+        /// <see cref="long"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of 64-bit signed integer values (<see cref="long"/>).</returns>
+        public static List<long> ToInt64List(this string input, params char[] separators) {
+            return StringUtils.ParseInt64List(input, separators);
         }
 
     }

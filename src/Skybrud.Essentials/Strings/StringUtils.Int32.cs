@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -74,29 +73,61 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses a string of integer values into an array of <see cref="int"/>. Supported separators are
-        /// <c>,</c>, <c> </c>, <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Supported separators are <c>,</c>, <c> </c>, <c>\r</c>,
+        /// <c>\n</c> and <c>\t</c>. Values in the list
         /// that can't be converted to <see cref="int"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string of integer values to be parsed.</param>
-        /// <returns>An array of <see cref="int"/>.</returns>
-        public static int[] ParseInt32Array(string str) {
-            return ParseInt32Array(str, DefaultSeparators);
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>An array of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static int[] ParseInt32Array(string input) {
+            return ParseInt32Array(input, DefaultSeparators);
         }
 
         /// <summary>
-        /// Parses a string of integer values into an array of <see cref="int"/>. Values in the list that can't be
-        /// converted to <see cref="int"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Values in the list that can't be converted to
+        /// <see cref="int"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string of integer values to be parsed.</param>
+        /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of <see cref="int"/>.</returns>
-        public static int[] ParseInt32Array(string str, params char[] separators) {
-            return (
-                from piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select int.Parse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture)
-            ).ToArray();
+        /// <returns>An array of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static int[] ParseInt32Array(string input, params char[] separators) {
+            return ParseInt32List(input, separators).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Supported separators are <c>,</c>, <c> </c>, <c>\r</c>,
+        /// <c>\n</c> and <c>\t</c>. Values in the list
+        /// that can't be converted to <see cref="int"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>A list of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static List<int> ParseInt32List(string input) {
+            return ParseInt32List(input, DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// 32-bit signed integer values (<see cref="int"/>). Values in the list that can't be converted to
+        /// <see cref="int"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of 32-bit signed integer values (<see cref="int"/>).</returns>
+        public static List<int> ParseInt32List(string input, params char[] separators) {
+
+            List<int> temp = new();
+
+            foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+                if (int.TryParse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture, out int result)) {
+                    temp.Add(result);
+                }
+            }
+
+            return temp;
+
         }
 
     }

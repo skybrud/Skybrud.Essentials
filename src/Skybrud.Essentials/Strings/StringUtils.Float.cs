@@ -1,7 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Globalization;
-using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -50,29 +49,61 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Parses a string of float values into an array of <see cref="float"/>. Supported separators are
-        /// <c>,</c>, <c> </c>, <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list
-        /// that can't be converted to <see cref="float"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// single-precision floating-point values (<see cref="float"/>). Supported separators are <c>,</c>, <c> </c>,
+        /// <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list that can't be converted to <see cref="float"/> will
+        /// be ignored.
         /// </summary>
-        /// <param name="str">The string of float values to be parsed.</param>
-        /// <returns>An array of <see cref="float"/>.</returns>
-        public static float[] ParseFloatArray(string str) {
-            return ParseFloatArray(str, DefaultSeparators);
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>An array of single-precision floating-point values (<see cref="float"/>).</returns>
+        public static float[] ParseFloatArray(string input) {
+            return ParseFloatArray(input, DefaultSeparators);
         }
 
         /// <summary>
-        /// Parses a string of float values into an array of <see cref="float"/>. Values in the list that can't be
-        /// converted to <see cref="float"/> will be ignored.
+        /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
+        /// single-precision floating-point values (<see cref="float"/>). Values in the list that can't be converted to
+        /// <see cref="float"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string of float values to be parsed.</param>
+        /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of <see cref="float"/>.</returns>
-        public static float[] ParseFloatArray(string str, params char[] separators) {
-            return (
-                from piece in (str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)
-                where Regex.IsMatch(piece, "^(-|)[0-9]+$")
-                select float.Parse(piece, NumberStyles.Any, CultureInfo.InvariantCulture)
-            ).ToArray();
+        /// <returns>An array of single-precision floating-point values (<see cref="float"/>).</returns>
+        public static float[] ParseFloatArray(string input, params char[] separators) {
+            return ParseFloatList(input, separators).ToArray();
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// single-precision floating-point values (<see cref="float"/>). Supported separators are <c>,</c>, <c> </c>,
+        /// <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list that can't be converted to <see cref="float"/> will
+        /// be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <returns>A list of 32-bit signed integer values (<see cref="float"/>).</returns>
+        public static List<float> ParseFloatList(string input) {
+            return ParseFloatList(input, DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
+        /// single-precision floating-point values (<see cref="float"/>). Values in the list that can't be converted to
+        /// <see cref="float"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string of numeric values to be parsed.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of single-precision floating-point values (<see cref="float"/>).</returns>
+        public static List<float> ParseFloatList(string input, params char[] separators) {
+
+            List<float> temp = new();
+
+            foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+                if (float.TryParse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture, out float result)) {
+                    temp.Add(result);
+                }
+            }
+
+            return temp;
+
         }
 
     }

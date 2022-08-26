@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -56,28 +57,54 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Parses a string of multiple GUIDs into an array of <see cref="Guid"/>. Supported separators are
-        /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
-        /// 
-        /// Values in <paramref name="str"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>. Supported
+        /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+        /// tab (<c>\t</c>).
+        ///
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string containing the GUIDs.</param>
+        /// <param name="input">The string containing the GUIDs.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ToGuidArray(this string str) {
-            return StringUtils.ParseGuidArray(str);
+        public static Guid[] ToGuidArray(this string input) {
+            return StringUtils.ParseGuidArray(input);
         }
 
         /// <summary>
-        /// Parses string of multiple GUIDs into an array of <see cref="Guid"/>, using the specified array of
-        /// <paramref name="separators"/>.
-        /// 
-        /// Values in <paramref name="str"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>, using the
+        /// specified array of <paramref name="separators"/>.
+        ///
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
         /// </summary>
-        /// <param name="str">The string containing the GUIDs.</param>
+        /// <param name="input">The string containing the GUIDs.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ToGuidArray(this string str, params char[] separators) {
-            return StringUtils.ParseGuidArray(str, separators);
+        public static Guid[] ToGuidArray(this string input, params char[] separators) {
+            return StringUtils.ParseGuidArray(input, separators);
+        }
+
+        /// <summary>
+        /// Parses a string of multiple GUIDs into a list of <see cref="Guid"/>. Supported separators are
+        /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+        ///
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string containing the GUIDs.</param>
+        /// <returns>An array of <see cref="Guid"/>.</returns>
+        public static List<Guid> ToGuidList(this string input) {
+            return StringUtils.ParseGuidList(input);
+        }
+
+        /// <summary>
+        /// Parses a string of multiple GUIDs into an array of <see cref="Guid"/>, using the specified array of
+        /// <paramref name="separators"/>.
+        ///
+        /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
+        /// </summary>
+        /// <param name="input">The string containing the GUIDs.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <see cref="Guid"/>.</returns>
+        public static List<Guid> ToGuidList(this string input, params char[] separators) {
+            return StringUtils.ParseGuidList(input, separators);
         }
 
     }
