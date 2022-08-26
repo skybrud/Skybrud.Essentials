@@ -1,4 +1,5 @@
-﻿using System.Globalization;
+﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 // ReSharper disable ExpressionIsAlwaysNull
@@ -328,6 +329,72 @@ namespace UnitTestProject1.Time {
 
             Assert.AreEqual(31, EssentialsDate.GetDaysBetween(jan1, feb1));
             Assert.AreEqual(-31, EssentialsDate.GetDaysBetween(feb1, jan1));
+
+        }
+
+        [TestMethod]
+        public void GetQuarter() {
+
+            EssentialsDate time1 = new EssentialsDate(2022, 3, 24);
+            EssentialsDate time2 = new EssentialsDate(2022, 3, 31);
+
+            EssentialsDate time3 = new EssentialsDate(2022, 10, 27);
+            EssentialsDate time4 = new EssentialsDate(2022, 11, 3);
+
+            Assert.AreEqual(1, time1.Quarter, "#1");
+            Assert.AreEqual(1, time2.Quarter, "#2");
+            Assert.AreEqual(4, time3.Quarter, "#3");
+            Assert.AreEqual(4, time4.Quarter, "#4");
+
+        }
+
+        [TestMethod]
+        public void GetStartOfQuarter() {
+
+            TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsDate time1 = new EssentialsDate(2022, 3, 24);
+            EssentialsDate time2 = new EssentialsDate(2022, 3, 31);
+
+            EssentialsDate time3 = new EssentialsDate(2022, 10, 27);
+            EssentialsDate time4 = new EssentialsDate(2022, 11, 3);
+
+            EssentialsTime start1 = time1.GetStartOfQuarter(timeZone);
+            EssentialsTime start2 = time2.GetStartOfQuarter(timeZone);
+
+            EssentialsTime start3 = time3.GetStartOfQuarter(timeZone);
+            EssentialsTime start4 = time4.GetStartOfQuarter(timeZone);
+
+            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start1.Iso8601);
+            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start2.Iso8601);
+
+            Assert.AreEqual("2022-10-01T00:00:00.000+02:00", start3.Iso8601);
+            Assert.AreEqual("2022-10-01T00:00:00.000+02:00", start4.Iso8601);
+
+        }
+
+        [TestMethod]
+        public void GetEndOfQuarter() {
+
+            TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsDate time1 = new EssentialsDate(2022, 3, 24);
+            EssentialsDate time2 = new EssentialsDate(2022, 3, 31);
+
+            EssentialsDate time3 = new EssentialsDate(2022, 10, 27);
+            EssentialsDate time4 = new EssentialsDate(2022, 11, 3);
+
+            EssentialsTime end1 = time1.GetEndOfQuarter(timeZone);
+            EssentialsTime end2 = time2.GetEndOfQuarter(timeZone);
+
+            EssentialsTime end3 = time3.GetEndOfQuarter(timeZone);
+            EssentialsTime end4 = time4.GetEndOfQuarter(timeZone);
+
+            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end1.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end2.Iso8601);
+
+            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end3.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end4.Iso8601);
 
         }
 

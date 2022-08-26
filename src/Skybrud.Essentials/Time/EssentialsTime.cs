@@ -113,7 +113,6 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public int Millisecond => DateTimeOffset.Millisecond;
 
-
         /// <summary>
         /// Gets the minute part of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>0</c> and <c>59</c>.
         /// </summary>
@@ -143,6 +142,11 @@ namespace Skybrud.Essentials.Time {
         /// Gets the year part of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>1</c> and <c>9999</c>.
         /// </summary>
         public int Year => DateTimeOffset.Year;
+
+        /// <summary>
+        /// Gets the quarter of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>1</c> and <c>4</c>.
+        /// </summary>
+        public int Quarter => TimeUtils.GetQuarter(this);
 
         /// <summary>
         /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
@@ -392,7 +396,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year (1 through 9999).</param>
         /// <param name="month">The month (1 through 12).</param>
         /// <param name="day">The day (1 through the number of days in month).</param>
-        /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param> 
+        /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         public EssentialsTime(int year, int month, int day, TimeSpan offset) {
             DateTimeOffset = new DateTimeOffset(year, month, day, 0, 0, 0, offset);
         }
@@ -407,7 +411,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="hour">The hours (0 through 23).</param>
         /// <param name="minute">The minutes (0 through 59).</param>
         /// <param name="second">The seconds (0 through 59).</param>
-        /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param> 
+        /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         public EssentialsTime(int year, int month, int day, int hour, int minute, int second, TimeSpan offset) {
             DateTimeOffset = new DateTimeOffset(year, month, day, hour, minute, second, offset);
         }
@@ -419,7 +423,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="year">The year (1 through 9999).</param>
         /// <param name="month">The month (1 through 12).</param>
         /// <param name="day">The day (1 through the number of days in month).</param>
-        /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param> 
+        /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param>
         public EssentialsTime(int year, int month, int day, TimeZoneInfo timeZone) {
 
             if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
@@ -441,7 +445,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="hour">The hours (0 through 23).</param>
         /// <param name="minute">The minutes (0 through 59).</param>
         /// <param name="second">The seconds (0 through 59).</param>
-        /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param> 
+        /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param>
         public EssentialsTime(int year, int month, int day, int hour, int minute, int second, TimeZoneInfo timeZone) {
 
             DateTimeOffset dto = new(year, month, day, hour, minute, second, timeZone.BaseUtcOffset);
@@ -462,7 +466,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="minute">The minutes (0 through 59).</param>
         /// <param name="second">The seconds (0 through 59).</param>
         /// <param name="millisecond">The milliseconds (0 through 999).</param>
-        /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param> 
+        /// <param name="timeZone">The time zone indicating the time's offset from Coordinated Universal Time (UTC).</param>
         public EssentialsTime(int year, int month, int day, int hour, int minute, int second, int millisecond, TimeZoneInfo timeZone) {
 
             DateTimeOffset dto = new(year, month, day, hour, minute, second, millisecond, timeZone.BaseUtcOffset);
@@ -758,7 +762,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the start of the day.
-        /// 
+        ///
         /// If <see cref="TimeZone"/> is present, the start of the day will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
@@ -768,7 +772,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the start of the day.
-        /// 
+        ///
         /// The start of the day will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
@@ -787,7 +791,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the end of the day.
-        /// 
+        ///
         /// The end of the day will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
@@ -798,7 +802,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the start of the week.
-        /// 
+        ///
         /// If <see cref="TimeZone"/> is present, the start of the week will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
@@ -808,7 +812,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the start of the week.
-        /// 
+        ///
         /// The start of the week will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
@@ -827,7 +831,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the end of the week.
-        /// 
+        ///
         /// The end of the week will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
@@ -838,7 +842,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the start of the month.
-        /// 
+        ///
         /// If <see cref="TimeZone"/> is present, the start of the month will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
@@ -848,7 +852,7 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the start of the month.
-        /// 
+        ///
         /// The start of the month will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
@@ -867,13 +871,53 @@ namespace Skybrud.Essentials.Time {
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsTime"/> representing the end of the month.
-        /// 
+        ///
         /// The end of the month will be adjusted according to the time zone and daylight saving.
         /// </summary>
         /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetEndOfMonth(TimeZoneInfo timeZone) {
             return new EssentialsTime(TimeUtils.GetEndOfMonth(DateTimeOffset, timeZone), timeZone);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsTime"/> representing the start of the quarter.
+        ///
+        /// If <see cref="TimeZone"/> is present, the start of the quarter will be adjusted according to the time zone and daylight saving.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetStartOfQuarter() {
+            return new EssentialsTime(TimeUtils.GetStartOfQuarter(DateTimeOffset, TimeZone), TimeZone);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsTime"/> representing the start of the quarter.
+        ///
+        /// The start of the quarter will be adjusted according to the time zone and daylight saving.
+        /// </summary>
+        /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetStartOfQuarter(TimeZoneInfo timeZone) {
+            return new EssentialsTime(TimeUtils.GetStartOfQuarter(DateTimeOffset, timeZone), timeZone);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsTime"/> representing the end of the quarter.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetEndOfQuarter() {
+            return new EssentialsTime(TimeUtils.GetEndOfQuarter(DateTimeOffset, TimeZone), TimeZone);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsTime"/> representing the end of the quarter.
+        ///
+        /// The end of the quarter will be adjusted according to the time zone and daylight saving.
+        /// </summary>
+        /// <param name="timeZone">The time zone for which the time will be adjusted.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetEndOfQuarter(TimeZoneInfo timeZone) {
+            return new EssentialsTime(TimeUtils.GetEndOfQuarter(DateTimeOffset, timeZone), timeZone);
         }
 
         #endregion

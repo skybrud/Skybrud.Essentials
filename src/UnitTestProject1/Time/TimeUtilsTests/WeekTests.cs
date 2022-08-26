@@ -3,10 +3,10 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 
-namespace UnitTestProject1.Time {
+namespace UnitTestProject1.Time.TimeUtilsTests {
 
     [TestClass]
-    public class TimeUtilsTests {
+    public class WeekTests {
 
         [TestMethod]
         public void GetStartOfWeek() {

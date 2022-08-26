@@ -105,8 +105,9 @@
     <Compile Include="Time\GetAge\EssentialsDateTests.cs" />
     <Compile Include="Time\GetAge\EssentialsDateTimeTests.cs" />
     <Compile Include="Time\GetAge\EssentialsTimeTests.cs" />
+    <Compile Include="Time\TimeUtilsTests\QuarterTests.cs" />
     <Compile Include="Time\SwatchInternetTimeTests.cs" />
-    <Compile Include="Time\TimeUtilsTests.cs" />
+    <Compile Include="Time\TimeUtilsTests\WeekTests.cs" />
     <Compile Include="Time\Time\CultureDisposable.cs" />
     <Compile Include="Time\Time\EssentialMonthTests.cs" />
     <Compile Include="Time\Time\EssentialsPeriodTests.cs" />

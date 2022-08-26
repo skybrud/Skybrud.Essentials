@@ -36,6 +36,11 @@ namespace Skybrud.Essentials.Time {
         public int Year => _dateTime.Year;
 
         /// <summary>
+        /// Gets the quarter.
+        /// </summary>
+        public int Quarter => TimeUtils.GetQuarter(_dateTime);
+
+        /// <summary>
         /// Gets the month.
         /// </summary>
         public int Month => _dateTime.Month;
@@ -349,7 +354,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the start of the day, according to Coordinated Universal Time (UTC).
+        /// Gets the start of the month, according to Coordinated Universal Time (UTC).
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetStartOfMonth() {
@@ -357,7 +362,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Gets the start of the day, according to the specified <paramref name="timeZone"/>.
+        /// Gets the start of the month, according to the specified <paramref name="timeZone"/>.
         /// </summary>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
@@ -380,6 +385,40 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public EssentialsTime GetEndOfMonth(TimeZoneInfo timeZone) {
             return new EssentialsTime(Year, Month, Day, timeZone).GetEndOfMonth();
+        }
+
+        /// <summary>
+        /// Gets the start of the quarter, according to Coordinated Universal Time (UTC).
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetStartOfQuarter() {
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetStartOfQuarter();
+        }
+
+        /// <summary>
+        /// Gets the start of the quarter, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetStartOfQuarter(TimeZoneInfo timeZone) {
+            return new EssentialsTime(Year, Month, Day, timeZone).GetStartOfQuarter();
+        }
+
+        /// <summary>
+        /// Gets the end of the quarter, according to Coordinated Universal Time (UTC).
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetEndOfQuarter() {
+            return new EssentialsTime(Year, Month, Day, TimeSpan.Zero).GetEndOfQuarter();
+        }
+
+        /// <summary>
+        /// Gets the end of the quarter, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public EssentialsTime GetEndOfQuarter(TimeZoneInfo timeZone) {
+            return new EssentialsTime(Year, Month, Day, timeZone).GetEndOfQuarter();
         }
 
         /// <summary>
