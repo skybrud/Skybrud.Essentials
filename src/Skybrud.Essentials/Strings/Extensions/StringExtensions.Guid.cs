@@ -35,17 +35,6 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Naming of this method is wrong. Use the <see cref="ToGuid(string, Guid)"/> method instead.
-        /// </summary>
-        /// <param name="input">The input string to be converted.</param>
-        /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
-        /// <returns>An instance of <see cref="Guid"/>.</returns>
-        [Obsolete("Naming of this method is wrong. Use ToGuid() method instead.")]
-        public static Guid ToInt32(this string input, Guid fallback) {
-            return StringUtils.ParseGuid(input, fallback);
-        }
-
-        /// <summary>
         /// Parses <paramref name="input"/> to an instance of <see cref="Guid"/>. If the conversion fails,
         /// <paramref name="fallback"/> will be returned instead.
         /// </summary>

@@ -33,17 +33,6 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be parsed.</param>
         /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
-        public static float ParseFloat(string str, int fallback) {
-            return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out float value) ? value : fallback;
-        }
-
-        /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="float"/>. If the parsing fails,
-        /// <paramref name="fallback"/> will be returned instead.
-        /// </summary>
-        /// <param name="str">The string to be parsed.</param>
-        /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
-        /// <returns>An instance of <see cref="float"/>.</returns>
         public static float ParseFloat(string str, float fallback) {
             return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out float value) ? value : fallback;
         }
