@@ -50,7 +50,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="long.MinValue"/> or greater than <see cref="long.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseInt64(string input, out long result) {
-            return long.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+            return long.TryParse(input, NumberStyles.Integer | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out result);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="long.MinValue"/> or greater than <see cref="long.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseInt64(string input, out long? result) {
-            if (long.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out long v)) {
+            if (long.TryParse(input, NumberStyles.Integer | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out long v)) {
                 result = v;
                 return true;
             }

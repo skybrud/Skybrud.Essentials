@@ -50,7 +50,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseInt32(string input, out int result) {
-            return int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+            return int.TryParse(input, NumberStyles.Integer | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out result);
         }
 
         /// <summary>
@@ -65,7 +65,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseInt32(string input, out int? result) {
-            if (int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out int temp)) {
+            if (int.TryParse(input, NumberStyles.Integer | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out int temp)) {
                 result = temp;
                 return true;
             }
