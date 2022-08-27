@@ -124,9 +124,7 @@ namespace Skybrud.Essentials.Strings {
             if (string.IsNullOrWhiteSpace(input)) return temp;
 
             foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
-                if (double.TryParse(piece, NumberStyles.Any, CultureInfo.InvariantCulture, out double result)) {
-                    temp.Add(result);
-                }
+                if (TryParseDouble(piece, out double result)) temp.Add(result);
             }
 
             return temp;
