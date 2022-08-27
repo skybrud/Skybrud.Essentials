@@ -3,7 +3,6 @@ using System.Globalization;
 using System.Net;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
