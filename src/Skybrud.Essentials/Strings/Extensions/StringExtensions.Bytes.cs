@@ -7,7 +7,7 @@
         /// </summary>
         /// <param name="bytes">The array of bytes.</param>
         /// <returns>The HEX string.</returns>
-        public static string ToHexString(byte[] bytes) {
+        public static string ToHexString(this byte[] bytes) {
             return StringUtils.ToHexString(bytes);
         }
 
