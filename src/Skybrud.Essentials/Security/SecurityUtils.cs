@@ -36,9 +36,9 @@ namespace Skybrud.Essentials.Security {
 #endregion
 
 #region GetMd5Guid
-        
+
         /// <summary>
-        /// Returns the MD5 hash of <paramref name="input"/>. The input string is converted using/// <see cref="Encoding.UTF8"/>.
+        /// Returns the MD5 hash of <paramref name="input"/>. The input string is converted using <see cref="Encoding.UTF8"/>.
         /// </summary>
         /// <param name="input">The input string</param>
         /// <returns>The hash as a 32-character hexadecimal number.</returns>
@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Security {
 #endregion
 
 #region GetMd5Hash...
-        
+
         /// <summary>
         /// Returns the MD5 hash of <paramref name="input"/>. The input string is converted using <see cref="Encoding.UTF8"/>.
         /// </summary>
@@ -71,7 +71,7 @@ namespace Skybrud.Essentials.Security {
             using MD5 md5 = MD5.Create();
             return GetHash(md5, input);
         }
-        
+
         /// <summary>
         /// Returns the MD5 hash of <paramref name="input"/>. The input string is converted using <see cref="Encoding.UTF8"/>.
         /// </summary>
@@ -236,7 +236,7 @@ namespace Skybrud.Essentials.Security {
         }
 
 #endregion
-        
+
 #region GetSha512Hash...
 
         /// <summary>
@@ -248,7 +248,7 @@ namespace Skybrud.Essentials.Security {
             using SHA512 sha512 = SHA512.Create();
             return GetHash(sha512, input);
         }
-        
+
         /// <summary>
         /// Returns the SHA512 hash of <paramref name="input"/>. The input string is converted using <see cref="Encoding.UTF8"/>.
         /// </summary>
@@ -310,7 +310,7 @@ namespace Skybrud.Essentials.Security {
         public static string GetHmacSha1Hash(string key, string value) {
             return GetHmacSha1Hash(key, value, default, Encoding.UTF8);
         }
-        
+
         /// <summary>
         /// Returns the HMACSHA1 hash generated from the specified <paramref name="key"/> and
         /// <paramref name="value"/>.
@@ -363,7 +363,7 @@ namespace Skybrud.Essentials.Security {
         public static string GetHmacSha256Hash(string key, string value) {
             return GetHmacSha256Hash(key, value, default, Encoding.UTF8);
         }
-        
+
         /// <summary>
         /// Returns the HMACSHA256 hash generated from the specified <paramref name="key"/> and
         /// <paramref name="value"/>.
@@ -416,7 +416,7 @@ namespace Skybrud.Essentials.Security {
         public static string GetHmacSha512Hash(string key, string value) {
             return GetHmacSha512Hash(key, value, default, Encoding.UTF8);
         }
-        
+
         /// <summary>
         /// Returns the HMACSHA512 hash generated from the specified <paramref name="key"/> and
         /// <paramref name="value"/>.
@@ -466,7 +466,7 @@ namespace Skybrud.Essentials.Security {
         public static string GetHash(HashAlgorithm algorithm, string input) {
             return GetHash(algorithm, input, Encoding.UTF8);
         }
-        
+
         /// <summary>
         /// Gets the hash of <paramref name="input"/> using the specified <paramref name="algorithm"/>.
         /// </summary>
