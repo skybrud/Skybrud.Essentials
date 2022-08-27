@@ -37,6 +37,31 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> string to the equivalent <see cref="Guid"/> value.
+        /// </summary>
+        /// <param name="input">The string containing the GUID.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</param>
+        /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        public static bool TryParseGuid(string input, out Guid result) {
+            return Guid.TryParse(input, out result);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string to the equivalent <see cref="Guid"/> value.
+        /// </summary>
+        /// <param name="input">The string containing the GUID.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <c>null</c>.</param>
+        /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        public static bool TryParseGuid(string input, out Guid? result) {
+            if (Guid.TryParse(input, out Guid guid)) {
+                result = guid;
+                return true;
+            }
+            result = null;
+            return false;
+        }
+
+        /// <summary>
         /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>. Supported
         /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
         /// tab (<c>\t</c>).

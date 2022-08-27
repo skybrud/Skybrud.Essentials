@@ -38,8 +38,8 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Converts the string representation of a number to its 32-bit signed integer equivalent. A return value
-        /// indicates whether the conversion succeeded.
+        /// Converts the specified <paramref name="input"/> string into it's representation of a number to its 32-bit
+        /// signed integer equivalent. A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>
         /// <param name="result">When this method returns, contains the 32-bit signed integer value equivalent of the
@@ -49,12 +49,12 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseInt32(string input, out int result) {
-            return int.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+            return int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
         }
 
         /// <summary>
-        /// Converts the string representation of a number to its 32-bit signed integer equivalent. A return value
-        /// indicates whether the conversion succeeded.
+        /// Converts the specified <paramref name="input"/> string into it's representation of a number to its 32-bit
+        /// signed integer equivalent. A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>
         /// <param name="result">When this method returns, contains the 32-bit signed integer value equivalent of the
@@ -64,7 +64,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParseInt32(string input, out int? result) {
-            if (int.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out int temp)) {
+            if (int.TryParse(input, NumberStyles.Integer, CultureInfo.InvariantCulture, out int temp)) {
                 result = temp;
                 return true;
             }
