@@ -3,6 +3,7 @@ using System.Globalization;
 using System.Net;
 using System.Threading;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -205,6 +206,35 @@ namespace UnitTestProject1.Strings {
         }
 
         [TestMethod]
+        public void ParseFloatArray() {
+
+            float[] result1 = StringUtils.ParseFloatArray(null);
+            float[] result2 = StringUtils.ParseFloatArray(string.Empty);
+            float[] result3 = StringUtils.ParseFloatArray("3.14 -1.234567");
+
+            Assert.AreEqual(0, result1.Length, "Result 1: Length");
+
+            Assert.AreEqual(0, result2.Length, "Result 2: Length");
+
+            Assert.AreEqual(2, result3.Length, "Check #1 failed");
+            Assert.AreEqual("3.140000", result3[0].ToString("F6", CultureInfo.InvariantCulture), "Check #2 failed");
+            Assert.AreEqual("-1.234567", result3[1].ToString("F6", CultureInfo.InvariantCulture), "Check #2 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseFloatArrayDanish() {
+
+            CultureInfo culture = CultureInfo.CurrentUICulture;
+            Thread.CurrentThread.CurrentCulture = new CultureInfo("da-DK");
+
+            ParseFloatArray();
+
+            Thread.CurrentThread.CurrentCulture = culture;
+
+        }
+
+        [TestMethod]
         public void ParseDouble() {
 
             Assert.AreEqual(0, StringUtils.ParseDouble(null), "Check #1 failed");
@@ -236,11 +266,17 @@ namespace UnitTestProject1.Strings {
         [TestMethod]
         public void ParseDoubleArray() {
 
-            double[] result = StringUtils.ParseDoubleArray("3.14 -1.234567");
+            double[] result1 = StringUtils.ParseDoubleArray(null);
+            double[] result2 = StringUtils.ParseDoubleArray(string.Empty);
+            double[] result3 = StringUtils.ParseDoubleArray("3.14 -1.234567");
 
-            Assert.AreEqual(2, result.Length, "Check #1 failed");
-            Assert.AreEqual(3.14, result[0], "Check #2 failed");
-            Assert.AreEqual(-1.234567, result[1], "Check #2 failed");
+            Assert.AreEqual(0, result1.Length, "Result 1: Length");
+
+            Assert.AreEqual(0, result2.Length, "Result 2: Length");
+
+            Assert.AreEqual(2, result3.Length, "Check #1 failed");
+            Assert.AreEqual(3.14, result3[0], "Check #2 failed");
+            Assert.AreEqual(-1.234567, result3[1], "Check #2 failed");
 
         }
 
@@ -259,20 +295,28 @@ namespace UnitTestProject1.Strings {
         [TestMethod]
         public void ParseGuidArray() {
 
-            string input1 = "714a1347-99a3-419e-83ce-eec2d3211912 c07fe838-4584-4cef-a4cd-851ff890bf3f";
-            string input2 = "{317C35F9-2D1B-4E81-9DF3-EFA04CAE01ED} (317C35F9-2D1B-4E81-9DF3-EFA04CAE01ED) hello 16F77374E26F4F8397590A58F34211C4";
+            string input1 = null;
+            string input2 = string.Empty;
+            string input3 = "714a1347-99a3-419e-83ce-eec2d3211912 c07fe838-4584-4cef-a4cd-851ff890bf3f";
+            string input4 = "{317C35F9-2D1B-4E81-9DF3-EFA04CAE01ED} (317C35F9-2D1B-4E81-9DF3-EFA04CAE01ED) hello 16F77374E26F4F8397590A58F34211C4";
 
             Guid[] guid1 = StringUtils.ParseGuidArray(input1);
             Guid[] guid2 = StringUtils.ParseGuidArray(input2);
+            Guid[] guid3 = StringUtils.ParseGuidArray(input3);
+            Guid[] guid4 = StringUtils.ParseGuidArray(input4);
 
-            Assert.AreEqual(2, guid1.Length, "Check #1 failed");
-            Assert.AreEqual("714a1347-99a3-419e-83ce-eec2d3211912", guid1[0].ToString(), "Check #2 failed");
-            Assert.AreEqual("c07fe838-4584-4cef-a4cd-851ff890bf3f", guid1[1].ToString(), "Check #3 failed");
+            Assert.AreEqual(0, guid1.Length, "Check #1 failed");
 
-            Assert.AreEqual(3, guid2.Length, "Check #4 failed");
-            Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid2[0].ToString(), "Check #5 failed");
-            Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid2[1].ToString(), "Check #6 failed");
-            Assert.AreEqual("16f77374-e26f-4f83-9759-0a58f34211c4", guid2[2].ToString(), "Check #7 failed");
+            Assert.AreEqual(0, guid2.Length, "Check #1 failed");
+
+            Assert.AreEqual(2, guid3.Length, "Check #1 failed");
+            Assert.AreEqual("714a1347-99a3-419e-83ce-eec2d3211912", guid3[0].ToString(), "Check #2 failed");
+            Assert.AreEqual("c07fe838-4584-4cef-a4cd-851ff890bf3f", guid3[1].ToString(), "Check #3 failed");
+
+            Assert.AreEqual(3, guid4.Length, "Check #4 failed");
+            Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid4[0].ToString(), "Check #5 failed");
+            Assert.AreEqual("317c35f9-2d1b-4e81-9df3-efa04cae01ed", guid4[1].ToString(), "Check #6 failed");
+            Assert.AreEqual("16f77374-e26f-4f83-9759-0a58f34211c4", guid4[2].ToString(), "Check #7 failed");
 
         }
 

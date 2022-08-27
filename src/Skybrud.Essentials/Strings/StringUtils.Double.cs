@@ -84,6 +84,7 @@ namespace Skybrud.Essentials.Strings {
         public static List<double> ParseDoubleList(string input, params char[] separators) {
 
             List<double> temp = new();
+            if (string.IsNullOrWhiteSpace(input)) return temp;
 
             foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (double.TryParse(piece, NumberStyles.Any, CultureInfo.InvariantCulture, out double result)) {

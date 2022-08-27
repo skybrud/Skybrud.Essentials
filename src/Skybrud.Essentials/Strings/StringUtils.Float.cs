@@ -95,6 +95,7 @@ namespace Skybrud.Essentials.Strings {
         public static List<float> ParseFloatList(string input, params char[] separators) {
 
             List<float> temp = new();
+            if (string.IsNullOrWhiteSpace(input)) return temp;
 
             foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (float.TryParse(piece, NumberStyles.Any, CultureInfo.InvariantCulture, out float result)) {

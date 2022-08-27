@@ -91,6 +91,7 @@ namespace Skybrud.Essentials.Strings {
         public static List<Guid> ParseGuidList(string input, params char[] separators) {
 
             List<Guid> temp = new();
+            if (string.IsNullOrWhiteSpace(input)) return temp;
 
             foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (Guid.TryParse(piece, out Guid result)) temp.Add(result);

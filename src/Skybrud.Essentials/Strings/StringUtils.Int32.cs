@@ -119,6 +119,7 @@ namespace Skybrud.Essentials.Strings {
         public static List<int> ParseInt32List(string input, params char[] separators) {
 
             List<int> temp = new();
+            if (string.IsNullOrWhiteSpace(input)) return temp;
 
             foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (int.TryParse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture, out int result)) {

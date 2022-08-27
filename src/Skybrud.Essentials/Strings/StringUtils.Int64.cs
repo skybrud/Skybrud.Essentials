@@ -84,6 +84,7 @@ namespace Skybrud.Essentials.Strings {
         public static List<long> ParseInt64List(string input, params char[] separators) {
 
             List<long> temp = new();
+            if (string.IsNullOrWhiteSpace(input)) return temp;
 
             foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (long.TryParse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture, out long result)) {
