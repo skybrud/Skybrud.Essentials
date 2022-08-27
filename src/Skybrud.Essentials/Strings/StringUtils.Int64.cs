@@ -7,34 +7,35 @@ namespace Skybrud.Essentials.Strings {
     public static partial class StringUtils {
 
         /// <summary>
-        /// Gets whether the string matches a long (<see cref="long"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a 64-bit signed integer
+        /// (<see cref="long"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a long; otherwise <c>false</c>.</returns>
-        public static bool IsInt64(string str) {
-            return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a 64-bit signed integer (<see cref="long"/>);
+        /// otherwise, <c>false</c>.</returns>
+        public static bool IsInt64(string input) {
+            return TryParseInt64(input, out long _);
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="long"/>. If the parsing fails,
-        /// the default value of <see cref="long"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into its 64-bit signed integer equivalent. If the
+        /// conversion fails, <c>0</c> will be returned instead.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
+        /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="long"/>.</returns>
-        public static long ParseInt64(string str) {
-            long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long value);
-            return value;
+        public static long ParseInt64(string input) {
+            return TryParseInt64(input, out long result) ? result : default;
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="long"/>. If the parsing fails,
-        /// <paramref name="fallback"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into its 64-bit signed integer equivalent. If the
+        /// conversion fails, <paramref name="fallback"/> will be returned instead.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
-        /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
+        /// <param name="input">The string to be converted.</param>
+        /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="long"/>.</returns>
-        public static long ParseInt64(string str, long fallback) {
-            return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long value) ? value : fallback;
+        public static long ParseInt64(string input, long fallback) {
+            return TryParseInt64(input, out long value) ? value : fallback;
         }
 
         /// <summary>

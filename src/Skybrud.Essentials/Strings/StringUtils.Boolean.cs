@@ -3,45 +3,48 @@
     public static partial class StringUtils {
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="bool"/>. The string is
+        /// Converts the specified <paramref name="input"/> into an instance of <see cref="bool"/>. The string is
         /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).</returns>
-        public static bool ParseBoolean(string str) {
-            return TryParseBoolean(str, out bool result) ? result : default;
+        /// <param name="input">The string to be converted.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or
+        /// <c>on</c> (case insensitive); otherwise, <c>false</c>.</returns>
+        public static bool ParseBoolean(string input) {
+            return TryParseBoolean(input, out bool result) ? result : default;
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="bool"/>. The string is
+        /// Converts <paramref name="input"/> into an instance of <see cref="bool"/>. The input string is
         /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>, or <c>false</c>
         /// if it matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. All comparisons are case insensitive.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
+        /// <param name="input">The string to be converted.</param>
         /// <param name="fallback">The fallback value.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>,
-        /// <c>false</c> if <paramref name="str"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
+        /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>,
+        /// <c>false</c> if <paramref name="input"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
-        public static bool ParseBoolean(string str, bool fallback) {
-            return TryParseBoolean(str, out bool result) ? result : fallback;
+        public static bool ParseBoolean(string input, bool fallback) {
+            return TryParseBoolean(input, out bool result) ? result : fallback;
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The value
-        /// is considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).
+        /// Converts the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The value
+        /// is considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case
+        /// insensitive).
         /// </summary>
-        /// <param name="value">The value to be parsed.</param>
-        /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).</returns>
+        /// <param name="value">The value to be converted.</param>
+        /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>
+        /// (case insensitive); otherwise, <c>false</c>.</returns>
         public static bool ParseBoolean(object value) {
             return ParseBoolean(value?.ToString() ?? string.Empty);
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The string is
+        /// Converts the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The string is
         /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>, or <c>false</c>
         /// if it matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. All comparisons are case insensitive.
         /// </summary>
-        /// <param name="value">The value to be parsed.</param>
+        /// <param name="value">The value to be converted.</param>
         /// <param name="fallback">The fallback value.</param>
         /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>,
         /// <c>false</c> if <paramref name="value"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For

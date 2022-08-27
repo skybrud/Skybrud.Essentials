@@ -1,44 +1,58 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 
         /// <summary>
-        /// Gets whether the string matches a double (<see cref="double"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a double-precision floating-point
+        /// number (<see cref="double"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
-        public static bool IsDouble(this string str) {
-            return StringUtils.IsDouble(str);
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a float; otherwise <c>false</c>.</returns>
+        public static bool IsDouble(this string input) {
+            return StringUtils.TryParseDouble(input, out double _);
         }
 
         /// <summary>
-        /// Gets whether the string matches a double (<see cref="double"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a double-precision floating-point
+        /// number (<see cref="double"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <param name="result">The converted value <paramref name="str"/> matches a <see cref="double"/>; otherwise <c>0</c>.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
-        public static bool IsDouble(this string str, out double result) {
-            return double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="double"/> if successful;
+        /// otherwise, <c>0</c>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise, <c>false</c>.</returns>
+        public static bool IsDouble(this string input, out double result) {
+            return StringUtils.TryParseDouble(input, out result);
         }
 
         /// <summary>
-        /// Converts <paramref name="input"/> to an instance of <see cref="double"/>. If the conversion fails,
-        /// <c>0</c> will be returned instead.
+        /// Returns whether the specified <paramref name="input"/> string matches a double-precision floating-point
+        /// number (<see cref="double"/>).
         /// </summary>
-        /// <param name="input">The input string to be converted.</param>
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="double"/> if successful;
+        /// otherwise, <c>null</c>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise, <c>false</c>.</returns>
+        public static bool IsDouble(this string input, out double? result) {
+            return StringUtils.TryParseDouble(input, out result);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into it's double-precision floating-point number
+        /// equivalent (<see cref="double"/>). If the conversion fails, <c>0</c> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be parsed.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
         public static double ToDouble(this string input) {
             return StringUtils.ParseDouble(input);
         }
 
         /// <summary>
-        /// Converts <paramref name="input"/> to an instance of <see cref="double"/>. If the conversion fails,
-        /// <paramref name="fallback"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into it's double-precision floating-point number
+        /// equivalent (<see cref="double"/>). If the parsing fails, <paramref name="fallback"/> will be returned instead.
         /// </summary>
-        /// <param name="input">The input string to be converted.</param>
+        /// <param name="input">The string to be parsed.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
         public static double ToDouble(this string input, double fallback) {

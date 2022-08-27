@@ -7,34 +7,36 @@ namespace Skybrud.Essentials.Strings {
     public static partial class StringUtils {
 
         /// <summary>
-        /// Gets whether the string matches an integer (<see cref="float"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a single-precision floating-point
+        /// number (<see cref="float"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a long; otherwise <c>false</c>.</returns>
-        public static bool IsFloat(string str) {
-            return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out _);
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a single-precision floating-point number;
+        /// otherwise <c>false</c>.</returns>
+        public static bool IsFloat(string input) {
+            return TryParseFloat(input, out float _);
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="float"/>. If the parsing fails,
-        /// the default value of <see cref="float"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into it's single-precision floating-point number
+        /// equivalent (<see cref="float"/>). If the conversion fails, <c>0</c> will be returned instead.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
+        /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
-        public static float ParseFloat(string str) {
-            float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out float value);
-            return value;
+        public static float ParseFloat(string input) {
+            return TryParseFloat(input, out float value) ? value : default;
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="float"/>. If the parsing fails,
-        /// <paramref name="fallback"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into it's single-precision floating-point number
+        /// equivalent (<see cref="float"/>). If the
+        /// conversion fails, <paramref name="fallback"/> will be returned instead.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
-        /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
+        /// <param name="input">The string to be converted.</param>
+        /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
-        public static float ParseFloat(string str, float fallback) {
-            return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out float value) ? value : fallback;
+        public static float ParseFloat(string input, float fallback) {
+            return TryParseFloat(input, out float value) ? value : fallback;
         }
 
         /// <summary>

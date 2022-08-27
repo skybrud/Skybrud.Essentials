@@ -6,37 +6,49 @@ namespace Skybrud.Essentials.Strings.Extensions {
     public static partial class StringExtensions {
 
         /// <summary>
-        /// Gets whether the string matches a GUID (<see cref="Guid"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a GUID (<see cref="Guid"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a GUID; otherwise <c>false</c>.</returns>
-        public static bool IsGuid(string str) {
-            return StringUtils.IsGuid(str);
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise, <c>false</c>.</returns>
+        public static bool IsGuid(this string input) {
+            return StringUtils.IsGuid(input);
         }
 
         /// <summary>
-        /// Gets whether the specified <paramref name="value"/> matches a GUID (<see cref="Guid"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a GUID (<see cref="Guid"/>).
         /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <param name="result">The converted <see cref="Guid"/> value, of <see cref="Guid.Empty"/> if <paramref name="value"/> doesn't match a GUID.</param>
-        /// <returns><c>true</c> if <paramref name="value"/> matches a GUID; otherwise <c>false</c>.</returns>
-        public static bool IsGuid(string value, out Guid result) {
-            return Guid.TryParse(value, out result);
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
+        /// otherwise, <see cref="Guid.Empty"/>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise, <c>false</c>.</returns>
+        public static bool IsGuid(this string input, out Guid result) {
+            return StringUtils.TryParseGuid(input, out result);
         }
 
         /// <summary>
-        /// Parses <paramref name="input"/> to an instance of <see cref="Guid"/>. If the conversion fails,
-        /// <see cref="Guid.Empty"/> will be returned instead.
+        /// Returns whether the specified <paramref name="input"/> string matches a GUID (<see cref="Guid"/>).
         /// </summary>
-        /// <param name="input">The input string to be converted.</param>
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
+        /// otherwise, <c>null</c>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise, <c>false</c>.</returns>
+        public static bool IsGuid(this string input, out Guid? result) {
+            return StringUtils.TryParseGuid(input, out result);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string to an instance of <see cref="Guid"/>. If the
+        /// conversion fails, <see cref="Guid.Empty"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="Guid"/>.</returns>
         public static Guid ToGuid(this string input) {
             return StringUtils.ParseGuid(input);
         }
 
         /// <summary>
-        /// Parses <paramref name="input"/> to an instance of <see cref="Guid"/>. If the conversion fails,
-        /// <paramref name="fallback"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string to an instance of <see cref="Guid"/>. If the
+        /// conversion fails, <paramref name="fallback"/> will be returned instead.
         /// </summary>
         /// <param name="input">The input string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
@@ -49,7 +61,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// Converts the specified <paramref name="input"/> string to the equivalent <see cref="Guid"/> value.
         /// </summary>
         /// <param name="input">The string containing the GUID.</param>
-        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
+        /// otherwise, <see cref="Guid.Empty"/>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
         public static bool TryParseGuid(this string input, out Guid result) {
             return StringUtils.TryParseGuid(input, out result);
@@ -59,7 +72,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// Converts the specified <paramref name="input"/> string to the equivalent <see cref="Guid"/> value.
         /// </summary>
         /// <param name="input">The string containing the GUID.</param>
-        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <c>null</c>.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
+        /// otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
         public static bool TryParseGuid(this string input, out Guid? result) {
             return StringUtils.TryParseGuid(input, out result);

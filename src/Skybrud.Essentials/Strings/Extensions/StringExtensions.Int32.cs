@@ -1,59 +1,51 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 
         /// <summary>
-        /// Gets whether the string matches an integer (<see cref="int"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a 32-bit signed integer (<see cref="int"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches an integer; otherwise <c>false</c>.</returns>
-        public static bool IsInt32(string str) {
-            return int.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out _);
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a 32-bit signed integer (<see cref="int"/>); otherwise, <c>false</c>.</returns>
+        public static bool IsInt32(this string input) {
+            return StringUtils.TryParseInt32(input, out int _);
         }
 
         /// <summary>
-        /// Returns whether the specified <paramref name="value"/> matches an integer.
+        /// Returns whether the specified <paramref name="input"/> string matches a 32-bit signed integer (<see cref="int"/>).
         /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <param name="result">The converted <see cref="int"/> value, of <c>0</c> if <paramref name="value"/> doesn't match an integer.</param>
-        /// <returns><c>true</c> if <paramref name="value"/> matches an integer; otherwise <c>false</c>.</returns>
-        public static bool IsInt32(string value, out int result) {
-            return int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out result);
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="int"/> if successful; otherwise, <c>0</c>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a 32-bit signed integer (<see cref="int"/>); otherwise, <c>false</c>.</returns>
+        public static bool IsInt32(this string input, out int result) {
+            return StringUtils.TryParseInt32(input, out result);
         }
 
         /// <summary>
-        /// Returns whether the specified <paramref name="value"/> matches an integer.
+        /// Returns whether the specified <paramref name="input"/> string matches a 32-bit signed integer (<see cref="int"/>).
         /// </summary>
-        /// <param name="value">The value to check.</param>
-        /// <param name="result">The converted <see cref="int"/> value, of <c>0</c> if <paramref name="value"/> doesn't match an integer.</param>
-        /// <returns><c>true</c> if <paramref name="value"/> matches an integer; otherwise <c>false</c>.</returns>
-        public static bool IsInt32(string value, out int? result) {
-            if (int.TryParse(value, NumberStyles.Integer, CultureInfo.InvariantCulture, out int v)) {
-                result = v;
-                return true;
-            }
-            result = null;
-            return false;
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">When this method returns, holds the converted <see cref="int"/> if successful; otherwise, <c>null</c>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a 32-bit signed integer (<see cref="int"/>); otherwise, <c>false</c>.</returns>
+        public static bool IsInt32(this string input, out int? result) {
+            return StringUtils.TryParseInt32(input, out result);
         }
 
         /// <summary>
-        /// Converts <paramref name="input"/> to an instance of <see cref="int"/>. If the conversion fails,
-        /// <c>0</c> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into its 32-bit signed integer equivalent. If the conversion fails, <c>0</c> will be returned instead.
         /// </summary>
-        /// <param name="input">The input string to be converted.</param>
+        /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
         public static int ToInt32(this string input) {
             return StringUtils.ParseInt32(input);
         }
 
         /// <summary>
-        /// Converts <paramref name="input"/> to an instance of <see cref="int"/>. If the conversion fails,
-        /// <paramref name="fallback"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into its 32-bit signed integer equivalent. If the conversion fails, <paramref name="fallback"/> will be returned instead.
         /// </summary>
-        /// <param name="input">The input string to be converted.</param>
+        /// <param name="input">The string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
         public static int ToInt32(this string input, int fallback) {
@@ -61,8 +53,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="input"/> string into it's representation of a number to its 32-bit
-        /// signed integer equivalent. A return value indicates whether the conversion succeeded.
+        /// Converts the specified <paramref name="input"/> string representation of a number to its 32-bit signed integer equivalent (<see cref="int"/>). A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>
         /// <param name="result">When this method returns, contains the 32-bit signed integer value equivalent of the
@@ -76,8 +67,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="input"/> string into it's representation of a number to its 32-bit
-        /// signed integer equivalent. A return value indicates whether the conversion succeeded.
+        /// Converts the specified <paramref name="input"/> string representation of a number to its 32-bit signed integer equivalent. A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>
         /// <param name="result">When this method returns, contains the 32-bit signed integer value equivalent of the

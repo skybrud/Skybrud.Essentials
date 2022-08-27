@@ -1,44 +1,60 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 
         /// <summary>
-        /// Gets whether the string matches a float (<see cref="float"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a single-precision floating-point
+        /// number (<see cref="float"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a float; otherwise <c>false</c>.</returns>
-        public static bool IsFloat(this string str) {
-            return StringUtils.IsFloat(str);
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a single-precision floating-point number;
+        /// otherwise <c>false</c>.</returns>
+        public static bool IsFloat(this string input) {
+            return StringUtils.IsFloat(input);
         }
 
         /// <summary>
-        /// Gets whether the string matches a float (<see cref="float"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a single-precision floating-point
+        /// number (<see cref="float"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <param name="result">The converted value <paramref name="str"/> matches a <see cref="float"/>; otherwise <c>0</c>.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a float; otherwise <c>false</c>.</returns>
-        public static bool IsFloat(this string str, out float result) {
-            return float.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">The converted value if the conversion was successful; otherwise <c>0</c>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a single-precision floating-point number
+        /// (<see cref="float"/>); otherwise <c>false</c>.</returns>
+        public static bool IsFloat(this string input, out float result) {
+            return StringUtils.TryParseFloat(input, out result);
         }
 
         /// <summary>
-        /// Converts <paramref name="input"/> to an instance of <see cref="float"/>. If the conversion fails,
-        /// <c>0</c> will be returned instead.
+        /// Returns whether the specified <paramref name="input"/> string matches a single-precision floating-point
+        /// number (<see cref="float"/>).
         /// </summary>
-        /// <param name="input">The input string to be converted.</param>
+        /// <param name="input">The string to validate.</param>
+        /// <param name="result">The converted value if the conversion was successful; otherwise <c>null</c>.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a single-precision floating-point number
+        /// (<see cref="float"/>); otherwise <c>false</c>.</returns>
+        public static bool IsFloat(this string input, out float? result) {
+            return StringUtils.TryParseFloat(input, out result);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into it's single-precision floating-point number
+        /// equivalent (<see cref="float"/>). If the conversion fails, <c>0</c> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
         public static float ToFloat(this string input) {
             return StringUtils.ParseFloat(input);
         }
 
         /// <summary>
-        /// Converts <paramref name="input"/> to an instance of <see cref="float"/>. If the conversion fails,
-        /// <paramref name="fallback"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into it's single-precision floating-point number
+        /// equivalent (<see cref="float"/>). If the
+        /// conversion fails, <paramref name="fallback"/> will be returned instead.
         /// </summary>
-        /// <param name="input">The input string to be converted.</param>
+        /// <param name="input">The string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
         public static float ToFloat(this string input, float fallback) {

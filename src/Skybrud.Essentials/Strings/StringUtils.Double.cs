@@ -7,34 +7,36 @@ namespace Skybrud.Essentials.Strings {
     public static partial class StringUtils {
 
         /// <summary>
-        /// Gets whether the string matches a double (<see cref="double"/>).
+        /// Returns whether the specified <paramref name="input"/> string matches a double-precision floating-point
+        /// number (<see cref="double"/>).
         /// </summary>
-        /// <param name="str">The string to validate.</param>
-        /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
-        public static bool IsDouble(string str) {
-            return double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out _);
+        /// <param name="input">The string to validate.</param>
+        /// <returns><c>true</c> if <paramref name="input"/> matches a double-precision floating-point number;
+        /// otherwise <c>false</c>.</returns>
+        public static bool IsDouble(string input) {
+            return TryParseDouble(input, out double _);
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="double"/>. If the parsing fails,
-        /// the default value of <see cref="double"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into it's double-precision floating-point number
+        /// equivalent (<see cref="double"/>). If the conversion fails, <c>0</c> will be returned instead.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
+        /// <param name="input">The string to be parsed.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
-        public static double ParseDouble(string str) {
-            double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out double value);
+        public static double ParseDouble(string input) {
+            TryParseDouble(input, out double value);
             return value;
         }
 
         /// <summary>
-        /// Parses the specified <paramref name="str"/> into an instance of <see cref="double"/>. If the parsing fails,
-        /// <paramref name="fallback"/> will be returned instead.
+        /// Converts the specified <paramref name="input"/> string into it's double-precision floating-point number
+        /// equivalent (<see cref="double"/>). If the parsing fails, <paramref name="fallback"/> will be returned instead.
         /// </summary>
-        /// <param name="str">The string to be parsed.</param>
-        /// <param name="fallback">The fallback value that will be returned if the parsing fails.</param>
+        /// <param name="input">The string to be parsed.</param>
+        /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
-        public static double ParseDouble(string str, double fallback) {
-            return double.TryParse(str, NumberStyles.Any, CultureInfo.InvariantCulture, out double value) ? value : fallback;
+        public static double ParseDouble(string input, double fallback) {
+            return TryParseDouble(input, out double value) ? value : fallback;
         }
 
         /// <summary>
