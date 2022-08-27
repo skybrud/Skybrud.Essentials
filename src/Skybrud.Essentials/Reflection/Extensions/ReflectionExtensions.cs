@@ -233,15 +233,6 @@ namespace Skybrud.Essentials.Reflection.Extensions {
         }
 
         /// <summary>
-        /// Returns whether the specified <typeparamref name="T"/> is an extension class.
-        /// </summary>
-        /// <typeparam name="T">The type.</typeparam>
-        /// <returns><c>true</c> if <typeparamref name="T"/> is an extension class; otherwise, <c>false</c>.</returns>
-        public static bool IsExtensionClass<T>() {
-            return ReflectionUtils.IsExtensionClass<T>();
-        }
-
-        /// <summary>
         /// Returns whether the specified <paramref name="method"/> is an extension method.
         /// </summary>
         /// <param name="method">The method.</param>
