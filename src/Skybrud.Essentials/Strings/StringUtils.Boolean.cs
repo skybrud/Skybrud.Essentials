@@ -47,7 +47,7 @@
         /// <c>false</c> if <paramref name="value"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
         public static bool ParseBoolean(object value, bool fallback) {
-            return ParseBoolean(value?.ToString() ?? string.Empty);
+            return ParseBoolean(value?.ToString() ?? string.Empty, fallback);
         }
 
         /// <summary>
