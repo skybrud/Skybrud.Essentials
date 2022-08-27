@@ -97,7 +97,7 @@ namespace Skybrud.Essentials.Strings {
             List<float> temp = new();
 
             foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
-                if (float.TryParse(piece, NumberStyles.Integer, CultureInfo.InvariantCulture, out float result)) {
+                if (float.TryParse(piece, NumberStyles.Any, CultureInfo.InvariantCulture, out float result)) {
                     temp.Add(result);
                 }
             }
