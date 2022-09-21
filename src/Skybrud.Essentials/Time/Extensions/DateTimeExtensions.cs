@@ -287,6 +287,33 @@ namespace Skybrud.Essentials.Time.Extensions {
             return TimeUtils.GetAbbreviatedLocalMonthName(date, culture);
         }
 
+        /// <summary>
+        /// Returns whether the specified <paramref name="date"/> is today.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns><c>true</c> if <paramref name="date"/> is today; otherwise, <c>false</c>.</returns>
+        public static bool IsToday(this DateTime date) {
+            return TimeUtils.IsToday(date);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="date"/> is tomorrow.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns><c>true</c> if <paramref name="date"/> is tomorrow; otherwise, <c>false</c>.</returns>
+        public static bool IsTomorrow(DateTime date) {
+            return TimeUtils.IsTomorrow(date);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="date"/> is yesterday.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
+        public static bool IsYesterday(DateTime date) {
+            return TimeUtils.IsYesterday(date);
+        }
+
     }
 
 }

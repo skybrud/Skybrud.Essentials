@@ -183,6 +183,47 @@ namespace Skybrud.Essentials.Time {
 
         #endregion
 
+        #region Is...
+
+        /// <summary>
+        /// Returns whether <paramref name="first"/> and <paramref name="second"/> represents the same day.
+        /// </summary>
+        /// <param name="first">The first date.</param>
+        /// <param name="second">The second date.</param>
+        /// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> represents the same day; otherwise, <c>false</c>.</returns>
+        public static bool IsSameDay(DateTimeOffset first, DateTimeOffset second) {
+            return first.Year == second.Year && first.Month == second.Month && first.Day == second.Day;
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="date"/> is today.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns><c>true</c> if <paramref name="date"/> is today; otherwise, <c>false</c>.</returns>
+        public static bool IsToday(DateTimeOffset date) {
+            return IsSameDay(date, DateTimeOffset.Now);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="date"/> is tomorrow.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns><c>true</c> if <paramref name="date"/> is tomorrow; otherwise, <c>false</c>.</returns>
+        public static bool IsTomorrow(DateTimeOffset date) {
+            return IsSameDay(date, DateTimeOffset.Now.AddDays(1));
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="date"/> is yesterday.
+        /// </summary>
+        /// <param name="date">The date.</param>
+        /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
+        public static bool IsYesterday(DateTimeOffset date) {
+            return IsSameDay(date, DateTimeOffset.Now.AddDays(-1));
+        }
+
+        #endregion
+
     }
 
 }
