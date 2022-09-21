@@ -55,10 +55,6 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return StringUtils.TryParseBoolean(collection[key], out result);
         }
 
-
-
-
-
         /// <summary>
         /// Returns the GUID value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a GUID failed, <see cref="Guid.Empty"/> is returned instead.
         /// </summary>
@@ -87,7 +83,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="key">The key of the item.</param>
         /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <see cref="Guid.Empty"/>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-        public static Guid TryGetGuid(this NameValueCollection collection, string key, out Guid result) {
+        public static bool TryGetGuid(this NameValueCollection collection, string key, out Guid result) {
             return StringUtils.TryParseGuid(collection[key], out result);
         }
 
@@ -98,10 +94,9 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="key">The key of the item.</param>
         /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>null</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-        public static Guid TryGetGuid(this NameValueCollection collection, string key, out Guid? result) {
+        public static bool TryGetGuid(this NameValueCollection collection, string key, out Guid? result) {
             return StringUtils.TryParseGuid(collection[key], out result);
         }
-
 
         /// <summary>
         /// Returns the <see cref="int"/> value of the item with the specified <paramref name="key"/>, or <c>0</c> if a matching item couldn't be found or the value couldn't be parsed to a 32-bit unsigned integer.
