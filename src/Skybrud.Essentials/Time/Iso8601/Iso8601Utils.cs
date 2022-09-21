@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Globalization;
+using Skybrud.Essentials.Time.Xml;
 
 using static Skybrud.Essentials.Time.Iso8601.Iso8601Constants;
 
@@ -187,6 +188,34 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryParse(string iso8601, out DateTimeOffset result) {
             return DateTimeOffset.TryParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+        }
+
+        /// <summary>
+        /// Parses the specified ISO 8601 duration string into an instance of <see cref="TimeSpan"/>.
+        /// </summary>
+        /// <param name="input">The input string representing an ISO 8601 duration.</param>
+        /// <returns>An instance of <see cref="TimeSpan"/> representing the duration.</returns>
+        public static TimeSpan ParseDuration(string input) {
+            return XmlSchemaUtils.ParseDuration(input);
+        }
+
+        /// <summary>
+        /// Attempts to parse the specified ISO 8601 duration string into a corresponding <see cref="TimeSpan"/> structure.
+        /// </summary>
+        /// <param name="input">The ISO 8601 formatted duration to parse.</param>
+        /// <param name="result">When this method returns, holds the parsed <see cref="TimeSpan"/> structure if successful; otherwise, <see cref="TimeSpan.Zero"/>.</param>
+        /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+        public static bool TryParseDuration(string input, out TimeSpan result) {
+            return XmlSchemaUtils.TryParseDuration(input, out result);
+        }
+
+        /// <summary>
+        /// Returns an ISO 8601 formatted string representing the specified <paramref name="duration"/>.
+        /// </summary>
+        /// <param name="duration">The duration to format.</param>
+        /// <returns>An ISO 8601 formatted duration string.</returns>
+        public static string ToString(TimeSpan duration) {
+            return XmlSchemaUtils.ToString(duration);
         }
 
     }
