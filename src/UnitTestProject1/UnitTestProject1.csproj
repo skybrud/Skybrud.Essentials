@@ -71,6 +71,7 @@
     <Compile Include="Json\Converters\NameValueCollectionTests.cs" />
     <Compile Include="Json\Converters\StringJsonConverterTests.cs" />
     <Compile Include="Json\Converters\TimeConverterTests.cs" />
+    <Compile Include="Json\Converters\TimeSpanConverterTests.cs" />
     <Compile Include="Json\Converters\TimeSpanSecondsConverterTests.cs" />
     <Compile Include="Json\Converters\EssentialsPartialDateConverterTests.cs" />
     <Compile Include="Json\Converters\UnixTimeConverterTests.cs" />
