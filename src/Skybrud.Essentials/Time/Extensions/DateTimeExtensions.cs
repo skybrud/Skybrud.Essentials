@@ -301,7 +301,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns><c>true</c> if <paramref name="date"/> is tomorrow; otherwise, <c>false</c>.</returns>
-        public static bool IsTomorrow(DateTime date) {
+        public static bool IsTomorrow(this DateTime date) {
             return TimeUtils.IsTomorrow(date);
         }
 
@@ -310,7 +310,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// </summary>
         /// <param name="date">The date.</param>
         /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
-        public static bool IsYesterday(DateTime date) {
+        public static bool IsYesterday(this DateTime date) {
             return TimeUtils.IsYesterday(date);
         }
 
