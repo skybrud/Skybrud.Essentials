@@ -1,9 +1,9 @@
-﻿#nullable enable
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+
+// ReSharper disable once RedundantSuppressNullableWarningExpression
 
 namespace Skybrud.Essentials.Strings {
 

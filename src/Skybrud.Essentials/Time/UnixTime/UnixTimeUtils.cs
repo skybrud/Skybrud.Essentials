@@ -1,7 +1,8 @@
 ﻿using System;
-using System.Diagnostics.CodeAnalysis;
 
 // ReSharper disable InconsistentNaming
+
+#pragma warning disable IDE1006 // Naming Styles (.NET 6.0 seems to have a different convention than all other target frameworks)
 
 namespace Skybrud.Essentials.Time.UnixTime {
 

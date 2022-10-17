@@ -1204,8 +1204,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         [return: NotNullIfNotNull("value")]
         public static EssentialsTime? FromIso8601(string? value) {
-            DateTimeOffset? dto = Iso8601Utils.Parse(value);
-            return dto is null ? null : new EssentialsTime(dto.Value);
+            return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Iso8601Utils.Parse(value));
         }
 
         /// <summary>
@@ -1247,8 +1246,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         [return: NotNullIfNotNull("str")]
         public static EssentialsTime? FromRfc822(string? str) {
-            DateTimeOffset? dto = Rfc822Utils.Parse(str);
-            return dto is null ? null : new EssentialsTime(dto.Value);
+            return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc822Utils.Parse(str));
         }
 
         /// <summary>
@@ -1258,8 +1256,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         [return: NotNullIfNotNull("str")]
         public static EssentialsTime? FromRfc2822(string? str) {
-            DateTimeOffset? dto = Rfc2822Utils.Parse(str);
-            return dto is null ? null : new EssentialsTime(dto.Value);
+            return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc2822Utils.Parse(str));
         }
 
         /// <summary>
@@ -1352,6 +1349,17 @@ namespace Skybrud.Essentials.Time {
         /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
         public static EssentialsTime FromTicks(long ticks, TimeSpan offset) {
             return new EssentialsTime(new DateTimeOffset(ticks, offset));
+        }
+
+        /// <summary>
+        /// Creates a new <see cref="EssentialsTime"/> instance from the specified amount of <paramref name="ticks"/> and <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="ticks">The amount of ticks.</param>
+        /// <param name="timeZone">The time zone to be used. Uses <see cref="TimeZoneInfo.Local"/> if <c>null</c>.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime FromTicks(long ticks, TimeZoneInfo? timeZone) {
+            DateTime time = new(ticks);
+            return new EssentialsTime(time, timeZone ?? TimeZoneInfo.Local);
         }
 
         #endregion

@@ -7,6 +7,8 @@ using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
 
+// ReSharper disable RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Json.Extensions {
 
     /// <summary>

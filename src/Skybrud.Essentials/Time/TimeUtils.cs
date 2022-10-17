@@ -783,7 +783,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetFirstWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek) {
-            DateTime dt = new DateTime(year, month, 1);
+            DateTime dt = new(year, month, 1);
             while (dt.DayOfWeek != dayOfWeek) {
                 dt = dt.AddDays(1);
             }
@@ -799,7 +799,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetFirstWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek, TimeSpan offset) {
-            DateTimeOffset dt = new DateTimeOffset(year, month, 1, 0, 0, 0, offset);
+            DateTimeOffset dt = new(year, month, 1, 0, 0, 0, offset);
             while (dt.DayOfWeek != dayOfWeek) {
                 dt = dt.AddDays(1);
             }
@@ -861,7 +861,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dayOfWeek">The weekday to match.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the day.</returns>
         public static DateTime GetLastWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek) {
-            DateTime dt = new DateTime(year, month, DateTime.DaysInMonth(year, month));
+            DateTime dt = new(year, month, DateTime.DaysInMonth(year, month));
             while (dt.DayOfWeek != dayOfWeek) {
                 dt = dt.AddDays(-1);
             }
@@ -877,7 +877,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="offset">The time's offset from Coordinated Universal Time (UTC).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the day.</returns>
         public static DateTimeOffset GetLastWeekdayOfMonth(int year, int month, DayOfWeek dayOfWeek, TimeSpan offset) {
-            DateTimeOffset dt = new DateTimeOffset(year, month, DateTime.DaysInMonth(year, month), 0, 0, 0, offset);
+            DateTimeOffset dt = new(year, month, DateTime.DaysInMonth(year, month), 0, 0, 0, offset);
             while (dt.DayOfWeek != dayOfWeek) {
                 dt = dt.AddDays(-1);
             }

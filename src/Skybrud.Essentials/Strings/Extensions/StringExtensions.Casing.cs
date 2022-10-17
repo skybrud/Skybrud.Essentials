@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 
+// ReSharper disable once RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {

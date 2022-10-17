@@ -332,7 +332,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="fallback">The fallback function.</param>
         /// <returns>The value returned by <paramref name="fallback"/> if <paramref name="input"/> is <c>null</c> or white space; otherwise <paramref name="input"/>.</returns>
         [return: NotNullIfNotNull("input")]
-        public static string? IfNullOrWhiteSpace(this string? input, Func<string> fallback) {
+        public static string? IfNullOrWhiteSpace(this string? input, Func<string?> fallback) {
             return string.IsNullOrWhiteSpace(input) ? fallback() : input;
         }
 

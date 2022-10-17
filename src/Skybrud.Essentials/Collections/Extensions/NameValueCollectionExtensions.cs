@@ -1,12 +1,12 @@
-﻿using System;
+﻿#if NET_FRAMEWORK
+
+using System;
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Collections.Extensions {
-
-#if NET_FRAMEWORK
 
     /// <summary>
     /// Class with various extension methods for <see cref="NameValueCollection"/>.
@@ -295,6 +295,6 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
     }
 
-#endif
-
 }
+
+#endif
