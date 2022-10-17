@@ -92,31 +92,31 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
-        /// double-precision doubleing-point values (<see cref="double"/>). Supported separators are <c>,</c>, <c> </c>,
+        /// double-precision floating-point values (<see cref="double"/>). Supported separators are <c>,</c>, <c> </c>,
         /// <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list that can't be converted to <see cref="double"/> will
         /// be ignored.
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
-        /// <returns>An array of double-precision doubleing-point values (<see cref="double"/>).</returns>
+        /// <returns>An array of double-precision floating-point values (<see cref="double"/>).</returns>
         public static double[] ToDoubleArray(this string? input) {
             return StringUtils.ParseDoubleArray(input);
         }
 
         /// <summary>
         /// Converts the specified <paramref name="input"/> string of numeric values into an array of corresponding
-        /// double-precision doubleing-point values (<see cref="double"/>). Values in the list that can't be converted to
+        /// double-precision floating-point values (<see cref="double"/>). Values in the list that can't be converted to
         /// <see cref="double"/> will be ignored.
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>An array of double-precision doubleing-point values (<see cref="double"/>).</returns>
+        /// <returns>An array of double-precision floating-point values (<see cref="double"/>).</returns>
         public static double[] ToDoubleArray(this string? input, params char[] separators) {
             return StringUtils.ParseDoubleArray(input, separators);
         }
 
         /// <summary>
         /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
-        /// double-precision doubleing-point values (<see cref="double"/>). Supported separators are <c>,</c>, <c> </c>,
+        /// double-precision floating-point values (<see cref="double"/>). Supported separators are <c>,</c>, <c> </c>,
         /// <c>\r</c>, <c>\n</c> and <c>\t</c>. Values in the list that can't be converted to <see cref="double"/> will
         /// be ignored.
         /// </summary>
@@ -128,12 +128,12 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Converts the specified <paramref name="input"/> string of numeric values into a list of corresponding
-        /// double-precision doubleing-point values (<see cref="double"/>). Values in the list that can't be converted to
+        /// double-precision floating-point values (<see cref="double"/>). Values in the list that can't be converted to
         /// <see cref="double"/> will be ignored.
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
-        /// <returns>A list of double-precision doubleing-point values (<see cref="double"/>).</returns>
+        /// <returns>A list of double-precision floating-point values (<see cref="double"/>).</returns>
         public static List<double> ToDoubleList(this string? input, params char[] separators) {
             return StringUtils.ParseDoubleList(input, separators);
         }
