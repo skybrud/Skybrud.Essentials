@@ -16,8 +16,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <see cref="String"/> representing the element value.</returns>
-        public static string GetElementValue(this XElement element, XName name) {
-            XElement child = element?.GetElement(name);
+        public static string GetElementValue(this XElement? element, XName name) {
+            XElement? child = element?.GetElement(name);
             return child?.Value ?? string.Empty;
         }
 
@@ -30,9 +30,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the element value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValue<T>(this XElement element, XName name, Func<string, T> callback) {
-            XElement child = element?.GetElement(name);
-            return child == null ? default(T) : callback(child.Value);
+        public static T GetElementValue<T>(this XElement? element, XName name, Func<string, T> callback) {
+            XElement? child = element?.GetElement(name);
+            return child == null ? default! : callback(child.Value);
         }
 
         #endregion
@@ -46,7 +46,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <see cref="Int32"/> representing the element value.</returns>
-        public static int GetElementValueAsInt32(this XElement element, XName name) {
+        public static int GetElementValueAsInt32(this XElement? element, XName name) {
             return GetElementValueAsInt32(element, name, x => x);
         }
 
@@ -58,7 +58,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
         /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
-        public static bool GetElementValueAsInt32(this XElement element, XName name, out int value) {
+        public static bool GetElementValueAsInt32(this XElement? element, XName name, out int value) {
             return GetElementValue(element, name, out value);
         }
 
@@ -71,8 +71,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the integer value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValueAsInt32<T>(this XElement element, XName name, Func<int, T> callback) {
-            return GetElementValue(element, name, out int value) ? callback(value) : default(T);
+        public static T GetElementValueAsInt32<T>(this XElement? element, XName name, Func<int, T> callback) {
+            return GetElementValue(element, name, out int value) ? callback(value) : default!;
         }
 
         #endregion
@@ -86,7 +86,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <see cref="Int64"/> representing the element value.</returns>
-        public static long GetElementValueAsInt64(this XElement element, XName name) {
+        public static long GetElementValueAsInt64(this XElement? element, XName name) {
             return GetElementValueAsInt64(element, name, x => x);
         }
 
@@ -98,7 +98,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
         /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
-        public static bool GetElementValueAsInt64(this XElement element, XName name, out long value) {
+        public static bool GetElementValueAsInt64(this XElement? element, XName name, out long value) {
             return GetElementValue(element, name, out value);
         }
 
@@ -111,8 +111,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the long value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValueAsInt64<T>(this XElement element, XName name, Func<long, T> callback) {
-            return GetElementValue(element, name, out long value) ? callback(value) : default(T);
+        public static T GetElementValueAsInt64<T>(this XElement? element, XName name, Func<long, T> callback) {
+            return GetElementValue(element, name, out long value) ? callback(value) : default!;
         }
 
         #endregion
@@ -126,7 +126,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
-        public static float GetElementValueAsSingle(this XElement element, XName name) {
+        public static float GetElementValueAsSingle(this XElement? element, XName name) {
             return GetElementValueAsSingle(element, name, x => x);
         }
 
@@ -138,7 +138,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
         /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
-        public static bool GetElementValueAsSingle(this XElement element, XName name, out float value) {
+        public static bool GetElementValueAsSingle(this XElement? element, XName name, out float value) {
             return GetElementValue(element, name, out value);
         }
 
@@ -151,8 +151,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the float value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValueAsSingle<T>(this XElement element, XName name, Func<float, T> callback) {
-            return GetElementValue(element, name, out float value) ? callback(value) : default(T);
+        public static T GetElementValueAsSingle<T>(this XElement? element, XName name, Func<float, T> callback) {
+            return GetElementValue(element, name, out float value) ? callback(value) : default!;
         }
 
         #endregion
@@ -166,7 +166,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
-        public static float GetElementValueAsFloat(this XElement element, XName name) {
+        public static float GetElementValueAsFloat(this XElement? element, XName name) {
             return GetElementValueAsSingle(element, name, x => x);
         }
 
@@ -178,7 +178,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
         /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
-        public static bool GetElementValueAsFloat(this XElement element, XName name, out float value) {
+        public static bool GetElementValueAsFloat(this XElement? element, XName name, out float value) {
             return GetElementValue(element, name, out value);
         }
 
@@ -191,8 +191,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the float value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValueAsFloat<T>(this XElement element, XName name, Func<float, T> callback) {
-            return GetElementValue(element, name, out float value) ? callback(value) : default(T);
+        public static T GetElementValueAsFloat<T>(this XElement? element, XName name, Func<float, T> callback) {
+            return GetElementValue(element, name, out float value) ? callback(value) : default!;
         }
 
         #endregion
@@ -206,7 +206,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <see cref="Double"/> representing the element value.</returns>
-        public static double GetElementValueAsDouble(this XElement element, XName name) {
+        public static double GetElementValueAsDouble(this XElement? element, XName name) {
             return GetElementValueAsDouble(element, name, x => x);
         }
 
@@ -218,7 +218,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
         /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
-        public static bool GetElementValueAsDouble(this XElement element, XName name, out double value) {
+        public static bool GetElementValueAsDouble(this XElement? element, XName name, out double value) {
             return GetElementValue(element, name, out value);
         }
 
@@ -231,8 +231,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the double value.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValueAsDouble<T>(this XElement element, XName name, Func<double, T> callback) {
-            return GetElementValue(element, name, out double value) ? callback(value) : default(T);
+        public static T GetElementValueAsDouble<T>(this XElement? element, XName name, Func<double, T> callback) {
+            return GetElementValue(element, name, out double value) ? callback(value) : default!;
         }
 
         #endregion
@@ -246,7 +246,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
-        public static bool GetElementValueAsBoolean(this XElement element, XName name) {
+        public static bool GetElementValueAsBoolean(this XElement? element, XName name) {
             return GetElementValueAsBoolean(element, name, x => x);
         }
 
@@ -258,10 +258,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
         /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
-        public static bool GetElementValueAsBoolean(this XElement element, XName name, out bool value) {
+        public static bool GetElementValueAsBoolean(this XElement? element, XName name, out bool value) {
 
             // Get the element from the specified "element"
-            XElement child = GetElement(element, name);
+            XElement? child = GetElement(element, name);
 
             // Parse the value (if "attr" is not "null")
             value = child != null && StringUtils.ParseBoolean(child.Value);
@@ -280,8 +280,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the boolean value.</param>
         /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
-        public static T GetElementValueAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
-            return GetElementValueAsBoolean(element, name, out bool value) ? callback(value) : default(T);
+        public static T GetElementValueAsBoolean<T>(this XElement? element, XName name, Func<bool, T> callback) {
+            return GetElementValueAsBoolean(element, name, out bool value) ? callback(value) : default!;
         }
 
         #endregion
@@ -291,15 +291,15 @@ namespace Skybrud.Essentials.Xml.Extensions {
 #pragma warning disable 1591
 
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
-        public static bool GetElementAsBoolean(this XElement element, XName name) {
+        public static bool GetElementAsBoolean(this XElement? element, XName name) {
             return GetElementAsBoolean(element, name, x => x);
         }
 
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
-        public static bool GetElementAsBoolean(this XElement element, XName name, out bool value) {
+        public static bool GetElementAsBoolean(this XElement? element, XName name, out bool value) {
 
             // Get the attribute from the specified "element"
-            XElement attr = GetElement(element, name);
+            XElement? attr = GetElement(element, name);
 
             // Parse the value (if "attr" is not "null")
             value = attr != null && StringUtils.ParseBoolean(attr.Value);
@@ -310,8 +310,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         }
 
         [Obsolete("Use the GetElementValueAsBoolean method instead.")]
-        public static T GetElementAsBoolean<T>(this XElement element, XName name, Func<bool, T> callback) {
-            return GetElementAsBoolean(element, name, out bool value) ? callback(value) : default(T);
+        public static T GetElementAsBoolean<T>(this XElement? element, XName name, Func<bool, T> callback) {
+            return GetElementAsBoolean(element, name, out bool value) ? callback(value) : default!;
         }
 
 #pragma warning restore 1591
@@ -328,13 +328,13 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValueAsEnum<T>(this XElement element, XName name) where T : struct {
+        public static T GetElementValueAsEnum<T>(this XElement? element, XName name) where T : struct {
 
             // Get the child element matching "name"
-            XElement child = GetElement(element, name);
+            XElement? child = GetElement(element, name);
 
             // Convert the element value to the type of T
-            return child == null ? default(T) : EnumUtils.ParseEnum<T>(child.Value);
+            return child == null ? default : EnumUtils.ParseEnum<T>(child.Value);
 
         }
 
@@ -348,10 +348,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> the element should match.</param>
         /// <param name="fallback">An instance of <typeparamref name="T"/> used as fallback.</param>
         /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
-        public static T GetElementValueAsEnum<T>(this XElement element, XName name, T fallback) where T : struct {
+        public static T GetElementValueAsEnum<T>(this XElement? element, XName name, T fallback) where T : struct {
 
             // Get the child element matching "name"
-            XElement child = element?.Element(name);
+            XElement? child = element?.Element(name);
 
             // Convert the element value to the type of T
             return child == null ? fallback : EnumUtils.ParseEnum(child.Value, fallback);
@@ -371,16 +371,16 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The <see cref="XElement"/>.</param>
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
-        public static T GetElementValue<T>(this XElement element, XName name) {
+        public static T GetElementValue<T>(this XElement? element, XName name) {
 
             // Get the element matching "name"
-            XElement child = GetElement(element, name);
+            XElement? child = GetElement(element, name);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (string.IsNullOrWhiteSpace(child?.Value)) return default(T);
+            if (string.IsNullOrWhiteSpace(child?.Value)) return default!;
 
             // Convert the element value to the type of T
-            return (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
+            return (T) Convert.ChangeType(child!.Value, typeof(T), CultureInfo.InvariantCulture);
 
         }
 
@@ -394,19 +394,19 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="value">The converted value.</param>
         /// <returns><c>true</c> if the element was found and has a value, otherwise <c>false</c>.</returns>
-        public static bool GetElementValue<T>(this XElement element, XName name, out T value) {
+        public static bool GetElementValue<T>(this XElement? element, XName name, out T value) {
 
             // Get the element matching "name"
-            XElement child = GetElement(element, name);
+            XElement? child = GetElement(element, name);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
             if (string.IsNullOrWhiteSpace(child?.Value)) {
-                value = default(T);
+                value = default!;
                 return false;
             }
 
             // Convert the element value to the type of T
-            value = (T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture);
+            value = (T) Convert.ChangeType(child!.Value, typeof(T), CultureInfo.InvariantCulture);
             return true;
 
         }
@@ -422,16 +422,16 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">The <see cref="XName"/> identifying the element.</param>
         /// <param name="callback">The callback method used for converting the element value.</param>
         /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
-        public static TResult GetElementValue<T, TResult>(this XElement element, XName name, Func<T, TResult> callback) {
+        public static TResult GetElementValue<T, TResult>(this XElement? element, XName name, Func<T, TResult> callback) {
 
             // Get the element matching "name"
-            XElement child = GetElement(element, name);
+            XElement? child = GetElement(element, name);
 
             // Fallback to the default value if the element wasn't found (or doesn't have a value)
-            if (string.IsNullOrWhiteSpace(child?.Value)) return default(TResult);
+            if (string.IsNullOrWhiteSpace(child?.Value)) return default!;
 
             // Convert the element value to the type of T and invoke the callback
-            return callback((T) Convert.ChangeType(child.Value, typeof(T), CultureInfo.InvariantCulture));
+            return callback((T) Convert.ChangeType(child!.Value, typeof(T), CultureInfo.InvariantCulture));
 
         }
 

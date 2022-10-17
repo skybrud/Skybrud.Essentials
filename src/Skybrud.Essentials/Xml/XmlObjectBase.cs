@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Xml {
         /// Gets the internal <see cref="System.Xml.Linq.XElement"/> the object was created from.
         /// </summary>
         [JsonIgnore]
-        public XElement XElement { get; }
+        public XElement? XElement { get; }
 
         #endregion
 
@@ -25,7 +25,7 @@ namespace Skybrud.Essentials.Xml {
         /// </summary>
         /// <param name="xml">The instance of <see cref="System.Xml.Linq.XElement"/> representing the object.</param>
         /// <returns>An instance of <see cref="XmlObjectBase"/>.</returns>
-        protected XmlObjectBase(XElement xml) {
+        protected XmlObjectBase(XElement? xml) {
             XElement = xml;
         }
 

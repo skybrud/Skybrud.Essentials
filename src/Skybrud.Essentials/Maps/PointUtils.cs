@@ -99,7 +99,7 @@ namespace Skybrud.Essentials.Maps {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Null_Island</cref>
         /// </see>
-        public static bool IsNullIsland(IPoint point) {
+        public static bool IsNullIsland(IPoint? point) {
             return point == null || Math.Abs(point.Latitude) < double.Epsilon && Math.Abs(point.Longitude) < double.Epsilon;
         }
 

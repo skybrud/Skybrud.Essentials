@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Specialized;
 using System.Globalization;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -21,7 +22,7 @@ namespace Skybrud.Essentials.Json.Converters {
         }
 
         /// <inheritdoc />
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
 
             switch (value) {
 
@@ -30,7 +31,7 @@ namespace Skybrud.Essentials.Json.Converters {
                     break;
 
 #if I_CAN_HAS_NAME_VALUE_COLLECTION
-                case System.Collections.Specialized.NameValueCollection nvc:
+                case NameValueCollection nvc:
                     writer.WriteValue(StringUtils.ToUrlEncodedString(nvc));
                     break;
 #endif
@@ -44,16 +45,18 @@ namespace Skybrud.Essentials.Json.Converters {
         }
 
         /// <inheritdoc />
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+        public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
 
 #if I_CAN_HAS_NAME_VALUE_COLLECTION
-            if (objectType == typeof(System.Collections.Specialized.NameValueCollection)) {
-                return System.Web.HttpUtility.ParseQueryString(reader.Value.ToString());
+            if (objectType == typeof(NameValueCollection)) {
+                string? temp = reader.Value?.ToString();
+                return temp is null ? new NameValueCollection() : System.Web.HttpUtility.ParseQueryString(temp);
             }
 #endif
 
             if (objectType.GetTypeInfo().IsEnum) {
-                return EnumUtils.ParseEnum(reader.Value.ToString(), objectType);
+                string? temp = reader.Value?.ToString();
+                return EnumUtils.ParseEnum(temp ?? string.Empty, objectType);
             }
 
             throw new Exception($"Unsupported type: {objectType}");

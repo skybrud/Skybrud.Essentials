@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Essentials.Time {
 
@@ -12,22 +13,24 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets a reference to the timestamp representing the start of the period.
         /// </summary>
-        public EssentialsTime Start { get; protected set; }
+        public EssentialsTime? Start { get; protected set; }
 
         /// <summary>
         /// Gets whether the <see cref="Start"/> property has a value.
         /// </summary>
-        public bool HasStart => Start != null;
+        [MemberNotNullWhen(true, "Start")]
+        public bool HasStart => Start is not null;
 
         /// <summary>
         /// Gets a reference to the timestamp representing the end of the period.
         /// </summary>
-        public EssentialsTime End { get; protected set; }
+        public EssentialsTime? End { get; protected set; }
 
         /// <summary>
         /// Gets whether the <see cref="End"/> property has a value.
         /// </summary>
-        public bool HasEnd => End != null;
+        [MemberNotNullWhen(true, "End")]
+        public bool HasEnd => End is not null;
 
         #endregion
 
@@ -43,7 +46,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="start">The start date.</param>
         /// <param name="end">The end date.</param>
-        public EssentialsPeriod(EssentialsTime start, EssentialsTime end) {
+        public EssentialsPeriod(EssentialsTime? start, EssentialsTime? end) {
             Start = start;
             End = end;
         }
@@ -55,7 +58,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="start">The start date.</param>
         /// <param name="end">The end date.</param>
         /// <param name="timeZone">The time zone.</param>
-        public EssentialsPeriod(DateTimeOffset start, DateTimeOffset end, TimeZoneInfo timeZone) {
+        public EssentialsPeriod(DateTimeOffset start, DateTimeOffset end, TimeZoneInfo? timeZone) {
             Start = new EssentialsTime(start, timeZone ?? TimeZoneInfo.Local);
             End = new EssentialsTime(end, timeZone ?? TimeZoneInfo.Local);
         }
@@ -64,7 +67,9 @@ namespace Skybrud.Essentials.Time {
 
         #region Static methods
 
-        private static EssentialsPeriod GetFromDate(DateTimeOffset dto, TimeZoneInfo timeZone) {
+        private static EssentialsPeriod GetFromDate(DateTimeOffset dto, TimeZoneInfo? timeZone) {
+
+            timeZone ??= TimeZoneInfo.Local;
 
             DateTimeOffset start = TimeUtils.GetStartOfDay(dto, timeZone);
             DateTimeOffset end = TimeUtils.GetEndOfDay(dto, timeZone);
@@ -78,7 +83,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
         public static EssentialsPeriod Today() {
-            return GetFromDate(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+            return GetFromDate(DateTimeOffset.UtcNow, null);
         }
 
         /// <summary>
@@ -86,7 +91,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Today(TimeZoneInfo timeZone) {
+        public static EssentialsPeriod Today(TimeZoneInfo? timeZone) {
             return GetFromDate(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -97,7 +102,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Today(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+        public static EssentialsPeriod Today(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
             return GetFromDate(timestamp, timeZone);
         }
 
@@ -107,7 +112,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
         public static EssentialsPeriod Yesterday() {
-            return Yesterday(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+            return Yesterday(DateTimeOffset.UtcNow, null);
         }
 
         /// <summary>
@@ -115,7 +120,7 @@ namespace Skybrud.Essentials.Time {
         /// the <paramref name="timeZone"/>.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Yesterday(TimeZoneInfo timeZone) {
+        public static EssentialsPeriod Yesterday(TimeZoneInfo? timeZone) {
             return Yesterday(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -126,7 +131,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Yesterday(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+        public static EssentialsPeriod Yesterday(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
             return GetFromDate(timestamp.AddDays(-1), timeZone);
         }
 
@@ -136,7 +141,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
         public static EssentialsPeriod Tomorrow() {
-            return Tomorrow(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+            return Tomorrow(DateTimeOffset.UtcNow, null);
         }
 
         /// <summary>
@@ -144,7 +149,7 @@ namespace Skybrud.Essentials.Time {
         /// the <paramref name="timeZone"/>.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Tomorrow(TimeZoneInfo timeZone) {
+        public static EssentialsPeriod Tomorrow(TimeZoneInfo? timeZone) {
             return Tomorrow(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -155,7 +160,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod Tomorrow(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+        public static EssentialsPeriod Tomorrow(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
             return GetFromDate(timestamp.AddDays(1), timeZone);
         }
 
@@ -165,7 +170,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
         public static EssentialsPeriod NextWeekend() {
-            return NextWeekend(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+            return NextWeekend(DateTimeOffset.UtcNow, null);
         }
 
         /// <summary>
@@ -174,7 +179,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod NextWeekend(TimeZoneInfo timeZone) {
+        public static EssentialsPeriod NextWeekend(TimeZoneInfo? timeZone) {
             return NextWeekend(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -188,16 +193,16 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod NextWeekend(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+        public static EssentialsPeriod NextWeekend(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
 
-            // Time zone may not be null
-            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+            // Fall back to local time zone if not specified
+            timeZone ??= TimeZoneInfo.Local;
 
             // Convert "timestamp" to same offset as "timeZone"
             timestamp = TimeZoneInfo.ConvertTime(timestamp, timeZone);
 
             // If "dto" is already within a weekend, we jump to the next week instead
-            if (timestamp.DayOfWeek == DayOfWeek.Saturday || timestamp.DayOfWeek == DayOfWeek.Sunday) {
+            if (timestamp.DayOfWeek is DayOfWeek.Saturday or DayOfWeek.Sunday) {
 
                 // Adjust to UTC and add seven days (aka a full week)
                 timestamp = timestamp.ToUniversalTime().AddDays(7);
@@ -220,7 +225,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
         public static EssentialsPeriod ThisWeek() {
-            return ThisWeek(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+            return ThisWeek(DateTimeOffset.UtcNow, null);
         }
 
         /// <summary>
@@ -228,7 +233,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod ThisWeek(TimeZoneInfo timeZone) {
+        public static EssentialsPeriod ThisWeek(TimeZoneInfo? timeZone) {
             return ThisWeek(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -238,10 +243,10 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod ThisWeek(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+        public static EssentialsPeriod ThisWeek(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
 
-            // Time zone may not be null
-            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+            // Fall back to local time zone if not specified
+            timeZone ??= TimeZoneInfo.Local;
 
             // Wrap the input "timestamp"
             EssentialsTime time = new(timestamp);
@@ -260,7 +265,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
         public static EssentialsPeriod ThisMonth() {
-            return ThisMonth(DateTimeOffset.UtcNow, TimeZoneInfo.Local);
+            return ThisMonth(DateTimeOffset.UtcNow, null);
         }
 
         /// <summary>
@@ -268,7 +273,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod ThisMonth(TimeZoneInfo timeZone) {
+        public static EssentialsPeriod ThisMonth(TimeZoneInfo? timeZone) {
             return ThisMonth(DateTimeOffset.UtcNow, timeZone);
         }
 
@@ -278,10 +283,10 @@ namespace Skybrud.Essentials.Time {
         /// <param name="dto">The timestamp.</param>
         /// <param name="timeZone">The time zone.</param>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
-        public static EssentialsPeriod ThisMonth(DateTimeOffset dto, TimeZoneInfo timeZone) {
+        public static EssentialsPeriod ThisMonth(DateTimeOffset dto, TimeZoneInfo? timeZone) {
 
-            // Time zone may not be null
-            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+            // Fall back to local time zone if not specified
+            timeZone ??= TimeZoneInfo.Local;
 
             // Wrap the input "dto"
             EssentialsTime time = new(dto);

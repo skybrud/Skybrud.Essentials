@@ -2,6 +2,8 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+// ReSharper disable CheckNamespace
+
 namespace Skybrud.Essentials.Json {
 
     /// <summary>
@@ -90,7 +92,7 @@ namespace Skybrud.Essentials.Json {
         public static T[] LoadJsonArray<T>(string path, Func<JObject, T> func) {
             return JsonUtils.ParseJsonArray(path, func);
         }
-        
+
         /// <summary>
         /// Saves the specified <see cref="JsonObjectBase"/> to the file at <paramref name="path"/>. If the file doesn't
         /// already exist, a new file will be created.

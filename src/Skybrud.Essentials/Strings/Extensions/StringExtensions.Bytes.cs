@@ -1,4 +1,6 @@
-﻿namespace Skybrud.Essentials.Strings.Extensions {
+﻿#nullable enable
+
+namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 

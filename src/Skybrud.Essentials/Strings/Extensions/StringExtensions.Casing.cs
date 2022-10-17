@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The camel cased string.</returns>
-        public static string ToCamelCase(this string str) {
+        public static string ToCamelCase(this string? str) {
             return StringUtils.ToCamelCase(str);
         }
 
@@ -40,7 +40,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The Pascal cased string.</returns>
-        public static string ToPascalCase(this string str) {
+        public static string ToPascalCase(this string? str) {
             return StringUtils.ToPascalCase(str);
         }
 
@@ -70,7 +70,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The kebab cased string.</returns>
-        public static string ToKebabCase(this string str) {
+        public static string ToKebabCase(this string? str) {
             return StringUtils.ToKebabCase(str);
         }
 
@@ -100,7 +100,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The train cased string.</returns>
-        public static string ToTrainCase(this string str) {
+        public static string ToTrainCase(this string? str) {
             return StringUtils.ToTrainCase(str);
         }
 
@@ -130,7 +130,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The converted string.</returns>
-        public static string ToUnderscore(this string str) {
+        public static string ToUnderscore(this string? str) {
             return StringUtils.ToUnderscore(str);
         }
 
@@ -202,8 +202,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
-        public static string FirstCharToUpper(this string str) {
-            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
+        public static string FirstCharToUpper(this string? str) {
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToUpper(), str.Substring(1));
         }
 
         /// <summary>
@@ -233,7 +233,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="str">The string to be converted.</param>
         /// <param name="casing">The casing of the output string.</param>
         /// <returns>The output string, matching the specified <paramref name="casing"/>.</returns>
-        public static string ToCasing(this string str, TextCasing casing) {
+        public static string ToCasing(this string? str, TextCasing casing) {
             return StringUtils.ToCasing(str, casing);
         }
 

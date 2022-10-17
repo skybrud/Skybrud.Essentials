@@ -1,7 +1,11 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+
+// ReSharper disable RedundantSuppressNullableWarningExpression
 
 namespace Skybrud.Essentials.Strings {
 
@@ -14,7 +18,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The camel cased string.</returns>
-        public static string ToCamelCase(string str) {
+        public static string ToCamelCase(string? str) {
 
             // Convert the string to lowercase initially for better results (eg. if the string is already camel cased)
             str = ToUnderscore(str);
@@ -53,7 +57,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The Pascal cased string.</returns>
-        public static string ToPascalCase(string str) {
+        public static string ToPascalCase(string? str) {
 
             // Convert the string to lowercase initially for better results (eg. if the string is already camel cased)
             str = ToUnderscore(str);
@@ -92,10 +96,13 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The kebab cased string.</returns>
-        public static string ToKebabCase(string str) {
+        public static string ToKebabCase(string? str) {
+
+            // Return right away if null or white space
+            if (string.IsNullOrWhiteSpace(str)) return str ?? string.Empty;
 
             // Replace invalid characters
-            str = Regex.Replace(str ?? string.Empty, "[\\W_]+", " ").Trim();
+            str = Regex.Replace(str, "[\\W_]+", " ").Trim();
 
             // Replace multiple whitespaces
             str = Regex.Replace(str, "[ ]{2,}", " ");
@@ -131,10 +138,13 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The train cased string.</returns>
-        public static string ToTrainCase(string str) {
+        public static string ToTrainCase(string? str) {
+
+            // Return right away if null or white space
+            if (string.IsNullOrWhiteSpace(str)) return str ?? string.Empty;
 
             // Replace invalid characters
-            str = Regex.Replace(str ?? string.Empty, "[\\W_]+", " ").Trim();
+            str = Regex.Replace(str, "[\\W_]+", " ").Trim();
 
             // Replace multiple whitespaces
             str = Regex.Replace(str, "[ ]{2,}", " ");
@@ -170,10 +180,13 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be converted.</param>
         /// <returns>The converted string.</returns>
-        public static string ToUnderscore(string str) {
+        public static string ToUnderscore(string? str) {
+
+            // Return right away if null or white space
+            if (string.IsNullOrWhiteSpace(str)) return str ?? string.Empty;
 
             // Replace invalid characters
-            str = Regex.Replace(str ?? string.Empty, "[\\W_]+", " ").Trim();
+            str = Regex.Replace(str, "[\\W_]+", " ").Trim();
 
             // Replace multiple whitespaces
             str = Regex.Replace(str, "[ ]{2,}", " ");
@@ -251,8 +264,12 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string which first character should be uppercased.</param>
         /// <returns>The input string with the first character has been uppercased.</returns>
-        public static string FirstCharToUpper(string str) {
-            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str.Substring(0, 1).ToUpper(), str.Substring(1));
+        public static string FirstCharToUpper(string? str) {
+#if NET5_0_OR_GREATER
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str[..1].ToUpper(), str[1..]);
+#else
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToUpper(), str.Substring(1));
+#endif
         }
 
         /// <summary>
@@ -282,38 +299,18 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The string to be converted.</param>
         /// <param name="casing">The casing of the output string.</param>
         /// <returns>The output string, matching the specified <paramref name="casing"/>.</returns>
-        public static string ToCasing(string str, TextCasing casing) {
-
+        public static string ToCasing(string? str, TextCasing casing) {
             if (string.IsNullOrWhiteSpace(str)) return string.Empty;
-
-            switch (casing) {
-
-                case TextCasing.LowerCase:
-                    return str.ToLower();
-
-                case TextCasing.UpperCase:
-                    return str.ToUpper();
-
-                case TextCasing.CamelCase:
-                    return ToCamelCase(str);
-
-                case TextCasing.PascalCase:
-                    return ToPascalCase(str);
-
-                case TextCasing.KebabCase:
-                    return ToKebabCase(str);
-
-                case TextCasing.TrainCase:
-                    return ToTrainCase(str);
-
-                case TextCasing.Underscore:
-                    return ToUnderscore(str);
-
-                default:
-                    throw new ArgumentException("Unknown casing " + casing, nameof(casing));
-
-            }
-
+            return casing switch {
+                TextCasing.LowerCase => str!.ToLower(),
+                TextCasing.UpperCase => str!.ToUpper(),
+                TextCasing.CamelCase => ToCamelCase(str),
+                TextCasing.PascalCase => ToPascalCase(str),
+                TextCasing.KebabCase => ToKebabCase(str),
+                TextCasing.TrainCase => ToTrainCase(str),
+                TextCasing.Underscore => ToUnderscore(str),
+                _ => throw new ArgumentException($"Unknown casing {casing}", nameof(casing))
+            };
         }
 
     }

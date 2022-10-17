@@ -5,7 +5,7 @@ namespace Skybrud.Essentials.Json {
 
     internal static class JsonTokenUtils {
 
-        internal static bool GetBoolean(JToken token) {
+        internal static bool GetBoolean(JToken? token) {
             return token?.Type switch {
                 JTokenType.Boolean => token.Value<bool>(),
                 JTokenType.Integer => token.Value<int>() switch {
@@ -18,7 +18,7 @@ namespace Skybrud.Essentials.Json {
             };
         }
 
-        internal static bool GetBoolean(JToken token, bool fallback) {
+        internal static bool GetBoolean(JToken? token, bool fallback) {
             return token?.Type switch {
                 JTokenType.Boolean => token.Value<bool>(),
                 JTokenType.Integer => token.Value<int>() switch {
@@ -31,7 +31,7 @@ namespace Skybrud.Essentials.Json {
             };
         }
 
-        internal static bool TryGetBoolean(JToken token, out bool result) {
+        internal static bool TryGetBoolean(JToken? token, out bool result) {
 
             switch (token?.Type) {
 

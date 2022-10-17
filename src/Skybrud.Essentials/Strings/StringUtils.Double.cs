@@ -1,5 +1,8 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Skybrud.Essentials.Strings {
@@ -13,7 +16,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a double-precision floating-point number;
         /// otherwise <c>false</c>.</returns>
-        public static bool IsDouble(string input) {
+        public static bool IsDouble(string? input) {
             return TryParseDouble(input, out double _);
         }
 
@@ -23,7 +26,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string to be parsed.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
-        public static double ParseDouble(string input) {
+        public static double ParseDouble(string? input) {
             TryParseDouble(input, out double value);
             return value;
         }
@@ -35,7 +38,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string to be parsed.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
-        public static double ParseDouble(string input, double fallback) {
+        public static double ParseDouble(string? input, double fallback) {
             return TryParseDouble(input, out double value) ? value : fallback;
         }
 
@@ -50,7 +53,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="double.MinValue"/> or greater than <see cref="double.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseDouble(string input, out double result) {
+        public static bool TryParseDouble(string? input, out double result) {
             return double.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
         }
 
@@ -65,7 +68,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="double.MinValue"/> or greater than <see cref="double.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseDouble(string input, out double? result) {
+        public static bool TryParseDouble(string? input, [NotNullWhen(true)] out double? result) {
             if (double.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out double v)) {
                 result = v;
                 return true;
@@ -82,7 +85,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>An array of double-precision doubleing-point values (<see cref="double"/>).</returns>
-        public static double[] ParseDoubleArray(string input) {
+        public static double[] ParseDoubleArray(string? input) {
             return ParseDoubleArray(input, DefaultSeparators);
         }
 
@@ -94,7 +97,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of double-precision doubleing-point values (<see cref="double"/>).</returns>
-        public static double[] ParseDoubleArray(string input, params char[] separators) {
+        public static double[] ParseDoubleArray(string? input, params char[] separators) {
             return ParseDoubleList(input, separators).ToArray();
         }
 
@@ -106,7 +109,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>A list of 32-bit signed integer values (<see cref="double"/>).</returns>
-        public static List<double> ParseDoubleList(string input) {
+        public static List<double> ParseDoubleList(string? input) {
             return ParseDoubleList(input, DefaultSeparators);
         }
 
@@ -118,12 +121,12 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>A list of double-precision doubleing-point values (<see cref="double"/>).</returns>
-        public static List<double> ParseDoubleList(string input, params char[] separators) {
+        public static List<double> ParseDoubleList(string? input, params char[] separators) {
 
             List<double> temp = new();
             if (string.IsNullOrWhiteSpace(input)) return temp;
 
-            foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (TryParseDouble(piece, out double result)) temp.Add(result);
             }
 

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Xml.Linq;
 
+// ReSharper disable CheckNamespace
+
 namespace Skybrud.Essentials.Xml {
 
     /// <summary>

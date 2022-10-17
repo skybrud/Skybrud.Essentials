@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using System.Xml.Linq;
+using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Essentials.Xml.Extensions {
 
@@ -12,8 +13,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the elements.</param>
         /// <returns>An array of <see cref="XElement"/>.</returns>
-        public static XElement[] GetElements(this XElement element, XName name) {
-            return element?.Elements(name).ToArray() ?? new XElement[0];
+        public static XElement[] GetElements(this XElement? element, XName name) {
+            return element?.Elements(name).ToArray() ?? ArrayUtils.Empty<XElement>();
         }
 
         /// <summary>
@@ -24,8 +25,8 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="name">An instance of <see cref="XName"/> identifying the elements.</param>
         /// <param name="callback">A callback function for parsing the element.</param>
         /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
-        public static T[] GetElements<T>(this XElement element, XName name, Func<XElement, T> callback) {
-            return element?.Elements(name).Select(callback).ToArray() ?? new T[0];
+        public static T[] GetElements<T>(this XElement? element, XName name, Func<XElement, T> callback) {
+            return element?.Elements(name).Select(callback).ToArray() ?? ArrayUtils.Empty<T>();
         }
 
     }

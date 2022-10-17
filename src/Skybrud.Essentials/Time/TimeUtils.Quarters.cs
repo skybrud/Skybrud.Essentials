@@ -78,7 +78,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone for which the reuslt should be adjusted.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the start of the quarter.</returns>
-        public static DateTimeOffset GetStartOfQuarter(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetStartOfQuarter(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
 
             // Get the start of the quarter
             var start = GetStartOfQuarter(timestamp);
@@ -157,7 +157,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">The timestamp.</param>
         /// <param name="timeZone">The time zone for which the reuslt should be adjusted.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the end of the quarter.</returns>
-        public static DateTimeOffset GetEndOfQuarter(DateTimeOffset timestamp, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetEndOfQuarter(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
 
             // Get the end of the quarter
             var end = GetEndOfQuarter(timestamp);

@@ -1,5 +1,6 @@
 ﻿using System;
-using System.Globalization;
+
+// ReSharper disable CheckNamespace
 
 namespace Skybrud.Essentials.Time {
 
@@ -103,7 +104,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the date of <strong>Whit Sunday</strong>, which is celebrated on the 7th Sunday after
         /// <strong>Easter</strong>.
-        /// 
+        ///
         /// Depending on the year, Whit Sunday falls within the period from the
         /// <strong>10th of May</strong> to the <strong>13th of June</strong> (both inclusive).
         /// </summary>
@@ -120,7 +121,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the date of <strong>Whit Monday</strong>, which is celebrated the day after
         /// <strong>Whit Sunday</strong>. Whit Sunday is the 7th Sunday after
         /// <strong>Easter</strong>.
-        /// 
+        ///
         /// Depending on the year, Whit Monday falls within the period from the <strong>11th of May</strong> to the
         /// <strong>14th of June</strong> (both inclusive).
         /// </summary>

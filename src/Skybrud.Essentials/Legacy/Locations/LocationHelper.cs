@@ -1,5 +1,7 @@
 ﻿using System;
 
+// ReSharper disable CheckNamespace
+
 namespace Skybrud.Essentials.Locations {
 
     /// <summary>
@@ -12,7 +14,7 @@ namespace Skybrud.Essentials.Locations {
 
         /// <summary>
         /// Gets the equatorial radius of Earth (in meters).
-        /// 
+        ///
         /// Notice: When comparing with various online services, they seem to use 6378137 meters for the equatorial
         /// radius of Earth, while 6378136.6 meters for the equatorial radius is more precise.
         /// </summary>

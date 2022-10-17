@@ -1,6 +1,8 @@
 ﻿using System;
 using Skybrud.Essentials.Time;
 
+// ReSharper disable CheckNamespace
+
 namespace Skybrud.Essentials.Json.Converters.Time {
 
     /// <summary>

@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Time {
             return new DateTimeOffset(time.Year, time.Month, time.Day, 0, 0, 0, time.Offset);
         }
 
-        public static DateTimeOffset GetStartOfDay(DateTimeOffset time, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetStartOfDay(DateTimeOffset time, TimeZoneInfo? timeZone) {
 
             // Get the end of the day according to the current offset
             DateTimeOffset temp = GetStartOfDay(time);
@@ -41,7 +41,7 @@ namespace Skybrud.Essentials.Time {
 
         }
 
-        public static DateTimeOffset GetEndOfDay(DateTimeOffset time, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetEndOfDay(DateTimeOffset time, TimeZoneInfo? timeZone) {
 
             // Get the end of the day according to the current offset
             DateTimeOffset temp = GetEndOfDay(time);
@@ -81,11 +81,11 @@ namespace Skybrud.Essentials.Time {
 
         }
 
-        public static DateTimeOffset GetStartOfWeek(DateTimeOffset time, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetStartOfWeek(DateTimeOffset time, TimeZoneInfo? timeZone) {
             return GetStartOfWeek(time, timeZone, DayOfWeek.Monday);
         }
 
-        public static DateTimeOffset GetStartOfWeek(DateTimeOffset time, TimeZoneInfo timeZone, DayOfWeek startOfWeek) {
+        public static DateTimeOffset GetStartOfWeek(DateTimeOffset time, TimeZoneInfo? timeZone, DayOfWeek startOfWeek) {
 
             // Get the start of the week
             time = GetStartOfWeek(time, startOfWeek);
@@ -109,11 +109,11 @@ namespace Skybrud.Essentials.Time {
             return GetStartOfWeek(time, startOfWeek).AddDays(7).AddTicks(-1);
         }
 
-        public static DateTimeOffset GetEndOfWeek(DateTimeOffset time, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetEndOfWeek(DateTimeOffset time, TimeZoneInfo? timeZone) {
             return GetEndOfWeek(time, timeZone, DayOfWeek.Monday);
         }
 
-        public static DateTimeOffset GetEndOfWeek(DateTimeOffset time, TimeZoneInfo timeZone, DayOfWeek startOfWeek) {
+        public static DateTimeOffset GetEndOfWeek(DateTimeOffset time, TimeZoneInfo? timeZone, DayOfWeek startOfWeek) {
 
             // Get the end of the week
             time = GetEndOfWeek(time, startOfWeek);
@@ -137,7 +137,7 @@ namespace Skybrud.Essentials.Time {
             return new DateTimeOffset(time.Year, time.Month, 1, 0, 0, 0, time.Offset);
         }
 
-        public static DateTimeOffset GetStartOfMonth(DateTimeOffset time, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetStartOfMonth(DateTimeOffset time, TimeZoneInfo? timeZone) {
 
             // Get the start of the month
             time = GetStartOfMonth(time);
@@ -165,7 +165,7 @@ namespace Skybrud.Essentials.Time {
 
         }
 
-        public static DateTimeOffset GetEndOfMonth(DateTimeOffset time, TimeZoneInfo timeZone) {
+        public static DateTimeOffset GetEndOfMonth(DateTimeOffset time, TimeZoneInfo? timeZone) {
 
             // Get the end of the month
             time = GetEndOfMonth(time);

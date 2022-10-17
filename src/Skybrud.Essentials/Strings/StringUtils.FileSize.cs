@@ -1,8 +1,10 @@
-﻿using System.Collections.Generic;
+﻿#nullable enable
+
+using System.Collections.Generic;
 using System.Globalization;
 
 namespace Skybrud.Essentials.Strings {
-    
+
     public partial class StringUtils {
 
         private static readonly string[] _fileSizesKibi = { "B", "KiB", "MiB", "GiB", "TiB" };

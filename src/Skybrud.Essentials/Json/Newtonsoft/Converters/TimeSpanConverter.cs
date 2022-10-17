@@ -39,7 +39,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Converters {
         /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
 
             switch (value) {
 
@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Converters {
         /// <param name="existingValue">The existing value of object being read.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns>The object value.</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
 
             if (objectType != typeof(TimeSpan) && objectType != typeof(TimeSpan?)) throw new JsonSerializationException($"Object type {objectType} is not supported");
 
@@ -115,7 +115,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Converters {
             return objectType == typeof(TimeSpan) || objectType == typeof(TimeSpan?);
         }
 
-        private object ReadFromNumber(JsonReader reader, Type objectType) {
+        private object? ReadFromNumber(JsonReader reader, Type objectType) {
 
             // Get the value from the reader
             if (reader.Value is not double value) return objectType == typeof(TimeSpan?) ? null : default(TimeSpan);
@@ -130,7 +130,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Converters {
 
         }
 
-        private object ReadFromString(JsonReader reader, Type objectType) {
+        private object? ReadFromString(JsonReader reader, Type objectType) {
 
             // Get the value from the reader
             string value = (string) reader.Value;

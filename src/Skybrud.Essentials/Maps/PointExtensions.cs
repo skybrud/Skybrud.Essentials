@@ -1,5 +1,4 @@
-﻿using System;
-using Skybrud.Essentials.Maps.Geometry;
+﻿using Skybrud.Essentials.Maps.Geometry;
 
 namespace Skybrud.Essentials.Maps {
 
@@ -39,7 +38,7 @@ namespace Skybrud.Essentials.Maps {
         /// <see>
         ///     <cref>https://en.wikipedia.org/wiki/Null_Island</cref>
         /// </see>
-        public static bool IsNullIsland(this IPoint point) {
+        public static bool IsNullIsland(this IPoint? point) {
             return PointUtils.IsNullIsland(point);
         }
 

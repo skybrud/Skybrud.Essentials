@@ -4,6 +4,8 @@ using System;
 using System.Security.Cryptography;
 using System.Text;
 
+// ReSharper disable CheckNamespace
+
 namespace Skybrud.Essentials.Security {
 
     /// <summary>

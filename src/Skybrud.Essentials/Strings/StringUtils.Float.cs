@@ -1,5 +1,8 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
 namespace Skybrud.Essentials.Strings {
@@ -13,7 +16,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a single-precision floating-point number;
         /// otherwise <c>false</c>.</returns>
-        public static bool IsFloat(string input) {
+        public static bool IsFloat(string? input) {
             return TryParseFloat(input, out float _);
         }
 
@@ -23,7 +26,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
-        public static float ParseFloat(string input) {
+        public static float ParseFloat(string? input) {
             return TryParseFloat(input, out float value) ? value : default;
         }
 
@@ -35,7 +38,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
-        public static float ParseFloat(string input, float fallback) {
+        public static float ParseFloat(string? input, float fallback) {
             return TryParseFloat(input, out float value) ? value : fallback;
         }
 
@@ -50,7 +53,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="float.MinValue"/> or greater than <see cref="float.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseFloat(string input, out float result) {
+        public static bool TryParseFloat(string? input, out float result) {
             return float.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out result);
         }
 
@@ -65,7 +68,7 @@ namespace Skybrud.Essentials.Strings {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="float.MinValue"/> or greater than <see cref="float.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseFloat(string input, out float? result) {
+        public static bool TryParseFloat(string? input, [NotNullWhen(true)] out float? result) {
             if (float.TryParse(input, NumberStyles.Any, CultureInfo.InvariantCulture, out float v)) {
                 result = v;
                 return true;
@@ -82,7 +85,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>An array of single-precision floating-point values (<see cref="float"/>).</returns>
-        public static float[] ParseFloatArray(string input) {
+        public static float[] ParseFloatArray(string? input) {
             return ParseFloatArray(input, DefaultSeparators);
         }
 
@@ -94,7 +97,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of single-precision floating-point values (<see cref="float"/>).</returns>
-        public static float[] ParseFloatArray(string input, params char[] separators) {
+        public static float[] ParseFloatArray(string? input, params char[] separators) {
             return ParseFloatList(input, separators).ToArray();
         }
 
@@ -106,7 +109,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>A list of 32-bit signed integer values (<see cref="float"/>).</returns>
-        public static List<float> ParseFloatList(string input) {
+        public static List<float> ParseFloatList(string? input) {
             return ParseFloatList(input, DefaultSeparators);
         }
 
@@ -118,12 +121,12 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>A list of single-precision floating-point values (<see cref="float"/>).</returns>
-        public static List<float> ParseFloatList(string input, params char[] separators) {
+        public static List<float> ParseFloatList(string? input, params char[] separators) {
 
             List<float> temp = new();
             if (string.IsNullOrWhiteSpace(input)) return temp;
 
-            foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (TryParseFloat(piece, out float result)) temp.Add(result);
             }
 

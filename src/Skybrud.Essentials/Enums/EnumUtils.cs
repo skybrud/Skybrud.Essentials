@@ -1,9 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
+using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Collections.Extensions;
 using Skybrud.Essentials.Strings;
+
+// ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
+// ReSharper disable RedundantSuppressNullableWarningExpression
 
 namespace Skybrud.Essentials.Enums {
 
@@ -42,9 +47,10 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of
         /// <typeparamref name="T"/>.</exception>
-        public static T ParseEnum<T>(string str) where T : struct {
+        public static T ParseEnum<T>(string? str) where T : struct {
+            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
             if (TryParseEnum(str, out T value)) return value;
-            throw new EnumParseException(typeof(T), str);
+            throw new EnumParseException(typeof(T), str!);
         }
 
         /// <summary>
@@ -59,6 +65,7 @@ namespace Skybrud.Essentials.Enums {
 
             // Throw an exception if "str" isn't specified
             if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+            if (enumType is null) throw new ArgumentNullException(nameof(enumType));
 
             // Convert the input string to camel case and lowercase (morel likely to get a match)
             string enumText = StringUtils.ToCamelCase(str).ToLower();
@@ -97,7 +104,7 @@ namespace Skybrud.Essentials.Enums {
         /// value is represented by value. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-        public static bool TryParseEnum<T>(string str, out T value) where T : struct {
+        public static bool TryParseEnum<T>(string? str, out T value) where T : struct {
 
             // Check whether the type of T is an enum
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
@@ -114,11 +121,47 @@ namespace Skybrud.Essentials.Enums {
             // Parse the enum
             foreach (T v in GetEnumValues<T>()) {
                 string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
-                string name = v.ToString().ToLowerInvariant();
-                if (ordinal == modified || name == modified) {
-                    value = v;
-                    return true;
-                }
+                string? name = v.ToString()?.ToLowerInvariant();
+                if (ordinal != modified && name != modified) continue;
+                value = v;
+                return true;
+            }
+
+            return false;
+
+        }
+
+        /// <summary>
+        /// Converts the string representation of the name or numeric value to an enum of type
+        /// <typeparamref name="T"/>. The return value indicates whether the conversion succeeded.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="str">The string representation of the enumeration name or underlying value to convert.</param>
+        /// <param name="value">When this method returns, contains an object of type <typeparamref name="T"/> whose
+        /// value is represented by value. This parameter is passed uninitialized.</param>
+        /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
+        /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
+        public static bool TryParseEnum<T>(string? str, [NotNullWhen(true)] out T? value) where T : struct {
+
+            // Check whether the type of T is an enum
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+
+            // Initialize "value"
+            value = null;
+
+            // Check whether the specified string is NULL (or white space)
+            if (string.IsNullOrWhiteSpace(str)) return false;
+
+            // Convert "str" to camel case and then lowercase
+            string modified = StringUtils.ToCamelCase(str + string.Empty).ToLowerInvariant();
+
+            // Parse the enum
+            foreach (T v in GetEnumValues<T>()) {
+                string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
+                string? name = v.ToString()?.ToLowerInvariant();
+                if (ordinal != modified && name != modified) continue;
+                value = v;
+                return true;
             }
 
             return false;
@@ -132,7 +175,7 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="type">The type of the enum.</param>
         /// <param name="value">When this method returns, contains a value of type <see cref="Enum"/>. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseEnum(string str, Type type, out Enum value) {
+        public static bool TryParseEnum(string? str, Type type, out Enum value) {
 
             // Check whether the specified string is NULL (or white space)
             if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
@@ -141,7 +184,7 @@ namespace Skybrud.Essentials.Enums {
             if (IsEnum(type) == false) throw new ArgumentException("Specified type must be an enum.");
 
             // Initialize "value"
-            value = default;
+            value = default!;
 
             // Check whether the specified string is NULL (or white space)
             if (string.IsNullOrWhiteSpace(str)) return false;
@@ -153,10 +196,9 @@ namespace Skybrud.Essentials.Enums {
             foreach (Enum v in GetEnumValues(type)) {
                 string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
                 string name = v.ToString().ToLowerInvariant();
-                if (ordinal == modified || name == modified) {
-                    value = v;
-                    return true;
-                }
+                if (ordinal != modified && name != modified) continue;
+                value = v;
+                return true;
             }
 
             return false;
@@ -171,9 +213,10 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An array of <typeparamref name="T"/> with the converted values.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
-        public static T[] ParseEnumArray<T>(string str) where T : struct {
+        public static T[] ParseEnumArray<T>(string? str) where T : struct {
+            if (string.IsNullOrWhiteSpace(str)) return ArrayUtils.Empty<T>();
             return (
-                from piece in (str ?? string.Empty).Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)
+                from piece in str!.Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)
                 select ParseEnum<T>(piece)
             ).ToArray();
         }
@@ -185,7 +228,7 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="str">A string value containing one or more enum values.</param>
         /// <param name="type">The enum type.</param>
         /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
-        public static Array ParseEnumArray(string str, Type type) {
+        public static Array ParseEnumArray(string? str, Type type) {
             return ParseEnumArray(str, type, StringUtils.DefaultSeparators);
         }
 
@@ -196,7 +239,8 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="type">The enum type.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
-        public static Array ParseEnumArray(string str, Type type, char[] separators) {
+        public static Array ParseEnumArray(string? str, Type type, char[] separators) {
+            // TODO: Return static empty array
             return ParseEnumArray((str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries), type);
         }
 
@@ -229,13 +273,18 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="array">The array of <typeparamref name="T"/> with the converted values.</param>
         /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-        public static bool TryParseEnumArray<T>(string str, out T[] array) where T : struct {
+        public static bool TryParseEnumArray<T>(string? str, [NotNullWhen(true)] out T[]? array) where T : struct {
+
+            if (string.IsNullOrWhiteSpace(str)) {
+                array = null;
+                return false;
+            }
 
             List<T> temp = new();
             array = null;
 
             // Iterate over and try to parse the each individual value
-            foreach (string piece in (str ?? string.Empty).Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in str!.Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (!TryParseEnum(piece, out T value)) return false;
                 temp.Add(value);
             }
@@ -364,15 +413,7 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is an enum; otherwise <c>false</c>.</returns>
         public static bool IsEnum(Type type) {
-
-#if NET_FRAMEWORK
-            return type.IsEnum;
-#endif
-
-#if NET_STANDARD
             return type.GetTypeInfo().IsEnum;
-#endif
-
         }
 
         /// <summary>

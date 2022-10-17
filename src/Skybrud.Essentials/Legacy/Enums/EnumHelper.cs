@@ -1,4 +1,8 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
+
+// ReSharper disable CheckNamespace
 
 namespace Skybrud.Essentials.Enums {
 

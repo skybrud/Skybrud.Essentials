@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Globalization;
-using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Enums;
-using Skybrud.Essentials.Strings;
+
+// ReSharper disable CheckNamespace
 
 namespace Skybrud.Essentials.Json.Extensions {
 
@@ -21,18 +21,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns><c>true</c> if the property exists and the value isn't <c>null</c>, otherwise <c>false</c>.</returns>
         [Obsolete]
         public static bool HasValue(JObject obj, string path) {
-            JToken token = obj?.SelectToken(path);
-            return !(
-                token == null
-                ||
-                (token.Type == JTokenType.Array && !token.HasValues)
-                ||
-                (token.Type == JTokenType.Object && !token.HasValues)
-                ||
-                (token.Type == JTokenType.String && token.ToString() == String.Empty)
-                ||
-                token.Type == JTokenType.Null
-            );
+            return obj.HasValue(path);
         }
 
         /// <summary>
@@ -42,8 +31,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
         [Obsolete]
-        public static JObject GetObject(JObject obj, string path) {
-            return obj?.SelectToken(path) as JObject;
+        public static JObject? GetObject(JObject obj, string path) {
+            return obj.GetObject(path);
         }
 
         /// <summary>
@@ -53,10 +42,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not found.</returns>
         [Obsolete]
-        public static T GetObject<T>(JObject obj, string path) {
-            if (obj == null) return default(T);
-            JObject child = obj.SelectToken(path) as JObject;
-            return child == null ? default(T) : child.ToObject<T>();
+        public static T? GetObject<T>(JObject obj, string path) {
+            return obj.GetObject<T>(path);
         }
 
         /// <summary>
@@ -67,8 +54,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="func">The delegate (callback method) used for parsing the object.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not found.</returns>
         [Obsolete]
-        public static T GetObject<T>(JObject obj, string path, Func<JObject, T> func) {
-            return obj == null ? default(T) : func(obj.SelectToken(path) as JObject);
+        public static T? GetObject<T>(JObject obj, string path, Func<JObject, T> func) {
+            return obj.GetObject(path, func);
         }
 
         /// <summary>
@@ -78,10 +65,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="String"/>, or <c>null</c>.</returns>
         [Obsolete]
-        public static string GetString(JObject obj, string path) {
-            if (obj == null) return null;
-            JToken token = GetSimpleTypeTokenFromPath(obj, path);
-            return token?.Value<string>();
+        public static string? GetString(JObject obj, string path) {
+            return obj.GetString(path);
         }
 
         /// <summary>
@@ -92,10 +77,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="callback">The callback used for converting the string value.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c>.</returns>
         [Obsolete]
-        public static T GetString<T>(JObject obj, string path, Func<string, T> callback) {
-            if (obj == null) return default(T);
-            JToken token = GetSimpleTypeTokenFromPath(obj, path);
-            return token == null ? default(T) : callback(token.Value<string>());
+        public static T? GetString<T>(JObject obj, string path, Func<string, T> callback) {
+            return obj.GetString(path, callback);
         }
 
         /// <summary>
@@ -107,7 +90,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Int32"/>.</returns>
         [Obsolete]
         public static int GetInt32(JObject obj, string path) {
-            return GetInt32(obj, path, x => x);
+            return obj.GetInt32(path);
         }
 
         /// <summary>
@@ -122,8 +105,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Int32"/>, or <c>0</c> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         [Obsolete]
-        public static T GetInt32<T>(JObject obj, string path, Func<int, T> callback) {
-            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        public static T? GetInt32<T>(JObject obj, string path, Func<int, T> callback) {
+            return obj.GetInt32(path, callback);
         }
 
         /// <summary>
@@ -135,7 +118,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Int64"/>.</returns>
         [Obsolete]
         public static long GetInt64(JObject obj, string path) {
-            return GetInt64(obj, path, x => x);
+            return obj.GetInt64(path);
         }
 
         /// <summary>
@@ -149,8 +132,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Int64"/>, or <c>0</c> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         [Obsolete]
-        public static T GetInt64<T>(JObject obj, string path, Func<long, T> callback) {
-            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        public static T? GetInt64<T>(JObject obj, string path, Func<long, T> callback) {
+            return obj.GetInt64(path, callback);
         }
 
         /// <summary>
@@ -162,7 +145,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Int64"/>.</returns>
         [Obsolete]
         public static float GetFloat(JObject obj, string path) {
-            return GetFloat(obj, path, x => x);
+            return obj.GetFloat(path);
         }
 
         /// <summary>
@@ -176,8 +159,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Single"/>, or <c>0</c> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         [Obsolete]
-        public static T GetFloat<T>(JObject obj, string path, Func<float, T> callback) {
-            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        public static T? GetFloat<T>(JObject obj, string path, Func<float, T> callback) {
+            return obj.GetFloat(path, callback);
         }
 
         /// <summary>
@@ -189,7 +172,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Double"/>.</returns>
         [Obsolete]
         public static double GetDouble(JObject obj, string path) {
-            return GetDouble(obj, path, x => x);
+            return obj.GetDouble(path);
         }
 
         /// <summary>
@@ -203,8 +186,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Double"/>, or <c>0</c> if <paramref name="path"/> doesn't
         /// match a token.</returns>
         [Obsolete]
-        public static T GetDouble<T>(JObject obj, string path, Func<double, T> callback) {
-            return GetSimpleTypeTokenValueFromPath(obj, path, callback);
+        public static T? GetDouble<T>(JObject obj, string path, Func<double, T> callback) {
+            return obj.GetDouble(path, callback);
         }
 
         /// <summary>
@@ -216,7 +199,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Boolean"/>.</returns>
         [Obsolete]
         public static bool GetBoolean(JObject obj, string path) {
-            return GetBoolean(obj, path, x => x);
+            return obj.GetBoolean(path);
         }
 
         /// <summary>
@@ -230,20 +213,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="System.Boolean"/>, or <c>false</c> if <paramref name="path"/>
         /// doesn't match a token.</returns>
         [Obsolete]
-        public static T GetBoolean<T>(JObject obj, string path, Func<bool, T> callback) {
-
-            // Get the token from the path
-            JToken token = GetSimpleTypeTokenFromPath(obj, path);
-
-            // Check whether the token is null
-            if (token == null || token.Type == JTokenType.Null) return default(T);
-
-            // Convert the value to a boolean
-            bool value = StringUtils.ParseBoolean(token + "");
-
-            // Invoke the callback and return the value
-            return callback(value);
-
+        public static T? GetBoolean<T>(JObject obj, string path, Func<bool, T> callback) {
+            return obj.GetBoolean(path, callback);
         }
 
         /// <summary>
@@ -267,8 +238,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="fallback">The fallback value if the value in the JSON couldn't be parsed.</param>
         [Obsolete]
         public static T GetEnum<T>(JObject obj, string path, T fallback) where T : struct {
-            string value = GetString(obj, path);
-            return String.IsNullOrWhiteSpace(value) ? fallback : EnumUtils.ParseEnum(value, fallback);
+            return obj.GetEnum(path, fallback);
         }
 
         /// <summary>
@@ -278,11 +248,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the value of the property.</returns>
         [Obsolete]
-        public static DateTime GetDateTime(JObject obj, string path) {
-            if (obj == null) return default(DateTime);
-            JToken token = obj.SelectToken(path);
-            if (token == null || token.Type == JTokenType.Null) return default(DateTime);
-            return token.Type == JTokenType.Date ? token.Value<DateTime>() : DateTime.Parse(token.Value<string>());
+        public static DateTime GetDateTime(JObject? obj, string path) {
+            return obj.GetDateTime(path);
         }
 
         /// <summary>
@@ -323,10 +290,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="JArray"/>, or <c>null</c> if not found.</returns>
         [Obsolete]
-        public static JArray GetArray(JObject obj, string path) {
-            if (obj == null) return null;
-            JToken token = obj.SelectToken(path);
-            return token == null || token.Type == JTokenType.Null ? null : token as JArray;
+        public static JArray? GetArray(JObject obj, string path) {
+            return obj.GetArray(path);
         }
 
         /// <summary>
@@ -337,16 +302,8 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
         [Obsolete]
-        public static T[] GetArray<T>(JObject obj, string path, Func<JObject, T> callback) {
-
-            JArray token = obj?.SelectToken(path) as JArray;
-            if (token == null) return null;
-
-            return (
-                from JObject child in token
-                select callback(child)
-            ).ToArray();
-
+        public static T[]? GetArray<T>(JObject obj, string path, Func<JObject, T> callback) {
+            return obj.GetArray(path, callback);
         }
 
         /// <summary>
@@ -358,8 +315,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         [Obsolete]
         public static JToken[] GetArrayItems(JObject obj, string path) {
-            JArray array = GetArray(obj, path);
-            return array?.ToArray() ?? new JToken[0];
+            return obj.GetArrayItems(path);
         }
 
         /// <summary>
@@ -371,17 +327,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         [Obsolete]
         public static T[] GetArrayItems<T>(JObject obj, string path) {
-
-            if (obj == null) return new T[0];
-
-            JArray token = obj.SelectToken(path) as JArray;
-            if (token == null) return new T[0];
-
-            return (
-                from JToken child in token
-                select child.Value<T>()
-            ).ToArray();
-
+            return obj.GetArrayItems<T>(path);
         }
 
         /// <summary>
@@ -394,17 +340,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         [Obsolete]
         public static T[] GetArrayItems<T>(JObject obj, string path, Func<JToken, T> callback) {
-
-            if (obj == null) return new T[0];
-
-            JArray token = obj.SelectToken(path) as JArray;
-            if (token == null) return new T[0];
-
-            return (
-                from JObject child in token
-                select callback(child)
-            ).ToArray();
-
+            return obj.GetArrayItems(path, callback);
         }
 
         /// <summary>
@@ -417,17 +353,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// still be returned.</returns>
         [Obsolete]
         public static T[] GetArrayItems<T>(JObject obj, string path, Func<JObject, T> callback) {
-
-            if (obj == null) return new T[0];
-
-            JArray token = obj.SelectToken(path) as JArray;
-            if (token == null) return new T[0];
-
-            return (
-                from JObject child in token
-                select callback(child)
-            ).ToArray();
-
+            return obj.GetArrayItems(path, callback);
         }
 
         /// <summary>
@@ -440,82 +366,40 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// array will still be returned.</returns>
         [Obsolete]
         public static TValue[] GetArrayItems<TKey, TValue>(JObject obj, string path, Func<TKey, TValue> callback) where TKey : JToken {
-
-            if (obj == null) return new TValue[0];
-
-            JArray token = obj.SelectToken(path) as JArray;
-            if (token == null) return new TValue[0];
-
-            return (
-                from TKey child in token
-                select callback(child)
-            ).ToArray();
-
+            return obj.GetArrayItems(path, callback);
         }
 
         /// <summary>
-        /// Gets an array of <see cref="System.String"/> from the token matching the specified <paramref name="path"/>.
+        /// Gets an array of <see cref="string"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
-        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>The token value as an array of <see cref="System.String"/>.</returns>
         [Obsolete]
-        public static string[] GetStringArray(JObject obj, string path) {
-            return GetArrayItems<string>(obj, path);
+        public static string[] GetStringArray(JObject? obj, string path) {
+            return obj.GetStringArray(path);
         }
 
         /// <summary>
-        /// Gets an array of <see cref="System.Int32"/> from the token matching the specified <paramref name="path"/>.
+        /// Gets an array of <see cref="int"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
-        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>The token value as an array of <see cref="System.Int32"/>.</returns>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>The token value as an array of <see cref="int"/>.</returns>
         [Obsolete]
-        public static int[] GetInt32Array(JObject obj, string path) {
-            return GetArrayItems<int>(obj, path);
+        public static int[] GetInt32Array(JObject? obj, string path) {
+            return obj.GetInt32Array(path);
         }
 
         /// <summary>
-        /// Gets an array of <see cref="System.Int64"/> from the token matching the specified <paramref name="path"/>.
+        /// Gets an array of <see cref="long"/> from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="obj">The instance of <see cref="JObject"/>.</param>
-        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>The token value as an array of <see cref="System.Int64"/>.</returns>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>The token value as an array of <see cref="long"/>.</returns>
         [Obsolete]
-        public static long[] GetInt64Array(JObject obj, string path) {
-            return GetArrayItems<long>(obj, path);
-        }
-
-        /// <summary>
-        /// Gets the <see cref="JToken"/> at the specified <paramref name="path"/>. If the type of the token is
-        /// either <see cref="JTokenType.Object"/> or <see cref="JTokenType.Array"/>, the method will return
-        /// <c>null</c> instead.
-        /// </summary>
-        /// <param name="obj">The instance of <see cref="JObject"/>.</param>
-        /// <param name="path">A <see cref="String"/> that contains a JPath expression.</param>
-        /// <returns>An instance of <see cref="JToken"/>, or <c>null</c>.</returns>
-        private static JToken GetSimpleTypeTokenFromPath(JObject obj, string path) {
-            JToken token = obj?.SelectToken(path);
-            return token == null || token.Type == JTokenType.Object || token.Type == JTokenType.Array ? null : token;
-        }
-
-        private static TOut GetSimpleTypeTokenValueFromPath<TIn, TOut>(JObject obj, string path, Func<TIn, TOut> callback) {
-
-            // Get the token from the path
-            JToken token = GetSimpleTypeTokenFromPath(obj, path);
-
-            // Check whether the token is null
-            if (token == null || token.Type == JTokenType.Null) return default(TOut);
-
-            // Check whether the token is an empty string (or whitespace)
-            if (token.Type == JTokenType.String && String.IsNullOrWhiteSpace(token + "")) return default(TOut);
-
-            // Cast/convert the value from "TIn" to "TOut"
-            TIn value = token.Value<TIn>();
-
-            // Invoke the callback and return the value
-            return callback(value);
-
+        public static long[] GetInt64Array(JObject? obj, string path) {
+            return obj.GetInt64Array(path);
         }
 
     }

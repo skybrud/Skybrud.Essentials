@@ -1,4 +1,8 @@
-﻿namespace Skybrud.Essentials.Strings.Extensions {
+﻿#nullable enable
+
+using System.Diagnostics.CodeAnalysis;
+
+namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 
@@ -9,7 +13,7 @@
         /// <param name="input">A string containing the value to test.</param>
         /// <returns><c>true</c> if <paramref name="input"/> can be converted to a <see cref="bool"/>; otherwise,
         /// <c>false</c>.</returns>
-        public static bool IsBoolean(this string input) {
+        public static bool IsBoolean(this string? input) {
             return StringUtils.TryParseBoolean(input, out bool _);
         }
 
@@ -21,7 +25,7 @@
         /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the
         /// conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool IsBoolean(this string input, out bool result) {
+        public static bool IsBoolean(this string? input, out bool result) {
             return StringUtils.TryParseBoolean(input, out result);
         }
 
@@ -33,7 +37,7 @@
         /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the
         /// conversion failed, contains <c>null</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool IsBoolean(this string input, out bool? result) {
+        public static bool IsBoolean(this string? input, [NotNullWhen(true)] out bool? result) {
             return StringUtils.TryParseBoolean(input, out result);
         }
 
@@ -44,7 +48,7 @@
         /// <param name="input">The string to be converted.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or
         /// <c>on</c> (case insensitive); otherwise, <c>false</c>.</returns>
-        public static bool ToBoolean(this string input) {
+        public static bool ToBoolean(this string? input) {
             return StringUtils.ParseBoolean(input, false);
         }
 
@@ -58,7 +62,7 @@
         /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>,
         /// <c>false</c> if <paramref name="input"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
-        public static bool ToBoolean(this string input, bool fallback) {
+        public static bool ToBoolean(this string? input, bool fallback) {
             return StringUtils.ParseBoolean(input, fallback);
         }
 
@@ -68,7 +72,7 @@
         /// <param name="input">A string containing the value to convert.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseBoolean(this string input, out bool result) {
+        public static bool TryParseBoolean(this string? input, out bool result) {
             return StringUtils.TryParseBoolean(input, out result);
         }
 
@@ -78,7 +82,7 @@
         /// <param name="input">A string containing the value to convert.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains <c>true</c>. If the conversion failed, contains <c>null</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseBoolean(this string input, out bool? result) {
+        public static bool TryParseBoolean(this string? input, [NotNullWhen(true)] out bool? result) {
             return StringUtils.TryParseBoolean(input, out result);
         }
 

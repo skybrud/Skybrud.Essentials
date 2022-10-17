@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Skybrud.Essentials.Time.Rfc822;
 
 namespace Skybrud.Essentials.Time.Rfc2822 {
@@ -42,7 +43,7 @@ namespace Skybrud.Essentials.Time.Rfc2822 {
         /// </summary>
         /// <param name="rfc2822">The string with the RFC 2822 formatted date.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTimeOffset Parse(string rfc2822) {
+        public static DateTimeOffset Parse(string? rfc2822) {
             return Rfc822Utils.Parse(rfc2822);
         }
 
@@ -56,7 +57,7 @@ namespace Skybrud.Essentials.Time.Rfc2822 {
         /// equivalent to the date and time contained in <paramref name="rfc2822"/>, if the conversion succeeded, or
         /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="rfc2822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParse(string rfc2822, out DateTime result) {
+        public static bool TryParse(string? rfc2822, out DateTime result) {
             return Rfc822Utils.TryParse(rfc2822, out result);
         }
 
@@ -70,7 +71,7 @@ namespace Skybrud.Essentials.Time.Rfc2822 {
         /// equivalent to the date and time contained in <paramref name="rfc2822"/>, if the conversion succeeded, or
         /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="rfc2822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParse(string rfc2822, out DateTimeOffset result) {
+        public static bool TryParse(string? rfc2822, out DateTimeOffset result) {
             return Rfc822Utils.TryParse(rfc2822, out result);
         }
 

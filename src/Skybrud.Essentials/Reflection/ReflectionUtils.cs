@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Diagnostics;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using System.Reflection;
 using System.Runtime.CompilerServices;
@@ -19,7 +20,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <returns>A string representing the version of the assembly.</returns>
         public static string GetVersion(Assembly assembly) {
             if (assembly == null) throw new ArgumentNullException(nameof(assembly));
-            return assembly.GetName().Version.ToString();
+            return assembly.GetName().Version?.ToString()!;
         }
 
 #if I_CAN_HAZ_FILE_VERSION_INFO
@@ -49,7 +50,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <returns>A string representing the file version of the assembly.</returns>
         public static string GetFileVersion(Assembly assembly) {
             if (assembly == null) throw new ArgumentNullException(nameof(assembly));
-            return FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion;
+            return FileVersionInfo.GetVersionInfo(assembly.Location).FileVersion!;
         }
 
         /// <summary>
@@ -77,7 +78,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <returns>A string representing the informational version of the assembly.</returns>
         public static string GetInformationalVersion(Assembly assembly) {
             if (assembly == null) throw new ArgumentNullException(nameof(assembly));
-            return FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion;
+            return FileVersionInfo.GetVersionInfo(assembly.Location).ProductVersion!;
         }
 
         /// <summary>
@@ -143,8 +144,8 @@ namespace Skybrud.Essentials.Reflection {
         /// </summary>
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is a class type; otherwise <c>false</c>.</returns>
-        public static bool IsClass(Type type) {
-            return type.GetTypeInfo().IsClass;
+        public static bool IsClass(Type? type) {
+            return type is not null && type.GetTypeInfo().IsClass;
         }
 
         /// <summary>
@@ -161,8 +162,8 @@ namespace Skybrud.Essentials.Reflection {
         /// </summary>
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is an interface type; otherwise <c>false</c>.</returns>
-        public static bool IsInterface(Type type) {
-            return type.GetTypeInfo().IsInterface;
+        public static bool IsInterface(Type? type) {
+            return type is not null && type.GetTypeInfo().IsInterface;
         }
 
         /// <summary>
@@ -179,8 +180,8 @@ namespace Skybrud.Essentials.Reflection {
         /// </summary>
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is an enum; otherwise <c>false</c>.</returns>
-        public static bool IsEnum(Type type) {
-            return type.GetTypeInfo().IsEnum;
+        public static bool IsEnum(Type? type) {
+            return type is not null && type.GetTypeInfo().IsEnum;
         }
 
         /// <summary>
@@ -188,7 +189,7 @@ namespace Skybrud.Essentials.Reflection {
         /// </summary>
         /// <param name="member">The method.</param>
         /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(MemberInfo member) {
+        public static bool IsObsolete(MemberInfo? member) {
             return IsObsolete(member, out _);
         }
 
@@ -198,8 +199,8 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="member">The method.</param>
         /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the member has been marked as obsolete.</param>
         /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(MemberInfo member, out ObsoleteAttribute attribute) {
-            attribute = member.GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
+        public static bool IsObsolete(MemberInfo? member, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
+            attribute = member?.GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
             return attribute != null;
         }
 
@@ -218,7 +219,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="value">The enum value.</param>
         /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the member has been marked as obsolete.</param>
         /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(Enum value, out ObsoleteAttribute attribute) {
+        public static bool IsObsolete(Enum value, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
             attribute = GetCustomAttribute<ObsoleteAttribute>(value);
             return attribute != null;
         }
@@ -228,7 +229,7 @@ namespace Skybrud.Essentials.Reflection {
         /// </summary>
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(Type type) {
+        public static bool IsObsolete(Type? type) {
             return IsObsolete(type, out _);
         }
 
@@ -238,7 +239,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="type">The type to check.</param>
         /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the type has been marked as obsolete.</param>
         /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(Type type, out ObsoleteAttribute attribute) {
+        public static bool IsObsolete(Type? type, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
             attribute = type?.GetTypeInfo().GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
             return attribute != null;
         }
@@ -258,7 +259,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type to check.</typeparam>
         /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the type has been marked as obsolete.</param>
         /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete<T>(out ObsoleteAttribute attribute) {
+        public static bool IsObsolete<T>([NotNullWhen(true)] out ObsoleteAttribute? attribute) {
             attribute = typeof(T).GetTypeInfo().GetCustomAttributes(true).OfType<ObsoleteAttribute>().FirstOrDefault();
             return attribute != null;
         }
@@ -280,7 +281,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="value">The enum value.</param>
         /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
         /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(Enum value, out T result) where T : Attribute {
+        public static bool HasCustomAttribute<T>(Enum value, [NotNullWhen(true)] out T? result) where T : Attribute {
             result = GetCustomAttributes<T>(value).FirstOrDefault();
             return result != null;
         }
@@ -292,7 +293,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="value">The enum value.</param>
         /// <param name="result">When this method returns, an array containing the matched attributes.</param>
         /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttributes<T>(Enum value, out T[] result) where T : Attribute {
+        public static bool HasCustomAttributes<T>(Enum value, [NotNullWhen(true)] out T[]? result) where T : Attribute {
             result = GetCustomAttributes<T>(value);
             return result.Length > 0;
         }
@@ -303,10 +304,10 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type of the attribute to return.</typeparam>
         /// <param name="value">The enum value to get the attribute for.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
-        public static T GetCustomAttribute<T>(Enum value) where T : Attribute {
+        public static T? GetCustomAttribute<T>(Enum value) where T : Attribute {
 
             // Get the member of the enum value
-            MemberInfo member = value.GetType().GetTypeInfo().GetDeclaredField(value.ToString());
+            MemberInfo? member = value.GetType().GetTypeInfo().GetDeclaredField(value.ToString());
 
             // Return an array of the found attributes
             return member?
@@ -324,7 +325,7 @@ namespace Skybrud.Essentials.Reflection {
         public static T[] GetCustomAttributes<T>(Enum value) where T : Attribute {
 
             // Get the member of the enum value
-            MemberInfo member = value.GetType().GetTypeInfo().GetDeclaredField(value.ToString());
+            MemberInfo? member = value.GetType().GetTypeInfo().GetDeclaredField(value.ToString());
             if (member == null) return ArrayUtils.Empty<T>();
 
             // Return an array of the found attributes
@@ -340,7 +341,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type of the attribute.</typeparam>
         /// <param name="member">The member.</param>
         /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(MemberInfo member) where T : Attribute {
+        public static bool HasCustomAttribute<T>(MemberInfo? member) where T : Attribute {
             return HasCustomAttribute<T>(member, out _);
         }
 
@@ -351,7 +352,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="member">The member.</param>
         /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
         /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(MemberInfo member, out T result) where T : Attribute {
+        public static bool HasCustomAttribute<T>(MemberInfo? member, [NotNullWhen(true)] out T? result) where T : Attribute {
             result = member?.GetCustomAttributes<T>().FirstOrDefault();
             return result != null;
         }
@@ -363,7 +364,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="member">The member.</param>
         /// <param name="result">When this method returns, an array containing the matched attributes.</param>
         /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttributes<T>(MemberInfo member, out T[] result) where T : Attribute {
+        public static bool HasCustomAttributes<T>(MemberInfo? member, [NotNullWhen(true)] out T[]? result) where T : Attribute {
             result = member?.GetCustomAttributes<T>().ToArray() ?? ArrayUtils.Empty<T>();
             return result.Length > 0;
         }
@@ -374,7 +375,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type of the attribute to return.</typeparam>
         /// <param name="member">The member holding the attribute.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
-        public static T GetCustomAttribute<T>(MemberInfo member) where T : Attribute {
+        public static T? GetCustomAttribute<T>(MemberInfo? member) where T : Attribute {
             return member?
                 .GetCustomAttributes<T>(false)
                 .FirstOrDefault();
@@ -386,7 +387,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type of the attributes to return.</typeparam>
         /// <param name="member">The member holding the attributes.</param>
         /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public static T[] GetCustomAttributes<T>(MemberInfo member) where T : Attribute {
+        public static T[] GetCustomAttributes<T>(MemberInfo? member) where T : Attribute {
             return member?
                 .GetCustomAttributes<T>(false)
                 .ToArray() ?? ArrayUtils.Empty<T>();
@@ -398,7 +399,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type of the attribute.</typeparam>
         /// <param name="type">The type to check.</param>
         /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(Type type) where T : Attribute {
+        public static bool HasCustomAttribute<T>(Type? type) where T : Attribute {
             return HasCustomAttribute<T>(type, out _);
         }
 
@@ -409,7 +410,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="type">The type to check.</param>
         /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
         /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(Type type, out T result) where T : Attribute {
+        public static bool HasCustomAttribute<T>(Type? type, [NotNullWhen(true)] out T? result) where T : Attribute {
             result = type?.GetTypeInfo().GetCustomAttributes<T>(false).FirstOrDefault();
             return result != null;
         }
@@ -421,7 +422,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <param name="type">The type to check.</param>
         /// <param name="result">When this method returns, an array containing the matched attributes.</param>
         /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttributes<T>(Type type, out T[] result) where T : Attribute {
+        public static bool HasCustomAttributes<T>(Type? type, [NotNullWhen(true)] out T[]? result) where T : Attribute {
             result = type?.GetTypeInfo().GetCustomAttributes<T>(false).ToArray() ?? ArrayUtils.Empty<T>();
             return result.Length > 0;
         }
@@ -432,7 +433,7 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type of the attribute to return.</typeparam>
         /// <param name="type">The type holding the attribute.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
-        public static T GetCustomAttribute<T>(Type type) where T : Attribute {
+        public static T? GetCustomAttribute<T>(Type? type) where T : Attribute {
             return type?
                 .GetTypeInfo()
                 .GetCustomAttributes<T>(false)
@@ -445,22 +446,22 @@ namespace Skybrud.Essentials.Reflection {
         /// <typeparam name="T">The type of the attributes to return.</typeparam>
         /// <param name="type">The type holding the attributes.</param>
         /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public static T[] GetCustomAttributes<T>(Type type) where T : Attribute {
+        public static T[] GetCustomAttributes<T>(Type? type) where T : Attribute {
             return type?
                 .GetTypeInfo()
                 .GetCustomAttributes<T>(false)
                 .ToArray() ?? ArrayUtils.Empty<T>();
         }
 
-#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER
+#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
 
         /// <summary>
         /// Returns whether the specified <paramref name="type"/> is an extension class.
         /// </summary>
         /// <param name="type">The type.</param>
         /// <returns><c>true</c> if <paramref name="type"/> is an extension class; otherwise, <c>false</c>.</returns>
-        public static bool IsExtensionClass(Type type) {
-            return type.IsDefined(typeof(ExtensionAttribute));
+        public static bool IsExtensionClass(Type? type) {
+            return type is not null && type.IsDefined(typeof(ExtensionAttribute));
         }
 
         /// <summary>
@@ -477,8 +478,8 @@ namespace Skybrud.Essentials.Reflection {
         /// </summary>
         /// <param name="method">The method.</param>
         /// <returns><c>true</c> if <paramref name="method"/> is an extension method; otherwise, <c>false</c>.</returns>
-        public static bool IsExtensionMethod(MethodInfo method) {
-            return method.IsDefined(typeof(ExtensionAttribute));
+        public static bool IsExtensionMethod(MethodInfo? method) {
+            return method is not null && method.IsDefined(typeof(ExtensionAttribute));
         }
 
 #endif

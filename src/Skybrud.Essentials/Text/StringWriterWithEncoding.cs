@@ -1,4 +1,6 @@
-﻿using System.IO;
+﻿#nullable enable
+
+using System.IO;
 using System.Text;
 
 namespace Skybrud.Essentials.Text {
@@ -8,12 +10,14 @@ namespace Skybrud.Essentials.Text {
     /// </summary>
     public class StringWriterWithEncoding : StringWriter {
 
+        private readonly Encoding? _encoding;
+
         #region Properties
 
         /// <summary>
         /// Gets the encoding associated with the string writer.
         /// </summary>
-        public override Encoding Encoding { get; }
+        public override Encoding Encoding => _encoding ?? base.Encoding;
 
         #endregion
 
@@ -31,7 +35,7 @@ namespace Skybrud.Essentials.Text {
         /// <param name="sb">The <see cref="StringBuilder"/> object to write to.</param>
         /// <param name="encoding">The encoding of the string writer.</param>
         public StringWriterWithEncoding(StringBuilder sb, Encoding encoding) : base(sb) {
-            Encoding = encoding;
+            _encoding = encoding;
         }
 
         #endregion

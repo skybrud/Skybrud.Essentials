@@ -1,4 +1,6 @@
-﻿using System.Text.RegularExpressions;
+﻿#nullable enable
+
+using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 
 namespace Skybrud.Essentials.Strings.Extensions {

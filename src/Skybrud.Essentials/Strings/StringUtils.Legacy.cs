@@ -1,4 +1,6 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -10,7 +12,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The comma separated string to be converted.</param>
         /// <returns>An array of <see cref="int"/>.</returns>
         [Obsolete("Use ParseInt32Array instead.")]
-        public static int[] CsvToInt(string str) {
+        public static int[] CsvToInt(string? str) {
             return ParseInt32Array(str);
         }
 

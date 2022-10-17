@@ -6,7 +6,7 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 
 namespace Skybrud.Essentials.Xml.Extensions {
-    
+
     public static partial class XElementExtensions {
 
         /// <summary>
@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression.</param>
         /// <returns>An instance of <see cref="XElement"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
-        public static XElement GetElement(this XElement element, string expression) {
+        public static XElement? GetElement(this XElement? element, string expression) {
             return element?.XPathSelectElement(expression);
         }
 
@@ -27,9 +27,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression.</param>
         /// <param name="callback">A callback function for parsing the element.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
-        public static T GetElement<T>(this XElement element, string expression, Func<XElement, T> callback) {
-            XElement child = element?.XPathSelectElement(expression);
-            return child == null ? default(T) : callback(child);
+        public static T? GetElement<T>(this XElement? element, string expression, Func<XElement, T> callback) {
+            XElement? child = element?.XPathSelectElement(expression);
+            return child == null ? default : callback(child);
         }
 
         /// <summary>
@@ -39,7 +39,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
         /// <returns>An instance of <see cref="XElement"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
-        public static XElement GetElement(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+        public static XElement? GetElement(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
             return element?.XPathSelectElement(expression, resolver);
         }
 
@@ -52,9 +52,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
         /// <param name="callback">A callback function for parsing the element.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
-        public static T GetElement<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<XElement, T> callback) {
-            XElement child = element?.XPathSelectElement(expression, resolver);
-            return child == null ? default(T) : callback(child);
+        public static T? GetElement<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver, Func<XElement, T> callback) {
+            XElement? child = element?.XPathSelectElement(expression, resolver);
+            return child == null ? default : callback(child);
         }
 
         /// <summary>
@@ -66,9 +66,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
         /// <param name="callback">A callback function for parsing the element.</param>
         /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
-        public static T GetElement<T>(this XElement element, string expression, IXmlNamespaceResolver resolver, Func<XElement, IXmlNamespaceResolver, T> callback) {
-            XElement child = element.XPathSelectElement(expression, resolver);
-            return child == null ? default(T) : callback(child, resolver);
+        public static T? GetElement<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver, Func<XElement, IXmlNamespaceResolver?, T> callback) {
+            XElement? child = element?.XPathSelectElement(expression, resolver);
+            return child == null ? default : callback(child, resolver);
         }
 
     }

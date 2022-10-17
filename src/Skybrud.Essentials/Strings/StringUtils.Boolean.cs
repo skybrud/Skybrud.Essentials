@@ -1,4 +1,8 @@
-﻿namespace Skybrud.Essentials.Strings {
+﻿#nullable enable
+
+using System.Diagnostics.CodeAnalysis;
+
+namespace Skybrud.Essentials.Strings {
 
     public static partial class StringUtils {
 
@@ -9,7 +13,7 @@
         /// <param name="input">The string to be converted.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or
         /// <c>on</c> (case insensitive); otherwise, <c>false</c>.</returns>
-        public static bool ParseBoolean(string input) {
+        public static bool ParseBoolean(string? input) {
             return TryParseBoolean(input, out bool result) ? result : default;
         }
 
@@ -23,7 +27,7 @@
         /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>,
         /// <c>false</c> if <paramref name="input"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
-        public static bool ParseBoolean(string input, bool fallback) {
+        public static bool ParseBoolean(string? input, bool fallback) {
             return TryParseBoolean(input, out bool result) ? result : fallback;
         }
 
@@ -35,7 +39,7 @@
         /// <param name="value">The value to be converted.</param>
         /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>
         /// (case insensitive); otherwise, <c>false</c>.</returns>
-        public static bool ParseBoolean(object value) {
+        public static bool ParseBoolean(object? value) {
             return ParseBoolean(value?.ToString() ?? string.Empty);
         }
 
@@ -49,7 +53,7 @@
         /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>,
         /// <c>false</c> if <paramref name="value"/> matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. For
         /// all other values, <paramref name="fallback"/> is returned instead.</returns>
-        public static bool ParseBoolean(object value, bool fallback) {
+        public static bool ParseBoolean(object? value, bool fallback) {
             return ParseBoolean(value?.ToString() ?? string.Empty, fallback);
         }
 
@@ -59,7 +63,7 @@
         /// <param name="input">A string containing the value to convert.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseBoolean(string input, out bool result) {
+        public static bool TryParseBoolean(string? input, out bool result) {
 
             switch (input?.ToLower()) {
 
@@ -91,7 +95,7 @@
         /// <param name="input">A string containing the value to convert.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseBoolean(string input, out bool? result) {
+        public static bool TryParseBoolean(string? input, [NotNullWhen(true)] out bool? result) {
 
             switch (input?.ToLower()) {
 

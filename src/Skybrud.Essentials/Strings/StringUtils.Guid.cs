@@ -1,5 +1,9 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Essentials.Strings {
 
@@ -10,7 +14,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise <c>false</c>.</returns>
-        public static bool IsGuid(string input) {
+        public static bool IsGuid(string? input) {
             return Guid.TryParse(input, out Guid _);
         }
 
@@ -20,8 +24,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="Guid"/>.</returns>
-        public static Guid ParseGuid(string input) {
-            Guid.TryParse(input, out Guid value);
+        public static Guid ParseGuid(string? input) {
+            _ = Guid.TryParse(input, out Guid value);
             return value;
         }
 
@@ -32,7 +36,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The input string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="Guid"/>.</returns>
-        public static Guid ParseGuid(string input, Guid fallback) {
+        public static Guid ParseGuid(string? input, Guid fallback) {
             return Guid.TryParse(input, out Guid value) ? value : fallback;
         }
 
@@ -43,7 +47,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
         /// otherwise, <see cref="Guid.Empty"/>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseGuid(string input, out Guid result) {
+        public static bool TryParseGuid(string? input, out Guid result) {
             return Guid.TryParse(input, out result);
         }
 
@@ -54,7 +58,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
         /// otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseGuid(string input, out Guid? result) {
+        public static bool TryParseGuid(string? input, [NotNullWhen(true)] out Guid? result) {
             if (Guid.TryParse(input, out Guid guid)) {
                 result = guid;
                 return true;
@@ -72,7 +76,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string containing the GUIDs.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ParseGuidArray(string input) {
+        public static Guid[] ParseGuidArray(string? input) {
             return ParseGuidArray(input, DefaultSeparators);
         }
 
@@ -85,12 +89,17 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string containing the GUIDs.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
-        public static Guid[] ParseGuidArray(string input, params char[] separators) {
+        public static Guid[] ParseGuidArray(string? input, params char[] separators) {
+
+            if (string.IsNullOrWhiteSpace(input)) return ArrayUtils.Empty<Guid>();
+
             List<Guid> guids = new();
-            foreach (string piece in (input ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
             }
+
             return guids.ToArray();
+
         }
 
         /// <summary>
@@ -102,7 +111,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The string containing the GUIDs.</param>
         /// <returns>A list of <see cref="Guid"/>.</returns>
-        public static List<Guid> ParseGuidList(string input) {
+        public static List<Guid> ParseGuidList(string? input) {
             return ParseGuidList(input, DefaultSeparators);
         }
 
@@ -115,12 +124,12 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The string containing the GUIDs.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>A list of <see cref="Guid"/>.</returns>
-        public static List<Guid> ParseGuidList(string input, params char[] separators) {
+        public static List<Guid> ParseGuidList(string? input, params char[] separators) {
 
             List<Guid> temp = new();
             if (string.IsNullOrWhiteSpace(input)) return temp;
 
-            foreach (string piece in input.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (Guid.TryParse(piece, out Guid result)) temp.Add(result);
             }
 

@@ -39,7 +39,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <see>
         ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L48</cref>
         /// </see>
-        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) {
+        public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey>? comparer) {
             if (source is null) throw new ArgumentNullException(nameof(source));
             if (keySelector is null) throw new ArgumentNullException(nameof(keySelector));
             return DistinctByIterator(source, keySelector, comparer);
@@ -48,7 +48,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <see>
         ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L62</cref>
         /// </see>
-        private static IEnumerable<TSource> DistinctByIterator<TSource, TKey>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey> comparer) {
+        private static IEnumerable<TSource> DistinctByIterator<TSource, TKey>(IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey>? comparer) {
 
             using IEnumerator<TSource> enumerator = source.GetEnumerator();
 
@@ -82,7 +82,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
             if (source == null) throw new ArgumentNullException(nameof(source));
             if (groupSize <= 0) throw new ArgumentException("Must be greater than zero.", nameof(groupSize));
 
-            TSource[] temp = null;
+            TSource[]? temp = null;
             var count = 0;
 
             foreach (var item in source) {
@@ -138,7 +138,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="comparer">An <see cref="IComparer{T}"/> to compare the keys.</param>
         /// <param name="reverse">Whether <paramref name="source"/> should be sorted in descending order.</param>
         /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
-        public static IOrderedEnumerable<T> OrderBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> func, IComparer<TKey> comparer, bool reverse) {
+        public static IOrderedEnumerable<T> OrderBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> func, IComparer<TKey>? comparer, bool reverse) {
             return reverse ? source.OrderByDescending(func, comparer) : source.OrderBy(func, comparer);
         }
 
@@ -153,7 +153,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="comparer">An <see cref="IComparer{T}"/> to compare the keys.</param>
         /// <param name="order">The order by which the collection should be sorted.</param>
         /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
-        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey> comparer, SortOrder order) {
+        public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey>? comparer, SortOrder order) {
             return order == SortOrder.Descending ? source.OrderByDescending(keySelector, comparer) : source.OrderBy(keySelector, comparer);
         }
 
@@ -166,8 +166,8 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <see>
         ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L226</cref>
         /// </see>
-        public static IEnumerable<TSource> WhereNotNull<TSource>(this IEnumerable<TSource> source) where TSource : class {
-            return source.Where(x => x != null);
+        public static IEnumerable<TSource> WhereNotNull<TSource>(this IEnumerable<TSource?> source) where TSource : class {
+            return source.Where(x => x != null)!;
         }
 
         /// <summary>
@@ -180,9 +180,9 @@ namespace Skybrud.Essentials.Collections.Extensions {
         public static IEnumerable Cast(this IEnumerable source, Type targetType) {
             return (IEnumerable) typeof(Enumerable)
                 .GetTypeInfo()
-                .GetDeclaredMethod("Cast")
+                .GetDeclaredMethod("Cast")!
                 .MakeGenericMethod(targetType)
-                .Invoke(null, new object[] { source });
+                .Invoke(null, new object[] { source })!;
         }
 
         /// <summary>
@@ -194,9 +194,9 @@ namespace Skybrud.Essentials.Collections.Extensions {
         public static IList ToList(this IEnumerable source, Type targetType) {
             return (IList) typeof(Enumerable)
                 .GetTypeInfo()
-                .GetDeclaredMethod("ToList")
+                .GetDeclaredMethod("ToList")!
                 .MakeGenericMethod(targetType)
-                .Invoke(null, new object[] { source });
+                .Invoke(null, new object[] { source })!;
         }
 
         /// <summary>
@@ -208,9 +208,9 @@ namespace Skybrud.Essentials.Collections.Extensions {
         public static Array ToArray(this IEnumerable source, Type targetType) {
             return (Array) typeof(Enumerable)
                 .GetTypeInfo()
-                .GetDeclaredMethod("ToArray")
+                .GetDeclaredMethod("ToArray")!
                 .MakeGenericMethod(targetType)
-                .Invoke(null, new object[] { source });
+                .Invoke(null, new object[] { source })!;
         }
 
         /// <summary>
@@ -234,7 +234,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="selector">A function to extract a key from each element.</param>
         /// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing values in the set, or null to use the default <see cref="EqualityComparer{T}"/> implementation for the set type.</param>
         /// <returns>A <see cref="HashSet{TResult}"/> that contains values of type <typeparamref name="TResult"/> selected from the input sequence.</returns>
-        public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector, IEqualityComparer<TResult> comparer) {
+        public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector, IEqualityComparer<TResult>? comparer) {
             return new HashSet<TResult>(source.Select(selector), comparer);
         }
 
@@ -256,7 +256,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// otherwise, the default value of <typeparamref name="T"/>.</param>
         /// <param name="second">When this method returns, holds the second item if the collection has at least two
         /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
-        public static void Deconstruct<T>(this IEnumerable<T> collection, out T first, out T second) {
+        public static void Deconstruct<T>(this IEnumerable<T> collection, out T? first, out T? second) {
 
             first = default;
             second = default;
@@ -293,7 +293,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
         /// <param name="third">When this method returns, holds the third item if the collection has at least three
         /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
-        public static void Deconstruct<T>(this IEnumerable<T> collection, out T first, out T second, out T third) {
+        public static void Deconstruct<T>(this IEnumerable<T> collection, out T? first, out T? second, out T? third) {
 
             first = default;
             second = default;
@@ -325,7 +325,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
         /// <param name="fourth">When this method returns, holds the fourth item if the collection has at least four
         /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
-        public static void Deconstruct<T>(this IEnumerable<T> collection, out T first, out T second, out T third, out T fourth) {
+        public static void Deconstruct<T>(this IEnumerable<T> collection, out T? first, out T? second, out T? third, out T? fourth) {
 
             first = default;
             second = default;
@@ -355,7 +355,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <remarks>
         ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementions, this seems to be the most random.</para>
         /// </remarks>
-        public static TSource RandomOrDefault<TSource>(this IEnumerable<TSource> collection) {
+        public static TSource? RandomOrDefault<TSource>(this IEnumerable<TSource> collection) {
             return collection.OrderBy(_ => Guid.NewGuid()).FirstOrDefault();
         }
 

@@ -1,5 +1,5 @@
 ﻿using System.Collections.Generic;
-using System.Globalization;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a 64-bit signed integer (<see cref="long"/>);
         /// otherwise, <c>false</c>.</returns>
-        public static bool IsInt64(this string input) {
+        public static bool IsInt64(this string? input) {
             return StringUtils.TryParseInt64(input, out long _);
         }
 
@@ -25,7 +25,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// otherwise, <c>0</c>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a 64-bit signed integer (<see cref="long"/>);
         /// otherwise, <c>false</c>.</returns>
-        public static bool IsInt64(this string input, out long result) {
+        public static bool IsInt64(this string? input, out long result) {
             return StringUtils.TryParseInt64(input, out result);
         }
 
@@ -38,7 +38,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a 64-bit signed integer (<see cref="long"/>);
         /// otherwise, <c>false</c>.</returns>
-        public static bool IsInt64(this string input, out long? result) {
+        public static bool IsInt64(this string? input, [NotNullWhen(true)] out long? result) {
             return StringUtils.TryParseInt64(input, out result);
         }
 
@@ -48,7 +48,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="long"/>.</returns>
-        public static long ToInt64(this string input) {
+        public static long ToInt64(this string? input) {
             return StringUtils.ParseInt64(input);
         }
 
@@ -59,7 +59,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="long"/>.</returns>
-        public static long ToInt64(this string input, long fallback) {
+        public static long ToInt64(this string? input, long fallback) {
             return StringUtils.ParseInt64(input, fallback);
         }
 
@@ -74,7 +74,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="long.MinValue"/> or greater than <see cref="long.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseInt64(this string input, out long result) {
+        public static bool TryParseInt64(this string? input, out long result) {
             return StringUtils.TryParseInt64(input, out result);
         }
 
@@ -89,7 +89,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="long.MinValue"/> or greater than <see cref="long.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseInt64(this string input, out long? result) {
+        public static bool TryParseInt64(this string? input, [NotNullWhen(true)] out long? result) {
             return StringUtils.TryParseInt64(input, out result);
         }
 
@@ -101,7 +101,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>An array of 64-bit signed integer values (<see cref="long"/>).</returns>
-        public static long[] ToInt64Array(this string input) {
+        public static long[] ToInt64Array(this string? input) {
             return StringUtils.ParseInt64Array(input);
         }
 
@@ -113,7 +113,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of 64-bit signed integer values (<see cref="long"/>).</returns>
-        public static long[] ToInt64Array(this string input, params char[] separators) {
+        public static long[] ToInt64Array(this string? input, params char[] separators) {
             return StringUtils.ParseInt64Array(input, separators);
         }
 
@@ -125,7 +125,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>A list of 64-bit signed integer values (<see cref="long"/>).</returns>
-        public static List<long> ToInt64List(this string input) {
+        public static List<long> ToInt64List(this string? input) {
             return StringUtils.ParseInt64List(input);
         }
 
@@ -137,7 +137,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>A list of 64-bit signed integer values (<see cref="long"/>).</returns>
-        public static List<long> ToInt64List(this string input, params char[] separators) {
+        public static List<long> ToInt64List(this string? input, params char[] separators) {
             return StringUtils.ParseInt64List(input, separators);
         }
 

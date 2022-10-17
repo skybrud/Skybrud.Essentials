@@ -1312,7 +1312,7 @@ namespace Skybrud.Essentials.Time {
         /// passed uninitialized.</param>
         /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
         /// <c>false</c>.</returns>
-        public static bool TryParseNumberFromMonthName(string monthName, IFormatProvider provider, out int result) {
+        public static bool TryParseNumberFromMonthName(string monthName, IFormatProvider? provider, out int result) {
             if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
             result = 0;
             if (!DateTime.TryParseExact(monthName, "MMMM", provider, DateTimeStyles.None, out DateTime dt)) return false;

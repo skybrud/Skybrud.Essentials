@@ -1,4 +1,6 @@
-﻿namespace Skybrud.Essentials.Strings.Extensions {
+﻿using System.Diagnostics.CodeAnalysis;
+
+namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 
@@ -7,7 +9,8 @@
         /// </summary>
         /// <param name="html">The input string containing HTML.</param>
         /// <returns>The input string without HTML markup.</returns>
-        public static string StripHtml(this string html) {
+        [return: NotNullIfNotNull("html")]
+        public static string? StripHtml(this string? html) {
             return StringUtils.StripHtml(html);
         }
 
@@ -18,7 +21,8 @@
         /// <param name="html">The input string containing the HTML.</param>
         /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
-        public static string StripHtml(this string html, params string[] ignore) {
+        [return: NotNullIfNotNull("html")]
+        public static string? StripHtml(this string? html, params string[]? ignore) {
             return StringUtils.StripHtml(html, ignore);
         }
 
@@ -27,7 +31,8 @@
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <returns> The HTML encoded text with text line breaks replaced with HTML line breaks (<c>&lt;br /&gt;</c>).</returns>
-        public static string ReplaceLineBreaks(this string input) {
+        [return: NotNullIfNotNull("input")]
+        public static string? ReplaceLineBreaks(this string? input) {
             return StringUtils.ReplaceLineBreaks(input);
         }
 
@@ -38,7 +43,7 @@
         /// </summary>
         /// <param name="input">The input string to be wrapped.</param>
         /// <returns>An instance of <see cref="System.Web.IHtmlString"/>.</returns>
-        public static System.Web.IHtmlString ToHtmlString(this string input) {
+        public static System.Web.IHtmlString ToHtmlString(this string? input) {
             return new  System.Web.HtmlString(input ?? string.Empty);
         }
 

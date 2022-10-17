@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -16,7 +17,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="json">The parent JSON object.</param>
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
-        public static bool GetBoolean(this JObject json, string propertyName) {
+        public static bool GetBoolean(this JObject? json, string propertyName) {
             return GetBoolean(json, propertyName, false);
         }
 
@@ -29,8 +30,8 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
-        public static bool GetBoolean(this JObject json, string propertyName, bool fallback) {
-            JToken token = json?[propertyName];
+        public static bool GetBoolean(this JObject? json, string propertyName, bool fallback) {
+            JToken? token = json?[propertyName];
             return token?.Type switch {
                 JTokenType.Boolean => token.ToObject<bool>(),
                 JTokenType.Integer => token.ToObject<int>() switch {
@@ -51,10 +52,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryGetBoolean(this JObject json, string propertyName, out bool result) {
+        public static bool TryGetBoolean(this JObject? json, string propertyName, out bool result) {
 
             if (TryGetBoolean(json, propertyName, out bool? temp)) {
-                result = temp!.Value;
+                result = temp.Value;
                 return true;
             }
 
@@ -70,9 +71,9 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryGetBoolean(this JObject json, string propertyName, out bool? result) {
+        public static bool TryGetBoolean(this JObject? json, string propertyName, [NotNullWhen(true)] out bool? result) {
 
-            JToken token = json?[propertyName];
+            JToken? token = json?[propertyName];
 
             switch (token?.Type) {
 
@@ -91,7 +92,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
                             return true;
                         default:
                             result = null;
-                            return true;
+                            return false;
                     }
 
                 case JTokenType.String:

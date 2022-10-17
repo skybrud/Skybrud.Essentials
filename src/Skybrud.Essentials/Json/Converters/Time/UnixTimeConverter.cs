@@ -49,7 +49,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
 
             if (value == null) {
                 writer.WriteNull();
@@ -88,9 +88,9 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="existingValue">The existing value of object being read.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns>The object value.</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
 
-            string type;
+            string? type;
 
             if (objectType.Name == "Nullable`1") {
 

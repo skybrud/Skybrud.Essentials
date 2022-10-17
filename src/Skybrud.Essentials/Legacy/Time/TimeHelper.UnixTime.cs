@@ -1,5 +1,7 @@
 ﻿using System;
 
+// ReSharper disable CheckNamespace
+
 namespace Skybrud.Essentials.Time {
 
     public static partial class TimeHelper {

@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="obj">The parent object.</param>
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
-        public static bool GetBoolean(this JObject obj, string path) {
+        public static bool GetBoolean(this JObject? obj, string path) {
             return JsonTokenUtils.GetBoolean(obj?.SelectToken(path), false);
         }
 
@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
-        public static bool GetBoolean(this JObject obj, string path, bool fallback) {
+        public static bool GetBoolean(this JObject? obj, string path, bool fallback) {
             return JsonTokenUtils.GetBoolean(obj?.SelectToken(path), fallback);
         }
 
@@ -38,7 +38,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="callback">A callback function used for parsing or converting the token value.</param>
         /// <returns>An instance of <see cref="bool"/>, or <c>false</c> if <paramref name="path"/>
         /// doesn't match a token.</returns>
-        public static T GetBoolean<T>(this JObject obj, string path, Func<bool, T> callback) {
+        public static T? GetBoolean<T>(this JObject? obj, string path, Func<bool, T> callback) {
             return JsonTokenUtils.TryGetBoolean(obj?.SelectToken(path), out bool result) ? callback(result) : default;
         }
 
@@ -49,7 +49,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryGetBoolean(this JObject obj, string path, out bool result) {
+        public static bool TryGetBoolean(this JObject? obj, string path, out bool result) {
             return JsonTokenUtils.TryGetBoolean(obj?.SelectToken(path), out result);
         }
 

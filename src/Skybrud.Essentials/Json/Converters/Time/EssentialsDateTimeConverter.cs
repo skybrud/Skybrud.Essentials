@@ -17,7 +17,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="writer">The <see cref="JsonWriter"/> to write to.</param>
         /// <param name="value">The value.</param>
         /// <param name="serializer">The calling serializer.</param>
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
             if (value is not EssentialsDateTime dt) return;
             base.WriteJson(writer, dt.DateTime, serializer);
         }
@@ -30,7 +30,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
         /// <param name="existingValue">The existing value of object being read.</param>
         /// <param name="serializer">The calling serializer.</param>
         /// <returns>The object value.</returns>
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
 
             if (reader.TokenType == JsonToken.Null) return null;
 
@@ -46,9 +46,9 @@ namespace Skybrud.Essentials.Json.Converters.Time {
                 case JsonToken.String:
                     if (string.IsNullOrWhiteSpace(reader.Value.ToString())) return null;
                     if (!string.IsNullOrEmpty(DateTimeFormat)) {
-                        return (EssentialsDateTime) DateTime.ParseExact(reader.Value.ToString(), DateTimeFormat, Culture, DateTimeStyles);
+                        return (EssentialsDateTime) DateTime.ParseExact(reader.Value?.ToString() ?? string.Empty, DateTimeFormat, Culture, DateTimeStyles);
                     }
-                    return (EssentialsDateTime) DateTime.Parse(reader.Value.ToString(), Culture, DateTimeStyles);
+                    return (EssentialsDateTime) DateTime.Parse(reader.Value?.ToString() ?? string.Empty, Culture, DateTimeStyles);
 
                 default:
                     throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);

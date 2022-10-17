@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -14,7 +15,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The encoded string.</returns>
-        public static string UrlEncode(this string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? UrlEncode(this string? str) {
             return StringUtils.UrlEncode(str);
         }
 
@@ -23,7 +25,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The decoded string.</returns>
-        public static string UrlDecode(this string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? UrlDecode(this string? str) {
             return StringUtils.UrlDecode(str);
         }
 
@@ -32,7 +35,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The encoded string.</returns>
-        public static string HtmlEncode(this string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? HtmlEncode(this string? str) {
             return StringUtils.HtmlEncode(str);
         }
 
@@ -41,7 +45,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The decoded string.</returns>
-        public static string HtmlDecode(this string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? HtmlDecode(this string? str) {
             return StringUtils.HtmlDecode(str);
         }
 
@@ -52,7 +57,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="collection">The name value collection.</param>
         /// <returns>The URL encoded string.</returns>
-        public static string ToUrlEncodedString(this NameValueCollection collection) {
+        public static string ToUrlEncodedString(this NameValueCollection? collection) {
             return StringUtils.ToUrlEncodedString(collection);
         }
 
@@ -61,7 +66,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="encoded">The URL encoded string.</param>
         /// <returns>The name value colection.</returns>
-        public static NameValueCollection ToNameValueCollection(this string encoded) {
+        public static NameValueCollection ToNameValueCollection(this string? encoded) {
             return string.IsNullOrWhiteSpace(encoded) ? new NameValueCollection() : System.Web.HttpUtility.ParseQueryString(encoded);
         }
 
@@ -72,7 +77,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="str">The string to parse.</param>
         /// <returns>An integer with the number of words found.</returns>
-        public static int WordCount(this string str) {
+        public static int WordCount(this string? str) {
             return StringUtils.WordCount(str);
         }
 
@@ -84,7 +89,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        public static string HighlightKeywords(this string input, string className, IEnumerable<string> keywords) {
+        [return: NotNullIfNotNull("input")]
+        public static string? HighlightKeywords(this string? input, string className, IEnumerable<string>? keywords) {
             return StringUtils.HighlightKeywords(input, className, keywords);
         }
 
@@ -96,7 +102,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        public static string HighlightKeywords(this string input, string className, params string[] keywords) {
+        [return: NotNullIfNotNull("input")]
+        public static string? HighlightKeywords(this string? input, string className, params string[]? keywords) {
             return StringUtils.HighlightKeywords(input, className, keywords);
         }
 
@@ -106,7 +113,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The input string to test.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
-        public static bool HasValue(this string input) {
+        public static bool HasValue(this string? input) {
             return string.IsNullOrWhiteSpace(input) == false;
         }
 
@@ -118,7 +125,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The input string to test.</param>
         /// <param name="result">When this method returns, contains the input value.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
-        public static bool HasValue(this string input, out string result) {
+        public static bool HasValue(this string? input, out string? result) {
             result = input;
             return string.IsNullOrWhiteSpace(input) == false;
         }
@@ -129,7 +136,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The input string to test.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
-        public static bool IsNullOrWhiteSpace(this string input) {
+        public static bool IsNullOrWhiteSpace(this string? input) {
             return string.IsNullOrWhiteSpace(input);
         }
 
@@ -138,7 +145,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise <c>false</c>.</returns>
-        public static bool IsNumeric(this string input) {
+        public static bool IsNumeric(this string? input) {
             return StringUtils.IsNumeric(input);
         }
 
@@ -147,7 +154,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
-        public static bool IsAlphanumeric(this string input) {
+        public static bool IsAlphanumeric(this string? input) {
             return StringUtils.IsAlphanumeric(input);
         }
 
@@ -156,32 +163,32 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
-        public static bool IsAlphabetic(this string input) {
+        public static bool IsAlphabetic(this string? input) {
             return StringUtils.IsAlphabetic(input);
         }
 
         /// <summary>
         /// Parses string of multiple values into an array of <see cref="string"/>. Supported separators are
         /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
-        /// 
+        ///
         /// Empty entries are automatically removed from the output array.
         /// </summary>
         /// <param name="input">The input string containing the values.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
-        public static string[] ToStringArray(this string input) {
+        public static string[] ToStringArray(this string? input) {
             return StringUtils.ParseStringArray(input);
         }
 
         /// <summary>
         /// Parses string of multiple values into an array of <see cref="string"/>, using the specified array of
         /// <paramref name="separators"/>.
-        /// 
+        ///
         /// Empty entries are automatically removed from the output array.
         /// </summary>
         /// <param name="input">The input string containing the values.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
-        public static string[] ToStringArray(this string input, char[] separators) {
+        public static string[] ToStringArray(this string? input, char[] separators) {
             return StringUtils.ParseStringArray(input, separators);
         }
 
@@ -208,7 +215,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
         /// <param name="end">The text to be appended to the end of the truncated string - eg. <c>...</c>.</param>
         /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
-        public static string Truncate(this string input, int maxCharacters, string end) {
+        public static string Truncate(this string input, int maxCharacters, string? end) {
             return StringUtils.Truncate(input, maxCharacters, end);
         }
 
@@ -310,7 +317,9 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The input string.</param>
         /// <param name="fallback">The fallback value.</param>
         /// <returns><paramref name="fallback"/> if <paramref name="input"/> is <c>null</c> or white space; otherwise <paramref name="input"/>.</returns>
-        public static string IfNullOrWhiteSpace(this string input, string fallback) {
+        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull("fallback")]
+        public static string? IfNullOrWhiteSpace(this string? input, string? fallback) {
             return string.IsNullOrWhiteSpace(input) ? fallback : input;
         }
 
@@ -322,7 +331,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The input string.</param>
         /// <param name="fallback">The fallback function.</param>
         /// <returns>The value returned by <paramref name="fallback"/> if <paramref name="input"/> is <c>null</c> or white space; otherwise <paramref name="input"/>.</returns>
-        public static string IfNullOrWhiteSpace(this string input, Func<string> fallback) {
+        [return: NotNullIfNotNull("input")]
+        public static string? IfNullOrWhiteSpace(this string? input, Func<string> fallback) {
             return string.IsNullOrWhiteSpace(input) ? fallback() : input;
         }
 
@@ -331,7 +341,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <returns><c>null</c> if <paramref name="input"/> is empty or white space; otherwise <paramref name="input"/>.</returns>
-        public static string NullIfWhiteSpace(this string input) {
+        public static string? NullIfWhiteSpace(this string? input) {
             return string.IsNullOrWhiteSpace(input) ? null : input;
         }
 
@@ -341,8 +351,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The value to be split.</param>
         /// <param name="separator">The separator to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
-        public static void Split(this string value, char separator, out string first) {
-            string[] array = value?.Split(separator);
+        public static void Split(this string? value, char separator, out string? first) {
+            string[]? array = value?.Split(separator);
             first = array?[0];
         }
 
@@ -353,8 +363,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="separator">The separator to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
-        public static void Split(this string value, char separator, out string first, out string second) {
-            string[] array = value?.Split(separator);
+        public static void Split(this string? value, char separator, out string? first, out string? second) {
+            string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
         }
@@ -367,8 +377,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
-        public static void Split(this string value, char separator, out string first, out string second, out string third) {
-            string[] array = value?.Split(separator);
+        public static void Split(this string? value, char separator, out string? first, out string? second, out string? third) {
+            string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
             third = array is { Length: > 2 } ? array[2] : null;
@@ -383,8 +393,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
-        public static void Split(this string value, char separator, out string first, out string second, out string third, out string fourth) {
-            string[] array = value?.Split(separator);
+        public static void Split(this string? value, char separator, out string? first, out string? second, out string? third, out string? fourth) {
+            string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
             third = array is { Length: > 2 } ? array[2] : null;
@@ -401,8 +411,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
         /// <param name="fifth">The fifth item resulting from the split.</param>
-        public static void Split(this string value, char separator, out string first, out string second, out string third, out string fourth, out string fifth) {
-            string[] array = value?.Split(separator);
+        public static void Split(this string? value, char separator, out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+            string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
             third = array is { Length: > 2 } ? array[2] : null;
@@ -416,8 +426,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The value to be split.</param>
         /// <param name="separators">The separators to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
-        public static void Split(this string value, char[] separators, out string first) {
-            string[] array = value?.Split(separators);
+        public static void Split(this string? value, char[] separators, out string? first) {
+            string[]? array = value?.Split(separators);
             first = array?[0];
         }
 
@@ -428,8 +438,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="separators">The separators to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
-        public static void Split(this string value, char[] separators, out string first, out string second) {
-            string[] array = value?.Split(separators);
+        public static void Split(this string? value, char[] separators, out string? first, out string? second) {
+            string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
         }
@@ -442,8 +452,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
-        public static void Split(this string value, char[] separators, out string first, out string second, out string third) {
-            string[] array = value?.Split(separators);
+        public static void Split(this string? value, char[] separators, out string? first, out string? second, out string? third) {
+            string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
             third = array is { Length: > 2 } ? array[2] : null;
@@ -458,8 +468,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
-        public static void Split(this string value, char[] separators, out string first, out string second, out string third, out string fourth) {
-            string[] array = value?.Split(separators);
+        public static void Split(this string? value, char[] separators, out string? first, out string? second, out string? third, out string? fourth) {
+            string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
             third = array is { Length: > 2 } ? array[2] : null;
@@ -476,8 +486,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
         /// <param name="fifth">The fifth item resulting from the split.</param>
-        public static void Split(this string value, char[] separators, out string first, out string second, out string third, out string fourth, out string fifth) {
-            string[] array = value?.Split(separators);
+        public static void Split(this string? value, char[] separators, out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+            string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
             third = array is { Length: > 2 } ? array[2] : null;

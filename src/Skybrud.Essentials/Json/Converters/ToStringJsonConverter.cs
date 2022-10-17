@@ -19,7 +19,7 @@ namespace Skybrud.Essentials.Json.Converters {
         }
 
         /// <inheritdoc />
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
             if (value == null) {
                 writer.WriteNull();
             } else {

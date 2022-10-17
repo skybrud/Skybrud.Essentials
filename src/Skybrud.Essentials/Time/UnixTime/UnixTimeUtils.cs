@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 
 // ReSharper disable InconsistentNaming
 
@@ -75,8 +76,8 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// </summary>
         /// <param name="seconds">The Unix timestamp specified in seconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTimeOffset FromSeconds(string seconds) {
-            return DateTimeOffsetUnixTimeStartUtc.AddSeconds(long.Parse(seconds));
+        public static DateTimeOffset FromSeconds(string? seconds) {
+            return seconds is null ? default : DateTimeOffsetUnixTimeStartUtc.AddSeconds(long.Parse(seconds));
         }
 
         /// <summary>
@@ -105,8 +106,8 @@ namespace Skybrud.Essentials.Time.UnixTime {
         /// </summary>
         /// <param name="milliseconds">The Unix timestamp specified in milliseconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTimeOffset FromMilliseconds(string milliseconds) {
-            return DateTimeOffsetUnixTimeStartUtc.AddMilliseconds(long.Parse(milliseconds));
+        public static DateTimeOffset FromMilliseconds(string? milliseconds) {
+            return milliseconds is null ? default : DateTimeOffsetUnixTimeStartUtc.AddMilliseconds(long.Parse(milliseconds));
         }
 
         /// <summary>

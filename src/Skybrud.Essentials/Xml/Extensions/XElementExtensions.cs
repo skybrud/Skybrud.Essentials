@@ -1,4 +1,5 @@
-﻿using System.Xml;
+﻿using System.Diagnostics.CodeAnalysis;
+using System.Xml;
 using System.Xml.Linq;
 
 namespace Skybrud.Essentials.Xml.Extensions {
@@ -14,10 +15,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="name">An instance of <see cref="XName"/> identifying the element.</param>
         /// <returns><c>true</c> if an element was found and has a value; otherwise <c>false</c>.</returns>
-        public static bool HasElementValue(this XElement element, XName name) {
+        public static bool HasElementValue(this XElement? element, XName name) {
 
             // Get the element matching "name"
-            XElement child = GetElement(element, name);
+            XElement? child = GetElement(element, name);
 
             // Check whether the element was found and has a value
             return child != null && !string.IsNullOrWhiteSpace(child.Value);
@@ -32,10 +33,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="element">The parent <see cref="XElement"/>.</param>
         /// <param name="expression">The XPath expression.</param>
         /// <returns><c>true</c> if an element was found and has a value; otherwise <c>false</c>.</returns>
-        public static bool HasElementValue(this XElement element, string expression) {
+        public static bool HasElementValue(this XElement? element, string expression) {
 
             // Get the element matching "name"
-            XElement child = GetElement(element, expression);
+            XElement? child = GetElement(element, expression);
 
             // Check whether the element was found and has a value
             return child != null && !string.IsNullOrWhiteSpace(child.Value);
@@ -49,10 +50,10 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <param name="expression">The XPath expression.</param>
         /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
         /// <returns><c>true</c> if an element was found and has a value; otherwise <c>false</c>.</returns>
-        public static bool HasElementValue(this XElement element, string expression, IXmlNamespaceResolver resolver) {
+        public static bool HasElementValue(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
 
             // Get the element matching "name"
-            XElement child = GetElement(element, expression, resolver);
+            XElement? child = GetElement(element, expression, resolver);
 
             // Check whether the element was found and has a value
             return child != null && !string.IsNullOrWhiteSpace(child.Value);
@@ -69,8 +70,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <see>
         ///     <cref>https://stackoverflow.com/a/1704579</cref>
         /// </see>
-        public static string GetOuterXml(this XElement element) {
-            return XmlUtils.GetOuterXml(element);
+        [return: NotNullIfNotNull("element")]
+        public static string? GetOuterXml(this XElement? element) {
+            return element is null ? null : XmlUtils.GetOuterXml(element);
         }
 
         /// <summary>
@@ -81,8 +83,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
         /// <see>
         ///     <cref>https://stackoverflow.com/a/1704579</cref>
         /// </see>
-        public static string GetInnerXml(this XElement element) {
-            return XmlUtils.GetInnerXml(element);
+        [return: NotNullIfNotNull("element")]
+        public static string? GetInnerXml(this XElement? element) {
+            return element is null ? null : XmlUtils.GetInnerXml(element);
         }
 
     }

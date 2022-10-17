@@ -20,11 +20,11 @@ namespace Skybrud.Essentials.Json.Converters.Enums {
         }
 
         /// <inheritdoc />
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
 
             // Validate the input type
-            Type itemType = objectType.GetElementType();
-            if (objectType.IsArray == false || itemType == null) throw new Exception("Property type " + objectType + " is not an array.");
+            Type? itemType = objectType.GetElementType();
+            if (objectType.IsArray == false || itemType == null) throw new Exception($"Property type {objectType} is not an array.");
 
             switch (reader.TokenType) {
 

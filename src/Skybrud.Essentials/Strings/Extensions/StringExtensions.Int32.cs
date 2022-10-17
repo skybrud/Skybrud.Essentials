@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -9,7 +10,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a 32-bit signed integer (<see cref="int"/>); otherwise, <c>false</c>.</returns>
-        public static bool IsInt32(this string input) {
+        public static bool IsInt32(this string? input) {
             return StringUtils.TryParseInt32(input, out int _);
         }
 
@@ -19,7 +20,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string to validate.</param>
         /// <param name="result">When this method returns, holds the converted <see cref="int"/> if successful; otherwise, <c>0</c>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a 32-bit signed integer (<see cref="int"/>); otherwise, <c>false</c>.</returns>
-        public static bool IsInt32(this string input, out int result) {
+        public static bool IsInt32(this string? input, out int result) {
             return StringUtils.TryParseInt32(input, out result);
         }
 
@@ -29,7 +30,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string to validate.</param>
         /// <param name="result">When this method returns, holds the converted <see cref="int"/> if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches a 32-bit signed integer (<see cref="int"/>); otherwise, <c>false</c>.</returns>
-        public static bool IsInt32(this string input, out int? result) {
+        public static bool IsInt32(this string? input, [NotNullWhen(true)] out int? result) {
             return StringUtils.TryParseInt32(input, out result);
         }
 
@@ -38,7 +39,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string to be converted.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
-        public static int ToInt32(this string input) {
+        public static int ToInt32(this string? input) {
             return StringUtils.ParseInt32(input);
         }
 
@@ -48,7 +49,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string to be converted.</param>
         /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
-        public static int ToInt32(this string input, int fallback) {
+        public static int ToInt32(this string? input, int fallback) {
             return StringUtils.ParseInt32(input, fallback);
         }
 
@@ -62,7 +63,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseInt32(this string input, out int result) {
+        public static bool TryParseInt32(this string? input, out int result) {
             return StringUtils.TryParseInt32(input, out result);
         }
 
@@ -76,7 +77,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
         /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParseInt32(this string input, out int? result) {
+        public static bool TryParseInt32(this string? input, [NotNullWhen(true)] out int? result) {
             return StringUtils.TryParseInt32(input, out result);
         }
 
@@ -88,7 +89,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>An array of 32-bit signed integer values (<see cref="int"/>).</returns>
-        public static int[] ToInt32Array(this string input) {
+        public static int[] ToInt32Array(this string? input) {
             return StringUtils.ParseInt32Array(input);
         }
 
@@ -100,7 +101,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of 32-bit signed integer values (<see cref="int"/>).</returns>
-        public static int[] ToInt32Array(this string input, params char[] separators) {
+        public static int[] ToInt32Array(this string? input, params char[] separators) {
             return StringUtils.ParseInt32Array(input, separators);
         }
 
@@ -112,7 +113,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <returns>A list of 32-bit signed integer values (<see cref="int"/>).</returns>
-        public static List<int> ToInt32List(this string input) {
+        public static List<int> ToInt32List(this string? input) {
             return StringUtils.ParseInt32List(input);
         }
 
@@ -124,7 +125,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The string of numeric values to be parsed.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>A list of 32-bit signed integer values (<see cref="int"/>).</returns>
-        public static List<int> ToInt32List(this string input, params char[] separators) {
+        public static List<int> ToInt32List(this string? input, params char[] separators) {
             return StringUtils.ParseInt32List(input, separators);
         }
 

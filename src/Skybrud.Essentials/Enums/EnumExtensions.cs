@@ -46,7 +46,7 @@ namespace Skybrud.Essentials.Enums {
         public static IEnumerable<TEnum> GetFlags<TEnum>(this TEnum value) where TEnum : Enum {
             // ReSharper disable once LoopCanBeConvertedToQuery
             if (Convert.ToInt32(value) == 0) {
-                yield return default;
+                yield return default!;
             } else {
                 foreach (Enum flag in Enum.GetValues(value.GetType())) {
                     if (Convert.ToInt32(flag) > 0 && value.HasFlag(flag)) yield return (TEnum) flag;

@@ -1,9 +1,14 @@
-﻿using System;
+﻿#nullable enable
+
+using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
 using Skybrud.Essentials.Collections;
+
+// ReSharper disable RedundantSuppressNullableWarningExpression
 
 namespace Skybrud.Essentials.Strings {
 
@@ -22,7 +27,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The input string containing the values.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
-        public static string[] ParseStringArray(string str) {
+        public static string[] ParseStringArray(string? str) {
             return ParseStringArray(str, DefaultSeparators);
         }
 
@@ -35,8 +40,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="str">The input string containing the values.</param>
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An array of <see cref="string"/>.</returns>
-        public static string[] ParseStringArray(string str, params char[] separators) {
-            return str == null ? ArrayUtils.Empty<string>() : str.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+        public static string[] ParseStringArray(string? str, params char[] separators) {
+            return string.IsNullOrWhiteSpace(str) ? ArrayUtils.Empty<string>() : str!.Split(separators, StringSplitOptions.RemoveEmptyEntries);
         }
 
         /// <summary>
@@ -45,6 +50,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="word">The singular word.</param>
         /// <returns>The plural word.</returns>
         public static string ToPlural(string word) {
+
+            if (string.IsNullOrWhiteSpace(word)) throw new ArgumentNullException(nameof(word));
 
             // Declare a list of rules
             var rules = new[] {
@@ -107,6 +114,8 @@ namespace Skybrud.Essentials.Strings {
         /// <returns>The singular word.</returns>
         public static string ToSingular(string word) {
 
+            if (string.IsNullOrWhiteSpace(word)) throw new ArgumentNullException(nameof(word));
+
             // Declare a list of rules
             var rules = new[] {
                 new { Pattern = "mice$", Replacement = "mouse" },
@@ -148,12 +157,14 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to parse.</param>
         /// <returns>An integer with the number of words found.</returns>
-        public static int WordCount(string str) {
+        public static int WordCount(string? str) {
+
+            if (string.IsNullOrWhiteSpace(str)) return 0;
 
             // See: http://stackoverflow.com/a/8784654
 
             // Trim the text a bit
-            str = str.Trim();
+            str = str!.Trim();
 
             int count = 0, index = 0;
 
@@ -182,7 +193,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        public static string HighlightKeywords(string input, string className, IEnumerable<string> keywords) {
+        [return: NotNullIfNotNull("input")]
+        public static string? HighlightKeywords(string? input, string className, IEnumerable<string>? keywords) {
             if (string.IsNullOrWhiteSpace(input) || keywords == null) return input;
             return HighlightKeywords(input, className, keywords.ToArray());
         }
@@ -195,7 +207,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        public static string HighlightKeywords(string input, string className, params string[] keywords) {
+        [return: NotNullIfNotNull("input")]
+        public static string? HighlightKeywords(string? input, string className, params string[]? keywords) {
 
             if (string.IsNullOrWhiteSpace(input) || keywords == null) return input;
 
@@ -213,8 +226,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
-        public static bool IsNumeric(string str) {
-            return long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long _);
+        public static bool IsNumeric(string? str) {
+            return str is not null && long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long _);
         }
 
         /// <summary>
@@ -222,8 +235,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="str"/> is alphanumeric; otherwise <c>false</c>.</returns>
-        public static bool IsAlphanumeric(string str) {
-            return Regex.IsMatch(str ?? string.Empty, "^[0-9a-zA-Z]+$");
+        public static bool IsAlphanumeric(string? str) {
+            return str is not null && Regex.IsMatch(str, "^[0-9a-zA-Z]+$");
         }
 
         /// <summary>
@@ -231,8 +244,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="value">The string to validate.</param>
         /// <returns><c>true</c> if <paramref name="value"/> is alphanumeric; otherwise <c>false</c>.</returns>
-        public static bool IsAlphabetic(string value) {
-            return Regex.IsMatch(value ?? string.Empty, "^[a-zA-Z]+$");
+        public static bool IsAlphabetic(string? value) {
+            return value is not null && Regex.IsMatch(value, "^[a-zA-Z]+$");
         }
 
         /// <summary>
@@ -278,67 +291,13 @@ namespace Skybrud.Essentials.Strings {
 
         }
 
-#if NET_FRAMEWORK
-
         /// <summary>
         /// URL encodes the specified <paramref name="str"/>.
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The URL encoded string.</returns>
-        public static string UrlEncode(string str) {
-            return System.Web.HttpUtility.UrlEncode(str);
-        }
-
-        /// <summary>
-        /// URL decodes a URL string.
-        /// </summary>
-        /// <param name="str">The string to be decoded.</param>
-        /// <returns>The URL decoded string.</returns>
-        public static string UrlDecode(string str) {
-			return System.Web.HttpUtility.UrlDecode(str);
-        }
-
-        /// <summary>
-        /// HTML encodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be encoded.</param>
-        /// <returns>The encoded string.</returns>
-        public static string HtmlEncode(string str) {
-            return System.Web.HttpUtility.HtmlEncode(str);
-        }
-
-        /// <summary>
-        /// HTML decodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be decoded.</param>
-        /// <returns>The decoded string.</returns>
-        public static string HtmlDecode(string str) {
-            return System.Web.HttpUtility.HtmlDecode(str);
-        }
-
-#endif
-
-#if I_CAN_HAS_NAME_VALUE_COLLECTION
-
-        /// <summary>
-        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
-        /// </summary>
-        /// <param name="collection">The name value collection.</param>
-        /// <returns>The URL encoded string.</returns>
-        public static string ToUrlEncodedString(System.Collections.Specialized.NameValueCollection collection) {
-            return collection == null ? string.Empty : string.Join("&", from string key in collection.Keys select $"{UrlEncode(key)}={UrlEncode(collection[key])}");
-        }
-
-#endif
-
-#if NET_STANDARD
-
-        /// <summary>
-        /// URL encodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be encoded.</param>
-        /// <returns>The URL encoded string.</returns>
-        public static string UrlEncode(string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? UrlEncode(string? str) {
             return System.Net.WebUtility.UrlEncode(str);
         }
 
@@ -347,7 +306,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The URL decoded string.</returns>
-        public static string UrlDecode(string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? UrlDecode(string? str) {
             return System.Net.WebUtility.UrlDecode(str);
         }
 
@@ -356,7 +316,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The encoded string.</returns>
-        public static string HtmlEncode(string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? HtmlEncode(string? str) {
             return System.Net.WebUtility.HtmlEncode(str);
         }
 
@@ -365,8 +326,20 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The decoded string.</returns>
-        public static string HtmlDecode(string str) {
+        [return: NotNullIfNotNull("str")]
+        public static string? HtmlDecode(string? str) {
             return System.Net.WebUtility.HtmlDecode(str);
+        }
+
+#if I_CAN_HAS_NAME_VALUE_COLLECTION
+
+        /// <summary>
+        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <returns>The URL encoded string.</returns>
+        public static string ToUrlEncodedString(System.Collections.Specialized.NameValueCollection? collection) {
+            return collection == null ? string.Empty : string.Join("&", from string key in collection.Keys select $"{UrlEncode(key)}={UrlEncode(collection[key])}");
         }
 
 #endif
@@ -376,7 +349,8 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="html">The input string containing the HTML.</param>
         /// <returns>The input string without any HTML markup.</returns>
-        public static string StripHtml(string html) {
+        [return: NotNullIfNotNull("html")]
+        public static string? StripHtml(string? html) {
             return html == null ? null : HtmlDecode(Regex.Replace(html, "<.*?>", string.Empty));
         }
 
@@ -387,7 +361,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="html">The input string containing the HTML.</param>
         /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
-        public static string StripHtml(string html, params string[] ignore) {
+        [return: NotNullIfNotNull("html")]
+        public static string? StripHtml(string? html, params string[]? ignore) {
             if (html == null) return null;
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
             Regex regex = new("<(?!(" + string.Join("|", from tag in ignore select "/?" + tag) + ")\\b)[^>]*>", RegexOptions.Singleline);
@@ -399,11 +374,12 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <returns> The HTML encoded text with text line breaks replaced with HTML line breaks (<c>&lt;br /&gt;</c>).</returns>
-        public static string ReplaceLineBreaks(string input) {
+        [return: NotNullIfNotNull("input")]
+        public static string? ReplaceLineBreaks(string? input) {
 
             // See: https://github.com/umbraco/Umbraco-CMS/blob/release-8.12.0/src/Umbraco.Web/HtmlStringUtilities.cs#L38
 
-            string value = HtmlEncode(input)?
+            string? value = HtmlEncode(input)?
                 .Replace("\r\n", "<br />")
                 .Replace("\r", "<br />")
                 .Replace("\n", "<br />");
@@ -421,7 +397,8 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The input string.</param>
         /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
         /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
-        public static string Truncate(string input, int maxCharacters) {
+        [return: NotNullIfNotNull("input")]
+        public static string? Truncate(string? input, int maxCharacters) {
             return Truncate(input, maxCharacters, "...");
         }
 
@@ -435,10 +412,15 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
         /// <param name="end">The text to be appended to the end of the truncated string - eg. <c>...</c>.</param>
         /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
-        public static string Truncate(string input, int maxCharacters, string end) {
+        [return: NotNullIfNotNull("input")]
+        public static string? Truncate(string? input, int maxCharacters, string? end) {
             if (string.IsNullOrWhiteSpace(input)) return input;
             end ??= string.Empty;
-            return input.Length > maxCharacters ? input.Substring(0, maxCharacters - end.Length) + end : input;
+#if NET5_0_OR_GREATER
+            return input.Length > maxCharacters ? input[..(maxCharacters - end.Length)] + end : input;
+#else
+            return input!.Length > maxCharacters ? input.Substring(0, maxCharacters - end.Length) + end : input;
+#endif
         }
 
         /// <summary>
@@ -449,8 +431,8 @@ namespace Skybrud.Essentials.Strings {
         /// Returns the value of the first parameter that has a value (not null or white space). If all parameter
         /// values are empty, <see cref="string.Empty"/> is returned instead.
         /// <returns>Returns the value of </returns>
-        public static string FirstWithValue(string value1, string value2) {
-            return string.IsNullOrWhiteSpace(value1) ? value2 ?? string.Empty : value1;
+        public static string FirstWithValue(string? value1, string? value2) {
+            return string.IsNullOrWhiteSpace(value1) ? value2 ?? string.Empty : value1!;
         }
 
         /// <summary>
@@ -459,7 +441,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="values">Array of string values.</param>
         /// <returns>The first value or <see cref="string.Empty"/>.</returns>
-        public static string FirstWithValue(params string[] values) {
+        public static string FirstWithValue(params string[]? values) {
             return values?.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? string.Empty;
         }
 
@@ -469,7 +451,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="values">Collection of string values.</param>
         /// <returns>The first value or <see cref="string.Empty"/>.</returns>
-        public static string FirstWithValue(IEnumerable<string> values) {
+        public static string FirstWithValue(IEnumerable<string>? values) {
             return values?.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? string.Empty;
         }
 

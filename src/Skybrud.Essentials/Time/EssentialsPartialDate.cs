@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
@@ -87,11 +88,11 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="date">An instance of <see cref="EssentialsDateTime"/> representing the full date.</param>
 #pragma warning disable 618
-        public EssentialsPartialDate(EssentialsDateTime date) {
+        public EssentialsPartialDate(EssentialsDateTime? date) {
 #pragma warning restore 618
-            Year = date == null ? 0 : date.Year;
-            Month = date == null ? 0 : date.Month;
-            Day = date == null ? 0 : date.Day;
+            Year = date?.Year ?? 0;
+            Month = date?.Month ?? 0;
+            Day = date?.Day ?? 0;
             DateTime = new DateTime(Year == 0 ? 1 : Year, Month == 0 ? 1 : Month, Day == 0 ? 1 : Day);
         }
 
@@ -99,10 +100,10 @@ namespace Skybrud.Essentials.Time {
         /// Initializes a new instance from the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">An instance of <see cref="EssentialsTime"/> representing the full date.</param>
-        public EssentialsPartialDate(EssentialsTime date) {
-            Year = date == null ? 0 : date.Year;
-            Month = date == null ? 0 : date.Month;
-            Day = date == null ? 0 : date.Day;
+        public EssentialsPartialDate(EssentialsTime? date) {
+            Year = date?.Year ?? 0;
+            Month = date?.Month ?? 0;
+            Day = date?.Day ?? 0;
             DateTime = new DateTime(Year == 0 ? 1 : Year, Month == 0 ? 1 : Month, Day == 0 ? 1 : Day);
         }
 
@@ -162,9 +163,10 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="input">A string that contains the partial date to convert.</param>
         /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
-        public static EssentialsPartialDate Parse(string input) {
+        [return: NotNullIfNotNull("input")]
+        public static EssentialsPartialDate? Parse(string? input) {
             if (string.IsNullOrWhiteSpace(input)) return null;
-            if (TryParse(input, out EssentialsPartialDate date)) return date;
+            if (TryParse(input, out EssentialsPartialDate? date)) return date;
             throw new ArgumentException("Specified string is not a valid date", nameof(input));
         }
 
@@ -176,9 +178,10 @@ namespace Skybrud.Essentials.Time {
         /// <param name="provider">An object that supplies culture-specific formatting information about
         /// <paramref name="input"/>.</param>
         /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
-        public static EssentialsPartialDate Parse(string input, IFormatProvider provider) {
+        [return: NotNullIfNotNull("input")]
+        public static EssentialsPartialDate? Parse(string? input, IFormatProvider? provider) {
             if (string.IsNullOrWhiteSpace(input)) return null;
-            if (TryParse(input, provider, out EssentialsPartialDate date)) return date;
+            if (TryParse(input, provider, out EssentialsPartialDate? date)) return date;
             throw new ArgumentException("Specified string is not a valid date", nameof(input));
         }
 
@@ -194,7 +197,7 @@ namespace Skybrud.Essentials.Time {
         /// date. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise,
         /// <c>false</c>.</returns>
-        public static bool TryParse(string input, out EssentialsPartialDate result) {
+        public static bool TryParse(string? input, [NotNullWhen(true)] out EssentialsPartialDate? result) {
             return TryParse(input, CultureInfo.InvariantCulture, out result);
         }
 
@@ -212,7 +215,7 @@ namespace Skybrud.Essentials.Time {
         /// date. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise,
         /// <c>false</c>.</returns>
-        public static bool TryParse(string input, IFormatProvider provider, out EssentialsPartialDate result) {
+        public static bool TryParse(string? input, IFormatProvider? provider, [NotNullWhen(true)] out EssentialsPartialDate? result) {
 
             // Initialize "date"
             result = null;

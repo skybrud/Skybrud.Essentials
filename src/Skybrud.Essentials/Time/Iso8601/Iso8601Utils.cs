@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Skybrud.Essentials.Time.Xml;
 
@@ -28,10 +29,10 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <param name="week">The <strong>ISO 8601</strong> week number.</param>
         /// <param name="timeZone">The time zone to convert the <see cref="DateTimeOffset"/> value to.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTimeOffset FromWeekNumber(int year, int week, TimeZoneInfo timeZone) {
+        public static DateTimeOffset FromWeekNumber(int year, int week, TimeZoneInfo? timeZone) {
 
             // Must have a time zone
-            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+            timeZone ??= TimeZoneInfo.Local;
 
             // Get the start of the week
             DateTimeOffset time = FromWeekNumber(year, week, timeZone.BaseUtcOffset);
@@ -157,8 +158,8 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// </summary>
         /// <param name="iso8601">The string with the ISO 8106 formatted string.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTimeOffset Parse(string iso8601) {
-            if (string.IsNullOrWhiteSpace(iso8601)) throw new ArgumentNullException(nameof(iso8601));
+        public static DateTimeOffset Parse(string? iso8601) {
+            if (string.IsNullOrWhiteSpace(iso8601)) return default;
             return DateTimeOffset.ParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None);
         }
 
@@ -172,7 +173,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// equivalent to the date and time contained in <paramref name="iso8601"/>, if the conversion succeeded, or
         /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParse(string iso8601, out DateTime result) {
+        public static bool TryParse(string? iso8601, out DateTime result) {
             return DateTime.TryParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
         }
 
@@ -186,7 +187,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// equivalent to the date and time contained in <paramref name="iso8601"/>, if the conversion succeeded, or
         /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParse(string iso8601, out DateTimeOffset result) {
+        public static bool TryParse(string? iso8601, out DateTimeOffset result) {
             return DateTimeOffset.TryParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
         }
 
@@ -205,7 +206,7 @@ namespace Skybrud.Essentials.Time.Iso8601 {
         /// <param name="input">The ISO 8601 formatted duration to parse.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="TimeSpan"/> structure if successful; otherwise, <see cref="TimeSpan.Zero"/>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseDuration(string input, out TimeSpan result) {
+        public static bool TryParseDuration(string? input, out TimeSpan result) {
             return XmlSchemaUtils.TryParseDuration(input, out result);
         }
 

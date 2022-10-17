@@ -29,7 +29,13 @@ namespace Skybrud.Essentials.Time.Xml {
         /// <param name="input">The duration using the XML schema format.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="TimeSpan"/> structure if successful; otherwise, <see cref="TimeSpan.Zero"/>.</param>
         /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseDuration(string input, out TimeSpan result) {
+        public static bool TryParseDuration(string? input, out TimeSpan result) {
+
+            if (string.IsNullOrWhiteSpace(input)) {
+                result = default;
+                return false;
+            }
+
             try {
                 result = XmlConvert.ToTimeSpan(input);
                 return true;
@@ -37,6 +43,7 @@ namespace Skybrud.Essentials.Time.Xml {
                 result = default;
                 return false;
             }
+
         }
 
         /// <summary>

@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using Skybrud.Essentials.Common;
 
 namespace Skybrud.Essentials.Time {
 
@@ -66,9 +67,8 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timestamp">A timestamp representing the month to be created.</param>
         public EssentialsMonth(EssentialsTime timestamp) {
 
-            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
-
-            if (timestamp.TimeZone == null) timestamp = timestamp.ToTimeZone(TimeZoneInfo.Local);
+            if (timestamp is null) throw new ArgumentNullException(nameof(timestamp));
+            if (timestamp.TimeZone is null) timestamp = timestamp.ToTimeZone(TimeZoneInfo.Local);
 
             Year = timestamp.Year;
             Month = timestamp.Month;
@@ -84,12 +84,11 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="timestamp">A timestamp representing the month to be created.</param>
         /// <param name="timeZone"></param>
-        public EssentialsMonth(EssentialsTime timestamp, TimeZoneInfo timeZone) {
+        public EssentialsMonth(EssentialsTime timestamp, TimeZoneInfo? timeZone) {
 
-            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
-            if (timeZone == null) throw new ArgumentNullException(nameof(timeZone));
+            if (timestamp is null) throw new ArgumentNullException(nameof(timestamp));
 
-            timestamp = timestamp.ToTimeZone(timeZone);
+            timestamp = timestamp.ToTimeZone(timeZone ?? TimeZoneInfo.Local);
 
             Year = timestamp.Year;
             Month = timestamp.Month;
@@ -107,6 +106,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
         public EssentialsMonth GetPrevious() {
+            if (Start is null) throw new PropertyNotSetException(nameof(Start));
             return new EssentialsMonth(Start.GetStartOfMonth(TimeZoneInfo.Local).AddDays(-1));
         }
 
@@ -116,6 +116,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timeZone">The time zone to be used for calculating the start and end dates.</param>
         /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
         public EssentialsMonth GetPrevious(TimeZoneInfo timeZone) {
+            if (Start is null) throw new PropertyNotSetException(nameof(Start));
             return new EssentialsMonth(Start.GetStartOfMonth(timeZone).AddDays(-1));
         }
 
@@ -124,6 +125,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
         public EssentialsMonth GetNext() {
+            if (End is null) throw new PropertyNotSetException(nameof(End));
             return new EssentialsMonth(End.GetEndOfMonth(TimeZoneInfo.Local).AddDays(+1));
         }
 
@@ -133,6 +135,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timeZone">The time zone to be used for calculating the start and end dates.</param>
         /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
         public EssentialsMonth GetNext(TimeZoneInfo timeZone) {
+            if (End is null) throw new PropertyNotSetException(nameof(End));
             return new EssentialsMonth(End.GetEndOfMonth(timeZone).AddDays(+1));
         }
 

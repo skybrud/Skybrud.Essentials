@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Json {
         /// Gets the internal <see cref="global::Newtonsoft.Json.Linq.JObject"/> the object was created from.
         /// </summary>
         [JsonIgnore]
-        public JObject JObject { get; }
+        public JObject? JObject { get; }
 
         #endregion
 
@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Json {
         /// Initializes a new instance from the specified <paramref name="json"/> object.
         /// </summary>
         /// <param name="json">The instance of <see cref="global::Newtonsoft.Json.Linq.JObject"/> representing the object.</param>
-        protected JsonObjectBase(JObject json) {
+        protected JsonObjectBase(JObject? json) {
             JObject = json;
         }
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
@@ -37,13 +38,13 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets the current date.
         /// </summary>
-        public static EssentialsDateTime Today => new EssentialsDateTime(DateTime.Today);
+        public static EssentialsDateTime Today => new(DateTime.Today);
 
         /// <summary>
         /// Gets a <see cref="EssentialsDateTime"/> object that is set to the current date and time on this computer,
         /// expressed as the Coordinated Universal Time (UTC).
         /// </summary>
-        public static EssentialsDateTime UtcNow => new EssentialsDateTime(DateTime.UtcNow);
+        public static EssentialsDateTime UtcNow => new(DateTime.UtcNow);
 
         /// <summary>
         /// Gets the wrapped <see cref="DateTime"/>.
@@ -155,7 +156,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>ISO 8601</strong> week of this
         /// <see cref="EssentialsDateTime"/>.
         /// </summary>
-        public EssentialsDateWeek Week => new EssentialsDateWeek(DateTime);
+        public EssentialsDateWeek Week => new(DateTime);
 
         /// <summary>
         /// Gets the amount of days in the month.
@@ -579,7 +580,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="value">The value to compare to the current instance.</param>
         /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
         /// parameter.</returns>
-        public int CompareTo(EssentialsDateTime value) {
+        public int CompareTo(EssentialsDateTime? value) {
 #if NET_FRAMEWORK
             return DateTime.CompareTo(value == null ? default(object) : value.DateTime);
 #else
@@ -595,7 +596,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="value">The value to compare to the current instance.</param>
         /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
         /// parameter.</returns>
-        public int CompareTo(object value) {
+        public int CompareTo(object? value) {
 #if NET_FRAMEWORK
             return DateTime.CompareTo(value);
 #else
@@ -790,7 +791,7 @@ namespace Skybrud.Essentials.Time {
         /// <returns>A time interval that is equal to the date and time represented by this instance minus the date
         /// and time represented by value.</returns>
         public TimeSpan Subtract(EssentialsDateTime value) {
-            if (value == null) throw new ArgumentNullException(null);
+            if (value is null) throw new ArgumentNullException(null);
             return DateTime.Subtract(value.DateTime);
         }
 
@@ -942,7 +943,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="str">The string to be parsed.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-        public static EssentialsDateTime Parse(string str) {
+        [return: NotNullIfNotNull("str")]
+        public static EssentialsDateTime? Parse(string? str) {
             return string.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(DateTime.Parse(str));
         }
 
@@ -958,13 +960,21 @@ namespace Skybrud.Essentials.Time {
         /// time. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if the <paramref name="str"/> parameter was converted successfully; otherwise,
         /// <c>false</c>.</returns>
-        public static bool TryParse(string str, out EssentialsDateTime result) {
+        public static bool TryParse(string? str, [NotNullWhen(true)] out EssentialsDateTime? result) {
+
+            if (string.IsNullOrWhiteSpace(str)) {
+                result = null;
+                return false;
+            }
+
             if (DateTime.TryParse(str, out DateTime dt)) {
                 result = new EssentialsDateTime(dt);
                 return true;
             }
+
             result = null;
             return false;
+
         }
 
         /// <summary>
@@ -985,13 +995,21 @@ namespace Skybrud.Essentials.Time {
         /// time. This parameter is passed uninitialized.</param>
         /// <returns><c>true</c> if the <paramref name="str"/> parameter was converted successfully; otherwise,
         /// <c>false</c>.</returns>
-        public static bool TryParse(string str, IFormatProvider provider, DateTimeStyles styles, out EssentialsDateTime result) {
+        public static bool TryParse(string? str, IFormatProvider provider, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsDateTime? result) {
+
+            if (string.IsNullOrWhiteSpace(str)) {
+                result = null;
+                return false;
+            }
+
             if (DateTime.TryParse(str, provider, styles, out DateTime dt)) {
                 result = new EssentialsDateTime(dt);
                 return true;
             }
+
             result = null;
             return false;
+
         }
 
         /// <summary>
@@ -1026,8 +1044,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="str">The <strong>ISO 8601</strong> string to be converted.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-        public static EssentialsDateTime FromIso8601(string str) {
-            return new EssentialsDateTime(TimeUtils.Iso8601ToDateTime(str));
+        [return: NotNullIfNotNull("str")]
+        public static EssentialsDateTime? FromIso8601(string? str) {
+            return string.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(TimeUtils.Iso8601ToDateTime(str!));
         }
 
         /// <summary>
@@ -1055,8 +1074,9 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="str">The <strong>RFC 2822</strong> string to be converted.</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-        public static EssentialsDateTime FromRfc2822(string str) {
-            return new EssentialsDateTime(TimeUtils.Rfc822ToDateTime(str));
+        [return: NotNullIfNotNull("str")]
+        public static EssentialsDateTime? FromRfc2822(string? str) {
+            return string.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(TimeUtils.Rfc822ToDateTime(str!));
         }
 
         #endregion
@@ -1130,16 +1150,16 @@ namespace Skybrud.Essentials.Time {
         /// <param name="d2">The second instance of <see cref="EssentialsDateTime"/>.</param>
         /// <returns><c>true</c> if the two instances represent the same date and time, otherwise
         /// <c>false</c>.</returns>
-        public static bool operator ==(EssentialsDateTime d1, EssentialsDateTime d2) {
+        public static bool operator ==(EssentialsDateTime? d1, EssentialsDateTime? d2) {
 
             // Check for NULL conditions
-            object value1 = d1;
-            object value2 = d2;
-            if (value1 == null) return value2 == null;
-            if (value2 == null) return false;
+            object? value1 = d1;
+            object? value2 = d2;
+            if (value1 is null) return value2 is null;
+            if (value2 is null) return false;
 
             // Pass the comparison on the the == operator of DateTime
-            return d1.DateTime == d2.DateTime;
+            return d1!.DateTime == d2!.DateTime;
 
         }
 
@@ -1151,7 +1171,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="d2">The second instance of <see cref="EssentialsDateTime"/>.</param>
         /// <returns><c>true</c> if the two instances represents a different date and time, otherwise
         /// <c>false</c>.</returns>
-        public static bool operator !=(EssentialsDateTime d1, EssentialsDateTime d2) {
+        public static bool operator !=(EssentialsDateTime? d1, EssentialsDateTime? d2) {
             return !(d1 == d2);
         }
 
@@ -1162,11 +1182,11 @@ namespace Skybrud.Essentials.Time {
         /// <param name="d2">The second instance of <see cref="EssentialsDateTime"/>.</param>
         /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
         /// <c>false</c>.</returns>
-        public static bool operator <(EssentialsDateTime d1, EssentialsDateTime d2) {
+        public static bool operator <(EssentialsDateTime? d1, EssentialsDateTime? d2) {
 
             // Check for NULL conditions
-            if (d1 == null) return d2 != null;
-            if (d2 == null) return false;
+            if (d1 is null) return d2 is not null;
+            if (d2 is null) return false;
 
             // Pass the comparison on the the < operator of DateTime
             return d1.DateTime < d2.DateTime;
@@ -1180,7 +1200,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="d2">The second instance of <see cref="EssentialsDateTime"/>.</param>
         /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
         /// otherwise <c>false</c>.</returns>
-        public static bool operator <=(EssentialsDateTime d1, EssentialsDateTime d2) {
+        public static bool operator <=(EssentialsDateTime? d1, EssentialsDateTime? d2) {
             return d1 < d2 || d1 == d2;
         }
 
@@ -1191,11 +1211,11 @@ namespace Skybrud.Essentials.Time {
         /// <param name="d2">The second instance of <see cref="EssentialsDateTime"/>.</param>
         /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
         /// otherwise <c>false</c>.</returns>
-        public static bool operator >(EssentialsDateTime d1, EssentialsDateTime d2) {
+        public static bool operator >(EssentialsDateTime? d1, EssentialsDateTime? d2) {
 
             // Check for NULL conditions
-            if (d2 == null) return d1 != null;
-            if (d1 == null) return false;
+            if (d2 is null) return d1 is not null;
+            if (d1 is null) return false;
 
             // Pass the comparison on the the > operator of DateTime
             return d1.DateTime > d2.DateTime;
@@ -1209,7 +1229,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="d2">The second instance of <see cref="EssentialsDateTime"/>.</param>
         /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
         /// otherwise <c>false</c>.</returns>
-        public static bool operator >=(EssentialsDateTime d1, EssentialsDateTime d2) {
+        public static bool operator >=(EssentialsDateTime? d1, EssentialsDateTime? d2) {
             return d1 > d2 || d1 == d2;
         }
 
@@ -1218,8 +1238,8 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="obj">The object to compare.</param>
         /// <returns>Whether this <see cref="EssentialsDateTime"/> equals the specified <paramref name="obj"/>.</returns>
-        public override bool Equals(Object obj) {
-            EssentialsDateTime time = obj as EssentialsDateTime;
+        public override bool Equals(object? obj) {
+            EssentialsDateTime? time = obj as EssentialsDateTime;
             return time != null && (this == time);
         }
 

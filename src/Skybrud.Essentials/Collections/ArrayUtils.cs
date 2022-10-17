@@ -1,5 +1,8 @@
 ﻿// ReSharper disable UseArrayEmptyMethod
 
+using System;
+using System.Reflection;
+
 namespace Skybrud.Essentials.Collections {
 
     /// <summary>
@@ -7,7 +10,20 @@ namespace Skybrud.Essentials.Collections {
     /// </summary>
     public static class ArrayUtils {
 
-#if NET46_OR_GREATER || NETSTANDARD1_3_OR_GREATER
+        /// <summary>
+        /// Returns an empty array of the specified <paramref name="type"/>.
+        /// </summary>
+        /// <param name="type">The type of the items in the array.</param>
+        /// <returns>An array of <paramref name="type"/>.</returns>
+        public static Array Empty(Type type) {
+            return (Array) typeof(ArrayUtils)
+                .GetTypeInfo()
+                .GetDeclaredMethod("Empty")!
+                .MakeGenericMethod(type)
+                .Invoke(null, null)!;
+        }
+
+#if NET46_OR_GREATER || NETSTANDARD1_3_OR_GREATER || NET5_0_OR_GREATER
 
 
         /// <summary>
@@ -19,10 +35,12 @@ namespace Skybrud.Essentials.Collections {
         ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.array.empty?view=net-6.0</cref>
         /// </see>
         public static T[] Empty<T>() {
-            return System.Array.Empty<T>();
+            return Array.Empty<T>();
         }
 
 #else
+
+#pragma warning disable CA1825 // Avoid zero-length array allocations
 
         /// <summary>
         /// Returns an empty array.

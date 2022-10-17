@@ -15,7 +15,7 @@ namespace Skybrud.Essentials.Json.Converters {
     public class NameValueCollectionJsonConverter : JsonConverter {
 
         /// <inheritdoc />
-        public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer)  {
+        public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer)  {
 
             // Write a null value if the specified value is not the correct type
             if (value is not NameValueCollection nvc) {
@@ -37,7 +37,7 @@ namespace Skybrud.Essentials.Json.Converters {
         }
 
         /// <inheritdoc />
-        public override object ReadJson(JsonReader reader, Type objectType, object existingValue, JsonSerializer serializer) {
+        public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
 
             // We only care about the value if it's a
             if (reader.TokenType is not JsonToken.StartObject) return null;

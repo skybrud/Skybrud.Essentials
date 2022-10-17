@@ -46,9 +46,9 @@ namespace Skybrud.Essentials.Time.Rfc822 {
         /// </summary>
         /// <param name="rfc822">The string with the RFC 822 formatted date.</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
-        public static DateTimeOffset Parse(string rfc822) {
+        public static DateTimeOffset Parse(string? rfc822) {
 
-            if (string.IsNullOrWhiteSpace(rfc822)) throw new ArgumentNullException(nameof(rfc822));
+            if (string.IsNullOrWhiteSpace(rfc822)) return default;
 
             Match m1 = Regex.Match(rfc822, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
 
@@ -86,7 +86,12 @@ namespace Skybrud.Essentials.Time.Rfc822 {
         /// equivalent to the date and time contained in <paramref name="rfc822"/>, if the conversion succeeded, or
         /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParse(string rfc822, out DateTime result) {
+        public static bool TryParse(string? rfc822, out DateTime result) {
+
+            if (string.IsNullOrWhiteSpace(rfc822)) {
+                result = default;
+                return false;
+            }
 
             if (TryParse(rfc822, out DateTimeOffset dto)) {
                 result = dto.DateTime;
@@ -108,7 +113,7 @@ namespace Skybrud.Essentials.Time.Rfc822 {
         /// equivalent to the date and time contained in <paramref name="rfc822"/>, if the conversion succeeded, or
         /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
         /// <returns><c>true</c> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-        public static bool TryParse(string rfc822, out DateTimeOffset result) {
+        public static bool TryParse(string? rfc822, out DateTimeOffset result) {
 
             if (string.IsNullOrWhiteSpace(rfc822)) {
                 result = default;

@@ -7,7 +7,7 @@
 
         /// <summary>
         /// Gets the equatorial radius of Earth (in metres).
-        /// 
+        ///
         /// Notice: When comparing with various online services, they seem to use 6378137 metres for the equatorial
         /// radius of Earth, while 6378136.6 metres for the equatorial radius is more precise.
         /// </summary>

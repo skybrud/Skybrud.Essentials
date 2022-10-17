@@ -58,7 +58,7 @@ namespace Skybrud.Essentials.Time.Swatch {
         ///     <cref>https://en.wikipedia.org/wiki/Swatch_Internet_Time</cref>
         /// </see>
         public static double ToDouble(EssentialsTime timestamp) {
-            if (timestamp == null) throw new ArgumentNullException(nameof(timestamp));
+            if (timestamp is null) throw new ArgumentNullException(nameof(timestamp));
             return ToDouble(timestamp.DateTimeOffset);
         }
 
