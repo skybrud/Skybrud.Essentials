@@ -275,9 +275,10 @@ namespace Skybrud.Essentials.Enums {
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
         public static bool TryParseEnumArray<T>(string? str, [NotNullWhen(true)] out T[]? array) where T : struct {
 
+            // An empty string (or white space) is treated as a valid value as it may indicate an empty array
             if (string.IsNullOrWhiteSpace(str)) {
-                array = null;
-                return false;
+                array = ArrayUtils.Empty<T>();
+                return true;
             }
 
             List<T> temp = new();
