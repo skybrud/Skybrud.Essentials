@@ -291,6 +291,65 @@ namespace Skybrud.Essentials.Strings {
 
         }
 
+#if NET_FRAMEWORK
+
+        /// <summary>
+        /// URL encodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be encoded.</param>
+        /// <returns>The URL encoded string.</returns>
+        [return: NotNullIfNotNull("str")]
+        public static string? UrlEncode(string? str) {
+            return System.Web.HttpUtility.UrlEncode(str);
+        }
+
+        /// <summary>
+        /// URL decodes a URL string.
+        /// </summary>
+        /// <param name="str">The string to be decoded.</param>
+        /// <returns>The URL decoded string.</returns>
+        [return: NotNullIfNotNull("str")]
+        public static string? UrlDecode(string? str) {
+            return System.Web.HttpUtility.UrlDecode(str);
+        }
+
+        /// <summary>
+        /// HTML encodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be encoded.</param>
+        /// <returns>The encoded string.</returns>
+        [return: NotNullIfNotNull("str")]
+        public static string? HtmlEncode(string? str) {
+            return System.Web.HttpUtility.HtmlEncode(str!);
+        }
+
+        /// <summary>
+        /// HTML decodes the specified <paramref name="str"/>.
+        /// </summary>
+        /// <param name="str">The string to be decoded.</param>
+        /// <returns>The decoded string.</returns>
+        [return: NotNullIfNotNull("str")]
+        public static string? HtmlDecode(string? str) {
+            return System.Web.HttpUtility.HtmlDecode(str);
+        }
+
+#endif
+
+#if I_CAN_HAS_NAME_VALUE_COLLECTION
+
+        /// <summary>
+        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <returns>The URL encoded string.</returns>
+        public static string ToUrlEncodedString(System.Collections.Specialized.NameValueCollection? collection) {
+            return collection == null ? string.Empty : string.Join("&", from string key in collection.Keys select $"{UrlEncode(key)}={UrlEncode(collection[key])}");
+        }
+
+#endif
+
+#if NET_STANDARD || NET5_0_OR_GREATER
+
         /// <summary>
         /// URL encodes the specified <paramref name="str"/>.
         /// </summary>
@@ -329,17 +388,6 @@ namespace Skybrud.Essentials.Strings {
         [return: NotNullIfNotNull("str")]
         public static string? HtmlDecode(string? str) {
             return System.Net.WebUtility.HtmlDecode(str);
-        }
-
-#if I_CAN_HAS_NAME_VALUE_COLLECTION
-
-        /// <summary>
-        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
-        /// </summary>
-        /// <param name="collection">The name value collection.</param>
-        /// <returns>The URL encoded string.</returns>
-        public static string ToUrlEncodedString(System.Collections.Specialized.NameValueCollection? collection) {
-            return collection == null ? string.Empty : string.Join("&", from string key in collection.Keys select $"{UrlEncode(key)}={UrlEncode(collection[key])}");
         }
 
 #endif
