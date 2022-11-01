@@ -1,9 +1,10 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System.Diagnostics.CodeAnalysis;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Strings;
 
-namespace Skybrud.Essentials.Json {
+namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
 
-    internal static class JsonTokenUtils {
+    internal static partial class JsonTokenUtils {
 
         internal static bool GetBoolean(JToken? token) {
             return token?.Type switch {
@@ -32,6 +33,18 @@ namespace Skybrud.Essentials.Json {
         }
 
         internal static bool TryGetBoolean(JToken? token, out bool result) {
+
+            if (TryGetBoolean(token, out bool? temp)) {
+                result = temp.Value;
+                return true;
+            }
+
+            result = default;
+            return false;
+
+        }
+
+        internal static bool TryGetBoolean(JToken? token, [NotNullWhen(true)] out bool? result) {
 
             switch (token?.Type) {
 

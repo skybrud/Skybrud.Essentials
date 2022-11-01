@@ -26,6 +26,10 @@ namespace Skybrud.Essentials.Enums {
             return (T[]) Enum.GetValues(typeof(T));
         }
 
+        internal static T[] GetEnumValuesInternal<T>() where T : Enum {
+            return (T[]) Enum.GetValues(typeof(T));
+        }
+
         /// <summary>
         /// Gets an array of all values of the specified enum <paramref name="type"/>.
         /// </summary>
@@ -50,6 +54,12 @@ namespace Skybrud.Essentials.Enums {
         public static T ParseEnum<T>(string? str) where T : struct {
             if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
             if (TryParseEnum(str, out T value)) return value;
+            throw new EnumParseException(typeof(T), str!);
+        }
+
+        internal static T ParseEnumInternal<T>(string? str) where T : Enum {
+            if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+            if (TryParseEnumInternal(str, out T? value)) return value;
             throw new EnumParseException(typeof(T), str!);
         }
 
@@ -92,6 +102,11 @@ namespace Skybrud.Essentials.Enums {
         public static T ParseEnum<T>(string str, T fallback) where T : struct {
             if (string.IsNullOrWhiteSpace(str)) return fallback;
             return TryParseEnum(str, out T value) ? value : fallback;
+        }
+
+        internal static T ParseEnumInternal<T>(string str, T fallback) where T : Enum {
+            if (string.IsNullOrWhiteSpace(str)) return fallback;
+            return TryParseEnumInternal(str, out T? value) ? value : fallback;
         }
 
         /// <summary>
@@ -157,6 +172,30 @@ namespace Skybrud.Essentials.Enums {
 
             // Parse the enum
             foreach (T v in GetEnumValues<T>()) {
+                string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
+                string? name = v.ToString()?.ToLowerInvariant();
+                if (ordinal != modified && name != modified) continue;
+                value = v;
+                return true;
+            }
+
+            return false;
+
+        }
+
+        internal static bool TryParseEnumInternal<T>(string? str, [NotNullWhen(true)] out T? value) where T : Enum {
+
+            // Initialize "value"
+            value = default;
+
+            // Check whether the specified string is NULL (or white space)
+            if (string.IsNullOrWhiteSpace(str)) return false;
+
+            // Convert "str" to camel case and then lowercase
+            string modified = StringUtils.ToCamelCase(str + string.Empty).ToLowerInvariant();
+
+            // Parse the enum
+            foreach (T v in GetEnumValuesInternal<T>()) {
                 string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
                 string? name = v.ToString()?.ToLowerInvariant();
                 if (ordinal != modified && name != modified) continue;
@@ -376,6 +415,29 @@ namespace Skybrud.Essentials.Enums {
         public static T FromInt32<T>(int input) where T : struct {
             if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
             return (T) Enum.ToObject(typeof(T), input);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> value to an enum of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="input">The input value to be converted.</param>
+        /// <returns>An instance of <typeparamref name="T"/>.</returns>
+        internal static T FromInt32Internal<T>(int input) where T : Enum {
+            if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+            return (T) Enum.ToObject(typeof(T), input);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> value to an enum of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The enum type.</typeparam>
+        /// <param name="input">The input value to be converted.</param>
+        /// <param name="fallback">The fallback value.</param>
+        /// <returns>An instance of <typeparamref name="T"/> representing the converted value if successful; otherwise, <paramref name="fallback"/>.</returns>
+        public static T FromInt32<T>(int input, T fallback) where T : Enum {
+            T value = (T) Enum.ToObject(typeof(T), input);
+            return Enum.IsDefined(typeof(T), value) ? value : fallback;
         }
 
         internal static T FromInt32WhereTIsEnum<T>(int input) where T : Enum {
