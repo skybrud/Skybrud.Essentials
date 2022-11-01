@@ -8,12 +8,11 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Common;
 
-namespace Skybrud.Essentials.Json {
+namespace Skybrud.Essentials.Json.Newtonsoft {
 
     /// <summary>
     /// Utility class with various static helper methods for working with JSON.
     /// </summary>
-    [Obsolete("Use the 'Skybrud.Essentials.Json.Newtonsoft.JsonUtils' class instead.")]
     public static class JsonUtils {
 
         /// <summary>
