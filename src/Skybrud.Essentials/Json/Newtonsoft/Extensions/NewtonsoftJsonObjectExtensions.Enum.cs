@@ -1,5 +1,6 @@
 ﻿using System;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
@@ -13,7 +14,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T GetEnum<T>(this JObject? json, string propertyName) where T : Enum {
-            return Parsing.JsonTokenUtils.GetEnum<T>(json?[propertyName]);
+            return JsonTokenUtils.GetEnum<T>(json?[propertyName]);
         }
 
         /// <summary>
@@ -25,7 +26,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value if the value in the JSON couldn't be parsed.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T GetEnum<T>(this JObject? json, string propertyName, T fallback) where T : Enum {
-            return Parsing.JsonTokenUtils.GetEnum(json?[propertyName], fallback);
+            return JsonTokenUtils.GetEnum(json?[propertyName], fallback);
         }
 
         /// <summary>
@@ -36,7 +37,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T GetEnumByPath<T>(this JObject? json, string path) where T : Enum {
-            return Parsing.JsonTokenUtils.GetEnum<T>(json?.SelectToken(path));
+            return JsonTokenUtils.GetEnum<T>(json?.SelectToken(path));
         }
 
         /// <summary>
@@ -48,7 +49,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value if the value in the JSON couldn't be parsed.</param>
         /// <returns>An instance of <typeparamref name="T"/>.</returns>
         public static T GetEnumByPath<T>(this JObject? json, string path, T fallback) where T : Enum {
-            return Parsing.JsonTokenUtils.GetEnum(json?.SelectToken(path), fallback);
+            return JsonTokenUtils.GetEnum(json?.SelectToken(path), fallback);
         }
 
     }

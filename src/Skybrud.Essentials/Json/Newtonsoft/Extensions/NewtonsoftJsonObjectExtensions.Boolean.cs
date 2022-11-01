@@ -1,5 +1,6 @@
 ﻿using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
@@ -14,7 +15,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
         public static bool GetBoolean(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetBoolean(json?[propertyName]);
+            return JsonTokenUtils.GetBoolean(json?[propertyName]);
         }
 
         /// <summary>
@@ -27,7 +28,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
         public static bool GetBoolean(this JObject? json, string propertyName, bool fallback) {
-            return Parsing.JsonTokenUtils.GetBoolean(json?[propertyName], fallback);
+            return JsonTokenUtils.GetBoolean(json?[propertyName], fallback);
         }
 
         /// <summary>
@@ -39,7 +40,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
         public static bool GetBooleanByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetBoolean(json?.SelectToken(path));
+            return JsonTokenUtils.GetBoolean(json?.SelectToken(path));
         }
 
         /// <summary>
@@ -52,7 +53,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
         public static bool GetBooleanByPath(this JObject? json, string path, bool fallback) {
-            return Parsing.JsonTokenUtils.GetBoolean(json?.SelectToken(path), fallback);
+            return JsonTokenUtils.GetBoolean(json?.SelectToken(path), fallback);
         }
 
         /// <summary>
@@ -63,7 +64,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryGetBoolean(this JObject? json, string propertyName, out bool result) {
-            return Parsing.JsonTokenUtils.TryGetBoolean(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetBoolean(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -74,7 +75,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryGetBoolean(this JObject? json, string propertyName, [NotNullWhen(true)] out bool? result) {
-            return Parsing.JsonTokenUtils.TryGetBoolean(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetBoolean(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -85,7 +86,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryGetBooleanByPath(this JObject? json, string path, out bool result) {
-            return Parsing.JsonTokenUtils.TryGetBoolean(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetBoolean(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -96,7 +97,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryGetBooleanByPath(this JObject? json, string path, [NotNullWhen(true)] out bool? result) {
-            return Parsing.JsonTokenUtils.TryGetBoolean(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetBoolean(json?.SelectToken(path), out result);
         }
 
     }

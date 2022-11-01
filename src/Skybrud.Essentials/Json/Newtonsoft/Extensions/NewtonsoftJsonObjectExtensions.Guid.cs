@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
@@ -15,7 +16,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An instance of <see cref="Guid"/>.</returns>
         public static Guid GetGuid(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetGuid(json?[propertyName]);
+            return JsonTokenUtils.GetGuid(json?[propertyName]);
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="Guid"/>.</returns>
         public static Guid GetGuid(this JObject? json, string propertyName, Guid fallback) {
-            return Parsing.JsonTokenUtils.GetGuid(json?[propertyName], fallback);
+            return JsonTokenUtils.GetGuid(json?[propertyName], fallback);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="Guid"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetGuid<T>(this JObject? json, string propertyName, Func<Guid, T> callback) {
-            return Parsing.JsonTokenUtils.GetGuid(json?[propertyName], callback);
+            return JsonTokenUtils.GetGuid(json?[propertyName], callback);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="Guid"/>.</returns>
         public static Guid GetGuidByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetGuid(json?.SelectToken(path));
+            return JsonTokenUtils.GetGuid(json?.SelectToken(path));
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="Guid"/>.</returns>
         public static Guid GetGuidByPath(this JObject? json, string path, Guid fallback) {
-            return Parsing.JsonTokenUtils.GetGuid(json?.SelectToken(path), fallback);
+            return JsonTokenUtils.GetGuid(json?.SelectToken(path), fallback);
         }
 
         /// <summary>
@@ -83,7 +84,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="Guid"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetGuidByPath<T>(this JObject? json, string path, Func<Guid, T> callback) {
-            return Parsing.JsonTokenUtils.GetGuid(json?.SelectToken(path), callback);
+            return JsonTokenUtils.GetGuid(json?.SelectToken(path), callback);
         }
 
         /// <summary>
@@ -94,7 +95,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetGuid(this JObject? json, string propertyName, out Guid result) {
-            return Parsing.JsonTokenUtils.TryGetGuid(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetGuid(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -105,7 +106,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetGuid(this JObject? json, string propertyName, [NotNullWhen(true)] out Guid? result) {
-            return Parsing.JsonTokenUtils.TryGetGuid(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetGuid(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -116,7 +117,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetGuidByPath(this JObject? json, string path, out Guid result) {
-            return Parsing.JsonTokenUtils.TryGetGuid(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetGuid(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -127,7 +128,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetGuidByPath(this JObject? json, string path, [NotNullWhen(true)] out Guid? result) {
-            return Parsing.JsonTokenUtils.TryGetGuid(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetGuid(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -139,7 +140,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] GetGuidArray(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetGuidArray(json?[propertyName]);
+            return JsonTokenUtils.GetGuidArray(json?[propertyName]);
         }
 
         /// <summary>
@@ -151,7 +152,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An array of <see cref="Guid"/>.</returns>
         public static Guid[] GetGuidArrayByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetGuidArray(json?.SelectToken(path));
+            return JsonTokenUtils.GetGuidArray(json?.SelectToken(path));
         }
 
     }

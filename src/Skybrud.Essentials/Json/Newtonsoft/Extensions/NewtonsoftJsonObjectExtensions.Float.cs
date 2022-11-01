@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
@@ -15,7 +16,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
         public static float GetFloat(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetFloat(json?[propertyName]);
+            return JsonTokenUtils.GetFloat(json?[propertyName]);
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
         public static float GetFloat(this JObject? json, string propertyName, float fallback) {
-            return Parsing.JsonTokenUtils.GetFloat(json?[propertyName], fallback);
+            return JsonTokenUtils.GetFloat(json?[propertyName], fallback);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="float"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetFloat<T>(this JObject? json, string propertyName, Func<float, T> callback) {
-            return Parsing.JsonTokenUtils.GetFloat(json?[propertyName], callback);
+            return JsonTokenUtils.GetFloat(json?[propertyName], callback);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
         public static float GetFloatByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetFloat(json?.SelectToken(path));
+            return JsonTokenUtils.GetFloat(json?.SelectToken(path));
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="float"/>.</returns>
         public static float GetFloatByPath(this JObject? json, string path, float fallback) {
-            return Parsing.JsonTokenUtils.GetFloat(json?.SelectToken(path), fallback);
+            return JsonTokenUtils.GetFloat(json?.SelectToken(path), fallback);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="float"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetFloatByPath<T>(this JObject? json, string path, Func<float, T> callback) {
-            return Parsing.JsonTokenUtils.GetFloat(json?.SelectToken(path), callback);
+            return JsonTokenUtils.GetFloat(json?.SelectToken(path), callback);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="float"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetFloat(this JObject? json, string propertyName, out float result) {
-            return Parsing.JsonTokenUtils.TryGetFloat(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetFloat(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetFloat(this JObject? json, string propertyName, [NotNullWhen(true)] out float? result) {
-            return Parsing.JsonTokenUtils.TryGetFloat(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetFloat(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="float"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetFloatByPath(this JObject? json, string path, out float result) {
-            return Parsing.JsonTokenUtils.TryGetFloat(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetFloat(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="float"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetFloatByPath(this JObject? json, string path, [NotNullWhen(true)] out float? result) {
-            return Parsing.JsonTokenUtils.TryGetFloat(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetFloat(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -136,7 +137,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// </summary>
         /// <returns>An array of <see cref="float"/>.</returns>
         public static float[] GetFloatArray(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetFloatArray(json?[propertyName]);
+            return JsonTokenUtils.GetFloatArray(json?[propertyName]);
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// </summary>
         /// <returns>An array of <see cref="float"/>.</returns>
         public static float[] GetFloatArrayByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetFloatArray(json?.SelectToken(path));
+            return JsonTokenUtils.GetFloatArray(json?.SelectToken(path));
         }
 
     }

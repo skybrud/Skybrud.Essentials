@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
@@ -15,7 +16,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
         public static double GetDouble(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetDouble(json?[propertyName]);
+            return JsonTokenUtils.GetDouble(json?[propertyName]);
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
         public static double GetDouble(this JObject? json, string propertyName, double fallback) {
-            return Parsing.JsonTokenUtils.GetDouble(json?[propertyName], fallback);
+            return JsonTokenUtils.GetDouble(json?[propertyName], fallback);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="double"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetDouble<T>(this JObject? json, string propertyName, Func<double, T> callback) {
-            return Parsing.JsonTokenUtils.GetDouble(json?[propertyName], callback);
+            return JsonTokenUtils.GetDouble(json?[propertyName], callback);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
         public static double GetDoubleByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetDouble(json?.SelectToken(path));
+            return JsonTokenUtils.GetDouble(json?.SelectToken(path));
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="double"/>.</returns>
         public static double GetDoubleByPath(this JObject? json, string path, double fallback) {
-            return Parsing.JsonTokenUtils.GetDouble(json?.SelectToken(path), fallback);
+            return JsonTokenUtils.GetDouble(json?.SelectToken(path), fallback);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="double"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetDoubleByPath<T>(this JObject? json, string path, Func<double, T> callback) {
-            return Parsing.JsonTokenUtils.GetDouble(json?.SelectToken(path), callback);
+            return JsonTokenUtils.GetDouble(json?.SelectToken(path), callback);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="double"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetDouble(this JObject? json, string propertyName, out double result) {
-            return Parsing.JsonTokenUtils.TryGetDouble(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetDouble(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetDouble(this JObject? json, string propertyName, [NotNullWhen(true)] out double? result) {
-            return Parsing.JsonTokenUtils.TryGetDouble(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetDouble(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="double"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetDoubleByPath(this JObject? json, string path, out double result) {
-            return Parsing.JsonTokenUtils.TryGetDouble(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetDouble(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="double"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetDoubleByPath(this JObject? json, string path, [NotNullWhen(true)] out double? result) {
-            return Parsing.JsonTokenUtils.TryGetDouble(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetDouble(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -136,7 +137,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// </summary>
         /// <returns>An array of <see cref="double"/>.</returns>
         public static double[] GetDoubleArray(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetDoubleArray(json?[propertyName]);
+            return JsonTokenUtils.GetDoubleArray(json?[propertyName]);
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// </summary>
         /// <returns>An array of <see cref="double"/>.</returns>
         public static double[] GetDoubleArrayByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetDoubleArray(json?.SelectToken(path));
+            return JsonTokenUtils.GetDoubleArray(json?.SelectToken(path));
         }
 
     }

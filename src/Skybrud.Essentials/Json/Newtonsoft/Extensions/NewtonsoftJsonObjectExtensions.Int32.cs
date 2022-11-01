@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
@@ -15,7 +16,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
         public static int GetInt32(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetInt32(json?[propertyName]);
+            return JsonTokenUtils.GetInt32(json?[propertyName]);
         }
 
         /// <summary>
@@ -28,7 +29,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
         public static int GetInt32(this JObject? json, string propertyName, int fallback) {
-            return Parsing.JsonTokenUtils.GetInt32(json?[propertyName], fallback);
+            return JsonTokenUtils.GetInt32(json?[propertyName], fallback);
         }
 
         /// <summary>
@@ -43,7 +44,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="int"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetInt32<T>(this JObject? json, string propertyName, Func<int, T> callback) {
-            return Parsing.JsonTokenUtils.GetInt32(json?[propertyName], callback);
+            return JsonTokenUtils.GetInt32(json?[propertyName], callback);
         }
 
         /// <summary>
@@ -55,7 +56,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
         public static int GetInt32ByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetInt32(json?.SelectToken(path));
+            return JsonTokenUtils.GetInt32(json?.SelectToken(path));
         }
 
         /// <summary>
@@ -68,7 +69,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="int"/>.</returns>
         public static int GetInt32ByPath(this JObject? json, string path, int fallback) {
-            return Parsing.JsonTokenUtils.GetInt32(json?.SelectToken(path), fallback);
+            return JsonTokenUtils.GetInt32(json?.SelectToken(path), fallback);
         }
 
         /// <summary>
@@ -82,7 +83,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="callback">The callback used for converting the <see cref="int"/> value.</param>
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetInt32ByPath<T>(this JObject? json, string path, Func<int, T> callback) {
-            return Parsing.JsonTokenUtils.GetInt32(json?.SelectToken(path), callback);
+            return JsonTokenUtils.GetInt32(json?.SelectToken(path), callback);
         }
 
         /// <summary>
@@ -93,7 +94,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetInt32(this JObject? json, string propertyName, out int result) {
-            return Parsing.JsonTokenUtils.TryGetInt32(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetInt32(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -104,7 +105,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetInt32(this JObject? json, string propertyName, [NotNullWhen(true)] out int? result) {
-            return Parsing.JsonTokenUtils.TryGetInt32(json?[propertyName], out result);
+            return JsonTokenUtils.TryGetInt32(json?[propertyName], out result);
         }
 
         /// <summary>
@@ -115,7 +116,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <c>0</c>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetInt32ByPath(this JObject? json, string path, out int result) {
-            return Parsing.JsonTokenUtils.TryGetInt32(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetInt32(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -126,7 +127,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetInt32ByPath(this JObject? json, string path, [NotNullWhen(true)] out int? result) {
-            return Parsing.JsonTokenUtils.TryGetInt32(json?.SelectToken(path), out result);
+            return JsonTokenUtils.TryGetInt32(json?.SelectToken(path), out result);
         }
 
         /// <summary>
@@ -136,7 +137,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// </summary>
         /// <returns>An array of <see cref="int"/>.</returns>
         public static int[] GetInt32Array(this JObject? json, string propertyName) {
-            return Parsing.JsonTokenUtils.GetInt32Array(json?[propertyName]);
+            return JsonTokenUtils.GetInt32Array(json?[propertyName]);
         }
 
         /// <summary>
@@ -146,7 +147,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// </summary>
         /// <returns>An array of <see cref="int"/>.</returns>
         public static int[] GetInt32ArrayByPath(this JObject? json, string path) {
-            return Parsing.JsonTokenUtils.GetInt32Array(json?.SelectToken(path));
+            return JsonTokenUtils.GetInt32Array(json?.SelectToken(path));
         }
 
     }
