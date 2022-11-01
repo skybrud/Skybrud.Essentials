@@ -4,6 +4,8 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json;
 using Skybrud.Essentials.Json.Extensions;
 
+#pragma warning disable CS0618
+
 namespace UnitTestProject1.Json {
 
     [TestClass]
@@ -23,7 +25,22 @@ namespace UnitTestProject1.Json {
         }
 
         [TestMethod]
-        public void ParseJsonObject2() {
+        public void ParseJsonObjectUtils() {
+
+            string json1 = "{\"value\":\"1234\"}";
+
+            JObject obj1 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonObject(json1);
+            TestObject obj2 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonObject(json1, TestObject.Parse);
+            TestObject obj3 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonObject<TestObject>(json1);
+
+            Assert.IsNotNull(obj1, "Check #1 failed");
+            Assert.IsNotNull(obj2, "Check #2 failed");
+            Assert.IsNotNull(obj3, "Check #3 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseJsonObjectUtilsLegacy() {
 
             string json1 = "{\"value\":\"1234\"}";
 
@@ -39,6 +56,25 @@ namespace UnitTestProject1.Json {
 
         [TestMethod]
         public void ParseJsonArray() {
+
+            string json1 = "[{\"value\":\"1234\"}]";
+
+            JArray obj1 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonArray(json1);
+            TestObject[] obj2 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonArray(json1, TestObject.Parse);
+            TestObject[] obj3 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonArray<TestObject>(json1);
+
+            Assert.IsNotNull(obj1, "Check #1 failed");
+            Assert.IsNotNull(obj2, "Check #2 failed");
+            Assert.IsNotNull(obj3, "Check #3 failed");
+
+            Assert.AreEqual(1, obj1.Count, "Check #1 failed");
+            Assert.AreEqual(1, obj2.Length, "Check #2 failed");
+            Assert.AreEqual(1, obj3.Length, "Check #3 failed");
+
+        }
+
+        [TestMethod]
+        public void ParseJsonArrayLegacy() {
 
             string json1 = "[{\"value\":\"1234\"}]";
 
