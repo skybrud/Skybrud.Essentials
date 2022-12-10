@@ -25,6 +25,22 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public int Days => IsLeapYear ? 366 : 365;
 
+        /// <summary>
+        /// Gets a reference to an <see cref="EssentialsTime"/> instance representing the start of the year.
+        /// </summary>
+        public new EssentialsTime Start {
+            get => base.Start!;
+            protected set => base.Start = value;
+        }
+
+        /// <summary>
+        /// Gets a reference to an <see cref="EssentialsTime"/> instance representing the end of the year.
+        /// </summary>
+        public new EssentialsTime End {
+            get => base.End!;
+            protected set => base.End = value;
+        }
+
         #region Calendar dates
 
         /// <summary>
