@@ -68,6 +68,32 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void Min() {
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            Assert.AreEqual(year1, EssentialsYear.Min(year1, year2));
+            Assert.AreEqual(year1, EssentialsYear.Min(year2, year1));
+            Assert.AreEqual(year1, EssentialsYear.Min(year1, year1));
+            Assert.AreEqual(year2, EssentialsYear.Min(year2, year2));
+
+        }
+
+        [TestMethod]
+        public void Max() {
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            Assert.AreEqual(year2, EssentialsYear.Max(year1, year2));
+            Assert.AreEqual(year2, EssentialsYear.Max(year2, year1));
+            Assert.AreEqual(year1, EssentialsYear.Max(year1, year1));
+            Assert.AreEqual(year2, EssentialsYear.Max(year2, year2));
+
+        }
+
     }
 
 }
