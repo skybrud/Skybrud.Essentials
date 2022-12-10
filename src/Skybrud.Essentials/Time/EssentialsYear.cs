@@ -363,11 +363,8 @@ namespace Skybrud.Essentials.Time {
         #region Static methods
 
         private static int CompareTo(EssentialsYear? a, EssentialsYear? b) {
-            if (a is null) {
-                return b is null ? 0 : -1;
-            } else {
-                return a.CompareTo(b);
-            }
+            if (a is null) return b is null ? 0 : -1;
+            return a.CompareTo(b);
         }
 
         #endregion
