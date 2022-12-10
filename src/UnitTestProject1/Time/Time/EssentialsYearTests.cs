@@ -36,6 +36,38 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void GetStartOfYear() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            EssentialsTime start1 = year1.GetStartOfYear(romance);
+            EssentialsTime start2 = year2.GetStartOfYear(romance);
+
+            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start1.ToString(), "#1");
+            Assert.AreEqual("2023-01-01T00:00:00.000+01:00", start2.ToString(), "#1");
+
+        }
+
+        [TestMethod]
+        public void GetEndOfYear() {
+
+            TimeZoneInfo romance = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            EssentialsTime start1 = year1.GetEndOfYear(romance);
+            EssentialsTime start2 = year2.GetEndOfYear(romance);
+
+            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", start1.ToString(), "#1");
+            Assert.AreEqual("2023-12-31T23:59:59.999+01:00", start2.ToString(), "#1");
+
+        }
+
     }
 
 }

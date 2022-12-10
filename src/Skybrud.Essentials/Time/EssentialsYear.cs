@@ -208,6 +208,28 @@ namespace Skybrud.Essentials.Time {
 
         #endregion
 
+        #region Member methods
+
+        /// <summary>
+        /// Returns a timestamp representing the start of the year, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
+        public EssentialsTime GetStartOfYear(TimeZoneInfo? timeZone) {
+            return new EssentialsTime(Year, 1, 1, timeZone ?? TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the end of the year, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the end of the year.</returns>
+        public EssentialsTime GetEndOfYear(TimeZoneInfo? timeZone) {
+            return new EssentialsTime(Year, 12, 31, timeZone ?? TimeZoneInfo.Local).GetEndOfDay();
+        }
+
+        #endregion
+
     }
 
 }
