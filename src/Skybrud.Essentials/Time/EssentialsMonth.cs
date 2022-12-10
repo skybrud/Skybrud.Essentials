@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Skybrud.Essentials.Common;
 
 namespace Skybrud.Essentials.Time {
@@ -7,7 +8,7 @@ namespace Skybrud.Essentials.Time {
     /// <summary>
     /// Class describing a month.
     /// </summary>
-    public class EssentialsMonth : EssentialsPeriod {
+    public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<EssentialsMonth> {
 
         #region Properties
 
@@ -155,6 +156,73 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsMonth(End.GetEndOfMonth(timeZone).AddDays(+1));
         }
 
+        /// <summary>
+        /// Compares the value of this instance to a specified object that contains an <see cref="EssentialsMonth"/>
+        /// value, and returns an integer value that indicates whether this instance is earlier than, the same as, or
+        /// later than the specified <see cref="EssentialsMonth"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(object? value) {
+            return value switch {
+                null => 1,
+                EssentialsMonth month => CompareTo(month),
+                _ => throw new ArgumentException("Object must be of type EssentialsDate.")
+            };
+        }
+
+        /// <summary>
+        /// Compares the value of this instance to a specified <see cref="EssentialsMonth"/> value and returns an
+        /// integer value that indicates whether this instance is lower than, the same as, or greater than the
+        /// specified <see cref="EssentialsMonth"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(EssentialsMonth? value) {
+            if (value is null) return 1;
+            if (value.Year < Year) return +1;
+            if (value.Year > Year) return -1;
+            return Month.CompareTo(value.Month);
+        }
+
+        /// <summary>
+        /// Gets whether this <see cref="EssentialsMonth"/> equals the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <param name="obj">The object to compare.</param>
+        /// <returns>Whether this <see cref="EssentialsMonth"/> equals the specified <paramref name="obj"/>.</returns>
+        public override bool Equals(object? obj) {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj is EssentialsMonth month && Equals(month);
+        }
+
+        /// <summary>
+        /// Gets whether this <see cref="EssentialsMonth"/> equals the specified <paramref name="month"/>.
+        /// </summary>
+        /// <param name="month">The month to compare.</param>
+        /// <returns>Whether this <see cref="EssentialsMonth"/> equals the specified <paramref name="month"/>.</returns>
+        public bool Equals(EssentialsMonth? month) {
+            return this == month;
+        }
+
+        /// <summary>
+        /// Gets the hash code for this <see cref="EssentialsDate"/>.
+        /// </summary>
+        /// <returns>The hash code of the object.</returns>
+        public override int GetHashCode() {
+            return Year.GetHashCode() + Month.GetHashCode();
+        }
+
+        /// <summary>
+        /// Returns a string representing the year and month.
+        /// </summary>
+        /// <returns>An instance of <see cref="string"/> representing the year and month.</returns>
+        public override string ToString() {
+            return $"{Year}-{Month:00}";
+        }
+
         #endregion
 
         #region Static methods
@@ -196,6 +264,160 @@ namespace Skybrud.Essentials.Time {
 
             return temp.ToArray();
 
+        }
+
+        /// <summary>
+        /// Returns the month representing the earliest period in time.
+        /// </summary>
+        /// <param name="a">The first month.</param>
+        /// <param name="b">The second month.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Min(EssentialsMonth a, EssentialsMonth b) {
+            return a > b ? b : a;
+        }
+
+        /// <summary>
+        /// Returns the month representing the earliest period in time.
+        /// </summary>
+        /// <param name="a">The first month.</param>
+        /// <param name="b">The second month.</param>
+        /// <param name="c">The third month.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Min(EssentialsMonth a, EssentialsMonth b, EssentialsMonth c) {
+            return Min(a, Min(b, c));
+        }
+
+        /// <summary>
+        /// Returns the month representing the earliest period in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsMonth"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Min(params EssentialsMonth[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the month representing the earliest period in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsMonth"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Min(IEnumerable<EssentialsMonth> values) {
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the month representing the latest period in time.
+        /// </summary>
+        /// <param name="a">The first month.</param>
+        /// <param name="b">The second month.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Max(EssentialsMonth a, EssentialsMonth b) {
+            return a > b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the month representing the latest period in time.
+        /// </summary>
+        /// <param name="a">The first month.</param>
+        /// <param name="b">The second month.</param>
+        /// <param name="c">The third month.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Max(EssentialsMonth a, EssentialsMonth b, EssentialsMonth c) {
+            return Max(a, Max(b, c));
+        }
+
+        /// <summary>
+        /// Returns the month representing the latest period in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsMonth"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Max(params EssentialsMonth[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Max(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the month representing the latest period in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsMonth"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public static EssentialsMonth Max(IEnumerable<EssentialsMonth> values) {
+            return values.Max(x => x)!;
+        }
+
+        private static int CompareTo(EssentialsMonth? a, EssentialsMonth? b) {
+            if (a is null) return b is null ? 0 : -1;
+            return a.CompareTo(b);
+        }
+
+        #endregion
+
+        #region Operator overloading
+
+        /// <summary>
+        /// Gets whether the month represented by two instances of <see cref="EssentialsMonth"/> are equal.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
+        /// <returns><c>true</c> if the two instances represent the same month; otherwise, <c>false</c>.</returns>
+        public static bool operator ==(EssentialsMonth? d1, EssentialsMonth? d2) {
+            return CompareTo(d1, d2) == 0;
+        }
+
+        /// <summary>
+        /// Gets whether the month represented by two instances of <see cref="EssentialsMonth"/> are different
+        /// from each other.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
+        /// <returns><c>true</c> if the two instances represents two different months; otherwise, <c>false</c>.</returns>
+        public static bool operator !=(EssentialsMonth? d1, EssentialsMonth? d2) {
+            return CompareTo(d1, d2) != 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+        /// <c>false</c>.</returns>
+        public static bool operator <(EssentialsMonth? d1, EssentialsMonth? d2) {
+            return CompareTo(d1, d2) < 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator <=(EssentialsMonth? d1, EssentialsMonth? d2) {
+            return CompareTo(d1, d2) <= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >(EssentialsMonth? d1, EssentialsMonth? d2) {
+            return CompareTo(d1, d2) > 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
+        /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+        /// otherwise <c>false</c>.</returns>
+        public static bool operator >=(EssentialsMonth? d1, EssentialsMonth? d2) {
+            return CompareTo(d1, d2) >= 0;
         }
 
         #endregion

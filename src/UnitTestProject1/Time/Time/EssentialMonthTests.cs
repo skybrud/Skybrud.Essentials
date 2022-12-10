@@ -204,6 +204,66 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void Min() {
+
+            EssentialsMonth a = new EssentialsMonth(2022, 1);
+            EssentialsMonth b = new EssentialsMonth(2022, 8);
+            EssentialsMonth c = new EssentialsMonth(2023, 4);
+            EssentialsMonth d = new EssentialsMonth(2023, 8);
+
+            Assert.AreEqual(a, EssentialsMonth.Min(a, a), "#A1");
+            Assert.AreEqual(a, EssentialsMonth.Min(a, b), "#A2");
+            Assert.AreEqual(a, EssentialsMonth.Min(a, c), "#A3");
+            Assert.AreEqual(a, EssentialsMonth.Min(a, d), "#A4");
+
+            Assert.AreEqual(a, EssentialsMonth.Min(b, a), "#B1");
+            Assert.AreEqual(b, EssentialsMonth.Min(b, b), "#B2");
+            Assert.AreEqual(b, EssentialsMonth.Min(b, c), "#B3");
+            Assert.AreEqual(b, EssentialsMonth.Min(b, d), "#B4");
+
+            Assert.AreEqual(a, EssentialsMonth.Min(c, a), "#C1");
+            Assert.AreEqual(b, EssentialsMonth.Min(c, b), "#C2");
+            Assert.AreEqual(c, EssentialsMonth.Min(c, c), "#C3");
+            Assert.AreEqual(c, EssentialsMonth.Min(c, d), "#C4");
+
+            Assert.AreEqual(a, EssentialsMonth.Min(d, a), "#D1");
+            Assert.AreEqual(b, EssentialsMonth.Min(d, b), "#D2");
+            Assert.AreEqual(c, EssentialsMonth.Min(d, c), "#D3");
+            Assert.AreEqual(d, EssentialsMonth.Min(d, d), "#D4");
+
+        }
+
+        [TestMethod]
+        public void Max() {
+
+            EssentialsMonth a = new EssentialsMonth(2022, 1);
+            EssentialsMonth b = new EssentialsMonth(2022, 8);
+            EssentialsMonth c = new EssentialsMonth(2023, 4);
+            EssentialsMonth d = new EssentialsMonth(2023, 8);
+
+            Assert.AreEqual(a, EssentialsMonth.Max(a, a), "#A1");
+            Assert.AreEqual(b, EssentialsMonth.Max(a, b), "#A2");
+            Assert.AreEqual(c, EssentialsMonth.Max(a, c), "#A3");
+            Assert.AreEqual(d, EssentialsMonth.Max(a, d), "#A4");
+
+            Assert.AreEqual(b, EssentialsMonth.Max(b, a), "#B1");
+            Assert.AreEqual(b, EssentialsMonth.Max(b, b), "#B2");
+            Assert.AreEqual(c, EssentialsMonth.Max(b, c), "#B3");
+            Assert.AreEqual(d, EssentialsMonth.Max(b, d), "#B4");
+
+            Assert.AreEqual(c, EssentialsMonth.Max(c, a), "#C1");
+            Assert.AreEqual(c, EssentialsMonth.Max(c, b), "#C2");
+            Assert.AreEqual(c, EssentialsMonth.Max(c, c), "#C3");
+            Assert.AreEqual(d, EssentialsMonth.Max(c, d), "#C4");
+
+            Assert.AreEqual(d, EssentialsMonth.Max(d, a), "#D1");
+            Assert.AreEqual(d, EssentialsMonth.Max(d, b), "#D2");
+            Assert.AreEqual(d, EssentialsMonth.Max(d, c), "#D3");
+            Assert.AreEqual(d, EssentialsMonth.Max(d, d), "#D4");
+
+        }
+
     }
 
 }
