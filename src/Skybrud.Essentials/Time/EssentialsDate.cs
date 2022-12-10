@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Linq;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
@@ -721,6 +723,86 @@ namespace Skybrud.Essentials.Time {
 
             return result is not null;
 
+        }
+
+        /// <summary>
+        /// Returns the date representing the earliest point in time.
+        /// </summary>
+        /// <param name="a">The first date.</param>
+        /// <param name="b">The second date.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Min(EssentialsDate a, EssentialsDate b) {
+            return a > b ? b : a;
+        }
+
+        /// <summary>
+        /// Returns the date representing the earliest point in time.
+        /// </summary>
+        /// <param name="a">The first date.</param>
+        /// <param name="b">The second date.</param>
+        /// <param name="c">The third date.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Min(EssentialsDate a, EssentialsDate b, EssentialsDate c) {
+            return Min(a, Min(b, c));
+        }
+
+        /// <summary>
+        /// Returns the date representing the earliest point in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsDate"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Min(params EssentialsDate[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the date representing the earliest point in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsDate"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Min(IEnumerable<EssentialsDate> values) {
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the date representing the latest point in time.
+        /// </summary>
+        /// <param name="a">The first date.</param>
+        /// <param name="b">The second date.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Max(EssentialsDate a, EssentialsDate b) {
+            return a > b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the date representing the latest point in time.
+        /// </summary>
+        /// <param name="a">The first date.</param>
+        /// <param name="b">The second date.</param>
+        /// <param name="c">The third date.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Max(EssentialsDate a, EssentialsDate b, EssentialsDate c) {
+            return Max(a, Max(b, c));
+        }
+
+        /// <summary>
+        /// Returns the date representing the latest point in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsDate"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Max(params EssentialsDate[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Max(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the date representing the latest point in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsDate"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public static EssentialsDate Max(IEnumerable<EssentialsDate> values) {
+            return values.Max(x => x)!;
         }
 
         private static int CompareTo(EssentialsDate? d1, EssentialsDate? d2) {
