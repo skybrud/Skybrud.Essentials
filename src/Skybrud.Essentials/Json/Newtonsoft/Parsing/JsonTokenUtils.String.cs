@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Strings.Extensions;
@@ -30,7 +31,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
                 case JTokenType.Integer:
                 case JTokenType.Float:
                 case JTokenType.Guid:
-                    result = token.ToString();
+                    result = string.Format(CultureInfo.InvariantCulture, "{0}", token);
                     return true;
 
                 case JTokenType.Date:
