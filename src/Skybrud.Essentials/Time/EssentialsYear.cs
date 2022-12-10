@@ -213,12 +213,28 @@ namespace Skybrud.Essentials.Time {
         #region Member methods
 
         /// <summary>
+        /// Returns a timestamp representing the start of the year, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
+        public EssentialsTime GetStartOfYear() {
+            return GetStartOfYear(TimeZoneInfo.Local);
+        }
+
+        /// <summary>
         /// Returns a timestamp representing the start of the year, according to the specified <paramref name="timeZone"/>.
         /// </summary>
         /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
         public EssentialsTime GetStartOfYear(TimeZoneInfo? timeZone) {
             return new EssentialsTime(Year, 1, 1, timeZone ?? TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the end of the year, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the end of the year.</returns>
+        public EssentialsTime GetEndOfYear() {
+            return GetEndOfYear(TimeZoneInfo.Local);
         }
 
         /// <summary>
@@ -348,6 +364,15 @@ namespace Skybrud.Essentials.Time {
             if (ReferenceEquals(null, obj)) return false;
             if (ReferenceEquals(this, obj)) return true;
             return obj is EssentialsYear month && Equals(month);
+        }
+
+        /// <summary>
+        /// Gets whether this <see cref="EssentialsYear"/> equals the specified <paramref name="year"/>.
+        /// </summary>
+        /// <param name="year">The year to compare.</param>
+        /// <returns>Whether this <see cref="EssentialsYear"/> equals the specified <paramref name="year"/>.</returns>
+        public bool Equals(EssentialsYear? year) {
+            return this == year;
         }
 
         /// <summary>

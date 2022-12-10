@@ -2,6 +2,8 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 
+// ReSharper disable EqualExpressionComparison
+
 namespace UnitTestProject1.Time.Time {
 
     [TestClass]
@@ -48,7 +50,23 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime start2 = year2.GetStartOfYear(romance);
 
             Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start1.ToString(), "#1");
-            Assert.AreEqual("2023-01-01T00:00:00.000+01:00", start2.ToString(), "#1");
+            Assert.AreEqual("2023-01-01T00:00:00.000+01:00", start2.ToString(), "#2");
+
+        }
+
+        [TestMethod]
+        public void GetStartOfYearLocal() {
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            EssentialsTime start11 = year1.GetStartOfYear();
+            EssentialsTime start12 = year1.GetStartOfYear(TimeZoneInfo.Local);
+            Assert.AreEqual(start11, start12, "#1");
+
+            EssentialsTime start21 = year2.GetStartOfYear();
+            EssentialsTime start22 = year2.GetStartOfYear(TimeZoneInfo.Local);
+            Assert.AreEqual(start21, start22, "#2");
 
         }
 
@@ -60,11 +78,53 @@ namespace UnitTestProject1.Time.Time {
             EssentialsYear year1 = new EssentialsYear(2022);
             EssentialsYear year2 = new EssentialsYear(2023);
 
-            EssentialsTime start1 = year1.GetEndOfYear(romance);
-            EssentialsTime start2 = year2.GetEndOfYear(romance);
+            EssentialsTime end1 = year1.GetEndOfYear(romance);
+            EssentialsTime end2 = year2.GetEndOfYear(romance);
 
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", start1.ToString(), "#1");
-            Assert.AreEqual("2023-12-31T23:59:59.999+01:00", start2.ToString(), "#1");
+            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end1.ToString(), "#1");
+            Assert.AreEqual("2023-12-31T23:59:59.999+01:00", end2.ToString(), "#2");
+
+        }
+
+        [TestMethod]
+        public void GetEndOfYearLocal() {
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            EssentialsTime end11 = year1.GetEndOfYear();
+            EssentialsTime end12 = year1.GetEndOfYear(TimeZoneInfo.Local);
+            Assert.AreEqual(end11, end12, "#1");
+
+            EssentialsTime end21 = year2.GetEndOfYear();
+            EssentialsTime end22 = year2.GetEndOfYear(TimeZoneInfo.Local);
+            Assert.AreEqual(end21, end22, "#2");
+
+        }
+
+        [TestMethod]
+        public void Equals() {
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            Assert.IsTrue(year1.Equals(year1), "#1");
+            Assert.IsTrue(year2.Equals(year2), "#2");
+            Assert.IsFalse(year1.Equals(year2), "#3");
+            Assert.IsFalse(year2.Equals(year1), "#3");
+
+        }
+
+        [TestMethod]
+        public void EqualsOperator() {
+
+            EssentialsYear year1 = new EssentialsYear(2022);
+            EssentialsYear year2 = new EssentialsYear(2023);
+
+            Assert.IsTrue(year1 == year1, "#1");
+            Assert.IsTrue(year2 == year2, "#2");
+            Assert.IsFalse(year1 == year2, "#3");
+            Assert.IsFalse(year2 == year1, "#3");
 
         }
 
