@@ -7,6 +7,7 @@
     <BuildInParallel>false</BuildInParallel>
     <LangVersion>10.0</LangVersion>
     <Nullable>enable</Nullable>
+    <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
 
   <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
