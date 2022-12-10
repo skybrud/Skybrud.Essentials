@@ -10,6 +10,8 @@ using Skybrud.Essentials.Reflection;
 using Skybrud.Essentials.Reflection.Extensions;
 using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
+// ReSharper disable RedundantNameQualifier
+
 #pragma warning disable 618
 
 namespace UnitTestProject1.Reflection {
@@ -88,8 +90,11 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void MemberIsObsolete() {
 
-            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(JsonObjectBase)));
-            Assert.IsFalse(ReflectionUtils.IsObsolete<JsonObjectBase>());
+            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.JsonObjectBase)));
+            Assert.IsTrue(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.JsonObjectBase>());
+
+            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase)));
+            Assert.IsFalse(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase>());
 
             Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(EssentialsLocation)));
             Assert.IsTrue(ReflectionUtils.IsObsolete<EssentialsLocation>());
@@ -102,8 +107,11 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void TypeIsObsolete() {
 
-            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(JsonObjectBase)));
-            Assert.IsFalse(ReflectionUtils.IsObsolete<JsonObjectBase>());
+            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.JsonObjectBase)));
+            Assert.IsTrue(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.JsonObjectBase>());
+
+            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase)));
+            Assert.IsFalse(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase>());
 
             Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(EssentialsLocation)));
             Assert.IsTrue(ReflectionUtils.IsObsolete<EssentialsLocation>());
@@ -124,11 +132,11 @@ namespace UnitTestProject1.Reflection {
 
             bool success3 = ReflectionUtils.HasCustomAttribute(EnumTest.WithDescription, out DescriptionAttribute result3);
             Assert.AreEqual(true, success3);
-            Assert.AreEqual("A description.", result3.Description);
+            Assert.AreEqual("A description.", result3?.Description);
 
             bool success4 = EnumTest.WithDescription.HasCustomAttribute(out DescriptionAttribute result4);
             Assert.AreEqual(true, success4);
-            Assert.AreEqual("A description.", result4.Description);
+            Assert.AreEqual("A description.", result4?.Description);
 
         }
 
@@ -138,8 +146,8 @@ namespace UnitTestProject1.Reflection {
             bool success = ReflectionUtils.HasCustomAttributes(EnumTest.WithDescription, out DescriptionAttribute[] result);
 
             Assert.AreEqual(true, success);
-            Assert.AreEqual(1, result.Length);
-            Assert.AreEqual("A description.", result[0].Description);
+            Assert.AreEqual(1, result?.Length);
+            Assert.AreEqual("A description.", result?[0].Description);
 
         }
 
