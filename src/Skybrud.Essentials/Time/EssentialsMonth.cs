@@ -31,6 +31,22 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public string LocalMonthName => TimeUtils.GetLocalMonthName(Month);
 
+        /// <summary>
+        /// Gets a reference to an <see cref="EssentialsTime"/> instance representing the start of the month.
+        /// </summary>
+        public new EssentialsTime Start {
+            get => base.Start!;
+            protected set => base.Start = value;
+        }
+
+        /// <summary>
+        /// Gets a reference to an <see cref="EssentialsTime"/> instance representing the end of the month.
+        /// </summary>
+        public new EssentialsTime End {
+            get => base.End!;
+            protected set => base.End = value;
+        }
+
         #endregion
 
         #region Constructors
