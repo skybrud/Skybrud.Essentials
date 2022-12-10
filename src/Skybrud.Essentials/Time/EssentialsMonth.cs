@@ -157,6 +157,74 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Returns a timestamp representing the start of the month, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the month.</returns>
+        public EssentialsTime GetStartOfMonth() {
+            return GetStartOfMonth(TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the start of the month, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the month.</returns>
+        public EssentialsTime GetStartOfMonth(TimeZoneInfo? timeZone) {
+            return new EssentialsTime(Year, Month, 1, timeZone ?? TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the start of the year, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
+        public EssentialsTime GetStartOfYear() {
+            return GetStartOfYear(TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the start of the year, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
+        public EssentialsTime GetStartOfYear(TimeZoneInfo? timeZone) {
+            return new EssentialsTime(Year, 1, 1, timeZone ?? TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the end of the month, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the end of the month.</returns>
+        public EssentialsTime GetEndOfMonth() {
+            return GetEndOfMonth(TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the end of the month, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the end of the month.</returns>
+        public EssentialsTime GetEndOfMonth(TimeZoneInfo? timeZone) {
+            return new EssentialsTime(Year, Month, DateTime.DaysInMonth(Year, Month), timeZone ?? TimeZoneInfo.Local).GetEndOfDay();
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the end of the year, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the end of the year.</returns>
+        public EssentialsTime GetEndOfYear() {
+            return GetEndOfYear(TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the end of the year, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the end of the year.</returns>
+        public EssentialsTime GetEndOfYear(TimeZoneInfo? timeZone) {
+            return new EssentialsTime(Year, 12, 31, timeZone ?? TimeZoneInfo.Local).GetEndOfDay();
+        }
+
+        /// <summary>
         /// Compares the value of this instance to a specified object that contains an <see cref="EssentialsMonth"/>
         /// value, and returns an integer value that indicates whether this instance is earlier than, the same as, or
         /// later than the specified <see cref="EssentialsMonth"/> value.
