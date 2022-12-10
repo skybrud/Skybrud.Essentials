@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
@@ -21,9 +22,9 @@ namespace UnitTestProject1.Json.Converters {
 
             var obj = json.ToObject<Sample>();
 
-            Assert.AreEqual("123.000", obj.Alpha.TotalSeconds.ToString("N3"), "#1");
-            Assert.AreEqual("0.123", obj.Bravo.TotalSeconds.ToString("N3"), "#2");
-            Assert.AreEqual("123.000", obj.Charlie.TotalSeconds.ToString("N3"), "#3");
+            Assert.AreEqual("123.000", obj.Alpha.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture), "#1");
+            Assert.AreEqual("0.123", obj.Bravo.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture), "#2");
+            Assert.AreEqual("123.000", obj.Charlie.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture), "#3");
 
         }
 
@@ -34,9 +35,9 @@ namespace UnitTestProject1.Json.Converters {
 
             var obj = json.ToObject<Sample>();
 
-            Assert.AreEqual("0.000", obj.Alpha.TotalSeconds.ToString("N3"), "#1");
-            Assert.AreEqual("0.000", obj.Bravo.TotalSeconds.ToString("N3"), "#2");
-            Assert.AreEqual("0.000", obj.Charlie.TotalSeconds.ToString("N3"), "#3");
+            Assert.AreEqual("0.000", obj.Alpha.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture), "#1");
+            Assert.AreEqual("0.000", obj.Bravo.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture), "#2");
+            Assert.AreEqual("0.000", obj.Charlie.TotalSeconds.ToString("N3", CultureInfo.InvariantCulture), "#3");
 
         }
 
