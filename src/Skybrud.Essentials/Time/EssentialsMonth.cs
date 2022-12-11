@@ -236,7 +236,7 @@ namespace Skybrud.Essentials.Time {
             return value switch {
                 null => 1,
                 EssentialsMonth month => CompareTo(month),
-                _ => throw new ArgumentException("Object must be of type EssentialsDate.")
+                _ => throw new ArgumentException("Object must be of type EssentialsMonth.")
             };
         }
 
