@@ -52,6 +52,18 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="start"/> and <paramref name="end"/> dates.
+        /// </summary>
+        /// <param name="start">The start date.</param>
+        /// <param name="end">The end date.</param>
+        /// <param name="timeZone">The time zone to be used.</param>
+        public EssentialsPeriod(EssentialsTime? start, EssentialsTime? end, TimeZoneInfo? timeZone) {
+            timeZone ??= TimeZoneInfo.Local;
+            Start = start?.ToTimeZone(timeZone);
+            End = end?.ToTimeZone(timeZone);
+        }
+
+        /// <summary>
         /// Initializes a new instance based on the specified <paramref name="start"/> and <paramref name="end"/>
         /// dates. Both dates will be adjusted according to the specified <paramref name="timeZone"/>.
         /// </summary>
