@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using System.Linq;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
@@ -1360,6 +1362,86 @@ namespace Skybrud.Essentials.Time {
         public static EssentialsTime FromTicks(long ticks, TimeZoneInfo? timeZone) {
             DateTime time = new(ticks);
             return new EssentialsTime(time, timeZone ?? TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the earliest point in time.
+        /// </summary>
+        /// <param name="a">The first timestamp.</param>
+        /// <param name="b">The second timestamp.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Min(EssentialsTime a, EssentialsTime b) {
+            return a > b ? b : a;
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the earliest point in time.
+        /// </summary>
+        /// <param name="a">The first timestamp.</param>
+        /// <param name="b">The second timestamp.</param>
+        /// <param name="c">The third timestamp.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Min(EssentialsTime a, EssentialsTime b, EssentialsTime c) {
+            return Min(a, Min(b, c));
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the earliest point in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsTime"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Min(params EssentialsTime[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the earliest point in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsTime"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Min(IEnumerable<EssentialsTime> values) {
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the latest point in time.
+        /// </summary>
+        /// <param name="a">The first timestamp.</param>
+        /// <param name="b">The second timestamp.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Max(EssentialsTime a, EssentialsTime b) {
+            return a > b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the latest point in time.
+        /// </summary>
+        /// <param name="a">The first timestamp.</param>
+        /// <param name="b">The second timestamp.</param>
+        /// <param name="c">The third timestamp.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Max(EssentialsTime a, EssentialsTime b, EssentialsTime c) {
+            return Max(a, Max(b, c));
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the latest point in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsTime"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Max(params EssentialsTime[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Max(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the timestamp representing the latest point in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsTime"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+        public static EssentialsTime Max(IEnumerable<EssentialsTime> values) {
+            return values.Max(x => x)!;
         }
 
         #endregion

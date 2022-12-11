@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 
@@ -202,6 +203,59 @@ namespace UnitTestProject1.Time {
 
             Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end3.Iso8601);
             Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end4.Iso8601);
+
+        }
+
+        [TestMethod]
+        public void Min() {
+
+            TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsTime time1 = new EssentialsTime(1988, 8, 17, 8, 35, 0, timeZone);
+            EssentialsTime time2 = new EssentialsTime(2022, 12, 24, 18, 0, 0, timeZone);
+            EssentialsTime time3 = new EssentialsTime(2022, 12, 25, 8, 0, 0, timeZone);
+
+            Assert.AreEqual(time1, EssentialsTime.Min(time1, time1), "#1a");
+            Assert.AreEqual(time1, EssentialsTime.Min(time1, time2), "#1b");
+            Assert.AreEqual(time1, EssentialsTime.Min(time1, time3), "#1c");
+
+            Assert.AreEqual(time1, EssentialsTime.Min(time2, time1), "#2a");
+            Assert.AreEqual(time2, EssentialsTime.Min(time2, time2), "#2b");
+            Assert.AreEqual(time2, EssentialsTime.Min(time2, time3), "#2c");
+
+            Assert.AreEqual(time1, EssentialsTime.Min(time3, time1), "#1a");
+            Assert.AreEqual(time2, EssentialsTime.Min(time3, time2), "#2a");
+            Assert.AreEqual(time3, EssentialsTime.Min(time3, time3), "#3a");
+
+            Assert.AreEqual(time1, EssentialsTime.Min(time1, time2, time3), "#4");
+
+            Assert.AreEqual(time1, EssentialsTime.Min(new List<EssentialsTime> { time1, time2, time3 }), "#5");
+        }
+
+        [TestMethod]
+        public void Max() {
+
+            TimeZoneInfo timeZone = TimeZoneInfo.FindSystemTimeZoneById("Romance Standard Time");
+
+            EssentialsTime time1 = new EssentialsTime(1988, 8, 17, 8, 35, 0, timeZone);
+            EssentialsTime time2 = new EssentialsTime(2022, 12, 24, 18, 0, 0, timeZone);
+            EssentialsTime time3 = new EssentialsTime(2022, 12, 25, 8, 0, 0, timeZone);
+
+            Assert.AreEqual(time1, EssentialsTime.Max(time1, time1), "#1a");
+            Assert.AreEqual(time2, EssentialsTime.Max(time1, time2), "#1b");
+            Assert.AreEqual(time3, EssentialsTime.Max(time1, time3), "#1c");
+
+            Assert.AreEqual(time2, EssentialsTime.Max(time2, time1), "#2a");
+            Assert.AreEqual(time2, EssentialsTime.Max(time2, time2), "#2b");
+            Assert.AreEqual(time3, EssentialsTime.Max(time2, time3), "#2c");
+
+            Assert.AreEqual(time3, EssentialsTime.Max(time3, time1), "#1a");
+            Assert.AreEqual(time3, EssentialsTime.Max(time3, time2), "#2a");
+            Assert.AreEqual(time3, EssentialsTime.Max(time3, time3), "#3a");
+
+            Assert.AreEqual(time3, EssentialsTime.Max(time1, time2, time3), "#4");
+
+            Assert.AreEqual(time3, EssentialsTime.Max(new List<EssentialsTime> { time1, time2, time3 }), "#5");
 
         }
 
