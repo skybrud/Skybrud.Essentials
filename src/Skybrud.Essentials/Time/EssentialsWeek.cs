@@ -98,7 +98,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = Iso8601Utils.GetWeekNumber(timestamp);
             Start = TimeUtils.GetStartOfWeek(timestamp);
             End = TimeUtils.GetEndOfWeek(timestamp);
-            Year = GetYear();
+            Year = GetYearNumber();
         }
 
         /// <summary>
@@ -110,7 +110,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = Iso8601Utils.GetWeekNumber(timestamp);
             Start = TimeUtils.GetStartOfWeek(timestamp, timeZone);
             End = TimeUtils.GetEndOfWeek(timestamp, timeZone);
-            Year = GetYear();
+            Year = GetYearNumber();
         }
 
         /// <summary>
@@ -121,7 +121,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = timestamp.WeekNumber;
             Start = timestamp.GetStartOfWeek();
             End = timestamp.GetEndOfWeek();
-            Year = GetYear();
+            Year = GetYearNumber();
         }
 
         /// <summary>
@@ -132,7 +132,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = date.WeekNumber;
             Start = date.GetStartOfWeek();
             End = date.GetEndOfWeek();
-            Year = GetYear();
+            Year = GetYearNumber();
         }
 
         /// <summary>
@@ -144,7 +144,7 @@ namespace Skybrud.Essentials.Time {
             WeekNumber = date.WeekNumber;
             Start = date.GetStartOfWeek(timeZone);
             End = date.GetEndOfWeek(timeZone);
-            Year = GetYear();
+            Year = GetYearNumber();
         }
 
         /// <summary>
@@ -156,6 +156,8 @@ namespace Skybrud.Essentials.Time {
         public EssentialsWeek(int year, int month, int day) : this(new EssentialsDate(year, month, day)) { }
 
         #endregion
+
+        #region Member methods
 
         /// <summary>
         /// Gets a new instance of <see cref="EssentialsWeek"/> representing the previous week.
@@ -196,15 +198,25 @@ namespace Skybrud.Essentials.Time {
 
         }
 
+        /// <summary>
+        /// Returns an instance of <see cref="EssentialsYear"/> representing the ISO 8601 year of this week.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsYear"/>.</returns>
+        public EssentialsYear GetYear() {
+            return new EssentialsYear(Year);
+        }
+
         IEnumerator IEnumerable.GetEnumerator() {
             return GetEnumerator();
         }
 
-        private int GetYear() {
+        private int GetYearNumber() {
             if (End.Month == 1 && WeekNumber == 1) return End.Year;
             if (Start.Month == 12 && WeekNumber >= 50) return Start.Year;
             return Start.Year;
         }
+
+        #endregion
 
     }
 

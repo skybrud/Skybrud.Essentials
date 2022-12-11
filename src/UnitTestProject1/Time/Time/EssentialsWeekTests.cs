@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Linq;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 
@@ -301,6 +300,21 @@ namespace UnitTestProject1.Time.Time {
 
             Assert.AreEqual(DayOfWeek.Sunday, days[6].DayOfWeek);
             Assert.AreEqual("2019-10-27", days[6].ToString());
+
+        }
+
+        [TestMethod]
+        public void GetYear() {
+
+            EssentialsTime time = new EssentialsTime(2023, 1, 1, TimeSpan.Zero);
+
+            EssentialsWeek week = new EssentialsWeek(time);
+
+            EssentialsYear year = week.GetYear();
+
+            Assert.AreEqual(2022, week.Year);
+            Assert.AreEqual(52, week.WeekNumber);
+            Assert.AreEqual(2022, year.Year);
 
         }
 
