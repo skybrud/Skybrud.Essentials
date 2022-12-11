@@ -318,6 +318,24 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void Parse() {
+
+            EssentialsWeek week1 = EssentialsWeek.Parse("2022-W52");
+            EssentialsWeek week2 = EssentialsWeek.Parse("2022W52");
+            EssentialsWeek week3 = EssentialsWeek.Parse("2022-52");
+
+            Assert.AreEqual(2022, week1?.Year);
+            Assert.AreEqual(52, week1?.WeekNumber);
+
+            Assert.AreEqual(2022, week2?.Year);
+            Assert.AreEqual(52, week2?.WeekNumber);
+
+            Assert.AreEqual(2022, week3?.Year);
+            Assert.AreEqual(52, week3?.WeekNumber);
+
+        }
+
     }
 
 }

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time {
@@ -214,6 +216,50 @@ namespace Skybrud.Essentials.Time {
             if (End.Month == 1 && WeekNumber == 1) return End.Year;
             if (Start.Month == 12 && WeekNumber >= 50) return Start.Year;
             return Start.Year;
+        }
+
+        #endregion
+
+        #region Static methods
+
+        /// <summary>
+        /// Parses the specified <paramref name="input"/> string representation of an ISO 8601 week into an instance of
+        /// <see cref="EssentialsWeek"/>. If <paramref name="input"/> is either <see langword="null"/> or white space,
+        /// <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string identifying the ISO 8601 week.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek? Parse(string input) {
+            if (string.IsNullOrWhiteSpace(input)) return null;
+            if (TryParse(input, out EssentialsWeek? result)) return result;
+            throw new Exception("Specified input string is not a valid week.");
+        }
+
+        /// <summary>
+        /// Tries to convert the specified string representation of an ISO 8601 week to its <see cref="EssentialsWeek"/>
+        /// equivalent, and returns a value that indicates whether the conversion succeeded.
+        /// </summary>
+        /// <param name="input">A string that contains the week to convert.</param>
+        /// <param name="result">When the method returns, contains the <see cref="EssentialsWeek"/> value equivalent to
+        /// the week, if the conversion succeeded, or <see langword="null"/>, if the conversion failed. The conversion
+        /// fails if the input parameter is <see langword="null"/> or does not contain a valid string representation of
+        /// a date. This parameter is passed uninitialized.</param>
+        /// <returns><see langword="true"/> if the input parameter is successfully converted; otherwise, <see langword="false"/>.</returns>
+        public static bool TryParse(string input, [NotNullWhen(true)] out EssentialsWeek? result) {
+
+            if (string.IsNullOrWhiteSpace(input)) {
+                result = null;
+                return false;
+            }
+
+            if (RegexUtils.IsMatch(input, "^([0-9]{4})(-|-W|W)([0-9]{1,2})$", out int year, out int _, out int week)) {
+                result = new EssentialsWeek(year, week);
+                return true;
+            }
+
+            result = null;
+            return false;
+
         }
 
         #endregion
