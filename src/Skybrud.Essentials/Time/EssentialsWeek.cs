@@ -179,6 +179,40 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Returns a timestamp representing the start of the week, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the week.</returns>
+        public EssentialsTime GetStartOfWeek() {
+            return GetStartOfWeek(null);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the start of the month, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the month.</returns>
+        public EssentialsTime GetStartOfWeek(TimeZoneInfo? timeZone) {
+            return Start.ToTimeZone(timeZone ?? TimeZoneInfo.Local);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the start of the year, according to the local time zone.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
+        public EssentialsTime GetEndOfWeek() {
+            return GetEndOfWeek(null);
+        }
+
+        /// <summary>
+        /// Returns a timestamp representing the start of the year, according to the specified <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
+        /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
+        public EssentialsTime GetEndOfWeek(TimeZoneInfo? timeZone) {
+            return End.ToTimeZone(timeZone ?? TimeZoneInfo.Local);
+        }
+
+        /// <summary>
         /// Returns a string representation of the ISO 8601 week - eg. <c>2022-W49</c> or <c>2023-W01</c>.
         /// </summary>
         /// <returns></returns>
