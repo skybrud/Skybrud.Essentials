@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Time.Iso8601;
 
@@ -10,7 +11,7 @@ namespace Skybrud.Essentials.Time {
     /// <summary>
     /// Class representing a week as defined by the <strong>ISO 8601</strong> specification.
     /// </summary>
-    public class EssentialsWeek : IEnumerable<EssentialsDate> {
+    public class EssentialsWeek : IEnumerable<EssentialsDate>, IComparable, IComparable<EssentialsWeek> {
 
         #region Properties
 
@@ -218,6 +219,64 @@ namespace Skybrud.Essentials.Time {
             return Start.Year;
         }
 
+        /// <summary>
+        /// Compares the value of this instance to a specified object that contains an <see cref="EssentialsWeek"/>
+        /// value, and returns an integer value that indicates whether this instance is earlier than, the same as, or
+        /// later than the specified <see cref="EssentialsWeek"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/> parameter.</returns>
+        public int CompareTo(object? value) {
+            return value switch {
+                null => 1,
+                EssentialsWeek week => CompareTo(week),
+                _ => throw new ArgumentException("Object must be of type EssentialsWeek.")
+            };
+        }
+
+        /// <summary>
+        /// Compares the value of this instance to a specified <see cref="EssentialsMonth"/> value and returns an
+        /// integer value that indicates whether this instance is lower than, the same as, or greater than the
+        /// specified <see cref="EssentialsMonth"/> value.
+        /// </summary>
+        /// <param name="value">The value to compare to the current instance.</param>
+        /// <returns>A signed number indicating the relative values of this instance and the <paramref name="value"/>
+        /// parameter.</returns>
+        public int CompareTo(EssentialsWeek? value) {
+            if (value is null) return 1;
+            if (value.Year < Year) return +1;
+            if (value.Year > Year) return -1;
+            return WeekNumber.CompareTo(value.WeekNumber);
+        }
+
+        /// <summary>
+        /// Gets whether this <see cref="EssentialsWeek"/> equals the specified <paramref name="obj"/>.
+        /// </summary>
+        /// <param name="obj">The object to compare.</param>
+        /// <returns>Whether this <see cref="EssentialsWeek"/> equals the specified <paramref name="obj"/>.</returns>
+        public override bool Equals(object? obj) {
+            if (ReferenceEquals(null, obj)) return false;
+            if (ReferenceEquals(this, obj)) return true;
+            return obj is EssentialsWeek week && Equals(week);
+        }
+
+        /// <summary>
+        /// Gets whether this <see cref="EssentialsWeek"/> equals the specified <paramref name="week"/>.
+        /// </summary>
+        /// <param name="week">The week to compare.</param>
+        /// <returns>Whether this <see cref="EssentialsWeek"/> equals the specified <paramref name="week"/>.</returns>
+        public bool Equals(EssentialsWeek? week) {
+            return this == week;
+        }
+
+        /// <summary>
+        /// Gets the hash code for this <see cref="EssentialsDate"/>.
+        /// </summary>
+        /// <returns>The hash code of the object.</returns>
+        public override int GetHashCode() {
+            return Year.GetHashCode() + WeekNumber.GetHashCode();
+        }
+
         #endregion
 
         #region Static methods
@@ -260,6 +319,156 @@ namespace Skybrud.Essentials.Time {
             result = null;
             return false;
 
+        }
+
+        /// <summary>
+        /// Returns the week representing the earliest period in time.
+        /// </summary>
+        /// <param name="a">The first week.</param>
+        /// <param name="b">The second week.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Min(EssentialsWeek a, EssentialsWeek b) {
+            return a > b ? b : a;
+        }
+
+        /// <summary>
+        /// Returns the week representing the earliest period in time.
+        /// </summary>
+        /// <param name="a">The first week.</param>
+        /// <param name="b">The second week.</param>
+        /// <param name="c">The third week.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Min(EssentialsWeek a, EssentialsWeek b, EssentialsWeek c) {
+            return Min(a, Min(b, c));
+        }
+
+        /// <summary>
+        /// Returns the week representing the earliest period in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsWeek"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Min(params EssentialsWeek[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the week representing the earliest period in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsWeek"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Min(IEnumerable<EssentialsWeek> values) {
+            return values.Min(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the week representing the latest period in time.
+        /// </summary>
+        /// <param name="a">The first week.</param>
+        /// <param name="b">The second week.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Max(EssentialsWeek a, EssentialsWeek b) {
+            return a > b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the week representing the latest period in time.
+        /// </summary>
+        /// <param name="a">The first week.</param>
+        /// <param name="b">The second week.</param>
+        /// <param name="c">The third week.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Max(EssentialsWeek a, EssentialsWeek b, EssentialsWeek c) {
+            return Max(a, Max(b, c));
+        }
+
+        /// <summary>
+        /// Returns the week representing the latest period in time.
+        /// </summary>
+        /// <param name="values">An array of <see cref="EssentialsWeek"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Max(params EssentialsWeek[] values) {
+            if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+            return values.Max(x => x)!;
+        }
+
+        /// <summary>
+        /// Returns the week representing the latest period in time.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="EssentialsWeek"/> instances.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public static EssentialsWeek Max(IEnumerable<EssentialsWeek> values) {
+            return values.Max(x => x)!;
+        }
+
+        private static int CompareTo(EssentialsWeek? a, EssentialsWeek? b) {
+            if (a is null) return b is null ? 0 : -1;
+            return a.CompareTo(b);
+        }
+
+        #endregion
+
+        #region Operator overloading
+
+        /// <summary>
+        /// Gets whether the week represented by two instances of <see cref="EssentialsWeek"/> are equal.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsWeek"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsWeek"/>.</param>
+        /// <returns><see langword="true"/> if the two instances represent the same week; otherwise, <see langword="false"/>.</returns>
+        public static bool operator ==(EssentialsWeek? d1, EssentialsWeek? d2) {
+            return CompareTo(d1, d2) == 0;
+        }
+
+        /// <summary>
+        /// Gets whether the week represented by two instances of <see cref="EssentialsWeek"/> are different
+        /// from each other.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsWeek"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsWeek"/>.</param>
+        /// <returns><see langword="true"/> if the two instances represents two different weeks; otherwise, <see langword="false"/>.</returns>
+        public static bool operator !=(EssentialsWeek? d1, EssentialsWeek? d2) {
+            return CompareTo(d1, d2) != 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsWeek"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsWeek"/>.</param>
+        /// <returns><see langword="true"/> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise <see langword="false"/>.</returns>
+        public static bool operator <(EssentialsWeek? d1, EssentialsWeek? d2) {
+            return CompareTo(d1, d2) < 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is less than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsWeek"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsWeek"/>.</param>
+        /// <returns><see langword="true"/> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>, otherwise <see langword="false"/>.</returns>
+        public static bool operator <=(EssentialsWeek? d1, EssentialsWeek? d2) {
+            return CompareTo(d1, d2) <= 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsWeek"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsWeek"/>.</param>
+        /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than <paramref name="d2"/>, otherwise <see langword="false"/>.</returns>
+        public static bool operator >(EssentialsWeek? d1, EssentialsWeek? d2) {
+            return CompareTo(d1, d2) > 0;
+        }
+
+        /// <summary>
+        /// Gets whether <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>.
+        /// </summary>
+        /// <param name="d1">The first instance of <see cref="EssentialsWeek"/>.</param>
+        /// <param name="d2">The second instance of <see cref="EssentialsWeek"/>.</param>
+        /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>, otherwise <see langword="false"/>.</returns>
+        public static bool operator >=(EssentialsWeek? d1, EssentialsWeek? d2) {
+            return CompareTo(d1, d2) >= 0;
         }
 
         #endregion
