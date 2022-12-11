@@ -1,12 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
-
-// ReSharper disable EqualExpressionComparison
-
-#pragma warning disable CS1718
 
 namespace UnitTestProject1.Time.Time {
 
