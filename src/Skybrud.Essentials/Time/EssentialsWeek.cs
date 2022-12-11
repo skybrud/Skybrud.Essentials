@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Alias of <see cref="WeekNumber"/>.
         /// </summary>
-        [Obsolete("Use the WeekNumber property instead,")]
+        [Obsolete("Use the WeekNumber property instead.")]
         public int Week => WeekNumber;
 
         /// <summary>
