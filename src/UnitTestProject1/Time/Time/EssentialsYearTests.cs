@@ -4,6 +4,8 @@ using Skybrud.Essentials.Time;
 
 // ReSharper disable EqualExpressionComparison
 
+#pragma warning disable CS1718
+
 namespace UnitTestProject1.Time.Time {
 
     [TestClass]
