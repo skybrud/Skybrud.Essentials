@@ -24,6 +24,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             return TryGetDouble(token, out double? result) ? callback(result.Value) : default;
         }
 
+        internal static double? GetDoubleOrNull(JToken? token) {
+            return TryGetDouble(token, out double? result) ? result : null;
+        }
+
         internal static bool TryGetDouble(JToken? token, out double result) {
 
             if (TryGetDouble(token, out double? temp)) {

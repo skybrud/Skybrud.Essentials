@@ -30,6 +30,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             return TryGetGuid(token, out Guid? result) ? callback(result.Value) : default;
         }
 
+        internal static Guid? GetGuidOrNull(JToken? token) {
+            return TryGetGuid(token, out Guid? result) ? result : null;
+        }
+
         internal static bool TryGetGuid(JToken? token, out Guid result) {
 
             if (TryGetGuid(token, out Guid? temp)) {

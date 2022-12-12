@@ -24,6 +24,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             return TryGetInt32(token, out int? result) ? callback(result.Value) : default;
         }
 
+        internal static int? GetInt32OrNull(JToken? token) {
+            return TryGetInt32(token, out int? result) ? result : null;
+        }
+
         internal static bool TryGetInt32(JToken? token, out int result) {
 
             if (TryGetInt32(token, out int? temp)) {

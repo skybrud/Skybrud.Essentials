@@ -24,6 +24,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             return TryGetInt64(token, out long? result) ? callback(result.Value) : default;
         }
 
+        internal static long? GetInt64OrNull(JToken? token) {
+            return TryGetInt64(token, out long? result) ? result : null;
+        }
+
         internal static bool TryGetInt64(JToken? token, out long result) {
 
             if (TryGetInt64(token, out long? temp)) {

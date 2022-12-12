@@ -48,6 +48,18 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
+        /// Returns the <see cref="double"/> value of the property with the specified <paramref name="propertyName"/>.
+        /// If a matching property can not be found or the value can not be successfully converted to a
+        /// <see cref="double"/> value, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="json">The parent JSON object.</param>
+        /// <param name="propertyName">The name of the property.</param>
+        /// <returns>An instance of <see cref="double"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static double? GetDoubleOrNull(this JObject? json, string propertyName) {
+            return JsonTokenUtils.GetDoubleOrNull(json?[propertyName]);
+        }
+
+        /// <summary>
         /// Returns the <see cref="double"/> value of the token matching the specified <paramref name="path"/>.
         /// If a matching token can not be found or the value can not be successfully converted to a
         /// <see cref="double"/> value, <c>0</c> is returned instead.
@@ -84,6 +96,18 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetDoubleByPath<T>(this JObject? json, string path, Func<double, T> callback) {
             return JsonTokenUtils.GetDouble(json?.SelectToken(path), callback);
+        }
+
+        /// <summary>
+        /// Returns the <see cref="double"/> value of the token matching the specified <paramref name="path"/>.
+        /// If a matching token can not be found or the value can not be successfully converted to a
+        /// <see cref="double"/> value,<see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="json">The parent JSON object.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="double"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static double? GetDoubleOrNullByPath(this JObject? json, string path) {
+            return JsonTokenUtils.GetDoubleOrNull(json?.SelectToken(path));
         }
 
         /// <summary>

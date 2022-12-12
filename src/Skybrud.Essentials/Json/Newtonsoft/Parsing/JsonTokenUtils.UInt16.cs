@@ -25,6 +25,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             return TryGetUInt16(token, out ushort? result) ? callback(result.Value) : default;
         }
 
+        internal static ushort? GetUInt16OrNull(JToken? token) {
+            return TryGetUInt16(token, out ushort? result) ? result : null;
+        }
+
         internal static bool TryGetUInt16(JToken? token, out ushort result) {
 
             if (TryGetUInt16(token, out ushort? temp)) {

@@ -32,6 +32,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             };
         }
 
+        internal static bool? GetBooleanOrNull(JToken? token) {
+            return TryGetBoolean(token, out bool? result) ? result : null;
+        }
+
         internal static bool TryGetBoolean(JToken? token, out bool result) {
 
             if (TryGetBoolean(token, out bool? temp)) {

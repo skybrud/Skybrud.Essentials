@@ -172,10 +172,6 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
             return (json?.SelectToken(path) as JArray)?.OfType<JObject>().ToArray() ?? ArrayUtils.Empty<JObject>();
         }
 
-
-
-
-
         /// <summary>
         /// Returns an array of <see cref="JToken"/> representing the items of the property with the specified <paramref name="propertyName"/>.
         /// </summary>
@@ -195,14 +191,14 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="callback">The callback used for converting each item to a corresponding <typeparamref name="T"/> value.</param>
         /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public static T[] GetArrayItems<T>(this JObject? json, string propertyName, Func<JObject, T> callback) {
+        public static T[] GetArrayItems<T>(this JObject? json, string propertyName, Func<JObject, T?> callback) {
 
             if (json?[propertyName] is not JArray array || array.Count == 0) return ArrayUtils.Empty<T>();
 
             List<T> temp = new();
 
             foreach (JToken item in array) {
-                if (item is JObject obj) temp.Add(callback(obj));
+                if (item is JObject obj && callback(obj) is { } value) temp.Add(value);
             }
 
             return temp.ToArray();
@@ -218,14 +214,17 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="callback">The callback used for converting each item to a corresponding <typeparamref name="TValue"/> value.</param>
         /// <returns>An array of <typeparamref name="TValue"/>.</returns>
-        public static TValue[] GetArrayItems<TKey, TValue>(this JObject? json, string propertyName, Func<TKey, TValue> callback) where TKey : JToken {
+        public static TValue[] GetArrayItems<TKey, TValue>(this JObject? json, string propertyName, Func<TKey, TValue?> callback) where TKey : JToken {
 
             if (json?[propertyName] is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
 
-            return (
-                from TKey child in array
-                select callback(child)
-            ).ToArray();
+            List<TValue> temp = new();
+
+            foreach (JToken child in array) {
+                if (child is TKey key && callback(key) is { } value) temp.Add(value);
+            }
+
+            return temp.ToArray();
 
         }
 
@@ -240,14 +239,6 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
             if (json?[propertyName] is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
             return array.Values<TValue>().ToArray();
         }
-
-
-
-
-
-
-
-
 
         /// <summary>
         /// Returns an array of <see cref="JToken"/> representing the items of the token matching the specified <paramref name="path"/>.
@@ -268,14 +259,14 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting each item to a corresponding <typeparamref name="T"/> value.</param>
         /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public static T[] GetArrayItemsByPath<T>(this JObject? json, string path, Func<JObject, T> callback) {
+        public static T[] GetArrayItemsByPath<T>(this JObject? json, string path, Func<JObject, T?> callback) {
 
             if (json?.SelectToken(path) is not JArray array || array.Count == 0) return ArrayUtils.Empty<T>();
 
             List<T> temp = new();
 
             foreach (JToken item in array) {
-                if (item is JObject obj) temp.Add(callback(obj));
+                if (item is JObject obj && callback(obj) is { } value) temp.Add(value);
             }
 
             return temp.ToArray();
@@ -291,14 +282,17 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting each item to a corresponding <typeparamref name="TValue"/> value.</param>
         /// <returns>An array of <typeparamref name="TValue"/>.</returns>
-        public static TValue[] GetArrayItemsByPath<TKey, TValue>(this JObject? json, string path, Func<TKey, TValue> callback) where TKey : JToken {
+        public static TValue[] GetArrayItemsByPath<TKey, TValue>(this JObject? json, string path, Func<TKey, TValue?> callback) where TKey : JToken {
 
             if (json?.SelectToken(path) is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
 
-            return (
-                from TKey child in array
-                select callback(child)
-            ).ToArray();
+            List<TValue> temp = new();
+
+            foreach (JToken child in array) {
+                if (child is TKey key && callback(key) is { } value) temp.Add(value);
+            }
+
+            return temp.ToArray();
 
         }
 

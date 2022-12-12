@@ -32,6 +32,18 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
+        /// Returns the <see cref="bool"/> value of the property with the specified <paramref name="propertyName"/>. If
+        /// a matching property can not be found or the value can not be successfully converted to a <see cref="bool"/>
+        /// value, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="json">The parent JSON object.</param>
+        /// <param name="propertyName">The name of the property.</param>
+        /// <returns>An instance of <see cref="bool"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static bool? GetBooleanOrNull(this JObject? json, string propertyName) {
+            return JsonTokenUtils.GetBooleanOrNull(json?[propertyName]);
+        }
+
+        /// <summary>
         /// Returns the <see cref="bool"/> value of the token matching the specified <paramref name="path"/>.
         /// If a matching property can not be found or the value can not be successfully converted to a
         /// <see cref="bool"/> value, <c>false</c> is returned instead.
@@ -54,6 +66,18 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <returns>An instance of <see cref="bool"/>.</returns>
         public static bool GetBooleanByPath(this JObject? json, string path, bool fallback) {
             return JsonTokenUtils.GetBoolean(json?.SelectToken(path), fallback);
+        }
+
+        /// <summary>
+        /// Returns the <see cref="bool"/> value of the token matching the specified <paramref name="path"/>.
+        /// If a matching property can not be found or the value can not be successfully converted to a
+        /// <see cref="bool"/> value, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="json">The parent JSON object.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="bool"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static bool? GetBooleanOrNullByPath(this JObject? json, string path) {
+            return JsonTokenUtils.GetBooleanOrNull(json?.SelectToken(path));
         }
 
         /// <summary>

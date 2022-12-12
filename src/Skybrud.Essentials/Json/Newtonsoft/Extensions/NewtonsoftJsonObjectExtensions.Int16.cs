@@ -48,6 +48,18 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
+        /// Returns the <see cref="short"/> value of the property with the specified <paramref name="propertyName"/>.
+        /// If a matching property can not be found or the value can not be successfully converted to a
+        /// <see cref="short"/> value, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="json">The parent JSON object.</param>
+        /// <param name="propertyName">The name of the property.</param>
+        /// <returns>An instance of <see cref="short"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static short? GetInt16OrNull(this JObject? json, string propertyName) {
+            return JsonTokenUtils.GetInt16OrNull(json?[propertyName]);
+        }
+
+        /// <summary>
         /// Returns the <see cref="short"/> value of the token matching the specified <paramref name="path"/>.
         /// If a matching token can not be found or the value can not be successfully converted to a
         /// <see cref="short"/> value, <c>0</c> is returned instead.
@@ -84,6 +96,18 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
         public static T? GetInt16ByPath<T>(this JObject? json, string path, Func<short, T> callback) {
             return JsonTokenUtils.GetInt16(json?.SelectToken(path), callback);
+        }
+
+        /// <summary>
+        /// Returns the <see cref="short"/> value of the token matching the specified <paramref name="path"/>.
+        /// If a matching token can not be found or the value can not be successfully converted to a
+        /// <see cref="short"/> value,<see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="json">The parent JSON object.</param>
+        /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+        /// <returns>An instance of <see cref="short"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static short? GetInt16OrNullByPath(this JObject? json, string path) {
+            return JsonTokenUtils.GetInt16OrNull(json?.SelectToken(path));
         }
 
         /// <summary>

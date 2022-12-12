@@ -24,6 +24,10 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             return TryGetFloat(token, out float? result) ? callback(result.Value) : default;
         }
 
+        internal static float? GetFloatOrNull(JToken? token) {
+            return TryGetFloat(token, out float? result) ? result : null;
+        }
+
         internal static bool TryGetFloat(JToken? token, out float result) {
 
             if (TryGetFloat(token, out float? temp)) {
