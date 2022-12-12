@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.1.43</VersionPrefix>
+    <VersionPrefix>1.1.44</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
@@ -45,7 +45,7 @@
 
   <PropertyGroup>
     <PackageId>Skybrud.Essentials</PackageId>
-    <PackageTags>Skybrud, Limbo, Essentials</PackageTags>
+    <PackageTags>Skybrud, Limbo, Essentials, JSON, XML, Date, Time, Calendar, ISO8601, RFC822, RFC2822, Reflection, Parsing</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://packages.skybrud.dk/skybrud.essentials/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
