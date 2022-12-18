@@ -192,7 +192,8 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the month.</returns>
         public EssentialsTime GetStartOfWeek(TimeZoneInfo? timeZone) {
-            return Start.ToTimeZone(timeZone ?? TimeZoneInfo.Local);
+            timeZone ??= TimeZoneInfo.Local;
+            return new EssentialsTime(Start.Year, Start.Month, Start.Day, 0, 0, 0, timeZone);
         }
 
         /// <summary>
@@ -209,7 +210,8 @@ namespace Skybrud.Essentials.Time {
         /// <param name="timeZone">The time zone to be used. Defaults to <see cref="TimeZoneInfo.Local"/> it not specified.</param>
         /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the year.</returns>
         public EssentialsTime GetEndOfWeek(TimeZoneInfo? timeZone) {
-            return End.ToTimeZone(timeZone ?? TimeZoneInfo.Local);
+            timeZone ??= TimeZoneInfo.Local;
+            return new EssentialsTime(End.Year, End.Month, End.Day, 12, 0, 0, timeZone).GetEndOfDay(timeZone);
         }
 
         /// <summary>
