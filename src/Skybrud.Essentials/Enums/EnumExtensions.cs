@@ -82,6 +82,58 @@ namespace Skybrud.Essentials.Enums {
             return v >= Convert.ToInt32(min) && v <= Convert.ToInt32(max);
         }
 
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into a corresponding array of enums of type
+        /// <typeparamref name="T"/>. Supported separators are comma (<c>,</c>), space (<c> </c>), carriage return
+        /// (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>). Any values that can't be successfully converted to a
+        /// <typeparamref name="T"/> will be ignored.
+        /// </summary>
+        /// <typeparam name="T">The type of to enum to convert to.</typeparam>
+        /// <param name="input">The string containing the enum values.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public static T[] ToEnumArray<T>(this string? input) where T : Enum {
+            return EnumUtils.ParseEnumArrayInternal<T>(input);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into a corresponding array of enums of type
+        /// <typeparamref name="T"/>, using the specified array of <paramref name="separators"/>. Any values that can't
+        /// be successfully converted to a <typeparamref name="T"/> will be ignored.
+        /// </summary>
+        /// <typeparam name="T">The type of to enum to convert to.</typeparam>
+        /// <param name="input">The string containing the enum values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public static T[] ToEnumArray<T>(this string? input, char[] separators) where T : Enum {
+            return EnumUtils.ParseEnumArray<T>(input, separators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into a corresponding list of enums of type
+        /// <typeparamref name="T"/>. Supported separators are comma (<c>,</c>), space (<c> </c>), carriage return
+        /// (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>). Any values that can't be successfully converted to a
+        /// <typeparamref name="T"/> will be ignored.
+        /// </summary>
+        /// <typeparam name="T">The type of to enum to convert to.</typeparam>
+        /// <param name="input">The string containing the enum values.</param>
+        /// <returns>A list of <typeparamref name="T"/>.</returns>
+        public static List<T> ToEnumList<T>(this string? input) where T : Enum {
+            return EnumUtils.ParseEnumList<T>(input);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into a corresponding list of enums of type
+        /// <typeparamref name="T"/>, using the specified array of <paramref name="separators"/>. Any values that can't
+        /// be successfully converted to a <typeparamref name="T"/> will be ignored.
+        /// </summary>
+        /// <typeparam name="T">The type of to enum to convert to.</typeparam>
+        /// <param name="input">The string containing the enum values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <typeparamref name="T"/>.</returns>
+        public static List<T> ToEnumList<T>(this string? input, char[] separators) where T : Enum {
+            return EnumUtils.ParseEnumList<T>(input, separators);
+        }
+
     }
 
 }

@@ -6,6 +6,7 @@ using System.Reflection;
 using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Collections.Extensions;
 using Skybrud.Essentials.Strings;
+using Skybrud.Essentials.Strings.Extensions;
 
 // ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
 // ReSharper disable RedundantSuppressNullableWarningExpression
@@ -260,6 +261,34 @@ namespace Skybrud.Essentials.Enums {
             ).ToArray();
         }
 
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into an array of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="input">A string value containing one or more enum values.</param>
+        /// <returns>An array of <typeparamref name="T"/> with the converted values.</returns>
+        /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
+        /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
+        internal static T[] ParseEnumArrayInternal<T>(string? input) where T : Enum {
+            return ParseEnumArray<T>(input, StringUtils.DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into an array of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="input">A string value containing one or more enum values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An array of <typeparamref name="T"/> with the converted values.</returns>
+        /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
+        /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
+        public static T[] ParseEnumArray<T>(string? input, char[] separators) where T : Enum {
+            if (string.IsNullOrWhiteSpace(input)) return ArrayUtils.Empty<T>();
+            return (
+                from piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)
+                select ParseEnumInternal<T>(piece)
+            ).ToArray();
+        }
 
         /// <summary>
         /// Converts the specified <paramref name="str"/> into an array of <paramref name="type"/>.
@@ -279,7 +308,7 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="separators">An array of supported separators.</param>
         /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
         public static Array ParseEnumArray(string? str, Type type, char[] separators) {
-            // TODO: Return static empty array
+            if (string.IsNullOrWhiteSpace(str)) return ArrayUtils.Empty(type);
             return ParseEnumArray((str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries), type);
         }
 
@@ -302,6 +331,112 @@ namespace Skybrud.Essentials.Enums {
             return temp.Cast(type).ToArray(type);
 
         }
+
+
+
+
+
+
+
+
+
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> value into a list of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="input">A string value containing one or more enum values.</param>
+        /// <returns>A list of <typeparamref name="T"/> with the converted values.</returns>
+        /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
+        public static List<T> ParseEnumList<T>(string? input) where T : Enum {
+            return ParseEnumList<T>(input, StringUtils.DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> value into a list of <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="input">A string value containing one or more enum values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <typeparamref name="T"/> with the converted values.</returns>
+        /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
+        public static List<T> ParseEnumList<T>(string? input, char[] separators) where T : Enum {
+            List<T> temp = new();
+            return string.IsNullOrWhiteSpace(input) ? temp : ParseEnumList<T>(input.ToStringArray(separators));
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> into an array of <paramref name="type"/>.
+        /// </summary>
+        /// <param name="str">A string value containing one or more enum values.</param>
+        /// <param name="type">The enum type.</param>
+        /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
+        public static List<Enum> ParseEnumList(string? str, Type type) {
+            return ParseEnumList(str, type, StringUtils.DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into a list of <paramref name="type"/>.
+        /// </summary>
+        /// <param name="input">A string value containing one or more enum values.</param>
+        /// <param name="type">The enum type.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
+        public static List<Enum> ParseEnumList(string? input, Type type, char[] separators) {
+            List<Enum> temp = new();
+            return string.IsNullOrWhiteSpace(input) ? temp : ParseEnumList(input.ToStringArray(separators), type);
+        }
+
+        /// <summary>
+        /// Converts the specified collection of <paramref name="pieces"/> into a list of <paramref name="type"/>.
+        /// </summary>
+        /// <param name="pieces">Array of enum string representation.</param>
+        /// <param name="type">The enum type.</param>
+        /// <returns>An instanceo of <see cref="Array"/> containing the parsed enum values.</returns>
+        public static List<Enum> ParseEnumList(IEnumerable<string> pieces, Type type) {
+
+            List<Enum> temp = new();
+
+            foreach (string piece in pieces) {
+                if (TryParseEnum(piece, type, out Enum value)) {
+                    temp.Add(value);
+                }
+            }
+
+            return temp;
+
+        }
+
+        /// <summary>
+        /// Converts the specified collection of <paramref name="pieces"/> into a list of <typeparamref name="T"/>. Empty or invalid values will be ignored.
+        /// </summary>
+        /// <typeparam name="T">The type of the enum.</typeparam>
+        /// <param name="pieces">Array of enum string representation.</param>
+        /// <returns>A list of <typeparamref name="T"/> containing the parsed enum values.</returns>
+        public static List<T> ParseEnumList<T>(IEnumerable<string> pieces) where T : Enum {
+
+            List<T> temp = new();
+
+            foreach (string piece in pieces) {
+                if (TryParseEnumInternal(piece, out T? value)) {
+                    temp.Add(value);
+                }
+            }
+
+            return temp;
+
+        }
+
+
+
+
+
+
+
+
+
+
+
 
         /// <summary>
         /// Converts the specified <paramref name="str"/> into an array of <typeparamref name="T"/>. The return value
