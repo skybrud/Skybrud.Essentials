@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -10,6 +11,8 @@ namespace UnitTestProject1.Json.Newtonsoft.JObjectTests {
 
         [TestMethod]
         public void GetFloat() {
+
+            CultureInfo culture = CultureInfo.InvariantCulture;
 
             JObject json = new JObject {
                 { "a", 0 },
@@ -48,9 +51,9 @@ namespace UnitTestProject1.Json.Newtonsoft.JObjectTests {
             Assert.AreEqual(1234, json.GetFloat("b", 2), "Check #5 failed");
             Assert.AreEqual(1235, json.GetFloat("b", x => x + 1), "Check #6 failed");
 
-            Assert.AreEqual("1234.456", json.GetFloat("c").ToString("F3"), "Check #7 failed");
-            Assert.AreEqual("1234.456", json.GetFloat("c", 2).ToString("F3"), "Check #8 failed");
-            Assert.AreEqual("1235.456", json.GetFloat("c", x => x + 1).ToString("F3"), "Check #9 failed");
+            Assert.AreEqual("1234.456", json.GetFloat("c").ToString("F3", culture), "Check #7 failed");
+            Assert.AreEqual("1234.456", json.GetFloat("c", 2).ToString("F3", culture), "Check #8 failed");
+            Assert.AreEqual("1235.456", json.GetFloat("c", x => x + 1).ToString("F3", culture), "Check #9 failed");
 
             Assert.AreEqual(0, json.GetFloat("d"), "Check #10 failed");
             Assert.AreEqual(0, json.GetFloat("d", 2), "Check #11 failed");
