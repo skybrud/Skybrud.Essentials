@@ -125,7 +125,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="input">The input string to test.</param>
         /// <param name="result">When this method returns, contains the input value.</param>
         /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
-        public static bool HasValue(this string? input, out string? result) {
+        public static bool HasValue(this string? input, [NotNullWhen(true)] out string? result) {
             result = input;
             return string.IsNullOrWhiteSpace(input) == false;
         }
