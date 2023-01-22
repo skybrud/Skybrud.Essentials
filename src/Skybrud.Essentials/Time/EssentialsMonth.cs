@@ -76,15 +76,53 @@ namespace Skybrud.Essentials.Time {
         ///
         /// Timestamps for start and end will be calculated using <paramref name="timeZone"/>.
         /// </summary>
-        /// <param name="year"></param>
-        /// <param name="month"></param>
-        /// <param name="timeZone"></param>
+        /// <param name="year">The year.</param>
+        /// <param name="month">The month.</param>
+        /// <param name="timeZone">The time zone the month will be based on.</param>
         public EssentialsMonth(int year, int month, TimeZoneInfo timeZone) {
             Year = year;
             Month = month;
             Start = new EssentialsTime(year, month, 1, timeZone);
             End = Start.GetEndOfMonth(timeZone);
         }
+
+        /// <summary>
+        /// Initializes a new month based on the specified <see cref="DateTime"/> instance.
+        ///
+        /// Timestamps for start and end will be calculated using <see cref="TimeZoneInfo.Local"/>.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/> instance.</param>
+        public EssentialsMonth(DateTime dateTime) : this(dateTime.Year, dateTime.Month, TimeZoneInfo.Local) { }
+
+        /// <summary>
+        /// Initializes a new month based on the specified <see cref="DateTime"/> instance.
+        ///
+        /// Timestamps for start and end will be calculated using <paramref name="timeZone"/>.
+        /// </summary>
+        /// <param name="dateTime">The <see cref="DateTime"/> instance.</param>
+        /// <param name="timeZone">The time zone the month will be based on.</param>
+        public EssentialsMonth(DateTime dateTime, TimeZoneInfo timeZone) : this(dateTime.Year, dateTime.Month, timeZone) { }
+
+        /// <summary>
+        /// Initializes a new month based on the specified <see cref="DateTimeOffset"/> instance.
+        ///
+        /// Timestamps for start and end will be calculated using <see cref="TimeZoneInfo.Local"/>.
+        /// </summary>
+        /// <param name="dateTimeOffset">The <see cref="DateTime"/> instance.</param>
+        public EssentialsMonth(DateTimeOffset dateTimeOffset) : this(dateTimeOffset.Year, dateTimeOffset.Month, TimeZoneInfo.Local) { }
+
+        /// <summary>
+        /// Initializes a new month based on the specified <paramref name="date"/>.
+        /// </summary>
+        /// <param name="date">An instance of <see cref="EssentialsDate"/> that indentifies the month.</param>
+        public EssentialsMonth(EssentialsDate date) : this(date.Year, date.Month) { }
+
+        /// <summary>
+        /// Initializes a new month based on the specified <paramref name="date"/>.
+        /// </summary>
+        /// <param name="date">An instance of <see cref="EssentialsDate"/> that indentifies the month.</param>
+        /// <param name="timeZone">The time zone the month will be based on.</param>
+        public EssentialsMonth(EssentialsDate date, TimeZoneInfo timeZone) : this(date.Year, date.Month, timeZone) { }
 
         /// <summary>
         /// Initializes a new instance for the month containing the specified <paramref name="timestamp"/>.
