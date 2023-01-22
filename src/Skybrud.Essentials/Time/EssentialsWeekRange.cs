@@ -2,7 +2,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
+using System.Linq;
 using System.Text.RegularExpressions;
+using JetBrains.Annotations;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -11,29 +13,44 @@ namespace Skybrud.Essentials.Time {
     /// <summary>
     /// Class representing a range of one or more <see cref="EssentialsWeek"/>.
     /// </summary>
-    public class EssentialsWeekRange : IEnumerable<EssentialsWeek> {
+    public class EssentialsWeekRange : IReadOnlyList<EssentialsWeek> {
+
+        private readonly IReadOnlyList<EssentialsWeek> _weeks;
 
         #region Properties
 
         /// <summary>
+        /// Gets the amount of months in the range.
+        /// </summary>
+        public int Count => _weeks.Count;
+
+        /// <summary>
+        /// Gets the week at the specified <paramref name="index"/>.
+        /// </summary>
+        /// <param name="index">The index of the week to get.</param>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public EssentialsWeek this[int index] => _weeks[index];
+
+        /// <summary>
         /// Gets the <see cref="EssentialsWeek"/> at the start of the range.
         /// </summary>
-        public EssentialsWeek Start { get; set; }
+        public EssentialsWeek Start => _weeks[0];
 
         /// <summary>
         /// Gets the <see cref="EssentialsWeek"/> at the end of the range.
         /// </summary>
-        public EssentialsWeek End { get; set; }
+        public EssentialsWeek End => _weeks[_weeks.Count - 1];
 
         /// <summary>
         /// Gets an array of <see cref="EssentialsWeek"/> within the range.
         /// </summary>
-        public EssentialsWeek[] Weeks { get; set; }
+        [Obsolete("Use 'ToArray' method instead.")]
+        public EssentialsWeek[] Weeks => _weeks.ToArray();
 
         /// <summary>
         /// Indicates whether the range is in reverse order (if <see cref="End"/> is before <see cref="Start"/>).
         /// </summary>
-        public bool IsReverse { get; }
+        public bool IsReverse => End < Start;
 
         #endregion
 
@@ -43,7 +60,27 @@ namespace Skybrud.Essentials.Time {
         /// Initializes a new range of all weeks of the specified <paramref name="year"/>.
         /// </summary>
         /// <param name="year">The year.</param>
-        public EssentialsWeekRange(int year) : this(new EssentialsWeek(year, 1, 1), new EssentialsWeek(year, 12, 31)) { }
+        public EssentialsWeekRange([ValueRange(0, 9999)] int year) {
+            _weeks = GetWeeks(new EssentialsWeek(year, 1, 1), new EssentialsWeek(year, 12, 31));
+        }
+
+        /// <summary>
+        /// Initializes a new range of all weeks from <paramref name="start"/> to <paramref name="end"/>.
+        /// </summary>
+        /// <param name="start">A timestamp within the first week of the range.</param>
+        /// <param name="end">A timestamp within the last week of the range.</param>
+        public EssentialsWeekRange(EssentialsTime start, EssentialsTime end) {
+            _weeks = GetWeeks(new EssentialsWeek(start), new EssentialsWeek(end));
+        }
+
+        /// <summary>
+        /// Initializes a new range of all weeks from <paramref name="start"/> to <paramref name="end"/>.
+        /// </summary>
+        /// <param name="start">A timestamp within the first week of the range.</param>
+        /// <param name="end">A timestamp within the last week of the range.</param>
+        public EssentialsWeekRange(EssentialsDate start, EssentialsDate end) {
+            _weeks = GetWeeks(new EssentialsWeek(start), new EssentialsWeek(end));
+        }
 
         /// <summary>
         /// Initializes a new range from the specified <paramref name="start"/> and <paramref name="end"/>.
@@ -51,25 +88,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="start">The <see cref="EssentialsWeek"/> at the start of the range.</param>
         /// <param name="end">The <see cref="EssentialsWeek"/> at the end of the range.</param>
         public EssentialsWeekRange(EssentialsWeek start, EssentialsWeek end) {
-
-            Start = start;
-            End = end;
-
-            List<EssentialsWeek> temp = new();
-
-            if (end.Start < start.Start) {
-                IsReverse = true;
-                for (EssentialsWeek week = start; week.Start >= end.Start; week = week.GetPreviousWeek()) {
-                    temp.Add(week);
-                }
-            } else {
-                for (EssentialsWeek week = start; week.Start <= end.Start; week = week.GetNextWeek()) {
-                    temp.Add(week);
-                }
-            }
-
-            Weeks = temp.ToArray();
-
+            _weeks = GetWeeks(start, end);
         }
 
         #endregion
@@ -77,11 +96,20 @@ namespace Skybrud.Essentials.Time {
         #region Member methods
 
         /// <summary>
+        /// Returns a new <see cref="EssentialsWeekRange"/> with the weeks in reverse order. If the current
+        /// <see cref="EssentialsWeekRange"/> only contains a single week, that instance will be returned unmodified.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsWeekRange"/>.</returns>
+        public EssentialsWeekRange Reverse() {
+            return Count == 1 ? this : new EssentialsWeekRange(_weeks[_weeks.Count - 1], _weeks[0]);
+        }
+
+        /// <summary>
         /// Returns a string representation of the week range - eg. <c>2022-W49__2023-W01</c>.
         /// </summary>
         /// <returns>An instance of <see cref="string"/> representing the week range.</returns>
         public override string ToString() {
-            return $"{Weeks[0]}__{Weeks[Weeks.Length - 1]}";
+            return $"{_weeks[0]}__{_weeks[_weeks.Count - 1]}";
         }
 
         /// <summary>
@@ -89,7 +117,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>An enumerator that can be used to iterate through the <see cref="EssentialsWeek"/> of the range.</returns>
         public IEnumerator<EssentialsWeek> GetEnumerator() {
-            return ((IEnumerable<EssentialsWeek>) Weeks).GetEnumerator();
+            return _weeks.GetEnumerator();
         }
 
         IEnumerator IEnumerable.GetEnumerator() {
@@ -99,6 +127,24 @@ namespace Skybrud.Essentials.Time {
         #endregion
 
         #region Static methods
+
+        private static List<EssentialsWeek> GetWeeks(EssentialsWeek start, EssentialsWeek end) {
+
+            List<EssentialsWeek> temp = new();
+
+            if (end.Start < start.Start) {
+                for (EssentialsWeek week = start; week.Start >= end.Start; week = week.GetPreviousWeek()) {
+                    temp.Add(week);
+                }
+            } else {
+                for (EssentialsWeek week = start; week.Start <= end.Start; week = week.GetNextWeek()) {
+                    temp.Add(week);
+                }
+            }
+
+            return temp;
+
+        }
 
         /// <summary>
         /// Parses the specified <paramref name="input"/> string representation of a week range into a corresponding of
@@ -110,7 +156,7 @@ namespace Skybrud.Essentials.Time {
         public static EssentialsWeekRange? Parse(string? input) {
             if (string.IsNullOrWhiteSpace(input)) return null;
             if (TryParse(input!, out EssentialsWeekRange? result)) return result;
-            throw new Exception("Specified input string is not a valid week.");
+            throw new Exception("Specified input string is not a valid week range.");
         }
 
         /// <summary>
