@@ -125,6 +125,7 @@
     <Compile Include="Time\SwatchInternetTimeTests.cs" />
     <Compile Include="Time\TimeUtilsTests\WeekTests.cs" />
     <Compile Include="Time\Time\CultureDisposable.cs" />
+    <Compile Include="Time\Time\DateTimeTests.cs" />
     <Compile Include="Time\Time\EssentialMonthTests.cs" />
     <Compile Include="Time\Time\EssentialsDateTests.cs" />
     <Compile Include="Time\Time\EssentialsPeriodTests.cs" />

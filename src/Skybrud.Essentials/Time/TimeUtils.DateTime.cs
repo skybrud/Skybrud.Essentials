@@ -4,6 +4,120 @@ namespace Skybrud.Essentials.Time {
 
     public partial class TimeUtils {
 
+        #region Get ... of day
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the start of the day based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the start of day for.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the start of the day.</returns>
+        public static DateTime GetStartOfDay(DateTime time) {
+            return new DateTime(time.Year, time.Month, time.Day, 0, 0, 0, time.Kind);
+        }
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the end of the day based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the end of day for.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the end of the day.</returns>
+        public static DateTime GetEndOfDay(DateTime time) {
+
+            // Get the start of the current day
+            DateTime temp = new(time.Year, time.Month, time.Day, 0, 0, 0, time.Kind);
+
+            // Add a day, but subtract a single tick
+            temp = temp.AddDays(1).AddTicks(-1);
+
+            return temp;
+
+        }
+
+        #endregion
+
+        #region Get ... of week
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the start of the week based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the start of week for.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the start of the week.</returns>
+        public static DateTime GetStartOfWeek(DateTime time) {
+            return GetStartOfWeek(time, DayOfWeek.Monday);
+        }
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the start of the week based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the start of week for.</param>
+        /// <param name="startOfWeek">The first day of the week.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the start of the week.</returns>
+        public static DateTime GetStartOfWeek(DateTime time, DayOfWeek startOfWeek) {
+
+            // Get the days since the start of the week
+            int diff = time.DayOfWeek - startOfWeek;
+
+            // Adjust if the difference is negative
+            if (diff < 0) diff += 7;
+
+            // Get the first day of the week
+            time = time.AddDays(-1 * diff);
+
+            // Get the start of the week
+            return new DateTime(time.Year, time.Month, time.Day, 0, 0, 0);
+
+        }
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the end of the week based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the end of week for.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the end of the week.</returns>
+        public static DateTime GetEndOfWeek(DateTime time) {
+            return GetEndOfWeek(time, DayOfWeek.Monday);
+        }
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the end of the week based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the end of week for.</param>
+        /// <param name="startOfWeek">The first day of the week.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the end of the week.</returns>
+        public static DateTime GetEndOfWeek(DateTime time, DayOfWeek startOfWeek) {
+            return GetStartOfWeek(time, startOfWeek).AddDays(7).AddTicks(-1);
+        }
+
+        #endregion
+
+        #region Get ... of month
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the start of the month based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the start of month for.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the start of the month.</returns>
+        public static DateTime GetStartOfMonth(DateTime time) {
+            return new DateTime(time.Year, time.Month, 1, 0, 0, 0, time.Kind);
+        }
+
+        /// <summary>
+        /// Returns an instance of <see cref="DateTime"/> representing the end of the month based on the specified <paramref name="time"/>.
+        /// </summary>
+        /// <param name="time">The <see cref="DateTime"/> to get the end of month for.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the end of the month.</returns>
+        public static DateTime GetEndOfMonth(DateTime time) {
+
+            // Get the amount of days in the month
+            int days = DateTime.DaysInMonth(time.Year, time.Month);
+
+            // Get the start of the month, then add the amount of days
+            time = GetStartOfMonth(time).AddDays(days).AddTicks(-1);
+
+            return time;
+
+        }
+
+        #endregion
+
         #region Is...
 
         /// <summary>
