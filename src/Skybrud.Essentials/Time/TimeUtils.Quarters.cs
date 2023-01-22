@@ -27,7 +27,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         internal static int GetEndMonthOfQuarter(int quarter) {
-            return 3 * quarter + 1;
+            return 3 * quarter;
         }
 
         internal static int GetEndMonthOfQuarter(DateTime date) {
@@ -44,6 +44,15 @@ namespace Skybrud.Essentials.Time {
 
         internal static int GetEndMonthOfQuarter(EssentialsTime date) {
             return GetEndMonthOfQuarter(GetQuarter(date));
+        }
+
+        /// <summary>
+        /// Returns the quarter of the specified <paramref name="month"/>.
+        /// </summary>
+        /// <param name="month">The mont to get the quarter for.</param>
+        /// <returns>An <see cref="int"/> representing the quarter.</returns>
+        public static int GetQuarter(int month) {
+            return (int) Math.Ceiling(month / 3d);
         }
 
         /// <summary>

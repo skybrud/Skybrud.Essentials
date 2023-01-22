@@ -128,6 +128,7 @@
     <Compile Include="Time\Time\DateTimeTests.cs" />
     <Compile Include="Time\Time\EssentialMonthTests.cs" />
     <Compile Include="Time\Time\EssentialsDateTests.cs" />
+    <Compile Include="Time\Time\EssentialsDateUtilsTests.cs" />
     <Compile Include="Time\Time\EssentialsPeriodTests.cs" />
     <Compile Include="Time\Time\EssentialsDateTimeTests.cs" />
     <Compile Include="Time\Time\EssentialsDateRangeTests.cs" />
