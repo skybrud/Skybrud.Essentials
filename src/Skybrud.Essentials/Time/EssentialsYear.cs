@@ -181,6 +181,19 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="date"/>.
+        /// </summary>
+        /// <param name="date">An instance of <see cref="EssentialsDate"/> representing the year.</param>
+        public EssentialsYear(EssentialsDate date) : this(date.Year) { }
+
+        /// <summary>
+        /// Initializes a new instance based on the specified <paramref name="date"/>.
+        /// </summary>
+        /// <param name="date">An instance of <see cref="EssentialsDate"/> representing the year.</param>
+        /// <param name="timeZone">The time zone used for calculating the start and end of the year.</param>
+        public EssentialsYear(EssentialsDate date, TimeZoneInfo timeZone) : this(date.Year, timeZone) { }
+
+        /// <summary>
         /// Initializes a new instance for the year containing the specified <paramref name="timestamp"/>.
         ///
         /// If <paramref name="timestamp"/> doesn't specify a timestamp (eg. only an offset), the timestamp will be converted to <see cref="TimeZoneInfo.Local"/>.
