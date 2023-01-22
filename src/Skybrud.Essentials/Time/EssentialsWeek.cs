@@ -56,6 +56,11 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public static EssentialsWeek CurrentUtc => new(DateTimeOffset.UtcNow);
 
+        /// <summary>
+        /// Gets whether the week represents the week month.
+        /// </summary>
+        public bool IsCurrent => this == Current;
+
         #endregion
 
         #region Constructors
