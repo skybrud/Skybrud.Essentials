@@ -110,7 +110,7 @@
     <Compile Include="Time\Converters\UnixTimeConverterTests.cs" />
     <Compile Include="Time\Converters\EssentialsDateTimeUnixTimeConverterTests.cs" />
     <Compile Include="Time\Converters\EssentialsDateTimeConverterTests.cs" />
-    <Compile Include="Time\DateTimeOffsetTests.cs" />
+    <Compile Include="Time\Time\DateTimeOffsetTests.cs" />
     <Compile Include="Time\EasterDateTests.cs" />
     <Compile Include="Time\Converters\DateTimeUnixTimeConverterTests.cs" />
     <Compile Include="Time\EssentialsDateRangeTests.cs" />

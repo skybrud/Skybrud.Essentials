@@ -118,6 +118,37 @@ namespace Skybrud.Essentials.Time {
 
         #endregion
 
+        #region Get ... of quarter
+
+        /// <summary>
+        /// Returns the quarter of the specified <paramref name="timestamp"/>.
+        /// </summary>
+        /// <param name="timestamp">An instance of <see cref="DateTime"/> representing the timestamp.</param>
+        /// <returns>An <see cref="int"/> representing the quarter.</returns>
+        public static int GetQuarter(DateTime timestamp) {
+            return (int) Math.Ceiling(timestamp.Month / 3d);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="DateTime"/> representing the start of the quarter of the specified <paramref name="timestamp"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <returns>An instance of <see cref="DateTime"/> representing the start of the quarter.</returns>
+        public static DateTime GetStartOfQuarter(DateTime timestamp) {
+            return GetStartOfQuarter(timestamp.Year, GetQuarter(timestamp)).DateTime;
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="DateTime"/> representing the quarter of the specified <paramref name="timestamp"/>.
+        /// </summary>
+        /// <param name="timestamp">The timestamp.</param>
+        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the start of the quarter.</returns>
+        public static DateTime GetEndOfQuarter(DateTime timestamp) {
+            return GetEndOfQuarter(timestamp.Year, GetQuarter(timestamp)).DateTime;
+        }
+
+        #endregion
+
         #region Is...
 
         /// <summary>

@@ -62,6 +62,67 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void GetStartOfMonth() {
+
+            DateTime time = new DateTime(2023, 1, 22, 12, 0, 0);
+
+            DateTime result = TimeUtils.GetStartOfMonth(time);
+
+            Assert.AreEqual("2023-01-01 00:00:00", result.ToString(_format, CultureInfo.CurrentCulture));
+
+        }
+
+        [TestMethod]
+        public void GetEndOfMonth() {
+
+            DateTime time = new DateTime(2023, 1, 22, 12, 0, 0);
+
+            var result1 = TimeUtils.GetEndOfMonth(time);
+
+            Assert.AreEqual("2023-01-31 23:59:59", result1.ToString(_format, CultureInfo.CurrentCulture));
+
+        }
+
+        [TestMethod]
+        public void GetQuarter() {
+
+            DateTime time1 = new DateTime(2023, 1, 22, 12, 0, 0);
+            DateTime time2 = new DateTime(2023, 6, 5, 12, 0, 0);
+            DateTime time3 = new DateTime(2023, 7, 4, 12, 0, 0);
+
+            int result1 = TimeUtils.GetQuarter(time1);
+            int result2 = TimeUtils.GetQuarter(time2);
+            int result3 = TimeUtils.GetQuarter(time3);
+
+            Assert.AreEqual(1, result1);
+            Assert.AreEqual(2, result2);
+            Assert.AreEqual(3, result3);
+
+        }
+
+        [TestMethod]
+        public void GetStartOfQuarter() {
+
+            DateTime time = new DateTime(2023, 1, 22, 12, 0, 0);
+
+            DateTime result = TimeUtils.GetStartOfQuarter(time);
+
+            Assert.AreEqual("2023-01-01 00:00:00", result.ToString(_format, CultureInfo.CurrentCulture));
+
+        }
+
+        [TestMethod]
+        public void GetEndOfQuarter() {
+
+            DateTime time = new DateTime(2023, 1, 22, 12, 0, 0);
+
+            var result1 = TimeUtils.GetEndOfQuarter(time);
+
+            Assert.AreEqual("2023-03-31 23:59:59", result1.ToString(_format, CultureInfo.CurrentCulture));
+
+        }
+
     }
 
 }
