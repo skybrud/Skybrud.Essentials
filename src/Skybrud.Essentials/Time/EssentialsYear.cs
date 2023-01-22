@@ -48,6 +48,11 @@ namespace Skybrud.Essentials.Time {
             protected set => base.End = value;
         }
 
+        /// <summary>
+        /// Gets whether the year matches the current year.
+        /// </summary>
+        public bool IsCurrent => Year == DateTime.Now.Year;
+
         #region Calendar dates
 
         /// <summary>
