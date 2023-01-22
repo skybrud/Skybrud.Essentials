@@ -12,6 +12,11 @@ namespace Skybrud.Essentials.Time {
         #region Properties
 
         /// <summary>
+        /// Gets an instance of <see cref="EssentialsYear"/> representing the current month.
+        /// </summary>
+        public static EssentialsYear Current => new(DateTime.Now.Year);
+
+        /// <summary>
         /// Gets the year.
         /// </summary>
         public int Year { get; }
