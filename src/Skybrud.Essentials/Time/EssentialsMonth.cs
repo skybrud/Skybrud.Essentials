@@ -53,6 +53,11 @@ namespace Skybrud.Essentials.Time {
             protected set => base.End = value;
         }
 
+        /// <summary>
+        /// Gets whether the month represents the current month.
+        /// </summary>
+        public bool IsCurrent => IsSameMonth(this, DateTime.Now);
+
         #endregion
 
         #region Constructors
@@ -491,6 +496,10 @@ namespace Skybrud.Essentials.Time {
         /// otherwise <c>false</c>.</returns>
         public static bool operator >=(EssentialsMonth? d1, EssentialsMonth? d2) {
             return CompareTo(d1, d2) >= 0;
+        }
+
+        private static bool IsSameMonth(EssentialsMonth month, DateTime dateTime) {
+            return month.Year == dateTime.Year && month.Month == dateTime.Month;
         }
 
         #endregion
