@@ -315,6 +315,7 @@ namespace Skybrud.Essentials.Time {
         public EssentialsTime(DateTime dateTime, TimeZoneInfo timeZone) {
             dateTime = TimeZoneInfo.ConvertTime(dateTime, timeZone);
             DateTimeOffset = new DateTimeOffset(dateTime, timeZone.GetUtcOffset(dateTime));
+            TimeZone = timeZone;
         }
 
         /// <summary>
