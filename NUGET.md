@@ -1,3 +1,5 @@
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/v/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
+
 Skybrud.Essentials is a library with common purpose functionality for working with .NET.
 
 The package has a strong focus on parsing various types of input. Among other things, the package can help you work with date and time beyond the standard `DateTime` and `DateTimeOffset` classes in .NET. It has better support for various date formats - such as unix time, ISO 8601, RFC 822 and RFC 2822.
