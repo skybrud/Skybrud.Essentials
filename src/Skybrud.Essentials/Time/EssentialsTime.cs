@@ -931,6 +931,38 @@ namespace Skybrud.Essentials.Time {
             return new EssentialsTime(TimeUtils.GetEndOfQuarter(DateTimeOffset, timeZone), timeZone);
         }
 
+        /// <summary>
+        /// Returns a new <see cref="EssentialsDate"/> instance representing the date of the this timestamp.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+        public EssentialsDate ToDate() {
+            return new EssentialsDate(Year, Month, Day);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsWeek"/> instance representing the ISO 8601 week of the this timestamp.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
+        public EssentialsWeek ToWeek() {
+            return new EssentialsWeek(this);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsMonth"/> instance representing the month of the this timestamp.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
+        public EssentialsMonth ToMonth() {
+            return new EssentialsMonth(this);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsYear"/> instance representing the year of the this timestamp.
+        /// </summary>
+        /// <returns>An instance of <see cref="EssentialsYear"/>.</returns>
+        public EssentialsYear ToYear() {
+            return new EssentialsYear(this);
+        }
+
         #endregion
 
         #region Static methods
