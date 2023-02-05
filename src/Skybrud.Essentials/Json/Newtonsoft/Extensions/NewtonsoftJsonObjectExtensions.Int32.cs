@@ -106,7 +106,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="json">The parent JSON object.</param>
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="int"/> if successful; otherwise, <see langword="null"/>.</returns>
-        public static int? GetInt32OrDefaultByNull(this JObject? json, string path) {
+        public static int? GetInt32OrNullByPath(this JObject? json, string path) {
             return JsonTokenUtils.GetInt32OrNull(json?.SelectToken(path));
         }
 
