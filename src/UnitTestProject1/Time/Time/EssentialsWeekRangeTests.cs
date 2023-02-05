@@ -35,13 +35,13 @@ namespace UnitTestProject1.Time.Time {
 
             Assert.IsNotNull(range3);
             Assert.IsFalse(range3.IsReverse);
-            Assert.AreEqual("2022-W49", range3.Weeks[0].ToString());
-            Assert.AreEqual("2023-W01", range3.Weeks[range3.Weeks.Length - 1].ToString());
+            Assert.AreEqual("2022-W49", range3[0].ToString());
+            Assert.AreEqual("2023-W01", range3[range3.Count - 1].ToString());
 
             Assert.IsNotNull(range4);
             Assert.IsTrue(range4.IsReverse);
-            Assert.AreEqual("2023-W01", range4.Weeks[0].ToString());
-            Assert.AreEqual("2022-W49", range4.Weeks[range4.Weeks.Length - 1].ToString());
+            Assert.AreEqual("2023-W01", range4[0].ToString());
+            Assert.AreEqual("2022-W49", range4[range4.Count - 1].ToString());
 
         }
 
