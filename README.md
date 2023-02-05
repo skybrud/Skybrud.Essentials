@@ -13,7 +13,7 @@ It also contains utilities for converting to and from string values, changing te
 
 ### Installation
 
-Install the package via NuGet via [NuGet](https://www.nuget.org/packages/Skybrud.Essentials). To install the package, you can use either .NET CLI:
+Install the package via [NuGet](https://www.nuget.org/packages/Skybrud.Essentials). To install the package, you can use either .NET CLI:
 
 ```
 dotnet add package Skybrud.Essentials
