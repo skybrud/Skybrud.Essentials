@@ -40,6 +40,16 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> string into its 64-bit signed integer equivalent. If the
+        /// conversion fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns>An instance of <see cref="long"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static long? ParseInt64OrNull(string? input) {
+            return TryParseInt64(input, out long value) ? value : null;
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="input"/> string into it's representation of a number to its 64-bit
         /// signed integer equivalent. A return value indicates whether the conversion succeeded.
         /// </summary>

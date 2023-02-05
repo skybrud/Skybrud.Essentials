@@ -44,6 +44,16 @@ namespace Skybrud.Essentials.Strings {
 
         /// <summary>
         /// Converts the specified <paramref name="input"/> string into it's single-precision floating-point number
+        /// equivalent (<see cref="float"/>). If the parsing fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be parsed.</param>
+        /// <returns>An instance of <see cref="float"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static float? ParseFloatOrNull(string? input) {
+            return TryParseFloat(input, out float value) ? value : null;
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into it's single-precision floating-point number
         /// equivalent. A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>

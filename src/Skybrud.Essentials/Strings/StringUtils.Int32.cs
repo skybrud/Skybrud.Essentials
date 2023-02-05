@@ -42,6 +42,16 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> string into its 32-bit signed integer equivalent. If the
+        /// conversion fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns>An instance of <see cref="int"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static int? ParseInt32OrNull(string? input) {
+            return TryParseInt32(input, out int value) ? value : null;
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="input"/> string representation of a number to its 32-bit signed
         /// integer equivalent (<see cref="int"/>). A return value indicates whether the conversion succeeded.
         /// </summary>

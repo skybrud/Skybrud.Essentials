@@ -30,6 +30,20 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> into an instance of <see cref="bool"/>. The method checks
+        /// against a number of known string values that either represent a <see langword="true"/> value or a
+        /// <see langword="false"/> value. If the parsing fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns><see langword="true"/> if <paramref name="input"/> matches a string value that is known to
+        /// represent a <see langword="true"/> value; <see langword="false"/> if <paramref name="input"/> matches a
+        /// string value that is known to represent a <see langword="false"/>; or if not recognized,
+        /// <see langword="null"/>.</returns>
+        public static bool? ParseBooleanOrNull(string? input) {
+            return TryParseBoolean(input, out bool result) ? result : null;
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The value
         /// is considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case
         /// insensitive).
@@ -38,7 +52,7 @@ namespace Skybrud.Essentials.Strings {
         /// <returns><c>true</c> if <paramref name="value"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>
         /// (case insensitive); otherwise, <c>false</c>.</returns>
         public static bool ParseBoolean(object? value) {
-            return ParseBoolean(value?.ToString() ?? string.Empty);
+            return ParseBoolean(value?.ToString());
         }
 
         /// <summary>
