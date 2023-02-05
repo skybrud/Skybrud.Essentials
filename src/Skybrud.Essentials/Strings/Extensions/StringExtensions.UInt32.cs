@@ -54,6 +54,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> string into its 32-bit unsigned integer equivalent. If the
+        /// conversion fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns>An instance of <see cref="uint"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static uint? ToUInt32OrNull(this string? input) {
+            return StringUtils.ParseUInt32OrNull(input);
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="input"/> string representation of a number to its 32-bit unsigned integer equivalent (<see cref="uint"/>). A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>

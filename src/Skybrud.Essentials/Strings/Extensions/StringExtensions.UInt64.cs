@@ -61,6 +61,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> string into its 64-bit unsigned integer equivalent. If the
+        /// conversion fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns>An instance of <see cref="ulong"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static ulong? ToUInt64OrNull(this string? input) {
+            return StringUtils.ParseUInt64OrNull(input);
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="input"/> string into it's representation of a number to its 64-bit
         /// unsigned integer equivalent. A return value indicates whether the conversion succeeded.
         /// </summary>

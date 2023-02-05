@@ -59,6 +59,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> string to an instance of <see cref="Guid"/>. If the
+        /// conversion fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The input string to be converted.</param>
+        /// <returns>An instance of <see cref="Guid"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static Guid? ToGuidOrNull(this string? input) {
+            return StringUtils.ParseGuidOrNull(input);
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="input"/> string to the equivalent <see cref="Guid"/> value.
         /// </summary>
         /// <param name="input">The string containing the GUID.</param>

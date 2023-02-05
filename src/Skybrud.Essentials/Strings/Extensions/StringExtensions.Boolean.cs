@@ -65,6 +65,20 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> into an instance of <see cref="bool"/>. The method checks
+        /// against a number of known string values that either represent a <see langword="true"/> value or a
+        /// <see langword="false"/> value. If the parsing fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns><see langword="true"/> if <paramref name="input"/> matches a string value that is known to
+        /// represent a <see langword="true"/> value; <see langword="false"/> if <paramref name="input"/> matches a
+        /// string value that is known to represent a <see langword="false"/>; or if not recognized,
+        /// <see langword="null"/>.</returns>
+        public static bool? ToBooleanOrNull(this string? input) {
+            return StringUtils.ParseBooleanOrNull(input);
+        }
+
+        /// <summary>
         /// Tries to convert the specified string representation of a logical value to its <see cref="bool"/> equivalent.
         /// </summary>
         /// <param name="input">A string containing the value to convert.</param>

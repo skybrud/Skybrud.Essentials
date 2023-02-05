@@ -54,6 +54,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
+        /// Converts the specified <paramref name="input"/> string into its 16-bit unsigned integer equivalent. If the
+        /// conversion fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns>An instance of <see cref="ushort"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static ushort? ToUInt16OrNull(this string? input) {
+            return StringUtils.ParseUInt16OrNull(input);
+        }
+
+        /// <summary>
         /// Converts the specified <paramref name="input"/> string representation of a number to its 16-bit unsigned integer equivalent (<see cref="ushort"/>). A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>

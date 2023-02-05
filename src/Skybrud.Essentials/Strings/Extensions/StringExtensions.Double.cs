@@ -62,6 +62,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Converts the specified <paramref name="input"/> string into it's double-precision floating-point number
+        /// equivalent (<see cref="double"/>). If the parsing fails, <see langword="null"/> will be returned instead.
+        /// </summary>
+        /// <param name="input">The string to be parsed.</param>
+        /// <returns>An instance of <see cref="double"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static double? ToDoubleOrNull(this string? input) {
+            return StringUtils.ParseDoubleOrNull(input);
+        }
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string into it's double-precision floating-point number
         /// equivalent. A return value indicates whether the conversion succeeded.
         /// </summary>
         /// <param name="input">A string containing a number to convert.</param>
