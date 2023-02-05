@@ -19,6 +19,19 @@ namespace Skybrud.Essentials.Enums {
     public static class EnumUtils {
 
         /// <summary>
+        /// Converts the specified enum <paramref name="ordinal"/> into a corresponding enum value of
+        /// <typeparamref name="TEnum"/>. If the conversion fails, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="ordinal">The enum ordinal.</param>
+        /// <returns>An instance of <typeparamref name="TEnum"/> if the conversion is successful; otherwise,
+        /// <see langword="null"/>.</returns>
+        public static TEnum? ToEnumOrNull<TEnum>(int ordinal) where TEnum : struct, Enum {
+            TEnum value = (TEnum) Enum.ToObject(typeof(TEnum), ordinal);
+            return Enum.IsDefined(typeof(TEnum), value) ? value : null;
+        }
+
+        /// <summary>
         /// Gets an array of all values of the specified enum class <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum class.</typeparam>
@@ -100,9 +113,20 @@ namespace Skybrud.Essentials.Enums {
         /// <param name="fallback">The fallback if the enum could not be parsed.</param>
         /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
         /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-        public static T ParseEnum<T>(string str, T fallback) where T : struct {
-            if (string.IsNullOrWhiteSpace(str)) return fallback;
+        public static T ParseEnum<T>(string? str, T fallback) where T : struct {
             return TryParseEnum(str, out T value) ? value : fallback;
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="input"/> string into a corresponding instance of
+        /// <typeparamref name="TEnum"/>. If the parsing fails, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of enum to parse to.</typeparam>
+        /// <param name="input">The input string to be parsed.</param>
+        /// <returns>An instance of <typeparamref name="TEnum"/> if the parsing was successful; otherwise,
+        /// <see langword="null"/>.</returns>
+        public static TEnum? ParseEnumOrNull<TEnum>(string? input) where TEnum : struct, Enum {
+            return TryParseEnum(input, out TEnum value) ? value : null;
         }
 
         internal static T ParseEnumInternal<T>(string str, T fallback) where T : Enum {
@@ -569,7 +593,8 @@ namespace Skybrud.Essentials.Enums {
         /// <typeparam name="T">The enum type.</typeparam>
         /// <param name="input">The input value to be converted.</param>
         /// <param name="fallback">The fallback value.</param>
-        /// <returns>An instance of <typeparamref name="T"/> representing the converted value if successful; otherwise, <paramref name="fallback"/>.</returns>
+        /// <returns>An instance of <typeparamref name="T"/> representing the converted value if successful; otherwise,
+        /// <paramref name="fallback"/>.</returns>
         public static T FromInt32<T>(int input, T fallback) where T : Enum {
             T value = (T) Enum.ToObject(typeof(T), input);
             return Enum.IsDefined(typeof(T), value) ? value : fallback;

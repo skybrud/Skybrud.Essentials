@@ -30,6 +30,17 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
+        /// Returns the enum of type <typeparamref name="TEnum"/> from the property with the specified <paramref name="propertyName"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="json">The parent JSON object.</param>
+        /// <param name="propertyName">The name of the property.</param>
+        /// <returns>An instance of <typeparamref name="TEnum"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static TEnum? GetEnumOrNull<TEnum>(this JObject? json, string propertyName) where TEnum : struct, Enum {
+            return JsonTokenUtils.GetEnumOrNull<TEnum>(json?[propertyName]);
+        }
+
+        /// <summary>
         /// Returns the enum of type <typeparamref name="T"/> value of the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <typeparam name="T">The type of the enum.</typeparam>

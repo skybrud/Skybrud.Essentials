@@ -26,6 +26,15 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
             };
         }
 
+        public static TEnum? GetEnumOrNull<TEnum>(JToken? token) where TEnum : struct, Enum {
+            return token?.Type switch {
+                JTokenType.Integer => EnumUtils.ToEnumOrNull<TEnum>(token.Value<int>()),
+                JTokenType.Float => EnumUtils.ToEnumOrNull<TEnum>(token.Value<int>()),
+                JTokenType.String => EnumUtils.ParseEnumOrNull<TEnum>(token.Value<string>()),
+                _ => null
+            };
+        }
+
     }
 
 }

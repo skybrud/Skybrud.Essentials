@@ -29,6 +29,42 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
+        /// Parses the specified <paramref name="input"/> string into an enum of type <typeparamref name="TEnum"/>. If
+        /// <paramref name="input"/> cannot be parsed, an exception of type <see cref="EnumParseException"/> will be
+        /// thrown instead.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="input">The input string to be parsed.</param>
+        /// <returns>An instance of <typeparamref name="TEnum"/>.</returns>
+        public static TEnum ToEnum<TEnum>(this string? input) where TEnum : struct, Enum {
+            return EnumUtils.ParseEnum<TEnum>(input);
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="input"/> string into an enum value of type
+        /// <typeparamref name="TEnum"/>. If <paramref name="input"/> cannot be parsed, <paramref name="fallback"/> is
+        /// returned instead.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="input">The input string to be parsed.</param>
+        /// <param name="fallback">The fallback if the enum could not be parsed.</param>
+        /// <returns>The parsed instance of <typeparamref name="TEnum"/> if successful; otherwise, <paramref name="fallback"/>.</returns>
+        public static TEnum ToEnum<TEnum>(this string? input, TEnum fallback) where TEnum : struct, Enum {
+            return EnumUtils.ParseEnum(input, fallback);
+        }
+
+        /// <summary>
+        /// Parses the specified <paramref name="input"/> string into an enum value of <typeparamref name="TEnum"/>. If
+        /// <paramref name="input"/> cannot be parsed, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="input">The input string to be parsed.</param>
+        /// <returns>The parsed instance of <typeparamref name="TEnum"/> if successful; otherwise, <see langword="null"/>.</returns>
+        public static TEnum? ToEnumOrNull<TEnum>(this string? input) where TEnum : struct, Enum {
+            return EnumUtils.ParseEnumOrNull<TEnum>(input);
+        }
+
+        /// <summary>
         /// Converts the specified enum <paramref name="value"/> to it's corresponding <see cref="int"/> ordinal value.
         /// </summary>
         /// <param name="value">The enum value.</param>
