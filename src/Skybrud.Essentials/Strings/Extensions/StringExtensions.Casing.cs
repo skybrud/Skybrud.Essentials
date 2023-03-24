@@ -7,6 +7,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
     public static partial class StringExtensions {
 
+        #region ToCamelCase(...)
+
         /// <summary>
         /// Converts the specified <paramref name="str"/> to camel case (also referred to as lower camel casing).
         /// </summary>
@@ -36,6 +38,10 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToCamelCase<TEnum>(this IEnumerable<TEnum> values) where TEnum : Enum {
             return StringUtils.ToCamelCase(values);
         }
+
+        #endregion
+
+        #region ToPascalCase(...)
 
         /// <summary>
         /// Converts the specified <paramref name="str"/> to Pascal case (also referred to as upper camel casing).
@@ -67,6 +73,10 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return StringUtils.ToPascalCase(values);
         }
 
+        #endregion
+
+        #region ToKebabCase(...)
+
         /// <summary>
         /// Converts the specified <paramref name="str"/> to a kebab cased string (lower case words separated by hyphens).
         /// </summary>
@@ -97,6 +107,46 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return StringUtils.ToKebabCase(values);
         }
 
+        #endregion
+
+        #region ToHeaderCase(...)
+
+        /// <summary>
+        /// Converts the specified <paramref name="input"/> string to a new lower camel cased string, but with the
+        /// first character in each word as upper case, and words separator by hyphens.
+        /// </summary>
+        /// <param name="input">The string to be converted.</param>
+        /// <returns>The converted string in header case.</returns>
+        public static string ToHeaderCase(this string? input) {
+            return StringUtils.ToHeaderCase(input);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="value"/> to a new lower camel cased string, but with the first
+        /// character in each word as upper case, and words separator by hyphens.
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The converted string in header case.</returns>
+        public static string ToHeaderCase(this Enum value) {
+            return StringUtils.ToHeaderCase(value);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a new lower camel cased string, but with the first
+        /// character in each word as upper case, and words separator by hyphens. If <paramref name="values"/> contains more than one enum value, the names will be separated by
+        /// commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string in header case.</returns>
+        public static string ToHeaderCase<TEnum>(this IEnumerable<TEnum> values) where TEnum : Enum {
+            return StringUtils.ToHeaderCase(values);
+        }
+
+        #endregion
+
+        #region ToTrainCase(...)
+
         /// <summary>
         /// Converts the specified <paramref name="str"/> to a train cased string (upper case words separated by hyphens).
         /// </summary>
@@ -126,6 +176,45 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToTrainCase<TEnum>(this IEnumerable<TEnum> values) where TEnum : Enum {
             return StringUtils.ToTrainCase(values);
         }
+
+        #endregion
+
+        #region ToSnakeCase(...)
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> to a lower case string with words separated by underscores.
+        /// </summary>
+        /// <param name="str">The string to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToSnakeCase(this string? str) {
+            return StringUtils.ToSnakeCase(str);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="value"/> to a lower case string with words separated by
+        /// underscores.
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToSnakeCase(this Enum value) {
+            return StringUtils.ToSnakeCase(value);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to a lower case string with words separated by
+        /// underscores. If <paramref name="values"/> contains more than one enum value, the names will be separated by
+        /// commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToSnakeCase<TEnum>(this IEnumerable<TEnum> values) where TEnum : Enum {
+            return StringUtils.ToSnakeCase(values);
+        }
+
+        #endregion
+
+        #region ToUnderscore(...)
 
         /// <summary>
         /// Converts the specified <paramref name="str"/> to a lower case string with words separated by underscores.
@@ -158,6 +247,45 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return StringUtils.ToUnderscore(values);
         }
 
+        #endregion
+
+        #region ToConstantCase(...)
+
+        /// <summary>
+        /// Converts the specified <paramref name="str"/> to an upper case string with words separated by underscores.
+        /// </summary>
+        /// <param name="str">The string to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToConstantCase(this string? str) {
+            return StringUtils.ToConstantCase(str);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="value"/> to an upper case string with words separated by
+        /// underscores.
+        /// </summary>
+        /// <param name="value">The enum value to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToConstantCase(this Enum value) {
+            return StringUtils.ToConstantCase(value);
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="values"/> to an upper case string with words separated by
+        /// underscores. If <paramref name="values"/> contains more than one enum value, the names will be separated by
+        /// commas.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="values">The enum values to be converted.</param>
+        /// <returns>The converted string.</returns>
+        public static string ToConstantCase<TEnum>(this IEnumerable<TEnum> values) where TEnum : Enum {
+            return StringUtils.ToConstantCase(values);
+        }
+
+        #endregion
+
+        #region ToLower(...)
+
         /// <summary>
         /// Converts the specified enum <paramref name="value"/> to a lower case string.
         /// </summary>
@@ -178,6 +306,10 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return StringUtils.ToLower(values);
         }
 
+        #endregion
+
+        #region ToUpper(...)
+
         /// <summary>
         /// Converts the specified enum <paramref name="value"/> to an upper case string.
         /// </summary>
@@ -197,6 +329,8 @@ namespace Skybrud.Essentials.Strings.Extensions {
         public static string ToUpper<TEnum>(this IEnumerable<TEnum> values) where TEnum : Enum {
             return StringUtils.ToUpper(values);
         }
+
+        #endregion
 
         /// <summary>
         /// Uppercases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
