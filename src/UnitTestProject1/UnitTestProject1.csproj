@@ -92,6 +92,7 @@
     <Compile Include="Json\Newtonsoft\JObjectTests\UInt64Tests.cs" />
     <Compile Include="Json\Newtonsoft\JObjectTests\UInt32Tests.cs" />
     <Compile Include="Json\Newtonsoft\JObjectTests\UInt16Tests.cs" />
+    <Compile Include="Json\Newtonsoft\NamingStrategyTests.cs" />
     <Compile Include="Maps\DistanceTests.cs" />
     <Compile Include="Locations\LocationTests.cs" />
     <Compile Include="Maps\PointTests.cs" />
