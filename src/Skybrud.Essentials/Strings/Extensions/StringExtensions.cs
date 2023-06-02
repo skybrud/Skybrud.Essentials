@@ -351,7 +351,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The value to be split.</param>
         /// <param name="separator">The separator to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
-        public static void Split(this string? value, char separator, out string? first) {
+        public static void Split(this string? value, char separator, [NotNullIfNotNull("value")] out string? first) {
             string[]? array = value?.Split(separator);
             first = array?[0];
         }
@@ -363,7 +363,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="separator">The separator to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
-        public static void Split(this string? value, char separator, out string? first, out string? second) {
+        public static void Split(this string? value, char separator, [NotNullIfNotNull("value")] out string? first, out string? second) {
             string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
@@ -377,7 +377,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
-        public static void Split(this string? value, char separator, out string? first, out string? second, out string? third) {
+        public static void Split(this string? value, char separator, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third) {
             string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
@@ -393,7 +393,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
-        public static void Split(this string? value, char separator, out string? first, out string? second, out string? third, out string? fourth) {
+        public static void Split(this string? value, char separator, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth) {
             string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
@@ -411,7 +411,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
         /// <param name="fifth">The fifth item resulting from the split.</param>
-        public static void Split(this string? value, char separator, out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+        public static void Split(this string? value, char separator, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
             string[]? array = value?.Split(separator);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
@@ -426,7 +426,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="value">The value to be split.</param>
         /// <param name="separators">The separators to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
-        public static void Split(this string? value, char[] separators, out string? first) {
+        public static void Split(this string? value, char[] separators, [NotNullIfNotNull("value")] out string? first) {
             string[]? array = value?.Split(separators);
             first = array?[0];
         }
@@ -438,7 +438,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="separators">The separators to be used for splitting the string.</param>
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
-        public static void Split(this string? value, char[] separators, out string? first, out string? second) {
+        public static void Split(this string? value, char[] separators, [NotNullIfNotNull("value")] out string? first, out string? second) {
             string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
@@ -452,7 +452,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="first">The first item resulting from the split.</param>
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
-        public static void Split(this string? value, char[] separators, out string? first, out string? second, out string? third) {
+        public static void Split(this string? value, char[] separators, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third) {
             string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
@@ -468,7 +468,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="second">The second item resulting from the split.</param>
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
-        public static void Split(this string? value, char[] separators, out string? first, out string? second, out string? third, out string? fourth) {
+        public static void Split(this string? value, char[] separators, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth) {
             string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
@@ -486,7 +486,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="third">The third item resulting from the split.</param>
         /// <param name="fourth">The fourth item resulting from the split.</param>
         /// <param name="fifth">The fifth item resulting from the split.</param>
-        public static void Split(this string? value, char[] separators, out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+        public static void Split(this string? value, char[] separators, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
             string[]? array = value?.Split(separators);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
