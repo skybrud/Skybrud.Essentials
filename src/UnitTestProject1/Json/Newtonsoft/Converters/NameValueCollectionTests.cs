@@ -2,12 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Converters;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Converters;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
-#pragma warning disable CS0618
-
-namespace UnitTestProject1.Json.Converters {
+namespace UnitTestProject1.Json.Newtonsoft.Converters {
 
     [TestClass]
     public class NameValueCollectionTests {

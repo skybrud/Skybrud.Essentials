@@ -29,6 +29,7 @@ namespace UnitTestProject1.Json.Converters {
             Sample sample2 = new Sample { Duration = TimeSpan.FromSeconds(3.14), Duration2 = null };
 
             Sample parsed1 = JsonConvert.DeserializeObject<Sample>("{\"duration\":42,\"duration2\":42}");
+
             Assert.AreEqual(sample1.Duration, parsed1.Duration);
             Assert.AreEqual(sample1.Duration2, parsed1.Duration2);
 

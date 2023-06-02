@@ -152,9 +152,9 @@ namespace UnitTestProject1.Json.Newtonsoft.JObjectTests {
             Assert.AreEqual(1234, outer.GetFloat("b", 2), "Check #74 failed");
             Assert.AreEqual(1235, outer.GetFloat("b", x => x + 1), "Check #75 failed");
 
-            Assert.AreEqual("1234.456", outer.GetFloat("c").ToString("F3"), "Check #76 failed");
-            Assert.AreEqual("1234.456", outer.GetFloat("c", 2).ToString("F3"), "Check #77 failed");
-            Assert.AreEqual("1235.456", outer.GetFloat("c", x => x + 1).ToString("F3"), "Check #78 failed");
+            Assert.AreEqual("1234.456", outer.GetFloat("c").ToString("F3", CultureInfo.InvariantCulture), "Check #76 failed");
+            Assert.AreEqual("1234.456", outer.GetFloat("c", 2).ToString("F3", CultureInfo.InvariantCulture), "Check #77 failed");
+            Assert.AreEqual("1235.456", outer.GetFloat("c", x => x + 1).ToString("F3", CultureInfo.InvariantCulture), "Check #78 failed");
 
             Assert.AreEqual(0, outer.GetFloat("d"), "Check #79 failed");
             Assert.AreEqual(0, outer.GetFloat("d", 2), "Check #80 failed");
@@ -230,9 +230,9 @@ namespace UnitTestProject1.Json.Newtonsoft.JObjectTests {
             Assert.AreEqual(1234, json.GetFloatByPath("b", 2), "Check #5 failed");
             Assert.AreEqual(1235, json.GetFloatByPath("b", x => x + 1), "Check #6 failed");
 
-            Assert.AreEqual("1234.456", json.GetFloatByPath("c").ToString("F3"), "Check #7 failed");
-            Assert.AreEqual("1234.456", json.GetFloatByPath("c", 2).ToString("F3"), "Check #8 failed");
-            Assert.AreEqual("1235.456", json.GetFloatByPath("c", x => x + 1).ToString("F3"), "Check #9 failed");
+            Assert.AreEqual("1234.456", json.GetFloatByPath("c").ToString("F3", CultureInfo.InvariantCulture), "Check #7 failed");
+            Assert.AreEqual("1234.456", json.GetFloatByPath("c", 2).ToString("F3", CultureInfo.InvariantCulture), "Check #8 failed");
+            Assert.AreEqual("1235.456", json.GetFloatByPath("c", x => x + 1).ToString("F3", CultureInfo.InvariantCulture), "Check #9 failed");
 
             Assert.AreEqual(0, json.GetFloatByPath("d"), "Check #10 failed");
             Assert.AreEqual(0, json.GetFloatByPath("d", 2), "Check #11 failed");
@@ -283,9 +283,9 @@ namespace UnitTestProject1.Json.Newtonsoft.JObjectTests {
             Assert.AreEqual(1234, json.GetFloatByPath("outer.b", 2), "Check #41 failed");
             Assert.AreEqual(1235, json.GetFloatByPath("outer.b", x => x + 1), "Check #42 failed");
 
-            Assert.AreEqual("1234.456", json.GetFloatByPath("outer.c").ToString("F3"), "Check #43 failed");
-            Assert.AreEqual("1234.456", json.GetFloatByPath("outer.c", 2).ToString("F3"), "Check #44 failed");
-            Assert.AreEqual("1235.456", json.GetFloatByPath("outer.c", x => x + 1).ToString("F3"), "Check #45 failed");
+            Assert.AreEqual("1234.456", json.GetFloatByPath("outer.c").ToString("F3", CultureInfo.InvariantCulture), "Check #43 failed");
+            Assert.AreEqual("1234.456", json.GetFloatByPath("outer.c", 2).ToString("F3", CultureInfo.InvariantCulture), "Check #44 failed");
+            Assert.AreEqual("1235.456", json.GetFloatByPath("outer.c", x => x + 1).ToString("F3", CultureInfo.InvariantCulture), "Check #45 failed");
 
             Assert.AreEqual(0, json.GetFloatByPath("outer.d"), "Check #46 failed");
             Assert.AreEqual(0, json.GetFloatByPath("outer.d", 2), "Check #47 failed");
@@ -331,9 +331,9 @@ namespace UnitTestProject1.Json.Newtonsoft.JObjectTests {
             Assert.AreEqual(1234, outer.GetFloatByPath("b", 2), "Check #74 failed");
             Assert.AreEqual(1235, outer.GetFloatByPath("b", x => x + 1), "Check #75 failed");
 
-            Assert.AreEqual("1234.456", outer.GetFloatByPath("c").ToString("F3"), "Check #76 failed");
-            Assert.AreEqual("1234.456", outer.GetFloatByPath("c", 2).ToString("F3"), "Check #77 failed");
-            Assert.AreEqual("1235.456", outer.GetFloatByPath("c", x => x + 1).ToString("F3"), "Check #78 failed");
+            Assert.AreEqual("1234.456", outer.GetFloatByPath("c").ToString("F3", CultureInfo.InvariantCulture), "Check #76 failed");
+            Assert.AreEqual("1234.456", outer.GetFloatByPath("c", 2).ToString("F3", CultureInfo.InvariantCulture), "Check #77 failed");
+            Assert.AreEqual("1235.456", outer.GetFloatByPath("c", x => x + 1).ToString("F3", CultureInfo.InvariantCulture), "Check #78 failed");
 
             Assert.AreEqual(0, outer.GetFloatByPath("d"), "Check #79 failed");
             Assert.AreEqual(0, outer.GetFloatByPath("d", 2), "Check #80 failed");

@@ -78,6 +78,12 @@
     <Compile Include="Json\JObjectExtensionTests.cs" />
     <Compile Include="Json\JsonTests.cs" />
     <Compile Include="Json\JObjectTests.cs" />
+    <Compile Include="Json\Newtonsoft\Converters\EnumStringConverterTests.cs" />
+    <Compile Include="Json\Newtonsoft\Converters\NameValueCollectionTests.cs" />
+    <Compile Include="Json\Newtonsoft\Converters\StringJsonConverterTests.cs" />
+    <Compile Include="Json\Newtonsoft\Converters\TimeConverterTests.cs" />
+    <Compile Include="Json\Newtonsoft\Converters\TimeSpanConverterTests.cs" />
+    <Compile Include="Json\Newtonsoft\Converters\UnixTimeConverterTests.cs" />
     <Compile Include="Json\Newtonsoft\JObjectTests\ArrayTests.cs" />
     <Compile Include="Json\Newtonsoft\JObjectTests\EnumTests.cs" />
     <Compile Include="Json\Newtonsoft\JObjectTests\FloatTests.cs" />
@@ -169,6 +175,7 @@
   <ItemGroup>
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Choose>
     <When Condition="'$(VisualStudioVersion)' == '10.0' And '$(IsCodedUITest)' == 'True'">
       <ItemGroup>

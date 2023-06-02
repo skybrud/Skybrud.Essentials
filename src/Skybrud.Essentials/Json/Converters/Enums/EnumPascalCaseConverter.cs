@@ -1,17 +1,11 @@
-﻿using Skybrud.Essentials.Strings;
+﻿using System;
 
 namespace Skybrud.Essentials.Json.Converters.Enums {
 
     /// <summary>
     /// JSON converter for serializing an enum value into a Pascal cased string.
     /// </summary>
-    public class EnumPascalCaseConverter : EnumStringConverter {
-
-        /// <summary>
-        /// Initializes a new converter with default options.
-        /// </summary>
-        public EnumPascalCaseConverter() : base(TextCasing.PascalCase) { }
-
-    }
+    [Obsolete("Use the 'Skybrud.Essentials.Json.Newtonsoft.Converters.Enums.EnumPascalCaseConverter' converted instead.")]
+    public class EnumPascalCaseConverter : Newtonsoft.Converters.Enums.EnumPascalCaseConverter { }
 
 }

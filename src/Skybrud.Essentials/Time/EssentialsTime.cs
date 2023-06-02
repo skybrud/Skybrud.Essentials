@@ -4,7 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;

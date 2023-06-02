@@ -6,7 +6,7 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 using Skybrud.Essentials.Time;
 
-namespace UnitTestProject1.Json.Converters {
+namespace UnitTestProject1.Json.Newtonsoft.Converters {
 
     [TestClass]
     public class TimeSpanConverterTests {
