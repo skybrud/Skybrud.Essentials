@@ -487,7 +487,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="values">Array of string values.</param>
         /// <returns>The first value or <see cref="string.Empty"/>.</returns>
-        public static string FirstWithValue(params string[]? values) {
+        public static string FirstWithValue(params string?[]? values) {
             return values?.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? string.Empty;
         }
 
@@ -497,7 +497,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="values">Collection of string values.</param>
         /// <returns>The first value or <see cref="string.Empty"/>.</returns>
-        public static string FirstWithValue(IEnumerable<string>? values) {
+        public static string FirstWithValue(IEnumerable<string?>? values) {
             return values?.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? string.Empty;
         }
 
