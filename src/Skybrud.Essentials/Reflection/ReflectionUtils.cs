@@ -453,6 +453,64 @@ namespace Skybrud.Essentials.Reflection {
                 .ToArray() ?? ArrayUtils.Empty<T>();
         }
 
+        /// <summary>
+        /// Returns whether the specified <paramref name="assembly"/> has an attribute of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute.</typeparam>
+        /// <param name="assembly">The type to check.</param>
+        /// <returns><see langword="true"/> if an attribute is found; otherwise, <see langword="false"/>.</returns>
+        public static bool HasCustomAttribute<T>(Assembly? assembly) where T : Attribute {
+            return HasCustomAttribute<T>(assembly, out _);
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="assembly"/> has an attribute of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute.</typeparam>
+        /// <param name="assembly">The assembly to check.</param>
+        /// <param name="result">The first attribute of <typeparamref name="T"/>, or <see langword="null"/> if no matches.</param>
+        /// <returns><see langword="true"/> if an attribute is found; otherwise, <see langword="false"/>.</returns>
+        public static bool HasCustomAttribute<T>(Assembly? assembly, [NotNullWhen(true)] out T? result) where T : Attribute {
+            result = assembly?.GetCustomAttributes<T>().FirstOrDefault();
+            return result != null;
+        }
+
+        /// <summary>
+        /// Returns whether the specified <paramref name="assembly"/> has one or more attributes of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attributes.</typeparam>
+        /// <param name="assembly">The assembly to check.</param>
+        /// <param name="result">When this method returns, an array containing the matched attributes.</param>
+        /// <returns><see langword="true"/> if an attribute is found; otherwise, <see langword="false"/>.</returns>
+        public static bool HasCustomAttributes<T>(Assembly? assembly, [NotNullWhen(true)] out T[]? result) where T : Attribute {
+            result = assembly?.GetCustomAttributes<T>().ToArray() ?? ArrayUtils.Empty<T>();
+            return result.Length > 0;
+        }
+
+        /// <summary>
+        /// Returns the first attribute of type <typeparamref name="T"/>, or <see langword="null"/> if no matching attributes are found.
+        /// </summary>
+        /// <typeparam name="T">The type of the attribute to return.</typeparam>
+        /// <param name="assembly">The assembly holding the attribute.</param>
+        /// <returns>An instance of <typeparamref name="T"/>, or <see langword="null"/> if no matching attributes are found.</returns>
+        public static T? GetCustomAttribute<T>(Assembly? assembly) where T : Attribute {
+            return assembly?
+                .GetCustomAttributes<T>()
+                .FirstOrDefault();
+        }
+
+        /// <summary>
+        /// Returns an array of attributes of type <typeparamref name="T"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the attributes to return.</typeparam>
+        /// <param name="assembly">The assembly holding the attributes.</param>
+        /// <returns>An array of <typeparamref name="T"/>.</returns>
+        public static T[] GetCustomAttributes<T>(Assembly? assembly) where T : Attribute {
+            return assembly?
+                .GetCustomAttributes<T>()
+                .ToArray() ?? ArrayUtils.Empty<T>();
+        }
+
 #if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
 
         /// <summary>
