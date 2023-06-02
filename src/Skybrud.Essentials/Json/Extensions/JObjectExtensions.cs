@@ -14,6 +14,7 @@ namespace Skybrud.Essentials.Json.Extensions {
     /// <summary>
     /// Various extensions methods for <see cref="JObject"/> that makes manual parsing easier.
     /// </summary>
+    [Obsolete("Use the 'Skybrud.Essentials.Json.Newtonsoft.Extensions.JObjectExtensions' class instead.")]
     public static partial class JObjectExtensions {
 
         /// <summary>

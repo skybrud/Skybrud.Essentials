@@ -7,6 +7,7 @@ namespace Skybrud.Essentials.Json.Extensions {
     /// <summary>
     /// Various extensions methods for <see cref="JArray"/> that makes manual parsing easier.
     /// </summary>
+    [Obsolete("Use the 'Skybrud.Essentials.Json.Newtonsoft.Extensions.JArrayExtensions' class instead.")]
     public static partial class JArrayExtensions {
 
         /// <summary>
