@@ -138,7 +138,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="JToken"/> if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonToken(string json, [NotNullWhen(true)] out JToken? result) {
+        public static bool TryParseJsonToken(string? json, [NotNullWhen(true)] out JToken? result) {
+
+            if (json is null) {
+                result = null;
+                return false;
+            }
+            
             try {
                 result = ParseJsonToken(json);
                 return true;
@@ -146,6 +152,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = null;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -155,7 +162,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="JToken"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonToken<T>(string json, [NotNullWhen(true)] out T? result) {
+        public static bool TryParseJsonToken<T>(string? json, [NotNullWhen(true)] out T? result) {
+
+            if (json is null) {
+                result = default;
+                return false;
+            }
+            
             try {
                 result = ParseJsonToken<T>(json);
                 return result is not null;
@@ -163,6 +176,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = default;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -173,18 +187,30 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="callback">A callback function used for converting a <see cref="JToken"/> into an instance of <typeparamref name="T"/>.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="JToken"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonToken<T>(string json, Func<JToken, T> callback, [NotNullWhen(true)] out T? result) {
+        public static bool TryParseJsonToken<T>(string? json, Func<JToken, T> callback, [NotNullWhen(true)] out T? result) {
+
+            if (json is null) {
+                result = default;
+                return false;
+            }
+
             try {
+                
                 if (TryParseJsonToken(json, out JToken? temp)) {
                     result = callback(temp);
                     return result is not null;
                 }
+                
                 result = default;
                 return false;
+
             } catch (Exception) {
+                
                 result = default;
                 return false;
+
             }
+
         }
 
         /// <summary>
@@ -193,7 +219,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="JObject"/> if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonObject(string json, [NotNullWhen(true)] out JObject? result) {
+        public static bool TryParseJsonObject(string? json, [NotNullWhen(true)] out JObject? result) {
+
+            if (json is null) {
+                result = null;
+                return false;
+            }
+
             try {
                 result = ParseJsonObject(json);
                 return true;
@@ -201,6 +233,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = null;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -210,7 +243,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="JObject"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonObject<T>(string json, [NotNullWhen(true)] out T? result) {
+        public static bool TryParseJsonObject<T>(string? json, [NotNullWhen(true)] out T? result) {
+
+            if (json is null) {
+                result = default;
+                return false;
+            }
+
             try {
                 result = ParseJsonObject<T>(json);
                 return result is not null;
@@ -218,6 +257,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = default;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -228,7 +268,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="callback">A callback function used for converting a <see cref="JObject"/> into an instance of <typeparamref name="T"/>.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="JObject"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonObject<T>(string json, Func<JObject, T> callback, [NotNullWhen(true)] out T? result) {
+        public static bool TryParseJsonObject<T>(string? json, Func<JObject, T> callback, [NotNullWhen(true)] out T? result) {
+
+            if (json is null) {
+                result = default;
+                return false;
+            }
+
             try {
                 if (TryParseJsonObject(json, out JObject? temp)) {
                     result = callback(temp);
@@ -240,6 +286,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = default;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -248,7 +295,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="result">When this method returns, holds the parsed <see cref="JArray"/> if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonArray(string json, [NotNullWhen(true)] out JArray? result) {
+        public static bool TryParseJsonArray(string? json, [NotNullWhen(true)] out JArray? result) {
+
+            if (json is null) {
+                result = null;
+                return false;
+            }
+
             try {
                 result = ParseJsonArray(json);
                 return true;
@@ -256,6 +309,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = null;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -265,7 +319,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="json">The JSON string to parse.</param>
         /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonArray<T>(string json, [NotNullWhen(true)] out T[]? result) {
+        public static bool TryParseJsonArray<T>(string? json, [NotNullWhen(true)] out T[]? result) {
+
+            if (json is null) {
+                result = null;
+                return false;
+            }
+
             try {
                 result = ParseJsonArray<T>(json);
                 return true;
@@ -273,6 +333,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = default;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -283,7 +344,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="callback">A callback function used for converting a <see cref="JArray"/> into an instance of <typeparamref name="T"/>.</param>
         /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonArray<T>(string json, Func<JArray, T[]> callback, [NotNullWhen(true)] out T[]? result) {
+        public static bool TryParseJsonArray<T>(string? json, Func<JArray, T[]> callback, [NotNullWhen(true)] out T[]? result) {
+
+            if (json is null) {
+                result = null;
+                return false;
+            }
+
             try {
                 if (TryParseJsonArray(json, out JArray? temp)) {
                     result = callback(temp);
@@ -295,6 +362,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = default;
                 return false;
             }
+
         }
 
         /// <summary>
@@ -305,7 +373,13 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
         /// <param name="callback">A callback function used for converting the individual <see cref="JObject"/> of the parsed array into instances of <typeparamref name="T"/>.</param>
         /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <c>null</c>.</param>
         /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
-        public static bool TryParseJsonArray<T>(string json, Func<JObject, T> callback, [NotNullWhen(true)] out T[]? result) {
+        public static bool TryParseJsonArray<T>(string? json, Func<JObject, T> callback, [NotNullWhen(true)] out T[]? result) {
+
+            if (json is null) {
+                result = null;
+                return false;
+            }
+            
             try {
                 if (TryParseJsonArray(json, out JArray? temp)) {
                     result = temp.OfType<JObject>().Select(callback).ToArray();
@@ -317,6 +391,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft {
                 result = default;
                 return false;
             }
+
         }
 
 #if I_CAN_HAZ_FILE
