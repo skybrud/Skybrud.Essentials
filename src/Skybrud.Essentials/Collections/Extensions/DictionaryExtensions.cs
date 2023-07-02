@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Collections.Extensions {
     
@@ -8,6 +9,30 @@ namespace Skybrud.Essentials.Collections.Extensions {
     /// Static class with various dictionary related extension methods.
     /// </summary>
     public static class DictionaryExtensions {
+
+        /// <summary>
+        /// Returns the boolean value (<see cref="bool"/>) of the dictionary item with the specified
+        /// <paramref name="key"/>. If a matching dictionary doesn't exist or it's value can not be converted to a
+        /// <see cref="bool"/> value, <see langword="false"/> is returned instead.
+        /// </summary>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="key">The key of the dictionary item.</param>
+        /// <returns>The <see cref="bool"/> value if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool GetBoolean(this IDictionary<object, object?>? dictionary, object key) {
+            return TryGetBoolean(dictionary, key, out bool value) ? value : default;
+        }
+
+        /// <summary>
+        /// Returns the boolean value (<see cref="bool"/>) of the dictionary item with the specified
+        /// <paramref name="key"/>. If a matching dictionary doesn't exist or it's value can not be converted to a
+        /// <see cref="bool"/> value, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="key">The key of the dictionary item.</param>
+        /// <returns>The <see cref="bool"/> value if successful; otherwise, <see langword="null"/>.</returns>
+        public static bool? GetBooleanOrNull(this IDictionary<object, object?>? dictionary, object key) {
+            return TryGetBoolean(dictionary, key, out bool? value) ? value : default;
+        }
 
         /// <summary>
         /// Returns the 32-bit integer value of the dictionary item with the specified <paramref name="key"/>. If a
@@ -65,6 +90,68 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns>The <see cref="string"/> value if successful; otherwise, <see langword="null"/>.</returns>
         public static string? GetString(this IDictionary<object, object?>? dictionary, object key) {
             return TryGetString(dictionary, key, out string? result) ? result : null;
+        }
+
+        /// <summary>
+        /// Attempts to get a boolean value (<see cref="bool"/>) from the dictionary item with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="key">The key of the dictionary item.</param>
+        /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="false"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetBoolean(this IDictionary<object, object?>? dictionary, object key, out bool result) {
+
+            if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
+                result = default;
+                return false;
+            }
+
+            switch (value) {
+
+                case bool boolean:
+                    result = boolean;
+                    return true;
+
+                case string str:
+                    return StringUtils.TryParseBoolean(str, out result);
+
+                default:
+                    result = default;
+                    return false;
+
+            }
+
+        }
+
+        /// <summary>
+        /// Attempts to get a boolean value (<see cref="bool"/>) from the dictionary item with the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="dictionary">The dictionary.</param>
+        /// <param name="key">The key of the dictionary item.</param>
+        /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryGetBoolean(this IDictionary<object, object?>? dictionary, object key, out bool? result) {
+
+            if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
+                result = default;
+                return false;
+            }
+
+            switch (value) {
+
+                case bool boolean:
+                    result = boolean;
+                    return true;
+
+                case string str:
+                    return StringUtils.TryParseBoolean(str, out result);
+
+                default:
+                    result = default;
+                    return false;
+
+            }
+
         }
 
         /// <summary>
