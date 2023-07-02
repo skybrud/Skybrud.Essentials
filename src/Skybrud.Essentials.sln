@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.29806.167
+# Visual Studio Version 17
+VisualStudioVersion = 17.4.33205.214
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skybrud.Essentials", "Skybrud.Essentials\Skybrud.Essentials.csproj", "{EDEB8F09-B293-4D1B-BC36-AD6C8EF8D9BD}"
 EndProject
@@ -11,6 +11,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
 	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{8EAA7946-1878-4720-86F6-BEA03787ED8E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -26,6 +28,10 @@ Global
 		{A160E1D0-5C6E-414D-BA75-06CC12FBFCEF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A160E1D0-5C6E-414D-BA75-06CC12FBFCEF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A160E1D0-5C6E-414D-BA75-06CC12FBFCEF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{8EAA7946-1878-4720-86F6-BEA03787ED8E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8EAA7946-1878-4720-86F6-BEA03787ED8E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8EAA7946-1878-4720-86F6-BEA03787ED8E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8EAA7946-1878-4720-86F6-BEA03787ED8E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
