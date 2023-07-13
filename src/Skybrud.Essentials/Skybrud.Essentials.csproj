@@ -35,12 +35,12 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.1.49</VersionPrefix>
+    <VersionPrefix>1.1.50</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
     <Description>Library with common purpose functionality for working with .NET.</Description>
-    <Copyright>Copyright © 2023</Copyright>
+    <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
   </PropertyGroup>
 
   <PropertyGroup>
