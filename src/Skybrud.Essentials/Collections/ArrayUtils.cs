@@ -1,6 +1,7 @@
 ﻿// ReSharper disable UseArrayEmptyMethod
 
 using System;
+using System.Linq;
 using System.Reflection;
 
 namespace Skybrud.Essentials.Collections {
@@ -18,7 +19,8 @@ namespace Skybrud.Essentials.Collections {
         public static Array Empty(Type type) {
             return (Array) typeof(ArrayUtils)
                 .GetTypeInfo()
-                .GetDeclaredMethod("Empty")!
+                .GetDeclaredMethods("Empty")
+                .First(x => x.GetParameters().Length == 0)
                 .MakeGenericMethod(type)
                 .Invoke(null, null)!;
         }
