@@ -501,6 +501,16 @@ namespace Skybrud.Essentials.Strings {
             return values?.FirstOrDefault(x => !string.IsNullOrWhiteSpace(x)) ?? string.Empty;
         }
 
+        /// <summary>
+        /// Returns a culture invarian string representation of the specified <paramref name="args"/> according to <paramref name="format"/>.
+        /// </summary>
+        /// <param name="format">A composite format string.</param>
+        /// <param name="args">An object array that contains zero or more objects to format.</param>
+        /// <returns>A copy of <paramref name="format"/> in which the <paramref name="format"/> items have been replaced by the string representation of the corresponding objects in <paramref name="args"/>.</returns>
+        public static string InvariantFormat(string format, params object[] args) {
+            return string.Format(CultureInfo.InvariantCulture, format, args);
+        }
+
     }
 
 }

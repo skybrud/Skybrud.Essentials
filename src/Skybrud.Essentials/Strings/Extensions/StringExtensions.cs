@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
+using System.Threading;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -493,6 +495,16 @@ namespace Skybrud.Essentials.Strings.Extensions {
             third = array is { Length: > 2 } ? array[2] : null;
             fourth = array is { Length: > 3 } ? array[3] : null;
             fifth = array is { Length: > 4 } ? array[4] : null;
+        }
+
+        /// <summary>
+        /// Returns a culture invariant string representation of the specified <paramref name="value"/>.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
+        [return: NotNullIfNotNull("value")]
+        public static string? ToInvariantString(this object? value) {
+            return value is null ? null : string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
     }
