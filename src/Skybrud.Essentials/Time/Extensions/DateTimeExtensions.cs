@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Skybrud.Essentials.Time.Iso8601;
 
@@ -312,6 +313,25 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
         public static bool IsYesterday(this DateTime date) {
             return TimeUtils.IsYesterday(date);
+        }
+
+        /// <summary>
+        /// Returns an ISO 8601 formatted string based on the specified <see cref="DateTime"/> <paramref name="value"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="DateTime"/> value.</param>
+        /// <returns>An ISO 8601 formatted string.</returns>
+        public static string ToIso8601(this DateTime value) {
+            return Iso8601Utils.ToString(value);
+        }
+
+        /// <summary>
+        /// Returns an ISO 8601 formatted string based on the specified <see cref="DateTime"/> <paramref name="value"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="DateTime"/> value.</param>
+        /// <returns>An ISO 8601 formatted string, or <see langword="null"/> if <paramref name="value"/> is <see langword="null"/>.</returns>
+        [return: NotNullIfNotNull("value")]
+        public static string? ToIso8601(this DateTime? value) {
+            return value is null ? null : Iso8601Utils.ToString(value.Value);
         }
 
     }
