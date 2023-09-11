@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 namespace Skybrud.Essentials.Time {
 
@@ -186,6 +188,70 @@ namespace Skybrud.Essentials.Time {
         /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
         public static bool IsYesterday(DateTime date) {
             return IsSameDay(date, DateTime.Now.AddDays(-1));
+        }
+
+        #endregion
+
+        #region Min...
+
+        /// <summary>
+        /// Returns the minimum value of <paramref name="a"/> and <paramref name="b"/>.
+        /// </summary>
+        /// <param name="a">The first <see cref="DateTime"/> value.</param>
+        /// <param name="b">The second <see cref="DateTime"/> value.</param>
+        /// <returns>The minimum <see cref="DateTime"/> value.</returns>
+        public static DateTime Min(DateTime a, DateTime b) {
+            return a < b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the minimum value of the specified <see cref="DateTime"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">An array of <see cref="DateTime"/> values.</param>
+        /// <returns>The minimum <see cref="DateTime"/> value.</returns>
+        public static DateTime Min(params DateTime[] values) {
+            return values.Min(x => x);
+        }
+
+        /// <summary>
+        /// Returns the minimum value of the specified <see cref="DateTime"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="DateTime"/> values.</param>
+        /// <returns>The minimum <see cref="DateTime"/> value.</returns>
+        public static DateTime Min(IEnumerable<DateTime> values) {
+            return values.Min(x => x);
+        }
+
+        #endregion
+
+        #region Max...
+
+        /// <summary>
+        /// Returns the maximum value of <paramref name="a"/> and <paramref name="b"/>.
+        /// </summary>
+        /// <param name="a">The first <see cref="DateTime"/> value.</param>
+        /// <param name="b">The second <see cref="DateTime"/> value.</param>
+        /// <returns>The maximum <see cref="DateTime"/> value.</returns>
+        public static DateTime Max(DateTime a, DateTime b) {
+            return a > b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the maximum value of the specified <see cref="DateTime"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">An array of <see cref="DateTime"/> values.</param>
+        /// <returns>The maximum <see cref="DateTime"/> value.</returns>
+        public static DateTime Max(params DateTime[] values) {
+            return values.Max(x => x);
+        }
+
+        /// <summary>
+        /// Returns the maximum value of the specified <see cref="DateTime"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="DateTime"/> values.</param>
+        /// <returns>The maximum <see cref="DateTime"/> value.</returns>
+        public static DateTime Max(IEnumerable<DateTime> values) {
+            return values.Max(x => x);
         }
 
         #endregion

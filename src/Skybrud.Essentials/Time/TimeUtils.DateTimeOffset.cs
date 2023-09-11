@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 
 #pragma warning disable CS1591 // Missing XML comment for publicly visible type or member
 
@@ -298,6 +300,70 @@ namespace Skybrud.Essentials.Time {
         /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
         public static bool IsYesterday(DateTimeOffset date) {
             return IsSameDay(date, DateTimeOffset.Now.AddDays(-1));
+        }
+
+        #endregion
+
+        #region Min...
+
+        /// <summary>
+        /// Returns the minimum value of <paramref name="a"/> and <paramref name="b"/>.
+        /// </summary>
+        /// <param name="a">The first <see cref="DateTimeOffset"/> value.</param>
+        /// <param name="b">The second <see cref="DateTimeOffset"/> value.</param>
+        /// <returns>The minimum <see cref="DateTimeOffset"/> value.</returns>
+        public static DateTimeOffset Min(DateTimeOffset a, DateTimeOffset b) {
+            return a < b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the minimum value of the specified <see cref="DateTimeOffset"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">An array of <see cref="DateTimeOffset"/> values.</param>
+        /// <returns>The minimum <see cref="DateTimeOffset"/> value.</returns>
+        public static DateTimeOffset Min(params DateTimeOffset[] values) {
+            return values.Min(x => x);
+        }
+
+        /// <summary>
+        /// Returns the minimum value of the specified <see cref="DateTimeOffset"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="DateTimeOffset"/> values.</param>
+        /// <returns>The minimum <see cref="DateTimeOffset"/> value.</returns>
+        public static DateTimeOffset Min(IEnumerable<DateTimeOffset> values) {
+            return values.Min(x => x);
+        }
+
+        #endregion
+
+        #region Max...
+
+        /// <summary>
+        /// Returns the maximum value of <paramref name="a"/> and <paramref name="b"/>.
+        /// </summary>
+        /// <param name="a">The first <see cref="DateTimeOffset"/> value.</param>
+        /// <param name="b">The second <see cref="DateTimeOffset"/> value.</param>
+        /// <returns>The maximum <see cref="DateTimeOffset"/> value.</returns>
+        public static DateTimeOffset Max(DateTimeOffset a, DateTimeOffset b) {
+            return a > b ? a : b;
+        }
+
+        /// <summary>
+        /// Returns the maximum value of the specified <see cref="DateTimeOffset"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">An array of <see cref="DateTimeOffset"/> values.</param>
+        /// <returns>The maximum <see cref="DateTimeOffset"/> value.</returns>
+        public static DateTimeOffset Max(params DateTimeOffset[] values) {
+            return values.Max(x => x);
+        }
+
+        /// <summary>
+        /// Returns the maximum value of the specified <see cref="DateTimeOffset"/> <paramref name="values"/>.
+        /// </summary>
+        /// <param name="values">A collection of <see cref="DateTimeOffset"/> values.</param>
+        /// <returns>The maximum <see cref="DateTimeOffset"/> value.</returns>
+        public static DateTimeOffset Max(IEnumerable<DateTimeOffset> values) {
+            return values.Max(x => x);
         }
 
         #endregion
