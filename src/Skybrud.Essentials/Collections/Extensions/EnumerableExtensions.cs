@@ -385,6 +385,27 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return collection.OrderBy(_ => Guid.NewGuid());
         }
 
+        /// <summary>
+        /// Returns a new list with the elements of <paramref name="source"/> that has been converted by the specified <paramref name="selector"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> to create a <see cref="HashSet{TResult}"/> from.</param>
+        /// <param name="selector">A function used for converting the elements.</param>
+        /// <returns>An instance of <see cref="List{TResult}"/></returns>
+        public static List<TResult> SelectList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
+
+            // Initialize a new list
+            List<TResult> temp = new();
+
+            // Iterate through the elements of the source
+            foreach (var item in source) temp.Add(selector(item));
+
+            // Return the list
+            return temp;
+
+        }
+
     }
 
 }
