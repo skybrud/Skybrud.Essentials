@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
 using Skybrud.Essentials.Collections;
@@ -541,6 +542,44 @@ namespace Skybrud.Essentials.Reflection {
         }
 
 #endif
+
+        /// <summary>
+        /// Returns the <see cref="MethodInfo"/> identified by the specified <paramref name="expression"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the expression.</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns>An instance of <see cref="MethodInfo"/>.</returns>
+        /// <exception cref="ArgumentException">If <paramref name="expression"/> is not a method expression.</exception>
+        public static MethodInfo GetMethodInfo<T>(Expression<T> expression) {
+
+            if (expression.Body is not MethodCallExpression methodExpression) {
+                throw new ArgumentException($"Expression body is not of type MethodCallExpression: {expression}");
+            }
+
+            return methodExpression.Method;
+
+        }
+
+        /// <summary>
+        /// Returns the <see cref="PropertyInfo"/> identified by the specified <paramref name="expression"/>.
+        /// </summary>
+        /// <typeparam name="T">The type of the expression.</typeparam>
+        /// <param name="expression">The expression.</param>
+        /// <returns>An instance of <see cref="PropertyInfo"/>.</returns>
+        /// <exception cref="ArgumentException">If <paramref name="expression"/> is not a property expression.</exception>
+        public static PropertyInfo GetPropertyInfo<T>(Expression<T> expression) {
+
+            if (expression.Body is not MemberExpression member) {
+                throw new ArgumentException($"Expression body is not of type MemberExpression: {expression}");
+            }
+
+            if (member.Member is not PropertyInfo propertyInfo) {
+                throw new ArgumentException($"Expression member is not a property: {expression}");
+            }
+
+            return propertyInfo;
+
+        }
 
     }
 
