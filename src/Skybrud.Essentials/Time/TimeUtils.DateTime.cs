@@ -158,7 +158,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="first">The first date.</param>
         /// <param name="second">The second date.</param>
-        /// <returns><c>true</c> if <paramref name="first"/> and <paramref name="second"/> represents the same day; otherwise, <c>false</c>.</returns>
+        /// <returns><see langword="true"/> if <paramref name="first"/> and <paramref name="second"/> represents the same day; otherwise, <see langword="false"/>.</returns>
         public static bool IsSameDay(DateTime first, DateTime second) {
             return first.Year == second.Year && first.Month == second.Month && first.Day == second.Day;
         }

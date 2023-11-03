@@ -289,6 +289,16 @@ namespace Skybrud.Essentials.Time.Extensions {
         }
 
         /// <summary>
+        /// Returns whether <paramref name="first"/> and <paramref name="second"/> represents the same day.
+        /// </summary>
+        /// <param name="first">The first date.</param>
+        /// <param name="second">The second date.</param>
+        /// <returns><see langword="true"/> if <paramref name="first"/> and <paramref name="second"/> represents the same day; otherwise, <see langword="false"/>.</returns>
+        public static bool IsSameDay(this DateTime first, DateTime second) {
+            return TimeUtils.IsSameDay(first, second);
+        }
+
+        /// <summary>
         /// Returns whether the specified <paramref name="date"/> is today.
         /// </summary>
         /// <param name="date">The date.</param>
