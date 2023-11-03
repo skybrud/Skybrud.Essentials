@@ -301,17 +301,17 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Gets whether the date of this <see cref="EssentialsTime"/> matches the current day.
         /// </summary>
-        public bool IsToday => ToString("yyyy-MM-dd") == DateTime.Now.ToString("yyyy-MM-dd");
+        public bool IsToday => TimeUtils.IsToday(DateTimeOffset);
 
         /// <summary>
         /// Gets whether the date of this <see cref="EssentialsTime"/> matches the day after the current day.
         /// </summary>
-        public bool IsTomorrow => ToString("yyyy-MM-dd") == DateTime.Now.AddDays(+1).ToString("yyyy-MM-dd");
+        public bool IsTomorrow => TimeUtils.IsTomorrow(DateTimeOffset);
 
         /// <summary>
         /// Gets whether the date of this <see cref="EssentialsTime"/> matches the day before the current day.
         /// </summary>
-        public bool IsYesterday => ToString("yyyy-MM-dd") == DateTime.Now.AddDays(-1).ToString("yyyy-MM-dd");
+        public bool IsYesterday => TimeUtils.IsYesterday(DateTimeOffset);
 
         /// <summary>
         /// Gets a string representation of the instance as specified by the <strong>ISO 8601</strong> format.
