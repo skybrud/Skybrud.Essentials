@@ -83,6 +83,26 @@ namespace Skybrud.Essentials.Time {
         public DateTimeOffset DateTimeOffset { get; }
 
         /// <summary>
+        /// Gets a <see cref="DateTime"/> value that represents the date of the current <see cref="EssentialsTime"/> object.
+        /// </summary>
+        public DateTime Date => DateTimeOffset.Date;
+
+        /// <summary>
+        /// Gets a <see cref="DateTime"/> value that represents the date and time of the current <see cref="EssentialsTime"/> object.
+        /// </summary>
+        public DateTime DateTime => DateTimeOffset.DateTime;
+
+        /// <summary>
+        /// Gets a <see cref="DateTime"/> value that represents the local date and time of the current <see cref="EssentialsTime"/> object.
+        /// </summary>
+        public DateTime LocalDateTime => DateTimeOffset.LocalDateTime;
+
+        /// <summary>
+        /// Gets a <see cref="DateTime"/> value that represents the Coordinated Universal Time (UTC) date and time of the current <see cref="EssentialsTime"/> object.
+        /// </summary>
+        public DateTime UtcDateTime => DateTimeOffset.UtcDateTime;
+
+        /// <summary>
         /// Returns the day-of-month part of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>1</c> and <c>31</c>.
         /// </summary>
         public int Day => DateTimeOffset.Day;
@@ -112,9 +132,37 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public int Hour => DateTimeOffset.Hour;
 
+#if NET7_0_OR_GREATER
+
         /// <summary>
-        /// Gets the millisecond part of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>0</c> and <c>999</c>.
+        /// Gets the microsecond part of this <see cref="EssentialsTime"/>.
         /// </summary>
+        /// <remarks>
+        /// If you rely on properties such as <see cref="Now"/> or <see cref="UtcNow"/> to accurately track the number
+        /// of elapsed microseconds, the precision of the time's microseconds component depends on the resolution of
+        /// the system clock. On Windows NT 3.5 and later, and Windows Vista operating systems, the clock's resolution
+        /// is approximately 10000-15000 microseconds.
+        /// </remarks>
+        /// <see>
+        ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.microsecond?view=net-7.0#system-datetimeoffset-microsecond</cref>
+        /// </see>
+        public int Microsecond => DateTimeOffset.Microsecond;
+
+#endif
+
+        ///  <summary>
+        ///  Gets the millisecond part of this <see cref="EssentialsTime"/>. The returned value is an integer between
+        ///  <c>0</c> and <c>999</c>.
+        ///  </summary>
+        ///  <remarks>
+        /// If you rely on properties such as <see cref="Now"/> or <see cref="UtcNow"/> to accurately track the number
+        ///  of elapsed milliseconds, the precision of the time's millisecond component depends on the resolution of the
+        ///  system clock. On Windows NT 3.5 and later, and Windows Vista operating systems, the clock's resolution is
+        ///  approximately 10-15 milliseconds.
+        ///  </remarks>
+        ///  <see>
+        ///      <cref>https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.millisecond?view=net-7.0#system-datetimeoffset-millisecond</cref>
+        ///  </see>
         public int Millisecond => DateTimeOffset.Millisecond;
 
         /// <summary>
@@ -127,6 +175,24 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         public int Month => DateTimeOffset.Month;
 
+#if NET7_0_OR_GREATER
+
+        /// <summary>
+        /// Gets the nanosecond part of this <see cref="EssentialsTime"/>.
+        /// </summary>
+        /// <remarks>
+        /// If you rely on properties such as <see cref="Now"/> or <see cref="UtcNow"/> to accurately track the number
+        /// of elapsed nanosecond, the precision of the time's nanosecond component depends on the resolution of the
+        /// system clock. On Windows NT 3.5 and later, and Windows Vista operating systems, the clock's resolution is
+        /// approximately 10000000-15000000 nanoseconds.
+        /// </remarks>
+        /// <see>
+        ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.nanosecond?view=net-7.0#system-datetimeoffset-nanosecond</cref>
+        /// </see>
+        public int Nanosecond => DateTimeOffset.Nanosecond;
+
+#endif
+
         /// <summary>
         /// Gets the second part of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>0</c> and <c>59</c>.
         /// </summary>
@@ -136,6 +202,20 @@ namespace Skybrud.Essentials.Time {
         /// Gets the tick count for this <see cref="EssentialsTime"/>. The returned value is the number of 100-nanosecond intervals that have elapsed since <c>1/1/0001 12:00am</c>.
         /// </summary>
         public long Ticks => DateTimeOffset.Ticks;
+
+        /// <summary>
+        /// Gets the number of ticks that represents the date and time of the current <see cref="EssentialsTime"/> object in Coordinated Universal Time (UTC).
+        /// </summary>
+        /// <remarks>
+        /// The value of the <see cref="UtcTicks"/> property represents the number of 100-nanosecond intervals that
+        /// have elapsed since 12:00:00 midnight on January 1, 0001 (the value of <see cref="MinValue"/>). It does not
+        /// include ticks that would be added by leap seconds. A nanosecond is one billionth of a second; there are ten
+        /// million ticks in a second.
+        /// </remarks>
+        /// <see>
+        ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.utcticks?view=net-7.0#system-datetimeoffset-utcticks</cref>
+        /// </see>
+        public long UtcTicks => DateTimeOffset.UtcTicks;
 
         /// <summary>
         /// Gets the time-of-day part of this <see cref="EssentialsTime"/>. The returned value is a <see cref="TimeSpan"/> that indicates the time elapsed since midnight.
