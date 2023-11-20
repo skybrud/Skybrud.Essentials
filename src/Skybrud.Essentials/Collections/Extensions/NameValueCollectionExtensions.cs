@@ -1,4 +1,4 @@
-﻿#if NET_FRAMEWORK
+﻿#if I_CAN_HAS_NAME_VALUE_COLLECTION
 
 using System;
 using System.Collections.Specialized;
