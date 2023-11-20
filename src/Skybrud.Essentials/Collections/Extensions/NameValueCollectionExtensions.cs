@@ -22,7 +22,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="collection">The name value collection.</param>
         /// <param name="key">The key of the item.</param>
         /// <returns>An instance of <see cref="string"/> if successful; otherwise, <see langword="null"/>.</returns>
-        public static string? GetString(this NameValueCollection collection, string key) {
+        public static string? GetString(this NameValueCollection? collection, string key) {
             return collection?.GetValues(key)?.FirstOrDefault();
         }
 
@@ -33,7 +33,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <param name="key">The key of the item.</param>
         /// <param name="result">When this method returns, holds the string value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-        public static bool TryGetString(this NameValueCollection collection, string key, [NotNullWhen(true)] out string? result) {
+        public static bool TryGetString(this NameValueCollection? collection, string key, [NotNullWhen(true)] out string? result) {
             if (collection?.GetValues(key)?.FirstOrDefault() is { } str && !string.IsNullOrWhiteSpace(str)) {
                 result = str;
                 return true;
