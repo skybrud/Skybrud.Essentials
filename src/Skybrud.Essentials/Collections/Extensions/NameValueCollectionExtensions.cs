@@ -68,6 +68,16 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
+        /// Returns the boolean value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a boolean representation failed, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="key">The key of the item.</param>
+        /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <see langword="null"/>.</returns>
+        public static bool? GetBooleanOrNull(this NameValueCollection? collection, string key) {
+            return StringUtils.ParseBooleanOrNull(collection?.GetString(key));
+        }
+
+        /// <summary>
         /// Gets the boolean value associated with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>
@@ -112,6 +122,16 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <paramref name="fallback"/>.</returns>
         public static Guid GetGuid(this NameValueCollection? collection, string key, Guid fallback) {
             return StringUtils.ParseGuid(collection?.GetString(key), fallback);
+        }
+
+        /// <summary>
+        /// Returns the GUID value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a GUID failed, <see langword="null"/> is returned instead.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="key">The key of the item.</param>
+        /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <c>false</c>.</returns>
+        public static Guid? GetGuidOrNull(this NameValueCollection? collection, string key) {
+            return StringUtils.ParseGuidOrNull(collection?.GetString(key));
         }
 
         /// <summary>
@@ -162,6 +182,16 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
+        /// Returns the <see cref="int"/> value of the item with the specified <paramref name="key"/>, or <see langword="null"/> if a matching item couldn't be found or the value couldn't be parsed to a 32-bit unsigned integer.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="key">The key of the item.</param>
+        /// <returns>The value as a 32-bit unsigned integer (<see cref="int"/>).</returns>
+        public static int? GetInt32OrNull(this NameValueCollection? collection, string key) {
+            return StringUtils.ParseInt32OrNull(collection?.GetString(key));
+        }
+
+        /// <summary>
         /// Gets the <see cref="int"/> value associated with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>
@@ -206,6 +236,16 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns>The value as a 64-bit unsigned integer (<see cref="long"/>).</returns>
         public static long GetInt64(this NameValueCollection? collection, string key, long fallback) {
             return StringUtils.ParseInt64(collection?.GetString(key), fallback);
+        }
+
+        /// <summary>
+        /// Returns the <see cref="long"/> value of the item with the specified <paramref name="key"/>, or <see langword="null"/> if a matching item couldn't be found or the value couldn't be parsed to a 64-bit unsigned integer.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="key">The key of the item.</param>
+        /// <returns>The value as a 64-bit unsigned integer (<see cref="long"/>).</returns>
+        public static long? GetInt64OrNull(this NameValueCollection? collection, string key) {
+            return StringUtils.ParseInt64OrNull(collection?.GetString(key));
         }
 
         /// <summary>
@@ -256,6 +296,16 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
+        /// Returns the <see cref="float"/> value of the item with the specified <paramref name="key"/>, or <see langword="null"/> if a matching item couldn't be found or the value couldn't be parsed to a single-precision floating-point number.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="key">The key of the item.</param>
+        /// <returns>The value as a single-precision floating-point number (<see cref="float"/>).</returns>
+        public static float? GetFloatOrNull(this NameValueCollection? collection, string key) {
+            return StringUtils.ParseFloatOrNull(collection?.GetString(key));
+        }
+
+        /// <summary>
         /// Gets the <see cref="float"/> value associated with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>
@@ -282,7 +332,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         #region Double
 
         /// <summary>
-        /// Returns the <see cref="long"/> value of the item with the specified <paramref name="key"/>, or <c>0</c> if a matching item couldn't be found or the value couldn't be parsed to a double-precision floating-point number.
+        /// Returns the <see cref="double"/> value of the item with the specified <paramref name="key"/>, or <c>0</c> if a matching item couldn't be found or the value couldn't be parsed to a double-precision floating-point number.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -303,7 +353,17 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="long"/> value associated with the specified <paramref name="key"/>.
+        /// Returns the <see cref="double"/> value of the item with the specified <paramref name="key"/>, or <see langword="null"/> if a matching item couldn't be found or the value couldn't be parsed to a double-precision floating-point number.
+        /// </summary>
+        /// <param name="collection">The collection.</param>
+        /// <param name="key">The key of the item.</param>
+        /// <returns>The value as a double-precision floating-point number (<see cref="double"/>).</returns>
+        public static double? GetDoubleOrNull(this NameValueCollection? collection, string key) {
+            return StringUtils.ParseDoubleOrNull(collection?.GetString(key));
+        }
+
+        /// <summary>
+        /// Gets the <see cref="double"/> value associated with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -314,7 +374,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
-        /// Gets the <see cref="long"/> value associated with the specified <paramref name="key"/>.
+        /// Gets the <see cref="double"/> value associated with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
