@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 
 // ReSharper disable once RedundantSuppressNullableWarningExpression
 
@@ -331,6 +333,37 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         #endregion
+
+        #if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
+
+        /// <summary>
+        /// Returns a title cased version of the specified <paramref name="input"/> string according to the invariant culture.
+        /// </summary>
+        /// <param name="input">The input string to convert.</param>
+        /// <returns>The converted string in title case format.</returns>
+        /// <see>
+        ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.globalization.textinfo.totitlecase</cref>
+        /// </see>
+        [return: NotNullIfNotNull("input")]
+        public static string? ToTitleCase(this string? input) {
+            return ToTitleCase(input, CultureInfo.InvariantCulture);
+        }
+
+        /// <summary>
+        /// Returns a title cased version of the specified <paramref name="input"/> string according to <paramref name="culture"/>.
+        /// </summary>
+        /// <param name="input">The input string to convert.</param>
+        /// <param name="culture">The culture to be used for the conversion.</param>
+        /// <returns>The converted string in title case format.</returns>
+        /// <see>
+        ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.globalization.textinfo.totitlecase</cref>
+        /// </see>
+        [return: NotNullIfNotNull("input")]
+        public static string? ToTitleCase(this string? input, CultureInfo culture) {
+            return string.IsNullOrWhiteSpace(input) ? input : culture.TextInfo.ToTitleCase(input);
+        }
+
+        #endif
 
         /// <summary>
         /// Uppercases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
