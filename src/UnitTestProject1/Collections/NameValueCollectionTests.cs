@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Collections.Extensions;
@@ -28,7 +29,6 @@ namespace UnitTestProject1.Collections {
 
         }
 
-
         [TestMethod]
         public void TryGetString() {
 
@@ -51,6 +51,84 @@ namespace UnitTestProject1.Collections {
 
             Assert.AreEqual(true, nvc.TryGetString("d", out string result4));
             Assert.AreEqual("Hello there!", result4);
+
+        }
+
+        [TestMethod]
+        public void GetStringArray() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            string[] a = nvc.GetStringArray("a");
+            string[] b = nvc.GetStringArray("b");
+            string[] c = nvc.GetStringArray("c");
+            string[] d = nvc.GetStringArray("d");
+            string[] e = nvc.GetStringArray("e");
+            string[] f = nvc.GetStringArray("f");
+
+            Assert.AreEqual(0, a.Length, "#a");
+
+            Assert.AreEqual(1, b.Length, "#b");
+            Assert.AreEqual("1", b[0], "#b0");
+
+            Assert.AreEqual(1, c.Length, "#c");
+            Assert.AreEqual("2", c[0], "#c0");
+
+            Assert.AreEqual(2, d.Length, "#d");
+            Assert.AreEqual("3", d[0], "#d0");
+            Assert.AreEqual("4", d[1], "#d0");
+
+            Assert.AreEqual(2, e.Length, "#e");
+            Assert.AreEqual("5", e[0], "#e0");
+            Assert.AreEqual("6", e[1], "#e0");
+
+            Assert.AreEqual(0, f.Length, "#f");
+
+        }
+
+        [TestMethod]
+        public void GetStringList() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            List<string> a = nvc.GetStringList("a");
+            List<string> b = nvc.GetStringList("b");
+            List<string> c = nvc.GetStringList("c");
+            List<string> d = nvc.GetStringList("d");
+            List<string> e = nvc.GetStringList("e");
+            List<string> f = nvc.GetStringList("f");
+
+            Assert.AreEqual(0, a.Count, "#a");
+
+            Assert.AreEqual(1, b.Count, "#b");
+            Assert.AreEqual("1", b[0], "#b0");
+
+            Assert.AreEqual(1, c.Count, "#c");
+            Assert.AreEqual("2", c[0], "#c0");
+
+            Assert.AreEqual(2, d.Count, "#d");
+            Assert.AreEqual("3", d[0], "#d0");
+            Assert.AreEqual("4", d[1], "#d0");
+
+            Assert.AreEqual(2, e.Count, "#e");
+            Assert.AreEqual("5", e[0], "#e0");
+            Assert.AreEqual("6", e[1], "#e0");
+
+            Assert.AreEqual(0, f.Count, "#f");
 
         }
 
@@ -219,6 +297,84 @@ namespace UnitTestProject1.Collections {
 
         }
 
+        [TestMethod]
+        public void GetGuidArray() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "400149d7-f2fa-413b-b1ee-32b167653e5f" },
+                {"c", "4a84e1c9-aca0-4659-9f10-efa515c56e98" },
+                {"d", "cee3add1-8b09-46b1-82b5-6dab6169d572" },
+                {"d", "83956322-44e8-4c3c-a692-bd0599558773" },
+                {"e", "cee3add1-8b09-46b1-82b5-6dab6169d572,83956322-44e8-4c3c-a692-bd0599558773" }
+            };
+
+            Guid[] a = nvc.GetGuidArray("a");
+            Guid[] b = nvc.GetGuidArray("b");
+            Guid[] c = nvc.GetGuidArray("c");
+            Guid[] d = nvc.GetGuidArray("d");
+            Guid[] e = nvc.GetGuidArray("e");
+            Guid[] f = nvc.GetGuidArray("f");
+
+            Assert.AreEqual(0, a.Length, "#a");
+
+            Assert.AreEqual(1, b.Length, "#b");
+            Assert.AreEqual("400149d7-f2fa-413b-b1ee-32b167653e5f", b[0].ToString(), "#b0");
+
+            Assert.AreEqual(1, c.Length, "#c");
+            Assert.AreEqual("4a84e1c9-aca0-4659-9f10-efa515c56e98", c[0].ToString(), "#c0");
+
+            Assert.AreEqual(2, d.Length, "#d");
+            Assert.AreEqual("cee3add1-8b09-46b1-82b5-6dab6169d572", d[0].ToString(), "#d0");
+            Assert.AreEqual("83956322-44e8-4c3c-a692-bd0599558773", d[1].ToString(), "#d0");
+
+            Assert.AreEqual(2, e.Length, "#e");
+            Assert.AreEqual("cee3add1-8b09-46b1-82b5-6dab6169d572", e[0].ToString(), "#e0");
+            Assert.AreEqual("83956322-44e8-4c3c-a692-bd0599558773", e[1].ToString(), "#e0");
+
+            Assert.AreEqual(0, f.Length, "#f");
+
+        }
+
+        [TestMethod]
+        public void GetGuidList() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "400149d7-f2fa-413b-b1ee-32b167653e5f" },
+                {"c", "4a84e1c9-aca0-4659-9f10-efa515c56e98" },
+                {"d", "cee3add1-8b09-46b1-82b5-6dab6169d572" },
+                {"d", "83956322-44e8-4c3c-a692-bd0599558773" },
+                {"e", "cee3add1-8b09-46b1-82b5-6dab6169d572,83956322-44e8-4c3c-a692-bd0599558773" }
+            };
+
+            List<Guid> a = nvc.GetGuidList("a");
+            List<Guid> b = nvc.GetGuidList("b");
+            List<Guid> c = nvc.GetGuidList("c");
+            List<Guid> d = nvc.GetGuidList("d");
+            List<Guid> e = nvc.GetGuidList("e");
+            List<Guid> f = nvc.GetGuidList("f");
+
+            Assert.AreEqual(0, a.Count, "#a");
+
+            Assert.AreEqual(1, b.Count, "#b");
+            Assert.AreEqual("400149d7-f2fa-413b-b1ee-32b167653e5f", b[0].ToString(), "#b0");
+
+            Assert.AreEqual(1, c.Count, "#c");
+            Assert.AreEqual("4a84e1c9-aca0-4659-9f10-efa515c56e98", c[0].ToString(), "#c0");
+
+            Assert.AreEqual(2, d.Count, "#d");
+            Assert.AreEqual("cee3add1-8b09-46b1-82b5-6dab6169d572", d[0].ToString(), "#d0");
+            Assert.AreEqual("83956322-44e8-4c3c-a692-bd0599558773", d[1].ToString(), "#d0");
+
+            Assert.AreEqual(2, e.Count, "#e");
+            Assert.AreEqual("cee3add1-8b09-46b1-82b5-6dab6169d572", e[0].ToString(), "#e0");
+            Assert.AreEqual("83956322-44e8-4c3c-a692-bd0599558773", e[1].ToString(), "#e0");
+
+            Assert.AreEqual(0, f.Count, "#f");
+
+        }
+
         #endregion
 
         #region Int32
@@ -306,6 +462,84 @@ namespace UnitTestProject1.Collections {
 
             Assert.AreEqual(true, nvc.TryGetInt32("d", out int? result4));
             Assert.AreEqual(3, result4);
+
+        }
+
+        [TestMethod]
+        public void GetInt32Array() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            int[] a = nvc.GetInt32Array("a");
+            int[] b = nvc.GetInt32Array("b");
+            int[] c = nvc.GetInt32Array("c");
+            int[] d = nvc.GetInt32Array("d");
+            int[] e = nvc.GetInt32Array("e");
+            int[] f = nvc.GetInt32Array("f");
+
+            Assert.AreEqual(0, a.Length, "#a");
+
+            Assert.AreEqual(1, b.Length, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Length, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Length, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Length, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Length, "#f");
+
+        }
+
+        [TestMethod]
+        public void GetInt32List() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            List<int> a = nvc.GetInt32List("a");
+            List<int> b = nvc.GetInt32List("b");
+            List<int> c = nvc.GetInt32List("c");
+            List<int> d = nvc.GetInt32List("d");
+            List<int> e = nvc.GetInt32List("e");
+            List<int> f = nvc.GetInt32List("f");
+
+            Assert.AreEqual(0, a.Count, "#a");
+
+            Assert.AreEqual(1, b.Count, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Count, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Count, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Count, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Count, "#f");
 
         }
 
@@ -399,6 +633,84 @@ namespace UnitTestProject1.Collections {
 
         }
 
+        [TestMethod]
+        public void GetInt64Array() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            long[] a = nvc.GetInt64Array("a");
+            long[] b = nvc.GetInt64Array("b");
+            long[] c = nvc.GetInt64Array("c");
+            long[] d = nvc.GetInt64Array("d");
+            long[] e = nvc.GetInt64Array("e");
+            long[] f = nvc.GetInt64Array("f");
+
+            Assert.AreEqual(0, a.Length, "#a");
+
+            Assert.AreEqual(1, b.Length, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Length, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Length, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Length, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Length, "#f");
+
+        }
+
+        [TestMethod]
+        public void GetInt64List() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            List<long> a = nvc.GetInt64List("a");
+            List<long> b = nvc.GetInt64List("b");
+            List<long> c = nvc.GetInt64List("c");
+            List<long> d = nvc.GetInt64List("d");
+            List<long> e = nvc.GetInt64List("e");
+            List<long> f = nvc.GetInt64List("f");
+
+            Assert.AreEqual(0, a.Count, "#a");
+
+            Assert.AreEqual(1, b.Count, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Count, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Count, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Count, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Count, "#f");
+
+        }
+
         #endregion
 
         #region Float
@@ -489,6 +801,84 @@ namespace UnitTestProject1.Collections {
 
         }
 
+        [TestMethod]
+        public void GetFloatArray() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            float[] a = nvc.GetFloatArray("a");
+            float[] b = nvc.GetFloatArray("b");
+            float[] c = nvc.GetFloatArray("c");
+            float[] d = nvc.GetFloatArray("d");
+            float[] e = nvc.GetFloatArray("e");
+            float[] f = nvc.GetFloatArray("f");
+
+            Assert.AreEqual(0, a.Length, "#a");
+
+            Assert.AreEqual(1, b.Length, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Length, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Length, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Length, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Length, "#f");
+
+        }
+
+        [TestMethod]
+        public void GetFloatList() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            List<float> a = nvc.GetFloatList("a");
+            List<float> b = nvc.GetFloatList("b");
+            List<float> c = nvc.GetFloatList("c");
+            List<float> d = nvc.GetFloatList("d");
+            List<float> e = nvc.GetFloatList("e");
+            List<float> f = nvc.GetFloatList("f");
+
+            Assert.AreEqual(0, a.Count, "#a");
+
+            Assert.AreEqual(1, b.Count, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Count, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Count, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Count, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Count, "#f");
+
+        }
+
         #endregion
 
         #region Double
@@ -576,6 +966,84 @@ namespace UnitTestProject1.Collections {
 
             Assert.AreEqual(true, nvc.TryGetDouble("d", out double? result4));
             Assert.AreEqual(6.28, result4);
+
+        }
+
+        [TestMethod]
+        public void GetDoubleArray() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            double[] a = nvc.GetDoubleArray("a");
+            double[] b = nvc.GetDoubleArray("b");
+            double[] c = nvc.GetDoubleArray("c");
+            double[] d = nvc.GetDoubleArray("d");
+            double[] e = nvc.GetDoubleArray("e");
+            double[] f = nvc.GetDoubleArray("f");
+
+            Assert.AreEqual(0, a.Length, "#a");
+
+            Assert.AreEqual(1, b.Length, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Length, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Length, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Length, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Length, "#f");
+
+        }
+
+        [TestMethod]
+        public void GetDoubleList() {
+
+            NameValueCollection nvc = new NameValueCollection {
+                {"a", "" },
+                {"b", "1" },
+                {"c", "2" },
+                {"d", "3" },
+                {"d", "4" },
+                {"e", "5,6" }
+            };
+
+            List<double> a = nvc.GetDoubleList("a");
+            List<double> b = nvc.GetDoubleList("b");
+            List<double> c = nvc.GetDoubleList("c");
+            List<double> d = nvc.GetDoubleList("d");
+            List<double> e = nvc.GetDoubleList("e");
+            List<double> f = nvc.GetDoubleList("f");
+
+            Assert.AreEqual(0, a.Count, "#a");
+
+            Assert.AreEqual(1, b.Count, "#b");
+            Assert.AreEqual(1, b[0], "#b0");
+
+            Assert.AreEqual(1, c.Count, "#c");
+            Assert.AreEqual(2, c[0], "#c0");
+
+            Assert.AreEqual(2, d.Count, "#d");
+            Assert.AreEqual(3, d[0], "#d0");
+            Assert.AreEqual(4, d[1], "#d0");
+
+            Assert.AreEqual(2, e.Count, "#e");
+            Assert.AreEqual(5, e[0], "#e0");
+            Assert.AreEqual(6, e[1], "#e0");
+
+            Assert.AreEqual(0, f.Count, "#f");
 
         }
 

@@ -1,6 +1,7 @@
 ﻿#if I_CAN_HAS_NAME_VALUE_COLLECTION
 
 using System;
+using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
@@ -40,6 +41,54 @@ namespace Skybrud.Essentials.Collections.Extensions {
             }
             result = null;
             return false;
+        }
+
+        /// <summary>
+        /// Returns a string array parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A string array representing the parsed values.</returns>
+        public static string[] GetStringArray(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not {} values) return ArrayUtils.Empty<string>();
+
+            // Initialize a new list
+            List<string> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseStringArray(value));
+            }
+
+            // Return the list as an array
+            return result.ToArray();
+
+        }
+
+        /// <summary>
+        /// Returns a string list parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A string list representing the parsed values.</returns>
+        public static List<string> GetStringList(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return new List<string>();
+
+            // Initialize a new list
+            List<string> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseStringArray(value));
+            }
+
+            // Return the list
+            return result;
+
         }
 
         #endregion
@@ -156,6 +205,54 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return StringUtils.TryParseGuid(collection?.GetString(key), out result);
         }
 
+        /// <summary>
+        /// Returns a <see cref="Guid"/> array parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="Guid"/> array representing the parsed values.</returns>
+        public static Guid[] GetGuidArray(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<Guid>();
+
+            // Initialize a new list
+            List<Guid> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseGuidArray(value));
+            }
+
+            // Return the list as an array
+            return result.ToArray();
+
+        }
+
+        /// <summary>
+        /// Returns a <see cref="Guid"/> list parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="Guid"/> list representing the parsed values.</returns>
+        public static List<Guid> GetGuidList(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return new List<Guid>();
+
+            // Initialize a new list
+            List<Guid> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseGuidArray(value));
+            }
+
+            // Return the list
+            return result;
+
+        }
+
         #endregion
 
         #region Int32
@@ -211,6 +308,54 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetInt32(this NameValueCollection? collection, string key, [NotNullWhen(true)] out int? result) {
             return StringUtils.TryParseInt32(collection?.GetString(key), out result);
+        }
+
+        /// <summary>
+        /// Returns an <see cref="int"/> array parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>An <see cref="int"/> array representing the parsed values.</returns>
+        public static int[] GetInt32Array(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<int>();
+
+            // Initialize a new list
+            List<int> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseInt32Array(value));
+            }
+
+            // Return the list as an array
+            return result.ToArray();
+
+        }
+
+        /// <summary>
+        /// Returns an <see cref="int"/> list parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>An <see cref="int"/> list representing the parsed values.</returns>
+        public static List<int> GetInt32List(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return new List<int>();
+
+            // Initialize a new list
+            List<int> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseInt32Array(value));
+            }
+
+            // Return the list
+            return result;
+
         }
 
         #endregion
@@ -270,6 +415,54 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return StringUtils.TryParseInt64(collection?.GetString(key), out result);
         }
 
+        /// <summary>
+        /// Returns a <see cref="long"/> array parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="long"/> array representing the parsed values.</returns>
+        public static long[] GetInt64Array(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<long>();
+
+            // Initialize a new list
+            List<long> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseInt64Array(value));
+            }
+
+            // Return the list as an array
+            return result.ToArray();
+
+        }
+
+        /// <summary>
+        /// Returns a <see cref="long"/> list parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="long"/> list representing the parsed values.</returns>
+        public static List<long> GetInt64List(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return new List<long>();
+
+            // Initialize a new list
+            List<long> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseInt64Array(value));
+            }
+
+            // Return the list
+            return result;
+
+        }
+
         #endregion
 
         #region Float
@@ -327,6 +520,54 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return StringUtils.TryParseFloat(collection?.GetString(key), out result);
         }
 
+        /// <summary>
+        /// Returns a <see cref="float"/> array parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="float"/> array representing the parsed values.</returns>
+        public static float[] GetFloatArray(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<float>();
+
+            // Initialize a new list
+            List<float> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseFloatArray(value));
+            }
+
+            // Return the list as an array
+            return result.ToArray();
+
+        }
+
+        /// <summary>
+        /// Returns a <see cref="float"/> list parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="float"/> list representing the parsed values.</returns>
+        public static List<float> GetFloatList(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return new List<float>();
+
+            // Initialize a new list
+            List<float> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseFloatArray(value));
+            }
+
+            // Return the list
+            return result;
+
+        }
+
         #endregion
 
         #region Double
@@ -382,6 +623,54 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetDouble(this NameValueCollection? collection, string key, [NotNullWhen(true)] out double? result) {
             return StringUtils.TryParseDouble(collection?.GetString(key), out result);
+        }
+
+        /// <summary>
+        /// Returns a <see cref="double"/> array parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="double"/> array representing the parsed values.</returns>
+        public static double[] GetDoubleArray(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<double>();
+
+            // Initialize a new list
+            List<double> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseDoubleArray(value));
+            }
+
+            // Return the list as an array
+            return result.ToArray();
+
+        }
+
+        /// <summary>
+        /// Returns a <see cref="double"/> list parsed from the item or items matching the specified <paramref name="key"/>.
+        /// </summary>
+        /// <param name="collection">The name value collection.</param>
+        /// <param name="key">The key of the item or items.</param>
+        /// <returns>A <see cref="double"/> list representing the parsed values.</returns>
+        public static List<double> GetDoubleList(this NameValueCollection? collection, string key) {
+
+            // Return an empty array if the value is null
+            if (collection?.GetValues(key) is not { } values) return new List<double>();
+
+            // Initialize a new list
+            List<double> result = new();
+
+            // Parse the individual values into separate string arrays
+            foreach (string value in values) {
+                result.AddRange(StringUtils.ParseDoubleArray(value));
+            }
+
+            // Return the list
+            return result;
+
         }
 
         #endregion
