@@ -390,7 +390,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> to create a <see cref="HashSet{TResult}"/> from.</param>
+        /// <param name="source">A <see cref="IEnumerable{T}"/> instance with the items.</param>
         /// <param name="selector">A function used for converting the elements.</param>
         /// <returns>An instance of <see cref="List{TResult}"/></returns>
         public static List<TResult> SelectList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
@@ -411,10 +411,22 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
         /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
-        /// <param name="source">An <see cref="IEnumerable{T}"/> to create a <see cref="HashSet{TResult}"/> from.</param>
+        /// <param name="source">A <see cref="IEnumerable{T}"/> instance with the items.</param>
         /// <param name="selector">A function used for converting the elements.</param>
         /// <returns>An array of <see cref="TResult"/></returns>
         public static TResult[] SelectArray<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
+            return source.Select(selector).ToArray();
+        }
+
+        /// <summary>
+        /// Returns a new list with the elements of <paramref name="source"/> that has been converted by the specified <paramref name="selector"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+        /// <param name="source">A <see cref="IEnumerable{T}"/> instance with the items.</param>
+        /// <param name="selector">A function used for converting the elements.</param>
+        /// <returns>An instance of <see cref="IReadOnlyList{TResult}"/></returns>
+        public static IReadOnlyList<TResult> SelectReadOnlyList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
             return source.Select(selector).ToArray();
         }
 
