@@ -5,7 +5,7 @@
   <PropertyGroup>
     <TargetFrameworks>netstandard1.1;netstandard1.3;netstandard2.0;net45;net46;net47;net48;net5.0;net6.0;net7.0</TargetFrameworks>
     <BuildInParallel>false</BuildInParallel>
-    <LangVersion>11.0</LangVersion>
+    <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.1.54</VersionPrefix>
+    <VersionPrefix>1.1.55</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
