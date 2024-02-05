@@ -430,6 +430,16 @@ namespace Skybrud.Essentials.Collections.Extensions {
             return source.Select(selector).ToArray();
         }
 
+        /// <summary>
+        /// Appends <paramref name="items"/> to <paramref name="list"/>.
+        /// </summary>
+        /// <typeparam name="T">The common type of the items.</typeparam>
+        /// <param name="items">The items to be appended.</param>
+        /// <param name="list">The list <paramref name="items"/> should be appended to.</param>
+        public static void AppendTo<T>(this IEnumerable<T> items, List<T> list) {
+            list.AddRange(items);
+        }
+
     }
 
 }
