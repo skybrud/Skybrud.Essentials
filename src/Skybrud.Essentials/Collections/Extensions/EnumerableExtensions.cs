@@ -399,11 +399,23 @@ namespace Skybrud.Essentials.Collections.Extensions {
             List<TResult> temp = new();
 
             // Iterate through the elements of the source
-            foreach (var item in source) temp.Add(selector(item));
+            foreach (TSource item in source) temp.Add(selector(item));
 
             // Return the list
             return temp;
 
+        }
+
+        /// <summary>
+        /// Returns a new array with the elements of <paramref name="source"/> that has been converted by the specified <paramref name="selector"/>.
+        /// </summary>
+        /// <typeparam name="TSource">The type of the elements of <paramref name="source"/>.</typeparam>
+        /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
+        /// <param name="source">An <see cref="IEnumerable{T}"/> to create a <see cref="HashSet{TResult}"/> from.</param>
+        /// <param name="selector">A function used for converting the elements.</param>
+        /// <returns>An array of <see cref="TResult"/></returns>
+        public static TResult[] SelectArray<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
+            return source.Select(selector).ToArray();
         }
 
     }
