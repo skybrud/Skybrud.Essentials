@@ -27,7 +27,6 @@ namespace Skybrud.Essentials.Collections {
 
 #if NET46_OR_GREATER || NETSTANDARD1_3_OR_GREATER || NET5_0_OR_GREATER
 
-
         /// <summary>
         /// Returns an empty array.
         /// </summary>

@@ -413,7 +413,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// <typeparam name="TResult">The type of the value returned by <paramref name="selector"/>.</typeparam>
         /// <param name="source">A <see cref="IEnumerable{T}"/> instance with the items.</param>
         /// <param name="selector">A function used for converting the elements.</param>
-        /// <returns>An array of <see cref="TResult"/></returns>
+        /// <returns>An array of <typeparamref name="TResult"/>.</returns>
         public static TResult[] SelectArray<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
             return source.Select(selector).ToArray();
         }
