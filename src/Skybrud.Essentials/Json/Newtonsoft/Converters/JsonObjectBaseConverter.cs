@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Converters;
 /// <summary>
 /// JSON converter for serializing and deserializing instances of <see cref="JsonObjectBase"/>.
 /// </summary>
-internal class JsonObjectBaseConverter : JsonConverter {
+public class JsonObjectBaseConverter : JsonConverter {
 
     /// <inheritdoc />
     public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
