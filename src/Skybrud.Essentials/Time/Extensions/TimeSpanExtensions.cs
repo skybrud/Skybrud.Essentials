@@ -14,8 +14,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// </summary>
         /// <param name="value">The <see cref="TimeSpan"/> value.</param>
         /// <returns>An ISO 8601 formatted string.</returns>
-        [return: NotNullIfNotNull("value")]
-        public static string? ToIso8601(this TimeSpan value) {
+        public static string ToIso8601(this TimeSpan value) {
             return Iso8601Utils.ToString(value);
         }
 
