@@ -363,16 +363,34 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return string.IsNullOrWhiteSpace(input) ? input : culture.TextInfo.ToTitleCase(input);
         }
 
-        #endif
+#endif
 
         /// <summary>
-        /// Uppercases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
-        /// either <c>null</c> or empty, an empty string will be returned instead.
+        /// Lower cases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
+        /// either <see langword="null"/> or empty, an empty string will be returned instead.
         /// </summary>
-        /// <param name="str">The string which first character should be uppercased.</param>
-        /// <returns>The input string with the first character has been uppercased.</returns>
+        /// <param name="str">The string which first character should be lower cased.</param>
+        /// <returns>The input string with the first character has been lower cased.</returns>
+        public static string FirstCharToLower(this string? str) {
+#if NET5_0_OR_GREATER
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str[..1].ToLowerInvariant(), str[1..]);
+#else
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToLowerInvariant(), str.Substring(1));
+#endif
+        }
+
+        /// <summary>
+        /// Upper cases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
+        /// either <see langword="null"/> or empty, an empty string will be returned instead.
+        /// </summary>
+        /// <param name="str">The string which first character should be upper cased.</param>
+        /// <returns>The input string with the first character has been upper cased.</returns>
         public static string FirstCharToUpper(this string? str) {
-            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToUpper(), str.Substring(1));
+#if NET5_0_OR_GREATER
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str![..1].ToUpperInvariant(), str[1..]);
+#else
+            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToUpperInvariant(), str.Substring(1));
+#endif
         }
 
         /// <summary>

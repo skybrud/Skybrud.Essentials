@@ -30,4 +30,24 @@ public class CasingTests {
 
     }
 
+    [TestMethod]
+    public void FirstCharToLower() {
+
+        Assert.AreEqual("a", "A".FirstCharToLower(), "#1");
+        Assert.AreEqual("æ", "Æ".FirstCharToLower(), "#2");
+        Assert.AreEqual("ø", "Ø".FirstCharToLower(), "#3");
+        Assert.AreEqual("å", "Å".FirstCharToLower(), "#4");
+
+    }
+
+    [TestMethod]
+    public void FirstCharToUpper() {
+
+        Assert.AreEqual("A", "a".FirstCharToUpper(), "#1");
+        Assert.AreEqual("Æ", "æ".FirstCharToUpper(), "#2");
+        Assert.AreEqual("Ø", "ø".FirstCharToUpper(), "#3");
+        Assert.AreEqual("Å", "å".FirstCharToUpper(), "#4");
+
+    }
+
 }
