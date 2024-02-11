@@ -76,7 +76,7 @@ The `GetMd5HashFromFile` method lets you generate a MD5 hash directly from a fil
 
 ```csharp
 // Generate the MD5 hash
-Guid hash = SecurityUtils.GetMd5hashFromFile("c:/obi-wan.txt", Encoding.UTF8);
+Guid hash = SecurityUtils.GetMd5hashFromFile("c:/obi-wan.txt");
 
 // Outputs "a77b55332699835c035957df17630d28"
 Console.WriteLine(hash);
