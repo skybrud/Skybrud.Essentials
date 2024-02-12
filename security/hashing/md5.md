@@ -84,7 +84,7 @@ Console.WriteLine(hash);
 
 The method will read the raw bytes of the file, meaning it isn't necessary to specify an encoding to be used.
 
-### `GetMd5Guid`
+## `GetMd5Guid`
 
 A MD5 hash has a length that also makes it suitable to be represented as a `GUID`:
 
