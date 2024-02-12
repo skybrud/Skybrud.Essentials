@@ -8,8 +8,8 @@ The `Skybrud.Essentials.Security` namespace revolves around the static `Security
 
 ## Hashing
 
-- [**MD5**](./hasing/md5.md)
-- [**SHA1**](./hasing/sha1.md)
-- [**SHA256**](./hasing/sha256.md)
-- [**SHA512**](./hasing/sha512.md)
-- [**HMACSHA512**](./hasing/hmacsha512.md)
+- [**MD5**](./hashing/md5.md)
+- [**SHA1**](./hashing/sha1.md)
+- [**SHA256**](./hashing/sha256.md)
+- [**SHA512**](./hashing/sha512.md)
+- [**HMACSHA512**](./hashing/hmacsha512.md)
