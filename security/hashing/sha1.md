@@ -44,10 +44,10 @@ Console.WriteLine(hash);
 
 ```csharp
 // Generate the SHA1 hash
-Guid hash = SecurityUtils.GetSha1hashFromFile("c:/obi-wan.txt");
+Guid hash = SecurityUtils.GetSha1HashFromFile("c:/obi-wan.txt");
 
 // Outputs "6b19cb3790b6da8f7c34b4d8895d78a56d078624"
 Console.WriteLine(hash);
 ```
 
-The `GetSha1hashFromFile` currently doesn't allow specifying the desired HEX format. As the file is read from disk, a method overload taking an encoding also isn't available.
+The `GetSha1HashFromFile` method currently doesn't allow specifying the desired HEX format. As the file is read from disk, a method overload taking an encoding also isn't available.
