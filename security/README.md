@@ -1,3 +1,8 @@
+---
+icon: fa-security
+title: Security
+---
+
 # Security
 
 The `Skybrud.Essentials.Security` namespace revolves around the static `SecurityUtils` class that contains a number of methods that makes it easy to hash, encrypt or decrypt using various popular algorithms.
