@@ -1,5 +1,5 @@
 ---
-icon: fa-security
+icon: fa-shield
 title: Security
 ---
 
