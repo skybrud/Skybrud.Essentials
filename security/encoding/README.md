@@ -1,4 +1,4 @@
 ---
-icon: fa-shield
+icon: fa-key
 title: Encoding
 ---
