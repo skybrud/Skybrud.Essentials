@@ -1,5 +1,5 @@
 ---
-icon: fa-umbraco
+icon: fa-brands fa-umbraco
 title: Umbraco
 order: 95
 redirect: ./package/
