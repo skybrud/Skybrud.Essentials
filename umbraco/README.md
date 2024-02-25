@@ -1,10 +1,9 @@
 ---
 icon: fa-brands fa-umbraco
 title: Umbraco
-order: 95
 redirect: ./package/
 ---
 
 # Umbraco
 
-- [**Package](./package/)
+- [**Package**](./package/)
