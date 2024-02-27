@@ -4,7 +4,7 @@
 
 ## Installation
 
-The package current targets Umbraco 13 and Umbraco 10, but being LTS versions of Umbraco. The Umbraco 10 package may also be used with Umbraco 11 and 12.
+The package current targets Umbraco 13 and Umbraco 10, both being LTS versions of Umbraco. The Umbraco 10 package may also be used with Umbraco 11 and 12.
 
 ### Umbraco 13
 
