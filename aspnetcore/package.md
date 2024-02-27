@@ -4,18 +4,9 @@ While `Skybrud.Essentials` focuses on .NET in general, we also have a [`Skybrud.
 
 ## Installation
 
-**`Skybrud.Essentials.AspNetCore`** is available via [**NuGet**][NuGetPackage].
-
-To install the package, you can use either .NET CLI:
-
-```
-dotnet add package Skybrud.Essentials.AspNetCore
-```
-
-or the NuGet Package Manager:
-
-```
-Install-Package Skybrud.Essentials.AspNetCore
-```
-
-[NuGetPackage]: https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore
+<div class="installation" package="Skybrud.Essentials.AspNetCore">
+  <p>To install the package via <a href="https://www.nuget.org/packages/Skybrud.Essentials.AspNetCore"><strong>NuGet</strong></a>, you can use either .NET CLI:</p>
+    <pre class="install-dotnet-cli">dotnet add package Skybrud.Essentials.AspNetCore</pre>
+    or the NuGet Package Manager:
+    <pre class="install-nuget">Install-Package Skybrud.Essentials.AspNetCore</pre>
+</div>
