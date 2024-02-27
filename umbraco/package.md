@@ -1,6 +1,6 @@
 # Package
 
-[**Skybrud.Essentials.Umbraco**](/skybrud.essentials.umbraco/) is a small package that builds on top of **`Skybrud.Essentials`** and provides useful functionality for when working with Umbraco. 
+[**Skybrud.Essentials.Umbraco**](/skybrud.essentials.umbraco/) is a small package that builds on top of **Skybrud.Essentials** and provides useful functionality for when working with Umbraco. 
 
 ## Installation
 
