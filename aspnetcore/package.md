@@ -1,6 +1,6 @@
 # Package
 
-While `Skybrud.Essentials` focuses on .NET in general, we also have a [`Skybrud.Essentials.AspNetCore`](/skybrud.essentials.aspnetcore/) package that also provides additional functionality for when working with ASP.NET Core.
+While **Skybrud.Essentials** focuses on .NET in general, we also have a [**Skybrud.Essentials.AspNetCore**](/skybrud.essentials.aspnetcore/) package that also provides additional functionality for when working with ASP.NET Core.
 
 ## Installation
 
