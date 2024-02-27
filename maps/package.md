@@ -12,7 +12,7 @@ Skybrud.Essentials only contain basic functionality within the `Skybrud.Essentia
 - <code type="Skybrud.Essentials.Maps.DistanceUtils, Skybrud.Essentials">DistanceUtils</code> static utility class.
 - <code type="Skybrud.Essentials.Maps.EarthConstants, Skybrud.Essentials">EarthConstants</code> static class.
 
-For more extended functionality, you can install the [**Skybrud.Essentials.Maps** package](/skybrud.essentials.maps/):
+Our [**Skybrud.Essentials.Maps** package](/skybrud.essentials.maps/) provides additional functionality for working with maps, geospatial data and geometries. The package also supports working with formats such as **G eoJSON**, **KML** and **Well Known Text**.
 
 <div class="installation" package="Skybrud.Essentials.Maps">
   <p>To install the package via <a href="https://www.nuget.org/packages/Skybrud.Essentials.Maps"><strong>NuGet</strong></a>, you can use either .NET CLI:</p>
