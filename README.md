@@ -1,6 +1,11 @@
-# Skybrud.Essentials [![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/v/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
+# Skybrud.Essentials
 
-Skybrud.Essentials is a library with common purpose functionality for working with .NET.
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
+[![NuGet](https://img.shields.io/nuget/v/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
+[![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
+[![Skybrud.Essentials at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/skybrud.essentials/)
+
+**Skybrud.Essentials** is a library with common purpose functionality for working with .NET.
 
 The package has a strong focus on parsing various types of input. Among other things, the package can help you work with date and time beyond the standard `DateTime` and `DateTimeOffset` classes in .NET. It has better support for various date formats - such as unix time, ISO 8601, RFC 822 and RFC 2822.
 
@@ -13,13 +18,13 @@ It also contains utilities for converting to and from string values, changing te
 
 ### Installation
 
-Install the package via [NuGet](https://www.nuget.org/packages/Skybrud.Essentials). To install the package, you can use either .NET CLI:
+Install the package via [**NuGet**](https://www.nuget.org/packages/Skybrud.Essentials). To install the package, you can use either .NET CLI:
 
 ```
 dotnet add package Skybrud.Essentials
 ```
 
-or the older NuGet Package Manager:
+or the NuGet Package Manager:
 
 ```
 Install-Package Skybrud.Essentials
