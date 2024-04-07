@@ -13,7 +13,7 @@ namespace Skybrud.Essentials.Time {
     /// Class representing a date without a time.
     /// </summary>
     [JsonConverter(typeof(TimeConverter))]
-    public class EssentialsDate : IComparable, IComparable<EssentialsDate> {
+    public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormattable {
 
         private readonly DateTime _dateTime;
 

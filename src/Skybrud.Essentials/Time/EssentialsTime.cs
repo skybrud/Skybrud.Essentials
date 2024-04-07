@@ -17,7 +17,7 @@ namespace Skybrud.Essentials.Time {
     /// Class wrapping an instance of <see cref="System.DateTimeOffset"/> (as an alternative to using <see cref="Nullable{DateTimeOffset}"/>).
     /// </summary>
     [JsonConverter(typeof(TimeConverter))]
-    public class EssentialsTime : IComparable, IComparable<EssentialsTime>, IComparable<DateTimeOffset> {
+    public class EssentialsTime : IComparable, IComparable<EssentialsTime>, IComparable<DateTimeOffset>, IFormattable {
 
         #region Static properties
 
