@@ -43,6 +43,57 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
+        /// Parses string of multiple values into a list of <see cref="string"/>. Supported separators are
+        /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+        ///
+        /// Empty entries are automatically removed from the output array.
+        /// </summary>
+        /// <param name="str">The input string containing the values.</param>
+        /// <returns>A list of <see cref="string"/>.</returns>
+        public static List<string> ParseStringList(string? str) {
+            return ParseStringList(str, DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Parses string of multiple values into a list of <see cref="string"/>, using the specified array of
+        /// <paramref name="separators"/>.
+        ///
+        /// Empty entries are automatically removed from the output list.
+        /// </summary>
+        /// <param name="str">The input string containing the values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <see cref="string"/>.</returns>
+        public static List<string> ParseStringList(string? str, params char[] separators) {
+            return new List<string>(ParseStringArray(str, separators));
+        }
+
+        /// <summary>
+        /// Parses string of multiple values into a read only list of <see cref="string"/>. Supported separators are
+        /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+        ///
+        /// Empty entries are automatically removed from the output array.
+        /// </summary>
+        /// <param name="str">The input string containing the values.</param>
+        /// <returns>A list of <see cref="string"/>.</returns>
+        public static IReadOnlyList<string> ParseStringReadOnlyList(string? str) {
+            return ParseStringReadOnlyList(str, DefaultSeparators);
+        }
+
+        /// <summary>
+        /// Parses string of multiple values into a read only list of <see cref="string"/>, using the specified array of
+        /// <paramref name="separators"/>.
+        ///
+        /// Empty entries are automatically removed from the output list.
+        /// </summary>
+        /// <param name="str">The input string containing the values.</param>
+        /// <param name="separators">An array of supported separators.</param>
+        /// <returns>A list of <see cref="string"/>.</returns>
+        public static IReadOnlyList<string> ParseStringReadOnlyList(string? str, params char[] separators) {
+            if (string.IsNullOrWhiteSpace(str)) return ArrayUtils.Empty<string>();
+            return new List<string>(str!.Split(separators, StringSplitOptions.RemoveEmptyEntries));
+        }
+
+        /// <summary>
         /// Converts a singular word to the plural counterpart (for English words only).
         /// </summary>
         /// <param name="word">The singular word.</param>
