@@ -428,7 +428,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <param name="format">A standard or custom date and time format string.</param>
         /// <returns>A string representation of value of the current <see cref="EssentialsDate"/> object as specified by <paramref name="format"/>.</returns>
-        public string ToString(string format) {
+        public string ToString([StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string format) {
             return _dateTime.ToString(format);
         }
 
@@ -438,7 +438,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="format">A standard or custom date and time format string.</param>
         /// <param name="provider">An object that supplies culture-specific formatting information.</param>
         /// <returns>A string representation of value of the current <see cref="EssentialsDate"/> object as specified by <paramref name="format"/> and <paramref name="provider"/>.</returns>
-        public string ToString(string format, IFormatProvider provider) {
+        public string ToString([StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string? format, IFormatProvider? provider) {
             return _dateTime.ToString(format, provider);
         }
 
