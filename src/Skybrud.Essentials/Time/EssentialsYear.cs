@@ -196,7 +196,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Initializes a new instance for the year containing the specified <paramref name="timestamp"/>.
         ///
-        /// If <paramref name="timestamp"/> doesn't specify a timestamp (eg. only an offset), the timestamp will be converted to <see cref="TimeZoneInfo.Local"/>.
+        /// If <paramref name="timestamp"/> doesn't specify a timestamp (e.g. only an offset), the timestamp will be converted to <see cref="TimeZoneInfo.Local"/>.
         /// </summary>
         /// <param name="timestamp">A timestamp representing the year to be created.</param>
         public EssentialsYear(EssentialsTime timestamp) {

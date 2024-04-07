@@ -10,7 +10,7 @@ using Skybrud.Essentials.Time.Rfc822;
 namespace Skybrud.Essentials.Json.Newtonsoft.Converters.Time {
 
     /// <summary>
-    /// Converts a timestamp (eg. <see cref="DateTime"/> or <see cref="DateTimeOffset"/>) to <see cref="Format"/>.
+    /// Converts a timestamp (e.g. <see cref="DateTime"/> or <see cref="DateTimeOffset"/>) to <see cref="Format"/>.
     /// </summary>
     public class TimeConverter : JsonConverter {
 

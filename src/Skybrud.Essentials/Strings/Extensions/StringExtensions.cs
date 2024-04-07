@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using System.Threading;
 
 namespace Skybrud.Essentials.Strings.Extensions {
 
@@ -55,7 +54,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
 #if I_CAN_HAS_NAME_VALUE_COLLECTION
 
         /// <summary>
-        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
+        /// Returns a URL encoded value of the specified <paramref name="collection"/>,
         /// </summary>
         /// <param name="collection">The name value collection.</param>
         /// <returns>The URL encoded string.</returns>
@@ -91,7 +90,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? HighlightKeywords(this string? input, string className, IEnumerable<string>? keywords) {
             return StringUtils.HighlightKeywords(input, className, keywords);
         }
@@ -104,7 +103,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? HighlightKeywords(this string? input, string className, params string[]? keywords) {
             return StringUtils.HighlightKeywords(input, className, keywords);
         }
@@ -122,7 +121,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <summary>
         /// Gets whether the <paramref name="input"/> string has a value.
         ///
-        /// This method may be use to improve the readability of your code - eg. instead of declaring a variable first, and then calling <see cref="HasValue(string)"/> afterwards.
+        /// This method may be used to improve the readability of your code - e.g. instead of declaring a variable first, and then calling <see cref="HasValue(string)"/> afterwards.
         /// </summary>
         /// <param name="input">The input string to test.</param>
         /// <param name="result">When this method returns, contains the input value.</param>
@@ -215,7 +214,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
-        /// <param name="end">The text to be appended to the end of the truncated string - eg. <c>...</c>.</param>
+        /// <param name="end">The text to be appended to the end of the truncated string - e.g. <c>...</c>.</param>
         /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
         public static string Truncate(this string input, int maxCharacters, string? end) {
             return StringUtils.Truncate(input, maxCharacters, end);

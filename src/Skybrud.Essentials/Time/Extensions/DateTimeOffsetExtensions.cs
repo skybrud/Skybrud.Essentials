@@ -42,7 +42,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// Gets the English ordinal suffix of the day based on the specified <paramref name="date"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <returns>The the ordinal suffix.</returns>
+        /// <returns>The ordinal suffix.</returns>
         public static string GetDaySuffix(this DateTimeOffset date) {
             return TimeUtils.GetDaySuffix(date);
         }
@@ -147,7 +147,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
         public static DateTimeOffset GetFirstDayOfWeek(this DateTimeOffset date, DayOfWeek startOfWeek) {
@@ -169,7 +169,7 @@ namespace Skybrud.Essentials.Time.Extensions {
         /// <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
         public static DateTimeOffset GetLastDayOfWeek(this DateTimeOffset date, DayOfWeek startOfWeek) {

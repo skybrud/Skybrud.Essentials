@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
         /// <summary>
         /// Returns the boolean value (<see cref="bool"/>) of the dictionary item with the specified
-        /// <paramref name="key"/>. If a matching dictionary doesn't exist or it's value can not be converted to a
+        /// <paramref name="key"/>. If a matching dictionary doesn't exist, or it's value can not be converted to a
         /// <see cref="bool"/> value, <see langword="false"/> is returned instead.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
         /// <summary>
         /// Returns the boolean value (<see cref="bool"/>) of the dictionary item with the specified
-        /// <paramref name="key"/>. If a matching dictionary doesn't exist or it's value can not be converted to a
+        /// <paramref name="key"/>. If a matching dictionary doesn't exist, or it's value can not be converted to a
         /// <see cref="bool"/> value, <see langword="null"/> is returned instead.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
@@ -36,7 +36,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
         /// <summary>
         /// Returns the 32-bit integer value of the dictionary item with the specified <paramref name="key"/>. If a
-        /// matching dictionary doesn't exist or it's value can not be converted to a <see cref="int"/> value, <c>0</c>
+        /// matching dictionary doesn't exist, or it's value can not be converted to a <see cref="int"/> value, <c>0</c>
         /// is returned instead.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
@@ -48,7 +48,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
         /// <summary>
         /// Returns the 32-bit integer value of the dictionary item with the specified <paramref name="key"/>. If a
-        /// matching dictionary doesn't exist or it's value can not be converted to a <see cref="int"/> value,
+        /// matching dictionary doesn't exist, or it's value can not be converted to a <see cref="int"/> value,
         /// <see langword="null"/> is returned instead.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
@@ -60,7 +60,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
         /// <summary>
         /// Returns the 64-bit integer value of the dictionary item with the specified <paramref name="key"/>. If a
-        /// matching dictionary doesn't exist or it's value can not be converted to a <see cref="long"/> value, <c>0</c>
+        /// matching dictionary doesn't exist, or it's value can not be converted to a <see cref="long"/> value, <c>0</c>
         /// is returned instead.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
@@ -72,7 +72,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
 
         /// <summary>
         /// Returns the 64-bit integer value of the dictionary item with the specified <paramref name="key"/>. If a
-        /// matching dictionary doesn't exist or it's value can not be converted to a <see cref="long"/> value,
+        /// matching dictionary doesn't exist, or it's value can not be converted to a <see cref="long"/> value,
         /// <see langword="null"/> is returned instead.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
-        /// Returns the string value of the dictionary item with the specified <paramref name="key"/>. If a matching dictionary item is found, but the value isn't a <see cref="string"/>, the value s converted to it's culture invariant string representation. If a matching dictionary isn't found, <see langword="null"/> is returned instead.
+        /// Returns the string value of the dictionary item with the specified <paramref name="key"/>. If a matching dictionary item is found, but the value isn't a <see cref="string"/>, the value s converted to its culture invariant string representation. If a matching dictionary isn't found, <see langword="null"/> is returned instead.
         /// </summary>
         /// <param name="dictionary">The dictionary.</param>
         /// <param name="key">The key of the dictionary item.</param>

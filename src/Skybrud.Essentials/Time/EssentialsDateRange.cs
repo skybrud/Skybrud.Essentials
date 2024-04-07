@@ -6,6 +6,8 @@ using System.Text.RegularExpressions;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
+// ReSharper disable RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
@@ -71,7 +73,7 @@ namespace Skybrud.Essentials.Time {
         #region Member methods
 
         /// <summary>
-        /// Returns a string representation of the week range - eg. <c>2022-10-01__2022-12-31</c>.
+        /// Returns a string representation of the week range - e.g. <c>2022-10-01__2022-12-31</c>.
         /// </summary>
         /// <returns>An instance of <see cref="string"/> representing the week range.</returns>
         public override string ToString() {

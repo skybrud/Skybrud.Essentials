@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>RFC 822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         [Obsolete("Use Rfc822Utils.ToString(DateTime) method instead.")]
         public static string ToRfc822(DateTime timestamp) {
             return Rfc822Utils.ToString(timestamp);
@@ -23,7 +23,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>RFC 822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         [Obsolete("Use Rfc822Utils.ToString(DateTimeOffset) method instead.")]
         public static string ToRfc822(DateTimeOffset timestamp) {
             return Rfc822Utils.ToString(timestamp);
@@ -34,7 +34,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>RFC 822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         [Obsolete("Use Rfc822Utils.ToString(EssentialsDateTime) method instead.")]
         public static string ToRfc822(EssentialsDateTime timestamp) {
             return Rfc822Utils.ToString(timestamp.DateTime);
@@ -61,10 +61,10 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// The RFC 822 specification describes a number of predefined time zones - eg. <c>EST</c>
+        /// The RFC 822 specification describes a number of predefined time zones - e.g. <c>EST</c>
         /// (Eastern Standard Time), <c>UT</c> (Universal Time) and <c>GMT</c>
-        /// (Greenwich Mean Time) - which <see cref="DateTimeOffset"/> isn't able to parse on it's own,
-        /// so we need to convert the time zone to an offset instead - eg <c>+01:00</c>.
+        /// (Greenwich Mean Time) - which <see cref="DateTimeOffset"/> isn't able to parse on its own,
+        /// so we need to convert the time zone to an offset instead - e.g. <c>+01:00</c>.
         /// </summary>
         /// <param name="timezone">The time zone value to be normalized.</param>
         /// <returns>The normalized time zone.</returns>

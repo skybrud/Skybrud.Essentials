@@ -5,6 +5,8 @@ using System.Xml.Linq;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
 
+// ReSharper disable RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Xml.Extensions {
 
     public static partial class XElementExtensions {

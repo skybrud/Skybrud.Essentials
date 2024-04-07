@@ -24,7 +24,7 @@ namespace Skybrud.Essentials.Json {
         public static JToken ParseJsonToken(string json) {
 
             // JSON.net is automatically parsing strings that look like dates into in actual dates so that we can't
-            // really read as strings without some localization going on. Since this is kinda annoying an we don't
+            // really read as strings without some localization going on. Since this is kinda annoying, and we don't
             // really need it, we can luckily disable it with the lines below
             return JToken.Load(new JsonTextReader(new StringReader(json)) {
                 DateParseHandling = DateParseHandling.None
@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Json {
         public static JObject ParseJsonObject(string json) {
 
             // JSON.net is automatically parsing strings that look like dates into in actual dates so that we can't
-            // really read as strings without some localization going on. Since this is kinda annoying an we don't
+            // really read as strings without some localization going on. Since this is kinda annoying, and we don't
             // really need it, we can luckily disable it with the lines below
             return JObject.Load(new JsonTextReader(new StringReader(json)) {
                 DateParseHandling = DateParseHandling.None
@@ -98,7 +98,7 @@ namespace Skybrud.Essentials.Json {
         public static JArray ParseJsonArray(string json) {
 
             // JSON.net is automatically parsing strings that look like dates into in actual dates so that we can't
-            // really read as strings without some localization going on. Since this is kinda annoying an we don't
+            // really read as strings without some localization going on. Since this is kinda annoying, and we don't
             // really need it, we can luckily disable it with the lines below
             return JArray.Load(new JsonTextReader(new StringReader(json)) {
                 DateParseHandling = DateParseHandling.None

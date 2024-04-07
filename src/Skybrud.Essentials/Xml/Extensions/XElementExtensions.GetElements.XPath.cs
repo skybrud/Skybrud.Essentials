@@ -7,6 +7,8 @@ using System.Xml.Linq;
 using System.Xml.XPath;
 using Skybrud.Essentials.Collections;
 
+// ReSharper disable RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Xml.Extensions {
 
     public static partial class XElementExtensions {

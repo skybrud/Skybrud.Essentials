@@ -53,12 +53,12 @@ namespace Skybrud.Essentials.Time {
         public static EssentialsTime Zero => FromUnixTimeSeconds(0);
 
         /// <summary>
-        /// Returns the amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Returns the amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         public static long CurrentUnixTimeSeconds => (long) UnixTimeUtils.CurrentSeconds;
 
         /// <summary>
-        /// Returns the amount of milliseconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Returns the amount of milliseconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         public static long CurrentUnixTimeMilliseconds => (long) UnixTimeUtils.CurrentMilliseconds;
 
@@ -830,9 +830,9 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns the number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).
+        /// Returns the number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January 1970 - 00:00:00 GMT</c>).
         /// </summary>
-        /// <returns>The number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).</returns>
+        /// <returns>The number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January 1970 - 00:00:00 GMT</c>).</returns>
         /// <seealso>
         ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimeseconds?view=netstandard-2.0</cref>
         /// </seealso>
@@ -841,9 +841,9 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns the number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).
+        /// Returns the number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January 1970 - 00:00:00 GMT</c>).
         /// </summary>
-        /// <returns>The number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January, 1970 - 00:00:00 GMT</c>).</returns>
+        /// <returns>The number of milliseconds that have elapsed since the start of the Unix epoch (<c>1st of January 1970 - 00:00:00 GMT</c>).</returns>
         /// <seealso>
         ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.datetimeoffset.tounixtimemilliseconds?view=netstandard-2.0</cref>
         /// </seealso>
@@ -1012,7 +1012,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a new <see cref="EssentialsDate"/> instance representing the date of the this timestamp.
+        /// Returns a new <see cref="EssentialsDate"/> instance representing the date of the timestamp.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
         public EssentialsDate ToDate() {
@@ -1020,7 +1020,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a new <see cref="EssentialsWeek"/> instance representing the ISO 8601 week of the this timestamp.
+        /// Returns a new <see cref="EssentialsWeek"/> instance representing the ISO 8601 week of the timestamp.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
         public EssentialsWeek ToWeek() {
@@ -1028,7 +1028,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a new <see cref="EssentialsMonth"/> instance representing the month of the this timestamp.
+        /// Returns a new <see cref="EssentialsMonth"/> instance representing the month of the timestamp.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsMonth"/>.</returns>
         public EssentialsMonth ToMonth() {
@@ -1036,7 +1036,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a new <see cref="EssentialsYear"/> instance representing the year of the this timestamp.
+        /// Returns a new <see cref="EssentialsYear"/> instance representing the year of the timestamp.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsYear"/>.</returns>
         public EssentialsYear ToYear() {
@@ -1645,7 +1645,7 @@ namespace Skybrud.Essentials.Time {
             if (d1 is null) return d2 is null;
             if (d2 is null) return false;
 
-            // Pass the comparison on the the == operator of DateTime
+            // Pass the comparison on the == operator of DateTime
             return d1.DateTimeOffset == d2.DateTimeOffset;
 
         }
@@ -1675,7 +1675,7 @@ namespace Skybrud.Essentials.Time {
             if (d1 is null) return d2 is not null;
             if (d2 is null) return false;
 
-            // Pass the comparison on the the < operator of DateTime
+            // Pass the comparison on the < operator of DateTime
             return d1.DateTimeOffset < d2.DateTimeOffset;
 
         }
@@ -1704,7 +1704,7 @@ namespace Skybrud.Essentials.Time {
             if (d2 is null) return d1 is not null;
             if (d1 is null) return false;
 
-            // Pass the comparison on the the > operator of DateTime
+            // Pass the comparison on the > operator of DateTime
             return d1.DateTimeOffset > d2.DateTimeOffset;
 
         }

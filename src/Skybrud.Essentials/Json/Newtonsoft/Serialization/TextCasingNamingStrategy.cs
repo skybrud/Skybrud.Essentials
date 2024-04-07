@@ -9,14 +9,14 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Serialization {
     public class TextCasingNamingStrategy : NamingStrategy {
 
         /// <summary>
-        /// Gets the casing the be used.
+        /// Gets the casing to be used.
         /// </summary>
         public TextCasing Casing { get; }
 
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="casing"/>.
         /// </summary>
-        /// <param name="casing">The casing the be used.</param>
+        /// <param name="casing">The casing to be used.</param>
         public TextCasingNamingStrategy(TextCasing casing) {
             Casing = casing;
         }

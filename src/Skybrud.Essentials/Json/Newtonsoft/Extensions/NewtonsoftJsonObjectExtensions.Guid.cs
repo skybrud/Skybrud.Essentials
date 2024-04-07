@@ -9,7 +9,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
         /// <summary>
         /// Returns the <see cref="Guid"/> value of the property with the specified <paramref name="propertyName"/>. If
-        /// a matching property can not be found or the value can not be successfully converted to an <see cref="Guid"/>
+        /// a matching property can not be found or the value can not be successfully converted to a <see cref="Guid"/>
         /// value, <see langword="false"/> is returned instead.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
         /// <summary>
         /// Returns the <see cref="Guid"/> value of the property with the specified <paramref name="propertyName"/>. If
-        /// a matching property can not be found or the value can not be successfully converted to an <see cref="Guid"/>
+        /// a matching property can not be found or the value can not be successfully converted to a <see cref="Guid"/>
         /// value, <paramref name="fallback"/> is returned instead.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
@@ -61,7 +61,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
         /// <summary>
         /// Returns the <see cref="Guid"/> value of the token matching the specified <paramref name="path"/>. If
-        /// a matching token can not be found or the value can not be successfully converted to an <see cref="Guid"/>
+        /// a matching token can not be found or the value can not be successfully converted to a <see cref="Guid"/>
         /// value, <see langword="false"/> is returned instead.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
@@ -73,7 +73,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
 
         /// <summary>
         /// Returns the <see cref="Guid"/> value of the token matching the specified <paramref name="path"/>. If
-        /// a matching token can not be found or the value can not be successfully converted to an <see cref="Guid"/>
+        /// a matching token can not be found or the value can not be successfully converted to a <see cref="Guid"/>
         /// value, <paramref name="fallback"/> is returned instead.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
@@ -112,7 +112,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
-        /// Attempts to get an <see cref="Guid"/> value from the property with the specified <paramref name="propertyName"/>.
+        /// Attempts to get a <see cref="Guid"/> value from the property with the specified <paramref name="propertyName"/>.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
         /// <param name="propertyName">The name of the property.</param>
@@ -123,7 +123,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
-        /// Attempts to get an <see cref="Guid"/> value from the property with the specified <paramref name="propertyName"/>.
+        /// Attempts to get a <see cref="Guid"/> value from the property with the specified <paramref name="propertyName"/>.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
         /// <param name="propertyName">The name of the property.</param>
@@ -134,7 +134,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
-        /// Attempts to get an <see cref="Guid"/> value from the token matching the specified <paramref name="path"/>.
+        /// Attempts to get a <see cref="Guid"/> value from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
@@ -145,7 +145,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         }
 
         /// <summary>
-        /// Attempts to get an <see cref="Guid"/> value from the token matching the specified <paramref name="path"/>.
+        /// Attempts to get a <see cref="Guid"/> value from the token matching the specified <paramref name="path"/>.
         /// </summary>
         /// <param name="json">The parent JSON object.</param>
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>

@@ -202,21 +202,21 @@ namespace Skybrud.Essentials.Reflection.Extensions {
         }
 
         /// <summary>
-        /// Returns the value of the meta data with the specified <paramref name="key"/>.
+        /// Returns the value of the metadata with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
-        /// <param name="key">The key of the meta data.</param>
+        /// <param name="key">The key of the metadata.</param>
         /// <returns>Returns the build configuration, or <see langword="null"/> if not found.</returns>
         public static string? GetMetadata(this Assembly assembly, string key) {
             return assembly.GetCustomAttributes<AssemblyMetadataAttribute>().FirstOrDefault(x => x.Key == key)?.Value;
         }
 
         /// <summary>
-        /// Attempts to get the value of the meta data with the specified <paramref name="key"/>.
+        /// Attempts to get the value of the metadata with the specified <paramref name="key"/>.
         /// </summary>
         /// <param name="assembly">The assembly.</param>
-        /// <param name="key">The key of the meta data.</param>
-        /// <param name="result">When this method returns, holds the meta data value if successful; otherwise, <see langword="null"/>.</param>
+        /// <param name="key">The key of the metadata.</param>
+        /// <param name="result">When this method returns, holds the metadata value if successful; otherwise, <see langword="null"/>.</param>
         /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/></returns>
         public static bool TryGetMetadata(this Assembly assembly, string key, out string? result) {
             result = assembly.GetCustomAttributes<AssemblyMetadataAttribute>().FirstOrDefault(x => x.Key == key)?.Value;

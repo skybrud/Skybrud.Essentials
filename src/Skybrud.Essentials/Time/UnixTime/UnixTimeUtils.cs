@@ -28,12 +28,12 @@ namespace Skybrud.Essentials.Time.UnixTime {
         #region Properties
 
         /// <summary>
-        /// Returns the amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Returns the amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         public static double CurrentSeconds => (DateTime.UtcNow - DateTimeUnixTimeStartUtc).TotalSeconds;
 
         /// <summary>
-        /// Returns the amount of milliseconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Returns the amount of milliseconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         public static double CurrentMilliseconds => (DateTime.UtcNow - DateTimeUnixTimeStartUtc).TotalMilliseconds;
 
@@ -43,7 +43,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
-        /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="seconds">The Unix timestamp specified in seconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
@@ -53,7 +53,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
-        /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="seconds">The Unix timestamp specified in seconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
@@ -63,7 +63,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
-        /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="seconds">The Unix timestamp specified in seconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
@@ -73,7 +73,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
-        /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="seconds">The Unix timestamp specified in seconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
@@ -83,7 +83,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
-        /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="milliseconds">The Unix timestamp specified in milliseconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
@@ -93,7 +93,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
-        /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="milliseconds">The Unix timestamp specified in milliseconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
@@ -103,7 +103,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns an instance of <see cref="DateTimeOffset"/> based on the amount of seconds since the start of the
-        /// Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="milliseconds">The Unix timestamp specified in milliseconds.</param>
         /// <returns>The timestamp as an instance of <see cref="DateTimeOffset"/>.</returns>
@@ -113,7 +113,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
-        /// amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="timestamp">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
         /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
@@ -123,7 +123,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
-        /// amount of seconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="timestamp">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
         /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
@@ -133,7 +133,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
-        /// amount of milliseconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// amount of milliseconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="timestamp">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
         /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
@@ -143,7 +143,7 @@ namespace Skybrud.Essentials.Time.UnixTime {
 
         /// <summary>
         /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
-        /// amount of milliseconds since the start of the Unix epoch - that is <c>1st of January, 1970 - 00:00:00 GMT</c>.
+        /// amount of milliseconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
         /// </summary>
         /// <param name="timestamp">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
         /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>

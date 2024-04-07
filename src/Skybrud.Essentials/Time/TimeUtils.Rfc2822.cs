@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         [Obsolete("Use Rfc2822Utils.ToString(DateTime) method instead.")]
         public static string ToRfc2822(DateTime timestamp) {
             return Rfc2822Utils.ToString(timestamp);
@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         [Obsolete("Use Rfc2822Utils.ToString(DateTimeOffset) method instead.")]
         public static string ToRfc2822(DateTimeOffset timestamp) {
             return Rfc2822Utils.ToString(timestamp);
@@ -32,7 +32,7 @@ namespace Skybrud.Essentials.Time {
         /// <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         [Obsolete("Use Rfc2822Utils.ToString(EssentialsDateTime) method instead.")]
         public static string ToRfc2822(EssentialsDateTime timestamp) {
             return Rfc2822Utils.ToString(timestamp);

@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 
+// ReSharper disable RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Strings {
 
     public static partial class StringUtils {

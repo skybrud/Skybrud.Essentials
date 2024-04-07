@@ -56,7 +56,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="json">The parent JSON object.</param>
         /// <param name="propertyName">The name of the property.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains the <see cref="string"/> value. If the property could not be found or the conversion failed, contains <see langword="null"/>.</param>
-        /// <returns><see langword="true"/> if the property is found and it's value was converted successfully; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the property is found, and it's value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetString(this JObject? json, string propertyName, [NotNullWhen(true)] out string? result) {
             return JsonTokenUtils.TryGetString(json?[propertyName], out result);
         }
@@ -67,7 +67,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="json">The parent JSON object.</param>
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <param name="result">When this method returns, if the conversion succeeded, contains the <see cref="string"/> value. If the property could not be found or the conversion failed, contains <see langword="null"/>.</param>
-        /// <returns><see langword="true"/> if the property is found and it's value was converted successfully; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> if the property is found, and it's value was converted successfully; otherwise, <see langword="false"/>.</returns>
         public static bool TryGetStringByPath(this JObject? json, string path, [NotNullWhen(true)] out string? result) {
             return JsonTokenUtils.TryGetString(json?.SelectToken(path), out result);
         }

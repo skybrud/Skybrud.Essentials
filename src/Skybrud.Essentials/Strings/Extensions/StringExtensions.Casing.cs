@@ -366,11 +366,11 @@ namespace Skybrud.Essentials.Strings.Extensions {
 #endif
 
         /// <summary>
-        /// Lower cases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
+        /// Lower cases the first character of the specified <paramref name="str"/>. If <paramref name="str"/> is
         /// either <see langword="null"/> or empty, an empty string will be returned instead.
         /// </summary>
-        /// <param name="str">The string which first character should be lower cased.</param>
-        /// <returns>The input string with the first character has been lower cased.</returns>
+        /// <param name="str">The string which first character should be lowercased.</param>
+        /// <returns>The input string with the first character has been lowercased.</returns>
         public static string FirstCharToLower(this string? str) {
 #if NET5_0_OR_GREATER
             return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str[..1].ToLowerInvariant(), str[1..]);
@@ -380,11 +380,11 @@ namespace Skybrud.Essentials.Strings.Extensions {
         }
 
         /// <summary>
-        /// Upper cases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
+        /// Upper cases the first character of the specified <paramref name="str"/>. If <paramref name="str"/> is
         /// either <see langword="null"/> or empty, an empty string will be returned instead.
         /// </summary>
-        /// <param name="str">The string which first character should be upper cased.</param>
-        /// <returns>The input string with the first character has been upper cased.</returns>
+        /// <param name="str">The string which first character should be uppercased.</param>
+        /// <returns>The input string with the first character has been uppercased.</returns>
         public static string FirstCharToUpper(this string? str) {
 #if NET5_0_OR_GREATER
             return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str![..1].ToUpperInvariant(), str[1..]);

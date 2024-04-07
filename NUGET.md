@@ -15,7 +15,7 @@ A .NET library for making HTTP requests - including working with OAuth 1.0a and 
 A .NET package for working with maps and geospatial data, including popular formats such as [**GeoJSON**](https://en.wikipedia.org/wiki/GeoJSON), [**KML**](https://en.wikipedia.org/wiki/Keyhole_Markup_Language) (Keyhole Markup Language) and [**WKT**](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (Well Known Text).
 
 - [**Skybrud.Essentials.AspNetCore**](https://github.com/skybrud/Skybrud.Essentials.AspNetCore)  
-A .NET package for that provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers.
+A .NET package for that provides various logic that makes it easier to work with different parts of ASP.NET Core - e.g. parsing query strings and reading request headers.
 
 - [**Skybrud.Essentials.Umbraco**](https://github.com/skybrud/Skybrud.Essentials.AspNUmbracoetCore)  
 A .NET package for that provides various logic that makes it easier to work with different parts of Umbraco.

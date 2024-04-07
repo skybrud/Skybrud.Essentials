@@ -18,7 +18,7 @@ namespace Skybrud.Essentials.Guids {
         }
 
         /// <summary>
-        /// Returns whether the specified GUID <paramref name="value"/> is neither <c>null</c> or equal to <see cref="Guid.Empty"/>.
+        /// Returns whether the specified GUID <paramref name="value"/> is neither <c>null</c> nor equal to <see cref="Guid.Empty"/>.
         /// </summary>
         /// <param name="value">The GUID value.</param>
         /// <returns><c>false</c> if <paramref name="value"/> is either <c>null</c> or <see cref="Guid.Empty"/>; otherwise <c>false</c>.</returns>

@@ -400,7 +400,7 @@ namespace Skybrud.Essentials.Time {
             /// year in memory of the 2,977 people killed in the 2001 September 11 attacks.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>A an instance of <see cref="DateTime"/> representing the date of <strong>Patriot Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Patriot Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Patriot_Day</cref>
             /// </see>
@@ -413,7 +413,7 @@ namespace Skybrud.Essentials.Time {
             /// Day is a public holiday celebrated on the first Monday in September.
             /// </summary>
             /// <param name="year">The year.</param>
-            /// <returns>A an instance of <see cref="DateTime"/> representing the date of <strong>Patriot Day</strong>.</returns>
+            /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Patriot Day</strong>.</returns>
             /// <see>
             ///     <cref>https://en.wikipedia.org/wiki/Labor_Day</cref>
             /// </see>

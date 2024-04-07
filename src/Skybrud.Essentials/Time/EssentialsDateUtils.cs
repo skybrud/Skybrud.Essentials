@@ -124,7 +124,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Returns an <see cref="EssentialsDate"/> instance representing the start of the week of the specified <paramref name="week"/>.
         /// </summary>
-        /// <param name="week">The <see cref="EssentialsWeek"/> to get the start of of.</param>
+        /// <param name="week">The <see cref="EssentialsWeek"/> to get the start of.</param>
         /// <returns>An instance of <see cref="EssentialsDate"/> representing the start of the week.</returns>
         public static EssentialsDate GetStartOfWeek(EssentialsWeek week) {
             // TODO: Don't convert to "EssentialsTime" as an intermediary
@@ -248,7 +248,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Returns an <see cref="EssentialsDate"/> instance representing the end of the week of the specified <paramref name="week"/>.
         /// </summary>
-        /// <param name="week">The <see cref="EssentialsWeek"/> to get the end of of.</param>
+        /// <param name="week">The <see cref="EssentialsWeek"/> to get the end of.</param>
         /// <returns>An instance of <see cref="EssentialsDate"/> representing the end of the week.</returns>
         public static EssentialsDate GetEndOfWeek(EssentialsWeek week) {
             // TODO: Don't convert to "EssentialsTime" as an intermediary

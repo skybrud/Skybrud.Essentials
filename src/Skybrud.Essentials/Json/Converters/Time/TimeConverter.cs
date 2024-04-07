@@ -4,7 +4,7 @@ using Skybrud.Essentials.Time;
 namespace Skybrud.Essentials.Json.Converters.Time {
 
     /// <summary>
-    /// Converts a timestamp (eg. <see cref="DateTime"/> or <see cref="DateTimeOffset"/>) to <see cref="Newtonsoft.Converters.Time.TimeConverter.Format"/>.
+    /// Converts a timestamp (e.g. <see cref="DateTime"/> or <see cref="DateTimeOffset"/>) to <see cref="Newtonsoft.Converters.Time.TimeConverter.Format"/>.
     /// </summary>
     [Obsolete("Use the 'Skybrud.Essentials.Json.Newtonsoft.Converters.Time.TimeConverter' converter instead.")]
     public class TimeConverter : Newtonsoft.Converters.Time.TimeConverter {

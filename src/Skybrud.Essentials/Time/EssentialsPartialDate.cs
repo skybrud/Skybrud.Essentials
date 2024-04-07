@@ -8,7 +8,7 @@ using Skybrud.Essentials.Json.Converters.Time;
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
-    /// Class representing a partial date (eg. only year and month).
+    /// Class representing a partial date (e.g. only year and month).
     /// </summary>
     [JsonConverter(typeof(EssentialsPartialDateConverter))]
     public class EssentialsPartialDate {

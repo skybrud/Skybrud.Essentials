@@ -96,7 +96,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         #region Boolean
 
         /// <summary>
-        /// Returns the boolean value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a boolean representation failed, <c>false</c> is returned instead.
+        /// Returns the boolean value of the item with <paramref name="key"/>. If a matching isn't found, or conversion to a boolean representation failed, <c>false</c> is returned instead.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -106,7 +106,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
-        /// Returns the boolean value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a boolean representation failed, <paramref name="fallback"/> is returned instead.
+        /// Returns the boolean value of the item with <paramref name="key"/>. If a matching isn't found, or conversion to a boolean representation failed, <paramref name="fallback"/> is returned instead.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -117,7 +117,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
-        /// Returns the boolean value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a boolean representation failed, <see langword="null"/> is returned instead.
+        /// Returns the boolean value of the item with <paramref name="key"/>. If a matching isn't found, or conversion to a boolean representation failed, <see langword="null"/> is returned instead.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -131,7 +131,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>false</c>.</param>
+        /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>false</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetBoolean(this NameValueCollection? collection, string key, out bool result) {
             return StringUtils.TryParseBoolean(collection?.GetString(key), out result);
@@ -142,7 +142,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>null</c>.</param>
+        /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetBoolean(this NameValueCollection? collection, string key, [NotNullWhen(true)] out bool? result) {
             return StringUtils.TryParseBoolean(collection?.GetString(key), out result);
@@ -153,7 +153,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         #region Guid
 
         /// <summary>
-        /// Returns the GUID value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a GUID failed, <see cref="Guid.Empty"/> is returned instead.
+        /// Returns the GUID value of the item with <paramref name="key"/>. If n matching isn't found, or conversion to a GUID failed, <see cref="Guid.Empty"/> is returned instead.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -163,7 +163,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
-        /// Returns the GUID value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a GUID failed, <paramref name="fallback"/> is returned instead.
+        /// Returns the GUID value of the item with <paramref name="key"/>. If n matching isn't found, or conversion to a GUID failed, <paramref name="fallback"/> is returned instead.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -174,7 +174,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         }
 
         /// <summary>
-        /// Returns the GUID value of the item with <paramref name="key"/>. If an matching isn't found, or conversion to a GUID failed, <see langword="null"/> is returned instead.
+        /// Returns the GUID value of the item with <paramref name="key"/>. If n matching isn't found, or conversion to a GUID failed, <see langword="null"/> is returned instead.
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
@@ -188,7 +188,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <see cref="Guid.Empty"/>.</param>
+        /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see cref="Guid.Empty"/>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetGuid(this NameValueCollection? collection, string key, out Guid result) {
             return StringUtils.TryParseGuid(collection?.GetString(key), out result);
@@ -199,7 +199,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>null</c>.</param>
+        /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetGuid(this NameValueCollection? collection, string key, [NotNullWhen(true)] out Guid? result) {
             return StringUtils.TryParseGuid(collection?.GetString(key), out result);
@@ -293,7 +293,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>0</c>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetInt32(this NameValueCollection? collection, string key, out int result) {
             return StringUtils.TryParseInt32(collection?.GetString(key), out result);
@@ -304,7 +304,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>null</c>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetInt32(this NameValueCollection? collection, string key, [NotNullWhen(true)] out int? result) {
             return StringUtils.TryParseInt32(collection?.GetString(key), out result);
@@ -398,7 +398,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>0</c>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetInt64(this NameValueCollection? collection, string key, out long result) {
             return StringUtils.TryParseInt64(collection?.GetString(key), out result);
@@ -409,7 +409,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>null</c>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetInt64(this NameValueCollection? collection, string key, [NotNullWhen(true)] out long? result) {
             return StringUtils.TryParseInt64(collection?.GetString(key), out result);
@@ -503,7 +503,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>0</c>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetFloat(this NameValueCollection? collection, string key, out float result) {
             return StringUtils.TryParseFloat(collection?.GetString(key), out result);
@@ -514,7 +514,7 @@ namespace Skybrud.Essentials.Collections.Extensions {
         /// </summary>
         /// <param name="collection">The collection.</param>
         /// <param name="key">The key of the item.</param>
-        /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>null</c>.</param>
+        /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
         /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
         public static bool TryGetFloat(this NameValueCollection? collection, string key, [NotNullWhen(true)] out float? result) {
             return StringUtils.TryParseFloat(collection?.GetString(key), out result);

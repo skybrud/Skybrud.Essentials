@@ -119,7 +119,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a <see cref="EssentialsPeriod"/> representing the the day before the current day and according to
+        /// Returns a <see cref="EssentialsPeriod"/> representing the day before the current day and according to
         /// the local time zone.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
@@ -128,7 +128,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a <see cref="EssentialsPeriod"/> representing the the day before the current day and according to
+        /// Returns a <see cref="EssentialsPeriod"/> representing the day before the current day and according to
         /// the <paramref name="timeZone"/>.
         /// </summary>
         /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
@@ -137,7 +137,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a <see cref="EssentialsPeriod"/> representing the the day before the day of
+        /// Returns a <see cref="EssentialsPeriod"/> representing the day before the day of
         /// <paramref name="timestamp"/> and according to the <paramref name="timeZone"/>.
         /// </summary>
         /// <param name="timestamp">The timestamp.</param>

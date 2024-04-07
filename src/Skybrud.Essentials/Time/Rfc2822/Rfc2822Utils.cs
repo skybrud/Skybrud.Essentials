@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Time.Rfc2822 {
         /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         public static string ToString(DateTime timestamp) {
             return Rfc822Utils.ToString(timestamp);
         }
@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Time.Rfc2822 {
         /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
         public static string ToString(DateTimeOffset timestamp) {
             return Rfc822Utils.ToString(timestamp);
         }
@@ -30,7 +30,7 @@ namespace Skybrud.Essentials.Time.Rfc2822 {
         /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the <strong>RFC 2822</strong> format.
         /// </summary>
         /// <param name="timestamp">The timestamp to be converted.</param>
-        /// <returns>The timestamp formatted as a RFC 822 date string.</returns>
+        /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
 #pragma warning disable 618
         public static string ToString(EssentialsDateTime timestamp) {
 #pragma warning restore 618

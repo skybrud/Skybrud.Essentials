@@ -333,7 +333,7 @@ namespace Skybrud.Essentials.Enums {
         /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
         public static Array ParseEnumArray(string? str, Type type, char[] separators) {
             if (string.IsNullOrWhiteSpace(str)) return ArrayUtils.Empty(type);
-            return ParseEnumArray((str ?? string.Empty).Split(separators, StringSplitOptions.RemoveEmptyEntries), type);
+            return ParseEnumArray(str!.Split(separators, StringSplitOptions.RemoveEmptyEntries), type);
         }
 
         /// <summary>
@@ -482,7 +482,7 @@ namespace Skybrud.Essentials.Enums {
             List<T> temp = new();
             array = null;
 
-            // Iterate over and try to parse the each individual value
+            // Iterate over and try to parse each individual value
             foreach (string piece in str!.Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)) {
                 if (!TryParseEnum(piece, out T value)) return false;
                 temp.Add(value);
@@ -611,7 +611,7 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="input"/> value to a enum of type <paramref name="type"/>.
+        /// Converts the specified <paramref name="input"/> value to an enum of type <paramref name="type"/>.
         /// </summary>
         /// <param name="input">The input value to be converted.</param>
         /// <param name="type">The enum type.</param>

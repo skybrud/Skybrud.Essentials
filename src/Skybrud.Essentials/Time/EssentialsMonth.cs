@@ -23,7 +23,7 @@ namespace Skybrud.Essentials.Time {
         public int Year { get; }
 
         /// <summary>
-        /// Gets the ordinal of the month - eg. <c>1</c> for January.
+        /// Gets the ordinal of the month - e.g. <c>1</c> for January.
         /// </summary>
         public int Month { get; }
 
@@ -127,7 +127,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Initializes a new instance for the month containing the specified <paramref name="timestamp"/>.
         ///
-        /// If <paramref name="timestamp"/> doesn't specify a timestamp (eg. only an offset), the timestamp will be converted to <see cref="TimeZoneInfo.Local"/>.
+        /// If <paramref name="timestamp"/> doesn't specify a timestamp (e.g. only an offset), the timestamp will be converted to <see cref="TimeZoneInfo.Local"/>.
         /// </summary>
         /// <param name="timestamp">A timestamp representing the month to be created.</param>
         public EssentialsMonth(EssentialsTime timestamp) {

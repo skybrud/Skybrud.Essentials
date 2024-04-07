@@ -10,7 +10,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Converters {
     /// <summary>
     /// JSON converter class for serializing and deserializing <see cref="NameValueCollection"/> instances.
     ///
-    /// The serializes value will be a JSON object. If you wish to serialize to an URL encoded string instead, see the <see cref="StringJsonConverter"/>.
+    /// The serializes value will be a JSON object. If you wish to serialize to a URL encoded string instead, see the <see cref="StringJsonConverter"/>.
     /// </summary>
     public class NameValueCollectionJsonConverter : JsonConverter {
 

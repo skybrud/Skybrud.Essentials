@@ -242,7 +242,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? HighlightKeywords(string? input, string className, IEnumerable<string>? keywords) {
             if (string.IsNullOrWhiteSpace(input) || keywords == null) return input;
             return HighlightKeywords(input, className, keywords.ToArray());
@@ -256,7 +256,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="className">The class name.</param>
         /// <param name="keywords">The keywords to highlight.</param>
         /// <returns>The input string with highlighted keywords.</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? HighlightKeywords(string? input, string className, params string[]? keywords) {
 
             if (string.IsNullOrWhiteSpace(input) || keywords == null) return input;
@@ -347,7 +347,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The URL encoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? UrlEncode(string? str) {
             return System.Web.HttpUtility.UrlEncode(str);
         }
@@ -357,7 +357,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The URL decoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? UrlDecode(string? str) {
             return System.Web.HttpUtility.UrlDecode(str);
         }
@@ -367,7 +367,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The encoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? HtmlEncode(string? str) {
             return System.Web.HttpUtility.HtmlEncode(str!);
         }
@@ -377,7 +377,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The decoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? HtmlDecode(string? str) {
             return System.Web.HttpUtility.HtmlDecode(str);
         }
@@ -387,7 +387,7 @@ namespace Skybrud.Essentials.Strings {
 #if I_CAN_HAS_NAME_VALUE_COLLECTION
 
         /// <summary>
-        /// Returns an URL encoded value of the specified <paramref name="collection"/>,
+        /// Returns a URL encoded value of the specified <paramref name="collection"/>,
         /// </summary>
         /// <param name="collection">The name value collection.</param>
         /// <returns>The URL encoded string.</returns>
@@ -404,7 +404,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The URL encoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? UrlEncode(string? str) {
             return System.Net.WebUtility.UrlEncode(str);
         }
@@ -414,7 +414,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The URL decoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? UrlDecode(string? str) {
             return System.Net.WebUtility.UrlDecode(str);
         }
@@ -424,7 +424,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be encoded.</param>
         /// <returns>The encoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? HtmlEncode(string? str) {
             return System.Net.WebUtility.HtmlEncode(str);
         }
@@ -434,7 +434,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="str">The string to be decoded.</param>
         /// <returns>The decoded string.</returns>
-        [return: NotNullIfNotNull("str")]
+        [return: NotNullIfNotNull(nameof(str))]
         public static string? HtmlDecode(string? str) {
             return System.Net.WebUtility.HtmlDecode(str);
         }
@@ -446,7 +446,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="html">The input string containing the HTML.</param>
         /// <returns>The input string without any HTML markup.</returns>
-        [return: NotNullIfNotNull("html")]
+        [return: NotNullIfNotNull(nameof(html))]
         public static string? StripHtml(string? html) {
             return html == null ? null : HtmlDecode(Regex.Replace(html, "<.*?>", string.Empty));
         }
@@ -458,7 +458,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="html">The input string containing the HTML.</param>
         /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
-        [return: NotNullIfNotNull("html")]
+        [return: NotNullIfNotNull(nameof(html))]
         public static string? StripHtml(string? html, params string[]? ignore) {
             if (html == null) return null;
             if (ignore == null || ignore.Length == 0) return StripHtml(html);
@@ -471,7 +471,7 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <returns> The HTML encoded text with text line breaks replaced with HTML line breaks (<c>&lt;br /&gt;</c>).</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? ReplaceLineBreaks(string? input) {
 
             // See: https://github.com/umbraco/Umbraco-CMS/blob/release-8.12.0/src/Umbraco.Web/HtmlStringUtilities.cs#L38
@@ -494,7 +494,7 @@ namespace Skybrud.Essentials.Strings {
         /// <param name="input">The input string.</param>
         /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
         /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? Truncate(string? input, int maxCharacters) {
             return Truncate(input, maxCharacters, "...");
         }
@@ -507,9 +507,9 @@ namespace Skybrud.Essentials.Strings {
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <param name="maxCharacters">The maximum allowed amount of characters.</param>
-        /// <param name="end">The text to be appended to the end of the truncated string - eg. <c>...</c>.</param>
+        /// <param name="end">The text to be appended to the end of the truncated string - e.g. <c>...</c>.</param>
         /// <returns>The truncated string if the length of <paramref name="input"/> exceeds <paramref name="maxCharacters"/>; otherwise <paramref name="input"/>.</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? Truncate(string? input, int maxCharacters, string? end) {
             if (string.IsNullOrWhiteSpace(input)) return input;
             end ??= string.Empty;

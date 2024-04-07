@@ -220,7 +220,7 @@ namespace Skybrud.Essentials.Time {
         }
 
         /// <summary>
-        /// Returns a string representation of the ISO 8601 week - eg. <c>2022-W49</c> or <c>2023-W01</c>.
+        /// Returns a string representation of the ISO 8601 week - e.g. <c>2022-W49</c> or <c>2023-W01</c>.
         /// </summary>
         /// <returns></returns>
         public override string ToString() {

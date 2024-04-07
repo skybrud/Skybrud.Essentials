@@ -35,7 +35,7 @@ namespace Skybrud.Essentials.Strings {
         /// Formats <paramref name="bytes"/> into a textual representation using the specified <paramref name="format"/>.
         /// </summary>
         /// <param name="bytes">The bytes to format.</param>
-        /// <param name="format">The format - eg. <see cref="FileSizeFormat.Kibi"/> or <see cref="FileSizeFormat.Kilo"/>.</param>
+        /// <param name="format">The format - e.g. <see cref="FileSizeFormat.Kibi"/> or <see cref="FileSizeFormat.Kilo"/>.</param>
         /// <returns>A string representing the formatted file size.</returns>
         public static string FormatFileSize(long bytes, FileSizeFormat format) {
             return FormatFileSize(bytes, format, CultureInfo.CurrentCulture);
@@ -45,7 +45,7 @@ namespace Skybrud.Essentials.Strings {
         /// Formats <paramref name="bytes"/> into a textual representation using the specified <paramref name="format"/>.
         /// </summary>
         /// <param name="bytes">The bytes to format.</param>
-        /// <param name="format">The format - eg. <see cref="FileSizeFormat.Kibi"/> or <see cref="FileSizeFormat.Kilo"/>.</param>
+        /// <param name="format">The format - e.g. <see cref="FileSizeFormat.Kibi"/> or <see cref="FileSizeFormat.Kilo"/>.</param>
         /// <param name="culture">The culture to be used when formatting the file size.</param>
         /// <returns>A string representing the formatted file size.</returns>
         public static string FormatFileSize(long bytes, FileSizeFormat format, CultureInfo culture) {

@@ -8,6 +8,8 @@ using JetBrains.Annotations;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
+// ReSharper disable RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Time {
 
     /// <summary>
@@ -88,8 +90,8 @@ namespace Skybrud.Essentials.Time {
             // ReSharper disable RedundantIfElseBlock
             // ReSharper disable ConvertIfStatementToReturnStatement
 
-            EssentialsMonth? first = _months[0];
-            EssentialsMonth? last = _months[_months.Count - 1];
+            EssentialsMonth first = _months[0];
+            EssentialsMonth last = _months[_months.Count - 1];
 
             if (IsReverse) {
 
@@ -122,7 +124,7 @@ namespace Skybrud.Essentials.Time {
         /// Returns whether the specified <paramref name="date"/> is within the range.
         /// </summary>
         /// <param name="date">The date</param>
-        /// <returns><see langword="true"/> the date is is within the range; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> the date is within the range; otherwise, <see langword="false"/>.</returns>
         public bool Contains(EssentialsDate date) {
             return Contains(date.Year, date.Month);
         }
@@ -131,7 +133,7 @@ namespace Skybrud.Essentials.Time {
         /// Returns whether the specified <paramref name="month"/> is within the range.
         /// </summary>
         /// <param name="month">The month</param>
-        /// <returns><see langword="true"/> the month is is within the range; otherwise, <see langword="false"/>.</returns>
+        /// <returns><see langword="true"/> the month is within the range; otherwise, <see langword="false"/>.</returns>
         public bool Contains(EssentialsMonth month) {
             return Contains(month.Year, month.Month);
         }

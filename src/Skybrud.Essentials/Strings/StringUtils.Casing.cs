@@ -271,7 +271,7 @@ namespace Skybrud.Essentials.Strings {
         #region ToConstantCase(...)
 
         /// <summary>
-        /// Converts the specified <paramref name="input"/> string to a upper case string with words separated by underscores.
+        /// Converts the specified <paramref name="input"/> string to an uppercase string with words separated by underscores.
         /// </summary>
         /// <param name="input">The string to be converted.</param>
         /// <returns>The converted string.</returns>
@@ -280,7 +280,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Converts the specified enum <paramref name="value"/> to a upper case string with words separated by
+        /// Converts the specified enum <paramref name="value"/> to an uppercase string with words separated by
         /// underscores.
         /// </summary>
         /// <param name="value">The enum value to be converted.</param>
@@ -290,7 +290,7 @@ namespace Skybrud.Essentials.Strings {
         }
 
         /// <summary>
-        /// Converts the specified enum <paramref name="values"/> to a upper case string with words separated by
+        /// Converts the specified enum <paramref name="values"/> to an uppercase string with words separated by
         /// underscores. If <paramref name="values"/> contains more than one enum value, the names will be separated by
         /// commas.
         /// </summary>
@@ -352,7 +352,7 @@ namespace Skybrud.Essentials.Strings {
         #endregion
 
         /// <summary>
-        /// Uppercases the first character of a the specified <paramref name="str"/>. If <paramref name="str"/> is
+        /// Uppercases the first character of the specified <paramref name="str"/>. If <paramref name="str"/> is
         /// either <c>null</c> or empty, an empty string will be returned instead.
         /// </summary>
         /// <param name="str">The string which first character should be uppercased.</param>
@@ -420,7 +420,7 @@ namespace Skybrud.Essentials.Strings {
 
                 char d = upperCase == null ? char.ToLowerInvariant(c) : (upperCase.Value ? char.ToUpperInvariant(c) : char.ToLowerInvariant(c));
 
-                // If "c" is neither a letter or digit, it's either a white space character or some kind of unwanted character. In either case, this means that we clar the buffer and expect a new word
+                // If "c" is neither a letter nor digit, it's either a white space character or some kind of unwanted character. In either case, this means that we clar the buffer and expect a new word
                 if (!char.IsLetterOrDigit(c)) {
                     if (buffer.Length > 0) words.Add(buffer.ToString());
                     buffer.Clear();

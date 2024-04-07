@@ -303,7 +303,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the first day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the first day of the week.</returns>
         public static DateTime GetFirstDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
@@ -314,7 +314,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the first day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
         public static DateTimeOffset GetFirstDayOfWeek(DateTimeOffset date, DayOfWeek startOfWeek) {
@@ -349,7 +349,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the last day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="DateTime"/> representing the last day of the week.</returns>
         public static DateTime GetLastDayOfWeek(DateTime date, DayOfWeek startOfWeek) {
@@ -360,7 +360,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the last day of the week of the specified <paramref name="date"/> and based on <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="DayOfWeek.Monday"/> or
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
         /// <see cref="DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
         public static DateTimeOffset GetLastDayOfWeek(DateTimeOffset date, DayOfWeek startOfWeek) {

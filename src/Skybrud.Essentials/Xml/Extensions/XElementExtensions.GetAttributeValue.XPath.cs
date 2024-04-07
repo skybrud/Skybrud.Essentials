@@ -12,7 +12,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
     public static partial class XElementExtensions {
 
-#region Get attribute value as System.String
+        #region Get attribute value as System.String
 
         /// <summary>
         /// Gets the value of the attribute matching the specified XPath <paramref name="expression"/>, or an empty
@@ -91,7 +91,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -148,7 +148,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -162,9 +162,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out int value) ? callback(value) : default!;
         }
 
-#endregion
+        #endregion
 
-#region Get attribute value as System.Int64
+        #region Get attribute value as System.Int64
 
         /// <summary>
         /// Gets an instance of <see cref="long"/> representing the value of the attribute matching the
@@ -181,7 +181,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -238,7 +238,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -252,9 +252,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out long value) ? callback(value) : default!;
         }
 
-#endregion
+        #endregion
 
-#region Get attribute value as System.Single
+        #region Get attribute value as System.Single
 
         /// <summary>
         /// Gets an instance of <see cref="Single"/> representing the value of the attribute matching the
@@ -271,7 +271,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -328,7 +328,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -342,9 +342,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out float value) ? callback(value) : default!;
         }
 
-#endregion
+        #endregion
 
-#region Get attribute value as System.Double
+        #region Get attribute value as System.Double
 
         /// <summary>
         /// Gets an instance of <see cref="Double"/> representing the value of the attribute matching the
@@ -361,7 +361,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -418,7 +418,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -432,9 +432,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValue(element, expression, resolver, out double value) ? callback(value) : default!;
         }
 
-#endregion
+        #endregion
 
-#region Get attribute value as System.Boolean
+        #region Get attribute value as System.Boolean
 
         /// <summary>
         /// Gets an instance of <see cref="Boolean"/> representing the value of the attribute matching the
@@ -451,7 +451,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -517,7 +517,7 @@ namespace Skybrud.Essentials.Xml.Extensions {
 
         /// <summary>
         /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-        /// XPath <paramref name="expression"/>. If a matching attribute ins't found found, the default value of
+        /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
         /// <typeparamref name="T"/> will be returned instead.
         /// </summary>
         /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -531,9 +531,9 @@ namespace Skybrud.Essentials.Xml.Extensions {
             return GetAttributeValueAsBoolean(element, expression, resolver, out bool value) ? callback(value) : default!;
         }
 
-#endregion
+        #endregion
 
-#region Get attribute value as System.Boolean (deprecated due to wrong naming)
+        #region Get attribute value as System.Boolean (deprecated due to wrong naming)
 
 #pragma warning disable 1591
 

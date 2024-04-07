@@ -41,11 +41,11 @@ namespace Skybrud.Essentials.Strings.Extensions {
 
         /// <summary>
         /// Converts the specified <paramref name="input"/> into an instance of <see cref="bool"/>. The string is
-        /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case insensitive).
+        /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c> (case-insensitive).
         /// </summary>
         /// <param name="input">The string to be converted.</param>
         /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or
-        /// <c>on</c> (case insensitive); otherwise, <c>false</c>.</returns>
+        /// <c>on</c> (case-insensitive); otherwise, <c>false</c>.</returns>
         public static bool ToBoolean(this string? input) {
             return StringUtils.ParseBoolean(input, false);
         }
@@ -53,7 +53,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <summary>
         /// Converts <paramref name="input"/> into an instance of <see cref="bool"/>. The input string is
         /// considered <c>true</c> if it matches either <c>true</c>, <c>1</c>, <c>t</c> or <c>on</c>, or <c>false</c>
-        /// if it matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. All comparisons are case insensitive.
+        /// if it matches either <c>false</c>, <c>0</c>, <c>f</c> or <c>off</c>. All comparisons are case-insensitive.
         /// </summary>
         /// <param name="input">The string to be converted.</param>
         /// <param name="fallback">The fallback value.</param>

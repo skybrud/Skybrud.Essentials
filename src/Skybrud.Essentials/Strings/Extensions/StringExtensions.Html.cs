@@ -9,7 +9,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="html">The input string containing HTML.</param>
         /// <returns>The input string without HTML markup.</returns>
-        [return: NotNullIfNotNull("html")]
+        [return: NotNullIfNotNull(nameof(html))]
         public static string? StripHtml(this string? html) {
             return StringUtils.StripHtml(html);
         }
@@ -21,7 +21,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="html">The input string containing the HTML.</param>
         /// <param name="ignore">An of tag names (without the brackets, like <c>div</c>) to ignore.</param>
         /// <returns>The stripped result.</returns>
-        [return: NotNullIfNotNull("html")]
+        [return: NotNullIfNotNull(nameof(html))]
         public static string? StripHtml(this string? html, params string[]? ignore) {
             return StringUtils.StripHtml(html, ignore);
         }
@@ -31,7 +31,7 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// </summary>
         /// <param name="input">The input string.</param>
         /// <returns> The HTML encoded text with text line breaks replaced with HTML line breaks (<c>&lt;br /&gt;</c>).</returns>
-        [return: NotNullIfNotNull("input")]
+        [return: NotNullIfNotNull(nameof(input))]
         public static string? ReplaceLineBreaks(this string? input) {
             return StringUtils.ReplaceLineBreaks(input);
         }

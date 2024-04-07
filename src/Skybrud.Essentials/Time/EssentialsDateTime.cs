@@ -226,7 +226,7 @@ namespace Skybrud.Essentials.Time {
         /// <summary>
         /// Initializes a new instance based on the specified <paramref name="dt"/>.
         /// </summary>
-        /// <param name="dt">The an instance <see cref="DateTime"/> the instance should be based on.</param>
+        /// <param name="dt">A <see cref="DateTime"/> value the instance should be based on.</param>
         public EssentialsDateTime(DateTime dt) {
             DateTime = dt;
         }
@@ -838,7 +838,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the first day of the week based on this <see cref="EssentialsDateTime"/> and
         /// <paramref name="startOfWeek"/>.
         /// </summary>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="System.DayOfWeek.Monday"/> or
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="System.DayOfWeek.Monday"/> or
         /// <see cref="System.DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/> representing the first day of the week.</returns>
         public EssentialsDateTime GetFirstDayOfWeek(DayOfWeek startOfWeek) {
@@ -858,7 +858,7 @@ namespace Skybrud.Essentials.Time {
         /// Gets the last day of the week based on this <see cref="EssentialsDateTime"/> and
         /// <paramref name="startOfWeek"/>.
         /// </summary>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="System.DayOfWeek.Monday"/> or <see cref="System.DayOfWeek.Sunday"/>).</param>
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="System.DayOfWeek.Monday"/> or <see cref="System.DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/> representing the last day of the week.</returns>
         public EssentialsDateTime GetLastDayOfWeek(DayOfWeek startOfWeek) {
             return new EssentialsDateTime(TimeUtils.GetLastDayOfWeek(DateTime, startOfWeek));
@@ -869,7 +869,7 @@ namespace Skybrud.Essentials.Time {
         /// <paramref name="startOfWeek"/>.
         /// </summary>
         /// <param name="date">The date.</param>
-        /// <param name="startOfWeek">The first day of the week (eg. <see cref="System.DayOfWeek.Monday"/> or <see cref="System.DayOfWeek.Sunday"/>).</param>
+        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="System.DayOfWeek.Monday"/> or <see cref="System.DayOfWeek.Sunday"/>).</param>
         /// <returns>An instance of <see cref="EssentialsDateTime"/> representing the last day of the week.</returns>
         [Obsolete("Use overload instead.")]
         public EssentialsDateTime GetLastDayOfWeek(DateTime date, DayOfWeek startOfWeek) {

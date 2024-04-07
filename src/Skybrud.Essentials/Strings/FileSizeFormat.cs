@@ -15,7 +15,7 @@
         Default,
 
         /// <summary>
-        /// Indicates that the file size should be formatted using kibibytes (based on the power of 2) - eg.
+        /// Indicates that the file size should be formatted using kibibytes (based on the power of 2) - e.g.
         /// <c>KiB</c>, <c>MiB</c> and so forth.
         ///
         /// Using this format, <c>1 KiB</c> equal to <c>1024 bytes</c>.
@@ -23,7 +23,7 @@
         Kibi,
 
         /// <summary>
-        /// Indicates that the file size should be formatted using kilobytes (based on the power of 10) - eg.
+        /// Indicates that the file size should be formatted using kilobytes (based on the power of 10) - e.g.
         /// <c>KB</c>, <c>MB</c> and so forth.
         ///
         /// Using this format, <c>1 KB</c> equal to <c>1000 bytes</c>.

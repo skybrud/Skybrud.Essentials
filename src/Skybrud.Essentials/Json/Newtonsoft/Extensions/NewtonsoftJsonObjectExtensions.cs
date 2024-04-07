@@ -20,7 +20,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="propertyName">The name of the property</param>
         /// <param name="callback">The callback used for converting each item to a corresponding <typeparamref name="T"/> value.</param>
         /// <returns>A list of <typeparamref name="T"/>.</returns>
-        /// <remarks>This method will always return a list. If the property doesn't exist or it's value can not be successfully converted, an empty array will be returned instead.</remarks>
+        /// <remarks>This method will always return a list. If the property doesn't exist, or it's value can not be successfully converted, an empty array will be returned instead.</remarks>
         public static IReadOnlyList<T> GetItems<T>(this JObject? json, string propertyName, Func<JObject, T> callback) {
             return JsonTokenUtils.ConvertTokenToReadOnlyList(json?[propertyName], callback);
         }
@@ -33,7 +33,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <param name="callback">The callback used for converting each item to a corresponding <typeparamref name="T"/> value.</param>
         /// <returns>A list of <typeparamref name="T"/>.</returns>
-        /// <remarks>This method will always return a list. If the property doesn't exist or it's value can not be successfully converted, an empty array will be returned instead.</remarks>
+        /// <remarks>This method will always return a list. If the property doesn't exist, or it's value can not be successfully converted, an empty array will be returned instead.</remarks>
         public static IReadOnlyList<T> GetItemsByPath<T>(this JObject? json, string path, Func<JObject, T> callback) {
             return JsonTokenUtils.ConvertTokenToReadOnlyList(json?.SelectToken(path), callback);
         }
