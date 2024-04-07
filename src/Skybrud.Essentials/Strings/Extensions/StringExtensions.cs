@@ -422,6 +422,87 @@ namespace Skybrud.Essentials.Strings.Extensions {
             fifth = array is { Length: > 4 } ? array[4] : null;
         }
 
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separator"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separator">The separator to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        public static void Split(this string? value, char separator, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first) {
+            string[]? array = value?.Split(new[] { separator }, options);
+            first = array?[0];
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separator"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separator">The separator to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        public static void Split(this string? value, char separator, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second) {
+            string[]? array = value?.Split(new[] { separator }, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separator"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separator">The separator to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        public static void Split(this string? value, char separator, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third) {
+            string[]? array = value?.Split(new[] { separator }, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separator"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separator">The separator to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        public static void Split(this string? value, char separator, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth) {
+            string[]? array = value?.Split(new[] { separator }, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separator"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separator">The separator to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        /// <param name="fifth">The fifth item resulting from the split.</param>
+        public static void Split(this string? value, char separator, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+            string[]? array = value?.Split(new []{ separator }, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+            fifth = array is { Length: > 4 } ? array[4] : null;
+        }
+
         /// <summary>
         /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
         /// </summary>
@@ -490,6 +571,241 @@ namespace Skybrud.Essentials.Strings.Extensions {
         /// <param name="fifth">The fifth item resulting from the split.</param>
         public static void Split(this string? value, char[] separators, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
             string[]? array = value?.Split(separators);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+            fifth = array is { Length: > 4 } ? array[4] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        public static void Split(this string? value, char[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        public static void Split(this string? value, char[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        public static void Split(this string? value, char[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        public static void Split(this string? value, char[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        /// <param name="fifth">The fifth item resulting from the split.</param>
+        public static void Split(this string? value, char[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+            fifth = array is { Length: > 4 } ? array[4] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, [NotNullIfNotNull("value")] out string? first) {
+            string[]? array = value?.Split(separators, StringSplitOptions.None);
+            first = array?[0];
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, [NotNullIfNotNull("value")] out string? first, out string? second) {
+            string[]? array = value?.Split(separators, StringSplitOptions.None);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third) {
+            string[]? array = value?.Split(separators, StringSplitOptions.None);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth) {
+            string[]? array = value?.Split(separators, StringSplitOptions.None);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        /// <param name="fifth">The fifth item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+            string[]? array = value?.Split(separators, StringSplitOptions.None);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+            fifth = array is { Length: > 4 } ? array[4] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth) {
+            string[]? array = value?.Split(separators, options);
+            first = array?[0];
+            second = array is { Length: > 1 } ? array[1] : null;
+            third = array is { Length: > 2 } ? array[2] : null;
+            fourth = array is { Length: > 3 } ? array[3] : null;
+        }
+
+        /// <summary>
+        /// Splits the specified <paramref name="value"/> into multiple pieces using <paramref name="separators"/>.
+        /// </summary>
+        /// <param name="value">The value to be split.</param>
+        /// <param name="separators">The separators to be used for splitting the string.</param>
+        /// <param name="options"><see cref="StringSplitOptions.RemoveEmptyEntries"/> to omit empty array elements from the array returned; or <see cref="StringSplitOptions.None"/> to include empty array elements in the array returned.</param>
+        /// <param name="first">The first item resulting from the split.</param>
+        /// <param name="second">The second item resulting from the split.</param>
+        /// <param name="third">The third item resulting from the split.</param>
+        /// <param name="fourth">The fourth item resulting from the split.</param>
+        /// <param name="fifth">The fifth item resulting from the split.</param>
+        public static void Split(this string? value, string[] separators, StringSplitOptions options, [NotNullIfNotNull("value")] out string? first, out string? second, out string? third, out string? fourth, out string? fifth) {
+            string[]? array = value?.Split(separators, options);
             first = array?[0];
             second = array is { Length: > 1 } ? array[1] : null;
             third = array is { Length: > 2 } ? array[2] : null;
