@@ -507,6 +507,50 @@ namespace Skybrud.Essentials.Strings.Extensions {
             return value is null ? null : string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
+        /// <summary>
+        /// Returns a culture invariant string representation of the specified <paramref name="value"/> formatted using <paramref name="format"/>.
+        /// </summary>
+        /// <param name="value">The value to convert.</param>
+        /// <param name="format">The format to be used when converting <paramref name="value"/>.</param>
+        /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
+        [return: NotNullIfNotNull(nameof(value))]
+        public static string? ToInvariantString(this IFormattable? value, string format) {
+            return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        }
+
+        /// <summary>
+        /// Returns a culture invariant string representation of the specified <paramref name="value"/> formatted using <paramref name="format"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="DateTime"/> value to convert.</param>
+        /// <param name="format">The format to be used when converting <paramref name="value"/>.</param>
+        /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
+        [return: NotNullIfNotNull(nameof(value))]
+        public static string? ToInvariantString(this DateTime? value, [StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string format) {
+            return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        }
+
+        /// <summary>
+        /// Returns a culture invariant string representation of the specified <paramref name="value"/> formatted using <paramref name="format"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="DateTimeOffset"/> value to convert.</param>
+        /// <param name="format">The format to be used when converting <paramref name="value"/>.</param>
+        /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
+        [return: NotNullIfNotNull(nameof(value))]
+        public static string? ToInvariantString(this DateTimeOffset? value, [StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string format) {
+            return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        }
+
+        /// <summary>
+        /// Returns a culture invariant string representation of the specified <paramref name="value"/> formatted using <paramref name="format"/>.
+        /// </summary>
+        /// <param name="value">The <see cref="TimeSpan"/> value to convert.</param>
+        /// <param name="format">The format to be used when converting <paramref name="value"/>.</param>
+        /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
+        [return: NotNullIfNotNull(nameof(value))]
+        public static string? ToInvariantString(this TimeSpan? value, [StringSyntax(StringSyntaxAttribute.TimeSpanFormat)] string format) {
+            return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        }
+
     }
 
 }
