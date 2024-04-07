@@ -420,7 +420,7 @@ namespace Skybrud.Essentials.Time {
         /// </summary>
         /// <returns>A string representation of the value of the current <see cref="EssentialsDate"/> object.</returns>
         public override string ToString() {
-            return _dateTime.ToString("yyyy-MM-dd");
+            return _dateTime.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture);
         }
 
         /// <summary>
@@ -429,7 +429,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="format">A standard or custom date and time format string.</param>
         /// <returns>A string representation of value of the current <see cref="EssentialsDate"/> object as specified by <paramref name="format"/>.</returns>
         public string ToString([StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string format) {
-            return _dateTime.ToString(format);
+            return _dateTime.ToString(format, CultureInfo.InvariantCulture);
         }
 
         /// <summary>
