@@ -13,8 +13,9 @@ public class EssentialsDateTests {
 
         EssentialsDate date = new(2024, 3, 27);
 
-        Assert.AreEqual("2024-03-27", date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture));
-        Assert.AreEqual("2024-03-27", date.ToString("yyyy-MM-dd", CultureInfo.GetCultureInfo("da-DK")));
+        Assert.AreEqual("2024-03-27", date.ToString("yyyy-MM-dd", CultureInfo.InvariantCulture), "#1");
+        Assert.AreEqual("2024-03-27", date.ToString("yyyy-MM-dd", CultureInfo.GetCultureInfo("da-DK")), "#2");
+        Assert.AreEqual("2024-03-27", $"{date}", "#3");
 
     }
 

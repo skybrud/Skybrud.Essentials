@@ -235,6 +235,17 @@ namespace UnitTestProject1.Time.Time {
 
         }
 
+        [TestMethod]
+        public void ToStringDefault() {
+
+            EssentialsDate date = new EssentialsDate(2024, 4, 7);
+
+            Assert.AreEqual("2024-04-07", date.ToString());
+            Assert.AreEqual("2024-04-07", $"{date}");
+            Assert.AreEqual("2024-04-07", $"{date:yyyy-MM-dd}");
+
+        }
+
     }
 
 }

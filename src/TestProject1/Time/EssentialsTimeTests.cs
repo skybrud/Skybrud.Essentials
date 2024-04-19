@@ -13,7 +13,8 @@ public class EssentialsTimeTests {
 
         EssentialsTime time = new(2024, 3, 27, 12, 0, 0, TimeZoneInfo.Utc);
 
-        Assert.AreEqual("2024-03-27T12:00:00.000Z", time.ToString());
+        Assert.AreEqual("2024-03-27T12:00:00.000Z", time.ToString(), "#1");
+        Assert.AreEqual("2024-03-27T12:00:00.000Z", $"{time}", "#2");
 
     }
 

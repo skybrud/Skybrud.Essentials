@@ -791,7 +791,7 @@ namespace Skybrud.Essentials.Time {
         /// <param name="provider">An object that supplies culture-specific formatting information.</param>
         /// <returns>A string representation of value of the current <see cref="EssentialsTime"/> object as specified by <paramref name="format"/> and <paramref name="provider"/>.</returns>
         public string ToString([StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string? format, IFormatProvider? provider) {
-            return DateTimeOffset.ToString(format, provider);
+            return string.IsNullOrWhiteSpace(format) ? Iso8601 : DateTimeOffset.ToString(format, provider);
         }
 
         /// <summary>
