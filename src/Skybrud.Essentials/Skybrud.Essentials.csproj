@@ -35,7 +35,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.1.56</VersionPrefix>
+    <VersionPrefix>1.1.57</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
@@ -43,34 +43,46 @@
     <Copyright>Copyright © $([System.DateTime]::UtcNow.ToString(`yyyy`))</Copyright>
   </PropertyGroup>
 
+  <!-- Information for the NuGet package -->
   <PropertyGroup>
     <PackageId>Skybrud.Essentials</PackageId>
     <PackageTags>Skybrud, Limbo, Essentials, JSON, XML, Date, Time, Calendar, ISO8601, RFC822, RFC2822, Reflection, Parsing</PackageTags>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
-    <PackageProjectUrl>https://packages.skybrud.dk/skybrud.essentials/</PackageProjectUrl>
+    <PackageProjectUrl>https://packages.limbo.works/skybrud.essentials/</PackageProjectUrl>
     <PackageIcon>Limbo.png</PackageIcon>
     <PackageReadmeFile>README.md</PackageReadmeFile>
     <RepositoryType>git</RepositoryType>
     <RepositoryUrl>https://github.com/skybrud/Skybrud.Essentials</RepositoryUrl>
   </PropertyGroup>
 
-  <PropertyGroup>
-    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Essentials.xml</DocumentationFile>
-  </PropertyGroup>
+  <!-- Include additional metadata in the assembly -->
+  <ItemGroup>
+    <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/skybrud.essentials/" />
+    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.iddqd/docs/v13/" />
+    <AssemblyMetadata Include="NuGetUrl" Value="https://packages.limbo.works/skybrud.essentials/docs/" />
+  </ItemGroup>
 
+  <!-- Include NuGet dependencies (.NET STadnard 1.3 and 2.0) -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3' OR '$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
 
+  <!-- Include NuGet dependencies (all target frameworks) -->
   <ItemGroup>
     <PackageReference Include="Nullable" Version="1.3.1" PrivateAssets="all" />
     <PackageReference Include="Newtonsoft.Json" Version="9.0.1" />
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" PrivateAssets="All" />
   </ItemGroup>
 
+  <!-- Include README package icon for the NuGet package -->
   <ItemGroup>
     <None Include="../../NUGET.md" Pack="true" PackagePath="\README.md" />
     <None Include="../build/Limbo.png" Pack="true" PackagePath="\" />
   </ItemGroup>
+
+  <!-- Generate XML documentation -->
+  <PropertyGroup>
+    <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Essentials.xml</DocumentationFile>
+  </PropertyGroup>
 
 </Project>
