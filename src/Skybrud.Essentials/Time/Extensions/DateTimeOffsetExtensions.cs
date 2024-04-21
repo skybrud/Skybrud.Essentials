@@ -344,6 +344,40 @@ namespace Skybrud.Essentials.Time.Extensions {
             return value is null ? null : Iso8601Utils.ToString(value.Value);
         }
 
+        /// <summary>
+        /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
+        /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
+        /// </summary>
+        /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
+        [return: NotNullIfNotNull(nameof(time))]
+        public static EssentialsDate? ToEssentialsDate(this DateTimeOffset? time) {
+            return time is null ? null : new EssentialsDate(time.Value);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
+        /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
+        /// </summary>
+        /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
+        [return: NotNullIfNotNull(nameof(time))]
+        public static EssentialsTime? ToEssentialsTime(this DateTimeOffset? time) {
+            return time is null ? null : new EssentialsTime(time.Value);
+        }
+
+        /// <summary>
+        /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
+        /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
+        /// </summary>
+        /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+        /// <param name="timeZone">The time zone the new <see cref="EssentialsDate"/> instance should be based on.</param>
+        /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
+        [return: NotNullIfNotNull(nameof(time))]
+        public static EssentialsTime? ToEssentialsTime(this DateTimeOffset? time, TimeZoneInfo timeZone) {
+            return time is null ? null : new EssentialsTime(time.Value, timeZone);
+        }
+
     }
 
 }
