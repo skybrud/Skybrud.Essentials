@@ -501,12 +501,14 @@ namespace UnitTestProject1.Time.Time {
 
             using (new CultureDisposable(InvariantCulture)) {
                 string actual = time.ToString();
-                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#1");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#1a");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", $"{time}", "#1b");
             }
 
             using (new CultureDisposable(DanishCulture)) {
                 string actual = time.ToString();
-                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#2");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#2a");
+                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", $"{time}", "#2b");
             }
 
         }
@@ -521,12 +523,14 @@ namespace UnitTestProject1.Time.Time {
 
             using (new CultureDisposable(InvariantCulture)) {
                 string actual = time.ToString("F");
-                Assert.AreEqual("Monday, 07 March 2022 17:50:23", actual, "#1");
+                Assert.AreEqual("Monday, 07 March 2022 17:50:23", actual, "#1a");
+                Assert.AreEqual("Monday, 07 March 2022 17:50:23", $"{time:F}", "#1b");
             }
 
             using (new CultureDisposable(DanishCulture)) {
                 string actual = time.ToString("F");
-                Assert.AreEqual("Monday, 07 March 2022 17:50:23", actual, "#2");
+                Assert.AreEqual("Monday, 07 March 2022 17:50:23", actual, "#2a");
+                Assert.AreEqual("7. marts 2022 17:50:23", $"{time:F}", "#2b");
             }
 
 

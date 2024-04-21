@@ -411,7 +411,7 @@ namespace UnitTestProject1.Time.Time {
             TimeZoneInfo greenland = TimeZoneInfo.FindSystemTimeZoneById("Greenland Standard Time");
 
             EssentialsDate date1 = new EssentialsDate(2022, 3, 24); // Thursday
-            EssentialsDate date2 = new EssentialsDate(2022, 3, 27); // Thursday
+            EssentialsDate date2 = new EssentialsDate(2022, 3, 27); // Sunday
             EssentialsDate date3 = new EssentialsDate(2022, 10, 30); // Sunday
             EssentialsDate date4 = new EssentialsDate(2022, 11, 9); // Wednesday
 
