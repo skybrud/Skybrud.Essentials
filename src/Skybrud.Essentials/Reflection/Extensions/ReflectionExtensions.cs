@@ -218,7 +218,7 @@ namespace Skybrud.Essentials.Reflection.Extensions {
         /// <param name="type">The type.</param>
         /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the type has been marked as obsolete.</param>
         /// <returns><c>true</c> if the type has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(this Type? type, out ObsoleteAttribute? attribute) {
+        public static bool IsObsolete(this Type? type, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
             return ReflectionUtils.IsObsolete(type, out attribute);
         }
 
