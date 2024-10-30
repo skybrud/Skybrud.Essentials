@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -12,23 +11,52 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 static partial class JsonTokenUtils {
 
-    internal static short GetInt16(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a 16-bit integer value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>The converted 16-bit integer value if successful; otherwise, <c>0</c>.</returns>
+    public static short GetInt16(JToken? token) {
         return GetInt16(token, default);
     }
 
-    internal static short GetInt16(JToken? token, short fallback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a 16-bit integer value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
+    /// <returns>The converted 16-bit integer value if successful; otherwise, <paramref name="fallback"/>>.</returns>
+    public static short GetInt16(JToken? token, short fallback) {
         return TryGetInt16(token, out short? result) ? result.Value : fallback;
     }
 
-    internal static T? GetInt16<T>(JToken? token, Func<short, T> callback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an instance of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the result of the conversion.</typeparam>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
+    /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
+    public static T? GetInt16<T>(JToken? token, Func<short, T> callback) {
         return TryGetInt16(token, out short? result) ? callback(result.Value) : default;
     }
 
-    internal static short? GetInt16OrNull(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a 16-bit integer value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>The converted 16-bit integer value if successful; otherwise, <see langword="null"/>.</returns>
+    public static short? GetInt16OrNull(JToken? token) {
         return TryGetInt16(token, out short? result) ? result : null;
     }
 
-    internal static bool TryGetInt16(JToken? token, out short result) {
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="token"/> into a 16-bit integer value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted 16-bit integer value if successful; otherwise, <c>0</c>.</param>
+    /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetInt16(JToken? token, out short result) {
 
         if (TryGetInt16(token, out short? temp)) {
             result = temp.Value;
@@ -40,7 +68,13 @@ static partial class JsonTokenUtils {
 
     }
 
-    internal static bool TryGetInt16(JToken? token, [NotNullWhen(true)] out short? result) {
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="token"/> into a 16-bit integer value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted 16-bit integer value if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetInt16(JToken? token, [NotNullWhen(true)] out short? result) {
 
         switch (token?.Type) {
 
@@ -64,19 +98,24 @@ static partial class JsonTokenUtils {
 
     }
 
-    internal static short[] GetInt16Array(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an array of 16-bit integer values.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>A 16-bit integer array.</returns>
+    public static short[] GetInt16Array(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToInt16Array(),
             JTokenType.Array => ConvertArrayTokenToInt16Array(token),
-            _ => TryGetInt16(token, out short? result) ? new[] { result.Value } : ArrayUtils.Empty<short>()
+            _ => TryGetInt16(token, out short? result) ? [result.Value] : []
         };
     }
 
     private static short[] ConvertArrayTokenToInt16Array(JToken token) {
 
-        if (token is not JArray) return ArrayUtils.Empty<short>();
+        if (token is not JArray) return [];
 
-        List<short> temp = new();
+        List<short> temp = [];
 
         foreach (JToken item in token) {
             if (TryGetInt16(item, out short? result)) {
@@ -84,7 +123,7 @@ static partial class JsonTokenUtils {
             }
         }
 
-        return temp.ToArray();
+        return [..temp];
 
     }
 

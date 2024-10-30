@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -10,7 +9,12 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 static partial class JsonTokenUtils {
 
-    internal static Guid GetGuid(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="Guid"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>The converted <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</returns>
+    public static Guid GetGuid(JToken? token) {
         return token?.Type switch {
             JTokenType.Guid => token.ToObject<Guid>(),
             JTokenType.String => token.ToObject<string>().ToGuid(),
@@ -18,7 +22,13 @@ static partial class JsonTokenUtils {
         };
     }
 
-    internal static Guid GetGuid(JToken? token, Guid fallback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="Guid"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
+    /// <returns>The converted <see cref="Guid"/> value if successful; otherwise, <paramref name="fallback"/>.</returns>
+    public static Guid GetGuid(JToken? token, Guid fallback) {
         return token?.Type switch {
             JTokenType.Guid => token.ToObject<Guid>(),
             JTokenType.String => token.ToObject<string>().ToGuid(fallback),
@@ -26,15 +36,33 @@ static partial class JsonTokenUtils {
         };
     }
 
-    internal static T? GetGuid<T>(JToken? token, Func<Guid, T> callback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an instance of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the result of the conversion.</typeparam>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
+    /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
+    public static T? GetGuid<T>(JToken? token, Func<Guid, T> callback) {
         return TryGetGuid(token, out Guid? result) ? callback(result.Value) : default;
     }
 
-    internal static Guid? GetGuidOrNull(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="Guid"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>The converted <see cref="Guid"/> value if successful; otherwise, <see langword="null"/>.</returns>
+    public static Guid? GetGuidOrNull(JToken? token) {
         return TryGetGuid(token, out Guid? result) ? result : null;
     }
 
-    internal static bool TryGetGuid(JToken? token, out Guid result) {
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="token"/> into a <see cref="Guid"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</param>
+    /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetGuid(JToken? token, out Guid result) {
 
         if (TryGetGuid(token, out Guid? temp)) {
             result = temp.Value;
@@ -46,7 +74,13 @@ static partial class JsonTokenUtils {
 
     }
 
-    internal static bool TryGetGuid(JToken? token, [NotNullWhen(true)] out Guid? result) {
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="token"/> into a <see cref="Guid"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetGuid(JToken? token, [NotNullWhen(true)] out Guid? result) {
 
         switch (token?.Type) {
 
@@ -65,16 +99,21 @@ static partial class JsonTokenUtils {
 
     }
 
-    internal static Guid[] GetGuidArray(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="Guid"/> array.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>A <see cref="Guid"/> array.</returns>
+    public static Guid[] GetGuidArray(JToken? token) {
 
         switch (token) {
 
             case null:
-                return ArrayUtils.Empty<Guid>();
+                return [];
 
             case JArray array:
 
-                List<Guid> temp = new();
+                List<Guid> temp = [];
 
                 foreach (JToken t in array) {
 
@@ -83,15 +122,15 @@ static partial class JsonTokenUtils {
 
                 }
 
-                return temp.ToArray();
+                return [..temp];
 
             default:
 
                 // Be friendly to other formats
                 return token.Type switch {
                     JTokenType.String => StringUtils.ParseGuidArray(token.Value<string>()),
-                    JTokenType.Guid => new[] { token.Value<Guid>() },
-                    _ => ArrayUtils.Empty<Guid>()
+                    JTokenType.Guid => [token.Value<Guid>()],
+                    _ => []
                 };
 
         }

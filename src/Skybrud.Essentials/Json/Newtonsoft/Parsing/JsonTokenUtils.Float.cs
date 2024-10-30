@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -12,23 +11,52 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 static partial class JsonTokenUtils {
 
-    internal static float GetFloat(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="float"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>The converted <see cref="float"/> value if successful; otherwise, <c>0</c>.</returns>
+    public static float GetFloat(JToken? token) {
         return GetFloat(token, default);
     }
 
-    internal static float GetFloat(JToken? token, float fallback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="float"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
+    /// <returns>The converted <see cref="float"/> value if successful; otherwise, <paramref name="fallback"/>.</returns>
+    public static float GetFloat(JToken? token, float fallback) {
         return TryGetFloat(token, out float? result) ? result.Value : fallback;
     }
 
-    internal static T? GetFloat<T>(JToken? token, Func<float, T> callback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an instance of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the result of the conversion.</typeparam>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
+    /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
+    public static T? GetFloat<T>(JToken? token, Func<float, T> callback) {
         return TryGetFloat(token, out float? result) ? callback(result.Value) : default;
     }
 
-    internal static float? GetFloatOrNull(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="float"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>The converted <see cref="float"/> value if successful; otherwise, <see langword="null"/>.</returns>
+    public static float? GetFloatOrNull(JToken? token) {
         return TryGetFloat(token, out float? result) ? result : null;
     }
 
-    internal static bool TryGetFloat(JToken? token, out float result) {
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="token"/> into a <see cref="float"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted <see cref="float"/> value if successful; otherwise, <c>0</c>.</param>
+    /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetFloat(JToken? token, out float result) {
 
         if (TryGetFloat(token, out float? temp)) {
             result = temp.Value;
@@ -40,7 +68,13 @@ static partial class JsonTokenUtils {
 
     }
 
-    internal static bool TryGetFloat(JToken? token, [NotNullWhen(true)] out float? result) {
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="token"/> into a <see cref="float"/> value.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted <see cref="float"/> value if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetFloat(JToken? token, [NotNullWhen(true)] out float? result) {
 
         switch (token?.Type) {
 
@@ -64,19 +98,24 @@ static partial class JsonTokenUtils {
 
     }
 
-    internal static float[] GetFloatArray(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an array of <see cref="float"/> values.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>A <see cref="float"/> array.</returns>
+    public static float[] GetFloatArray(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToFloatArray(),
             JTokenType.Array => ConvertArrayTokenToFloatArray(token),
-            _ => TryGetFloat(token, out float? result) ? new[] { result.Value } : ArrayUtils.Empty<float>()
+            _ => TryGetFloat(token, out float? result) ? [result.Value] : []
         };
     }
 
     private static float[] ConvertArrayTokenToFloatArray(JToken token) {
 
-        if (token is not JArray) return ArrayUtils.Empty<float>();
+        if (token is not JArray) return [];
 
-        List<float> temp = new();
+        List<float> temp = [];
 
         foreach (JToken item in token) {
             if (TryGetFloat(item, out float? result)) {
@@ -84,7 +123,7 @@ static partial class JsonTokenUtils {
             }
         }
 
-        return temp.ToArray();
+        return [..temp];
 
     }
 

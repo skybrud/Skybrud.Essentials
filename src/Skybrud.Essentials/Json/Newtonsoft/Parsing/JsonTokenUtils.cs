@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Collections;
 
 // ReSharper disable LoopCanBeConvertedToQuery
 // ReSharper disable SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
@@ -14,41 +13,57 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 /// </summary>
 public static partial class JsonTokenUtils {
 
-    internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JToken, T> callback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an array of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The item type of the array.</typeparam>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="callback">A callback function used for converting each child token into an instance of <typeparamref name="T"/>.</param>
+    /// <returns>An array of <typeparamref name="T"/> if <paramref name="token"/> is an array; otherwise, <see langword="null"/>.</returns>
+    public static T[]? ConvertTokenToArray<T>(JToken? token, Func<JToken, T> callback) {
 
         if (token is not JArray array) return null;
-        if (array.Count == 0) return ArrayUtils.Empty<T>();
+        if (array.Count == 0) return [];
 
-        List<T> temp = new();
+        List<T> temp = [];
 
         foreach (JToken item in array) {
             temp.Add(callback(item));
         }
 
-        return temp.ToArray();
+        return [..temp];
 
     }
 
-    internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JObject, T> callback) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an array of <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The item type of the array.</typeparam>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="callback">A callback function used for converting each child object into an instance of <typeparamref name="T"/>.</param>
+    /// <returns>An array of <typeparamref name="T"/> if <paramref name="token"/> is an array; otherwise, <see langword="null"/>.</returns>
+    public static T[]? ConvertTokenToArray<T>(JToken? token, Func<JObject, T> callback) {
 
         if (token is not JArray array) return null;
-        if (array.Count == 0) return ArrayUtils.Empty<T>();
+        if (array.Count == 0) return [];
 
-        List<T> temp = new();
+        List<T> temp = [];
 
         foreach (JToken item in array) {
             if (item is JObject obj) temp.Add(callback(obj));
         }
 
-        return temp.ToArray();
+        return [..temp];
 
     }
 
     internal static IReadOnlyList<T> ConvertTokenToReadOnlyList<T>(JToken? token, Func<JObject, T> callback) {
 
-        if (token is not JArray array || array.Count == 0) return ArrayUtils.Empty<T>();
+        // TODO: should this return null if token is not an array?
 
-        List<T> temp = new();
+        if (token is not JArray array || array.Count == 0) return [];
+
+        List<T> temp = [];
 
         foreach (JToken item in array) {
             if (item is JObject obj) temp.Add(callback(obj));
