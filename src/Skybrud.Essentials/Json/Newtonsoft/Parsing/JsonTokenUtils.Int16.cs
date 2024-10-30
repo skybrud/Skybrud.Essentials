@@ -10,7 +10,7 @@ using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-internal static partial class JsonTokenUtils {
+static partial class JsonTokenUtils {
 
     internal static short GetInt16(JToken? token) {
         return GetInt16(token, default);

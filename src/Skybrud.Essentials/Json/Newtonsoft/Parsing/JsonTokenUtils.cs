@@ -9,7 +9,10 @@ using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-internal static partial class JsonTokenUtils {
+/// <summary>
+/// Static class with various methods for parsing instances of <see cref="JToken"/>.
+/// </summary>
+public static partial class JsonTokenUtils {
 
     internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JToken, T> callback) {
 

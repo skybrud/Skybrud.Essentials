@@ -11,7 +11,7 @@ using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-internal static partial class JsonTokenUtils {
+static partial class JsonTokenUtils {
 
     internal static ulong GetUInt64(JToken? token) {
         return GetUInt64(token, default);

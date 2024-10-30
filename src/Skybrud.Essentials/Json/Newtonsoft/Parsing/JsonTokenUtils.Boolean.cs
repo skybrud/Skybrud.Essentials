@@ -4,7 +4,7 @@ using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-internal static partial class JsonTokenUtils {
+static partial class JsonTokenUtils {
 
     internal static bool GetBoolean(JToken? token) {
         return token?.Type switch {

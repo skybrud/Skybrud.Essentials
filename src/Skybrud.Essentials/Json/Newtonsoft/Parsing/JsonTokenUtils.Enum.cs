@@ -6,7 +6,7 @@ using Skybrud.Essentials.Enums;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-internal static partial class JsonTokenUtils {
+static partial class JsonTokenUtils {
 
     public static T GetEnum<T>(JToken? token) where T : Enum {
         return token?.Type switch {

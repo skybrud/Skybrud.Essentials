@@ -11,7 +11,7 @@ using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-internal static partial class JsonTokenUtils {
+static partial class JsonTokenUtils {
 
     #region System.String
 

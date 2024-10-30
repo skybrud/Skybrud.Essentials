@@ -8,7 +8,7 @@ using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-internal static partial class JsonTokenUtils {
+static partial class JsonTokenUtils {
 
     internal static Guid GetGuid(JToken? token) {
         return token?.Type switch {
