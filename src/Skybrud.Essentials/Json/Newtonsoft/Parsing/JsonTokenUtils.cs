@@ -7,53 +7,51 @@ using Skybrud.Essentials.Collections;
 // ReSharper disable SwitchExpressionHandlesSomeKnownEnumValuesWithExceptionInDefault
 // ReSharper disable SwitchStatementHandlesSomeKnownEnumValuesWithDefault
 
-namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
+namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-    internal static partial class JsonTokenUtils {
+internal static partial class JsonTokenUtils {
 
-        internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JToken, T> callback) {
+    internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JToken, T> callback) {
 
-            if (token is not JArray array) return null;
-            if (array.Count == 0) return ArrayUtils.Empty<T>();
+        if (token is not JArray array) return null;
+        if (array.Count == 0) return ArrayUtils.Empty<T>();
 
-            List<T> temp = new();
+        List<T> temp = new();
 
-            foreach (JToken item in array) {
-                temp.Add(callback(item));
-            }
-
-            return temp.ToArray();
-
+        foreach (JToken item in array) {
+            temp.Add(callback(item));
         }
 
-        internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JObject, T> callback) {
+        return temp.ToArray();
 
-            if (token is not JArray array) return null;
-            if (array.Count == 0) return ArrayUtils.Empty<T>();
+    }
 
-            List<T> temp = new();
+    internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JObject, T> callback) {
 
-            foreach (JToken item in array) {
-                if (item is JObject obj) temp.Add(callback(obj));
-            }
+        if (token is not JArray array) return null;
+        if (array.Count == 0) return ArrayUtils.Empty<T>();
 
-            return temp.ToArray();
+        List<T> temp = new();
 
+        foreach (JToken item in array) {
+            if (item is JObject obj) temp.Add(callback(obj));
         }
 
-        internal static IReadOnlyList<T> ConvertTokenToReadOnlyList<T>(JToken? token, Func<JObject, T> callback) {
+        return temp.ToArray();
 
-            if (token is not JArray array || array.Count == 0) return ArrayUtils.Empty<T>();
+    }
 
-            List<T> temp = new();
+    internal static IReadOnlyList<T> ConvertTokenToReadOnlyList<T>(JToken? token, Func<JObject, T> callback) {
 
-            foreach (JToken item in array) {
-                if (item is JObject obj) temp.Add(callback(obj));
-            }
+        if (token is not JArray array || array.Count == 0) return ArrayUtils.Empty<T>();
 
-            return temp;
+        List<T> temp = new();
 
+        foreach (JToken item in array) {
+            if (item is JObject obj) temp.Add(callback(obj));
         }
+
+        return temp;
 
     }
 

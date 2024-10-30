@@ -6,95 +6,93 @@ using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
-namespace Skybrud.Essentials.Json.Newtonsoft.Parsing {
+namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
-    internal static partial class JsonTokenUtils {
+internal static partial class JsonTokenUtils {
 
-        internal static Guid GetGuid(JToken? token) {
-            return token?.Type switch {
-                JTokenType.Guid => token.ToObject<Guid>(),
-                JTokenType.String => token.ToObject<string>().ToGuid(),
-                _ => Guid.Empty
-            };
+    internal static Guid GetGuid(JToken? token) {
+        return token?.Type switch {
+            JTokenType.Guid => token.ToObject<Guid>(),
+            JTokenType.String => token.ToObject<string>().ToGuid(),
+            _ => Guid.Empty
+        };
+    }
+
+    internal static Guid GetGuid(JToken? token, Guid fallback) {
+        return token?.Type switch {
+            JTokenType.Guid => token.ToObject<Guid>(),
+            JTokenType.String => token.ToObject<string>().ToGuid(fallback),
+            _ => fallback
+        };
+    }
+
+    internal static T? GetGuid<T>(JToken? token, Func<Guid, T> callback) {
+        return TryGetGuid(token, out Guid? result) ? callback(result.Value) : default;
+    }
+
+    internal static Guid? GetGuidOrNull(JToken? token) {
+        return TryGetGuid(token, out Guid? result) ? result : null;
+    }
+
+    internal static bool TryGetGuid(JToken? token, out Guid result) {
+
+        if (TryGetGuid(token, out Guid? temp)) {
+            result = temp.Value;
+            return true;
         }
 
-        internal static Guid GetGuid(JToken? token, Guid fallback) {
-            return token?.Type switch {
-                JTokenType.Guid => token.ToObject<Guid>(),
-                JTokenType.String => token.ToObject<string>().ToGuid(fallback),
-                _ => fallback
-            };
-        }
+        result = default;
+        return false;
 
-        internal static T? GetGuid<T>(JToken? token, Func<Guid, T> callback) {
-            return TryGetGuid(token, out Guid? result) ? callback(result.Value) : default;
-        }
+    }
 
-        internal static Guid? GetGuidOrNull(JToken? token) {
-            return TryGetGuid(token, out Guid? result) ? result : null;
-        }
+    internal static bool TryGetGuid(JToken? token, [NotNullWhen(true)] out Guid? result) {
 
-        internal static bool TryGetGuid(JToken? token, out Guid result) {
+        switch (token?.Type) {
 
-            if (TryGetGuid(token, out Guid? temp)) {
-                result = temp.Value;
+            case JTokenType.Guid:
+                result = token.ToObject<Guid>();
                 return true;
-            }
 
-            result = default;
-            return false;
+            case JTokenType.String:
+                return StringUtils.TryParseGuid(token.ToObject<string>(), out result);
 
-        }
-
-        internal static bool TryGetGuid(JToken? token, [NotNullWhen(true)] out Guid? result) {
-
-            switch (token?.Type) {
-
-                case JTokenType.Guid:
-                    result = token.ToObject<Guid>();
-                    return true;
-
-                case JTokenType.String:
-                    return StringUtils.TryParseGuid(token.ToObject<string>(), out result);
-
-                default:
-                    result = null;
-                    return false;
-
-            }
+            default:
+                result = null;
+                return false;
 
         }
 
-        internal static Guid[] GetGuidArray(JToken? token) {
+    }
 
-            switch (token) {
+    internal static Guid[] GetGuidArray(JToken? token) {
 
-                case null:
-                    return ArrayUtils.Empty<Guid>();
+        switch (token) {
 
-                case JArray array:
+            case null:
+                return ArrayUtils.Empty<Guid>();
 
-                    List<Guid> temp = new();
+            case JArray array:
 
-                    foreach (JToken t in array) {
+                List<Guid> temp = new();
 
-                        // Attempt to parse the individual tokens in the array, ensuring invalid values doesn't trigger an exception
-                        if (t != null && Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
+                foreach (JToken t in array) {
 
-                    }
+                    // Attempt to parse the individual tokens in the array, ensuring invalid values doesn't trigger an exception
+                    if (t != null && Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
 
-                    return temp.ToArray();
+                }
 
-                default:
+                return temp.ToArray();
 
-                    // Be friendly to other formats
-                    return token.Type switch {
-                        JTokenType.String => StringUtils.ParseGuidArray(token.Value<string>()),
-                        JTokenType.Guid => new[] { token.Value<Guid>() },
-                        _ => ArrayUtils.Empty<Guid>()
-                    };
+            default:
 
-            }
+                // Be friendly to other formats
+                return token.Type switch {
+                    JTokenType.String => StringUtils.ParseGuidArray(token.Value<string>()),
+                    JTokenType.Guid => new[] { token.Value<Guid>() },
+                    _ => ArrayUtils.Empty<Guid>()
+                };
 
         }
 
