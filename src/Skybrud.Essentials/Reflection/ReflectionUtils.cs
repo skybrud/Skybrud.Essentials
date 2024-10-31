@@ -132,6 +132,26 @@ public static class ReflectionUtils {
 #endif
 
     /// <summary>
+    /// Returns whether the type extends <typeparamref name="TClass"/>.
+    /// </summary>
+    /// <typeparam name="TClass">The type of the class to check.</typeparam>
+    /// <param name="type">The type to check.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> extends <typeparamref name="TClass"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Extends<TClass>(Type type) {
+        return typeof(TClass).IsAssignableFrom(type);
+    }
+
+    /// <summary>
+    /// Returns whether the type implements <typeparamref name="TInterface"/>.
+    /// </summary>
+    /// <typeparam name="TInterface">The type of the interface to check.</typeparam>
+    /// <param name="type">The type to check.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Implements<TInterface>(Type type) {
+        return typeof(TInterface).IsAssignableFrom(type);
+    }
+
+    /// <summary>
     /// Returns whether <typeparamref name="T"/> is a class type.
     /// </summary>
     /// <typeparam name="T">The type to check.</typeparam>

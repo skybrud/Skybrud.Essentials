@@ -166,6 +166,26 @@ public static class ReflectionExtensions {
     }
 
     /// <summary>
+    /// Returns whether the type extends <typeparamref name="TClass"/>.
+    /// </summary>
+    /// <typeparam name="TClass">The type of the class to check.</typeparam>
+    /// <param name="type">The type to check.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> extends <typeparamref name="TClass"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Extends<TClass>(this Type type) {
+        return typeof(TClass).IsAssignableFrom(type);
+    }
+
+    /// <summary>
+    /// Returns whether the type implements <typeparamref name="TInterface"/>.
+    /// </summary>
+    /// <typeparam name="TInterface">The type of the interface to check.</typeparam>
+    /// <param name="type">The type to check.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Implements<TInterface>(this Type type) {
+        return typeof(TInterface).IsAssignableFrom(type);
+    }
+
+    /// <summary>
     /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
     /// </summary>
     /// <param name="member">The member.</param>
