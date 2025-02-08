@@ -131,6 +131,8 @@ public static class ReflectionUtils {
 
 #endif
 
+#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
+
     /// <summary>
     /// Returns whether the type extends <typeparamref name="TClass"/>.
     /// </summary>
@@ -150,6 +152,8 @@ public static class ReflectionUtils {
     public static bool Implements<TInterface>(Type type) {
         return typeof(TInterface).IsAssignableFrom(type);
     }
+
+#endif
 
     /// <summary>
     /// Returns whether <typeparamref name="T"/> is a class type.
