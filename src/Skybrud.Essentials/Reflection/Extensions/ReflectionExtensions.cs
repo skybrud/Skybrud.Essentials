@@ -2,248 +2,266 @@
 using System.Diagnostics.CodeAnalysis;
 using System.Reflection;
 
-namespace Skybrud.Essentials.Reflection.Extensions {
+namespace Skybrud.Essentials.Reflection.Extensions;
+
+/// <summary>
+/// Extension methods for working with reflection.
+/// </summary>
+public static class ReflectionExtensions {
 
     /// <summary>
-    /// Extension methods for working with reflection.
+    /// Returns whether the specified enum <paramref name="value"/> has an attribute of type <typeparamref name="T"/>.
     /// </summary>
-    public static class ReflectionExtensions {
+    /// <typeparam name="T">The type of the attribute.</typeparam>
+    /// <param name="value">The enum value.</param>
+    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttribute<T>(this Enum value) where T : Attribute {
+        return ReflectionUtils.HasCustomAttribute<T>(value);
+    }
 
-        /// <summary>
-        /// Returns whether the specified enum <paramref name="value"/> has an attribute of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute.</typeparam>
-        /// <param name="value">The enum value.</param>
-        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(this Enum value) where T : Attribute {
-            return ReflectionUtils.HasCustomAttribute<T>(value);
-        }
+    /// <summary>
+    /// Returns whether the specified enum <paramref name="value"/> has an attribute of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute.</typeparam>
+    /// <param name="value">The enum value.</param>
+    /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
+    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttribute<T>(this Enum value, [NotNullWhen(true)] out T? result) where T : Attribute {
+        return ReflectionUtils.HasCustomAttribute(value, out result);
+    }
 
-        /// <summary>
-        /// Returns whether the specified enum <paramref name="value"/> has an attribute of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute.</typeparam>
-        /// <param name="value">The enum value.</param>
-        /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
-        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(this Enum value, [NotNullWhen(true)] out T? result) where T : Attribute {
-            return ReflectionUtils.HasCustomAttribute(value, out result);
-        }
+    /// <summary>
+    /// Returns whether the specified enum <paramref name="value"/> has one or more attributes of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attributes.</typeparam>
+    /// <param name="value">The enum value.</param>
+    /// <param name="result">When this method returns, an array containing the matched attributes.</param>
+    /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttributes<T>(this Enum value, [NotNullWhen(true)] out T[]? result) where T : Attribute {
+        return ReflectionUtils.HasCustomAttributes(value, out result);
+    }
 
-        /// <summary>
-        /// Returns whether the specified enum <paramref name="value"/> has one or more attributes of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attributes.</typeparam>
-        /// <param name="value">The enum value.</param>
-        /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-        /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttributes<T>(this Enum value, [NotNullWhen(true)] out T[]? result) where T : Attribute {
-            return ReflectionUtils.HasCustomAttributes(value, out result);
-        }
+    /// <summary>
+    /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute to return.</typeparam>
+    /// <param name="value">The enum value to get the attribute for.</param>
+    /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
+    public static T? GetCustomAttribute<T>(this Enum value) where T : Attribute {
+        return ReflectionUtils.GetCustomAttribute<T>(value);
+    }
 
-        /// <summary>
-        /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute to return.</typeparam>
-        /// <param name="value">The enum value to get the attribute for.</param>
-        /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
-        public static T? GetCustomAttribute<T>(this Enum value) where T : Attribute {
-            return ReflectionUtils.GetCustomAttribute<T>(value);
-        }
+    /// <summary>
+    /// Returns an array of attributes of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attributes to return.</typeparam>
+    /// <param name="value">The enum value to get attributes for.</param>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
+    public static T[] GetCustomAttributes<T>(this Enum value) where T : Attribute {
+        return ReflectionUtils.GetCustomAttributes<T>(value);
+    }
 
-        /// <summary>
-        /// Returns an array of attributes of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attributes to return.</typeparam>
-        /// <param name="value">The enum value to get attributes for.</param>
-        /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public static T[] GetCustomAttributes<T>(this Enum value) where T : Attribute {
-            return ReflectionUtils.GetCustomAttributes<T>(value);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="member"/> has an attribute of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute.</typeparam>
+    /// <param name="member">The member info.</param>
+    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttribute<T>(this MemberInfo? member) where T : Attribute {
+        return ReflectionUtils.HasCustomAttribute<T>(member);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="member"/> has an attribute of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute.</typeparam>
-        /// <param name="member">The member info.</param>
-        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(this MemberInfo? member) where T : Attribute {
-            return ReflectionUtils.HasCustomAttribute<T>(member);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="member"/> has an attribute of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute.</typeparam>
+    /// <param name="member">The member info.</param>
+    /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
+    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttribute<T>(this MemberInfo? member, [NotNullWhen(true)] out T? result) where T : Attribute {
+        return ReflectionUtils.HasCustomAttribute(member, out result);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="member"/> has an attribute of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute.</typeparam>
-        /// <param name="member">The member info.</param>
-        /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
-        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(this MemberInfo? member, [NotNullWhen(true)] out T? result) where T : Attribute {
-            return ReflectionUtils.HasCustomAttribute(member, out result);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="member"/> has one or more attributes of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attributes.</typeparam>
+    /// <param name="member">The member info.</param>
+    /// <param name="result">When this method returns, an array containing the matched attributes.</param>
+    /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttributes<T>(this MemberInfo? member, [NotNullWhen(true)] out T[]? result) where T : Attribute {
+        return ReflectionUtils.HasCustomAttributes(member, out result);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="member"/> has one or more attributes of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attributes.</typeparam>
-        /// <param name="member">The member info.</param>
-        /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-        /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttributes<T>(this MemberInfo? member, [NotNullWhen(true)] out T[]? result) where T : Attribute {
-            return ReflectionUtils.HasCustomAttributes(member, out result);
-        }
+    /// <summary>
+    /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute to return.</typeparam>
+    /// <param name="member">The member holding the attribute.</param>
+    /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
+    public static T? GetCustomAttribute<T>(this MemberInfo? member) where T : Attribute {
+        return ReflectionUtils.GetCustomAttribute<T>(member);
+    }
 
-        /// <summary>
-        /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute to return.</typeparam>
-        /// <param name="member">The member holding the attribute.</param>
-        /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
-        public static T? GetCustomAttribute<T>(this MemberInfo? member) where T : Attribute {
-            return ReflectionUtils.GetCustomAttribute<T>(member);
-        }
+    /// <summary>
+    /// Returns an array of attributes of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attributes to return.</typeparam>
+    /// <param name="member">The member holding the attributes.</param>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
+    public static T[] GetCustomAttributes<T>(this MemberInfo? member) where T : Attribute {
+        return ReflectionUtils.GetCustomAttributes<T>(member);
+    }
 
-        /// <summary>
-        /// Returns an array of attributes of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attributes to return.</typeparam>
-        /// <param name="member">The member holding the attributes.</param>
-        /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public static T[] GetCustomAttributes<T>(this MemberInfo? member) where T : Attribute {
-            return ReflectionUtils.GetCustomAttributes<T>(member);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="type"/> has an attribute of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute.</typeparam>
+    /// <param name="type">The type holding the attribute.</param>
+    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttribute<T>(this Type? type) where T : Attribute {
+        return ReflectionUtils.HasCustomAttribute<T>(type);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="type"/> has an attribute of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute.</typeparam>
-        /// <param name="type">The type holding the attribute.</param>
-        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(this Type? type) where T : Attribute {
-            return ReflectionUtils.HasCustomAttribute<T>(type);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="type"/> has an attribute of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute.</typeparam>
+    /// <param name="type">The type holding the attribute.</param>
+    /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
+    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttribute<T>(this Type? type, [NotNullWhen(true)] out T? result) where T : Attribute {
+        return ReflectionUtils.HasCustomAttribute(type, out result);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="type"/> has an attribute of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute.</typeparam>
-        /// <param name="type">The type holding the attribute.</param>
-        /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
-        /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttribute<T>(this Type? type, [NotNullWhen(true)] out T? result) where T : Attribute {
-            return ReflectionUtils.HasCustomAttribute(type, out result);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="type"/> has one or more attributes of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attributes.</typeparam>
+    /// <param name="type">The type holding the attributes.</param>
+    /// <param name="result">When this method returns, an array containing the matched attributes.</param>
+    /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
+    public static bool HasCustomAttributes<T>(this Type type, [NotNullWhen(true)] out T[]? result) where T : Attribute {
+        return ReflectionUtils.HasCustomAttributes(type, out result);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="type"/> has one or more attributes of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attributes.</typeparam>
-        /// <param name="type">The type holding the attributes.</param>
-        /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-        /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
-        public static bool HasCustomAttributes<T>(this Type type, [NotNullWhen(true)] out T[]? result) where T : Attribute {
-            return ReflectionUtils.HasCustomAttributes(type, out result);
-        }
+    /// <summary>
+    /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
+    /// </summary>
+    /// <typeparam name="T">The type of the attribute to return.</typeparam>
+    /// <param name="type">The type holding the attribute.</param>
+    /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
+    public static T? GetCustomAttribute<T>(this Type? type) where T : Attribute {
+        return ReflectionUtils.GetCustomAttribute<T>(type);
+    }
 
-        /// <summary>
-        /// Returns the first attribute of type <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.
-        /// </summary>
-        /// <typeparam name="T">The type of the attribute to return.</typeparam>
-        /// <param name="type">The type holding the attribute.</param>
-        /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if no matching attributes are found.</returns>
-        public static T? GetCustomAttribute<T>(this Type? type) where T : Attribute {
-            return ReflectionUtils.GetCustomAttribute<T>(type);
-        }
+    /// <summary>
+    /// Returns an array of attributes of type <typeparamref name="T"/>.
+    /// </summary>
+    /// <typeparam name="T">The type of the attributes to return.</typeparam>
+    /// <param name="type">The type holding the attributes.</param>
+    /// <returns>An array of <typeparamref name="T"/>.</returns>
+    public static T[] GetCustomAttributes<T>(this Type? type) where T : Attribute {
+        return ReflectionUtils.GetCustomAttributes<T>(type);
+    }
 
-        /// <summary>
-        /// Returns an array of attributes of type <typeparamref name="T"/>.
-        /// </summary>
-        /// <typeparam name="T">The type of the attributes to return.</typeparam>
-        /// <param name="type">The type holding the attributes.</param>
-        /// <returns>An array of <typeparamref name="T"/>.</returns>
-        public static T[] GetCustomAttributes<T>(this Type? type) where T : Attribute {
-            return ReflectionUtils.GetCustomAttributes<T>(type);
-        }
+    /// <summary>
+    /// Returns whether the type extends <typeparamref name="TClass"/>.
+    /// </summary>
+    /// <typeparam name="TClass">The type of the class to check.</typeparam>
+    /// <param name="type">The type to check.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> extends <typeparamref name="TClass"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Extends<TClass>(this Type type) {
+        return typeof(TClass).IsAssignableFrom(type);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
-        /// </summary>
-        /// <param name="member">The member.</param>
-        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(this MemberInfo? member) {
-            return ReflectionUtils.IsObsolete(member, out _);
-        }
+    /// <summary>
+    /// Returns whether the type implements <typeparamref name="TInterface"/>.
+    /// </summary>
+    /// <typeparam name="TInterface">The type of the interface to check.</typeparam>
+    /// <param name="type">The type to check.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Implements<TInterface>(this Type type) {
+        return typeof(TInterface).IsAssignableFrom(type);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
-        /// </summary>
-        /// <param name="member">The member.</param>
-        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the member has been marked as obsolete.</param>
-        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(this MemberInfo? member, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
-            return ReflectionUtils.IsObsolete(member, out attribute);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
+    /// </summary>
+    /// <param name="member">The member.</param>
+    /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+    public static bool IsObsolete(this MemberInfo? member) {
+        return ReflectionUtils.IsObsolete(member, out _);
+    }
 
-        /// <summary>
-        /// Returns whether the specified enum <paramref name="value" /> is marked as obsolete.
-        /// </summary>
-        /// <param name="value">The enum value.</param>
-        /// <returns><c>true</c> if the enum value has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(this Enum value) {
-            return ReflectionUtils.IsObsolete(value, out _);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
+    /// </summary>
+    /// <param name="member">The member.</param>
+    /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the member has been marked as obsolete.</param>
+    /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+    public static bool IsObsolete(this MemberInfo? member, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
+        return ReflectionUtils.IsObsolete(member, out attribute);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="value" /> is marked as obsolete.
-        /// </summary>
-        /// <param name="value">The enum value.</param>
-        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the enum value has been marked as obsolete.</param>
-        /// <returns><c>true</c> if the enum value has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(this Enum value, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
-            return ReflectionUtils.IsObsolete(value, out attribute);
-        }
+    /// <summary>
+    /// Returns whether the specified enum <paramref name="value" /> is marked as obsolete.
+    /// </summary>
+    /// <param name="value">The enum value.</param>
+    /// <returns><c>true</c> if the enum value has been marked as obsolete; otherwise <c>false</c>.</returns>
+    public static bool IsObsolete(this Enum value) {
+        return ReflectionUtils.IsObsolete(value, out _);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="type" /> is marked as obsolete.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(this Type? type) {
-            return ReflectionUtils.IsObsolete(type, out _);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="value" /> is marked as obsolete.
+    /// </summary>
+    /// <param name="value">The enum value.</param>
+    /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the enum value has been marked as obsolete.</param>
+    /// <returns><c>true</c> if the enum value has been marked as obsolete; otherwise <c>false</c>.</returns>
+    public static bool IsObsolete(this Enum value, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
+        return ReflectionUtils.IsObsolete(value, out attribute);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="type" /> is marked as obsolete.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the type has been marked as obsolete.</param>
-        /// <returns><c>true</c> if the type has been marked as obsolete; otherwise <c>false</c>.</returns>
-        public static bool IsObsolete(this Type? type, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
-            return ReflectionUtils.IsObsolete(type, out attribute);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="type" /> is marked as obsolete.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <returns><c>true</c> if the member has been marked as obsolete; otherwise <c>false</c>.</returns>
+    public static bool IsObsolete(this Type? type) {
+        return ReflectionUtils.IsObsolete(type, out _);
+    }
+
+    /// <summary>
+    /// Returns whether the specified <paramref name="type" /> is marked as obsolete.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <param name="attribute">An instance of <see cref="T:System.ObsoleteAttribute" /> if the type has been marked as obsolete.</param>
+    /// <returns><c>true</c> if the type has been marked as obsolete; otherwise <c>false</c>.</returns>
+    public static bool IsObsolete(this Type? type, [NotNullWhen(true)] out ObsoleteAttribute? attribute) {
+        return ReflectionUtils.IsObsolete(type, out attribute);
+    }
 
 #if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="type"/> is an extension class.
-        /// </summary>
-        /// <param name="type">The type.</param>
-        /// <returns><c>true</c> if <paramref name="type"/> is an extension class; otherwise, <c>false</c>.</returns>
-        public static bool IsExtensionClass(this Type? type) {
-            return ReflectionUtils.IsExtensionClass(type);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="type"/> is an extension class.
+    /// </summary>
+    /// <param name="type">The type.</param>
+    /// <returns><c>true</c> if <paramref name="type"/> is an extension class; otherwise, <c>false</c>.</returns>
+    public static bool IsExtensionClass(this Type? type) {
+        return ReflectionUtils.IsExtensionClass(type);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="method"/> is an extension method.
-        /// </summary>
-        /// <param name="method">The method.</param>
-        /// <returns><c>true</c> if <paramref name="method"/> is an extension method; otherwise, <c>false</c>.</returns>
-        public static bool IsExtensionMethod(this MethodInfo? method) {
-            return ReflectionUtils.IsExtensionMethod(method);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="method"/> is an extension method.
+    /// </summary>
+    /// <param name="method">The method.</param>
+    /// <returns><c>true</c> if <paramref name="method"/> is an extension method; otherwise, <c>false</c>.</returns>
+    public static bool IsExtensionMethod(this MethodInfo? method) {
+        return ReflectionUtils.IsExtensionMethod(method);
+    }
 
 #endif
-
-    }
 
 }
