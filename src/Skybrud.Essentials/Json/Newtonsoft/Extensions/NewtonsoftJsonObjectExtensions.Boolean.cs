@@ -1,5 +1,7 @@
-﻿using System.Diagnostics.CodeAnalysis;
+﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -122,6 +124,38 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
     public static bool TryGetBooleanByPath(this JObject? json, string path, [NotNullWhen(true)] out bool? result) {
         return JsonTokenUtils.TryGetBoolean(json?.SelectToken(path), out result);
+    }
+
+    /// <summary>
+    /// Returns the <see cref="bool"/> value of the property with the specified <paramref name="propertyName"/>. If a
+    /// matching property isn't found, or the value doesn't match a valid <see cref="bool"/>, an exception is thrown
+    /// instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>The <see cref="bool"/> value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="bool"/>.</exception>
+    public static bool GetRequiredBoolean(this JObject json, string propertyName) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetBoolean(property.Value, out bool result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid boolean value.");
+        return result;
+    }
+
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the <see cref="bool"/> value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The property value as an instance of <typeparamref name="TResult"/>.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="bool"/>.</exception>
+    public static TResult GetRequiredBoolean<TResult>(this JObject json, string propertyName, Func<bool, TResult> callback) where TResult : notnull {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetBoolean(property.Value, out bool result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid boolean value.");
+        return callback(result);
     }
 
 }

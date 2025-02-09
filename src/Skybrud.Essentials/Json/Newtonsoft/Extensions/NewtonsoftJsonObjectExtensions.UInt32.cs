@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -172,6 +173,38 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <see cref="uint"/>.</returns>
     public static uint[] GetUInt32ArrayByPath(this JObject? json, string path) {
         return JsonTokenUtils.GetUInt32Array(json?.SelectToken(path));
+    }
+
+    /// <summary>
+    /// Returns the unsigned 32-bit integer value of the property with the specified <paramref name="propertyName"/>.
+    /// If a matching property isn't found, or the value doesn't match a valid unsigned 32-bit integer, an exception is
+    /// thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>The unsigned 32-bit integer value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 32-bit integer.</exception>
+    public static uint GetRequiredUInt32(this JObject json, string propertyName) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetUInt32(property.Value, out uint result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 32-bit integer value.");
+        return result;
+    }
+
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the unsigned 32-bit integer value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The unsigned 32-bit integer value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 32-bit integer.</exception>
+    public static TResult GetRequiredUInt32<TResult>(this JObject json, string propertyName, Func<uint, TResult> callback) where TResult : notnull {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetUInt32(property.Value, out uint result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 32-bit integer value.");
+        return callback(result);
     }
 
 }

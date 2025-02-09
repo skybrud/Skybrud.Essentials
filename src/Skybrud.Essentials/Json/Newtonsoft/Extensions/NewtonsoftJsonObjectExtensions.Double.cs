@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -172,6 +173,38 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <see cref="double"/>.</returns>
     public static double[] GetDoubleArrayByPath(this JObject? json, string path) {
         return JsonTokenUtils.GetDoubleArray(json?.SelectToken(path));
+    }
+
+    /// <summary>
+    /// Returns the <see cref="double"/> value of the property with the specified <paramref name="propertyName"/>. If a
+    /// matching property isn't found, or the value doesn't match a valid <see cref="double"/>, an exception is thrown
+    /// instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>The <see cref="double"/> value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
+    public static double GetRequiredDouble(this JObject json, string propertyName) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetDouble(property.Value, out double result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid double value.");
+        return result;
+    }
+
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the <see cref="double"/> value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The <see cref="double"/> value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
+    public static TResult GetRequiredDouble<TResult>(this JObject json, string propertyName, Func<double, TResult> callback) where TResult : notnull {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetDouble(property.Value, out double result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid double value.");
+        return callback(result);
     }
 
 }

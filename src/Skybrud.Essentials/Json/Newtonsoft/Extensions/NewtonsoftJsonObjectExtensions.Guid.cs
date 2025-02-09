@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -177,6 +178,26 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <see cref="Guid"/>.</returns>
     public static Guid[] GetGuidArrayByPath(this JObject? json, string path) {
         return JsonTokenUtils.GetGuidArray(json?.SelectToken(path));
+    }
+
+    /// <summary>
+    /// Returns the GUID value of the property with the specified <paramref name="propertyName"/>. If a matching property isn't found, or the value isn't a valid GUID, an exception is thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>The <see cref="Guid"/>> value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="Guid"/>.</exception>
+    public static Guid GetRequiredGuid(this JObject json, string propertyName) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
+        return result;
+    }
+
+    public static TResult GetRequiredGuid<TResult>(this JObject json, string propertyName, Func<Guid, TResult> callback) where TResult : notnull {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
+        return callback(result);
     }
 
 }

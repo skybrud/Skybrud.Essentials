@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -90,6 +91,35 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <see cref="string"/>.</returns>
     public static string[] GetStringArrayByPath(this JObject? json, string path) {
         return JsonTokenUtils.GetStringArray(json?.SelectToken(path));
+    }
+
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching property is not found, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>The string value </returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    public static string GetRequiredString(this JObject json, string propertyName) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetString(property.Value, out string? result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid string value.");
+        return result;
+    }
+
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found, an exception will be thrown instead.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the string value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The converted value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    public static TResult GetRequiredString<TResult>(this JObject json, string propertyName, Func<string, TResult> callback) where TResult : notnull {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (!JsonTokenUtils.TryGetString(property.Value, out string? result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid string value.");
+        return callback(result);
     }
 
 }

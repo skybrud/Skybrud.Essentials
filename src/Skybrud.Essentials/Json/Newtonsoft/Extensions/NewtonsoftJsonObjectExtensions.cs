@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Collections;
+using Skybrud.Essentials.Collections.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions;
@@ -306,6 +308,126 @@ public static partial class NewtonsoftJsonObjectExtensions {
     public static TValue[] GetArrayItemsByPath<TValue>(this JObject? json, string path) where TValue : struct {
         if (json?.SelectToken(path) is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
         return array.Values<TValue>().ToArray();
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+    /// <summary>
+    /// Returns an instance of <see cref="JArray"/> representing the value of the property with the specified
+    /// <paramref name="propertyName"/>. If a matching property isn't found or the property value isn't a
+    /// <see cref="JArray"/>, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>An instance of <see cref="JArray"/> representing the property value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="JArray"/>.</exception>
+    public static JArray GetRequiredArray(this JObject json, string propertyName) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (property.Value is not JArray array) throw new JsonException($"The value of the '{propertyName}' property is not a valid JSON array.");
+        return array;
+    }
+
+    /// <summary>
+    /// Returns an instance of <typeparamref name="TResult"/> representing the value of the property with the specified
+    /// <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found or the property value isn't a
+    /// <see cref="JArray"/>, an exception will be thrown instead.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the <see cref="JArray"/> value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The property value as an instance of <typeparamref name="TResult"/>.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="JArray"/>.</exception>
+    public static TResult GetRequiredArray<TResult>(this JObject json, string propertyName, Func<JArray, TResult> callback) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (property.Value is not JArray array) throw new JsonException($"The value of the '{propertyName}' property is not a valid JSON array.");
+        return callback(array);
+    }
+
+
+    /// <summary>
+    /// Returns an instance of <typeparamref name="TResult"/> representing the value of the property with the specified
+    /// <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found or the property value isn't a
+    /// <see cref="JArray"/>, an exception will be thrown instead.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the <see cref="JArray"/> value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The property value as an instance of <typeparamref name="TResult"/>.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="JArray"/>.</exception>
+    public static TResult[] GetRequiredArray<TResult>(this JObject json, string propertyName, Func<JToken, TResult> callback) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (property.Value is not JArray array) throw new JsonException($"The value of the '{propertyName}' property is not a valid JSON array.");
+        return array.SelectArray(callback);
+    }
+
+    /// <summary>
+    /// Returns an instance of <typeparamref name="TResult"/> representing the value of the property with the specified
+    /// <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found or the property value isn't a
+    /// <see cref="JArray"/>, an exception will be thrown instead.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the <see cref="JArray"/> value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The property value as an instance of <typeparamref name="TResult"/>.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="JArray"/>.</exception>
+    public static TResult[] GetRequiredArray<TResult>(this JObject json, string propertyName, Func<JObject, TResult> callback) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (property.Value is not JArray array) throw new JsonException($"The value of the '{propertyName}' property is not a valid JSON array.");
+        return array.OfType<JObject>().SelectArray(callback);
+    }
+
+    /// <summary>
+    /// Returns an instance of <see cref="JObject"/> representing the value of the property with the specified
+    /// <paramref name="propertyName"/>. If a matching property isn't found or the property value isn't a
+    /// <see cref="JObject"/>, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>An instance of <see cref="JObject"/> representing the property value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="JObject"/>.</exception>
+    public static JObject GetRequiredObject(this JObject json, string propertyName) {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (property.Value is not JObject obj) throw new JsonException($"The value of the '{propertyName}' property is not a valid JSON object.");
+        return obj;
+    }
+
+    /// <summary>
+    /// Returns an instance of <typeparamref name="TResult"/> representing the value of the property with the specified
+    /// <paramref name="propertyName"/>. If a matching property is
+    /// found, the value is converted using <paramref name="callback"/>. If not found or the property value isn't a
+    /// <see cref="JObject"/>, an exception will be thrown instead.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">A callback function used for converting the <see cref="JObject"/> value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The property value as an instance of <typeparamref name="TResult"/>.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="JObject"/>.</exception>
+    public static TResult GetRequiredObject<TResult>(this JObject json, string propertyName, Func<JObject, TResult> callback) where TResult : notnull {
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+        if (property.Value is not JObject obj) throw new JsonException($"The value of the '{propertyName}' property is not a valid JSON object.");
+        return callback(obj);
     }
 
 }
