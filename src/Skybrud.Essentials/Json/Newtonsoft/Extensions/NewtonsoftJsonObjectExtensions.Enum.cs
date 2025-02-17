@@ -93,7 +93,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>The property value as an instance of <typeparamref name="TResult"/>.</returns>
     /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
-    public static TResult GetRequiredEnum<TEnum, TResult>(this JObject json, string propertyName, Func<TEnum, TResult> callback) where TEnum : struct, Enum {
+    public static TResult GetRequiredEnum<TEnum, TResult>(this JObject json, string propertyName, Func<TEnum, TResult> callback) where TEnum : struct, Enum where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
         if (JsonTokenUtils.GetEnumOrNull<TEnum>(property.Value) is not {} value) throw new JsonException($"The value of the '{propertyName}' property doesn't match a value of enum '{typeof(Enum)}'.");
         return callback(value);

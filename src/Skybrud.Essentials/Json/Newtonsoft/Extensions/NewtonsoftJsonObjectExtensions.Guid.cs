@@ -181,7 +181,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     }
 
     /// <summary>
-    /// Returns the GUID value of the property with the specified <paramref name="propertyName"/>. If a matching property isn't found, or the value isn't a valid GUID, an exception is thrown instead.
+    /// Returns the GUID value of the property with the specified <paramref name="propertyName"/>. If a matching
+    /// property isn't found, or the value isn't a valid GUID, an exception is thrown instead.
     /// </summary>
     /// <param name="json">The parent JSON object.</param>
     /// <param name="propertyName">The name of the property.</param>
@@ -194,6 +195,19 @@ public static partial class NewtonsoftJsonObjectExtensions {
         return result;
     }
 
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching property is
+    /// found, and the value matches a GUID, the GUID value is converted using the specified
+    /// <paramref name="callback"/> function. If a matching property isn't found, or the value doesn't match a GUID
+    /// value, an exception is thrown instead.
+    /// </summary>
+    /// <typeparam name="TResult">The type to which the GUID value will be converted.</typeparam>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="callback">The callback function used for converting the GUID value to an instance of <typeparamref name="TResult"/>.</param>
+    /// <returns>The converted GUID value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="Guid"/>.</exception>
     public static TResult GetRequiredGuid<TResult>(this JObject json, string propertyName, Func<Guid, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
         if (!JsonTokenUtils.TryGetGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
