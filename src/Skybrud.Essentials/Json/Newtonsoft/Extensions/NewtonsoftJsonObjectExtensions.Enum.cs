@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
@@ -97,6 +98,50 @@ public static partial class NewtonsoftJsonObjectExtensions {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
         if (JsonTokenUtils.GetEnumOrNull<TEnum>(property.Value) is not {} value) throw new JsonException($"The value of the '{propertyName}' property doesn't match a value of enum '{typeof(TEnum)}'.");
         return callback(value);
+    }
+
+    /// <summary>
+    /// Attempts to get an enum value of type <typeparamref name="TEnum"/> from the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the <typeparamref name="TEnum"/> value. If the conversion failed, contains the default value of <typeparamref name="TEnum"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetEnum<TEnum>(this JObject? json, string propertyName, out TEnum result) where TEnum : struct, Enum {
+        return JsonTokenUtils.TryParseEnum(json?[propertyName], out result);
+    }
+
+    /// <summary>
+    /// Attempts to get an enum value of type <typeparamref name="TEnum"/> from the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the <typeparamref name="TEnum"/> value. If the conversion failed, contains <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetEnum<TEnum>(this JObject? json, string propertyName, [NotNullWhen(true)] out TEnum? result) where TEnum : struct, Enum {
+        return JsonTokenUtils.TryParseEnum(json?[propertyName], out result);
+    }
+
+    /// <summary>
+    /// Attempts to get an enum value of type <typeparamref name="TEnum"/> of the token matching the specified <paramref name="path"/>.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the <typeparamref name="TEnum"/> value. If the conversion failed, contains the default value of <typeparamref name="TEnum"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetEnumByPath<TEnum>(this JObject? json, string path, out TEnum result) where TEnum : struct, Enum {
+        return JsonTokenUtils.TryParseEnum(json?.SelectToken(path), out result);
+    }
+
+    /// <summary>
+    /// Attempts to get an enum value of type <typeparamref name="TEnum"/> of the token matching the specified <paramref name="path"/>.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the <typeparamref name="TEnum"/> value. If the conversion failed, contains <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetEnumByPath<TEnum>(this JObject? json, string path, [NotNullWhen(true)] out TEnum? result) where TEnum : struct, Enum {
+        return JsonTokenUtils.TryParseEnum(json?.SelectToken(path), out result);
     }
 
 }

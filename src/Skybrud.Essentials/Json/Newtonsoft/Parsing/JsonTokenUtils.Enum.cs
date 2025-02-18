@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Enums;
 
@@ -53,6 +54,62 @@ static partial class JsonTokenUtils {
             JTokenType.String => EnumUtils.ParseEnumOrNull<TEnum>(token.Value<string>()),
             _ => null
         };
+    }
+
+    /// <summary>
+    /// Attempts to parse the specified JSON <paramref name="token"/> into an enum value of type <typeparamref name="TEnum"/>.
+    /// </summary>
+    /// <typeparam name="TEnum">The type of the enum.</typeparam>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted <typeparamref name="TEnum"/> value if successful; otherwise, the default value of <typeparamref name="TEnum"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryParseEnum<TEnum>(JToken? token, out TEnum result) where TEnum : struct, Enum {
+
+        switch (token?.Type) {
+
+            case JTokenType.Integer:
+                return EnumUtils.TryParseEnum(token.Value<int>(), out result);
+
+            case JTokenType.Float:
+                return EnumUtils.TryParseEnum(token.Value<int>(), out result);
+
+            case JTokenType.String:
+                return EnumUtils.TryParseEnum(token.Value<string>(), out result);
+
+            default:
+                result = default;
+                return false;
+
+        }
+
+    }
+
+    /// <summary>
+    /// Attempts to parse the specified JSON <paramref name="token"/> into an enum value of type <typeparamref name="TEnum"/>.
+    /// </summary>
+    /// <typeparam name="TEnum">The type of the enum.</typeparam>
+    /// <param name="token">The token to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted <typeparamref name="TEnum"/> value if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryParseEnum<TEnum>(JToken? token, [NotNullWhen(true)] out TEnum? result) where TEnum : struct, Enum {
+
+        switch (token?.Type) {
+
+            case JTokenType.Integer:
+                return EnumUtils.TryParseEnum(token.Value<int>(), out result);
+
+            case JTokenType.Float:
+                return EnumUtils.TryParseEnum(token.Value<int>(), out result);
+
+            case JTokenType.String:
+                return EnumUtils.TryParseEnum(token.Value<string>(), out result);
+
+            default:
+                result = null;
+                return false;
+
+        }
+
     }
 
 }

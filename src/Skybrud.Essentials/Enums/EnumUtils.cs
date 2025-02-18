@@ -135,6 +135,36 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
+        /// Converts the specified enum <paramref name="ordinal"/> into a corresponding enum value of
+        /// <typeparamref name="TEnum"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="ordinal">The enum ordinal.</param>
+        /// <param name="result">When this method returns, holds the converted <typeparamref name="TEnum"/> value if successful; otherwise, the default value of <typeparamref name="TEnum"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryParseEnum<TEnum>(int? ordinal, out TEnum result) where TEnum : struct, Enum {
+            if (TryParseEnum(ordinal, out TEnum? inter)) {
+                result = inter.Value;
+                return true;
+            }
+            result = default;
+            return false;
+        }
+
+        /// <summary>
+        /// Converts the specified enum <paramref name="ordinal"/> into a corresponding enum value of
+        /// <typeparamref name="TEnum"/>.
+        /// </summary>
+        /// <typeparam name="TEnum">The type of the enum.</typeparam>
+        /// <param name="ordinal">The enum ordinal.</param>
+        /// <param name="result">When this method returns, holds the converted <typeparamref name="TEnum"/> value if successful; otherwise, <see langword="null"/>.</param>
+        /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+        public static bool TryParseEnum<TEnum>(int? ordinal, [NotNullWhen(true)] out TEnum? result) where TEnum : struct, Enum {
+            result = ordinal is null ? null : ToEnumOrNull<TEnum>(ordinal.Value);
+            return result is not null;
+        }
+
+        /// <summary>
         /// Converts the string representation of the name or numeric value to an enum of type
         /// <typeparamref name="T"/>. The return value indicates whether the conversion succeeded.
         /// </summary>
