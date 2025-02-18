@@ -16,8 +16,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted 64-bit integer value if successful; otherwise, <c>0</c>.</returns>
-    public static long GetInt64(JToken? token) {
-        return GetInt64(token, default);
+    public static long ParseInt64(JToken? token) {
+        return ParseInt64(token, default);
     }
 
     /// <summary>
@@ -26,8 +26,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted 64-bit integer value if successful; otherwise, <paramref name="fallback"/>>.</returns>
-    public static long GetInt64(JToken? token, long fallback) {
-        return TryGetInt64(token, out long? result) ? result.Value : fallback;
+    public static long ParseInt64(JToken? token, long fallback) {
+        return TryParseInt64(token, out long? result) ? result.Value : fallback;
     }
 
     /// <summary>
@@ -37,8 +37,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
-    public static T? GetInt64<T>(JToken? token, Func<long, T> callback) {
-        return TryGetInt64(token, out long? result) ? callback(result.Value) : default;
+    public static T? ParseInt64<T>(JToken? token, Func<long, T> callback) {
+        return TryParseInt64(token, out long? result) ? callback(result.Value) : default;
     }
 
     /// <summary>
@@ -46,8 +46,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted 64-bit integer value if successful; otherwise, <see langword="null"/>.</returns>
-    public static long? GetInt64OrNull(JToken? token) {
-        return TryGetInt64(token, out long? result) ? result : null;
+    public static long? ParseInt64OrNull(JToken? token) {
+        return TryParseInt64(token, out long? result) ? result : null;
     }
 
     /// <summary>
@@ -56,9 +56,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted 64-bit integer value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetInt64(JToken? token, out long result) {
+    public static bool TryParseInt64(JToken? token, out long result) {
 
-        if (TryGetInt64(token, out long? temp)) {
+        if (TryParseInt64(token, out long? temp)) {
             result = temp.Value;
             return true;
         }
@@ -74,7 +74,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted 64-bit integer value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetInt64(JToken? token, [NotNullWhen(true)] out long? result) {
+    public static bool TryParseInt64(JToken? token, [NotNullWhen(true)] out long? result) {
 
         switch (token?.Type) {
 
@@ -103,11 +103,11 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>A 64-bit integer array.</returns>
-    public static long[] GetInt64Array(JToken? token) {
+    public static long[] ParseInt64Array(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToInt64Array(),
             JTokenType.Array => ConvertArrayTokenToInt64Array(token),
-            _ => TryGetInt64(token, out long? result) ? [result.Value] : []
+            _ => TryParseInt64(token, out long? result) ? [result.Value] : []
         };
     }
 
@@ -118,7 +118,7 @@ static partial class JsonTokenUtils {
         List<long> temp = [];
 
         foreach (JToken item in token) {
-            if (TryGetInt64(item, out long? result)) {
+            if (TryParseInt64(item, out long? result)) {
                 temp.Add(result.Value);
             }
         }

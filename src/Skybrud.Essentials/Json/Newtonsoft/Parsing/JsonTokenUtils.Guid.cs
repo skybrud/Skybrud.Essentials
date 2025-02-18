@@ -14,7 +14,7 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</returns>
-    public static Guid GetGuid(JToken? token) {
+    public static Guid ParseGuid(JToken? token) {
         return token?.Type switch {
             JTokenType.Guid => token.ToObject<Guid>(),
             JTokenType.String => token.ToObject<string>().ToGuid(),
@@ -28,7 +28,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted <see cref="Guid"/> value if successful; otherwise, <paramref name="fallback"/>.</returns>
-    public static Guid GetGuid(JToken? token, Guid fallback) {
+    public static Guid ParseGuid(JToken? token, Guid fallback) {
         return token?.Type switch {
             JTokenType.Guid => token.ToObject<Guid>(),
             JTokenType.String => token.ToObject<string>().ToGuid(fallback),
@@ -43,8 +43,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
-    public static T? GetGuid<T>(JToken? token, Func<Guid, T> callback) {
-        return TryGetGuid(token, out Guid? result) ? callback(result.Value) : default;
+    public static T? ParseGuid<T>(JToken? token, Func<Guid, T> callback) {
+        return TryParseGuid(token, out Guid? result) ? callback(result.Value) : default;
     }
 
     /// <summary>
@@ -52,8 +52,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="Guid"/> value if successful; otherwise, <see langword="null"/>.</returns>
-    public static Guid? GetGuidOrNull(JToken? token) {
-        return TryGetGuid(token, out Guid? result) ? result : null;
+    public static Guid? ParseGuidOrNull(JToken? token) {
+        return TryParseGuid(token, out Guid? result) ? result : null;
     }
 
     /// <summary>
@@ -62,9 +62,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <see cref="Guid.Empty"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetGuid(JToken? token, out Guid result) {
+    public static bool TryParseGuid(JToken? token, out Guid result) {
 
-        if (TryGetGuid(token, out Guid? temp)) {
+        if (TryParseGuid(token, out Guid? temp)) {
             result = temp.Value;
             return true;
         }
@@ -80,7 +80,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetGuid(JToken? token, [NotNullWhen(true)] out Guid? result) {
+    public static bool TryParseGuid(JToken? token, [NotNullWhen(true)] out Guid? result) {
 
         switch (token?.Type) {
 
@@ -104,7 +104,7 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>A <see cref="Guid"/> array.</returns>
-    public static Guid[] GetGuidArray(JToken? token) {
+    public static Guid[] ParseGuidArray(JToken? token) {
 
         switch (token) {
 

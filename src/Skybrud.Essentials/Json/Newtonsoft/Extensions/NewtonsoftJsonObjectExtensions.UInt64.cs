@@ -17,7 +17,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     public static ulong GetUInt64(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt64(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt64(json?[propertyName]);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     public static ulong GetUInt64(this JObject? json, string propertyName, ulong fallback) {
-        return JsonTokenUtils.GetUInt64(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseUInt64(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="ulong"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetUInt64<T>(this JObject? json, string propertyName, Func<ulong, T> callback) {
-        return JsonTokenUtils.GetUInt64(json?[propertyName], callback);
+        return JsonTokenUtils.ParseUInt64(json?[propertyName], callback);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="ulong"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static ulong? GetUInt64OrNull(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt64OrNull(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt64OrNull(json?[propertyName]);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     public static ulong GetUInt64ByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt64(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt64(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     public static ulong GetUInt64ByPath(this JObject? json, string path, ulong fallback) {
-        return JsonTokenUtils.GetUInt64(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseUInt64(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="ulong"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetUInt64ByPath<T>(this JObject? json, string path, Func<ulong, T> callback) {
-        return JsonTokenUtils.GetUInt64(json?.SelectToken(path), callback);
+        return JsonTokenUtils.ParseUInt64(json?.SelectToken(path), callback);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ulong"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static ulong? GetUInt64OrNullByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt64OrNull(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt64OrNull(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="ulong"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt64(this JObject? json, string propertyName, out ulong result) {
-        return JsonTokenUtils.TryGetUInt64(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseUInt64(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt64(this JObject? json, string propertyName, [NotNullWhen(true)] out ulong? result) {
-        return JsonTokenUtils.TryGetUInt64(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseUInt64(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="ulong"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt64ByPath(this JObject? json, string path, out ulong result) {
-        return JsonTokenUtils.TryGetUInt64(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseUInt64(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="ulong"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt64ByPath(this JObject? json, string path, [NotNullWhen(true)] out ulong? result) {
-        return JsonTokenUtils.TryGetUInt64(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseUInt64(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="ulong"/>.</returns>
     public static ulong[] GetUInt64Array(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt64Array(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt64Array(json?[propertyName]);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="ulong"/>.</returns>
     public static ulong[] GetUInt64ArrayByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt64Array(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt64Array(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 64-bit integer.</exception>
     public static ulong GetRequiredUInt64(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetUInt64(property.Value, out ulong result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 64-bit integer value.");
+        if (!JsonTokenUtils.TryParseUInt64(property.Value, out ulong result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 64-bit integer value.");
         return result;
     }
 
@@ -203,7 +203,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 64-bit integer.</exception>
     public static TResult GetRequiredUInt64<TResult>(this JObject json, string propertyName, Func<ulong, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetUInt64(property.Value, out ulong result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 64-bit integer value.");
+        if (!JsonTokenUtils.TryParseUInt64(property.Value, out ulong result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 64-bit integer value.");
         return callback(result);
     }
 

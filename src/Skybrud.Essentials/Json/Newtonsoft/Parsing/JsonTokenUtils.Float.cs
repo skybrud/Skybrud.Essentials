@@ -16,8 +16,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="float"/> value if successful; otherwise, <c>0</c>.</returns>
-    public static float GetFloat(JToken? token) {
-        return GetFloat(token, default);
+    public static float ParseFloat(JToken? token) {
+        return ParseFloat(token, default);
     }
 
     /// <summary>
@@ -26,8 +26,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted <see cref="float"/> value if successful; otherwise, <paramref name="fallback"/>.</returns>
-    public static float GetFloat(JToken? token, float fallback) {
-        return TryGetFloat(token, out float? result) ? result.Value : fallback;
+    public static float ParseFloat(JToken? token, float fallback) {
+        return TryParseFloat(token, out float? result) ? result.Value : fallback;
     }
 
     /// <summary>
@@ -37,8 +37,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
-    public static T? GetFloat<T>(JToken? token, Func<float, T> callback) {
-        return TryGetFloat(token, out float? result) ? callback(result.Value) : default;
+    public static T? ParseFloat<T>(JToken? token, Func<float, T> callback) {
+        return TryParseFloat(token, out float? result) ? callback(result.Value) : default;
     }
 
     /// <summary>
@@ -46,8 +46,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="float"/> value if successful; otherwise, <see langword="null"/>.</returns>
-    public static float? GetFloatOrNull(JToken? token) {
-        return TryGetFloat(token, out float? result) ? result : null;
+    public static float? ParseFloatOrNull(JToken? token) {
+        return TryParseFloat(token, out float? result) ? result : null;
     }
 
     /// <summary>
@@ -56,9 +56,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="float"/> value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetFloat(JToken? token, out float result) {
+    public static bool TryParseFloat(JToken? token, out float result) {
 
-        if (TryGetFloat(token, out float? temp)) {
+        if (TryParseFloat(token, out float? temp)) {
             result = temp.Value;
             return true;
         }
@@ -74,7 +74,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="float"/> value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetFloat(JToken? token, [NotNullWhen(true)] out float? result) {
+    public static bool TryParseFloat(JToken? token, [NotNullWhen(true)] out float? result) {
 
         switch (token?.Type) {
 
@@ -99,15 +99,15 @@ static partial class JsonTokenUtils {
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="token"/> into an array of <see cref="float"/> values.
+    /// Converts the specified <paramref name="token"/> into an array of single-precision floating point numbers (<see cref="float"/>).
     /// </summary>
     /// <param name="token">The token to be converted.</param>
-    /// <returns>A <see cref="float"/> array.</returns>
-    public static float[] GetFloatArray(JToken? token) {
+    /// <returns>An array with the single-precision floating point numbers.</returns>
+    public static float[] ParseFloatArray(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToFloatArray(),
             JTokenType.Array => ConvertArrayTokenToFloatArray(token),
-            _ => TryGetFloat(token, out float? result) ? [result.Value] : []
+            _ => TryParseFloat(token, out float? result) ? [result.Value] : []
         };
     }
 
@@ -118,7 +118,7 @@ static partial class JsonTokenUtils {
         List<float> temp = [];
 
         foreach (JToken item in token) {
-            if (TryGetFloat(item, out float? result)) {
+            if (TryParseFloat(item, out float? result)) {
                 temp.Add(result.Value);
             }
         }

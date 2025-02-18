@@ -20,7 +20,7 @@ public static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting each child token into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An array of <typeparamref name="T"/> if <paramref name="token"/> is an array; otherwise, <see langword="null"/>.</returns>
-    public static T[]? ConvertTokenToArray<T>(JToken? token, Func<JToken, T> callback) {
+    internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JToken, T> callback) {
 
         if (token is not JArray array) return null;
         if (array.Count == 0) return [];
@@ -42,7 +42,7 @@ public static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting each child object into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An array of <typeparamref name="T"/> if <paramref name="token"/> is an array; otherwise, <see langword="null"/>.</returns>
-    public static T[]? ConvertTokenToArray<T>(JToken? token, Func<JObject, T> callback) {
+    internal static T[]? ConvertTokenToArray<T>(JToken? token, Func<JObject, T> callback) {
 
         if (token is not JArray array) return null;
         if (array.Count == 0) return [];

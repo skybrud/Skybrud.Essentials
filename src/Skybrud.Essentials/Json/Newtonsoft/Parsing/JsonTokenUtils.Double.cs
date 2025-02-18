@@ -16,8 +16,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="double"/> value if successful; otherwise, <c>0</c>.</returns>
-    public static double GetDouble(JToken? token) {
-        return GetDouble(token, default);
+    public static double ParseDouble(JToken? token) {
+        return ParseDouble(token, default);
     }
 
     /// <summary>
@@ -26,12 +26,12 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted <see cref="double"/> value if successful; otherwise, <paramref name="fallback"/>.</returns>
-    public static double GetDouble(JToken? token, double fallback) {
-        return TryGetDouble(token, out double? result) ? result.Value : fallback;
+    public static double ParseDouble(JToken? token, double fallback) {
+        return TryParseDouble(token, out double? result) ? result.Value : fallback;
     }
 
-    internal static T? GetDouble<T>(JToken? token, Func<double, T> callback) {
-        return TryGetDouble(token, out double? result) ? callback(result.Value) : default;
+    internal static T? ParseDouble<T>(JToken? token, Func<double, T> callback) {
+        return TryParseDouble(token, out double? result) ? callback(result.Value) : default;
     }
 
     /// <summary>
@@ -39,8 +39,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="double"/> value if successful; otherwise, <see langword="null"/>.</returns>
-    public static double? GetDoubleOrNull(JToken? token) {
-        return TryGetDouble(token, out double? result) ? result : null;
+    public static double? ParseDoubleOrNull(JToken? token) {
+        return TryParseDouble(token, out double? result) ? result : null;
     }
 
     /// <summary>
@@ -49,9 +49,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="double"/> value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetDouble(JToken? token, out double result) {
+    public static bool TryParseDouble(JToken? token, out double result) {
 
-        if (TryGetDouble(token, out double? temp)) {
+        if (TryParseDouble(token, out double? temp)) {
             result = temp.Value;
             return true;
         }
@@ -67,7 +67,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="double"/> value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetDouble(JToken? token, [NotNullWhen(true)] out double? result) {
+    public static bool TryParseDouble(JToken? token, [NotNullWhen(true)] out double? result) {
 
         switch (token?.Type) {
 
@@ -91,11 +91,16 @@ static partial class JsonTokenUtils {
 
     }
 
-    internal static double[] GetDoubleArray(JToken? token) {
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into an array of double-precision floating point numbers (<see cref="double"/>).
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>An array with the double-precision floating point numbers.</returns>
+    public static double[] ParseDoubleArray(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToDoubleArray(),
             JTokenType.Array => ConvertArrayTokenToDoubleArray(token),
-            _ => TryGetDouble(token, out double? result) ? [result.Value] : []
+            _ => TryParseDouble(token, out double? result) ? [result.Value] : []
         };
     }
 
@@ -106,7 +111,7 @@ static partial class JsonTokenUtils {
         List<double> temp = [];
 
         foreach (JToken item in token) {
-            if (TryGetDouble(item, out double? result)) {
+            if (TryParseDouble(item, out double? result)) {
                 temp.Add(result.Value);
             }
         }

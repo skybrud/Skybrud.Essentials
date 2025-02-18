@@ -17,8 +17,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted unsigned 32-bit integer value if successful; otherwise, <c>0</c>.</returns>
-    public static uint GetUInt32(JToken? token) {
-        return GetUInt32(token, default);
+    public static uint ParseUInt32(JToken? token) {
+        return ParseUInt32(token, default);
     }
 
     /// <summary>
@@ -27,8 +27,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted unsigned 32-bit integer value if successful; otherwise, <paramref name="fallback"/>>.</returns>
-    public static uint GetUInt32(JToken? token, uint fallback) {
-        return TryGetUInt32(token, out uint? result) ? result.Value : fallback;
+    public static uint ParseUInt32(JToken? token, uint fallback) {
+        return TryParseUInt32(token, out uint? result) ? result.Value : fallback;
     }
 
     /// <summary>
@@ -38,8 +38,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
-    public static T? GetUInt32<T>(JToken? token, Func<uint, T> callback) {
-        return TryGetUInt32(token, out uint? result) ? callback(result.Value) : default;
+    public static T? ParseUInt32<T>(JToken? token, Func<uint, T> callback) {
+        return TryParseUInt32(token, out uint? result) ? callback(result.Value) : default;
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted unsigned 32-bit integer value if successful; otherwise, <see langword="null"/>.</returns>
-    public static uint? GetUInt32OrNull(JToken? token) {
-        return TryGetUInt32(token, out uint? result) ? result : null;
+    public static uint? ParseUInt32OrNull(JToken? token) {
+        return TryParseUInt32(token, out uint? result) ? result : null;
     }
 
     /// <summary>
@@ -57,9 +57,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted unsigned 32-bit integer value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetUInt32(JToken? token, out uint result) {
+    public static bool TryParseUInt32(JToken? token, out uint result) {
 
-        if (TryGetUInt32(token, out uint? temp)) {
+        if (TryParseUInt32(token, out uint? temp)) {
             result = temp.Value;
             return true;
         }
@@ -75,7 +75,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted unsigned 32-bit integer value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetUInt32(JToken? token, [NotNullWhen(true)] out uint? result) {
+    public static bool TryParseUInt32(JToken? token, [NotNullWhen(true)] out uint? result) {
 
         switch (token?.Type) {
 
@@ -104,11 +104,11 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>An unsigned 32-bit integer array.</returns>
-    public static uint[] GetUInt32Array(JToken? token) {
+    public static uint[] ParseUInt32Array(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToUInt32Array(),
             JTokenType.Array => ConvertArrayTokenToUInt32Array(token),
-            _ => TryGetUInt32(token, out uint? result) ? [result.Value] : []
+            _ => TryParseUInt32(token, out uint? result) ? [result.Value] : []
         };
     }
 
@@ -120,7 +120,7 @@ static partial class JsonTokenUtils {
         List<uint> temp = [];
 
         foreach (JToken item in token) {
-            if (TryGetUInt32(item, out uint? result)) {
+            if (TryParseUInt32(item, out uint? result)) {
                 temp.Add(result.Value);
             }
         }

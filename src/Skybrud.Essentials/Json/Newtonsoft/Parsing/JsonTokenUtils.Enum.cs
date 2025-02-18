@@ -16,7 +16,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted enum value if successful.</returns>
     /// <exception cref="EnumParseException">If the type <paramref name="token"/> is not supported, or the doesn't match a valid token value.</exception>
-    public static TEnum GetEnum<TEnum>(JToken? token) where TEnum : Enum {
+    public static TEnum ParseEnum<TEnum>(JToken? token) where TEnum : Enum {
         return token?.Type switch {
             JTokenType.Integer => EnumUtils.FromInt32Internal<TEnum>(token.Value<int>()),
             JTokenType.Float => EnumUtils.FromInt32Internal<TEnum>(token.Value<int>()),
@@ -32,7 +32,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">The fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted enum value if successful; otherwise, <paramref name="fallback"/>.</returns>
-    public static TEnum GetEnum<TEnum>(JToken? token, TEnum fallback) where TEnum : Enum {
+    public static TEnum ParseEnum<TEnum>(JToken? token, TEnum fallback) where TEnum : Enum {
         return token?.Type switch {
             JTokenType.Integer => EnumUtils.FromInt32(token.Value<int>(), fallback),
             JTokenType.Float => EnumUtils.FromInt32(token.Value<int>(), fallback),
@@ -47,7 +47,7 @@ static partial class JsonTokenUtils {
     /// <typeparam name="TEnum">The type of the enum.</typeparam>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted enum value if successful; otherwise, <see langword="null"/>.</returns>
-    public static TEnum? GetEnumOrNull<TEnum>(JToken? token) where TEnum : struct, Enum {
+    public static TEnum? ParseEnumOrNull<TEnum>(JToken? token) where TEnum : struct, Enum {
         return token?.Type switch {
             JTokenType.Integer => EnumUtils.ToEnumOrNull<TEnum>(token.Value<int>()),
             JTokenType.Float => EnumUtils.ToEnumOrNull<TEnum>(token.Value<int>()),

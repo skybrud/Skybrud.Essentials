@@ -17,8 +17,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted unsigned 16-bit integer value if successful; otherwise, <c>0</c>.</returns>
-    public static ushort GetUInt16(JToken? token) {
-        return GetUInt16(token, default);
+    public static ushort ParseUInt16(JToken? token) {
+        return ParseUInt16(token, default);
     }
 
     /// <summary>
@@ -27,8 +27,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted unsigned 16-bit integer value if successful; otherwise, <paramref name="fallback"/>>.</returns>
-    public static ushort GetUInt16(JToken? token, ushort fallback) {
-        return TryGetUInt16(token, out ushort? result) ? result.Value : fallback;
+    public static ushort ParseUInt16(JToken? token, ushort fallback) {
+        return TryParseUInt16(token, out ushort? result) ? result.Value : fallback;
     }
 
     /// <summary>
@@ -38,8 +38,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
-    public static T? GetUInt16<T>(JToken? token, Func<ushort, T> callback) {
-        return TryGetUInt16(token, out ushort? result) ? callback(result.Value) : default;
+    public static T? ParseUInt16<T>(JToken? token, Func<ushort, T> callback) {
+        return TryParseUInt16(token, out ushort? result) ? callback(result.Value) : default;
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted unsigned 16-bit integer value if successful; otherwise, <see langword="null"/>.</returns>
-    public static ushort? GetUInt16OrNull(JToken? token) {
-        return TryGetUInt16(token, out ushort? result) ? result : null;
+    public static ushort? ParseUInt16OrNull(JToken? token) {
+        return TryParseUInt16(token, out ushort? result) ? result : null;
     }
 
     /// <summary>
@@ -57,9 +57,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted unsigned 16-bit integer value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetUInt16(JToken? token, out ushort result) {
+    public static bool TryParseUInt16(JToken? token, out ushort result) {
 
-        if (TryGetUInt16(token, out ushort? temp)) {
+        if (TryParseUInt16(token, out ushort? temp)) {
             result = temp.Value;
             return true;
         }
@@ -75,7 +75,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted unsigned 16-bit integer value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetUInt16(JToken? token, [NotNullWhen(true)] out ushort? result) {
+    public static bool TryParseUInt16(JToken? token, [NotNullWhen(true)] out ushort? result) {
 
         switch (token?.Type) {
 
@@ -104,11 +104,11 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>An unsigned 16-bit integer array.</returns>
-    public static ushort[] GetUInt16Array(JToken? token) {
+    public static ushort[] ParseUInt16Array(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToUInt16Array(),
             JTokenType.Array => ConvertArrayTokenToUInt16Array(token),
-            _ => TryGetUInt16(token, out ushort? result) ? [result.Value] : []
+            _ => TryParseUInt16(token, out ushort? result) ? [result.Value] : []
         };
     }
 
@@ -120,7 +120,7 @@ static partial class JsonTokenUtils {
         List<ushort> temp = [];
 
         foreach (JToken item in token) {
-            if (TryGetUInt16(item, out ushort? result)) {
+            if (TryParseUInt16(item, out ushort? result)) {
                 temp.Add(result.Value);
             }
         }

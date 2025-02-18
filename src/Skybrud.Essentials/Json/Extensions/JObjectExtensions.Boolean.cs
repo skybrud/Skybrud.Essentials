@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
         public static bool GetBoolean(this JObject? obj, string path) {
-            return JsonTokenUtils.GetBoolean(obj?.SelectToken(path), false);
+            return JsonTokenUtils.ParseBoolean(obj?.SelectToken(path), false);
         }
 
         /// <summary>
@@ -26,7 +26,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="fallback">The fallback value.</param>
         /// <returns>An instance of <see cref="bool"/>.</returns>
         public static bool GetBoolean(this JObject? obj, string path, bool fallback) {
-            return JsonTokenUtils.GetBoolean(obj?.SelectToken(path), fallback);
+            return JsonTokenUtils.ParseBoolean(obj?.SelectToken(path), fallback);
         }
 
         /// <summary>
@@ -40,7 +40,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <returns>An instance of <see cref="bool"/>, or <c>false</c> if <paramref name="path"/>
         /// doesn't match a token.</returns>
         public static T? GetBoolean<T>(this JObject? obj, string path, Func<bool, T> callback) {
-            return JsonTokenUtils.TryGetBoolean(obj?.SelectToken(path), out bool result) ? callback(result) : default;
+            return JsonTokenUtils.TryParseBoolean(obj?.SelectToken(path), out bool result) ? callback(result) : default;
         }
 
         /// <summary>
@@ -51,7 +51,7 @@ namespace Skybrud.Essentials.Json.Extensions {
         /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
         /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
         public static bool TryGetBoolean(this JObject? obj, string path, out bool result) {
-            return JsonTokenUtils.TryGetBoolean(obj?.SelectToken(path), out result);
+            return JsonTokenUtils.TryParseBoolean(obj?.SelectToken(path), out result);
         }
 
     }

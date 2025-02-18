@@ -11,7 +11,7 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns><see langword="true"/> if <paramref name="token"/> matches a *truthy* value; otherwise, <see langword="false"/>.</returns>
-    public static bool GetBoolean(JToken? token) {
+    public static bool ParseBoolean(JToken? token) {
         return token?.Type switch {
             JTokenType.Boolean => token.Value<bool>(),
             JTokenType.Integer => token.Value<int>() switch {
@@ -30,7 +30,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">The fallback value to be returned if <paramref name="token"/> matches neither a *truthy* nor *falsy* value.</param>
     /// <returns><see langword="true"/> if <paramref name="token"/> matches a *truthy* value, <see langword="false"/> if <paramref name="token"/> matches a *falsy* value. If neither, <paramref name="fallback"/> is returned instead.</returns>
-    public static bool GetBoolean(JToken? token, bool fallback) {
+    public static bool ParseBoolean(JToken? token, bool fallback) {
         return token?.Type switch {
             JTokenType.Boolean => token.Value<bool>(),
             JTokenType.Integer => token.Value<int>() switch {
@@ -47,8 +47,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns><see langword="true"/> if <paramref name="token"/> matches a *truthy* value, <see langword="false"/> if <paramref name="token"/> matches a *falsy* value. If neither, <see langword="null"/> is returned instead.</returns>
-    public static bool? GetBooleanOrNull(JToken? token) {
-        return TryGetBoolean(token, out bool? result) ? result : null;
+    public static bool? ParseBooleanOrNull(JToken? token) {
+        return TryParseBoolean(token, out bool? result) ? result : null;
     }
 
     /// <summary>
@@ -57,9 +57,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds a boolean value matching either a *truthy* or *falsy* value if successful; otherwise, <see langword="false"/>.</param>
     /// <returns><see langword="true"/> if <paramref name="token"/> matches either a *truthy* or *falsy* value; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetBoolean(JToken? token, out bool result) {
+    public static bool TryParseBoolean(JToken? token, out bool result) {
 
-        if (TryGetBoolean(token, out bool? temp)) {
+        if (TryParseBoolean(token, out bool? temp)) {
             result = temp.Value;
             return true;
         }
@@ -75,7 +75,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds a boolean value matching either a *truthy* or *falsy* value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if <paramref name="token"/> matches either a *truthy* or *falsy* value; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetBoolean(JToken? token, [NotNullWhen(true)] out bool? result) {
+    public static bool TryParseBoolean(JToken? token, [NotNullWhen(true)] out bool? result) {
 
         switch (token?.Type) {
 

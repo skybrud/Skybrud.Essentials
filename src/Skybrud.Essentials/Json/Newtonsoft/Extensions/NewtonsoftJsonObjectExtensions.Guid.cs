@@ -17,7 +17,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
     public static Guid GetGuid(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetGuid(json?[propertyName]);
+        return JsonTokenUtils.ParseGuid(json?[propertyName]);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
     public static Guid GetGuid(this JObject? json, string propertyName, Guid fallback) {
-        return JsonTokenUtils.GetGuid(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseGuid(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="Guid"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetGuid<T>(this JObject? json, string propertyName, Func<Guid, T> callback) {
-        return JsonTokenUtils.GetGuid(json?[propertyName], callback);
+        return JsonTokenUtils.ParseGuid(json?[propertyName], callback);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="Guid"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static Guid? GetGuidOrNull(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetGuidOrNull(json?[propertyName]);
+        return JsonTokenUtils.ParseGuidOrNull(json?[propertyName]);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
     public static Guid GetGuidByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetGuid(json?.SelectToken(path));
+        return JsonTokenUtils.ParseGuid(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
     public static Guid GetGuidByPath(this JObject? json, string path, Guid fallback) {
-        return JsonTokenUtils.GetGuid(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseGuid(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -97,7 +97,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="Guid"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetGuidByPath<T>(this JObject? json, string path, Func<Guid, T> callback) {
-        return JsonTokenUtils.GetGuid(json?.SelectToken(path), callback);
+        return JsonTokenUtils.ParseGuid(json?.SelectToken(path), callback);
     }
 
     /// <summary>
@@ -109,7 +109,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="Guid"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static Guid? GetGuidOrNullByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetGuidOrNull(json?.SelectToken(path));
+        return JsonTokenUtils.ParseGuidOrNull(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -120,7 +120,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetGuid(this JObject? json, string propertyName, out Guid result) {
-        return JsonTokenUtils.TryGetGuid(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseGuid(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetGuid(this JObject? json, string propertyName, [NotNullWhen(true)] out Guid? result) {
-        return JsonTokenUtils.TryGetGuid(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseGuid(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -142,7 +142,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetGuidByPath(this JObject? json, string path, out Guid result) {
-        return JsonTokenUtils.TryGetGuid(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseGuid(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -153,7 +153,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="Guid"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetGuidByPath(this JObject? json, string path, [NotNullWhen(true)] out Guid? result) {
-        return JsonTokenUtils.TryGetGuid(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseGuid(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -165,7 +165,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An array of <see cref="Guid"/>.</returns>
     public static Guid[] GetGuidArray(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetGuidArray(json?[propertyName]);
+        return JsonTokenUtils.ParseGuidArray(json?[propertyName]);
     }
 
     /// <summary>
@@ -177,7 +177,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An array of <see cref="Guid"/>.</returns>
     public static Guid[] GetGuidArrayByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetGuidArray(json?.SelectToken(path));
+        return JsonTokenUtils.ParseGuidArray(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -191,7 +191,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="Guid"/>.</exception>
     public static Guid GetRequiredGuid(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
+        if (!JsonTokenUtils.TryParseGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
         return result;
     }
 
@@ -210,7 +210,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="Guid"/>.</exception>
     public static TResult GetRequiredGuid<TResult>(this JObject json, string propertyName, Func<Guid, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
+        if (!JsonTokenUtils.TryParseGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
         return callback(result);
     }
 

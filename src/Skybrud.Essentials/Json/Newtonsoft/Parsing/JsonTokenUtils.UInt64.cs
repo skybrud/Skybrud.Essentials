@@ -17,8 +17,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted unsigned 64-bit integer value if successful; otherwise, <c>0</c>.</returns>
-    public static ulong GetUInt64(JToken? token) {
-        return GetUInt64(token, default);
+    public static ulong ParseUInt64(JToken? token) {
+        return ParseUInt64(token, default);
     }
 
     /// <summary>
@@ -27,8 +27,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">A fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted unsigned 64-bit integer value if successful; otherwise, <paramref name="fallback"/>>.</returns>
-    public static ulong GetUInt64(JToken? token, ulong fallback) {
-        return TryGetUInt64(token, out ulong? result) ? result.Value : fallback;
+    public static ulong ParseUInt64(JToken? token, ulong fallback) {
+        return TryParseUInt64(token, out ulong? result) ? result.Value : fallback;
     }
 
     /// <summary>
@@ -38,8 +38,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting a <see cref="Guid"/> value into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
-    public static T? GetUInt64<T>(JToken? token, Func<ulong, T> callback) {
-        return TryGetUInt64(token, out ulong? result) ? callback(result.Value) : default;
+    public static T? ParseUInt64<T>(JToken? token, Func<ulong, T> callback) {
+        return TryParseUInt64(token, out ulong? result) ? callback(result.Value) : default;
     }
 
     /// <summary>
@@ -47,8 +47,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted unsigned 64-bit integer value if successful; otherwise, <see langword="null"/>.</returns>
-    public static ulong? GetUInt64OrNull(JToken? token) {
-        return TryGetUInt64(token, out ulong? result) ? result : null;
+    public static ulong? ParseUInt64OrNull(JToken? token) {
+        return TryParseUInt64(token, out ulong? result) ? result : null;
     }
 
     /// <summary>
@@ -57,9 +57,9 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted unsigned 64-bit integer value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetUInt64(JToken? token, out ulong result) {
+    public static bool TryParseUInt64(JToken? token, out ulong result) {
 
-        if (TryGetUInt64(token, out ulong? temp)) {
+        if (TryParseUInt64(token, out ulong? temp)) {
             result = temp.Value;
             return true;
         }
@@ -75,7 +75,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When this method returns, holds the converted unsigned 64-bit integer value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetUInt64(JToken? token, [NotNullWhen(true)] out ulong? result) {
+    public static bool TryParseUInt64(JToken? token, [NotNullWhen(true)] out ulong? result) {
 
         switch (token?.Type) {
 
@@ -104,11 +104,11 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>An unsigned 64-bit integer array.</returns>
-    public static ulong[] GetUInt64Array(JToken? token) {
+    public static ulong[] ParseUInt64Array(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToUInt64Array(),
             JTokenType.Array => ConvertArrayTokenToUInt64Array(token),
-            _ => TryGetUInt64(token, out ulong? result) ? [result.Value] : []
+            _ => TryParseUInt64(token, out ulong? result) ? [result.Value] : []
         };
     }
 
@@ -120,7 +120,7 @@ static partial class JsonTokenUtils {
         List<ulong> temp = [];
 
         foreach (JToken item in token) {
-            if (TryGetUInt64(item, out ulong? result)) {
+            if (TryParseUInt64(item, out ulong? result)) {
                 temp.Add(result.Value);
             }
         }

@@ -19,8 +19,8 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted string value if successful; otherwise, <see langword="null"/>.</returns>
-    public static string? GetString(JToken? token) {
-        return TryGetString(token, out string? result) ? result : null;
+    public static string? ParseString(JToken? token) {
+        return TryParseString(token, out string? result) ? result : null;
     }
 
     /// <summary>
@@ -30,8 +30,8 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="callback">A callback function used for converting a string value into an instance of <typeparamref name="T"/>.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, <see langword="null"/>.</returns>
-    public static T? GetString<T>(JToken? token, Func<string, T> callback) {
-        return TryGetString(token, out string? result) ? callback(result) : default;
+    public static T? ParseString<T>(JToken? token, Func<string, T> callback) {
+        return TryParseString(token, out string? result) ? callback(result) : default;
     }
 
     /// <summary>
@@ -40,7 +40,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="result">When the method returns, holds the string value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if the conversion was successful; otherwise, <see langword="false"/>.</returns>
-    public static bool TryGetString(JToken? token, [NotNullWhen(true)] out string? result) {
+    public static bool TryParseString(JToken? token, [NotNullWhen(true)] out string? result) {
 
         switch (token?.Type) {
 
@@ -81,11 +81,11 @@ static partial class JsonTokenUtils {
     /// </summary>
     /// <param name="token">The token to be converted.</param>
     /// <returns>A string array.</returns>
-    public static string[] GetStringArray(JToken? token) {
+    public static string[] ParseStringArray(JToken? token) {
         return token?.Type switch {
             JTokenType.String => token.Value<string>().ToStringArray(),
             JTokenType.Array => ConvertArrayTokenToStringArray(token),
-            _ => TryGetString(token, out string? result) ? [result] : []
+            _ => TryParseString(token, out string? result) ? [result] : []
         };
     }
 
@@ -96,7 +96,7 @@ static partial class JsonTokenUtils {
         List<string> temp = [];
 
         foreach (JToken item in token) {
-            if (TryGetString(item, out string? result)) {
+            if (TryParseString(item, out string? result)) {
                 temp.Add(result);
             }
         }

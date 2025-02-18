@@ -19,7 +19,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBoolean(this JArray? array, int index) {
-        return JsonTokenUtils.GetBoolean(array?[index], false);
+        return JsonTokenUtils.ParseBoolean(array?[index], false);
     }
 
     /// <summary>
@@ -32,7 +32,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBoolean(this JArray? array, int index, bool fallback) {
-        return JsonTokenUtils.GetBoolean(array?[index], fallback);
+        return JsonTokenUtils.ParseBoolean(array?[index], fallback);
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBooleanByPath(this JArray? array, string path) {
-        return JsonTokenUtils.GetBoolean(array?.SelectToken(path), false);
+        return JsonTokenUtils.ParseBoolean(array?.SelectToken(path), false);
     }
 
     /// <summary>
@@ -55,7 +55,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBooleanByPath(this JArray? array, string path, bool fallback) {
-        return JsonTokenUtils.GetBoolean(array?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseBoolean(array?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -66,7 +66,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
     public static bool TryGetBoolean(this JArray? array, int index, out bool result) {
-        return JsonTokenUtils.TryGetBoolean(array?[index], out result);
+        return JsonTokenUtils.TryParseBoolean(array?[index], out result);
     }
 
     /// <summary>
@@ -77,7 +77,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
     public static bool TryGetBooleanByPath(this JArray? array, string path, out bool result) {
-        return JsonTokenUtils.TryGetBoolean(array?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseBoolean(array?.SelectToken(path), out result);
     }
 
     #endregion

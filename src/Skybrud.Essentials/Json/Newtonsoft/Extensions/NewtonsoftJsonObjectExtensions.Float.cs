@@ -17,7 +17,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="float"/>.</returns>
     public static float GetFloat(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetFloat(json?[propertyName]);
+        return JsonTokenUtils.ParseFloat(json?[propertyName]);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="float"/>.</returns>
     public static float GetFloat(this JObject? json, string propertyName, float fallback) {
-        return JsonTokenUtils.GetFloat(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseFloat(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="float"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetFloat<T>(this JObject? json, string propertyName, Func<float, T> callback) {
-        return JsonTokenUtils.GetFloat(json?[propertyName], callback);
+        return JsonTokenUtils.ParseFloat(json?[propertyName], callback);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="float"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static float? GetFloatOrNull(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetFloatOrNull(json?[propertyName]);
+        return JsonTokenUtils.ParseFloatOrNull(json?[propertyName]);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="float"/>.</returns>
     public static float GetFloatByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetFloat(json?.SelectToken(path));
+        return JsonTokenUtils.ParseFloat(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="float"/>.</returns>
     public static float GetFloatByPath(this JObject? json, string path, float fallback) {
-        return JsonTokenUtils.GetFloat(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseFloat(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="float"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetFloatByPath<T>(this JObject? json, string path, Func<float, T> callback) {
-        return JsonTokenUtils.GetFloat(json?.SelectToken(path), callback);
+        return JsonTokenUtils.ParseFloat(json?.SelectToken(path), callback);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="float"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static float? GetFloatOrNullByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetFloatOrNull(json?.SelectToken(path));
+        return JsonTokenUtils.ParseFloatOrNull(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="float"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetFloat(this JObject? json, string propertyName, out float result) {
-        return JsonTokenUtils.TryGetFloat(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseFloat(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetFloat(this JObject? json, string propertyName, [NotNullWhen(true)] out float? result) {
-        return JsonTokenUtils.TryGetFloat(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseFloat(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="float"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetFloatByPath(this JObject? json, string path, out float result) {
-        return JsonTokenUtils.TryGetFloat(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseFloat(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="float"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetFloatByPath(this JObject? json, string path, [NotNullWhen(true)] out float? result) {
-        return JsonTokenUtils.TryGetFloat(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseFloat(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="float"/>.</returns>
     public static float[] GetFloatArray(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetFloatArray(json?[propertyName]);
+        return JsonTokenUtils.ParseFloatArray(json?[propertyName]);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="float"/>.</returns>
     public static float[] GetFloatArrayByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetFloatArray(json?.SelectToken(path));
+        return JsonTokenUtils.ParseFloatArray(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="float"/>.</exception>
     public static float GetRequiredFloat(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetFloat(property.Value, out float result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid float value.");
+        if (!JsonTokenUtils.TryParseFloat(property.Value, out float result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid float value.");
         return result;
     }
 
@@ -203,7 +203,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a 64-bit integer.</exception>
     public static TResult GetRequiredFloat<TResult>(this JObject json, string propertyName, Func<float, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetFloat(property.Value, out float result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid float value.");
+        if (!JsonTokenUtils.TryParseFloat(property.Value, out float result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid float value.");
         return callback(result);
     }
 

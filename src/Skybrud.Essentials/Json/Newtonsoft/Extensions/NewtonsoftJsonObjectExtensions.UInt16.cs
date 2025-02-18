@@ -17,7 +17,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     public static ushort GetUInt16(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt16(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt16(json?[propertyName]);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     public static ushort GetUInt16(this JObject? json, string propertyName, ushort fallback) {
-        return JsonTokenUtils.GetUInt16(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseUInt16(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="ushort"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetUInt16<T>(this JObject? json, string propertyName, Func<ushort, T> callback) {
-        return JsonTokenUtils.GetUInt16(json?[propertyName], callback);
+        return JsonTokenUtils.ParseUInt16(json?[propertyName], callback);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="ushort"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static ushort? GetUInt16OrNull(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt16OrNull(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt16OrNull(json?[propertyName]);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     public static ushort GetUInt16ByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt16(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt16(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     public static ushort GetUInt16ByPath(this JObject? json, string path, ushort fallback) {
-        return JsonTokenUtils.GetUInt16(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseUInt16(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="ushort"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetUInt16ByPath<T>(this JObject? json, string path, Func<ushort, T> callback) {
-        return JsonTokenUtils.GetUInt16(json?.SelectToken(path), callback);
+        return JsonTokenUtils.ParseUInt16(json?.SelectToken(path), callback);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ushort"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static ushort? GetUInt16OrNullByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt16OrNull(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt16OrNull(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="ushort"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt16(this JObject? json, string propertyName, out ushort result) {
-        return JsonTokenUtils.TryGetUInt16(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseUInt16(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt16(this JObject? json, string propertyName, [NotNullWhen(true)] out ushort? result) {
-        return JsonTokenUtils.TryGetUInt16(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseUInt16(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="ushort"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt16ByPath(this JObject? json, string path, out ushort result) {
-        return JsonTokenUtils.TryGetUInt16(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseUInt16(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="ushort"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt16ByPath(this JObject? json, string path, [NotNullWhen(true)] out ushort? result) {
-        return JsonTokenUtils.TryGetUInt16(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseUInt16(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="ushort"/>.</returns>
     public static ushort[] GetUInt16Array(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt16Array(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt16Array(json?[propertyName]);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="ushort"/>.</returns>
     public static ushort[] GetUInt16ArrayByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt16Array(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt16Array(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 16-bit integer.</exception>
     public static ushort GetRequiredUInt16(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetUInt16(property.Value, out ushort result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 16-bit integer value.");
+        if (!JsonTokenUtils.TryParseUInt16(property.Value, out ushort result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 16-bit integer value.");
         return result;
     }
 
@@ -203,7 +203,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 16-bit integer.</exception>
     public static TResult GetRequiredUInt16<TResult>(this JObject json, string propertyName, Func<ushort, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetUInt16(property.Value, out ushort result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 16-bit integer value.");
+        if (!JsonTokenUtils.TryParseUInt16(property.Value, out ushort result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 16-bit integer value.");
         return callback(result);
     }
 

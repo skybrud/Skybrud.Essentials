@@ -16,7 +16,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T GetEnum<T>(this JObject? json, string propertyName) where T : Enum {
-        return JsonTokenUtils.GetEnum<T>(json?[propertyName]);
+        return JsonTokenUtils.ParseEnum<T>(json?[propertyName]);
     }
 
     /// <summary>
@@ -28,7 +28,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value if the value in the JSON couldn't be parsed.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T GetEnum<T>(this JObject? json, string propertyName, T fallback) where T : Enum {
-        return JsonTokenUtils.GetEnum(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseEnum(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -39,7 +39,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <typeparamref name="TEnum"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static TEnum? GetEnumOrNull<TEnum>(this JObject? json, string propertyName) where TEnum : struct, Enum {
-        return JsonTokenUtils.GetEnumOrNull<TEnum>(json?[propertyName]);
+        return JsonTokenUtils.ParseEnumOrNull<TEnum>(json?[propertyName]);
     }
 
     /// <summary>
@@ -50,7 +50,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T GetEnumByPath<T>(this JObject? json, string path) where T : Enum {
-        return JsonTokenUtils.GetEnum<T>(json?.SelectToken(path));
+        return JsonTokenUtils.ParseEnum<T>(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -62,7 +62,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value if the value in the JSON couldn't be parsed.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T GetEnumByPath<T>(this JObject? json, string path, T fallback) where T : Enum {
-        return JsonTokenUtils.GetEnum(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseEnum(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
     public static TEnum GetRequiredEnum<TEnum>(this JObject json, string propertyName) where TEnum : struct, Enum {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        return JsonTokenUtils.GetEnumOrNull<TEnum>(property.Value) ?? throw new JsonException($"The value of the '{propertyName}' property doesn't match a value of enum '{typeof(TEnum)}'.");
+        return JsonTokenUtils.ParseEnumOrNull<TEnum>(property.Value) ?? throw new JsonException($"The value of the '{propertyName}' property doesn't match a value of enum '{typeof(TEnum)}'.");
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
     public static TResult GetRequiredEnum<TEnum, TResult>(this JObject json, string propertyName, Func<TEnum, TResult> callback) where TEnum : struct, Enum where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (JsonTokenUtils.GetEnumOrNull<TEnum>(property.Value) is not {} value) throw new JsonException($"The value of the '{propertyName}' property doesn't match a value of enum '{typeof(TEnum)}'.");
+        if (JsonTokenUtils.ParseEnumOrNull<TEnum>(property.Value) is not {} value) throw new JsonException($"The value of the '{propertyName}' property doesn't match a value of enum '{typeof(TEnum)}'.");
         return callback(value);
     }
 

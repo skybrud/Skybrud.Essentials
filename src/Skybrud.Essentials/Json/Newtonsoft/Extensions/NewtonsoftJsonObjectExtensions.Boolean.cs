@@ -17,7 +17,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBoolean(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetBoolean(json?[propertyName]);
+        return JsonTokenUtils.ParseBoolean(json?[propertyName]);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBoolean(this JObject? json, string propertyName, bool fallback) {
-        return JsonTokenUtils.GetBoolean(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseBoolean(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -42,7 +42,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="bool"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static bool? GetBooleanOrNull(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetBooleanOrNull(json?[propertyName]);
+        return JsonTokenUtils.ParseBooleanOrNull(json?[propertyName]);
     }
 
     /// <summary>
@@ -54,7 +54,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBooleanByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetBoolean(json?.SelectToken(path));
+        return JsonTokenUtils.ParseBoolean(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -67,7 +67,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
     public static bool GetBooleanByPath(this JObject? json, string path, bool fallback) {
-        return JsonTokenUtils.GetBoolean(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseBoolean(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="bool"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static bool? GetBooleanOrNullByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetBooleanOrNull(json?.SelectToken(path));
+        return JsonTokenUtils.ParseBooleanOrNull(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -90,7 +90,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
     public static bool TryGetBoolean(this JObject? json, string propertyName, out bool result) {
-        return JsonTokenUtils.TryGetBoolean(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseBoolean(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
     public static bool TryGetBoolean(this JObject? json, string propertyName, [NotNullWhen(true)] out bool? result) {
-        return JsonTokenUtils.TryGetBoolean(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseBoolean(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -112,7 +112,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
     public static bool TryGetBooleanByPath(this JObject? json, string path, out bool result) {
-        return JsonTokenUtils.TryGetBoolean(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseBoolean(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -123,7 +123,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
     public static bool TryGetBooleanByPath(this JObject? json, string path, [NotNullWhen(true)] out bool? result) {
-        return JsonTokenUtils.TryGetBoolean(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseBoolean(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -138,7 +138,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="bool"/>.</exception>
     public static bool GetRequiredBoolean(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetBoolean(property.Value, out bool result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid boolean value.");
+        if (!JsonTokenUtils.TryParseBoolean(property.Value, out bool result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid boolean value.");
         return result;
     }
 
@@ -154,7 +154,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="bool"/>.</exception>
     public static TResult GetRequiredBoolean<TResult>(this JObject json, string propertyName, Func<bool, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetBoolean(property.Value, out bool result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid boolean value.");
+        if (!JsonTokenUtils.TryParseBoolean(property.Value, out bool result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid boolean value.");
         return callback(result);
     }
 

@@ -17,7 +17,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
     public static double GetDouble(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetDouble(json?[propertyName]);
+        return JsonTokenUtils.ParseDouble(json?[propertyName]);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
     public static double GetDouble(this JObject? json, string propertyName, double fallback) {
-        return JsonTokenUtils.GetDouble(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseDouble(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="double"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetDouble<T>(this JObject? json, string propertyName, Func<double, T> callback) {
-        return JsonTokenUtils.GetDouble(json?[propertyName], callback);
+        return JsonTokenUtils.ParseDouble(json?[propertyName], callback);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="double"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static double? GetDoubleOrNull(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetDoubleOrNull(json?[propertyName]);
+        return JsonTokenUtils.ParseDoubleOrNull(json?[propertyName]);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
     public static double GetDoubleByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetDouble(json?.SelectToken(path));
+        return JsonTokenUtils.ParseDouble(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
     public static double GetDoubleByPath(this JObject? json, string path, double fallback) {
-        return JsonTokenUtils.GetDouble(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseDouble(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="double"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetDoubleByPath<T>(this JObject? json, string path, Func<double, T> callback) {
-        return JsonTokenUtils.GetDouble(json?.SelectToken(path), callback);
+        return JsonTokenUtils.ParseDouble(json?.SelectToken(path), callback);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="double"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static double? GetDoubleOrNullByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetDoubleOrNull(json?.SelectToken(path));
+        return JsonTokenUtils.ParseDoubleOrNull(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="double"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetDouble(this JObject? json, string propertyName, out double result) {
-        return JsonTokenUtils.TryGetDouble(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseDouble(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetDouble(this JObject? json, string propertyName, [NotNullWhen(true)] out double? result) {
-        return JsonTokenUtils.TryGetDouble(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseDouble(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="double"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetDoubleByPath(this JObject? json, string path, out double result) {
-        return JsonTokenUtils.TryGetDouble(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseDouble(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="double"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetDoubleByPath(this JObject? json, string path, [NotNullWhen(true)] out double? result) {
-        return JsonTokenUtils.TryGetDouble(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseDouble(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="double"/>.</returns>
     public static double[] GetDoubleArray(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetDoubleArray(json?[propertyName]);
+        return JsonTokenUtils.ParseDoubleArray(json?[propertyName]);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="double"/>.</returns>
     public static double[] GetDoubleArrayByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetDoubleArray(json?.SelectToken(path));
+        return JsonTokenUtils.ParseDoubleArray(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
     public static double GetRequiredDouble(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetDouble(property.Value, out double result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid double value.");
+        if (!JsonTokenUtils.TryParseDouble(property.Value, out double result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid double value.");
         return result;
     }
 
@@ -203,7 +203,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
     public static TResult GetRequiredDouble<TResult>(this JObject json, string propertyName, Func<double, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetDouble(property.Value, out double result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid double value.");
+        if (!JsonTokenUtils.TryParseDouble(property.Value, out double result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid double value.");
         return callback(result);
     }
 

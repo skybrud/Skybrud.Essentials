@@ -17,7 +17,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
     public static uint GetUInt32(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt32(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt32(json?[propertyName]);
     }
 
     /// <summary>
@@ -30,7 +30,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
     public static uint GetUInt32(this JObject? json, string propertyName, uint fallback) {
-        return JsonTokenUtils.GetUInt32(json?[propertyName], fallback);
+        return JsonTokenUtils.ParseUInt32(json?[propertyName], fallback);
     }
 
     /// <summary>
@@ -45,7 +45,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="uint"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetUInt32<T>(this JObject? json, string propertyName, Func<uint, T> callback) {
-        return JsonTokenUtils.GetUInt32(json?[propertyName], callback);
+        return JsonTokenUtils.ParseUInt32(json?[propertyName], callback);
     }
 
     /// <summary>
@@ -57,7 +57,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <see cref="uint"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static uint? GetUInt32OrNull(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt32OrNull(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt32OrNull(json?[propertyName]);
     }
 
     /// <summary>
@@ -69,7 +69,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
     public static uint GetUInt32ByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt32(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt32(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -82,7 +82,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
     public static uint GetUInt32ByPath(this JObject? json, string path, uint fallback) {
-        return JsonTokenUtils.GetUInt32(json?.SelectToken(path), fallback);
+        return JsonTokenUtils.ParseUInt32(json?.SelectToken(path), fallback);
     }
 
     /// <summary>
@@ -96,7 +96,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="callback">The callback used for converting the <see cref="uint"/> value.</param>
     /// <returns>An instance of <typeparamref name="T"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</returns>
     public static T? GetUInt32ByPath<T>(this JObject? json, string path, Func<uint, T> callback) {
-        return JsonTokenUtils.GetUInt32(json?.SelectToken(path), callback);
+        return JsonTokenUtils.ParseUInt32(json?.SelectToken(path), callback);
     }
 
     /// <summary>
@@ -108,7 +108,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="uint"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static uint? GetUInt32OrNullByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt32OrNull(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt32OrNull(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="uint"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt32(this JObject? json, string propertyName, out uint result) {
-        return JsonTokenUtils.TryGetUInt32(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseUInt32(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -130,7 +130,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="int"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt32(this JObject? json, string propertyName, [NotNullWhen(true)] out uint? result) {
-        return JsonTokenUtils.TryGetUInt32(json?[propertyName], out result);
+        return JsonTokenUtils.TryParseUInt32(json?[propertyName], out result);
     }
 
     /// <summary>
@@ -141,7 +141,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="uint"/> value. If the conversion failed, contains <c>0</c>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt32ByPath(this JObject? json, string path, out uint result) {
-        return JsonTokenUtils.TryGetUInt32(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseUInt32(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -152,7 +152,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed <see cref="uint"/> value. If the conversion failed, contains <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetUInt32ByPath(this JObject? json, string path, [NotNullWhen(true)] out uint? result) {
-        return JsonTokenUtils.TryGetUInt32(json?.SelectToken(path), out result);
+        return JsonTokenUtils.TryParseUInt32(json?.SelectToken(path), out result);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="uint"/>.</returns>
     public static uint[] GetUInt32Array(this JObject? json, string propertyName) {
-        return JsonTokenUtils.GetUInt32Array(json?[propertyName]);
+        return JsonTokenUtils.ParseUInt32Array(json?[propertyName]);
     }
 
     /// <summary>
@@ -172,7 +172,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <returns>An array of <see cref="uint"/>.</returns>
     public static uint[] GetUInt32ArrayByPath(this JObject? json, string path) {
-        return JsonTokenUtils.GetUInt32Array(json?.SelectToken(path));
+        return JsonTokenUtils.ParseUInt32Array(json?.SelectToken(path));
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 32-bit integer.</exception>
     public static uint GetRequiredUInt32(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetUInt32(property.Value, out uint result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 32-bit integer value.");
+        if (!JsonTokenUtils.TryParseUInt32(property.Value, out uint result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 32-bit integer value.");
         return result;
     }
 
@@ -203,7 +203,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match an unsigned 32-bit integer.</exception>
     public static TResult GetRequiredUInt32<TResult>(this JObject json, string propertyName, Func<uint, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        if (!JsonTokenUtils.TryGetUInt32(property.Value, out uint result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 32-bit integer value.");
+        if (!JsonTokenUtils.TryParseUInt32(property.Value, out uint result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid unsigned 32-bit integer value.");
         return callback(result);
     }
 
