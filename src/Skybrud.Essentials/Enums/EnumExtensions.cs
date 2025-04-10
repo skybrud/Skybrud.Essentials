@@ -9,7 +9,7 @@ namespace Skybrud.Essentials.Enums {
     public static class EnumExtensions {
 
         /// <summary>
-        /// Converts the specified <paramref name="input"/> string into an enum vlaue of <paramref name="type"/>.
+        /// Converts the specified <paramref name="input"/> string into an enum value of <paramref name="type"/>.
         /// </summary>
         /// <param name="input">The ordinal value of the enum.</param>
         /// <param name="type">The enum type.</param>
@@ -19,7 +19,7 @@ namespace Skybrud.Essentials.Enums {
         }
 
         /// <summary>
-        /// Converts the specified <paramref name="input"/> string into an enum vlaue of <typeparamref name="T"/>.
+        /// Converts the specified <paramref name="input"/> string into an enum value of <typeparamref name="T"/>.
         /// </summary>
         /// <typeparam name="T">The enum type.</typeparam>
         /// <param name="input">The ordinal value of the enum.</param>
