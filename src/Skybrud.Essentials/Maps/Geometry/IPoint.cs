@@ -1,20 +1,18 @@
-﻿namespace Skybrud.Essentials.Maps.Geometry {
+﻿namespace Skybrud.Essentials.Maps.Geometry;
+
+/// <summary>
+/// Interface representing a point identified by latitude and longitude.
+/// </summary>
+public interface IPoint : IGeometry {
 
     /// <summary>
-    /// Interface representing a point identified by latitude and longitude.
+    /// Gets the latitude of the location. The latitude specifies the north-south position (Y-axis) of a point on the Earth's surface.
     /// </summary>
-    public interface IPoint : IGeometry {
+    double Latitude { get; }
 
-        /// <summary>
-        /// Gets the latitude of the location. The latitude specifies the north-south position (Y-axis) of a point on the Earth's surface.
-        /// </summary>
-        double Latitude { get; }
-
-        /// <summary>
-        /// Gets the longitude of the location. The longitude specifies the east-west position (X-axis) of a point on the Earth's surface.
-        /// </summary>
-        double Longitude { get; }
-
-    }
+    /// <summary>
+    /// Gets the longitude of the location. The longitude specifies the east-west position (X-axis) of a point on the Earth's surface.
+    /// </summary>
+    double Longitude { get; }
 
 }

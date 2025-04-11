@@ -3,381 +3,379 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Skybrud.Essentials.Time.Iso8601;
 
-namespace Skybrud.Essentials.Time.Extensions {
+namespace Skybrud.Essentials.Time.Extensions;
+
+/// <summary>
+/// Static class with various extension methods for <see cref="DateTimeOffset"/>.
+/// </summary>
+public static class DateTimeOffsetExtensions {
 
     /// <summary>
-    /// Static class with various extension methods for <see cref="DateTimeOffset"/>.
+    /// Gets the current age, from the specified date of birth.
     /// </summary>
-    public static class DateTimeOffsetExtensions {
+    /// <param name="dateOfBirth">The date of birth.</param>
+    /// <returns>An instance of <see cref="int"/> representing the age.</returns>
+    public static int GetAge(this DateTimeOffset dateOfBirth) {
+        return TimeUtils.GetAge(dateOfBirth);
+    }
 
-        /// <summary>
-        /// Gets the current age, from the specified date of birth.
-        /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <returns>An instance of <see cref="int"/> representing the age.</returns>
-        public static int GetAge(this DateTimeOffset dateOfBirth) {
-            return TimeUtils.GetAge(dateOfBirth);
-        }
+    /// <summary>
+    /// Gets the current age, from the specified date of birth. The age is calculated based on <paramref name="dt"/>.
+    /// </summary>
+    /// <param name="dateOfBirth">The date of birth.</param>
+    /// <param name="dt">The date used for calculating the age.</param>
+    /// <returns>An instance of <see cref="int"/> representing the age.</returns>
+    public static int GetAge(this DateTimeOffset dateOfBirth, DateTimeOffset dt) {
+        return TimeUtils.GetAge(dateOfBirth, dt);
+    }
 
-        /// <summary>
-        /// Gets the current age, from the specified date of birth. The age is calculated based on <paramref name="dt"/>.
-        /// </summary>
-        /// <param name="dateOfBirth">The date of birth.</param>
-        /// <param name="dt">The date used for calculating the age.</param>
-        /// <returns>An instance of <see cref="int"/> representing the age.</returns>
-        public static int GetAge(this DateTimeOffset dateOfBirth, DateTimeOffset dt) {
-            return TimeUtils.GetAge(dateOfBirth, dt);
-        }
+    /// <summary>
+    /// Gets the day of the month along with the English ordinal suffix based on the specified <paramref name="date"/>.
+    /// </summary>
+    /// <param name="date">The date.</param>
+    /// <returns>The day number and ordinal suffix.</returns>
+    public static string GetDayNumberAndSuffix(this DateTimeOffset date) {
+        return TimeUtils.GetDayNumberAndSuffix(date);
+    }
 
-        /// <summary>
-        /// Gets the day of the month along with the English ordinal suffix based on the specified <paramref name="date"/>.
-        /// </summary>
-        /// <param name="date">The date.</param>
-        /// <returns>The day number and ordinal suffix.</returns>
-        public static string GetDayNumberAndSuffix(this DateTimeOffset date) {
-            return TimeUtils.GetDayNumberAndSuffix(date);
-        }
+    /// <summary>
+    /// Gets the English ordinal suffix of the day based on the specified <paramref name="date"/>.
+    /// </summary>
+    /// <param name="date">The date.</param>
+    /// <returns>The ordinal suffix.</returns>
+    public static string GetDaySuffix(this DateTimeOffset date) {
+        return TimeUtils.GetDaySuffix(date);
+    }
 
-        /// <summary>
-        /// Gets the English ordinal suffix of the day based on the specified <paramref name="date"/>.
-        /// </summary>
-        /// <param name="date">The date.</param>
-        /// <returns>The ordinal suffix.</returns>
-        public static string GetDaySuffix(this DateTimeOffset date) {
-            return TimeUtils.GetDaySuffix(date);
-        }
+    /// <summary>
+    /// Gets the week number of the specified <paramref name="date"/> according to the <strong>ISO 8601</strong>
+    /// specification.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>An instance of <see cref="int"/> representing the <strong>ISO 8601</strong> week number.</returns>
+    public static int GetIso8601WeekNumber(this DateTimeOffset date) {
+        return Iso8601Utils.GetWeekNumber(date);
+    }
 
-        /// <summary>
-        /// Gets the week number of the specified <paramref name="date"/> according to the <strong>ISO 8601</strong>
-        /// specification.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>An instance of <see cref="int"/> representing the <strong>ISO 8601</strong> week number.</returns>
-        public static int GetIso8601WeekNumber(this DateTimeOffset date) {
-            return Iso8601Utils.GetWeekNumber(date);
-        }
+    /// <summary>
+    /// Gets whether the specified <paramref name="date"/> is a weekday.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns><c>true</c> if <paramref name="date"/> is a weekday; otherwise <c>false</c>. </returns>
+    public static bool IsWeekday(this DateTimeOffset date) {
+        return TimeUtils.IsWeekday(date);
+    }
 
-        /// <summary>
-        /// Gets whether the specified <paramref name="date"/> is a weekday.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns><c>true</c> if <paramref name="date"/> is a weekday; otherwise <c>false</c>. </returns>
-        public static bool IsWeekday(this DateTimeOffset date) {
-            return TimeUtils.IsWeekday(date);
-        }
+    /// <summary>
+    /// Gets whether the specified <paramref name="date"/> is in the weekend.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns><c>true</c> if <paramref name="date"/> is in the weekend; otherwise <c>false</c>.</returns>
+    public static bool IsWeekend(this DateTimeOffset date) {
+        return TimeUtils.IsWeekend(date);
+    }
 
-        /// <summary>
-        /// Gets whether the specified <paramref name="date"/> is in the weekend.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns><c>true</c> if <paramref name="date"/> is in the weekend; otherwise <c>false</c>.</returns>
-        public static bool IsWeekend(this DateTimeOffset date) {
-            return TimeUtils.IsWeekend(date);
-        }
+    /// <summary>
+    /// Gets whether the specified <paramref name="date"/> is a leap year.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns><c>true</c> if the year of <paramref name="date"/> is a leap year; otherwise <c>false</c>.</returns>
+    public static bool IsLeapYear(this DateTimeOffset date) {
+        return TimeUtils.IsLeapYear(date);
+    }
 
-        /// <summary>
-        /// Gets whether the specified <paramref name="date"/> is a leap year.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns><c>true</c> if the year of <paramref name="date"/> is a leap year; otherwise <c>false</c>.</returns>
-        public static bool IsLeapYear(this DateTimeOffset date) {
-            return TimeUtils.IsLeapYear(date);
-        }
-
-        /// <summary>
-        /// Gets whether the specified year is a leap year.
-        /// </summary>
-        /// <param name="year">The year.</param>
-        /// <returns><c>true</c> if <paramref name="year"/> is a leap year; otherwise <c>false</c>.</returns>
-        public static bool IsLeapYear(this int year) {
-            return TimeUtils.IsLeapYear(year);
-        }
+    /// <summary>
+    /// Gets whether the specified year is a leap year.
+    /// </summary>
+    /// <param name="year">The year.</param>
+    /// <returns><c>true</c> if <paramref name="year"/> is a leap year; otherwise <c>false</c>.</returns>
+    public static bool IsLeapYear(this int year) {
+        return TimeUtils.IsLeapYear(year);
+    }
 
 
-        /// <summary>
-        /// Gets the amount elapsed seconds since the specified <paramref name="date"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The elapsed seconds since the input <see cref="DateTimeOffset"/>.</returns>
-        public static double GetElapsedSeconds(this DateTimeOffset date) {
-            return TimeUtils.GetElapsedSeconds(date);
-        }
+    /// <summary>
+    /// Gets the amount elapsed seconds since the specified <paramref name="date"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The elapsed seconds since the input <see cref="DateTimeOffset"/>.</returns>
+    public static double GetElapsedSeconds(this DateTimeOffset date) {
+        return TimeUtils.GetElapsedSeconds(date);
+    }
 
-        /// <summary>
-        /// Gets whether <paramref name="date"/> is within the last number of specified <paramref name="days"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="days">The number of days.</param>
-        /// <returns><c>true</c> if <paramref name="date"/> is within the last number of
-        /// <paramref name="days"/>, otherwise <c>false</c>.</returns>
-        public static bool IsDateWithinLastDays(this DateTimeOffset date, int days) {
-            return TimeUtils.IsDateWithinLastDays(date, days);
-        }
+    /// <summary>
+    /// Gets whether <paramref name="date"/> is within the last number of specified <paramref name="days"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <param name="days">The number of days.</param>
+    /// <returns><c>true</c> if <paramref name="date"/> is within the last number of
+    /// <paramref name="days"/>, otherwise <c>false</c>.</returns>
+    public static bool IsDateWithinLastDays(this DateTimeOffset date, int days) {
+        return TimeUtils.IsDateWithinLastDays(date, days);
+    }
 
-        /// <summary>
-        /// Gets the first day of the month of the specified <paramref name="date"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the month.</returns>
-        public static DateTimeOffset GetFirstDayOfMonth(this DateTimeOffset date) {
-            return TimeUtils.GetFirstDayOfMonth(date);
-        }
+    /// <summary>
+    /// Gets the first day of the month of the specified <paramref name="date"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the month.</returns>
+    public static DateTimeOffset GetFirstDayOfMonth(this DateTimeOffset date) {
+        return TimeUtils.GetFirstDayOfMonth(date);
+    }
 
-        /// <summary>
-        /// Gets the last day of the month of the specified <paramref name="date"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the month.</returns>
-        public static DateTimeOffset GetLastDayOfMonth(this DateTimeOffset date) {
-            return TimeUtils.GetLastDayOfMonth(date);
-        }
+    /// <summary>
+    /// Gets the last day of the month of the specified <paramref name="date"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the month.</returns>
+    public static DateTimeOffset GetLastDayOfMonth(this DateTimeOffset date) {
+        return TimeUtils.GetLastDayOfMonth(date);
+    }
 
-        /// <summary>
-        /// Gets the first day of the week of the specified <paramref name="date"/>. <strong>Monday</strong> is
-        /// considered the first day of the week.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
-        public static DateTimeOffset GetFirstDayOfWeek(this DateTimeOffset date) {
-            return TimeUtils.GetFirstDayOfWeek(date);
-        }
+    /// <summary>
+    /// Gets the first day of the week of the specified <paramref name="date"/>. <strong>Monday</strong> is
+    /// considered the first day of the week.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
+    public static DateTimeOffset GetFirstDayOfWeek(this DateTimeOffset date) {
+        return TimeUtils.GetFirstDayOfWeek(date);
+    }
 
-        /// <summary>
-        /// Gets the first day of the week of the specified <paramref name="date"/> and based on
-        /// <paramref name="startOfWeek"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
-        /// <see cref="DayOfWeek.Sunday"/>).</param>
-        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
-        public static DateTimeOffset GetFirstDayOfWeek(this DateTimeOffset date, DayOfWeek startOfWeek) {
-            return TimeUtils.GetFirstDayOfWeek(date, startOfWeek);
-        }
+    /// <summary>
+    /// Gets the first day of the week of the specified <paramref name="date"/> and based on
+    /// <paramref name="startOfWeek"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
+    /// <see cref="DayOfWeek.Sunday"/>).</param>
+    /// <returns>An instance of <see cref="DateTimeOffset"/> representing the first day of the week.</returns>
+    public static DateTimeOffset GetFirstDayOfWeek(this DateTimeOffset date, DayOfWeek startOfWeek) {
+        return TimeUtils.GetFirstDayOfWeek(date, startOfWeek);
+    }
 
-        /// <summary>
-        /// Gets the last day of the week of the specified <paramref name="date"/>. <strong>Monday</strong> is
-        /// considered the first day of the week.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
-        public static DateTimeOffset GetLastDayOfWeek(this DateTimeOffset date) {
-            return TimeUtils.GetLastDayOfWeek(date);
-        }
+    /// <summary>
+    /// Gets the last day of the week of the specified <paramref name="date"/>. <strong>Monday</strong> is
+    /// considered the first day of the week.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
+    public static DateTimeOffset GetLastDayOfWeek(this DateTimeOffset date) {
+        return TimeUtils.GetLastDayOfWeek(date);
+    }
 
-        /// <summary>
-        /// Gets the last day of the week of the specified <paramref name="date"/> and based on
-        /// <paramref name="startOfWeek"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
-        /// <see cref="DayOfWeek.Sunday"/>).</param>
-        /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
-        public static DateTimeOffset GetLastDayOfWeek(this DateTimeOffset date, DayOfWeek startOfWeek) {
-            return TimeUtils.GetLastDayOfWeek(date, startOfWeek);
-        }
+    /// <summary>
+    /// Gets the last day of the week of the specified <paramref name="date"/> and based on
+    /// <paramref name="startOfWeek"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <param name="startOfWeek">The first day of the week (e.g. <see cref="DayOfWeek.Monday"/> or
+    /// <see cref="DayOfWeek.Sunday"/>).</param>
+    /// <returns>An instance of <see cref="DateTimeOffset"/> representing the last day of the week.</returns>
+    public static DateTimeOffset GetLastDayOfWeek(this DateTimeOffset date, DayOfWeek startOfWeek) {
+        return TimeUtils.GetLastDayOfWeek(date, startOfWeek);
+    }
 
-        /// <summary>
-        /// Gets the English name of the day.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The English name of the day.</returns>
-        public static string GetDayName(this DateTimeOffset date) {
-            return TimeUtils.GetDayName(date);
-        }
+    /// <summary>
+    /// Gets the English name of the day.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The English name of the day.</returns>
+    public static string GetDayName(this DateTimeOffset date) {
+        return TimeUtils.GetDayName(date);
+    }
 
-        /// <summary>
-        /// Gets the abbreviated English name of the day.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The abbreviated English name of the day.</returns>
-        public static string GetAbbreviatedDayName(this DateTimeOffset date) {
-            return TimeUtils.GetAbbreviatedDayName(date);
-        }
+    /// <summary>
+    /// Gets the abbreviated English name of the day.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The abbreviated English name of the day.</returns>
+    public static string GetAbbreviatedDayName(this DateTimeOffset date) {
+        return TimeUtils.GetAbbreviatedDayName(date);
+    }
 
-        /// <summary>
-        /// Gets the name of the day according to the current culture.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The local name of the day.</returns>
-        public static string GetLocalDayName(this DateTimeOffset date) {
-            return TimeUtils.GetLocalDayName(date);
-        }
+    /// <summary>
+    /// Gets the name of the day according to the current culture.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The local name of the day.</returns>
+    public static string GetLocalDayName(this DateTimeOffset date) {
+        return TimeUtils.GetLocalDayName(date);
+    }
 
-        /// <summary>
-        /// Gets the name of the day according to <paramref name="culture"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>The local name of the day.</returns>
-        public static string GetLocalDayName(this DateTimeOffset date, CultureInfo culture) {
-            return TimeUtils.GetLocalDayName(date, culture);
-        }
+    /// <summary>
+    /// Gets the name of the day according to <paramref name="culture"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
+    /// <returns>The local name of the day.</returns>
+    public static string GetLocalDayName(this DateTimeOffset date, CultureInfo culture) {
+        return TimeUtils.GetLocalDayName(date, culture);
+    }
 
-        /// <summary>
-        /// Gets the abbreviated name of the day according to the current culture.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The local abbreviated name of the day.</returns>
-        public static string GetAbbreviatedLocalDayName(this DateTimeOffset date) {
-            return TimeUtils.GetAbbreviatedLocalDayName(date);
-        }
+    /// <summary>
+    /// Gets the abbreviated name of the day according to the current culture.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The local abbreviated name of the day.</returns>
+    public static string GetAbbreviatedLocalDayName(this DateTimeOffset date) {
+        return TimeUtils.GetAbbreviatedLocalDayName(date);
+    }
 
-        /// <summary>
-        /// Gets the name of the day according to <paramref name="culture"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>The local abbreviated name of the day.</returns>
-        public static string GetAbbreviatedLocalDayName(this DateTimeOffset date, CultureInfo culture) {
-            return TimeUtils.GetAbbreviatedLocalDayName(date, culture);
-        }
+    /// <summary>
+    /// Gets the name of the day according to <paramref name="culture"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
+    /// <returns>The local abbreviated name of the day.</returns>
+    public static string GetAbbreviatedLocalDayName(this DateTimeOffset date, CultureInfo culture) {
+        return TimeUtils.GetAbbreviatedLocalDayName(date, culture);
+    }
 
-        /// <summary>
-        /// Gets the English name of the month.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The English name of the month.</returns>
-        public static string GetMonthName(this DateTimeOffset date) {
-            return TimeUtils.GetMonthName(date);
-        }
+    /// <summary>
+    /// Gets the English name of the month.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The English name of the month.</returns>
+    public static string GetMonthName(this DateTimeOffset date) {
+        return TimeUtils.GetMonthName(date);
+    }
 
-        /// <summary>
-        /// Gets the name of the month according to the current culture.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The local name of the month.</returns>
-        public static string GetLocalMonthName(this DateTimeOffset date) {
-            return TimeUtils.GetLocalMonthName(date);
-        }
+    /// <summary>
+    /// Gets the name of the month according to the current culture.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The local name of the month.</returns>
+    public static string GetLocalMonthName(this DateTimeOffset date) {
+        return TimeUtils.GetLocalMonthName(date);
+    }
 
-        /// <summary>
-        /// Gets the name of the month according to <paramref name="culture"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>The local name of the month.</returns>
-        public static string GetLocalMonthName(this DateTimeOffset date, CultureInfo culture) {
-            return TimeUtils.GetLocalMonthName(date, culture);
-        }
+    /// <summary>
+    /// Gets the name of the month according to <paramref name="culture"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
+    /// <returns>The local name of the month.</returns>
+    public static string GetLocalMonthName(this DateTimeOffset date, CultureInfo culture) {
+        return TimeUtils.GetLocalMonthName(date, culture);
+    }
 
-        /// <summary>
-        /// Gets the abbreviated English name of the month.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The English name of the month.</returns>
-        public static string GetAbbreviatedMonthName(this DateTimeOffset date) {
-            return TimeUtils.GetAbbreviatedMonthName(date);
-        }
+    /// <summary>
+    /// Gets the abbreviated English name of the month.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The English name of the month.</returns>
+    public static string GetAbbreviatedMonthName(this DateTimeOffset date) {
+        return TimeUtils.GetAbbreviatedMonthName(date);
+    }
 
-        /// <summary>
-        /// Gets the abbreviated name of the month according to the current culture.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <returns>The abbreviated local name of the month.</returns>
-        public static string GetAbbreviatedLocalMonthName(this DateTimeOffset date) {
-            return TimeUtils.GetAbbreviatedLocalMonthName(date);
-        }
+    /// <summary>
+    /// Gets the abbreviated name of the month according to the current culture.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <returns>The abbreviated local name of the month.</returns>
+    public static string GetAbbreviatedLocalMonthName(this DateTimeOffset date) {
+        return TimeUtils.GetAbbreviatedLocalMonthName(date);
+    }
 
-        /// <summary>
-        /// Gets the abbreviated name of the month according to <paramref name="culture"/>.
-        /// </summary>
-        /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
-        /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
-        /// <returns>The abbreviated local name of the month.</returns>
-        public static string GetAbbreviatedLocalMonthName(this DateTimeOffset date, CultureInfo culture) {
-            return TimeUtils.GetAbbreviatedLocalMonthName(date, culture);
-        }
+    /// <summary>
+    /// Gets the abbreviated name of the month according to <paramref name="culture"/>.
+    /// </summary>
+    /// <param name="date">An instance of <see cref="DateTimeOffset"/> representing the date.</param>
+    /// <param name="culture">The instance of <see cref="CultureInfo"/> to be used.</param>
+    /// <returns>The abbreviated local name of the month.</returns>
+    public static string GetAbbreviatedLocalMonthName(this DateTimeOffset date, CultureInfo culture) {
+        return TimeUtils.GetAbbreviatedLocalMonthName(date, culture);
+    }
 
-        /// <summary>
-        /// Returns whether <paramref name="first"/> and <paramref name="second"/> represents the same day.
-        /// </summary>
-        /// <param name="first">The first date.</param>
-        /// <param name="second">The second date.</param>
-        /// <returns><see langword="true"/> if <paramref name="first"/> and <paramref name="second"/> represents the same day; otherwise, <see langword="false"/>.</returns>
-        public static bool IsSameDay(this DateTimeOffset first, DateTimeOffset second) {
-            return TimeUtils.IsSameDay(first, second);
-        }
+    /// <summary>
+    /// Returns whether <paramref name="first"/> and <paramref name="second"/> represents the same day.
+    /// </summary>
+    /// <param name="first">The first date.</param>
+    /// <param name="second">The second date.</param>
+    /// <returns><see langword="true"/> if <paramref name="first"/> and <paramref name="second"/> represents the same day; otherwise, <see langword="false"/>.</returns>
+    public static bool IsSameDay(this DateTimeOffset first, DateTimeOffset second) {
+        return TimeUtils.IsSameDay(first, second);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="date"/> is today.
-        /// </summary>
-        /// <param name="date">The date.</param>
-        /// <returns><c>true</c> if <paramref name="date"/> is today; otherwise, <c>false</c>.</returns>
-        public static bool IsToday(this DateTimeOffset date) {
-            return TimeUtils.IsToday(date);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="date"/> is today.
+    /// </summary>
+    /// <param name="date">The date.</param>
+    /// <returns><c>true</c> if <paramref name="date"/> is today; otherwise, <c>false</c>.</returns>
+    public static bool IsToday(this DateTimeOffset date) {
+        return TimeUtils.IsToday(date);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="date"/> is tomorrow.
-        /// </summary>
-        /// <param name="date">The date.</param>
-        /// <returns><c>true</c> if <paramref name="date"/> is tomorrow; otherwise, <c>false</c>.</returns>
-        public static bool IsTomorrow(this DateTimeOffset date) {
-            return TimeUtils.IsTomorrow(date);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="date"/> is tomorrow.
+    /// </summary>
+    /// <param name="date">The date.</param>
+    /// <returns><c>true</c> if <paramref name="date"/> is tomorrow; otherwise, <c>false</c>.</returns>
+    public static bool IsTomorrow(this DateTimeOffset date) {
+        return TimeUtils.IsTomorrow(date);
+    }
 
-        /// <summary>
-        /// Returns whether the specified <paramref name="date"/> is yesterday.
-        /// </summary>
-        /// <param name="date">The date.</param>
-        /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
-        public static bool IsYesterday(this DateTimeOffset date) {
-            return TimeUtils.IsYesterday(date);
-        }
+    /// <summary>
+    /// Returns whether the specified <paramref name="date"/> is yesterday.
+    /// </summary>
+    /// <param name="date">The date.</param>
+    /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
+    public static bool IsYesterday(this DateTimeOffset date) {
+        return TimeUtils.IsYesterday(date);
+    }
 
-        /// <summary>
-        /// Returns an ISO 8601 formatted string based on the specified <see cref="DateTimeOffset"/> <paramref name="value"/>.
-        /// </summary>
-        /// <param name="value">The <see cref="DateTimeOffset"/> value.</param>
-        /// <returns>An ISO 8601 formatted string.</returns>
-        public static string ToIso8601(this DateTimeOffset value) {
-            return Iso8601Utils.ToString(value);
-        }
+    /// <summary>
+    /// Returns an ISO 8601 formatted string based on the specified <see cref="DateTimeOffset"/> <paramref name="value"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="DateTimeOffset"/> value.</param>
+    /// <returns>An ISO 8601 formatted string.</returns>
+    public static string ToIso8601(this DateTimeOffset value) {
+        return Iso8601Utils.ToString(value);
+    }
 
-        /// <summary>
-        /// Returns an ISO 8601 formatted string based on the specified <see cref="DateTimeOffset"/> <paramref name="value"/>.
-        /// </summary>
-        /// <param name="value">The <see cref="DateTimeOffset"/> value.</param>
-        /// <returns>An ISO 8601 formatted string, or <see langword="null"/> if <paramref name="value"/> is <see langword="null"/>.</returns>
-        [return: NotNullIfNotNull("value")]
-        public static string? ToIso8601(this DateTimeOffset? value) {
-            return value is null ? null : Iso8601Utils.ToString(value.Value);
-        }
+    /// <summary>
+    /// Returns an ISO 8601 formatted string based on the specified <see cref="DateTimeOffset"/> <paramref name="value"/>.
+    /// </summary>
+    /// <param name="value">The <see cref="DateTimeOffset"/> value.</param>
+    /// <returns>An ISO 8601 formatted string, or <see langword="null"/> if <paramref name="value"/> is <see langword="null"/>.</returns>
+    [return: NotNullIfNotNull("value")]
+    public static string? ToIso8601(this DateTimeOffset? value) {
+        return value is null ? null : Iso8601Utils.ToString(value.Value);
+    }
 
-        /// <summary>
-        /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
-        /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
-        /// </summary>
-        /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
-        /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
-        [return: NotNullIfNotNull(nameof(time))]
-        public static EssentialsDate? ToEssentialsDate(this DateTimeOffset? time) {
-            return time is null ? null : new EssentialsDate(time.Value);
-        }
+    /// <summary>
+    /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
+    /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
+    /// </summary>
+    /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
+    [return: NotNullIfNotNull(nameof(time))]
+    public static EssentialsDate? ToEssentialsDate(this DateTimeOffset? time) {
+        return time is null ? null : new EssentialsDate(time.Value);
+    }
 
-        /// <summary>
-        /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
-        /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
-        /// </summary>
-        /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
-        /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
-        [return: NotNullIfNotNull(nameof(time))]
-        public static EssentialsTime? ToEssentialsTime(this DateTimeOffset? time) {
-            return time is null ? null : new EssentialsTime(time.Value);
-        }
+    /// <summary>
+    /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
+    /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
+    /// </summary>
+    /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
+    [return: NotNullIfNotNull(nameof(time))]
+    public static EssentialsTime? ToEssentialsTime(this DateTimeOffset? time) {
+        return time is null ? null : new EssentialsTime(time.Value);
+    }
 
-        /// <summary>
-        /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
-        /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
-        /// </summary>
-        /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
-        /// <param name="timeZone">The time zone the new <see cref="EssentialsDate"/> instance should be based on.</param>
-        /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
-        [return: NotNullIfNotNull(nameof(time))]
-        public static EssentialsTime? ToEssentialsTime(this DateTimeOffset? time, TimeZoneInfo timeZone) {
-            return time is null ? null : new EssentialsTime(time.Value, timeZone);
-        }
-
+    /// <summary>
+    /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
+    /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
+    /// </summary>
+    /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <param name="timeZone">The time zone the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <returns>An instance of <see cref="EssentialsDate"/>, or <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.</returns>
+    [return: NotNullIfNotNull(nameof(time))]
+    public static EssentialsTime? ToEssentialsTime(this DateTimeOffset? time, TimeZoneInfo timeZone) {
+        return time is null ? null : new EssentialsTime(time.Value, timeZone);
     }
 
 }

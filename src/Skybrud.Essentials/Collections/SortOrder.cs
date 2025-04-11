@@ -1,20 +1,18 @@
-﻿namespace Skybrud.Essentials.Collections {
+﻿namespace Skybrud.Essentials.Collections;
+
+/// <summary>
+/// Enum class representing the sort order of a collection.
+/// </summary>
+public enum SortOrder {
 
     /// <summary>
-    /// Enum class representing the sort order of a collection.
+    /// Indicates that items are sorted in ascending order.
     /// </summary>
-    public enum SortOrder {
+    Ascending,
 
-        /// <summary>
-        /// Indicates that items are sorted in ascending order.
-        /// </summary>
-        Ascending,
-
-        /// <summary>
-        /// Indicates that items are sorted in descending order.
-        /// </summary>
-        Descending
-
-    }
+    /// <summary>
+    /// Indicates that items are sorted in descending order.
+    /// </summary>
+    Descending
 
 }

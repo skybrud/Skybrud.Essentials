@@ -1,21 +1,19 @@
 ﻿using Skybrud.Essentials.Collections;
 
-namespace TestProject1.Collections {
+namespace TestProject1.Collections;
 
-    [TestClass]
-    public class ArrayUtilsTests {
+[TestClass]
+public class ArrayUtilsTests {
 
-        [TestMethod]
-        public void EmptyStringArray() {
+    [TestMethod]
+    public void EmptyStringArray() {
 
-            Array array = ArrayUtils.Empty(typeof(string));
+        Array array = ArrayUtils.Empty(typeof(string));
 
-            Assert.IsNotNull(array);
-            Assert.AreEqual(0, array.Length);
+        Assert.IsNotNull(array);
+        Assert.AreEqual(0, array.Length);
 
-            Assert.AreEqual(typeof(string[]), array.GetType());
-
-        }
+        Assert.AreEqual(typeof(string[]), array.GetType());
 
     }
 

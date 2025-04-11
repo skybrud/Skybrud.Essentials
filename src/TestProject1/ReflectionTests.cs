@@ -1,45 +1,43 @@
 ﻿using System.Linq.Expressions;
 using Skybrud.Essentials.Reflection;
 
-namespace TestProject1 {
+namespace TestProject1;
 
-    [TestClass]
-    public class ReflectionTests {
+[TestClass]
+public class ReflectionTests {
 
-        [TestMethod]
-        public void GetMethodInfo() {
+    [TestMethod]
+    public void GetMethodInfo() {
 
-            Expression<Func<MyModel, string>> expression = GetExpression<MyModel, string>(x => x.MyMethod());
+        Expression<Func<MyModel, string>> expression = GetExpression<MyModel, string>(x => x.MyMethod());
 
-            var method = ReflectionUtils.GetMethodInfo(expression);
+        var method = ReflectionUtils.GetMethodInfo(expression);
 
-            Assert.AreEqual("MyMethod", method.Name);
+        Assert.AreEqual("MyMethod", method.Name);
 
-        }
+    }
 
-        [TestMethod]
-        public void GetPropertyInfo() {
+    [TestMethod]
+    public void GetPropertyInfo() {
 
-            Expression<Func<MyModel, string>> expression = GetExpression<MyModel, string>(x => x.MyProperty);
+        Expression<Func<MyModel, string>> expression = GetExpression<MyModel, string>(x => x.MyProperty);
 
-            var property = ReflectionUtils.GetPropertyInfo(expression);
+        var property = ReflectionUtils.GetPropertyInfo(expression);
 
-            Assert.AreEqual("MyProperty", property.Name);
+        Assert.AreEqual("MyProperty", property.Name);
 
-        }
+    }
 
-        private Expression<Func<TModel, TProperty>> GetExpression<TModel, TProperty>(Expression<Func<TModel, TProperty>> expression) {
-            return expression;
-        }
+    private Expression<Func<TModel, TProperty>> GetExpression<TModel, TProperty>(Expression<Func<TModel, TProperty>> expression) {
+        return expression;
+    }
 
-        public class MyModel {
+    public class MyModel {
 
-            public string MyProperty { get; set; } = "Hello There";
+        public string MyProperty { get; set; } = "Hello There";
 
-            public string MyMethod() {
-                return "Hello Where";
-            }
-
+        public string MyMethod() {
+            return "Hello Where";
         }
 
     }

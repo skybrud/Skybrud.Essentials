@@ -1,17 +1,15 @@
 ﻿using Skybrud.Essentials.Strings;
 
-namespace Skybrud.Essentials.Json.Newtonsoft.Converters.Enums {
+namespace Skybrud.Essentials.Json.Newtonsoft.Converters.Enums;
+
+/// <summary>
+/// JSON converter for serializing an enum value into a lower case string.
+/// </summary>
+public class EnumLowerCaseConverter : EnumStringConverter {
 
     /// <summary>
-    /// JSON converter for serializing an enum value into a lower case string.
+    /// Initializes a new converter with default options.
     /// </summary>
-    public class EnumLowerCaseConverter : EnumStringConverter {
-
-        /// <summary>
-        /// Initializes a new converter with default options.
-        /// </summary>
-        public EnumLowerCaseConverter() : base(TextCasing.LowerCase) { }
-
-    }
+    public EnumLowerCaseConverter() : base(TextCasing.LowerCase) { }
 
 }

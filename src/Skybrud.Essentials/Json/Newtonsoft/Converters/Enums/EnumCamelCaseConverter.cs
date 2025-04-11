@@ -1,17 +1,15 @@
 ﻿using Skybrud.Essentials.Strings;
 
-namespace Skybrud.Essentials.Json.Newtonsoft.Converters.Enums {
+namespace Skybrud.Essentials.Json.Newtonsoft.Converters.Enums;
+
+/// <summary>
+/// JSON converter for serializing an enum value into a camel cased string.
+/// </summary>
+public class EnumCamelCaseConverter : EnumStringConverter {
 
     /// <summary>
-    /// JSON converter for serializing an enum value into a camel cased string.
+    /// Initializes a new converter with default options.
     /// </summary>
-    public class EnumCamelCaseConverter : EnumStringConverter {
-
-        /// <summary>
-        /// Initializes a new converter with default options.
-        /// </summary>
-        public EnumCamelCaseConverter() : base(TextCasing.CamelCase) { }
-
-    }
+    public EnumCamelCaseConverter() : base(TextCasing.CamelCase) { }
 
 }
