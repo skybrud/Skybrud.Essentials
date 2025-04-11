@@ -108,7 +108,7 @@ namespace UnitTestProject1.Enums {
         [TestMethod]
         public void TryParseEnum() {
 
-            bool status1 = EnumUtils.TryParseEnum(null, out HttpStatusCode result1);
+            bool status1 = EnumUtils.TryParseEnum(default(string), out HttpStatusCode result1);
             bool status2 = EnumUtils.TryParseEnum("", out HttpStatusCode result2);
             bool status3 = EnumUtils.TryParseEnum("ok", out HttpStatusCode result3);
             bool status4 = EnumUtils.TryParseEnum("OK", out HttpStatusCode result4);
