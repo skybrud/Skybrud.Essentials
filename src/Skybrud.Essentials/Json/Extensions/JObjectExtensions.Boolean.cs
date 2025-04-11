@@ -13,6 +13,7 @@ public static partial class JObjectExtensions {
     /// <param name="obj">The parent object.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool GetBoolean(this JObject? obj, string path) {
         return JsonTokenUtils.ParseBoolean(obj?.SelectToken(path), false);
     }
@@ -25,6 +26,7 @@ public static partial class JObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool GetBoolean(this JObject? obj, string path, bool fallback) {
         return JsonTokenUtils.ParseBoolean(obj?.SelectToken(path), fallback);
     }
@@ -39,6 +41,7 @@ public static partial class JObjectExtensions {
     /// <param name="callback">A callback function used for parsing or converting the token value.</param>
     /// <returns>An instance of <see cref="bool"/>, or <c>false</c> if <paramref name="path"/>
     /// doesn't match a token.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T? GetBoolean<T>(this JObject? obj, string path, Func<bool, T> callback) {
         return JsonTokenUtils.TryParseBoolean(obj?.SelectToken(path), out bool result) ? callback(result) : default;
     }
@@ -50,6 +53,7 @@ public static partial class JObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool TryGetBoolean(this JObject? obj, string path, out bool result) {
         return JsonTokenUtils.TryParseBoolean(obj?.SelectToken(path), out result);
     }

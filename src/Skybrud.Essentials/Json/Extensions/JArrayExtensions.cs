@@ -16,6 +16,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static JObject? GetObject(this JArray? array, int index) {
         return array?[index] as JObject;
     }
@@ -28,6 +29,7 @@ public static partial class JArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
     /// found.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T? GetObject<T>(this JArray? array, int index) {
         if (array == null) return default;
         return array[index] is JObject child ? child.ToObject<T>() : default;
@@ -41,6 +43,7 @@ public static partial class JArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <param name="func">The delegate (callback method) used for parsing the object.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T? GetObject<T>(this JArray? array, int index, Func<JObject, T> func) {
         return array?[index] is JObject obj ? func(obj) : default;
     }
@@ -51,6 +54,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static JObject? GetObject(this JArray? array, string path) {
         return array?.SelectToken(path) as JObject;
     }
@@ -63,6 +67,7 @@ public static partial class JArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <typeparamref name="T"/>, or the default value of <typeparamref name="T"/> if not
     /// found.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T? GetObject<T>(this JArray? array, string path) {
         return array?.SelectToken(path) is JObject child ? child.ToObject<T>() : default;
     }
@@ -75,6 +80,7 @@ public static partial class JArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="func">The delegate (callback method) used for parsing the object.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T? GetObject<T>(this JArray? array, string path, Func<JObject, T> func) {
         return array?.SelectToken(path) is JObject obj ? func(obj) : default;
     }
@@ -84,6 +90,7 @@ public static partial class JArrayExtensions {
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static string? GetString(this JArray? array, int index) {
         return array?[index]?.Value<string>();
     }
@@ -95,6 +102,7 @@ public static partial class JArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="string"/>, or <c>null</c> if <paramref name="path"/> didn't match
     /// any tokens.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static string? GetString(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<string>();
     }
@@ -105,6 +113,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The array.</param>
     /// <param name="index">The index of the item holding the GUID value.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static Guid GetGuid(this JArray? array, int index) {
         return GetGuid(array, index, Guid.Empty);
     }
@@ -115,6 +124,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static Guid GetGuid(this JArray? array, string path) {
         return GetGuid(array, path, Guid.Empty);
     }
@@ -126,6 +136,7 @@ public static partial class JArrayExtensions {
     /// <param name="index">The index of the item holding the GUID value.</param>
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static Guid GetGuid(this JArray? array, int index, Guid fallback) {
 
         // Get the token at "index" (or return "fallback" if not found)
@@ -144,6 +155,7 @@ public static partial class JArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="Guid"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static Guid GetGuid(this JArray? array, string path, Guid fallback) {
 
         // Get the token at "index" (or return "fallback" if not found)
@@ -162,6 +174,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="short"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static short GetInt16(this JArray? array, int index) {
         return array?[index]?.Value<short>() ?? default;
     }
@@ -173,6 +186,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="short"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static short GetInt16(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<short>() ?? default;
     }
@@ -184,6 +198,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ushort GetUInt16(this JArray? array, int index) {
         return array?[index]?.Value<ushort>() ?? default;
     }
@@ -195,6 +210,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ushort GetUInt16(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<ushort>() ?? default;
     }
@@ -206,6 +222,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="int"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static int GetInt32(this JArray? array, int index) {
         return array?[index]?.Value<int>() ?? default;
     }
@@ -217,6 +234,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="int"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static int GetInt32(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<int>() ?? default;
     }
@@ -228,6 +246,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static uint GetUInt32(this JArray? array, int index) {
         return array?[index]?.Value<uint>() ?? default;
     }
@@ -239,6 +258,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static uint GetUInt32(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<uint>() ?? default;
     }
@@ -250,6 +270,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="long"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static long GetInt64(this JArray? array, int index) {
         return array?[index]?.Value<long>() ?? default;
     }
@@ -260,6 +281,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="System.Int64"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static long GetInt64(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<long>() ?? default;
     }
@@ -271,6 +293,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ulong GetUInt64(this JArray? array, int index) {
         return array?[index]?.Value<ulong>() ?? default;
     }
@@ -282,6 +305,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ulong GetUInt64(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<ulong>() ?? default;
     }
@@ -292,6 +316,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static double GetDouble(this JArray? array, int index) {
         return array?[index]?.Value<double>() ?? default;
     }
@@ -302,6 +327,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static double GetDouble(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<double>() ?? default;
     }
@@ -313,6 +339,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="JArray"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static JArray? GetArray(this JArray? array, int index) {
         return array?[index] as JArray;
     }
@@ -325,6 +352,7 @@ public static partial class JArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <param name="func">The delegate (callback method) used for parsing each item in the array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[]? GetArray<T>(this JArray? array, int index, Func<JObject, T> func) {
 
         if (array?[index] is not JArray property) return null;
@@ -342,6 +370,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="JArray"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static JArray? GetArray(this JArray? array, string path) {
         return array?.SelectToken(path) as JArray;
     }
@@ -355,6 +384,7 @@ public static partial class JArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="func">The delegate (callback method) used for parsing each item in the array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[]? GetArray<T>(this JArray? array, string path, Func<JObject, T> func) {
 
         if (array?.SelectToken(path) is not JArray token) return null;

@@ -1,5 +1,7 @@
 ﻿#pragma warning disable 618
 
+using System;
+
 namespace Skybrud.Essentials.Locations.Extensions;
 
 /// <summary>
@@ -12,6 +14,7 @@ public static class LocationExtensions {
     /// </summary>
     /// <param name="loc1">The first location.</param>
     /// <param name="loc2">The second location.</param>
+    [Obsolete("Use the 'IPoint' interface as well as the extension methods in the 'Skybrud.Essentials.Maps' namespace instead.")]
     public static double GetDistance(this ILocation loc1, ILocation loc2) {
         return LocationUtils.GetDistance(loc1, loc2);
     }

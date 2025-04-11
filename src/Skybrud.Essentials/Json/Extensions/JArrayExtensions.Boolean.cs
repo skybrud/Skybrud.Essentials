@@ -1,4 +1,5 @@
-﻿using Newtonsoft.Json.Linq;
+﻿using System;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 namespace Skybrud.Essentials.Json.Extensions;
@@ -11,6 +12,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool GetBoolean(this JArray? array, int index) {
         return JsonTokenUtils.ParseBoolean(array?[index], false);
     }
@@ -24,6 +26,7 @@ public static partial class JArrayExtensions {
     /// <param name="index">The index of the token.</param>
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool GetBoolean(this JArray? array, int index, bool fallback) {
         return JsonTokenUtils.ParseBoolean(array?[index], fallback);
     }
@@ -34,6 +37,7 @@ public static partial class JArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool GetBoolean(this JArray? array, string path) {
         return JsonTokenUtils.ParseBoolean(array?.SelectToken(path), false);
     }
@@ -47,6 +51,7 @@ public static partial class JArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool GetBoolean(this JArray? array, string path, bool fallback) {
         return JsonTokenUtils.ParseBoolean(array?.SelectToken(path), fallback);
     }
@@ -58,6 +63,7 @@ public static partial class JArrayExtensions {
     /// <param name="index">The index of the token.</param>
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool TryGetBoolean(this JArray? array, int index, out bool result) {
         return JsonTokenUtils.TryParseBoolean(array?[index], out result);
     }
@@ -69,6 +75,7 @@ public static partial class JArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
     /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static bool TryGetBoolean(this JArray? array, string path, out bool result) {
         return JsonTokenUtils.TryParseBoolean(array?.SelectToken(path), out result);
     }
