@@ -35,7 +35,7 @@ public partial class XPathExtensions {
     /// <param name="fallback">The fallback value.</param>
     /// <returns>The enum value.</returns>
     public static TEnum GetEnumValue<TEnum>(this XElement element, string expression, IXmlNamespaceResolver? resolver, TEnum fallback) where TEnum : struct, Enum {
-        return EnumUtils.TryParseEnum(GetStringValue(element, expression), out TEnum result) ? result : fallback;
+        return EnumUtils.TryParseEnum(GetStringValue(element, expression, resolver), out TEnum result) ? result : fallback;
     }
 
     /// <summary>
@@ -119,7 +119,7 @@ public partial class XPathExtensions {
     /// <param name="callback">The callback function used for converting the enum value to an instance of <typeparamref name="TResult"/>.</param>
     /// <returns>The converted <typeparamref name="TResult"/> value.</returns>
     public static TResult GetRequiredEnumValue<TEnum, TResult>(this XElement element, string expression, IXmlNamespaceResolver? resolver, Func<TEnum, TResult> callback) where TEnum : struct, Enum where TResult : notnull {
-        return callback(GetRequiredEnumValue<TEnum>(element, expression));
+        return callback(GetRequiredEnumValue<TEnum>(element, expression, resolver));
     }
 
     /// <summary>

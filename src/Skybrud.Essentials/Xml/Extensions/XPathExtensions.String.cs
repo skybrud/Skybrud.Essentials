@@ -189,7 +189,7 @@ public partial class XPathExtensions {
     /// <returns>The attribute or element value.</returns>
     /// <exception cref="Exception">If a matching attribute or element isn't found.</exception>
     public static string GetRequiredStringValue(this XElement element, string expression, IXmlNamespaceResolver? resolver) {
-        if (TryGetStringValue(element, expression, out string? value)) return value;
+        if (TryGetStringValue(element, expression, resolver, out string? value)) return value;
         throw XmlException.XPathExpressionNotFound(element, expression);
     }
 
