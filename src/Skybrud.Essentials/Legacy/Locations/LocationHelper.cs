@@ -2,6 +2,7 @@
 
 // ReSharper disable CheckNamespace
 
+#pragma warning disable IDE0130 // Namespace does not match file name
 namespace Skybrud.Essentials.Locations;
 
 /// <summary>

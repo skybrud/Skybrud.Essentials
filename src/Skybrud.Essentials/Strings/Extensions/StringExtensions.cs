@@ -66,7 +66,7 @@ public static partial class StringExtensions {
     /// Returns a <see cref="NameValueCollection"/> from the specified URL <paramref name="encoded"/> string.
     /// </summary>
     /// <param name="encoded">The URL encoded string.</param>
-    /// <returns>The name value colection.</returns>
+    /// <returns>The name value collection.</returns>
     public static NameValueCollection ToNameValueCollection(this string? encoded) {
         return string.IsNullOrWhiteSpace(encoded) ? [] : System.Web.HttpUtility.ParseQueryString(encoded);
     }

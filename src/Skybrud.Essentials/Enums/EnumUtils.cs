@@ -269,7 +269,7 @@ public static class EnumUtils {
     /// <param name="type">The type of the enum.</param>
     /// <param name="value">When this method returns, contains a value of type <see cref="Enum"/>. This parameter is passed uninitialized.</param>
     /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
-    public static bool TryParseEnum(string? str, Type type, out Enum value) {
+    public static bool TryParseEnum(string? str, Type type, [NotNullWhen(true)] out Enum? value) {
 
         // Check whether the specified string is NULL (or white space)
         if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
@@ -356,8 +356,7 @@ public static class EnumUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
     public static Array ParseEnumArray(string? str, Type type, char[] separators) {
-        if (string.IsNullOrWhiteSpace(str)) return ArrayUtils.Empty(type);
-        return ParseEnumArray(str!.Split(separators, StringSplitOptions.RemoveEmptyEntries), type);
+        return string.IsNullOrWhiteSpace(str) ? ArrayUtils.Empty(type) : ParseEnumArray(str!.Split(separators, StringSplitOptions.RemoveEmptyEntries), type);
     }
 
     /// <summary>
@@ -368,10 +367,10 @@ public static class EnumUtils {
     /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
     public static Array ParseEnumArray(string[] pieces, Type type) {
 
-        List<Enum> temp = new();
+        List<Enum> temp = [];
 
         foreach (string piece in pieces) {
-            if (TryParseEnum(piece, type, out Enum value)) {
+            if (TryParseEnum(piece, type, out Enum? value)) {
                 temp.Add(value);
             }
         }
@@ -443,10 +442,10 @@ public static class EnumUtils {
     /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
     public static List<Enum> ParseEnumList(IEnumerable<string> pieces, Type type) {
 
-        List<Enum> temp = new();
+        List<Enum> temp = [];
 
         foreach (string piece in pieces) {
-            if (TryParseEnum(piece, type, out Enum value)) {
+            if (TryParseEnum(piece, type, out Enum? value)) {
                 temp.Add(value);
             }
         }

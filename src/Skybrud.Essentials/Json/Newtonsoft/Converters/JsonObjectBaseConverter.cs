@@ -43,9 +43,7 @@ public class JsonObjectBaseConverter : JsonConverter {
             .GetConstructors(BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic)
             .FirstOrDefault(x => x.GetParameters().Length == 1 && x.GetParameters()[0].ParameterType == typeof(JObject));
 
-        if (constructor == null)
-            throw new JsonSerializationException(
-                $"Type {objectType} does not contain a constructor taking an instance of {typeof(JObject)}...");
+        if (constructor == null) throw new JsonSerializationException($"Type {objectType} does not contain a constructor taking an instance of {typeof(JObject)}...");
 
         JObject obj = JObject.Load(reader);
 

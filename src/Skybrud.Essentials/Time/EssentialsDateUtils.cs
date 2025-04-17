@@ -1,6 +1,4 @@
-﻿#pragma warning disable CS1591
-
-using System;
+﻿using System;
 
 namespace Skybrud.Essentials.Time;
 

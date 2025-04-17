@@ -2,6 +2,7 @@
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 
+#pragma warning disable IDE0130 // Namespace does not match file name
 // ReSharper disable CheckNamespace
 
 namespace Skybrud.Essentials.Json;

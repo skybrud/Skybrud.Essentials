@@ -1,6 +1,4 @@
-﻿#pragma warning disable 618
-
-using System;
+﻿using System;
 
 namespace Skybrud.Essentials.Locations.Extensions;
 

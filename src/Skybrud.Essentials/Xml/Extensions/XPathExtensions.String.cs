@@ -241,7 +241,7 @@ public partial class XPathExtensions {
                     return true;
                 case XElement el:
                     result = el.Value;
-                    parentType = "element";
+                    parentType = nameof(element);
                     return true;
             }
 

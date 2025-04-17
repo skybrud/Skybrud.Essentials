@@ -3,6 +3,8 @@ using System.Globalization;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Enums;
 
+#pragma warning disable CA1041
+#pragma warning disable IDE0130 // Namespace does not match file name
 // ReSharper disable CheckNamespace
 
 namespace Skybrud.Essentials.Json.Extensions;

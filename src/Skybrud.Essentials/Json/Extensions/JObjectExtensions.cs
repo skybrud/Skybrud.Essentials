@@ -31,9 +31,9 @@ public static partial class JObjectExtensions {
         return !(
             token == null
             ||
-            (token.Type == JTokenType.Array && !token.HasValues)
+            token is { Type: JTokenType.Array, HasValues: false }
             ||
-            (token.Type == JTokenType.Object && !token.HasValues)
+            token is { Type: JTokenType.Object, HasValues: false }
             ||
             (token.Type == JTokenType.String && token.ToString() == string.Empty)
             ||
@@ -507,7 +507,6 @@ public static partial class JObjectExtensions {
     }
 
     /// <summary>
-    /// Gets the items of the <see cref="JArray"/> from the token matching the specfied <paramref name="path"/>.
     /// Gets the items of the <see cref="JArray"/> from the token matching the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="obj">The instance of <see cref="JObject"/>.</param>

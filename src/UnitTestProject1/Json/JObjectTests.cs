@@ -6,6 +6,8 @@ using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Extensions;
 
+#pragma warning disable CS0618 // Type or member is obsolete
+
 // ReSharper disable UseObjectOrCollectionInitializer
 
 namespace UnitTestProject1.Json {

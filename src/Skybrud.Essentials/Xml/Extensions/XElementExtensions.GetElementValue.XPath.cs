@@ -116,7 +116,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
-    /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="int"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetElementValueAsInt32(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out int value) {
         return GetElementValue(element, expression, resolver, out value);
