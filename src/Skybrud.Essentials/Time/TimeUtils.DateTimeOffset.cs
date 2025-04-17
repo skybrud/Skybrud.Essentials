@@ -95,7 +95,7 @@ public static partial class TimeUtils {
         // Adjust to the specified time zone
         time = timeZone == null ? time : TimeZoneInfo.ConvertTime(time, timeZone);
 
-        // Adjust for dayligt savings
+        // Adjust for daylight savings
         if (time.Hour == 23) time = time.AddHours(+1);
         if (time.Hour == 01) time = time.AddHours(-1);
 
@@ -123,7 +123,7 @@ public static partial class TimeUtils {
         // Adjust to the specified time zone
         time = timeZone == null ? time : TimeZoneInfo.ConvertTime(time, timeZone);
 
-        // Adjust for dayligt savings
+        // Adjust for daylight savings
         if (time.Hour == 22) time = time.AddHours(+1);
         if (time.Hour == 00) time = time.AddHours(-1);
 
@@ -147,7 +147,7 @@ public static partial class TimeUtils {
         // Adjust to the specified time zone
         time = timeZone == null ? time : TimeZoneInfo.ConvertTime(time, timeZone);
 
-        // Adjust for dayligt savings
+        // Adjust for daylight savings
         if (time.Hour == 23) time = time.AddHours(+1);
         if (time.Hour == 01) time = time.AddHours(-1);
 
@@ -175,7 +175,7 @@ public static partial class TimeUtils {
         // Adjust to the specified time zone
         time = timeZone == null ? time : TimeZoneInfo.ConvertTime(time, timeZone);
 
-        // Adjust for dayligt savings
+        // Adjust for daylight savings
         if (time.Hour == 22) time = time.AddHours(+1);
         if (time.Hour == 00) time = time.AddHours(-1);
 
@@ -209,7 +209,7 @@ public static partial class TimeUtils {
     /// Returns a new <see cref="DateTimeOffset"/> representing the start of the quarter of the specified <paramref name="timestamp"/>.
     /// </summary>
     /// <param name="timestamp">The timestamp.</param>
-    /// <param name="timeZone">The time zone for which the reuslt should be adjusted.</param>
+    /// <param name="timeZone">The time zone for which the result should be adjusted.</param>
     /// <returns>An instance of <see cref="DateTimeOffset"/> representing the start of the quarter.</returns>
     public static DateTimeOffset GetStartOfQuarter(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
 
@@ -219,7 +219,7 @@ public static partial class TimeUtils {
         // Adjust to the specified time zone
         start = timeZone == null ? start : TimeZoneInfo.ConvertTime(start, timeZone);
 
-        // Adjust for dayligt savings
+        // Adjust for daylight savings
         if (start.Hour == 23) start = start.AddHours(+1);
         if (start.Hour == 01) start = start.AddHours(-1);
 
@@ -240,7 +240,7 @@ public static partial class TimeUtils {
     /// Returns a new <see cref="DateTimeOffset"/> representing the end of the quarter of the specified <paramref name="timestamp"/>.
     /// </summary>
     /// <param name="timestamp">The timestamp.</param>
-    /// <param name="timeZone">The time zone for which the reuslt should be adjusted.</param>
+    /// <param name="timeZone">The time zone for which the result should be adjusted.</param>
     /// <returns>An instance of <see cref="DateTimeOffset"/> representing the end of the quarter.</returns>
     public static DateTimeOffset GetEndOfQuarter(DateTimeOffset timestamp, TimeZoneInfo? timeZone) {
 
@@ -250,7 +250,7 @@ public static partial class TimeUtils {
         // Adjust to the specified time zone
         end = timeZone == null ? end : TimeZoneInfo.ConvertTime(end, timeZone);
 
-        // Adjust for dayligt savings
+        // Adjust for daylight savings
         switch (end.Hour) {
             case 22: end = end.AddHours(+1); break;
             case 00: end = end.AddHours(-1); break;

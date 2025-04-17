@@ -17,7 +17,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="float"/> value if successful; otherwise, <c>0</c>.</returns>
     public static float ParseFloat(JToken? token) {
-        return ParseFloat(token, default);
+        return ParseFloat(token, 0);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ static partial class JsonTokenUtils {
             return true;
         }
 
-        result = default;
+        result = 0;
         return false;
 
     }

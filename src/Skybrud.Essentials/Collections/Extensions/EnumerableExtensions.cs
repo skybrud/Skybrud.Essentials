@@ -162,7 +162,7 @@ public static class EnumerableExtensions {
     /// </summary>
     /// <typeparam name="TSource"></typeparam>
     /// <param name="source">The collection to be filtered.</param>
-    /// <returns>An instanced of <see cref="IEnumerable{TSource}"/> without any null values..</returns>
+    /// <returns>An instance of <see cref="IEnumerable{TSource}"/> without any null values.</returns>
     /// <see>
     ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L226</cref>
     /// </see>

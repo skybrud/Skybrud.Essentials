@@ -23,7 +23,7 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <see cref="string"/> representing the attribute value, or an empty string if
     /// a matching attribute wasn't found not found.</returns>
     public static string GetAttributeValue(this XElement element, string expression) {
-        return GetAttributeValue(element, expression, default);
+        return GetAttributeValue(element, expression, null);
     }
 
     /// <summary>
@@ -37,7 +37,7 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or an empty string if
     /// a matching attribute wasn't found not found.</returns>
     public static T GetAttributeValue<T>(this XElement? element, string expression, Func<string, T> callback) {
-        return GetAttributeValue(element, expression, default, callback);
+        return GetAttributeValue(element, expression, null, callback);
     }
 
     /// <summary>
@@ -78,7 +78,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="int"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="int"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -86,12 +86,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <see cref="int"/> representing the attribute value, or the default value
     /// of <see cref="int"/> if a matching attribute wasn't found.</returns>
     public static int GetAttributeValueAsInt32(this XElement? element, string expression) {
-        return GetAttributeValueAsInt32(element, expression, default, x => x);
+        return GetAttributeValueAsInt32(element, expression, null, x => x);
     }
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -100,12 +100,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
     /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
     public static T GetAttributeValueAsInt32<T>(this XElement? element, string expression, Func<int, T> callback) {
-        return GetAttributeValueAsInt32(element, expression, default, callback);
+        return GetAttributeValueAsInt32(element, expression, null, callback);
     }
 
     /// <summary>
     /// Gets an instance of <see cref="int"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="int"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -120,7 +120,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="int"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="int"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -133,7 +133,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="int"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="int"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -148,7 +148,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -168,7 +168,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="long"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="long"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -176,12 +176,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <see cref="long"/> representing the attribute value, or the default value
     /// of <see cref="long"/> if a matching attribute wasn't found.</returns>
     public static long GetAttributeValueAsInt64(this XElement? element, string expression) {
-        return GetAttributeValueAsInt64(element, expression, default, x => x);
+        return GetAttributeValueAsInt64(element, expression, null, x => x);
     }
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -190,12 +190,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
     /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
     public static T GetAttributeValueAsInt64<T>(this XElement? element, string expression, Func<long, T> callback) {
-        return GetAttributeValueAsInt64(element, expression, default, callback);
+        return GetAttributeValueAsInt64(element, expression, null, callback);
     }
 
     /// <summary>
     /// Gets an instance of <see cref="long"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="long"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -210,7 +210,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="long"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="long"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -223,7 +223,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="long"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="long"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -238,7 +238,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -258,7 +258,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -266,12 +266,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <see cref="float"/> representing the attribute value, or the default value
     /// of <see cref="float"/> if a matching attribute wasn't found.</returns>
     public static float GetAttributeValueAsSingle(this XElement? element, string expression) {
-        return GetAttributeValueAsSingle(element, expression, default, x => x);
+        return GetAttributeValueAsSingle(element, expression, null, x => x);
     }
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -280,12 +280,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
     /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
     public static T GetAttributeValueAsSingle<T>(this XElement? element, string expression, Func<float, T> callback) {
-        return GetAttributeValueAsSingle(element, expression, default, callback);
+        return GetAttributeValueAsSingle(element, expression, null, callback);
     }
 
     /// <summary>
     /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -300,7 +300,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -313,7 +313,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -328,7 +328,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -348,7 +348,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -361,7 +361,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -370,12 +370,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
     /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
     public static T GetAttributeValueAsDouble<T>(this XElement? element, string expression, Func<double, T> callback) {
-        return GetAttributeValueAsDouble(element, expression, default, callback);
+        return GetAttributeValueAsDouble(element, expression, null, callback);
     }
 
     /// <summary>
     /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -390,7 +390,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -403,7 +403,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -418,7 +418,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -438,7 +438,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -446,12 +446,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <see cref="bool"/> representing the attribute value, or the default value
     /// of <see cref="bool"/> if a matching attribute wasn't found.</returns>
     public static bool GetAttributeValueAsBoolean(this XElement? element, string expression) {
-        return GetAttributeValueAsBoolean(element, expression, default, x => x);
+        return GetAttributeValueAsBoolean(element, expression, null, x => x);
     }
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -460,12 +460,12 @@ public static partial class XElementExtensions {
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value, or the default value
     /// of <typeparamref name="T"/> if a matching attribute wasn't found.</returns>
     public static T GetAttributeValueAsBoolean<T>(this XElement? element, string expression, Func<bool, T> callback) {
-        return GetAttributeValueAsBoolean(element, expression, default, callback);
+        return GetAttributeValueAsBoolean(element, expression, null, callback);
     }
 
     /// <summary>
     /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -480,7 +480,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -488,12 +488,12 @@ public static partial class XElementExtensions {
     /// <param name="value">An instance of <see cref="bool"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetAttributeValueAsBoolean(this XElement? element, string expression, out bool value) {
-        return GetAttributeValueAsBoolean(element, expression, default, out value);
+        return GetAttributeValueAsBoolean(element, expression, null, out value);
     }
 
     /// <summary>
     /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
-    /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// specified XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -517,7 +517,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the specified
-    /// XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
+    /// XPath <paramref name="expression"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -539,12 +539,12 @@ public static partial class XElementExtensions {
 
     [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
     public static bool GetAttributeAsBoolean(this XElement? element, string expression) {
-        return GetAttributeValueAsBoolean(element, expression, default, x => x);
+        return GetAttributeValueAsBoolean(element, expression, null, x => x);
     }
 
     [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
     public static T GetAttributeAsBoolean<T>(this XElement? element, string expression, Func<bool, T> callback) {
-        return GetAttributeValueAsBoolean(element, expression, default, callback);
+        return GetAttributeValueAsBoolean(element, expression, null, callback);
     }
 
     [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
@@ -577,7 +577,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
     public static T GetAttributeValueAsEnum<T>(this XElement element, string expression) where T : struct {
-        return GetAttributeValueAsEnum<T>(element, expression, default(IXmlNamespaceResolver));
+        return GetAttributeValueAsEnum<T>(element, expression, null);
     }
 
     /// <summary>
@@ -591,7 +591,7 @@ public static partial class XElementExtensions {
     /// <param name="fallback">An instance of <typeparamref name="T"/> used as fallback.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
     public static T GetAttributeValueAsEnum<T>(this XElement element, string expression, T fallback) where T : struct {
-        return GetAttributeValueAsEnum(element, expression, default, fallback);
+        return GetAttributeValueAsEnum(element, expression, null, fallback);
     }
 
     /// <summary>
@@ -665,7 +665,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the attribute value.</param>
     /// <returns>An instance of <typeparamref name="TResult"/> representing the attribute value.</returns>
     public static TResult GetAttributeValue<T, TResult>(this XElement element, string expression, Func<T, TResult> callback) {
-        return GetAttributeValue(element, expression, default, callback);
+        return GetAttributeValue(element, expression, null, callback);
     }
 
     /// <summary>

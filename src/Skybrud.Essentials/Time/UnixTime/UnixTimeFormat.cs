@@ -6,12 +6,12 @@
 public enum UnixTimeFormat {
 
     /// <summary>
-    /// Indiciates that a given timestamp is or should be represented by seconds.
+    /// Indicates that a given timestamp is or should be represented by seconds.
     /// </summary>
     Seconds,
 
     /// <summary>
-    /// Indiciates that a given timestamp is or should be represented by milliseconds.
+    /// Indicates that a given timestamp is or should be represented by milliseconds.
     /// </summary>
     Milliseconds
 

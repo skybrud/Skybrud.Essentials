@@ -324,7 +324,7 @@ public static class JsonUtils {
             result = ParseJsonArray<T>(json);
             return true;
         } catch (Exception) {
-            result = default;
+            result = null;
             return false;
         }
 
@@ -350,10 +350,10 @@ public static class JsonUtils {
                 result = callback(temp);
                 return true;
             }
-            result = default;
+            result = null;
             return false;
         } catch (Exception) {
-            result = default;
+            result = null;
             return false;
         }
 

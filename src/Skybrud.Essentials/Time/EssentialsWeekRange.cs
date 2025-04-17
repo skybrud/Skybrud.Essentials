@@ -2,12 +2,12 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
-using System.Linq;
 using System.Text.RegularExpressions;
 using JetBrains.Annotations;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
+// ReSharper disable UseIndexFromEndExpression <-- can't have nice things since we still have .NET Framework 4.5 as a target framework
 // ReSharper disable RedundantSuppressNullableWarningExpression
 
 namespace Skybrud.Essentials.Time;

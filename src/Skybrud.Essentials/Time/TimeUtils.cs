@@ -20,7 +20,7 @@ public static partial class TimeUtils {
     /// <param name="year">The year of the date to compare against.</param>
     /// <param name="month">The year of the date to compare against.</param>
     /// <param name="day">The year of the date to compare against.</param>
-    /// <returns>The calculated age between thespecified date and the current date.</returns>
+    /// <returns>The calculated age between the specified date and the current date.</returns>
     public static int GetAge(DateTime then, int year, int month, int day) {
         int age = year - then.Year;
         if (month < then.Month || month == then.Month && day < then.Day) age--;

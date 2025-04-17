@@ -131,7 +131,7 @@ public static partial class TimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="date"/>. The Unix timestamp is defined as the
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="date">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
+    /// <param name="date">The instance of <see cref="DateTime"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="int"/> representing the Unix timestamp.</returns>
     [Obsolete("Use UnixTimeUtils.ToSeconds(DateTime) method instead.")]
     public static int GetUnixTimeFromDateTime(DateTime date) {
@@ -142,7 +142,7 @@ public static partial class TimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="date"/>. The Unix timestamp is defined as the
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="date">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
+    /// <param name="date">The instance of <see cref="DateTime"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     [Obsolete("Use UnixTimeUtils.ToSeconds(DateTime) method instead.")]
     public static double GetUnixTimeFromDateTimeAsDouble(DateTime date) {
@@ -157,7 +157,7 @@ public static partial class TimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="date"/>. The Unix timestamp is defined as the
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="date">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
+    /// <param name="date">The instance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="int"/> representing the Unix timestamp.</returns>
     [Obsolete("Use UnixTimeUtils.ToSeconds(DateTimeOffset) method instead.")]
     public static int GetUnixTimeFromDateTimeOffset(DateTimeOffset date) {
@@ -168,7 +168,7 @@ public static partial class TimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="date"/>. The Unix timestamp is defined as the
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="date">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
+    /// <param name="date">The instance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     [Obsolete("Use UnixTimeUtils.ToSeconds(DateTimeOffset) method instead.")]
     public static double GetUnixTimeFromDateTimeOffsetAsDouble(DateTimeOffset date) {

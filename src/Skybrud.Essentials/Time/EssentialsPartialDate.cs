@@ -32,7 +32,7 @@ public class EssentialsPartialDate {
 
     /// <summary>
     /// Gets an instance of <see cref="DateTime"/> representing the publication date. This instance will not be
-    /// realiable in the way that an instance of <see cref="DateTime"/> can't represent a partial date.
+    /// reliable in the way that an instance of <see cref="DateTime"/> can't represent a partial date.
     /// </summary>
     public DateTime DateTime { get; }
 

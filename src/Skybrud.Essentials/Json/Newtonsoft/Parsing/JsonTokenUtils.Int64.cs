@@ -17,7 +17,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted 64-bit integer value if successful; otherwise, <c>0</c>.</returns>
     public static long ParseInt64(JToken? token) {
-        return ParseInt64(token, default);
+        return ParseInt64(token, 0);
     }
 
     /// <summary>
@@ -63,7 +63,7 @@ static partial class JsonTokenUtils {
             return true;
         }
 
-        result = default;
+        result = 0;
         return false;
 
     }

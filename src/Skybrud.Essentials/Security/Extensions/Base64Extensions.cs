@@ -3,7 +3,7 @@
 namespace Skybrud.Essentials.Security.Extensions;
 
 /// <summary>
-/// Static class with variois Base64 related extension methods.
+/// Static class with various Base64 related extension methods.
 /// </summary>
 public static class Base64Extensions {
 

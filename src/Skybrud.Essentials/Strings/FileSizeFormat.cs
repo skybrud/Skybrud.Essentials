@@ -9,7 +9,7 @@ public enum FileSizeFormat {
     /// Indicates that the file size should be formatted using kibibytes (based on the power of 2), but using units
     /// like <c>KB</c>, <c>MB</c> etc.
     ///
-    /// Teachnically this is wrong as 1 kibibyte (1024 bytes) should use the unit <c>KiB</c>, as <c>KB</c> refers
+    /// Technically this is wrong as 1 kibibyte (1024 bytes) should use the unit <c>KiB</c>, as <c>KB</c> refers
     /// to kilobytes. But <c>KB</c> is commonly used to represent kibibytes, thereby causing some ambiguity.
     /// </summary>
     Default,

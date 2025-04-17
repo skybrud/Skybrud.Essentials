@@ -4,12 +4,12 @@ using Skybrud.Essentials.Time.Iso8601;
 namespace Skybrud.Essentials.Time;
 
 /// <summary>
-/// Class with varius time related constants.
+/// Class with various time related constants.
 /// </summary>
 public static class TimeConstants {
 
     /// <summary>
-    /// Class with varius constants related to date and time.
+    /// Class with various constants related to date and time.
     /// </summary>
     public static class DateAndTime {
 

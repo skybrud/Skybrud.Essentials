@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
-using Newtonsoft.Json;
 using Skybrud.Essentials.Time.Iso8601;
 
 namespace Skybrud.Essentials.Time.Extensions;

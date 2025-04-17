@@ -64,7 +64,7 @@ static partial class JsonTokenUtils {
             return true;
         }
 
-        result = default;
+        result = false;
         return false;
 
     }

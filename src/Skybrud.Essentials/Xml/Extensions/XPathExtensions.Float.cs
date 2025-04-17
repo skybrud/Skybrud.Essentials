@@ -67,13 +67,13 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the <typeparamref name="TResult"/> value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element isn't found, or the value can not be
-    /// converted to first a single-pprecision floating point number, the default value of
+    /// converted to first a single-precision floating point number, the default value of
     /// <typeparamref name="TResult"/> is returned instead.
     /// </summary>
     /// <typeparam name="TResult">The type to convert to.</typeparam>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
-    /// <param name="callback">A callback function used for converting the single-pprecision floating point number to <typeparamref name="TResult"/>.</param>
+    /// <param name="callback">A callback function used for converting the single-precision floating point number to <typeparamref name="TResult"/>.</param>
     /// <returns>An instance of <typeparamref name="TResult"/> if successful; otherwise, the default value of <typeparamref name="TResult"/>.</returns>
     public static TResult? GetFloatValue<TResult>(this XElement element, string expression, Func<float, TResult> callback) {
         return StringUtils.TryParseFloat(GetStringValue(element, expression), out float result) ? callback(result) : default;
@@ -82,14 +82,14 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the <typeparamref name="TResult"/> value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element isn't found, or the value can not be
-    /// converted to first a single-pprecision floating point number, the default value of
+    /// converted to first a single-precision floating point number, the default value of
     /// <typeparamref name="TResult"/> is returned instead.
     /// </summary>
     /// <typeparam name="TResult">The type to convert to.</typeparam>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes in the XPath expression.</param>
-    /// <param name="callback">A callback function used for converting the single-pprecision floating point number to <typeparamref name="TResult"/>.</param>
+    /// <param name="callback">A callback function used for converting the single-precision floating point number to <typeparamref name="TResult"/>.</param>
     /// <returns>An instance of <typeparamref name="TResult"/> if successful; otherwise, the default value of <typeparamref name="TResult"/>.</returns>
     public static TResult? GetFloatValue<TResult>(this XElement element, string expression, IXmlNamespaceResolver? resolver, Func<float, TResult> callback) {
         return StringUtils.TryParseFloat(GetStringValue(element, expression, resolver), out float result) ? callback(result) : default;

@@ -115,7 +115,7 @@ public static class UnixTimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="timestamp">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
+    /// <param name="timestamp">The instance of <see cref="DateTime"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     public static double ToSeconds(DateTime timestamp) {
         return (timestamp.ToUniversalTime() - DateTimeUnixTimeStartUtc).TotalSeconds;
@@ -125,7 +125,7 @@ public static class UnixTimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="timestamp">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
+    /// <param name="timestamp">The instance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     public static double ToSeconds(DateTimeOffset timestamp) {
         return (timestamp.ToUniversalTime() - DateTimeOffsetUnixTimeStartUtc).TotalSeconds;
@@ -135,7 +135,7 @@ public static class UnixTimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
     /// amount of milliseconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="timestamp">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
+    /// <param name="timestamp">The instance of <see cref="DateTime"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     public static double ToMilliseconds(DateTime timestamp) {
         return (timestamp.ToUniversalTime() - DateTimeUnixTimeStartUtc).TotalMilliseconds;
@@ -145,7 +145,7 @@ public static class UnixTimeUtils {
     /// Returns the Unix timestamp for the specified <paramref name="timestamp"/>. The Unix timestamp is defined as the
     /// amount of milliseconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <param name="timestamp">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
+    /// <param name="timestamp">The instance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
     /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     public static double ToMilliseconds(DateTimeOffset timestamp) {
         return (timestamp.ToUniversalTime() - DateTimeOffsetUnixTimeStartUtc).TotalMilliseconds;

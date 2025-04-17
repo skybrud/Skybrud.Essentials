@@ -17,7 +17,7 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted <see cref="double"/> value if successful; otherwise, <c>0</c>.</returns>
     public static double ParseDouble(JToken? token) {
-        return ParseDouble(token, default);
+        return ParseDouble(token, 0);
     }
 
     /// <summary>
@@ -56,7 +56,7 @@ static partial class JsonTokenUtils {
             return true;
         }
 
-        result = default;
+        result = 0;
         return false;
 
     }

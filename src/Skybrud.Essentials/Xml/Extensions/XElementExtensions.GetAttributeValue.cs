@@ -46,7 +46,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="int"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="int"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -59,7 +59,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="int"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="int"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -72,7 +72,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -90,7 +90,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="long"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="long"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -103,7 +103,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="long"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="long"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -116,7 +116,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -134,7 +134,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -147,7 +147,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -160,7 +160,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -178,7 +178,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -191,7 +191,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -204,7 +204,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -222,7 +222,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
@@ -235,7 +235,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
@@ -257,7 +257,7 @@ public static partial class XElementExtensions {
 
     /// <summary>
     /// Gets an instance of <typeparamref name="T"/> representing the value of the attribute matching the
-    /// specified <paramref name="name"/>. If a matching attribute ins't found, the default value of
+    /// specified <paramref name="name"/>. If a matching attribute isn't found, the default value of
     /// <typeparamref name="T"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>

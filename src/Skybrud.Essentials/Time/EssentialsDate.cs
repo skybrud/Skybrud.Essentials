@@ -266,7 +266,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <param name="obj">The object to compare.</param>
     /// <returns>Whether this <see cref="EssentialsDate"/> equals the specified <paramref name="obj"/>.</returns>
     public override bool Equals(object? obj) {
-        if (ReferenceEquals(null, obj)) return false;
+        if (obj is null) return false;
         if (ReferenceEquals(this, obj)) return true;
         return obj is EssentialsDate date && Equals(date);
     }

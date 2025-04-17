@@ -27,7 +27,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     public bool IsLeapYear => TimeUtils.IsLeapYear(Year);
 
     /// <summary>
-    /// Gets the amount of days in the yeay - <c>366</c> if <see cref="IsLeapYear"/> is <c>true</c>,
+    /// Gets the amount of days in the year - <c>366</c> if <see cref="IsLeapYear"/> is <c>true</c>,
     /// otherwise <c>365</c>.
     /// </summary>
     public int Days => IsLeapYear ? 366 : 365;
@@ -64,13 +64,21 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     public DateTime PalmSunday => CalendarUtils.GetPalmSunday(Year);
 
     /// <summary>
-    /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before
-    /// <strong>Easter</strong>.
+    /// Gets the date of <strong>Maundy Thursday</strong>, which falls on the Thursday before <strong>Easter</strong>.
     /// </summary>
     /// <see>
     ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
     /// </see>
-    public DateTime GetMoundyThursday => CalendarUtils.GetMoundyThursday(Year);
+    public DateTime GetMaundyThursday => CalendarUtils.GetMaundyThursday(Year);
+
+    /// <summary>
+    /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before <strong>Easter</strong>.
+    /// </summary>
+    /// <see>
+    ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
+    /// </see>
+    [Obsolete("Method name is spelled incorrectly. Use the 'GetMaundyThursday' method instead.")]
+    public DateTime GetMoundyThursday => CalendarUtils.GetMaundyThursday(Year);
 
     /// <summary>
     /// Gets the date of <strong>Good Friday</strong>, which falls on the Friday before <strong>Easter</strong>.
@@ -121,7 +129,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
 
     /// <summary>
     /// Gets the date of <strong>Ascension Day</strong>, which is celebrated on a Thursday, the fortieth day of
-    /// <strong>Easter</strong> (the 6th Thursday after <strong>Moundy Thursday</strong>).
+    /// <strong>Easter</strong> (the 6th Thursday after <strong>Maundy Thursday</strong>).
     /// </summary>
     /// <see>
     ///     <cref>https://en.wikipedia.org/wiki/Feast_of_the_Ascension</cref>
@@ -384,7 +392,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     /// <param name="obj">The object to compare.</param>
     /// <returns>Whether this <see cref="EssentialsYear"/> equals the specified <paramref name="obj"/>.</returns>
     public override bool Equals(object? obj) {
-        if (ReferenceEquals(null, obj)) return false;
+        if (obj is null) return false;
         if (ReferenceEquals(this, obj)) return true;
         return obj is EssentialsYear month && Equals(month);
     }
