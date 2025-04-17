@@ -944,7 +944,7 @@ public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, 
     /// </summary>
     /// <param name="str">The string to be parsed.</param>
     /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-    [return: NotNullIfNotNull("str")]
+    [return: NotNullIfNotNull(nameof(str))]
     public static EssentialsDateTime? Parse(string? str) {
         return string.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(DateTime.Parse(str));
     }
@@ -1045,7 +1045,7 @@ public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, 
     /// </summary>
     /// <param name="str">The <strong>ISO 8601</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-    [return: NotNullIfNotNull("str")]
+    [return: NotNullIfNotNull(nameof(str))]
     public static EssentialsDateTime? FromIso8601(string? str) {
         return string.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(TimeUtils.Iso8601ToDateTime(str!));
     }
@@ -1075,7 +1075,7 @@ public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, 
     /// </summary>
     /// <param name="str">The <strong>RFC 2822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-    [return: NotNullIfNotNull("str")]
+    [return: NotNullIfNotNull(nameof(str))]
     public static EssentialsDateTime? FromRfc2822(string? str) {
         return string.IsNullOrWhiteSpace(str) ? null : new EssentialsDateTime(TimeUtils.Rfc822ToDateTime(str!));
     }

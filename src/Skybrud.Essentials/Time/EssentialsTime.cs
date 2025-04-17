@@ -1052,7 +1052,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="input">The input string to be parsed.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsTime? Parse(string? input) {
 
         // Is "input" an empty string?
@@ -1072,7 +1072,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="input">The input string to be parsed.</param>
     /// <param name="provider">An object that provides culture-specific format information about input.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsTime? Parse(string? input, IFormatProvider? provider) {
 
         // Is "input" an empty string?
@@ -1093,7 +1093,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="provider">An object that provides culture-specific format information about input.</param>
     /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsTime? Parse(string? input, IFormatProvider? provider, DateTimeStyles styles) {
 
         // Is "input" an empty string?
@@ -1317,7 +1317,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="value">The <strong>ISO 8601</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull("value")]
+    [return: NotNullIfNotNull(nameof(value))]
     public static EssentialsTime? FromIso8601(string? value) {
         return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Iso8601Utils.Parse(value));
     }
@@ -1359,7 +1359,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="str">The <strong>RFC 822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull("str")]
+    [return: NotNullIfNotNull(nameof(str))]
     public static EssentialsTime? FromRfc822(string? str) {
         return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc822Utils.Parse(str));
     }
@@ -1369,7 +1369,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="str">The <strong>RFC 2822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull("str")]
+    [return: NotNullIfNotNull(nameof(str))]
     public static EssentialsTime? FromRfc2822(string? str) {
         return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc2822Utils.Parse(str));
     }

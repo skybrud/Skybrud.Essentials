@@ -339,7 +339,7 @@ public static class DateTimeOffsetExtensions {
     /// </summary>
     /// <param name="value">The <see cref="DateTimeOffset"/> value.</param>
     /// <returns>An ISO 8601 formatted string, or <see langword="null"/> if <paramref name="value"/> is <see langword="null"/>.</returns>
-    [return: NotNullIfNotNull("value")]
+    [return: NotNullIfNotNull(nameof(value))]
     public static string? ToIso8601(this DateTimeOffset? value) {
         return value is null ? null : Iso8601Utils.ToString(value.Value);
     }

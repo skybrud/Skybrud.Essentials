@@ -163,7 +163,7 @@ public class EssentialsPartialDate {
     /// </summary>
     /// <param name="input">A string that contains the partial date to convert.</param>
     /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsPartialDate? Parse(string? input) {
         if (string.IsNullOrWhiteSpace(input)) return null;
         if (TryParse(input, out EssentialsPartialDate? date)) return date;
@@ -178,7 +178,7 @@ public class EssentialsPartialDate {
     /// <param name="provider">An object that supplies culture-specific formatting information about
     /// <paramref name="input"/>.</param>
     /// <returns>An instance of <see cref="EssentialsPartialDate"/> representing the converted partial date.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsPartialDate? Parse(string? input, IFormatProvider? provider) {
         if (string.IsNullOrWhiteSpace(input)) return null;
         if (TryParse(input, provider, out EssentialsPartialDate? date)) return date;

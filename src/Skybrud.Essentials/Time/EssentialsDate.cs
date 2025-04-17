@@ -466,7 +466,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="input">A string that contains a date to convert.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsDate? Parse(string? input) {
 
         // Is "input" an empty string?
@@ -487,7 +487,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <param name="input">A string that contains a date to convert.</param>
     /// <param name="provider">An object that supplies culture-specific format information about <paramref name="input"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsDate? Parse(string? input, IFormatProvider? provider) {
 
         // Is "input" an empty string?
@@ -512,7 +512,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// interpret the parsed date in relation to the current time zone or the current date. A typical value to
     /// specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/> and <paramref name="styles"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsDate? Parse(string? input, IFormatProvider? provider, DateTimeStyles styles) {
 
         // Is "input" an empty string?
@@ -537,7 +537,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <paramref name="input"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
     /// <paramref name="format"/> and <paramref name="provider"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsDate? ParseExact(string? input, string format, IFormatProvider? provider) {
 
         // Is "input" an empty string?
@@ -565,7 +565,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// to specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
     /// <paramref name="format"/>, <paramref name="provider"/>, and <paramref name="styles"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsDate? ParseExact(string? input, string format, IFormatProvider? provider, DateTimeStyles styles) {
 
         // Is "input" an empty string?
@@ -591,7 +591,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <paramref name="input"/>. A typical value to specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
     /// <paramref name="formats"/>, <paramref name="provider"/>, and <paramref name="styles"/>.</returns>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static EssentialsDate? ParseExact(string? input, string[] formats, IFormatProvider? provider, DateTimeStyles styles) {
 
         // Is "input" an empty string?

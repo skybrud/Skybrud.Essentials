@@ -344,7 +344,7 @@ public static partial class StringExtensions {
     /// <see>
     ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.globalization.textinfo.totitlecase</cref>
     /// </see>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static string? ToTitleCase(this string? input) {
         return ToTitleCase(input, CultureInfo.InvariantCulture);
     }
@@ -358,7 +358,7 @@ public static partial class StringExtensions {
     /// <see>
     ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.globalization.textinfo.totitlecase</cref>
     /// </see>
-    [return: NotNullIfNotNull("input")]
+    [return: NotNullIfNotNull(nameof(input))]
     public static string? ToTitleCase(this string? input, CultureInfo culture) {
         return string.IsNullOrWhiteSpace(input) ? input : culture.TextInfo.ToTitleCase(input);
     }

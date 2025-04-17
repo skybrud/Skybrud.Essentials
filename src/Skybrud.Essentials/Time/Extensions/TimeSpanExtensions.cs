@@ -23,7 +23,7 @@ public static class TimeSpanExtensions {
     /// </summary>
     /// <param name="value">The <see cref="TimeSpan"/> value.</param>
     /// <returns>An ISO 8601 formatted string, or <see langword="null"/> if <paramref name="value"/> is <see langword="null"/>.</returns>
-    [return: NotNullIfNotNull("value")]
+    [return: NotNullIfNotNull(nameof(value))]
     public static string? ToIso8601(this TimeSpan? value) {
         return value is null ? null : Iso8601Utils.ToString(value.Value);
     }

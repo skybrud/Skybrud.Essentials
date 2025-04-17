@@ -18,7 +18,7 @@ public class EssentialsPeriod {
     /// <summary>
     /// Gets whether the <see cref="Start"/> property has a value.
     /// </summary>
-    [MemberNotNullWhen(true, "Start")]
+    [MemberNotNullWhen(true, nameof(Start))]
     public bool HasStart => Start is not null;
 
     /// <summary>
@@ -29,7 +29,7 @@ public class EssentialsPeriod {
     /// <summary>
     /// Gets whether the <see cref="End"/> property has a value.
     /// </summary>
-    [MemberNotNullWhen(true, "End")]
+    [MemberNotNullWhen(true, nameof(End))]
     public bool HasEnd => End is not null;
 
     #endregion

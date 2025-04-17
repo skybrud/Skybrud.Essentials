@@ -180,7 +180,7 @@ public static class EnumerableExtensions {
     public static IEnumerable Cast(this IEnumerable source, Type targetType) {
         return (IEnumerable) typeof(Enumerable)
             .GetTypeInfo()
-            .GetDeclaredMethod("Cast")!
+            .GetDeclaredMethod(nameof(Cast))!
             .MakeGenericMethod(targetType)
             .Invoke(null, new object[] { source })!;
     }
@@ -194,7 +194,7 @@ public static class EnumerableExtensions {
     public static IList ToList(this IEnumerable source, Type targetType) {
         return (IList) typeof(Enumerable)
             .GetTypeInfo()
-            .GetDeclaredMethod("ToList")!
+            .GetDeclaredMethod(nameof(ToList))!
             .MakeGenericMethod(targetType)
             .Invoke(null, new object[] { source })!;
     }
@@ -208,7 +208,7 @@ public static class EnumerableExtensions {
     public static Array ToArray(this IEnumerable source, Type targetType) {
         return (Array) typeof(Enumerable)
             .GetTypeInfo()
-            .GetDeclaredMethod("ToArray")!
+            .GetDeclaredMethod(nameof(ToArray))!
             .MakeGenericMethod(targetType)
             .Invoke(null, new object[] { source })!;
     }

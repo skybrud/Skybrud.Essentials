@@ -70,7 +70,7 @@ public static partial class XElementExtensions {
     /// <see>
     ///     <cref>https://stackoverflow.com/a/1704579</cref>
     /// </see>
-    [return: NotNullIfNotNull("element")]
+    [return: NotNullIfNotNull(nameof(element))]
     public static string? GetOuterXml(this XElement? element) {
         return element is null ? null : XmlUtils.GetOuterXml(element);
     }
@@ -83,7 +83,7 @@ public static partial class XElementExtensions {
     /// <see>
     ///     <cref>https://stackoverflow.com/a/1704579</cref>
     /// </see>
-    [return: NotNullIfNotNull("element")]
+    [return: NotNullIfNotNull(nameof(element))]
     public static string? GetInnerXml(this XElement? element) {
         return element is null ? null : XmlUtils.GetInnerXml(element);
     }

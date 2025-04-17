@@ -19,7 +19,7 @@ public static class ArrayUtils {
     public static Array Empty(Type type) {
         return (Array) typeof(ArrayUtils)
             .GetTypeInfo()
-            .GetDeclaredMethods("Empty")
+            .GetDeclaredMethods(nameof(Empty))
             .First(x => x.GetParameters().Length == 0)
             .MakeGenericMethod(type)
             .Invoke(null, null)!;
