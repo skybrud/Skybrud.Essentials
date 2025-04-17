@@ -198,7 +198,7 @@ public static class SecurityUtils {
     /// <returns>The hash as a 64-character hexadecimal number.</returns>
     public static string GetSha256Hash(string input, HexFormat format) {
         using SHA256 sha256 = SHA256.Create();
-        return GetHash(sha256, input);
+        return GetHash(sha256, input, format);
     }
 
     /// <summary>
@@ -221,7 +221,7 @@ public static class SecurityUtils {
     /// <returns>The hash as a 64-character hexadecimal number.</returns>
     public static string GetSha256Hash(string input, HexFormat format, Encoding encoding) {
         using SHA256 sha256 = SHA256.Create();
-        return GetHash(sha256, input, encoding);
+        return GetHash(sha256, input, format, encoding);
     }
 
     /// <summary>
