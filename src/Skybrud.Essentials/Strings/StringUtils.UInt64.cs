@@ -27,7 +27,7 @@ public static partial class StringUtils {
     /// <param name="input">The string to be converted.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     public static ulong ParseUInt64(string? input) {
-        return TryParseUInt64(input, out ulong result) ? result : default;
+        return TryParseUInt64(input, out ulong result) ? result : 0;
     }
 
     /// <summary>

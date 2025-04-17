@@ -27,7 +27,7 @@ public static partial class StringUtils {
     /// <param name="input">The string to be converted.</param>
     /// <returns>An instance of <see cref="int"/>.</returns>
     public static int ParseInt32(string? input) {
-        return TryParseInt32(input, out int value) ? value : default;
+        return TryParseInt32(input, out int value) ? value : 0;
     }
 
     /// <summary>

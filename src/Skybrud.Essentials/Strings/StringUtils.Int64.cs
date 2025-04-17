@@ -27,7 +27,7 @@ public static partial class StringUtils {
     /// <param name="input">The string to be converted.</param>
     /// <returns>An instance of <see cref="long"/>.</returns>
     public static long ParseInt64(string? input) {
-        return TryParseInt64(input, out long result) ? result : default;
+        return TryParseInt64(input, out long result) ? result : 0;
     }
 
     /// <summary>

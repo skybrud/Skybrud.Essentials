@@ -27,7 +27,7 @@ public static partial class StringUtils {
     /// <param name="input">The string to be converted.</param>
     /// <returns>An instance of <see cref="float"/>.</returns>
     public static float ParseFloat(string? input) {
-        return TryParseFloat(input, out float value) ? value : default;
+        return TryParseFloat(input, out float value) ? value : 0;
     }
 
     /// <summary>

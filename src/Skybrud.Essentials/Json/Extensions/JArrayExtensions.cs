@@ -176,7 +176,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="short"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static short GetInt16(this JArray? array, int index) {
-        return array?[index]?.Value<short>() ?? default;
+        return array?[index]?.Value<short>() ?? 0;
     }
 
     /// <summary>
@@ -188,7 +188,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="short"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static short GetInt16(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<short>() ?? default;
+        return array?.SelectToken(path)?.Value<short>() ?? 0;
     }
 
     /// <summary>
@@ -200,7 +200,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ushort GetUInt16(this JArray? array, int index) {
-        return array?[index]?.Value<ushort>() ?? default;
+        return array?[index]?.Value<ushort>() ?? 0;
     }
 
     /// <summary>
@@ -212,7 +212,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ushort GetUInt16(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<ushort>() ?? default;
+        return array?.SelectToken(path)?.Value<ushort>() ?? 0;
     }
 
     /// <summary>
@@ -224,7 +224,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="int"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static int GetInt32(this JArray? array, int index) {
-        return array?[index]?.Value<int>() ?? default;
+        return array?[index]?.Value<int>() ?? 0;
     }
 
     /// <summary>
@@ -236,7 +236,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="int"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static int GetInt32(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<int>() ?? default;
+        return array?.SelectToken(path)?.Value<int>() ?? 0;
     }
 
     /// <summary>
@@ -248,7 +248,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="uint"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static uint GetUInt32(this JArray? array, int index) {
-        return array?[index]?.Value<uint>() ?? default;
+        return array?[index]?.Value<uint>() ?? 0;
     }
 
     /// <summary>
@@ -260,7 +260,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="uint"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static uint GetUInt32(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<uint>() ?? default;
+        return array?.SelectToken(path)?.Value<uint>() ?? 0;
     }
 
     /// <summary>
@@ -272,7 +272,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="long"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static long GetInt64(this JArray? array, int index) {
-        return array?[index]?.Value<long>() ?? default;
+        return array?[index]?.Value<long>() ?? 0;
     }
 
     /// <summary>
@@ -283,7 +283,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="long"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static long GetInt64(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<long>() ?? default;
+        return array?.SelectToken(path)?.Value<long>() ?? 0;
     }
 
     /// <summary>
@@ -295,7 +295,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ulong GetUInt64(this JArray? array, int index) {
-        return array?[index]?.Value<ulong>() ?? default;
+        return array?[index]?.Value<ulong>() ?? 0;
     }
 
     /// <summary>
@@ -307,7 +307,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static ulong GetUInt64(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<ulong>() ?? default;
+        return array?.SelectToken(path)?.Value<ulong>() ?? 0;
     }
 
     /// <summary>
@@ -318,7 +318,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="double"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static double GetDouble(this JArray? array, int index) {
-        return array?[index]?.Value<double>() ?? default;
+        return array?[index]?.Value<double>() ?? 0;
     }
 
     /// <summary>
@@ -329,7 +329,7 @@ public static partial class JArrayExtensions {
     /// <returns>An instance of <see cref="double"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static double GetDouble(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<double>() ?? default;
+        return array?.SelectToken(path)?.Value<double>() ?? 0;
     }
 
     /// <summary>

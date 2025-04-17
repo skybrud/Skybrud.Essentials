@@ -21,7 +21,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <see cref="string"/> representing the element value.</returns>
     public static string GetElementValue(this XElement? element, string expression) {
-        return GetElementValue(element, expression, default);
+        return GetElementValue(element, expression, null);
     }
 
     /// <summary>
@@ -34,7 +34,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the element value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValue<T>(this XElement? element, string expression, Func<string, T> callback) {
-        return GetElementValue(element, expression, default, callback);
+        return GetElementValue(element, expression, null, callback);
     }
 
     /// <summary>
@@ -79,7 +79,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <see cref="int"/> representing the element value.</returns>
     public static int GetElementValueAsInt32(this XElement? element, string expression) {
-        return GetElementValueAsInt32(element, expression, default, x => x);
+        return GetElementValueAsInt32(element, expression, null, x => x);
     }
 
     /// <summary>
@@ -92,7 +92,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the integer value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsInt32<T>(this XElement? element, string expression, Func<int, T> callback) {
-        return GetElementValueAsInt32(element, expression, default, callback);
+        return GetElementValueAsInt32(element, expression, null, callback);
     }
 
     /// <summary>
@@ -149,7 +149,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <see cref="long"/> representing the element value.</returns>
     public static long GetElementValueAsInt64(this XElement? element, string expression) {
-        return GetElementValueAsInt64(element, expression, default, x => x);
+        return GetElementValueAsInt64(element, expression, null, x => x);
     }
 
     /// <summary>
@@ -162,7 +162,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the long value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsInt64<T>(this XElement? element, string expression, Func<long, T> callback) {
-        return GetElementValueAsInt64(element, expression, default, callback);
+        return GetElementValueAsInt64(element, expression, null, callback);
     }
 
     /// <summary>
@@ -219,7 +219,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <see cref="float"/> representing the element value.</returns>
     public static float GetElementValueAsSingle(this XElement? element, string expression) {
-        return GetElementValueAsSingle(element, expression, default, x => x);
+        return GetElementValueAsSingle(element, expression, null, x => x);
     }
 
     /// <summary>
@@ -232,7 +232,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the float value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsSingle<T>(this XElement? element, string expression, Func<float, T> callback) {
-        return GetElementValueAsSingle(element, expression, default, callback);
+        return GetElementValueAsSingle(element, expression, null, callback);
     }
 
     /// <summary>
@@ -289,7 +289,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <see cref="float"/> representing the element value.</returns>
     public static float GetElementValueAsFloat(this XElement? element, string expression) {
-        return GetElementValueAsSingle(element, expression, default, x => x);
+        return GetElementValueAsSingle(element, expression, null, x => x);
     }
 
     /// <summary>
@@ -302,7 +302,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the float value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsFloat<T>(this XElement? element, string expression, Func<float, T> callback) {
-        return GetElementValueAsSingle(element, expression, default, callback);
+        return GetElementValueAsSingle(element, expression, null, callback);
     }
 
     /// <summary>
@@ -359,7 +359,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <see cref="double"/> representing the element value.</returns>
     public static double GetElementValueAsDouble(this XElement? element, string expression) {
-        return GetElementValueAsDouble(element, expression, default, x => x);
+        return GetElementValueAsDouble(element, expression, null, x => x);
     }
 
     /// <summary>
@@ -372,7 +372,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the double value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsDouble<T>(this XElement? element, string expression, Func<double, T> callback) {
-        return GetElementValueAsDouble(element, expression, default, callback);
+        return GetElementValueAsDouble(element, expression, null, callback);
     }
 
     /// <summary>
@@ -429,7 +429,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <see cref="bool"/> representing the element value.</returns>
     public static bool GetElementValueAsBoolean(this XElement? element, string expression) {
-        return GetElementValueAsBoolean(element, expression, default, x => x);
+        return GetElementValueAsBoolean(element, expression, null, x => x);
     }
 
     /// <summary>
@@ -442,7 +442,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the boolean value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsBoolean<T>(this XElement? element, string expression, Func<bool, T> callback) {
-        return GetElementValueAsBoolean(element, expression, default, callback);
+        return GetElementValueAsBoolean(element, expression, null, callback);
     }
 
     /// <summary>
@@ -504,12 +504,12 @@ public static partial class XElementExtensions {
 
     [Obsolete("Use the GetElementValueAsBoolean method instead.")]
     public static bool GetElementAsBoolean(this XElement? element, string expression) {
-        return GetElementAsBoolean(element, expression, default, x => x);
+        return GetElementAsBoolean(element, expression, null, x => x);
     }
 
     [Obsolete("Use the GetElementValueAsBoolean method instead.")]
     public static T GetElementAsBoolean<T>(this XElement? element, string expression, Func<bool, T> callback) {
-        return GetElementAsBoolean(element, expression, default, callback);
+        return GetElementAsBoolean(element, expression, null, callback);
     }
 
     [Obsolete("Use the GetElementValueAsBoolean method instead.")]
@@ -551,7 +551,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsEnum<T>(this XElement? element, string expression) where T : struct {
-        return GetElementValueAsEnum<T>(element, expression, default(IXmlNamespaceResolver));
+        return GetElementValueAsEnum<T>(element, expression, null);
     }
 
     /// <summary>
@@ -565,7 +565,7 @@ public static partial class XElementExtensions {
     /// <param name="fallback">An instance of <typeparamref name="T"/> used as fallback.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the element value.</returns>
     public static T GetElementValueAsEnum<T>(this XElement? element, string expression, T fallback) where T : struct {
-        return GetElementValueAsEnum(element, expression, default, fallback);
+        return GetElementValueAsEnum(element, expression, null, fallback);
     }
 
     /// <summary>
@@ -584,7 +584,7 @@ public static partial class XElementExtensions {
         XElement? child = GetElement(element, expression, resolver);
 
         // Convert the element value to the type of T
-        return child == null ? default(T) : EnumUtils.ParseEnum<T>(child.Value);
+        return child == null ? default : EnumUtils.ParseEnum<T>(child.Value);
 
     }
 
@@ -639,7 +639,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">The callback method used for converting the element value.</param>
     /// <returns>An instance of <typeparamref name="TResult"/> representing the element value.</returns>
     public static TResult GetElementValue<T, TResult>(this XElement? element, string expression, Func<T, TResult> callback) {
-        return GetElementValue(element, expression, default, callback);
+        return GetElementValue(element, expression, null, callback);
     }
 
     /// <summary>

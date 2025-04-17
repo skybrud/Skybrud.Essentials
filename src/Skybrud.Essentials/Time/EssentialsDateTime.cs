@@ -583,7 +583,7 @@ public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, 
     /// parameter.</returns>
     public int CompareTo(EssentialsDateTime? value) {
 #if NET_FRAMEWORK
-            return DateTime.CompareTo(value == null ? default(object) : value.DateTime);
+            return DateTime.CompareTo(value?.DateTime);
 #else
         throw new NotImplementedException();
 #endif

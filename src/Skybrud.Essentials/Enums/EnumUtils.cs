@@ -278,7 +278,7 @@ public static class EnumUtils {
         if (IsEnum(type) == false) throw new ArgumentException("Specified type must be an enum.");
 
         // Initialize "value"
-        value = default!;
+        value = null!;
 
         // Check whether the specified string is NULL (or white space)
         if (string.IsNullOrWhiteSpace(str)) return false;

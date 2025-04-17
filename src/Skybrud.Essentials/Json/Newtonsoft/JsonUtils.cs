@@ -379,10 +379,10 @@ public static class JsonUtils {
                 result = [.. temp.OfType<JObject>().Select(callback)];
                 return true;
             }
-            result = default;
+            result = null;
             return false;
         } catch (Exception) {
-            result = default;
+            result = null;
             return false;
         }
 

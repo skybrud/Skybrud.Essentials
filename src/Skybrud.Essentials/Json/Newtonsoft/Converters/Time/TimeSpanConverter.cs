@@ -127,7 +127,7 @@ public class TimeSpanConverter : JsonConverter {
                 value = d;
                 break;
             default:
-                return objectType == typeof(TimeSpan?) ? null : default(TimeSpan);
+                return objectType == typeof(TimeSpan?) ? null : TimeSpan.Zero;
         }
 
         // Handle the various formats
@@ -146,7 +146,7 @@ public class TimeSpanConverter : JsonConverter {
         string value = (string) reader.Value;
 
         // If null, empty or white space we return the default value
-        if (string.IsNullOrWhiteSpace(value)) return objectType == typeof(TimeSpan?) ? null : default(TimeSpan);
+        if (string.IsNullOrWhiteSpace(value)) return objectType == typeof(TimeSpan?) ? null : TimeSpan.Zero;
 
         // If the string value starts with a P, we assume it's an ISO 8601 duration string
         if (value[0] is 'P') return Iso8601Utils.ParseDuration(value);

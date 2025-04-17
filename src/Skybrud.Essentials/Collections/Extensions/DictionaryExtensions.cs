@@ -19,7 +19,7 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="bool"/> value if successful; otherwise, <see langword="false"/>.</returns>
     public static bool GetBoolean(this IDictionary<object, object?>? dictionary, object key) {
-        return TryGetBoolean(dictionary, key, out bool value) ? value : default;
+        return TryGetBoolean(dictionary, key, out bool value) && value;
     }
 
     /// <summary>
@@ -31,7 +31,7 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="bool"/> value if successful; otherwise, <see langword="null"/>.</returns>
     public static bool? GetBooleanOrNull(this IDictionary<object, object?>? dictionary, object key) {
-        return TryGetBoolean(dictionary, key, out bool? value) ? value : default;
+        return TryGetBoolean(dictionary, key, out bool? value) ? value : null;
     }
 
     /// <summary>
@@ -102,7 +102,7 @@ public static class DictionaryExtensions {
     public static bool TryGetBoolean(this IDictionary<object, object?>? dictionary, object key, out bool result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
-            result = default;
+            result = false;
             return false;
         }
 
@@ -116,7 +116,7 @@ public static class DictionaryExtensions {
                 return StringUtils.TryParseBoolean(str, out result);
 
             default:
-                result = default;
+                result = false;
                 return false;
 
         }
@@ -133,7 +133,7 @@ public static class DictionaryExtensions {
     public static bool TryGetBoolean(this IDictionary<object, object?>? dictionary, object key, out bool? result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
-            result = default;
+            result = null;
             return false;
         }
 
@@ -147,7 +147,7 @@ public static class DictionaryExtensions {
                 return StringUtils.TryParseBoolean(str, out result);
 
             default:
-                result = default;
+                result = null;
                 return false;
 
         }
@@ -164,7 +164,7 @@ public static class DictionaryExtensions {
     public static bool TryGetInt32(this IDictionary<object, object?>? dictionary, object key, out int result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
-            result = default;
+            result = 0;
             return false;
         }
 
@@ -179,14 +179,14 @@ public static class DictionaryExtensions {
                     result = (int) longValue;
                     return true;
                 }
-                result = default;
+                result = 0;
                 return false;
 
             case string str:
                 return int.TryParse(str, out result);
 
             default:
-                result = default;
+                result = 0;
                 return false;
 
         }
@@ -222,7 +222,7 @@ public static class DictionaryExtensions {
     public static bool TryGetInt64(this IDictionary<object, object?>? dictionary, object key, out long result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
-            result = default;
+            result = 0;
             return false;
         }
 
@@ -240,7 +240,7 @@ public static class DictionaryExtensions {
                 return long.TryParse(str, default, CultureInfo.InvariantCulture, out result);
 
             default:
-                result = default;
+                result = 0;
                 return false;
 
         }

@@ -27,8 +27,7 @@ public static partial class StringUtils {
     /// <param name="input">The string to be parsed.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
     public static double ParseDouble(string? input) {
-        TryParseDouble(input, out double value);
-        return value;
+        return TryParseDouble(input, out double value) ? value : 0;
     }
 
     /// <summary>

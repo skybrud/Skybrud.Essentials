@@ -12,7 +12,7 @@ public static partial class StringUtils {
     /// <returns><c>true</c> if <paramref name="input"/> matches either <c>true</c>, <c>1</c>, <c>t</c> or
     /// <c>on</c> (case-insensitive); otherwise, <c>false</c>.</returns>
     public static bool ParseBoolean(string? input) {
-        return TryParseBoolean(input, out bool result) ? result : default;
+        return TryParseBoolean(input, out bool result) && result;
     }
 
     /// <summary>

@@ -103,7 +103,7 @@ public static partial class JObjectExtensions {
     public static T? GetString<T>(this JObject? obj, string path, Func<string, T> callback) {
         if (obj == null) return default;
         JToken? token = GetSimpleTypeTokenFromPath(obj, path);
-        return token == null ? default(T) : callback(token.Value<string>());
+        return token == null ? default : callback(token.Value<string>());
     }
 
     /// <summary>
