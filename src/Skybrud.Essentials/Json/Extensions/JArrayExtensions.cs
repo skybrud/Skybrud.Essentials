@@ -276,11 +276,11 @@ public static partial class JArrayExtensions {
     }
 
     /// <summary>
-    /// Gets the <see cref="System.Int64"/> value of the token matching the specified <paramref name="path"/>.
+    /// Gets the <see cref="long"/> value of the token matching the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <returns>An instance of <see cref="System.Int64"/>.</returns>
+    /// <returns>An instance of <see cref="long"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static long GetInt64(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<long>() ?? default;

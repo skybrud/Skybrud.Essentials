@@ -12,7 +12,7 @@ public static partial class TimeHelper {
     /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix
     /// epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <returns>An instance of <see cref="System.Int32"/> representing the current Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="int"/> representing the current Unix timestamp.</returns>
     public static int GetCurrentUnixTimestamp() {
         return TimeUtils.GetCurrentUnixTimestamp();
     }
@@ -21,7 +21,7 @@ public static partial class TimeHelper {
     /// Returns the current Unix timestamp which is defined as the amount of seconds since the start of the Unix
     /// epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
-    /// <returns>An instance of <see cref="System.Double"/> representing the current Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="double"/> representing the current Unix timestamp.</returns>
     public static double GetCurrentUnixTimestampAsDouble() {
         return TimeUtils.GetCurrentUnixTimestampAsDouble();
     }
@@ -123,7 +123,7 @@ public static partial class TimeHelper {
     /// of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
     /// <param name="date">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
-    /// <returns>An instance of <see cref="System.Int32"/> representing the Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="int"/> representing the Unix timestamp.</returns>
     public static int GetUnixTimeFromDateTime(DateTime date) {
         return TimeUtils.GetUnixTimeFromDateTime(date);
     }
@@ -133,7 +133,7 @@ public static partial class TimeHelper {
     /// of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
     /// <param name="date">The isntance of <see cref="DateTime"/> the timestamp should be based on.</param>
-    /// <returns>An instance of <see cref="System.Double"/> representing the Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     public static double GetUnixTimeFromDateTimeAsDouble(DateTime date) {
         return TimeUtils.GetUnixTimeFromDateTimeAsDouble(date);
     }
@@ -147,7 +147,7 @@ public static partial class TimeHelper {
     /// of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
     /// <param name="date">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
-    /// <returns>An instance of <see cref="System.Int32"/> representing the Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="int"/> representing the Unix timestamp.</returns>
     public static int GetUnixTimeFromDateTimeOffset(DateTimeOffset date) {
         return TimeUtils.GetUnixTimeFromDateTimeOffset(date);
     }
@@ -157,7 +157,7 @@ public static partial class TimeHelper {
     /// of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
     /// <param name="date">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
-    /// <returns>An instance of <see cref="System.Double"/> representing the Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     public static double GetUnixTimeFromDateTimeOffsetAsDouble(DateTimeOffset date) {
         return TimeUtils.GetUnixTimeFromDateTimeOffsetAsDouble(date);
     }

@@ -158,7 +158,7 @@ public static partial class TimeUtils {
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
     /// <param name="date">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
-    /// <returns>An instance of <see cref="System.Int32"/> representing the Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="int"/> representing the Unix timestamp.</returns>
     [Obsolete("Use UnixTimeUtils.ToSeconds(DateTimeOffset) method instead.")]
     public static int GetUnixTimeFromDateTimeOffset(DateTimeOffset date) {
         return (int) UnixTimeUtils.ToSeconds(date);
@@ -169,7 +169,7 @@ public static partial class TimeUtils {
     /// amount of seconds since the start of the Unix epoch - that is <c>1st of January 1970 - 00:00:00 GMT</c>.
     /// </summary>
     /// <param name="date">The isntance of <see cref="DateTimeOffset"/> the timestamp should be based on.</param>
-    /// <returns>An instance of <see cref="System.Double"/> representing the Unix timestamp.</returns>
+    /// <returns>An instance of <see cref="double"/> representing the Unix timestamp.</returns>
     [Obsolete("Use UnixTimeUtils.ToSeconds(DateTimeOffset) method instead.")]
     public static double GetUnixTimeFromDateTimeOffsetAsDouble(DateTimeOffset date) {
         return UnixTimeUtils.ToSeconds(date);

@@ -17,7 +17,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <returns>An instance of <see cref="String"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="string"/> representing the element value.</returns>
     public static string GetElementValue(this XElement? element, XName name) {
         XElement? child = element?.GetElement(name);
         return child?.Value ?? string.Empty;
@@ -47,7 +47,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <returns>An instance of <see cref="Int32"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="int"/> representing the element value.</returns>
     public static int GetElementValueAsInt32(this XElement? element, XName name) {
         return GetElementValueAsInt32(element, name, x => x);
     }
@@ -58,7 +58,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <param name="value">An instance of <see cref="Int32"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="int"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetElementValueAsInt32(this XElement? element, XName name, out int value) {
         return GetElementValue(element, name, out value);
@@ -87,7 +87,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <returns>An instance of <see cref="Int64"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="long"/> representing the element value.</returns>
     public static long GetElementValueAsInt64(this XElement? element, XName name) {
         return GetElementValueAsInt64(element, name, x => x);
     }
@@ -98,7 +98,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <param name="value">An instance of <see cref="Int64"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="long"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetElementValueAsInt64(this XElement? element, XName name, out long value) {
         return GetElementValue(element, name, out value);
@@ -127,7 +127,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="float"/> representing the element value.</returns>
     public static float GetElementValueAsSingle(this XElement? element, XName name) {
         return GetElementValueAsSingle(element, name, x => x);
     }
@@ -138,7 +138,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="float"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetElementValueAsSingle(this XElement? element, XName name, out float value) {
         return GetElementValue(element, name, out value);
@@ -167,7 +167,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <returns>An instance of <see cref="Single"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="float"/> representing the element value.</returns>
     public static float GetElementValueAsFloat(this XElement? element, XName name) {
         return GetElementValueAsSingle(element, name, x => x);
     }
@@ -178,7 +178,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="float"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetElementValueAsFloat(this XElement? element, XName name, out float value) {
         return GetElementValue(element, name, out value);
@@ -207,7 +207,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <returns>An instance of <see cref="Double"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="double"/> representing the element value.</returns>
     public static double GetElementValueAsDouble(this XElement? element, XName name) {
         return GetElementValueAsDouble(element, name, x => x);
     }
@@ -218,7 +218,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="double"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetElementValueAsDouble(this XElement? element, XName name, out double value) {
         return GetElementValue(element, name, out value);
@@ -247,7 +247,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="bool"/> representing the element value.</returns>
     public static bool GetElementValueAsBoolean(this XElement? element, XName name) {
         return GetElementValueAsBoolean(element, name, x => x);
     }
@@ -258,7 +258,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the element should match.</param>
-    /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="bool"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetElementValueAsBoolean(this XElement? element, XName name, out bool value) {
 
@@ -281,7 +281,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> identifying the element.</param>
     /// <param name="callback">The callback method used for converting the boolean value.</param>
-    /// <returns>An instance of <see cref="Boolean"/> representing the element value.</returns>
+    /// <returns>An instance of <see cref="bool"/> representing the element value.</returns>
     public static T GetElementValueAsBoolean<T>(this XElement? element, XName name, Func<bool, T> callback) {
         return GetElementValueAsBoolean(element, name, out bool value) ? callback(value) : default!;
     }

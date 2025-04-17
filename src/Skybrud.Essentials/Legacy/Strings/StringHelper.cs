@@ -11,7 +11,7 @@ namespace Skybrud.Essentials.Strings;
 public static class StringHelper {
 
     /// <summary>
-    /// Parses the specified <c>str</c> into an instance of <see cref="System.Boolean"/>. The string is
+    /// Parses the specified <c>str</c> into an instance of <see cref="bool"/>. The string is
     /// considered <c>true</c> if it matches either <c>1</c>, <c>t</c> or <c>true</c> (case insensitive).
     /// </summary>
     /// <param name="str">The string to be parsed.</param>
@@ -22,7 +22,7 @@ public static class StringHelper {
     }
 
     /// <summary>
-    /// Parses the specified <paramref name="value"/> into an instance of <see cref="System.Boolean"/>. The value is
+    /// Parses the specified <paramref name="value"/> into an instance of <see cref="bool"/>. The value is
     /// considered <c>true</c> if it matches either <c>1</c>, <c>t</c> or <c>true</c> (case insensitive).
     /// </summary>
     /// <param name="value">The value to be parsed.</param>
@@ -36,7 +36,7 @@ public static class StringHelper {
     /// Converts a comma separated string into an array of integers.
     /// </summary>
     /// <param name="str">The comma separated string to be converted.</param>
-    /// <returns>An array of <see cref="Int32"/>.</returns>
+    /// <returns>An array of <see cref="int"/>.</returns>
     [Obsolete("Use the StringUtils class instead.")]
     public static int[] CsvToInt(string str) {
         return StringUtils.ParseInt32Array(str);

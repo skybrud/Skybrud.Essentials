@@ -236,7 +236,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <returns>An instance of <see cref="System.Int64"/>.</returns>
+    /// <returns>An instance of <see cref="long"/>.</returns>
     public static long GetInt64ByPath(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<long>() ?? default;
     }

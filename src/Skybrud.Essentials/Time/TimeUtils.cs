@@ -1260,7 +1260,7 @@ public static partial class TimeUtils {
     /// (e.g. <c>August</c> is the eight month of the year, and will result in <c>8</c>).
     /// </summary>
     /// <param name="monthName">The name of the month.</param>
-    /// <returns>An instance of <see cref="System.Int32"/> representing the month.</returns>
+    /// <returns>An instance of <see cref="int"/> representing the month.</returns>
     public static int ParseNumberFromMonthName(string monthName) {
         if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
         return DateTime.ParseExact(monthName, "MMMM", CultureInfo.InvariantCulture).Month;
@@ -1273,7 +1273,7 @@ public static partial class TimeUtils {
     /// <param name="monthName">The name of the month.</param>
     /// <param name="provider">An object that supplies culture-specific format information about
     /// <paramref name="monthName"/>.</param>
-    /// <returns>An instance of <see cref="System.Int32"/> representing the month.</returns>
+    /// <returns>An instance of <see cref="int"/> representing the month.</returns>
     public static int ParseNumberFromMonthName(string monthName, IFormatProvider provider) {
         if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
         return DateTime.ParseExact(monthName, "MMMM", provider).Month;
@@ -1285,7 +1285,7 @@ public static partial class TimeUtils {
     /// value that indicates whether the conversion succeeded.
     /// </summary>
     /// <param name="monthName">The name of the month.</param>
-    /// <param name="result">When this method returns, contains the <see cref="System.Int32"/> value
+    /// <param name="result">When this method returns, contains the <see cref="int"/> value
     /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
     /// or <c>0</c> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
     /// <c>null</c>, is an empty string (""), or does not contain a valid month name. This parameter is
@@ -1305,7 +1305,7 @@ public static partial class TimeUtils {
     /// <param name="monthName">The name of the month.</param>
     /// <param name="provider">An object that supplies culture-specific format information about
     /// <paramref name="monthName"/>.</param>
-    /// <param name="result">When this method returns, contains the <see cref="System.Int32"/> value
+    /// <param name="result">When this method returns, contains the <see cref="int"/> value
     /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
     /// or <c>0</c> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
     /// <c>null</c>, is an empty string (""), or does not contain a valid month name. This parameter is

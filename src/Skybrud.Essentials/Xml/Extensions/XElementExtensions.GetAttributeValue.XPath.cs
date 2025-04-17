@@ -257,14 +257,14 @@ public static partial class XElementExtensions {
     #region Get attribute value as System.Single
 
     /// <summary>
-    /// Gets an instance of <see cref="Single"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Single"/> will be returned instead.
+    /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
-    /// <returns>An instance of <see cref="Single"/> representing the attribute value, or the default value
-    /// of <see cref="Single"/> if a matching attribute wasn't found.</returns>
+    /// <returns>An instance of <see cref="float"/> representing the attribute value, or the default value
+    /// of <see cref="float"/> if a matching attribute wasn't found.</returns>
     public static float GetAttributeValueAsSingle(this XElement? element, string expression) {
         return GetAttributeValueAsSingle(element, expression, default, x => x);
     }
@@ -284,43 +284,43 @@ public static partial class XElementExtensions {
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Single"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Single"/> will be returned instead.
+    /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
-    /// <returns>An instance of <see cref="Single"/> representing the attribute value, or the default value
-    /// of <see cref="Single"/> if a matching attribute wasn't found.</returns>
+    /// <returns>An instance of <see cref="float"/> representing the attribute value, or the default value
+    /// of <see cref="float"/> if a matching attribute wasn't found.</returns>
     public static float GetAttributeValueAsSingle(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
         return GetAttributeValueAsSingle(element, expression, resolver, x => x);
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Single"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Single"/> will be returned instead.
+    /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
-    /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="float"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetAttributeValueAsSingle(this XElement? element, string expression, out float value) {
         return GetAttributeValue(element, expression, out value);
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Single"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="float"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Single"/> will be returned instead.
+    /// <see cref="float"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
-    /// <param name="value">An instance of <see cref="Single"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="float"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetAttributeValueAsSingle(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out float value) {
         return GetAttributeValue(element, expression, resolver, out value);
@@ -347,14 +347,14 @@ public static partial class XElementExtensions {
     #region Get attribute value as System.Double
 
     /// <summary>
-    /// Gets an instance of <see cref="Double"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Double"/> will be returned instead.
+    /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
-    /// <returns>An instance of <see cref="Double"/> representing the attribute value, or the default value
-    /// of <see cref="Double"/> if a matching attribute wasn't found.</returns>
+    /// <returns>An instance of <see cref="double"/> representing the attribute value, or the default value
+    /// of <see cref="double"/> if a matching attribute wasn't found.</returns>
     public static double GetAttributeValueAsDouble(this XElement? element, string expression) {
         return GetAttributeValueAsDouble(element, expression, null, x => x);
     }
@@ -374,43 +374,43 @@ public static partial class XElementExtensions {
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Double"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Double"/> will be returned instead.
+    /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
-    /// <returns>An instance of <see cref="Double"/> representing the attribute value, or the default value
-    /// of <see cref="Double"/> if a matching attribute wasn't found.</returns>
+    /// <returns>An instance of <see cref="double"/> representing the attribute value, or the default value
+    /// of <see cref="double"/> if a matching attribute wasn't found.</returns>
     public static double GetAttributeValueAsDouble(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
         return GetAttributeValueAsDouble(element, expression, resolver, x => x);
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Double"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Double"/> will be returned instead.
+    /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
-    /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="double"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetAttributeValueAsDouble(this XElement? element, string expression, out double value) {
         return GetAttributeValue(element, expression, out value);
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Double"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="double"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Double"/> will be returned instead.
+    /// <see cref="double"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
-    /// <param name="value">An instance of <see cref="Double"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="double"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetAttributeValueAsDouble(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out double value) {
         return GetAttributeValue(element, expression, resolver, out value);
@@ -437,14 +437,14 @@ public static partial class XElementExtensions {
     #region Get attribute value as System.Boolean
 
     /// <summary>
-    /// Gets an instance of <see cref="Boolean"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Boolean"/> will be returned instead.
+    /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
-    /// <returns>An instance of <see cref="Boolean"/> representing the attribute value, or the default value
-    /// of <see cref="Boolean"/> if a matching attribute wasn't found.</returns>
+    /// <returns>An instance of <see cref="bool"/> representing the attribute value, or the default value
+    /// of <see cref="bool"/> if a matching attribute wasn't found.</returns>
     public static bool GetAttributeValueAsBoolean(this XElement? element, string expression) {
         return GetAttributeValueAsBoolean(element, expression, default, x => x);
     }
@@ -464,43 +464,43 @@ public static partial class XElementExtensions {
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Boolean"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Boolean"/> will be returned instead.
+    /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
-    /// <returns>An instance of <see cref="Boolean"/> representing the attribute value, or the default value
-    /// of <see cref="Boolean"/> if a matching attribute wasn't found.</returns>
+    /// <returns>An instance of <see cref="bool"/> representing the attribute value, or the default value
+    /// of <see cref="bool"/> if a matching attribute wasn't found.</returns>
     public static bool GetAttributeValueAsBoolean(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
         return GetAttributeValueAsBoolean(element, expression, resolver, x => x);
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Boolean"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Boolean"/> will be returned instead.
+    /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
-    /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="bool"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetAttributeValueAsBoolean(this XElement? element, string expression, out bool value) {
         return GetAttributeValueAsBoolean(element, expression, default, out value);
     }
 
     /// <summary>
-    /// Gets an instance of <see cref="Boolean"/> representing the value of the attribute matching the
+    /// Gets an instance of <see cref="bool"/> representing the value of the attribute matching the
     /// specified XPath <paramref name="expression"/>. If a matching attribute ins't found, the default value of
-    /// <see cref="Boolean"/> will be returned instead.
+    /// <see cref="bool"/> will be returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
-    /// <param name="value">An instance of <see cref="Boolean"/> representing the element value.</param>
+    /// <param name="value">An instance of <see cref="bool"/> representing the element value.</param>
     /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
     public static bool GetAttributeValueAsBoolean(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out bool value) {
 

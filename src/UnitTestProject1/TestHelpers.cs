@@ -12,31 +12,31 @@ namespace UnitTestProject1 {
         }
 
         public static string ToString(string value) {
-            return String.Format(CultureInfo.InvariantCulture, "{0}", value);
+            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
         public static string ToString(int value) {
-            return String.Format(CultureInfo.InvariantCulture, "{0}", value);
+            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
         public static string ToString(long value) {
-            return String.Format(CultureInfo.InvariantCulture, "{0}", value);
+            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
         public static string ToString(float value) {
-            return String.Format(CultureInfo.InvariantCulture, "{0}", value);
+            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
         public static string ToString(double value) {
-            return String.Format(CultureInfo.InvariantCulture, "{0}", value);
+            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
         public static string ToString(bool value) {
-            return String.Format(CultureInfo.InvariantCulture, "{0}", value);
+            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
         public static string ToString(object value) {
-            return String.Format(CultureInfo.InvariantCulture, "{0}", value);
+            return string.Format(CultureInfo.InvariantCulture, "{0}", value);
         }
 
     }
