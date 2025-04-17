@@ -431,6 +431,50 @@ public static class EnumerableExtensions {
     }
 
     /// <summary>
+    /// Returns a new list containing the elements from <paramref name="source"/>> that matches the specified <paramref name="predicate"/>.
+    /// </summary>
+    /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+    /// <param name="source">An <see cref="IEnumerable{TSource}"/> to filter.</param>
+    /// <param name="predicate">A function to test each element for a condition.</param>
+    /// <returns>An <see cref="List{TSource}"/> that contains elements from the input sequence that satisfy the condition.</returns>
+    public static List<TSource> WhereList<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
+
+        // Initialize a new list
+        List<TSource> temp = [];
+
+        // Iterate through the elements of the source
+        // ReSharper disable once LoopCanBeConvertedToQuery
+        foreach (TSource item in source) {
+            if (predicate(item)) temp.Add(item);
+        }
+
+        // Return the list
+        return temp;
+
+    }
+
+    /// <summary>
+    /// Returns a new array containing the elements from <paramref name="source"/>> that matches the specified <paramref name="predicate"/>.
+    /// </summary>
+    /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+    /// <param name="source">An <see cref="IEnumerable{TSource}"/> to filter.</param>
+    /// <param name="predicate">A function to test each element for a condition.</param>
+    /// <returns>An array that contains elements from the input sequence that satisfy the condition.</returns>
+    public static TSource[] WhereArray<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
+        return [.. source.Where(predicate)];
+    }
+
+    /// <summary>
+    /// Returns a new list containing the elements from <paramref name="source"/>> that matches the specified <paramref name="predicate"/>.
+    /// </summary>
+    /// <typeparam name="TSource">The type of the elements of <paramref name="source" />.</typeparam>
+    /// <param name="source">An <see cref="IEnumerable{TSource}"/> to filter.</param>
+    /// <param name="predicate">A function to test each element for a condition.</param>
+    /// <returns>An <see cref="IReadOnlyList{TSource}"/> that contains elements from the input sequence that satisfy the condition.</returns>
+    public static IReadOnlyList<TSource> WhereReadOnlyList<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
+        return [.. source.Where(predicate)];
+    }
+    /// <summary>
     /// Appends <paramref name="items"/> to <paramref name="list"/>.
     /// </summary>
     /// <typeparam name="T">The common type of the items.</typeparam>
