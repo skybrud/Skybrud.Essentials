@@ -148,7 +148,7 @@ public class EssentialsPeriod {
     }
 
     /// <summary>
-    /// Returns a <see cref="EssentialsPeriod"/> representing the the day after the current day and according to
+    /// Returns a <see cref="EssentialsPeriod"/> representing the day after the current day and according to
     /// the local time zone.
     /// </summary>
     /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
@@ -157,7 +157,7 @@ public class EssentialsPeriod {
     }
 
     /// <summary>
-    /// Returns a <see cref="EssentialsPeriod"/> representing the the day after the current day and according to
+    /// Returns a <see cref="EssentialsPeriod"/> representing the day after the current day and according to
     /// the <paramref name="timeZone"/>.
     /// </summary>
     /// <returns>An instance of <see cref="EssentialsPeriod"/>.</returns>
@@ -166,7 +166,7 @@ public class EssentialsPeriod {
     }
 
     /// <summary>
-    /// Returns a <see cref="EssentialsPeriod"/> representing the the day after the day of
+    /// Returns a <see cref="EssentialsPeriod"/> representing the day after the day of
     /// <paramref name="timestamp"/> and according to the <paramref name="timeZone"/>.
     /// </summary>
     /// <param name="timestamp">The timestamp.</param>
@@ -199,7 +199,7 @@ public class EssentialsPeriod {
     /// Returns a <see cref="EssentialsPeriod"/> representing the upcoming weekend relative to the specified
     /// <paramref name="timestamp"/> and according to <paramref name="timeZone"/>.
     ///
-    /// If <paramref name="timestamp"/> represents a Saturday or a Sunday, the returned period will representing
+    /// If <paramref name="timestamp"/> represents a Saturday or a Sunday, the returned period will represent
     /// the weekend of the next week instead.
     /// </summary>
     /// <param name="timestamp">The timestamp.</param>

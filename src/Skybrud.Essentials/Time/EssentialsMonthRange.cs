@@ -84,7 +84,7 @@ public class EssentialsMonthRange : IReadOnlyList<EssentialsMonth> {
     /// </summary>
     /// <param name="year">The year.</param>
     /// <param name="month">The month</param>
-    /// <returns><see langword="true"/> the month is is within the range; otherwise, <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> the month is within the range; otherwise, <see langword="false"/>.</returns>
     public bool Contains(int year, int month) {
 
         // ReSharper disable RedundantIfElseBlock

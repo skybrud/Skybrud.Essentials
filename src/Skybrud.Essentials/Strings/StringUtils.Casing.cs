@@ -420,7 +420,7 @@ public static partial class StringUtils {
 
             char d = upperCase == null ? char.ToLowerInvariant(c) : (upperCase.Value ? char.ToUpperInvariant(c) : char.ToLowerInvariant(c));
 
-            // If "c" is neither a letter nor digit, it's either a white space character or some kind of unwanted character. In either case, this means that we clar the buffer and expect a new word
+            // If "c" is neither a letter nor digit, it's either a white space character or some kind of unwanted character. In either case, this means that we clear the buffer and expect a new word
             if (!char.IsLetterOrDigit(c)) {
                 if (buffer.Length > 0) words.Add(buffer.ToString());
                 buffer.Clear();

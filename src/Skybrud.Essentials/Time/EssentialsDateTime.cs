@@ -1159,7 +1159,7 @@ public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, 
         if (value1 is null) return value2 is null;
         if (value2 is null) return false;
 
-        // Pass the comparison on the the == operator of DateTime
+        // Pass the comparison on the == operator of DateTime
         return d1!.DateTime == d2!.DateTime;
 
     }
@@ -1189,7 +1189,7 @@ public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, 
         if (d1 is null) return d2 is not null;
         if (d2 is null) return false;
 
-        // Pass the comparison on the the < operator of DateTime
+        // Pass the comparison on the < operator of DateTime
         return d1.DateTime < d2.DateTime;
 
     }
@@ -1218,7 +1218,7 @@ public class EssentialsDateTime : IComparable, IComparable<EssentialsDateTime>, 
         if (d2 is null) return d1 is not null;
         if (d1 is null) return false;
 
-        // Pass the comparison on the the > operator of DateTime
+        // Pass the comparison on the > operator of DateTime
         return d1.DateTime > d2.DateTime;
 
     }

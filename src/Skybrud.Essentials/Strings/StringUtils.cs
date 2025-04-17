@@ -553,7 +553,7 @@ public static partial class StringUtils {
     }
 
     /// <summary>
-    /// Returns a culture invarian string representation of the specified <paramref name="args"/> according to <paramref name="format"/>.
+    /// Returns a culture invariant string representation of the specified <paramref name="args"/> according to <paramref name="format"/>.
     /// </summary>
     /// <param name="format">A composite format string.</param>
     /// <param name="args">An object array that contains zero or more objects to format.</param>

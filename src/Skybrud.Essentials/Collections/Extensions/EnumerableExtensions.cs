@@ -71,7 +71,7 @@ public static class EnumerableExtensions {
     /// <typeparam name="TSource"></typeparam>
     /// <param name="source">The input collection to be grouped.</param>
     /// <param name="groupSize">The maximum size of each group.</param>
-    /// <returns>A collection of indifivial <see cref="IEnumerable{TSource}"/> instances representing each group.</returns>
+    /// <returns>A collection of individual <see cref="IEnumerable{TSource}"/> instances representing each group.</returns>
     /// <exception cref="ArgumentNullException">If <paramref name="source"/> is <c>null</c>.</exception>
     /// <exception cref="ArgumentException">If <paramref name="groupSize"/> is not greater than <c>0</c>.</exception>
     /// <see>
@@ -250,7 +250,7 @@ public static class EnumerableExtensions {
     /// <summary>
     /// Deconstructs the specified <paramref name="collection"/>.
     /// </summary>
-    /// <typeparam name="T">The tpye of the items of the collection.</typeparam>
+    /// <typeparam name="T">The type of the items of the collection.</typeparam>
     /// <param name="collection">The collection.</param>
     /// <param name="first">When this method returns, holds the first item if the collection has at least one item;
     /// otherwise, the default value of <typeparamref name="T"/>.</param>
@@ -285,7 +285,7 @@ public static class EnumerableExtensions {
     /// <summary>
     /// Deconstructs the specified <paramref name="collection"/>.
     /// </summary>
-    /// <typeparam name="T">The tpye of the items of the collection.</typeparam>
+    /// <typeparam name="T">The type of the items of the collection.</typeparam>
     /// <param name="collection">The collection.</param>
     /// <param name="first">When this method returns, holds the first item if the collection has at least one item;
     /// otherwise, the default value of <typeparamref name="T"/>.</param>
@@ -315,7 +315,7 @@ public static class EnumerableExtensions {
     /// <summary>
     /// Deconstructs the specified <paramref name="collection"/>.
     /// </summary>
-    /// <typeparam name="T">The tpye of the items of the collection.</typeparam>
+    /// <typeparam name="T">The type of the items of the collection.</typeparam>
     /// <param name="collection">The collection.</param>
     /// <param name="first">When this method returns, holds the first item if the collection has at least one item;
     /// otherwise, the default value of <typeparamref name="T"/>.</param>
@@ -353,7 +353,7 @@ public static class EnumerableExtensions {
     /// <param name="collection">The collection.</param>
     /// <returns>A random item of type <typeparamref name="TSource"/> from <paramref name="collection"/> if not empty; otherwise, the default value of <typeparamref name="TSource"/>.</returns>
     /// <remarks>
-    ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementions, this seems to be the most random.</para>
+    ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementations, this seems to be the most random.</para>
     /// </remarks>
     public static TSource? RandomOrDefault<TSource>(this IEnumerable<TSource> collection) {
         return collection.OrderBy(_ => Guid.NewGuid()).FirstOrDefault();
@@ -366,7 +366,7 @@ public static class EnumerableExtensions {
     /// <param name="collection">The collection.</param>
     /// <returns>A new <see cref="IOrderedEnumerable{T}"/> whose elements are sorted in a random order.</returns>
     /// <remarks>
-    ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementions, this seems to be the most random.</para>
+    ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementations, this seems to be the most random.</para>
     /// </remarks>
     public static IOrderedEnumerable<TSource> OrderByRandom<TSource>(this IEnumerable<TSource> collection) {
         return collection.OrderBy(_ => Guid.NewGuid());
@@ -379,7 +379,7 @@ public static class EnumerableExtensions {
     /// <param name="collection">The collection.</param>
     /// <returns>A new <see cref="IOrderedEnumerable{T}"/> whose elements are sorted in a random order.</returns>
     /// <remarks>
-    ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementions, this seems to be the most random.</para>
+    ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementations, this seems to be the most random.</para>
     /// </remarks>
     public static IOrderedEnumerable<TSource> Randomize<TSource>(this IEnumerable<TSource> collection) {
         return collection.OrderBy(_ => Guid.NewGuid());

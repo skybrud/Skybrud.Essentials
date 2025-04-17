@@ -516,10 +516,11 @@ public static partial class JObjectExtensions {
 
     /// <summary>
     /// Gets the items of the <see cref="JArray"/> from the token matching the specfied <paramref name="path"/>.
+    /// Gets the items of the <see cref="JArray"/> from the token matching the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="obj">The instance of <see cref="JObject"/>.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <returns>An array of <see cref="JToken"/>. If the a matching token isn't found, an empty array will
+    /// <returns>An array of <see cref="JToken"/>. If a matching token isn't found, an empty array will
     /// still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static JToken[] GetArrayItems(this JObject? obj, string path) {
@@ -528,11 +529,11 @@ public static partial class JObjectExtensions {
     }
 
     /// <summary>
-    /// Gets the items of the <see cref="JArray"/> from the token matching the specfied <paramref name="path"/>.
+    /// Gets the items of the <see cref="JArray"/> from the token matching the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="obj">The instance of <see cref="JObject"/>.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <returns>An array of <typeparamref name="T"/>. If the a matching token isn't found, an empty array will
+    /// <returns>An array of <typeparamref name="T"/>. If a matching token isn't found, an empty array will
     /// still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetArrayItems<T>(this JObject? obj, string path) {
@@ -547,12 +548,12 @@ public static partial class JObjectExtensions {
     }
 
     /// <summary>
-    /// Gets the items of the <see cref="JArray"/> from the token matching the specfied <paramref name="path"/>.
+    /// Gets the items of the <see cref="JArray"/> from the token matching the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="obj">The instance of <see cref="JObject"/>.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-    /// <returns>An array of <typeparamref name="T"/>. If the a matching token isn't found, an empty array will
+    /// <returns>An array of <typeparamref name="T"/>. If a matching token isn't found, an empty array will
     /// still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetArrayItems<T>(this JObject? obj, string path, Func<JToken, T> callback) {
@@ -567,12 +568,12 @@ public static partial class JObjectExtensions {
     }
 
     /// <summary>
-    /// Gets the items of the <see cref="JArray"/> from the token matching the specfied <paramref name="path"/>.
+    /// Gets the items of the <see cref="JArray"/> from the token matching the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="obj">The instance of <see cref="JObject"/>.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-    /// <returns>An array of <typeparamref name="T"/>. If the a matching token isn't found, an empty array will
+    /// <returns>An array of <typeparamref name="T"/>. If a matching token isn't found, an empty array will
     /// still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetArrayItems<T>(this JObject? obj, string path, Func<JObject, T> callback) {
@@ -587,12 +588,12 @@ public static partial class JObjectExtensions {
     }
 
     /// <summary>
-    /// Gets the items of the <see cref="JArray"/> from the token matching the specfied <paramref name="path"/>.
+    /// Gets the items of the <see cref="JArray"/> from the token matching the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="obj">The instance of <see cref="JObject"/>.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="callback">A callback function used for parsing or converting the token value.</param>
-    /// <returns>An array of <typeparamref name="TValue"/>. If the a matching token isn't found, an empty
+    /// <returns>An array of <typeparamref name="TValue"/>. If a matching token isn't found, an empty
     /// array will still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static TValue[] GetArrayItems<TKey, TValue>(this JObject? obj, string path, Func<TKey, TValue> callback) where TKey : JToken {

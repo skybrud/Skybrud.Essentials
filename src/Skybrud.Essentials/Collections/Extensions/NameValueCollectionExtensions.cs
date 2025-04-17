@@ -608,7 +608,7 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the <see cref="double"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>0</c>.</param>
+    /// <param name="result">When this method returns, contains the <see cref="double"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetDouble(this NameValueCollection? collection, string key, out double result) {
         return StringUtils.TryParseDouble(collection?.GetString(key), out result);
@@ -619,7 +619,7 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the the conversion succeeded; otherwise <c>null</c>.</param>
+    /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetDouble(this NameValueCollection? collection, string key, [NotNullWhen(true)] out double? result) {
         return StringUtils.TryParseDouble(collection?.GetString(key), out result);

@@ -1061,7 +1061,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
         // Attempt to parse the date
         DateTimeOffset dto = DateTimeOffset.Parse(input);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsTime(dto);
 
     }
@@ -1081,7 +1081,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
         // Attempt to parse the date
         DateTimeOffset dto = DateTimeOffset.Parse(input, provider);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsTime(dto);
 
     }
@@ -1102,7 +1102,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
         // Attempt to parse the date
         DateTimeOffset dto = DateTimeOffset.Parse(input, provider, styles);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsTime(dto);
 
     }

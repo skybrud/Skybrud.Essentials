@@ -371,7 +371,7 @@ public static class EnumUtils {
     /// </summary>
     /// <param name="pieces">Array of enum string representation.</param>
     /// <param name="type">The enum type.</param>
-    /// <returns>An instanceo of <see cref="Array"/> containing the parsed enum values.</returns>
+    /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
     public static Array ParseEnumArray(string[] pieces, Type type) {
 
         List<Enum> temp = new();
@@ -446,7 +446,7 @@ public static class EnumUtils {
     /// </summary>
     /// <param name="pieces">Array of enum string representation.</param>
     /// <param name="type">The enum type.</param>
-    /// <returns>An instanceo of <see cref="Array"/> containing the parsed enum values.</returns>
+    /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
     public static List<Enum> ParseEnumList(IEnumerable<string> pieces, Type type) {
 
         List<Enum> temp = new();

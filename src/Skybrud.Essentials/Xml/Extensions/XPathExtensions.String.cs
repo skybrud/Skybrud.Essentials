@@ -41,7 +41,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the string value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found,
-    /// <paramref name="fallback"/> is returned insetad.
+    /// <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -55,7 +55,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the string value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found,
-    /// <paramref name="fallback"/> is returned insetad.
+    /// <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -196,7 +196,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the value of the attribute or element matching the specified XPath <paramref name="expression"/>. If an
     /// attribute or element is found, the value is converted to <typeparamref name="TResult"/> using the specified
-    /// <paramref name="callback"/> function. If a matching atteibute or element isn't found, the default value of
+    /// <paramref name="callback"/> function. If a matching attribute or element isn't found, the default value of
     /// <typeparamref name="TResult"/> is returned instead.
     /// </summary>
     /// <typeparam name="TResult">The type the value should be converted to.</typeparam>

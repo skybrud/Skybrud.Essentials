@@ -11,7 +11,7 @@ public partial class StringUtils {
     /// <summary>
     /// Formats the specified <paramref name="bytes"/> into a textual representation using kibibytes, but units like <c>KB</c>, <c>MB</c> etc.
     ///
-    /// Teachnically this is wrong as 1 kibibyte (1024 bytes) should use the unit <c>KiB</c>, but <c>KB</c> is commonly used instead.
+    /// Technically this is wrong as 1 kibibyte (1024 bytes) should use the unit <c>KiB</c>, but <c>KB</c> is commonly used instead.
     /// </summary>
     /// <param name="bytes">The bytes to format.</param>
     /// <returns>A string representing the formatted file size.</returns>
@@ -22,7 +22,7 @@ public partial class StringUtils {
     /// <summary>
     /// Formats the specified <paramref name="bytes"/> into a textual representation using kibibytes, but units like <c>KB</c>, <c>MB</c> etc.
     ///
-    /// Teachnically this is wrong as 1 kibibyte (1024 bytes) should use the unit <c>KiB</c>, but <c>KB</c> is commonly used instead.
+    /// Technically this is wrong as 1 kibibyte (1024 bytes) should use the unit <c>KiB</c>, but <c>KB</c> is commonly used instead.
     /// </summary>
     /// <param name="bytes">The bytes to format.</param>
     /// <param name="culture">The culture to be used when formatting the file size.</param>

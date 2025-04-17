@@ -15,7 +15,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the GUID value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a GUID value,
-    /// <see cref="Guid.Empty"/> is returned insetad.
+    /// <see cref="Guid.Empty"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -27,7 +27,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the GUID value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a GUID value,
-    /// <see cref="Guid.Empty"/> is returned insetad.
+    /// <see cref="Guid.Empty"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -40,7 +40,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the GUID value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a GUID value,
-    /// <paramref name="fallback"/> is returned insetad.
+    /// <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -53,7 +53,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the GUID value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a GUID value,
-    /// <paramref name="fallback"/> is returned insetad.
+    /// <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -96,7 +96,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the GUID value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a GUID value,
-    /// <see langword="null"/> is returned insetad.
+    /// <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -108,7 +108,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the GUID value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a GUID value,
-    /// <see langword="null"/> is returned insetad.
+    /// <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>

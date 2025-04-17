@@ -7,7 +7,7 @@ using System.Globalization;
 namespace Skybrud.Essentials.Strings.Extensions;
 
 /// <summary>
-/// Static class with various extension methods for <see cref="String"/>.
+/// Static class with various extension methods for <see cref="string"/>.
 /// </summary>
 public static partial class StringExtensions {
 

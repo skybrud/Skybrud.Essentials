@@ -15,7 +15,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the single-precision floating point number of the attribute or element matching the specified
     /// XPath <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not
-    /// be converted to a single-precision floating point number, <c>0</c> is returned insetad.
+    /// be converted to a single-precision floating point number, <c>0</c> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -27,7 +27,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the single-precision floating point number of the attribute or element matching the specified
     /// XPath <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not
-    /// be converted to a single-precision floating point number, <c>0</c> is returned insetad.
+    /// be converted to a single-precision floating point number, <c>0</c> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -40,7 +40,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the single-precision floating point number of the attribute or element matching the specified
     /// XPath <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not
-    /// be converted to a single-precision floating point number, <paramref name="fallback"/> is returned insetad.
+    /// be converted to a single-precision floating point number, <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -53,7 +53,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the single-precision floating point number of the attribute or element matching the specified
     /// XPath <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not
-    /// be converted to a single-precision floating point number, <paramref name="fallback"/> is returned insetad.
+    /// be converted to a single-precision floating point number, <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -98,7 +98,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the single-precision floating point number of the attribute or element matching the specified
     /// XPath <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not
-    /// be converted to a single-precision floating point number, <see langword="null"/> is returned insetad.
+    /// be converted to a single-precision floating point number, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -110,7 +110,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the single-precision floating point number of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a single-precision floating point number, <see langword="null"/> is returned insetad.
+    /// converted to a single-precision floating point number, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>

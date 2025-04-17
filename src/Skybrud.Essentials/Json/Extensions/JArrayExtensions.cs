@@ -376,7 +376,7 @@ public static partial class JArrayExtensions {
     }
 
     /// <summary>
-    /// Gets an array of <typeparamref name="T"/> from the from the token matching the specified
+    /// Gets an array of <typeparamref name="T"/> from the token matching the specified
     /// <paramref name="path"/> in the array using the specified delegate <paramref name="func"/> for parsing each
     /// item in the array.
     /// </summary>

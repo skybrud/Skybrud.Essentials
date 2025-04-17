@@ -15,7 +15,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the boolean value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a boolean value, <see langword="false"/> is returned insetad.
+    /// converted to a boolean value, <see langword="false"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -27,7 +27,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the boolean value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a boolean value, <see langword="false"/> is returned insetad.
+    /// converted to a boolean value, <see langword="false"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -99,7 +99,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the boolean value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a boolean value, <see langword="null"/> is returned insetad.
+    /// converted to a boolean value, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -111,7 +111,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the boolean value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a boolean value, <see langword="null"/> is returned insetad.
+    /// converted to a boolean value, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>

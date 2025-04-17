@@ -41,7 +41,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the enum value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a
-    /// <typeparamref name="TEnum"/> value, <see langword="null"/> is returned insetad.
+    /// <typeparamref name="TEnum"/> value, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -53,7 +53,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the enum value of the attribute or element matching the specified XPath <paramref name="expression"/>.
     /// If a matching attribute or element value isn't found, ot the value can not be converted to a
-    /// <typeparamref name="TEnum"/> value, <see langword="null"/> is returned insetad.
+    /// <typeparamref name="TEnum"/> value, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>

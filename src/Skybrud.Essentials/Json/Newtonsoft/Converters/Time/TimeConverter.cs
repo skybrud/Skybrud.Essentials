@@ -148,11 +148,11 @@ public class TimeConverter : JsonConverter {
             case JsonToken.Null:
                 return default;
 
-            // If the token type is an integer, we assume UNIX time regardles of the format of the converter
+            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
                 return TimeUtils.GetDateTimeFromUnixTime((long) reader.Value);
 
-            // If the token type is an integer, we assume UNIX time regardles of the format of the converter
+            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
                 return TimeUtils.GetDateTimeFromUnixTime((double) reader.Value);
 
@@ -212,11 +212,11 @@ public class TimeConverter : JsonConverter {
             case JsonToken.Null:
                 return default;
 
-            // If the token type is an integer, we assume UNIX time regardles of the format of the converter
+            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
                 return TimeUtils.GetDateTimeOffsetFromUnixTime((long) reader.Value);
 
-            // If the token type is an integer, we assume UNIX time regardles of the format of the converter
+            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
                 return TimeUtils.GetDateTimeOffsetFromUnixTime((double) reader.Value);
 
@@ -276,11 +276,11 @@ public class TimeConverter : JsonConverter {
             case JsonToken.Null:
                 return default;
 
-            // If the token type is an integer, we assume UNIX time regardles of the format of the converter
+            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
                 return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((long) reader.Value));
 
-            // If the token type is an integer, we assume UNIX time regardles of the format of the converter
+            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
                 return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((double) reader.Value));
 

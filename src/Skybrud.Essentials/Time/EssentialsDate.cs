@@ -475,7 +475,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
         // Attempt to parse the date
         DateTime dt = DateTime.Parse(input);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsDate(dt);
 
     }
@@ -496,7 +496,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
         // Attempt to parse the date
         DateTime dt = DateTime.Parse(input, provider);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsDate(dt);
 
     }
@@ -521,7 +521,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
         // Attempt to parse the date
         DateTime dt = DateTime.Parse(input, provider, styles);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsDate(dt);
 
     }
@@ -546,7 +546,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
         // Attempt to parse the date
         DateTime dt = DateTime.ParseExact(input, format, provider);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsDate(dt);
 
     }
@@ -574,7 +574,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
         // Attempt to parse the date
         DateTime dt = DateTime.ParseExact(input, format, provider, styles);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsDate(dt);
 
     }
@@ -600,7 +600,7 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
         // Attempt to parse the date
         DateTime dt = DateTime.ParseExact(input, formats, provider, styles);
 
-        // Intialize a new instance
+        // Initialize a new instance
         return new EssentialsDate(dt);
 
     }

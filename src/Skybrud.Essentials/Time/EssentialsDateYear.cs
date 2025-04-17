@@ -26,7 +26,7 @@ public class EssentialsDateYear {
     public bool IsLeapYear => TimeUtils.IsLeapYear(Year);
 
     /// <summary>
-    /// Gets the amount of days in the yeay - <c>366</c> if <see cref="IsLeapYear"/> is <c>true</c>,
+    /// Gets the amount of days in the year - <c>366</c> if <see cref="IsLeapYear"/> is <c>true</c>,
     /// otherwise <c>365</c>.
     /// </summary>
     public int Days => IsLeapYear ? 366 : 365;

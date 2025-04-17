@@ -15,7 +15,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the signed 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a signed 32-bit integer value, <c>0</c> is returned insetad.
+    /// converted to a signed 32-bit integer value, <c>0</c> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -27,7 +27,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the signed 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a signed 32-bit integer value, <c>0</c> is returned insetad.
+    /// converted to a signed 32-bit integer value, <c>0</c> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -40,7 +40,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a 32-bit integer value, <paramref name="fallback"/> is returned insetad.
+    /// converted to a 32-bit integer value, <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -53,7 +53,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a 32-bit integer value, <paramref name="fallback"/> is returned insetad.
+    /// converted to a 32-bit integer value, <paramref name="fallback"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -67,7 +67,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the signed 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a signed 32-bit integer value, <c>0</c> is returned insetad.
+    /// converted to a signed 32-bit integer value, <c>0</c> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -80,7 +80,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the signed 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a signed 32-bit integer value, <c>0</c> is returned insetad.
+    /// converted to a signed 32-bit integer value, <c>0</c> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -94,7 +94,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the signed 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a signed 32-bit integer value, <see langword="null"/> is returned insetad.
+    /// converted to a signed 32-bit integer value, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
@@ -106,7 +106,7 @@ public partial class XPathExtensions {
     /// <summary>
     /// Returns the signed 32-bit integer value of the attribute or element matching the specified XPath
     /// <paramref name="expression"/>. If a matching attribute or element value isn't found, ot the value can not be
-    /// converted to a signed 32-bit integer value, <see langword="null"/> is returned insetad.
+    /// converted to a signed 32-bit integer value, <see langword="null"/> is returned instead.
     /// </summary>
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
