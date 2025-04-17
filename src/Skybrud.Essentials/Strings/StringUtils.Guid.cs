@@ -101,14 +101,14 @@ public static partial class StringUtils {
     /// <returns>An array of <see cref="Guid"/>.</returns>
     public static Guid[] ParseGuidArray(string? input, params char[] separators) {
 
-        if (string.IsNullOrWhiteSpace(input)) return ArrayUtils.Empty<Guid>();
+        if (string.IsNullOrWhiteSpace(input)) return [];
 
-        List<Guid> guids = new();
+        List<Guid> guids = [];
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
             if (Guid.TryParse(piece, out Guid guid)) guids.Add(guid);
         }
 
-        return guids.ToArray();
+        return [.. guids];
 
     }
 
@@ -136,7 +136,7 @@ public static partial class StringUtils {
     /// <returns>A list of <see cref="Guid"/>.</returns>
     public static List<Guid> ParseGuidList(string? input, params char[] separators) {
 
-        List<Guid> temp = new();
+        List<Guid> temp = [];
         if (string.IsNullOrWhiteSpace(input)) return temp;
 
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {

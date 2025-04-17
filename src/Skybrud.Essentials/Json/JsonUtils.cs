@@ -114,10 +114,7 @@ public static class JsonUtils {
     /// an instance of <typeparamref name="T"/>.</param>
     /// <returns>An array of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
     public static T[] ParseJsonArray<T>(string json, Func<JObject, T> func) {
-        return (
-            from JObject item in ParseJsonArray(json)
-            select func(item)
-        ).ToArray();
+        return [.. from JObject item in ParseJsonArray(json) select func(item)];
     }
 
     /// <summary>
@@ -127,10 +124,7 @@ public static class JsonUtils {
     /// <param name="json">The JSON string to be parsed.</param>
     /// <returns>An array of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
     public static T[] ParseJsonArray<T>(string json) {
-        return (
-            from JObject item in ParseJsonArray(json)
-            select item.ToObject<T>()
-        ).ToArray();
+        return [.. from JObject item in ParseJsonArray(json) select item.ToObject<T>()];
     }
 
     /// <summary>
@@ -309,7 +303,7 @@ public static class JsonUtils {
     public static bool TryParseJsonArray<T>(string json, Func<JObject, T> callback, [NotNullWhen(true)] out T[]? result) {
         try {
             if (TryParseJsonArray(json, out JArray? temp)) {
-                result = temp.OfType<JObject>().Select(callback).ToArray();
+                result = [.. temp.OfType<JObject>().Select(callback)];
                 return true;
             }
             result = default;

@@ -108,7 +108,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of single-precision floating-point values (<see cref="float"/>).</returns>
     public static float[] ParseFloatArray(string? input, params char[] separators) {
-        return ParseFloatList(input, separators).ToArray();
+        return [.. ParseFloatList(input, separators)];
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ public static partial class StringUtils {
     /// <returns>A list of single-precision floating-point values (<see cref="float"/>).</returns>
     public static List<float> ParseFloatList(string? input, params char[] separators) {
 
-        List<float> temp = new();
+        List<float> temp = [];
         if (string.IsNullOrWhiteSpace(input)) return temp;
 
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {

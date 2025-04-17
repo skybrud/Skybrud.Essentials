@@ -43,7 +43,7 @@ public class NameValueCollectionJsonConverter : JsonConverter {
         if (reader.TokenType is not JsonToken.StartObject) return null;
 
         // Initialize a new name value collection
-        NameValueCollection nvc = new();
+        NameValueCollection nvc = [];
 
         // Parse the JSON object and iterate through it's properties
         foreach (var property in JObject.Load(reader).Properties()) {

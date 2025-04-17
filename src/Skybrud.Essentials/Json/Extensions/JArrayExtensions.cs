@@ -354,14 +354,8 @@ public static partial class JArrayExtensions {
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[]? GetArray<T>(this JArray? array, int index, Func<JObject, T> func) {
-
         if (array?[index] is not JArray property) return null;
-
-        return (
-            from JObject child in property
-            select func(child)
-        ).ToArray();
-
+        return [.. from JObject child in property select func(child)];
     }
 
     /// <summary>
@@ -386,14 +380,8 @@ public static partial class JArrayExtensions {
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[]? GetArray<T>(this JArray? array, string path, Func<JObject, T> func) {
-
         if (array?.SelectToken(path) is not JArray token) return null;
-
-        return (
-            from JObject child in token
-            select func(child)
-        ).ToArray();
-
+        return [.. from JObject child in token select func(child)];
     }
 
 }

@@ -108,7 +108,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of double-precision floating-point values (<see cref="double"/>).</returns>
     public static double[] ParseDoubleArray(string? input, params char[] separators) {
-        return ParseDoubleList(input, separators).ToArray();
+        return [.. ParseDoubleList(input, separators)];
     }
 
     /// <summary>
@@ -133,7 +133,7 @@ public static partial class StringUtils {
     /// <returns>A list of double-precision floating-point values (<see cref="double"/>).</returns>
     public static List<double> ParseDoubleList(string? input, params char[] separators) {
 
-        List<double> temp = new();
+        List<double> temp = [];
         if (string.IsNullOrWhiteSpace(input)) return temp;
 
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {

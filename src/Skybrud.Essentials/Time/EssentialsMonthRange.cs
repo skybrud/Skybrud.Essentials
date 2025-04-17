@@ -162,7 +162,7 @@ public class EssentialsMonthRange : IReadOnlyList<EssentialsMonth> {
 
     private static List<EssentialsMonth> GetMonths(int firstYear, int firstMonth, int lastYear, int lastMonth) {
 
-        List<EssentialsMonth> months = new();
+        List<EssentialsMonth> months = [];
 
         if (firstYear < lastYear || firstYear == lastYear && firstMonth <= lastMonth) {
             for (int y = firstYear; y <= lastYear; y++) {

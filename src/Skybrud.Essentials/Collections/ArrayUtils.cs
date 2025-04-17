@@ -36,12 +36,10 @@ public static class ArrayUtils {
     ///     <cref>https://docs.microsoft.com/en-us/dotnet/api/system.array.empty?view=net-6.0</cref>
     /// </see>
     public static T[] Empty<T>() {
-        return Array.Empty<T>();
+        return [];
     }
 
 #else
-
-#pragma warning disable CA1825 // Avoid zero-length array allocations
 
     /// <summary>
     /// Returns an empty array.
@@ -58,7 +56,7 @@ public static class ArrayUtils {
     }
 
     private static class EmptyArray<T> {
-        internal static readonly T[] Value = new T[0];
+        internal static readonly T[] Value = [];
     }
 
 #endif

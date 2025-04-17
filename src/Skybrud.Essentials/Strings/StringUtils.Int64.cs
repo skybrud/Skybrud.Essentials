@@ -107,7 +107,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of 64-bit signed integer values (<see cref="long"/>).</returns>
     public static long[] ParseInt64Array(string? input, params char[] separators) {
-        return ParseInt64List(input, separators).ToArray();
+        return [.. ParseInt64List(input, separators)];
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public static partial class StringUtils {
     /// <returns>A list of 64-bit signed integer values (<see cref="long"/>).</returns>
     public static List<long> ParseInt64List(string? input, params char[] separators) {
 
-        List<long> temp = new();
+        List<long> temp = [];
         if (string.IsNullOrWhiteSpace(input)) return temp;
 
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {

@@ -49,7 +49,7 @@ public class JsonObjectBaseConverter : JsonConverter {
 
         JObject obj = JObject.Load(reader);
 
-        return Activator.CreateInstance(objectType, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, new object[] { obj }, null)!;
+        return Activator.CreateInstance(objectType, BindingFlags.Instance | BindingFlags.Public | BindingFlags.NonPublic, null, [obj], null)!;
 
     }
 

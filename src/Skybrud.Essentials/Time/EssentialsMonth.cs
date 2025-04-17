@@ -368,7 +368,7 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
     /// <returns>An array of <see cref="EssentialsMonth"/>.</returns>
     public static EssentialsMonth[] GetMonths(int startYear, int startMonth, int months, TimeZoneInfo timeZone) {
 
-        List<EssentialsMonth> temp = new();
+        List<EssentialsMonth> temp = [];
 
         int year = startYear;
 
@@ -378,7 +378,7 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
             temp.Add(new EssentialsMonth(year, month, timeZone));
         }
 
-        return temp.ToArray();
+        return [.. temp];
 
     }
 

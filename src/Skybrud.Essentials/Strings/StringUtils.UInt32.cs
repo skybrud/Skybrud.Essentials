@@ -107,7 +107,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of 32-bit unsigned integer values (<see cref="uint"/>).</returns>
     public static uint[] ParseUInt32Array(string? input, params char[] separators) {
-        return ParseUInt32List(input, separators).ToArray();
+        return [.. ParseUInt32List(input, separators)];
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public static partial class StringUtils {
     /// <returns>A list of 32-bit unsigned integer values (<see cref="uint"/>).</returns>
     public static List<uint> ParseUInt32List(string? input, params char[] separators) {
 
-        List<uint> temp = new();
+        List<uint> temp = [];
         if (string.IsNullOrWhiteSpace(input)) return temp;
 
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {

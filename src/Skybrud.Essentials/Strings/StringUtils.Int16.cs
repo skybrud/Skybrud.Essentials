@@ -106,7 +106,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of 16-bit signed integer values (<see cref="short"/>).</returns>
     public static short[] ParseInt16Array(string? input, params char[] separators) {
-        return ParseInt16List(input, separators).ToArray();
+        return [.. ParseInt16List(input, separators)];
     }
 
     /// <summary>
@@ -131,7 +131,7 @@ public static partial class StringUtils {
     /// <returns>A list of 16-bit signed integer values (<see cref="short"/>).</returns>
     public static List<short> ParseInt16List(string? input, params char[] separators) {
 
-        List<short> temp = new();
+        List<short> temp = [];
         if (string.IsNullOrWhiteSpace(input)) return temp;
 
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {

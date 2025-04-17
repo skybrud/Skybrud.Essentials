@@ -53,11 +53,11 @@ public static class Iso8601Constants {
     /// <summary>
     /// An array with known ISO 8601 date time formats used when attempt to parse ISO 8601 values.
     /// </summary>
-    internal static readonly string[] DateTimeFormats = {
+    internal static readonly string[] DateTimeFormats = [
         DateTimeSecondsZulu,
         DateTimeSeconds,
         DateTimeMillisecondsZulu,
         DateTimeMilliseconds
-    };
+    ];
 
 }

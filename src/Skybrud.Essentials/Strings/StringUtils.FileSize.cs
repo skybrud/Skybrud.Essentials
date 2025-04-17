@@ -5,8 +5,8 @@ namespace Skybrud.Essentials.Strings;
 
 public partial class StringUtils {
 
-    private static readonly string[] _fileSizesKibi = { "B", "KiB", "MiB", "GiB", "TiB" };
-    private static readonly string[] _fileSizesKilo = { "B", "KB", "MB", "GB", "TB" };
+    private static readonly string[] _fileSizesKibi = ["B", "KiB", "MiB", "GiB", "TiB"];
+    private static readonly string[] _fileSizesKilo = ["B", "KB", "MB", "GB", "TB"];
 
     /// <summary>
     /// Formats the specified <paramref name="bytes"/> into a textual representation using kibibytes, but units like <c>KB</c>, <c>MB</c> etc.

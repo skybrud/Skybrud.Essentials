@@ -5,7 +5,6 @@ using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
 using System.Xml.XPath;
-using Skybrud.Essentials.Collections;
 
 // ReSharper disable RedundantSuppressNullableWarningExpression
 
@@ -20,7 +19,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression.</param>
     /// <returns>An array of <see cref="XElement"/>.</returns>
     public static XElement[] GetElements(this XElement? element, string expression) {
-        return element?.XPathSelectElements(expression).ToArray() ?? ArrayUtils.Empty<XElement>();
+        return element?.XPathSelectElements(expression).ToArray() ?? [];
     }
 
     /// <summary>
@@ -31,7 +30,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
     /// <returns>An array of <see cref="XElement"/>.</returns>
     public static XElement[] GetElements(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
-        return element?.XPathSelectElements(expression, resolver).ToArray() ?? ArrayUtils.Empty<XElement>();
+        return element?.XPathSelectElements(expression, resolver).ToArray() ?? [];
     }
 
     /// <summary>
@@ -43,7 +42,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">A callback function for parsing the elements.</param>
     /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
     public static T[] GetElements<T>(this XElement? element, string expression, Func<XElement, T> callback) {
-        return element?.XPathSelectElements(expression).Select(callback).ToArray() ?? ArrayUtils.Empty<T>();
+        return element?.XPathSelectElements(expression).Select(callback).ToArray() ?? [];
     }
 
     /// <summary>
@@ -56,7 +55,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">A callback function for parsing the elements.</param>
     /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
     public static T[] GetElements<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver, Func<XElement, T> callback) {
-        return element?.XPathSelectElements(expression, resolver).Select(callback).ToArray() ?? ArrayUtils.Empty<T>();
+        return element?.XPathSelectElements(expression, resolver).Select(callback).ToArray() ?? [];
     }
 
     /// <summary>
@@ -69,11 +68,8 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     public static T[] GetElements<T>(this XElement? element, string expression, Func<XElement, IXmlNamespaceResolver?, T> callback, IXmlNamespaceResolver? resolver) {
-        if (element == null) return ArrayUtils.Empty<T>();
-        return (
-            from child in element!.XPathSelectElements(expression, resolver)
-            select callback(child, resolver)
-        ).ToArray();
+        if (element == null) return [];
+        return [.. from child in element!.XPathSelectElements(expression, resolver) select callback(child, resolver)];
     }
 
     /// <summary>
@@ -87,11 +83,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver2">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     public static T[] GetElements<T>(this XElement? element, string expression, Func<XElement, IXmlNamespaceResolver?, T> callback, IXmlNamespaceResolver? resolver, IXmlNamespaceResolver? resolver2) {
-        if (element == null) return ArrayUtils.Empty<T>();
-        return (
-            from child in element.XPathSelectElements(expression, resolver)
-            select callback(child, resolver2)
-        ).ToArray();
+        return element is null ? [] : [.. from child in element.XPathSelectElements(expression, resolver) select callback(child, resolver2)];
     }
 
 }

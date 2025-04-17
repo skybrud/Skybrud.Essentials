@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Collections;
 using Skybrud.Essentials.Collections.Extensions;
 using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
@@ -161,7 +160,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An array of <see cref="JObject"/>.</returns>
     public static JObject[] GetObjectArray(this JObject? json, string propertyName) {
-        return (json?[propertyName] as JArray)?.OfType<JObject>().ToArray() ?? ArrayUtils.Empty<JObject>();
+        return (json?[propertyName] as JArray)?.OfType<JObject>().ToArray() ?? [];
     }
 
     /// <summary>
@@ -171,7 +170,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An array of <see cref="JObject"/>.</returns>
     public static JObject[] GetObjectArrayByPath(this JObject? json, string path) {
-        return (json?.SelectToken(path) as JArray)?.OfType<JObject>().ToArray() ?? ArrayUtils.Empty<JObject>();
+        return (json?.SelectToken(path) as JArray)?.OfType<JObject>().ToArray() ?? [];
     }
 
     /// <summary>
@@ -181,8 +180,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An array of <see cref="JToken"/>.</returns>
     public static JToken[] GetArrayItems(this JObject? json, string propertyName) {
-        if (json?[propertyName] is not JArray array || array.Count == 0) return ArrayUtils.Empty<JToken>();
-        return array.ToArray();
+        if (json?[propertyName] is not JArray array || array.Count == 0) return [];
+        return [.. array];
     }
 
     /// <summary>
@@ -195,15 +194,15 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     public static T[] GetArrayItems<T>(this JObject? json, string propertyName, Func<JObject, T?> callback) {
 
-        if (json?[propertyName] is not JArray array || array.Count == 0) return ArrayUtils.Empty<T>();
+        if (json?[propertyName] is not JArray array || array.Count == 0) return [];
 
-        List<T> temp = new();
+        List<T> temp = [];
 
         foreach (JToken item in array) {
             if (item is JObject obj && callback(obj) is { } value) temp.Add(value);
         }
 
-        return temp.ToArray();
+        return [.. temp];
 
     }
 
@@ -218,15 +217,15 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <typeparamref name="TValue"/>.</returns>
     public static TValue[] GetArrayItems<TKey, TValue>(this JObject? json, string propertyName, Func<TKey, TValue?> callback) where TKey : JToken {
 
-        if (json?[propertyName] is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
+        if (json?[propertyName] is not JArray array || array.Count == 0) return [];
 
-        List<TValue> temp = new();
+        List<TValue> temp = [];
 
         foreach (JToken child in array) {
             if (child is TKey key && callback(key) is { } value) temp.Add(value);
         }
 
-        return temp.ToArray();
+        return [.. temp];
 
     }
 
@@ -238,8 +237,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An array of <typeparamref name="TValue"/>.</returns>
     public static TValue[] GetArrayItems<TValue>(this JObject? json, string propertyName) where TValue : struct {
-        if (json?[propertyName] is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
-        return array.Values<TValue>().ToArray();
+        if (json?[propertyName] is not JArray array || array.Count == 0) return [];
+        return [.. array.Values<TValue>()];
     }
 
     /// <summary>
@@ -249,8 +248,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An array of <see cref="JToken"/>.</returns>
     public static JToken[] GetArrayItemsByPath(this JObject? json, string path) {
-        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return ArrayUtils.Empty<JToken>();
-        return array.ToArray();
+        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return [];
+        return [.. array];
     }
 
     /// <summary>
@@ -263,15 +262,15 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     public static T[] GetArrayItemsByPath<T>(this JObject? json, string path, Func<JObject, T?> callback) {
 
-        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return ArrayUtils.Empty<T>();
+        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return [];
 
-        List<T> temp = new();
+        List<T> temp = [];
 
         foreach (JToken item in array) {
             if (item is JObject obj && callback(obj) is { } value) temp.Add(value);
         }
 
-        return temp.ToArray();
+        return [.. temp];
 
     }
 
@@ -286,15 +285,15 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <typeparamref name="TValue"/>.</returns>
     public static TValue[] GetArrayItemsByPath<TKey, TValue>(this JObject? json, string path, Func<TKey, TValue?> callback) where TKey : JToken {
 
-        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
+        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return [];
 
-        List<TValue> temp = new();
+        List<TValue> temp = [];
 
         foreach (JToken child in array) {
             if (child is TKey key && callback(key) is { } value) temp.Add(value);
         }
 
-        return temp.ToArray();
+        return [.. temp];
 
     }
 
@@ -306,20 +305,9 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An array of <typeparamref name="TValue"/>.</returns>
     public static TValue[] GetArrayItemsByPath<TValue>(this JObject? json, string path) where TValue : struct {
-        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return ArrayUtils.Empty<TValue>();
-        return array.Values<TValue>().ToArray();
+        if (json?.SelectToken(path) is not JArray array || array.Count == 0) return [];
+        return [.. array.Values<TValue>()];
     }
-
-
-
-
-
-
-
-
-
-
-
 
     /// <summary>
     /// Returns an instance of <see cref="JArray"/> representing the value of the property with the specified

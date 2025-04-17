@@ -224,7 +224,7 @@ public class EssentialsPartialDate {
         input = (input ?? string.Empty).Replace(",", string.Empty);
 
         // Parse the string into an instance of DateTime for full dates
-        if (DateTime.TryParseExact(input, new[] { "yyyy-MM-dd", "d MMMM yyyy", "MMMM d yyyy" }, provider, DateTimeStyles.None, out DateTime dt)) {
+        if (DateTime.TryParseExact(input, ["yyyy-MM-dd", "d MMMM yyyy", "MMMM d yyyy"], provider, DateTimeStyles.None, out DateTime dt)) {
             result = new EssentialsPartialDate(dt);
             return true;
         }

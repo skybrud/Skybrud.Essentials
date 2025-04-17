@@ -53,7 +53,7 @@ public class StringJsonConverter : JsonConverter {
 #if I_CAN_HAS_NAME_VALUE_COLLECTION
         if (objectType == typeof(NameValueCollection)) {
             string? temp = reader.Value?.ToString();
-            return temp is null ? new NameValueCollection() : System.Web.HttpUtility.ParseQueryString(temp);
+            return temp is null ? [] : System.Web.HttpUtility.ParseQueryString(temp);
         }
 #endif
 

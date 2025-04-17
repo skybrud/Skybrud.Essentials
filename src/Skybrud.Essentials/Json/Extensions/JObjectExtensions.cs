@@ -158,11 +158,11 @@ public static partial class JObjectExtensions {
         switch (token) {
 
             case null:
-                return ArrayUtils.Empty<Guid>();
+                return [];
 
             case JArray array:
 
-                List<Guid> temp = new();
+                List<Guid> temp = [];
 
                 foreach (JToken t in array) {
 
@@ -171,15 +171,15 @@ public static partial class JObjectExtensions {
 
                 }
 
-                return temp.ToArray();
+                return [.. temp];
 
             default:
 
                 // Be friendly to other formats
                 return token.Type switch {
                     JTokenType.String => StringUtils.ParseGuidArray(token.Value<string>()),
-                    JTokenType.Guid => new[] { token.Value<Guid>() },
-                    _ => ArrayUtils.Empty<Guid>()
+                    JTokenType.Guid => [token.Value<Guid>()],
+                    _ => []
                 };
 
         }
@@ -503,15 +503,7 @@ public static partial class JObjectExtensions {
     /// <param name="callback">A callback function used for parsing or converting the token value.</param>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[]? GetArray<T>(this JObject? obj, string path, Func<JObject, T> callback) {
-
-        if (obj?.SelectToken(path) is not JArray token) return null;
-
-        return (
-            from child in token
-            where child is JObject
-            select callback((JObject) child)
-        ).ToArray();
-
+        return obj?.SelectToken(path) is not JArray token ? null : [..from child in token where child is JObject select callback((JObject) child)];
     }
 
     /// <summary>
@@ -525,7 +517,7 @@ public static partial class JObjectExtensions {
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static JToken[] GetArrayItems(this JObject? obj, string path) {
         JArray ?array = GetArray(obj, path);
-        return array?.ToArray() ?? ArrayUtils.Empty<JToken>();
+        return array?.ToArray() ?? [];
     }
 
     /// <summary>
@@ -537,14 +529,7 @@ public static partial class JObjectExtensions {
     /// still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetArrayItems<T>(this JObject? obj, string path) {
-
-        if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<T>();
-
-        return (
-            from JToken child in token
-            select child.Value<T>()
-        ).ToArray();
-
+        return obj?.SelectToken(path) is not JArray token ? [] : [.. from JToken child in token select child.Value<T>()];
     }
 
     /// <summary>
@@ -557,14 +542,8 @@ public static partial class JObjectExtensions {
     /// still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetArrayItems<T>(this JObject? obj, string path, Func<JToken, T> callback) {
-
-        if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<T>();
-
-        return (
-            from JObject child in token
-            select callback(child)
-        ).ToArray();
-
+        if (obj?.SelectToken(path) is not JArray token) return [];
+        return [.. from JObject child in token select callback(child)];
     }
 
     /// <summary>
@@ -577,14 +556,7 @@ public static partial class JObjectExtensions {
     /// still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetArrayItems<T>(this JObject? obj, string path, Func<JObject, T> callback) {
-
-        if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<T>();
-
-        return (
-            from JObject child in token
-            select callback(child)
-        ).ToArray();
-
+        return obj?.SelectToken(path) is not JArray token ? [] : [.. from JObject child in token select callback(child)];
     }
 
     /// <summary>
@@ -597,14 +569,7 @@ public static partial class JObjectExtensions {
     /// array will still be returned.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static TValue[] GetArrayItems<TKey, TValue>(this JObject? obj, string path, Func<TKey, TValue> callback) where TKey : JToken {
-
-        if (obj?.SelectToken(path) is not JArray token) return ArrayUtils.Empty<TValue>();
-
-        return (
-            from TKey child in token
-            select callback(child)
-        ).ToArray();
-
+        return obj?.SelectToken(path) is not JArray token ? [] : [.. from TKey child in token select callback(child)];
     }
 
     /// <summary>
@@ -692,7 +657,7 @@ public static partial class JObjectExtensions {
     /// <returns>The token value as an array of <typeparamref name="T"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetObjectArray<T>(this JObject? obj, string path) {
-        return GetArrayItems<JObject>(obj, path).Select(x => x.ToObject<T>()).ToArray();
+        return [.. GetArrayItems<JObject>(obj, path).Select(x => x.ToObject<T>())];
     }
 
     /// <summary>
@@ -704,7 +669,7 @@ public static partial class JObjectExtensions {
     /// <returns>The token value as an array of <typeparamref name="T"/>.</returns>
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static T[] GetObjectArray<T>(this JObject? obj, string path, Func<JObject, T> callback) {
-        return GetArrayItems<JObject>(obj, path).Select(callback).ToArray();
+        return [.. GetArrayItems<JObject>(obj, path).Select(callback)];
     }
 
     /// <summary>

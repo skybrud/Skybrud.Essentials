@@ -50,7 +50,7 @@ public static class EnumUtils {
     /// <param name="type">The type of the enum class.</param>
     /// <returns>An array of <see cref="Enum"/>.</returns>
     public static Enum[] GetEnumValues(Type type) {
-        return Enum.GetValues(type).Cast<Enum>().ToArray();
+        return [.. Enum.GetValues(type).Cast<Enum>()];
     }
 
     /// <summary>
@@ -308,11 +308,8 @@ public static class EnumUtils {
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
     public static T[] ParseEnumArray<T>(string? str) where T : struct {
-        if (string.IsNullOrWhiteSpace(str)) return ArrayUtils.Empty<T>();
-        return (
-            from piece in str!.Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries)
-            select ParseEnum<T>(piece)
-        ).ToArray();
+        if (string.IsNullOrWhiteSpace(str)) return [];
+        return [.. from piece in str!.Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries) select ParseEnum<T>(piece)];
     }
 
     /// <summary>
@@ -337,11 +334,8 @@ public static class EnumUtils {
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
     public static T[] ParseEnumArray<T>(string? input, char[] separators) where T : Enum {
-        if (string.IsNullOrWhiteSpace(input)) return ArrayUtils.Empty<T>();
-        return (
-            from piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)
-            select ParseEnumInternal<T>(piece)
-        ).ToArray();
+        if (string.IsNullOrWhiteSpace(input)) return [];
+        return [.. from piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries) select ParseEnumInternal<T>(piece)];
     }
 
     /// <summary>
@@ -415,7 +409,7 @@ public static class EnumUtils {
     /// <returns>A list of <typeparamref name="T"/> with the converted values.</returns>
     /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
     public static List<T> ParseEnumList<T>(string? input, char[] separators) where T : Enum {
-        List<T> temp = new();
+        List<T> temp = [];
         return string.IsNullOrWhiteSpace(input) ? temp : ParseEnumList<T>(input.ToStringArray(separators));
     }
 
@@ -437,7 +431,7 @@ public static class EnumUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An instance of <see cref="Array"/> containing the parsed enum values.</returns>
     public static List<Enum> ParseEnumList(string? input, Type type, char[] separators) {
-        List<Enum> temp = new();
+        List<Enum> temp = [];
         return string.IsNullOrWhiteSpace(input) ? temp : ParseEnumList(input.ToStringArray(separators), type);
     }
 
@@ -469,7 +463,7 @@ public static class EnumUtils {
     /// <returns>A list of <typeparamref name="T"/> containing the parsed enum values.</returns>
     public static List<T> ParseEnumList<T>(IEnumerable<string> pieces) where T : Enum {
 
-        List<T> temp = new();
+        List<T> temp = [];
 
         foreach (string piece in pieces) {
             if (TryParseEnumInternal(piece, out T? value)) {
@@ -480,17 +474,6 @@ public static class EnumUtils {
         return temp;
 
     }
-
-
-
-
-
-
-
-
-
-
-
 
     /// <summary>
     /// Converts the specified <paramref name="str"/> into an array of <typeparamref name="T"/>. The return value
@@ -505,11 +488,11 @@ public static class EnumUtils {
 
         // An empty string (or white space) is treated as a valid value as it may indicate an empty array
         if (string.IsNullOrWhiteSpace(str)) {
-            array = ArrayUtils.Empty<T>();
+            array = [];
             return true;
         }
 
-        List<T> temp = new();
+        List<T> temp = [];
         array = null;
 
         // Iterate over and try to parse each individual value
@@ -518,7 +501,7 @@ public static class EnumUtils {
             temp.Add(value);
         }
 
-        array = temp.ToArray();
+        array = [.. temp];
         return true;
 
     }

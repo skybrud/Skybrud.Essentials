@@ -13,7 +13,7 @@ public static class ReadOnlyCollection {
     /// <typeparam name="T">The item type of the collection.</typeparam>
     /// <returns>An instance of <see cref="IReadOnlyCollection{T}"/>.</returns>
     public static IReadOnlyCollection<T> Empty<T>() {
-        return ArrayUtils.Empty<T>();
+        return [];
     }
 
 }

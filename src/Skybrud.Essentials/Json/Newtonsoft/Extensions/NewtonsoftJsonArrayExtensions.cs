@@ -440,13 +440,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="callback">The delegate (callback method) used for parsing each item in the array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     public static T[]? GetArray<T>(this JArray? array, int index, Func<JObject, T> callback) {
-
-        if (array?[index] is not JArray property) return null;
-
-        return (
-            from JObject child in property
-            select callback(child)
-        ).ToArray();
+        return array?[index] is not JArray property ? null : [.. from JObject child in property select callback(child)];
 
     }
 
@@ -470,14 +464,8 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="callback">The delegate (callback method) used for parsing each item in the array.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
     public static T[]? GetArrayByPath<T>(this JArray? array, string path, Func<JObject, T> callback) {
-
         if (array?.SelectToken(path) is not JArray token) return null;
-
-        return (
-            from JObject child in token
-            select callback(child)
-        ).ToArray();
-
+        return [.. from JObject child in token select callback(child)];
     }
 
     #endregion

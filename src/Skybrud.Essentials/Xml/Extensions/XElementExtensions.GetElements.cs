@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Linq;
 using System.Xml.Linq;
-using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Essentials.Xml.Extensions;
 
@@ -14,7 +13,7 @@ public static partial class XElementExtensions {
     /// <param name="name">An instance of <see cref="XName"/> identifying the elements.</param>
     /// <returns>An array of <see cref="XElement"/>.</returns>
     public static XElement[] GetElements(this XElement? element, XName name) {
-        return element?.Elements(name).ToArray() ?? ArrayUtils.Empty<XElement>();
+        return element?.Elements(name).ToArray() ?? [];
     }
 
     /// <summary>
@@ -26,7 +25,7 @@ public static partial class XElementExtensions {
     /// <param name="callback">A callback function for parsing the element.</param>
     /// <returns>The elements as parsed by the specified <paramref name="callback"/>.</returns>
     public static T[] GetElements<T>(this XElement? element, XName name, Func<XElement, T> callback) {
-        return element?.Elements(name).Select(callback).ToArray() ?? ArrayUtils.Empty<T>();
+        return element?.Elements(name).Select(callback).ToArray() ?? [];
     }
 
 }

@@ -182,7 +182,7 @@ public static class EnumerableExtensions {
             .GetTypeInfo()
             .GetDeclaredMethod(nameof(Cast))!
             .MakeGenericMethod(targetType)
-            .Invoke(null, new object[] { source })!;
+            .Invoke(null, [source])!;
     }
 
     /// <summary>
@@ -196,7 +196,7 @@ public static class EnumerableExtensions {
             .GetTypeInfo()
             .GetDeclaredMethod(nameof(ToList))!
             .MakeGenericMethod(targetType)
-            .Invoke(null, new object[] { source })!;
+            .Invoke(null, [source])!;
     }
 
     /// <summary>
@@ -210,7 +210,7 @@ public static class EnumerableExtensions {
             .GetTypeInfo()
             .GetDeclaredMethod(nameof(ToArray))!
             .MakeGenericMethod(targetType)
-            .Invoke(null, new object[] { source })!;
+            .Invoke(null, [source])!;
     }
 
     /// <summary>
@@ -222,7 +222,7 @@ public static class EnumerableExtensions {
     /// <param name="selector">A function to extract a key from each element.</param>
     /// <returns>A <see cref="HashSet{TResult}"/> that contains values of type <typeparamref name="TResult"/> selected from the input sequence.</returns>
     public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
-        return new HashSet<TResult>(source.Select(selector));
+        return [..source.Select(selector)];
     }
 
     /// <summary>
@@ -396,7 +396,7 @@ public static class EnumerableExtensions {
     public static List<TResult> SelectList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
 
         // Initialize a new list
-        List<TResult> temp = new();
+        List<TResult> temp = [];
 
         // Iterate through the elements of the source
         foreach (TSource item in source) temp.Add(selector(item));
@@ -415,7 +415,7 @@ public static class EnumerableExtensions {
     /// <param name="selector">A function used for converting the elements.</param>
     /// <returns>An array of <typeparamref name="TResult"/>.</returns>
     public static TResult[] SelectArray<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
-        return source.Select(selector).ToArray();
+        return [.. source.Select(selector)];
     }
 
     /// <summary>
@@ -427,7 +427,7 @@ public static class EnumerableExtensions {
     /// <param name="selector">A function used for converting the elements.</param>
     /// <returns>An instance of <see cref="IReadOnlyList{TResult}"/></returns>
     public static IReadOnlyList<TResult> SelectReadOnlyList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
-        return source.Select(selector).ToArray();
+        return [.. source.Select(selector)];
     }
 
     /// <summary>

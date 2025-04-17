@@ -5,7 +5,6 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Reflection;
 using System.Runtime.CompilerServices;
-using Skybrud.Essentials.Collections;
 
 namespace Skybrud.Essentials.Reflection;
 
@@ -351,12 +350,10 @@ public static class ReflectionUtils {
 
         // Get the member of the enum value
         MemberInfo? member = value.GetType().GetTypeInfo().GetDeclaredField(value.ToString());
-        if (member == null) return ArrayUtils.Empty<T>();
+        if (member == null) return [];
 
         // Return an array of the found attributes
-        return member
-            .GetCustomAttributes<T>(false)
-            .ToArray();
+        return [.. member.GetCustomAttributes<T>(false)];
 
     }
 
@@ -390,7 +387,7 @@ public static class ReflectionUtils {
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
     /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttributes<T>(MemberInfo? member, [NotNullWhen(true)] out T[]? result) where T : Attribute {
-        result = member?.GetCustomAttributes<T>().ToArray() ?? ArrayUtils.Empty<T>();
+        result = member?.GetCustomAttributes<T>().ToArray() ?? [];
         return result.Length > 0;
     }
 
@@ -415,7 +412,7 @@ public static class ReflectionUtils {
     public static T[] GetCustomAttributes<T>(MemberInfo? member) where T : Attribute {
         return member?
             .GetCustomAttributes<T>(false)
-            .ToArray() ?? ArrayUtils.Empty<T>();
+            .ToArray() ?? [];
     }
 
     /// <summary>
@@ -448,7 +445,7 @@ public static class ReflectionUtils {
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
     /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttributes<T>(Type? type, [NotNullWhen(true)] out T[]? result) where T : Attribute {
-        result = type?.GetTypeInfo().GetCustomAttributes<T>(false).ToArray() ?? ArrayUtils.Empty<T>();
+        result = type?.GetTypeInfo().GetCustomAttributes<T>(false).ToArray() ?? [];
         return result.Length > 0;
     }
 
@@ -475,7 +472,7 @@ public static class ReflectionUtils {
         return type?
             .GetTypeInfo()
             .GetCustomAttributes<T>(false)
-            .ToArray() ?? ArrayUtils.Empty<T>();
+            .ToArray() ?? [];
     }
 
     /// <summary>
@@ -508,7 +505,7 @@ public static class ReflectionUtils {
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
     /// <returns><see langword="true"/> if an attribute is found; otherwise, <see langword="false"/>.</returns>
     public static bool HasCustomAttributes<T>(Assembly? assembly, [NotNullWhen(true)] out T[]? result) where T : Attribute {
-        result = assembly?.GetCustomAttributes<T>().ToArray() ?? ArrayUtils.Empty<T>();
+        result = assembly?.GetCustomAttributes<T>().ToArray() ?? [];
         return result.Length > 0;
     }
 
@@ -533,7 +530,7 @@ public static class ReflectionUtils {
     public static T[] GetCustomAttributes<T>(Assembly? assembly) where T : Attribute {
         return assembly?
             .GetCustomAttributes<T>()
-            .ToArray() ?? ArrayUtils.Empty<T>();
+            .ToArray() ?? [];
     }
 
 #if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER

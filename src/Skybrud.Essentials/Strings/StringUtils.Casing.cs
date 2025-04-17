@@ -411,7 +411,7 @@ public static partial class StringUtils {
     private static IReadOnlyList<string> ToCasingList(string input, bool firstToUpper, bool? upperCase) {
 
         StringBuilder buffer = new();
-        List<string> words = new();
+        List<string> words = [];
 
         for (int i = 0; i < input.Length; i++) {
 

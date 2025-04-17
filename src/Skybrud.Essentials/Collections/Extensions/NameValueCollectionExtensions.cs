@@ -52,10 +52,10 @@ public static class NameValueCollectionExtensions {
     public static string[] GetStringArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not {} values) return ArrayUtils.Empty<string>();
+        if (collection?.GetValues(key) is not {} values) return [];
 
         // Initialize a new list
-        List<string> result = new();
+        List<string> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -63,7 +63,7 @@ public static class NameValueCollectionExtensions {
         }
 
         // Return the list as an array
-        return result.ToArray();
+        return [.. result];
 
     }
 
@@ -76,10 +76,10 @@ public static class NameValueCollectionExtensions {
     public static List<string> GetStringList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return new List<string>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<string> result = new();
+        List<string> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -214,10 +214,10 @@ public static class NameValueCollectionExtensions {
     public static Guid[] GetGuidArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<Guid>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<Guid> result = new();
+        List<Guid> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -225,7 +225,7 @@ public static class NameValueCollectionExtensions {
         }
 
         // Return the list as an array
-        return result.ToArray();
+        return [.. result];
 
     }
 
@@ -238,10 +238,10 @@ public static class NameValueCollectionExtensions {
     public static List<Guid> GetGuidList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return new List<Guid>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<Guid> result = new();
+        List<Guid> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -319,10 +319,10 @@ public static class NameValueCollectionExtensions {
     public static int[] GetInt32Array(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<int>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<int> result = new();
+        List<int> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -330,7 +330,7 @@ public static class NameValueCollectionExtensions {
         }
 
         // Return the list as an array
-        return result.ToArray();
+        return [.. result];
 
     }
 
@@ -343,10 +343,10 @@ public static class NameValueCollectionExtensions {
     public static List<int> GetInt32List(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return new List<int>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<int> result = new();
+        List<int> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -424,10 +424,10 @@ public static class NameValueCollectionExtensions {
     public static long[] GetInt64Array(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<long>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<long> result = new();
+        List<long> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -435,7 +435,7 @@ public static class NameValueCollectionExtensions {
         }
 
         // Return the list as an array
-        return result.ToArray();
+        return [.. result];
 
     }
 
@@ -448,10 +448,10 @@ public static class NameValueCollectionExtensions {
     public static List<long> GetInt64List(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return new List<long>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<long> result = new();
+        List<long> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -529,10 +529,10 @@ public static class NameValueCollectionExtensions {
     public static float[] GetFloatArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<float>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<float> result = new();
+        List<float> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -540,7 +540,7 @@ public static class NameValueCollectionExtensions {
         }
 
         // Return the list as an array
-        return result.ToArray();
+        return [.. result];
 
     }
 
@@ -553,10 +553,10 @@ public static class NameValueCollectionExtensions {
     public static List<float> GetFloatList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return new List<float>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<float> result = new();
+        List<float> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -634,10 +634,10 @@ public static class NameValueCollectionExtensions {
     public static double[] GetDoubleArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return ArrayUtils.Empty<double>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<double> result = new();
+        List<double> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {
@@ -645,7 +645,7 @@ public static class NameValueCollectionExtensions {
         }
 
         // Return the list as an array
-        return result.ToArray();
+        return [.. result];
 
     }
 
@@ -658,10 +658,10 @@ public static class NameValueCollectionExtensions {
     public static List<double> GetDoubleList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
-        if (collection?.GetValues(key) is not { } values) return new List<double>();
+        if (collection?.GetValues(key) is not { } values) return [];
 
         // Initialize a new list
-        List<double> result = new();
+        List<double> result = [];
 
         // Parse the individual values into separate string arrays
         foreach (string value in values) {

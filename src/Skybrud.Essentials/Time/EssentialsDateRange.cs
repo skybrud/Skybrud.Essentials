@@ -51,7 +51,7 @@ public class EssentialsDateRange : IEnumerable<EssentialsDate> {
         Start = start;
         End = end;
 
-        List<EssentialsDate> temp = new();
+        List<EssentialsDate> temp = [];
 
         if (end < start) {
             IsReverse = true;
@@ -64,7 +64,7 @@ public class EssentialsDateRange : IEnumerable<EssentialsDate> {
             }
         }
 
-        Days = temp.ToArray();
+        Days = [.. temp];
 
     }
 

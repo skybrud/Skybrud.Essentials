@@ -107,7 +107,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of 32-bit signed integer values (<see cref="int"/>).</returns>
     public static int[] ParseInt32Array(string? input, params char[] separators) {
-        return ParseInt32List(input, separators).ToArray();
+        return [.. ParseInt32List(input, separators)];
     }
 
     /// <summary>
@@ -132,7 +132,7 @@ public static partial class StringUtils {
     /// <returns>A list of 32-bit signed integer values (<see cref="int"/>).</returns>
     public static List<int> ParseInt32List(string? input, params char[] separators) {
 
-        List<int> temp = new();
+        List<int> temp = [];
         if (string.IsNullOrWhiteSpace(input)) return temp;
 
         foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {

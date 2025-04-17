@@ -4,7 +4,6 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Linq;
 using System.Text.RegularExpressions;
-using Skybrud.Essentials.Collections;
 
 // ReSharper disable RedundantSuppressNullableWarningExpression
 
@@ -15,7 +14,7 @@ namespace Skybrud.Essentials.Strings;
 /// </summary>
 public static partial class StringUtils {
 
-    internal static readonly char[] DefaultSeparators = { ',', ' ', '\r', '\n', '\t' };
+    internal static readonly char[] DefaultSeparators = [',', ' ', '\r', '\n', '\t'];
 
     /// <summary>
     /// Parses string of multiple values into an array of <see cref="string"/>. Supported separators are
@@ -39,7 +38,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of <see cref="string"/>.</returns>
     public static string[] ParseStringArray(string? str, params char[] separators) {
-        return string.IsNullOrWhiteSpace(str) ? ArrayUtils.Empty<string>() : str!.Split(separators, StringSplitOptions.RemoveEmptyEntries);
+        return string.IsNullOrWhiteSpace(str) ? [] : str!.Split(separators, StringSplitOptions.RemoveEmptyEntries);
     }
 
     /// <summary>
@@ -64,7 +63,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>A list of <see cref="string"/>.</returns>
     public static List<string> ParseStringList(string? str, params char[] separators) {
-        return new List<string>(ParseStringArray(str, separators));
+        return [..ParseStringArray(str, separators)];
     }
 
     /// <summary>
@@ -89,8 +88,7 @@ public static partial class StringUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>A list of <see cref="string"/>.</returns>
     public static IReadOnlyList<string> ParseStringReadOnlyList(string? str, params char[] separators) {
-        if (string.IsNullOrWhiteSpace(str)) return ArrayUtils.Empty<string>();
-        return new List<string>(str!.Split(separators, StringSplitOptions.RemoveEmptyEntries));
+        return string.IsNullOrWhiteSpace(str) ? [] : str!.Split(separators, StringSplitOptions.RemoveEmptyEntries);
     }
 
     /// <summary>
@@ -245,7 +243,7 @@ public static partial class StringUtils {
     [return: NotNullIfNotNull(nameof(input))]
     public static string? HighlightKeywords(string? input, string className, IEnumerable<string>? keywords) {
         if (string.IsNullOrWhiteSpace(input) || keywords == null) return input;
-        return HighlightKeywords(input, className, keywords.ToArray());
+        return HighlightKeywords(input, className, [.. keywords]);
     }
 
     /// <summary>
