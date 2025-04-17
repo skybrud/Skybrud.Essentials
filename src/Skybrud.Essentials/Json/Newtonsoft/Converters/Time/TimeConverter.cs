@@ -107,27 +107,14 @@ public class TimeConverter : JsonConverter {
 
         }
 
-        switch (type) {
-
-            case "System.DateTime":
-                return ParseDateTime(reader);
-
-            case "System.DateTimeOffset":
-                return ParseDateTimeOffset(reader);
-
-            case "Skybrud.Essentials.Time.EssentialsDateTime":
-                return ParseEssentialsDateTime(reader);
-
-            case "Skybrud.Essentials.Time.EssentialsTime":
-                return ParseEssentialsTime(reader);
-
-            case "Skybrud.Essentials.Time.EssentialsDate":
-                return ParseEssentialsDate(reader);
-
-            default:
-                throw new JsonSerializationException($"Unsupported type: {objectType}");
-
-        }
+        return type switch {
+            "System.DateTime" => ParseDateTime(reader),
+            "System.DateTimeOffset" => ParseDateTimeOffset(reader),
+            "Skybrud.Essentials.Time.EssentialsDateTime" => ParseEssentialsDateTime(reader),
+            "Skybrud.Essentials.Time.EssentialsTime" => ParseEssentialsTime(reader),
+            "Skybrud.Essentials.Time.EssentialsDate" => ParseEssentialsDate(reader),
+            _ => throw new JsonSerializationException($"Unsupported type: {objectType}")
+        };
 
     }
 
@@ -159,18 +146,12 @@ public class TimeConverter : JsonConverter {
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
 
-                switch (reader.Value) {
-
-                    case DateTime dt:
-                        return dt;
-
-                    case DateTimeOffset dto:
-                        return dto.DateTime;
-
-                    default:
-                        throw new JsonSerializationException("Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType());
-
-                }
+                return reader.Value switch {
+                    DateTime dt => dt,
+                    DateTimeOffset dto => dto.DateTime,
+                    _ => throw new JsonSerializationException(
+                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType())
+                };
 
             case JsonToken.String:
 
@@ -178,24 +159,13 @@ public class TimeConverter : JsonConverter {
                 string value = (string) reader.Value;
 
                 // Parse the string using the format of the converter
-                switch (Format) {
-
-                    case TimeFormat.Iso8601:
-                        return Iso8601Utils.Parse(value).DateTime;
-
-                    case TimeFormat.Rfc822:
-                        return Rfc822Utils.Parse(value).DateTime;
-
-                    case TimeFormat.Rfc2822:
-                        return Rfc2822Utils.Parse(value).DateTime;
-
-                    case TimeFormat.UnixTime:
-                        return TimeUtils.GetDateTimeFromUnixTime(value);
-
-                    default:
-                        throw new JsonSerializationException("Unsupported format " + Format);
-
-                }
+                return Format switch {
+                    TimeFormat.Iso8601 => Iso8601Utils.Parse(value).DateTime,
+                    TimeFormat.Rfc822 => Rfc822Utils.Parse(value).DateTime,
+                    TimeFormat.Rfc2822 => Rfc2822Utils.Parse(value).DateTime,
+                    TimeFormat.UnixTime => TimeUtils.GetDateTimeFromUnixTime(value),
+                    _ => throw new JsonSerializationException("Unsupported format " + Format)
+                };
 
             default:
                 throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);
@@ -223,18 +193,12 @@ public class TimeConverter : JsonConverter {
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
 
-                switch (reader.Value) {
-
-                    case DateTime dt:
-                        return dt;
-
-                    case DateTimeOffset dto:
-                        return dto;
-
-                    default:
-                        throw new JsonSerializationException("Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType());
-
-                }
+                return reader.Value switch {
+                    DateTime dt => dt,
+                    DateTimeOffset dto => dto,
+                    _ => throw new JsonSerializationException(
+                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType())
+                };
 
             case JsonToken.String:
 
@@ -242,24 +206,13 @@ public class TimeConverter : JsonConverter {
                 string value = (string) reader.Value;
 
                 // Parse the string using the format of the converter
-                switch (Format) {
-
-                    case TimeFormat.Iso8601:
-                        return Iso8601Utils.Parse(value);
-
-                    case TimeFormat.Rfc822:
-                        return Rfc822Utils.Parse(value);
-
-                    case TimeFormat.Rfc2822:
-                        return Rfc2822Utils.Parse(value);
-
-                    case TimeFormat.UnixTime:
-                        return TimeUtils.GetDateTimeOffsetFromUnixTime(value);
-
-                    default:
-                        throw new JsonSerializationException("Unsupported format " + Format);
-
-                }
+                return Format switch {
+                    TimeFormat.Iso8601 => Iso8601Utils.Parse(value),
+                    TimeFormat.Rfc822 => Rfc822Utils.Parse(value),
+                    TimeFormat.Rfc2822 => Rfc2822Utils.Parse(value),
+                    TimeFormat.UnixTime => TimeUtils.GetDateTimeOffsetFromUnixTime(value),
+                    _ => throw new JsonSerializationException("Unsupported format " + Format)
+                };
 
             default:
                 throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);
@@ -274,7 +227,7 @@ public class TimeConverter : JsonConverter {
 
             // Return the default value if the JSON value is NULL
             case JsonToken.Null:
-                return default;
+                return null;
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
@@ -286,19 +239,12 @@ public class TimeConverter : JsonConverter {
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
-
-                switch (reader.Value) {
-
-                    case DateTime dt:
-                        return new EssentialsDate(dt);
-
-                    case DateTimeOffset dto:
-                        return new EssentialsDate(dto);
-
-                    default:
-                        throw new JsonSerializationException("Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType());
-
-                }
+                return reader.Value switch {
+                    DateTime dt => new EssentialsDate(dt),
+                    DateTimeOffset dto => new EssentialsDate(dto),
+                    _ => throw new JsonSerializationException(
+                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType())
+                };
 
             case JsonToken.String:
 
@@ -306,15 +252,10 @@ public class TimeConverter : JsonConverter {
                 string value = (string) reader.Value;
 
                 // Parse the string using the format of the converter
-                switch (Format) {
-
-                    case TimeFormat.Iso8601:
-                        return EssentialsDate.Parse(value);
-
-                    default:
-                        throw new JsonSerializationException("Unsupported format " + Format);
-
-                }
+                return Format switch {
+                    TimeFormat.Iso8601 => EssentialsDate.Parse(value),
+                    _ => throw new JsonSerializationException("Unsupported format " + Format)
+                };
 
             default:
                 throw new JsonSerializationException("Unexpected token type: " + reader.TokenType);

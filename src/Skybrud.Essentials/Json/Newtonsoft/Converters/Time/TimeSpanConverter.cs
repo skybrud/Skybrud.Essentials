@@ -84,26 +84,13 @@ public class TimeSpanConverter : JsonConverter {
     /// <param name="serializer">The calling serializer.</param>
     /// <returns>The object value.</returns>
     public override object? ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
-
         if (objectType != typeof(TimeSpan) && objectType != typeof(TimeSpan?)) throw new JsonSerializationException($"Object type {objectType} is not supported");
-
-        switch (reader.TokenType) {
-
-            case JsonToken.Null:
-                return objectType == typeof(TimeSpan?) ? null : default(TimeSpan);
-
-            case JsonToken.Integer:
-            case JsonToken.Float:
-                return ReadFromNumber(reader, objectType);
-
-            case JsonToken.String:
-                return ReadFromString(reader, objectType);
-
-            default:
-                throw new JsonSerializationException($"Unexpected token type: {reader.TokenType}");
-
-        }
-
+        return reader.TokenType switch {
+            JsonToken.Null => objectType == typeof(TimeSpan?) ? null : TimeSpan.Zero,
+            JsonToken.Integer or JsonToken.Float => ReadFromNumber(reader, objectType),
+            JsonToken.String => ReadFromString(reader, objectType),
+            _ => throw new JsonSerializationException($"Unexpected token type: {reader.TokenType}")
+        };
     }
 
     /// <summary>

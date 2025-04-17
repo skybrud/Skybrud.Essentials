@@ -26,21 +26,13 @@ public class EnumArrayJsonConverter : JsonConverter {
         Type? itemType = objectType.GetElementType();
         if (objectType.IsArray == false || itemType == null) throw new Exception($"Property type {objectType} is not an array.");
 
-        switch (reader.TokenType) {
-
-            case JsonToken.Null:
-                return null;
-
-            case JsonToken.String:
-                return ParseEnumArray(reader.Value.ToString(), itemType);
-
-            case JsonToken.StartArray:
-                return ParseEnumArray(JArray.Load(reader).ToObject<string[]>(), itemType);
-
-            default:
-                throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, "Unexpected token {0} when parsing enum.", reader.TokenType));
-
-        }
+        return reader.TokenType switch {
+            JsonToken.Null => (object?) null,
+            JsonToken.String => ParseEnumArray(reader.Value.ToString(), itemType),
+            JsonToken.StartArray => ParseEnumArray(JArray.Load(reader).ToObject<string[]>(), itemType),
+            _ => throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture,
+                "Unexpected token {0} when parsing enum.", reader.TokenType))
+        };
 
     }
 

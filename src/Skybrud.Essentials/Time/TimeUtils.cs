@@ -435,12 +435,12 @@ public static partial class TimeUtils {
     /// <param name="date">The date.</param>
     /// <returns>The day ordinal suffix.</returns>
     public static string GetDaySuffix(DateTime date) {
-        switch (date.Day) {
-            case 1: case 21: case 31: return "st";
-            case 2: case 22: return "nd";
-            case 3: case 23: return "rd";
-            default: return "th";
-        }
+        return date.Day switch {
+            1 or 21 or 31 => "st",
+            2 or 22 => "nd",
+            3 or 23 => "rd",
+            _ => "th"
+        };
     }
 
     /// <summary>
@@ -1400,77 +1400,37 @@ public static partial class TimeUtils {
     }
 
     internal static object ToFormat(DateTime value, TimeFormat format) {
-
-        switch (format) {
-
-            case TimeFormat.Iso8601:
-                return Iso8601Utils.ToString(value);
-
-            case TimeFormat.Rfc822:
-                return Rfc822Utils.ToString(value);
-
-            case TimeFormat.Rfc2822:
-                return Rfc2822Utils.ToString(value);
-
-            case TimeFormat.UnixTime:
-                return (long) UnixTimeUtils.ToSeconds(value);
-
-            default:
-                throw new ArgumentException("Unsupported format " + format, nameof(format));
-
-        }
-
+        return format switch {
+            TimeFormat.Iso8601 => Iso8601Utils.ToString(value),
+            TimeFormat.Rfc822 => Rfc822Utils.ToString(value),
+            TimeFormat.Rfc2822 => Rfc2822Utils.ToString(value),
+            TimeFormat.UnixTime => (long) UnixTimeUtils.ToSeconds(value),
+            _ => throw new ArgumentException("Unsupported format " + format, nameof(format))
+        };
     }
 
     internal static object ToFormat(EssentialsDate date, TimeFormat format) {
-
-        switch (format) {
-
-            case TimeFormat.Iso8601:
-                return date.Iso8601;
-
-            default:
-                throw new ArgumentException("Unsupported format " + format, nameof(format));
-
-        }
-
+        return format switch {
+            TimeFormat.Iso8601 => date.Iso8601,
+            _ => throw new ArgumentException("Unsupported format " + format, nameof(format))
+        };
     }
 
     internal static object ToFormat(DateTimeOffset value, TimeFormat format) {
-
-        switch (format) {
-
-            case TimeFormat.Iso8601:
-                return Iso8601Utils.ToString(value);
-
-            case TimeFormat.Rfc822:
-                return Rfc822Utils.ToString(value);
-
-            case TimeFormat.Rfc2822:
-                return Rfc2822Utils.ToString(value);
-
-            case TimeFormat.UnixTime:
-                return (long) UnixTimeUtils.ToSeconds(value);
-
-            default:
-                throw new ArgumentException("Unsupported format " + format, nameof(format));
-
-        }
-
+        return format switch {
+            TimeFormat.Iso8601 => Iso8601Utils.ToString(value),
+            TimeFormat.Rfc822 => Rfc822Utils.ToString(value),
+            TimeFormat.Rfc2822 => Rfc2822Utils.ToString(value),
+            TimeFormat.UnixTime => (long) UnixTimeUtils.ToSeconds(value),
+            _ => throw new ArgumentException("Unsupported format " + format, nameof(format))
+        };
     }
 
     internal static object ToFormat(EssentialsPartialDate value, TimeFormat format) {
-
-        switch (format) {
-
-            case TimeFormat.Iso8601:
-                return value.ToString();
-
-            default:
-                throw new ArgumentException("Unsupported format " + format, nameof(format));
-
-        }
-
+        return format switch {
+            TimeFormat.Iso8601 => value.ToString(),
+            _ => throw new ArgumentException("Unsupported format " + format, nameof(format))
+        };
     }
 
 }

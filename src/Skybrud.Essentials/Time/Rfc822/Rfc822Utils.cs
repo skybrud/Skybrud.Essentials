@@ -160,71 +160,34 @@ public static class Rfc822Utils {
     ///     <cref>https://www.w3.org/Protocols/rfc822/#z28</cref>
     /// </see>
     public static string NormalizeTimeZone(string timeZone) {
-        switch (timeZone) {
-            case "UT":
-            case "UTC":
-            case "Z":
-            case "GMT":
-                return "+0000";
-            case "A":
-                return "-0100";
-            case "B":
-                return "-0200";
-            case "C":
-                return "-0300";
-            case "D":
-            case "EDT":
-                return "-0400";
-            case "E":
-            case "EST":
-            case "CDT":
-                return "-0500";
-            case "F":
-            case "CST":
-            case "MDT":
-                return "-0600";
-            case "G":
-            case "MST":
-            case "PDT":
-                return "-0700";
-            case "H":
-            case "PST":
-                return "-0800";
-            case "I":
-                return "-0900";
-            case "K":
-                return "-1000";
-            case "L":
-                return "-1100";
-            case "M":
-                return "-1200";
-            case "N":
-                return "+0100";
-            case "O":
-                return "+0200";
-            case "P":
-                return "+0300";
-            case "Q":
-                return "+0400";
-            case "R":
-                return "+0500";
-            case "S":
-                return "+0600";
-            case "T":
-                return "+0700";
-            case "U":
-                return "+0800";
-            case "V":
-                return "+0900";
-            case "W":
-                return "+1000";
-            case "X":
-                return "+1100";
-            case "Y":
-                return "+1200";
-            default:
-                return "";
-        }
+        return timeZone switch {
+            "UT" or "UTC" or "Z" or "GMT" => "+0000",
+            "A" => "-0100",
+            "B" => "-0200",
+            "C" => "-0300",
+            "D" or "EDT" => "-0400",
+            "E" or "EST" or "CDT" => "-0500",
+            "F" or "CST" or "MDT" => "-0600",
+            "G" or "MST" or "PDT" => "-0700",
+            "H" or "PST" => "-0800",
+            "I" => "-0900",
+            "K" => "-1000",
+            "L" => "-1100",
+            "M" => "-1200",
+            "N" => "+0100",
+            "O" => "+0200",
+            "P" => "+0300",
+            "Q" => "+0400",
+            "R" => "+0500",
+            "S" => "+0600",
+            "T" => "+0700",
+            "U" => "+0800",
+            "V" => "+0900",
+            "W" => "+1000",
+            "X" => "+1100",
+            "Y" => "+1200",
+            _ => ""
+        };
     }
 
 }
