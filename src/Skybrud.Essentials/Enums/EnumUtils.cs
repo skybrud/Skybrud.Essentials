@@ -176,11 +176,11 @@ public static class EnumUtils {
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     public static bool TryParseEnum<T>(string? str, out T value) where T : struct {
 
-        // Check whether the type of T is an enum
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-
         // Initialize "value"
         value = default;
+
+        // Check whether the type of T is an enum
+        if (IsEnum<T>() == false) return false;
 
         // Check whether the specified string is NULL (or white space)
         if (string.IsNullOrWhiteSpace(str)) return false;
@@ -213,11 +213,11 @@ public static class EnumUtils {
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     public static bool TryParseEnum<T>(string? str, [NotNullWhen(true)] out T? value) where T : struct {
 
-        // Check whether the type of T is an enum
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-
         // Initialize "value"
         value = null;
+
+        // Check whether the type of T is an enum
+        if (IsEnum<T>() == false) return false;
 
         // Check whether the specified string is NULL (or white space)
         if (string.IsNullOrWhiteSpace(str)) return false;
@@ -268,17 +268,17 @@ public static class EnumUtils {
     /// <param name="str">The string representation of the enumeration name or underlying value to convert.</param>
     /// <param name="type">The type of the enum.</param>
     /// <param name="value">When this method returns, contains a value of type <see cref="Enum"/>. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the value parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseEnum(string? str, Type type, [NotNullWhen(true)] out Enum? value) {
 
+        // Initialize "value"
+        value = null;
+
         // Check whether the specified string is NULL (or white space)
-        if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+        if (string.IsNullOrWhiteSpace(str)) return false;
 
         // Check whether the type of T is an enum
-        if (IsEnum(type) == false) throw new ArgumentException("Specified type must be an enum.");
-
-        // Initialize "value"
-        value = null!;
+        if (IsEnum(type) == false) return false;
 
         // Check whether the specified string is NULL (or white space)
         if (string.IsNullOrWhiteSpace(str)) return false;
