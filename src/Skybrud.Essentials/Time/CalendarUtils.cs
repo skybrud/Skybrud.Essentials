@@ -3,7 +3,7 @@
 namespace Skybrud.Essentials.Time;
 
 /// <summary>
-/// Utility class used for calculating the dates of varios international and national days.
+/// Utility class used for calculating the dates of various international and national days.
 /// </summary>
 public static class CalendarUtils {
 
@@ -125,7 +125,7 @@ public static class CalendarUtils {
 
     /// <summary>
     /// Gets the date of <strong>Ascension Day</strong>, which is celebrated on a Thursday, the fortieth day of
-    /// <strong>Easter</strong> (the 6th Thursday after <strong>Moundy Thursday</strong>).
+    /// <strong>Easter</strong> (the 6th Thursday after <strong>Maundy Thursday</strong>).
     /// </summary>
     /// <param name="year">The year.</param>
     /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Ascension Day</strong>.</returns>
@@ -133,7 +133,7 @@ public static class CalendarUtils {
     ///     <cref>https://en.wikipedia.org/wiki/Feast_of_the_Ascension</cref>
     /// </see>
     public static DateTime GetAscensionDay(int year) {
-        return GetMoundyThursday(year).AddDays(7 * 6);
+        return GetMaundyThursday(year).AddDays(7 * 6);
     }
 
     /// <summary>
@@ -288,7 +288,7 @@ public static class CalendarUtils {
     #region Canada
 
     /// <summary>
-    /// Natianal holidays and special dates in <strong>Canada</strong>.
+    /// National holidays and special dates in <strong>Canada</strong>.
     /// </summary>
     public static class Canada {
 
@@ -343,7 +343,7 @@ public static class CalendarUtils {
     #region Denmark
 
     /// <summary>
-    /// Natianal holidays and special dates in <strong>Denmark</strong>.
+    /// National holidays and special dates in <strong>Denmark</strong>.
     /// </summary>
     public static class Denmark {
 
@@ -390,7 +390,7 @@ public static class CalendarUtils {
     #region United States
 
     /// <summary>
-    /// Natianal holidays and special dates in the <strong>United States</strong>.
+    /// National holidays and special dates in the <strong>United States</strong>.
     /// </summary>
     public static class UnitedStates {
 
