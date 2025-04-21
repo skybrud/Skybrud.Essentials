@@ -7,6 +7,21 @@ namespace TestProject1.Enums;
 public class EnumTests {
 
     [TestMethod]
+    public void Parse() {
+
+        Assert.ThrowsException<ArgumentNullException>(() => {
+            EnumUtils.ParseEnum(null!, typeof(HttpStatusCode));
+        }, "#1");
+
+        Assert.ThrowsException<ArgumentException>(() => {
+            EnumUtils.ParseEnum("", typeof(HttpStatusCode));
+        }, "#2");
+
+        Assert.AreEqual(HttpStatusCode.OK, EnumUtils.ParseEnum("ok", typeof(HttpStatusCode)), "#3");
+
+    }
+
+    [TestMethod]
     public void TryParseString() {
 
         bool success1 = EnumUtils.TryParseEnum("ok", typeof(HttpStatusCode), out Enum? result1);

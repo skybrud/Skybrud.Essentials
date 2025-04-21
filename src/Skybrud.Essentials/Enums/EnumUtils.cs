@@ -8,6 +8,8 @@ using Skybrud.Essentials.Collections.Extensions;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
+using static Skybrud.Essentials.Exceptions.EssentialsException;
+
 // ReSharper disable ConditionalAccessQualifierIsNonNullableAccordingToAPIContract
 // ReSharper disable RedundantSuppressNullableWarningExpression
 
@@ -65,14 +67,14 @@ public static class EnumUtils {
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of
     /// <typeparamref name="T"/>.</exception>
-    public static T ParseEnum<T>(string? str) where T : struct {
-        if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+    public static T ParseEnum<T>([NotNull] string? str) where T : struct {
+        ThrowIfNullOrWhiteSpace(str, nameof(str));
         if (TryParseEnum(str, out T value)) return value;
         throw new EnumParseException(typeof(T), str!);
     }
 
-    internal static T ParseEnumInternal<T>(string? str) where T : Enum {
-        if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
+    internal static T ParseEnumInternal<T>([NotNull] string? str) where T : Enum {
+        ThrowIfNullOrWhiteSpace(str, nameof(str));
         if (TryParseEnumInternal(str, out T? value)) return value;
         throw new EnumParseException(typeof(T), str!);
     }
@@ -87,9 +89,8 @@ public static class EnumUtils {
     /// in <paramref name="str"/>.</exception>
     public static object ParseEnum(string str, Type enumType) {
 
-        // Throw an exception if "str" isn't specified
-        if (string.IsNullOrWhiteSpace(str)) throw new ArgumentNullException(nameof(str));
-        if (enumType is null) throw new ArgumentNullException(nameof(enumType));
+        // Throw an exception if "str" is null or white space
+        ThrowIfNullOrWhiteSpace(str, nameof(str));
 
         // Convert the input string to camel case and lowercase (morel likely to get a match)
         string enumText = StringUtils.ToCamelCase(str).ToLower();
@@ -378,15 +379,6 @@ public static class EnumUtils {
         return temp.Cast(type).ToArray(type);
 
     }
-
-
-
-
-
-
-
-
-
 
     /// <summary>
     /// Converts the specified <paramref name="input"/> value into a list of <typeparamref name="T"/>.
