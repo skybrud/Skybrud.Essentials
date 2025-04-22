@@ -187,12 +187,12 @@ public static class EnumUtils {
         if (string.IsNullOrWhiteSpace(str)) return false;
 
         // Convert "str" to camel case and then lowercase
-        string modified = StringUtils.ToCamelCase(str + string.Empty).ToLowerInvariant();
+        string modified = StringUtils.ToCamelCase(str).ToLowerInvariant();
 
         // Parse the enum
         foreach (T v in GetEnumValues<T>()) {
             string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
-            string? name = v.ToString()?.ToLowerInvariant();
+            string? name = v.ToString()?.ToCamelCase().ToLowerInvariant();
             if (ordinal != modified && name != modified) continue;
             value = v;
             return true;
@@ -229,7 +229,7 @@ public static class EnumUtils {
         // Parse the enum
         foreach (T v in GetEnumValues<T>()) {
             string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
-            string? name = v.ToString()?.ToLowerInvariant();
+            string? name = v.ToString()?.ToCamelCase().ToLowerInvariant();
             if (ordinal != modified && name != modified) continue;
             value = v;
             return true;
