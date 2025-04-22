@@ -78,7 +78,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <exception cref="JsonException">If the property is found, but the value doesn't match a <see cref="double"/>.</exception>
     public static TEnum GetRequiredEnum<TEnum>(this JObject json, string propertyName) where TEnum : struct, Enum {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
-        return JsonTokenUtils.ParseEnumOrNull<TEnum>(property.Value) ?? throw new JsonException($"The value of the '{propertyName}' property doesn't match a value of enum '{typeof(TEnum)}'.");
+        return JsonTokenUtils.ParseEnumOrNull<TEnum>(property.Value) ?? throw new JsonException($"The value '{property.Value}' of the '{propertyName}' property doesn't match a value of enum '{typeof(TEnum)}'.");
     }
 
     /// <summary>
