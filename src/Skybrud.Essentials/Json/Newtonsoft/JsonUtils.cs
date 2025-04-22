@@ -706,6 +706,29 @@ public static class JsonUtils {
         File.WriteAllText(path, JsonConvert.SerializeObject(from item in collection select item?.JObject, formatting), Encoding.UTF8);
     }
 
+    /// <summary>
+    /// Saves <paramref name="token"/> to the specified <paramref name="path"/>.
+    /// </summary>
+    /// <param name="path">The path to the file.</param>
+    /// <param name="token">The JSON token to be saved.</param>
+    public static void SaveJsonToken(string path, JToken token) {
+        if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+        if (token == null) throw new ArgumentNullException(nameof(token));
+        SaveJsonToken(path, token, Formatting.None);
+    }
+
+    /// <summary>
+    /// Saves <paramref name="token"/> to the specified <paramref name="path"/> using <paramref name="formatting"/>.
+    /// </summary>
+    /// <param name="path">The path to the file.</param>
+    /// <param name="token">The JSON token to be saved.</param>
+    /// <param name="formatting">The formatting to be used when saving the token.</param>
+    public static void SaveJsonToken(string path, JToken token, Formatting formatting) {
+        if (string.IsNullOrWhiteSpace(path)) throw new ArgumentNullException(nameof(path));
+        if (token == null) throw new ArgumentNullException(nameof(token));
+        File.WriteAllText(path, token.ToString(formatting), Encoding.UTF8);
+    }
+
 #endif
 
 }
