@@ -15,7 +15,7 @@ public class EnumArrayJsonConverter : JsonConverter {
     public override bool CanWrite => false;
 
     /// <inheritdoc />
-    public override void WriteJson(JsonWriter writer, object value, JsonSerializer serializer) {
+    public override void WriteJson(JsonWriter writer, object? value, JsonSerializer serializer) {
         throw new NotImplementedException();
     }
 
@@ -28,10 +28,9 @@ public class EnumArrayJsonConverter : JsonConverter {
 
         return reader.TokenType switch {
             JsonToken.Null => (object?) null,
-            JsonToken.String => ParseEnumArray(reader.Value.ToString(), itemType),
-            JsonToken.StartArray => ParseEnumArray(JArray.Load(reader).ToObject<string[]>(), itemType),
-            _ => throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture,
-                "Unexpected token {0} when parsing enum.", reader.TokenType))
+            JsonToken.String => ParseEnumArray(reader.Value?.ToString(), itemType),
+            JsonToken.StartArray => ParseEnumArray(JArray.Load(reader).ToObject<string[]>()!, itemType),
+            _ => throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, "Unexpected token {0} when parsing enum.", reader.TokenType))
         };
 
     }

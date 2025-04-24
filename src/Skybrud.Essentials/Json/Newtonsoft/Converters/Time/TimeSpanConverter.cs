@@ -130,7 +130,7 @@ public class TimeSpanConverter : JsonConverter {
     private object? ReadFromString(JsonReader reader, Type objectType) {
 
         // Get the value from the reader
-        string value = (string) reader.Value;
+        string? value = reader.Value as string;
 
         // If null, empty or white space we return the default value
         if (string.IsNullOrWhiteSpace(value)) return objectType == typeof(TimeSpan?) ? null : TimeSpan.Zero;

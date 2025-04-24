@@ -137,11 +137,11 @@ public class TimeConverter : JsonConverter {
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return TimeUtils.GetDateTimeFromUnixTime((long) reader.Value);
+                return TimeUtils.GetDateTimeFromUnixTime((long) reader.Value!);
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
-                return TimeUtils.GetDateTimeFromUnixTime((double) reader.Value);
+                return TimeUtils.GetDateTimeFromUnixTime((double) reader.Value!);
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -150,13 +150,13 @@ public class TimeConverter : JsonConverter {
                     DateTime dt => dt,
                     DateTimeOffset dto => dto.DateTime,
                     _ => throw new JsonSerializationException(
-                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType())
+                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value!.GetType())
                 };
 
             case JsonToken.String:
 
                 // Get the value as a string
-                string value = (string) reader.Value;
+                string value = (string) reader.Value!;
 
                 // Parse the string using the format of the converter
                 return Format switch {
@@ -184,11 +184,11 @@ public class TimeConverter : JsonConverter {
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return TimeUtils.GetDateTimeOffsetFromUnixTime((long) reader.Value);
+                return TimeUtils.GetDateTimeOffsetFromUnixTime((long) reader.Value!);
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
-                return TimeUtils.GetDateTimeOffsetFromUnixTime((double) reader.Value);
+                return TimeUtils.GetDateTimeOffsetFromUnixTime((double) reader.Value!);
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -196,14 +196,13 @@ public class TimeConverter : JsonConverter {
                 return reader.Value switch {
                     DateTime dt => dt,
                     DateTimeOffset dto => dto,
-                    _ => throw new JsonSerializationException(
-                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType())
+                    _ => throw new JsonSerializationException("Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value!.GetType())
                 };
 
             case JsonToken.String:
 
                 // Get the value as a string
-                string value = (string) reader.Value;
+                string value = (string) reader.Value!;
 
                 // Parse the string using the format of the converter
                 return Format switch {
@@ -231,11 +230,11 @@ public class TimeConverter : JsonConverter {
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((long) reader.Value));
+                return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((long) reader.Value!));
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
-                return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((double) reader.Value));
+                return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((double) reader.Value!));
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -243,13 +242,13 @@ public class TimeConverter : JsonConverter {
                     DateTime dt => new EssentialsDate(dt),
                     DateTimeOffset dto => new EssentialsDate(dto),
                     _ => throw new JsonSerializationException(
-                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value.GetType())
+                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value!.GetType())
                 };
 
             case JsonToken.String:
 
                 // Get the value as a string
-                string value = (string) reader.Value;
+                string value = (string) reader.Value!;
 
                 // Parse the string using the format of the converter
                 return Format switch {

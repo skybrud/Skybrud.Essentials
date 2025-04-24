@@ -137,7 +137,7 @@ public static partial class JObjectExtensions {
         if (token == null) return Guid.Empty;
 
         // Get the string value
-        string value = token.Value<string>();
+        string? value = token.Value<string>();
 
         // Parse the GUID (or return "fallback" if null)
         return Guid.TryParse(value, out Guid guid) ? guid : fallback;
@@ -490,7 +490,7 @@ public static partial class JObjectExtensions {
     [Obsolete("Use the extension methods in the 'Skybrud.Essentials.Json.Newtonsoft.Extensions' namespace instead.")]
     public static JArray? GetArray(this JObject? obj, string path) {
         if (obj == null) return null;
-        JToken token = obj.SelectToken(path);
+        JToken? token = obj.SelectToken(path);
         return token == null || token.Type == JTokenType.Null ? null : token as JArray;
     }
 
@@ -696,10 +696,10 @@ public static partial class JObjectExtensions {
         if (token.Type == JTokenType.String && string.IsNullOrWhiteSpace(token.ToString())) return default;
 
         // Cast/convert the value from "TIn" to "TOut"
-        TIn value = token.Value<TIn>();
+        TIn? value = token.Value<TIn>();
 
         // Invoke the callback and return the value
-        return callback(value);
+        return value is null ? default : callback(value);
 
     }
 
