@@ -21,7 +21,7 @@ static partial class JsonTokenUtils {
             JTokenType.Integer => EnumUtils.FromInt32Internal<TEnum>(token.Value<int>()),
             JTokenType.Float => EnumUtils.FromInt32Internal<TEnum>(token.Value<int>()),
             JTokenType.String => EnumUtils.ParseEnumInternal<TEnum>(token.Value<string>()),
-            _ => throw new EnumParseException(typeof(TEnum), token.Value<string>())
+            _ => throw new EnumParseException(typeof(TEnum), token?.Value<string>())
         };
     }
 
@@ -36,7 +36,7 @@ static partial class JsonTokenUtils {
         return token?.Type switch {
             JTokenType.Integer => EnumUtils.FromInt32(token.Value<int>(), fallback),
             JTokenType.Float => EnumUtils.FromInt32(token.Value<int>(), fallback),
-            JTokenType.String => EnumUtils.ParseEnumInternal(token.Value<string>(), fallback),
+            JTokenType.String => EnumUtils.ParseEnumInternal(token.Value<string>()!, fallback),
             _ => fallback
         };
     }

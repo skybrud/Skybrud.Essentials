@@ -17,7 +17,7 @@ public class EnumParseException : Exception {
     /// <summary>
     /// Gets the value.
     /// </summary>
-    public string Value { get; }
+    public string? Value { get; }
 
     #endregion
 
@@ -28,7 +28,7 @@ public class EnumParseException : Exception {
     /// </summary>
     /// <param name="type">The type of the enum.</param>
     /// <param name="value">The invalid value.</param>
-    public EnumParseException(Type type, string value) {
+    public EnumParseException(Type type, string? value) {
         Type = type;
         Value = value;
     }
@@ -40,7 +40,7 @@ public class EnumParseException : Exception {
     /// <summary>
     /// Gets the message of the exception.
     /// </summary>
-    public override string Message => $"Unable to parse enum of type {Type.Name} from value \"{Value}\"";
+    public override string Message => $"Unable to parse enum of type {Type.Name} from value '{Value ?? "NULL"}'.";
 
     #endregion
 

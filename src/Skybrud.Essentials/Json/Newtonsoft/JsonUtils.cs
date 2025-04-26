@@ -37,7 +37,7 @@ public static class JsonUtils {
     /// <param name="json">The JSON string to be parsed.</param>
     /// <returns>An instance of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
     public static T ParseJsonToken<T>(string json) {
-        return ParseJsonToken(json).ToObject<T>();
+        return ParseJsonToken(json).ToObject<T>() ?? throw new JsonException($"Failed parsing JSON string into an object of type '{typeof(T)}'.");
     }
 
     /// <summary>
@@ -74,7 +74,7 @@ public static class JsonUtils {
     /// <param name="json">The JSON string to be parsed.</param>
     /// <returns>An instance of <typeparamref name="T"/> parsed from the specified <paramref name="json"/> string.</returns>
     public static T ParseJsonObject<T>(string json) {
-        return ParseJsonObject(json).ToObject<T>();
+        return ParseJsonObject(json).ToObject<T>() ?? throw new JsonException($"Failed parsing JSON string into an object of type '{typeof(T)}'.");
     }
 
     /// <summary>
@@ -403,7 +403,7 @@ public static class JsonUtils {
     /// <param name="path">The path to the JSON file.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T LoadJsonToken<T>(string path) {
-        return LoadJsonToken(path).ToObject<T>();
+        return LoadJsonToken(path).ToObject<T>() ?? throw new JsonException($"Failed parsing JSON string into an object of type '{typeof(T)}'.");
     }
 
     /// <summary>
@@ -433,7 +433,7 @@ public static class JsonUtils {
     /// <param name="path">The path to the JSON file.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T LoadJsonObject<T>(string path) {
-        return LoadJsonObject(path).ToObject<T>();
+        return LoadJsonObject(path).ToObject<T>() ?? throw new JsonException($"Failed parsing JSON string into an object of type '{typeof(T)}'.");
     }
 
     /// <summary>

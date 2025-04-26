@@ -136,7 +136,7 @@ public class TimeSpanConverter : JsonConverter {
         if (string.IsNullOrWhiteSpace(value)) return objectType == typeof(TimeSpan?) ? null : TimeSpan.Zero;
 
         // If the string value starts with a P, we assume it's an ISO 8601 duration string
-        if (value[0] is 'P') return Iso8601Utils.ParseDuration(value);
+        if (value![0] is 'P') return Iso8601Utils.ParseDuration(value);
 
         // Can we parse the value to a double?
         if (!StringUtils.TryParseDouble(value, out double result)) throw new JsonSerializationException("Value is not in a known format.");

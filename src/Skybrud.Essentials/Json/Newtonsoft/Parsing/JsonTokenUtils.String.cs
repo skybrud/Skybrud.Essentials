@@ -66,7 +66,7 @@ static partial class JsonTokenUtils {
 
             case JTokenType.String:
                 result = token.Value<string>();
-                return true;
+                return result is not null;
 
             default:
                 result = null;
