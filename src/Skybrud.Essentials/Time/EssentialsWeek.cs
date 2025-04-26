@@ -21,12 +21,6 @@ public class EssentialsWeek : IEnumerable<EssentialsDate>, IComparable, ICompara
     public int Year { get; }
 
     /// <summary>
-    /// Alias of <see cref="WeekNumber"/>.
-    /// </summary>
-    [Obsolete("Use the WeekNumber property instead.")]
-    public int Week => WeekNumber;
-
-    /// <summary>
     /// Gets the number of the week.
     /// </summary>
     public int WeekNumber { get; }

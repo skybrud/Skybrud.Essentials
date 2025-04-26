@@ -1,10 +1,8 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json;
-using Skybrud.Essentials.Json.Extensions;
-
-#pragma warning disable CS0618
+using Skybrud.Essentials.Json.Newtonsoft;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace UnitTestProject1.Json {
 
@@ -17,10 +15,10 @@ namespace UnitTestProject1.Json {
             JObject obj = JObject.Parse("{\"date\":\"Fri, 25 Nov 2016 16:25:35 GMT\",\"guid\":\"d6cd5a0c-e2d0-44ad-871f-987c263dcbbb\"}");
 
             Assert.AreEqual("Fri, 25 Nov 2016 16:25:35 GMT", obj.GetString("date"), "Check #1 failed");
-            Assert.AreEqual("String", obj.GetString("date").GetType().Name, "Check #2 failed");
+            Assert.AreEqual("String", obj.GetString("date")?.GetType().Name, "Check #2 failed");
 
             Assert.AreEqual("d6cd5a0c-e2d0-44ad-871f-987c263dcbbb", obj.GetString("guid"), "Check #3 failed");
-            Assert.AreEqual("String", obj.GetString("guid").GetType().Name, "Check #4 failed");
+            Assert.AreEqual("String", obj.GetString("guid")?.GetType().Name, "Check #4 failed");
 
         }
 
@@ -29,9 +27,9 @@ namespace UnitTestProject1.Json {
 
             string json1 = "{\"value\":\"1234\"}";
 
-            JObject obj1 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonObject(json1);
-            TestObject obj2 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonObject(json1, TestObject.Parse);
-            TestObject obj3 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonObject<TestObject>(json1);
+            JObject obj1 = JsonUtils.ParseJsonObject(json1);
+            TestObject obj2 = JsonUtils.ParseJsonObject(json1, TestObject.Parse);
+            TestObject obj3 = JsonUtils.ParseJsonObject<TestObject>(json1);
 
             Assert.IsNotNull(obj1, "Check #1 failed");
             Assert.IsNotNull(obj2, "Check #2 failed");
@@ -59,9 +57,9 @@ namespace UnitTestProject1.Json {
 
             string json1 = "[{\"value\":\"1234\"}]";
 
-            JArray obj1 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonArray(json1);
-            TestObject[] obj2 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonArray(json1, TestObject.Parse);
-            TestObject[] obj3 = Skybrud.Essentials.Json.Newtonsoft.JsonUtils.ParseJsonArray<TestObject>(json1);
+            JArray obj1 = JsonUtils.ParseJsonArray(json1);
+            TestObject[] obj2 = JsonUtils.ParseJsonArray(json1, TestObject.Parse);
+            TestObject[] obj3 = JsonUtils.ParseJsonArray<TestObject>(json1);
 
             Assert.IsNotNull(obj1, "Check #1 failed");
             Assert.IsNotNull(obj2, "Check #2 failed");

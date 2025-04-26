@@ -98,19 +98,6 @@ public static partial class TimeUtils {
     /// <param name="dt">The date used for calculating the age.</param>
     /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
     /// <paramref name="dt"/>.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(DateTime dateOfBirth, EssentialsDateTime dt) {
-        return GetAge(dateOfBirth, dt.Year, dt.Month, dt.Day);
-    }
-
-    /// <summary>
-    /// Gets the current age, from the specified <paramref name="dateOfBirth"/>. The age is calculated based on
-    /// <paramref name="dt"/>.
-    /// </summary>
-    /// <param name="dateOfBirth">The date of birth.</param>
-    /// <param name="dt">The date used for calculating the age.</param>
-    /// <returns>The age based on the specified <paramref name="dateOfBirth"/> at the moment of
-    /// <paramref name="dt"/>.</returns>
     public static int GetAge(DateTime dateOfBirth, EssentialsTime dt) {
         return GetAge(dateOfBirth, dt.DateTimeOffset);
     }
@@ -165,20 +152,6 @@ public static partial class TimeUtils {
     /// <returns>The age based on the specified <paramref name="then"/> at the moment of
     /// <paramref name="compare"/>.</returns>
     public static int GetAge(DateTimeOffset then, EssentialsDate compare) {
-        DateTimeOffset a = then.ToUniversalTime();
-        return GetAge(a.Year, a.Month, a.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    /// <summary>
-    /// Gets the current age, from the specified <paramref name="then"/>. The age is calculated based on
-    /// <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date used for calculating the age.</param>
-    /// <returns>The age based on the specified <paramref name="then"/> at the moment of
-    /// <paramref name="compare"/>.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(DateTimeOffset then, EssentialsDateTime compare) {
         DateTimeOffset a = then.ToUniversalTime();
         return GetAge(a.Year, a.Month, a.Day, compare.Year, compare.Month, compare.Day);
     }
@@ -247,89 +220,7 @@ public static partial class TimeUtils {
     /// <param name="then">The date of birth.</param>
     /// <param name="compare">The date to compare against.</param>
     /// <returns>The calculated age between the two dates.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsDate then, EssentialsDateTime compare) {
-        return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    /// <summary>
-    /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date to compare against.</param>
-    /// <returns>The calculated age between the two dates.</returns>
     public static int GetAge(EssentialsDate then, EssentialsTime compare) {
-        compare = compare.ToUniversalTime();
-        return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    #endregion
-
-    #region GetAge/EssentialsDateTime
-
-    /// <summary>
-    /// Returns the age as calculated between <paramref name="then"/> and the current date.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <returns>The age calculated between the current date and <paramref name="then"/>.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsDateTime then) {
-        return GetAge(then, DateTime.Today);
-    }
-
-    /// <summary>
-    /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date to compare against.</param>
-    /// <returns>The calculated age between the two dates.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsDateTime then, DateTime compare) {
-        return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    /// <summary>
-    /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date to compare against.</param>
-    /// <returns>The calculated age between the two dates.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsDateTime then, DateTimeOffset compare) {
-        compare = compare.ToUniversalTime();
-        return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    /// <summary>
-    /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date to compare against.</param>
-    /// <returns>The calculated age between the two dates.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsDateTime then, EssentialsDate compare) {
-        return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    /// <summary>
-    /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date to compare against.</param>
-    /// <returns>The calculated age between the two dates.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsDateTime then, EssentialsDateTime compare) {
-        return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    /// <summary>
-    /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date to compare against.</param>
-    /// <returns>The calculated age between the two dates.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsDateTime then, EssentialsTime compare) {
         compare = compare.ToUniversalTime();
         return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
     }
@@ -388,19 +279,6 @@ public static partial class TimeUtils {
     /// <param name="then">The date of birth.</param>
     /// <param name="compare">The date to compare against.</param>
     /// <returns>The calculated age between the two dates.</returns>
-    [Obsolete("Use EssentialsTime instead of EssentialsDateTime.")]
-    public static int GetAge(EssentialsTime then, EssentialsDateTime compare) {
-        then = then.ToUniversalTime();
-        compare = compare.ToUniversalTime();
-        return GetAge(then.Year, then.Month, then.Day, compare.Year, compare.Month, compare.Day);
-    }
-
-    /// <summary>
-    /// Returns the age as calculated between the two dates <paramref name="then"/> and <paramref name="compare"/>.
-    /// </summary>
-    /// <param name="then">The date of birth.</param>
-    /// <param name="compare">The date to compare against.</param>
-    /// <returns>The calculated age between the two dates.</returns>
     public static int GetAge(EssentialsTime then, EssentialsTime compare) {
         then = then.ToUniversalTime();
         compare = compare.ToUniversalTime();
@@ -450,32 +328,6 @@ public static partial class TimeUtils {
     /// <returns>The day ordinal suffix.</returns>
     public static string GetDaySuffix(DateTimeOffset date) {
         return GetDaySuffix(date.Date);
-    }
-
-    /// <summary>
-    /// Gets the week number of <paramref name="date"/> according to the <strong>ISO 8601</strong> specification.
-    /// </summary>
-    /// <param name="date">The date.</param>
-    /// <returns>The <strong>ISO 8601</strong> week number.</returns>
-    /// <see>
-    ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
-    /// </see>
-    [Obsolete("Use Iso8601Utils.GetWeekNumber(DateTime) method instead.")]
-    public static int GetIso8601WeekNumber(DateTime date) {
-        return Iso8601Utils.GetWeekNumber(date);
-    }
-
-    /// <summary>
-    /// Gets the week number of <paramref name="date"/> according to the <strong>ISO 8601</strong> specification.
-    /// </summary>
-    /// <param name="date">The date.</param>
-    /// <returns>The <strong>ISO 8601</strong> week number.</returns>
-    /// <see>
-    ///     <cref>https://en.wikipedia.org/wiki/ISO_8601</cref>
-    /// </see>
-    [Obsolete("Use Iso8601Utils.GetWeekNumber(DateTimeOffset) method instead.")]
-    public static int GetIso8601WeekNumber(DateTimeOffset date) {
-        return Iso8601Utils.GetWeekNumber(date.DateTime);
     }
 
     /// <summary>

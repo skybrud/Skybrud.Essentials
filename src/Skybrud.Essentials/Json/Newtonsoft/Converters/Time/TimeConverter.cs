@@ -4,8 +4,7 @@ using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
-
-#pragma warning disable 618
+using Skybrud.Essentials.Time.UnixTime;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 
@@ -57,10 +56,6 @@ public class TimeConverter : JsonConverter {
                 writer.WriteValue(TimeUtils.ToFormat(dto, Format));
                 break;
 
-            case EssentialsDateTime edt:
-                writer.WriteValue(TimeUtils.ToFormat(edt.DateTime, Format));
-                break;
-
             case EssentialsTime et:
                 writer.WriteValue(TimeUtils.ToFormat(et.DateTimeOffset, Format));
                 break;
@@ -110,7 +105,6 @@ public class TimeConverter : JsonConverter {
         return type switch {
             "System.DateTime" => ParseDateTime(reader),
             "System.DateTimeOffset" => ParseDateTimeOffset(reader),
-            "Skybrud.Essentials.Time.EssentialsDateTime" => ParseEssentialsDateTime(reader),
             "Skybrud.Essentials.Time.EssentialsTime" => ParseEssentialsTime(reader),
             "Skybrud.Essentials.Time.EssentialsDate" => ParseEssentialsDate(reader),
             _ => throw new JsonSerializationException($"Unsupported type: {objectType}")
@@ -124,7 +118,7 @@ public class TimeConverter : JsonConverter {
     /// <param name="objectType">Type of the object.</param>
     /// <returns><c>true</c> if this instance can convert the specified object type; otherwise <c>false</c>.</returns>
     public override bool CanConvert(Type objectType) {
-        return objectType == typeof(DateTime) || objectType == typeof(DateTimeOffset) || objectType == typeof(EssentialsDateTime) || objectType == typeof(EssentialsTime) || objectType == typeof(EssentialsDate);
+        return objectType == typeof(DateTime) || objectType == typeof(DateTimeOffset) || objectType == typeof(EssentialsTime) || objectType == typeof(EssentialsDate);
     }
 
     private DateTime ParseDateTime(JsonReader reader) {
@@ -137,11 +131,11 @@ public class TimeConverter : JsonConverter {
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return TimeUtils.GetDateTimeFromUnixTime((long) reader.Value!);
+                return UnixTimeUtils.FromSeconds((long) reader.Value!).DateTime;
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
-                return TimeUtils.GetDateTimeFromUnixTime((double) reader.Value!);
+                return UnixTimeUtils.FromSeconds((double) reader.Value!).DateTime;
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -163,7 +157,7 @@ public class TimeConverter : JsonConverter {
                     TimeFormat.Iso8601 => Iso8601Utils.Parse(value).DateTime,
                     TimeFormat.Rfc822 => Rfc822Utils.Parse(value).DateTime,
                     TimeFormat.Rfc2822 => Rfc2822Utils.Parse(value).DateTime,
-                    TimeFormat.UnixTime => TimeUtils.GetDateTimeFromUnixTime(value),
+                    TimeFormat.UnixTime => UnixTimeUtils.FromSeconds(value).DateTime,
                     _ => throw new JsonSerializationException("Unsupported format " + Format)
                 };
 
@@ -184,11 +178,11 @@ public class TimeConverter : JsonConverter {
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return TimeUtils.GetDateTimeOffsetFromUnixTime((long) reader.Value!);
+                return UnixTimeUtils.FromSeconds((long) reader.Value!);
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
-                return TimeUtils.GetDateTimeOffsetFromUnixTime((double) reader.Value!);
+                return UnixTimeUtils.FromSeconds((double) reader.Value!);
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -209,7 +203,7 @@ public class TimeConverter : JsonConverter {
                     TimeFormat.Iso8601 => Iso8601Utils.Parse(value),
                     TimeFormat.Rfc822 => Rfc822Utils.Parse(value),
                     TimeFormat.Rfc2822 => Rfc2822Utils.Parse(value),
-                    TimeFormat.UnixTime => TimeUtils.GetDateTimeOffsetFromUnixTime(value),
+                    TimeFormat.UnixTime => UnixTimeUtils.FromSeconds(value),
                     _ => throw new JsonSerializationException("Unsupported format " + Format)
                 };
 
@@ -230,11 +224,11 @@ public class TimeConverter : JsonConverter {
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((long) reader.Value!));
+                return new EssentialsDate(UnixTimeUtils.FromSeconds((long) reader.Value!));
 
             // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
-                return new EssentialsDate(TimeUtils.GetDateTimeFromUnixTime((double) reader.Value!));
+                return new EssentialsDate(UnixTimeUtils.FromSeconds((double) reader.Value!));
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -261,10 +255,6 @@ public class TimeConverter : JsonConverter {
 
         }
 
-    }
-
-    private EssentialsDateTime? ParseEssentialsDateTime(JsonReader reader) {
-        return reader.TokenType == JsonToken.Null ? null : new EssentialsDateTime(ParseDateTime(reader));
     }
 
     private EssentialsTime? ParseEssentialsTime(JsonReader reader) {

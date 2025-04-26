@@ -4,9 +4,7 @@ using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
-
-#pragma warning disable CS0618 // Type or member is obsolete
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 // ReSharper disable UseObjectOrCollectionInitializer
 
@@ -16,30 +14,16 @@ namespace UnitTestProject1.Json {
     public class JObjectTests {
 
         [TestMethod]
-        public void HasValue() {
-
-            JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"obj\":{\"value\":\"1234\",\"nothing\":null,\"empty\":\"\",\"whitespace\":\"    \"}}}");
-
-            Assert.AreEqual(false, obj.HasValue("root.nothing"), "Check #1 failed");
-            Assert.AreEqual(false, obj.HasValue("root.obj.nothing"), "Check #2 failed");
-            Assert.AreEqual(true, obj.HasValue("root.obj"), "Check #3 failed");
-            Assert.AreEqual(true, obj.HasValue("root.obj.value"), "Check #4 failed");
-            Assert.AreEqual(false, obj.HasValue("root.obj.empty"), "Check #5 failed");
-            Assert.AreEqual(true, obj.HasValue("root.obj.whitespace"), "Check #6 failed");
-
-        }
-
-        [TestMethod]
         public void GetObject() {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"obj\":{\"value\":\"1234\"}}}");
 
-            Assert.AreEqual(null, obj.GetObject("nope"), "Check #1 failed");
-            Assert.AreEqual(null, obj.GetObject("root.nothing"), "Check #2 failed");
-            Assert.IsNotNull(obj.GetObject("root.obj"), "Check #3 failed");
-            Assert.AreEqual("1234", obj.GetObject<TestObject>("root.obj").Value, "Check #4 failed");
-            Assert.AreEqual("1234", obj.GetObject("root.obj", TestObject.Parse).Value, "Check #5 failed");
-            Assert.IsNull(obj.GetObject<TestObject>("root.hest"), "Check #6 failed");
+            Assert.AreEqual(null, obj.GetObjectByPath("nope"), "Check #1 failed");
+            Assert.AreEqual(null, obj.GetObjectByPath("root.nothing"), "Check #2 failed");
+            Assert.IsNotNull(obj.GetObjectByPath("root.obj"), "Check #3 failed");
+            Assert.AreEqual("1234", obj.GetObjectByPath<TestObject>("root.obj").Value, "Check #4 failed");
+            Assert.AreEqual("1234", obj.GetObjectByPath("root.obj", TestObject.Parse).Value, "Check #5 failed");
+            Assert.IsNull(obj.GetObjectByPath<TestObject>("root.hest"), "Check #6 failed");
 
         }
 
@@ -48,14 +32,14 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"obj\":{\"value\":\"1234\",\"nothing\":null,\"empty\":\"\",\"whitespace\":\"    \"}}}");
 
-            Assert.AreEqual(null, obj.GetString("root.nope"), "Check #1 failed");
-            Assert.AreEqual(null, obj.GetString("root.nothing"), "Check #2 failed");
-            Assert.AreEqual("1234", obj.GetString("root.obj.value"), "Check #3 failed");
-            Assert.AreEqual(null, obj.GetString("root.obj.nothing"), "Check #4 failed");
-            Assert.AreEqual("", obj.GetString("root.obj.empty"), "Check #5 failed");
-            Assert.AreEqual("    ", obj.GetString("root.obj.whitespace"), "Check #6 failed");
+            Assert.AreEqual(null, obj.GetStringByPath("root.nope"), "Check #1 failed");
+            Assert.AreEqual(null, obj.GetStringByPath("root.nothing"), "Check #2 failed");
+            Assert.AreEqual("1234", obj.GetStringByPath("root.obj.value"), "Check #3 failed");
+            Assert.AreEqual(null, obj.GetStringByPath("root.obj.nothing"), "Check #4 failed");
+            Assert.AreEqual("", obj.GetStringByPath("root.obj.empty"), "Check #5 failed");
+            Assert.AreEqual("    ", obj.GetStringByPath("root.obj.whitespace"), "Check #6 failed");
 
-            Assert.IsNull(obj.GetString("root.obj"), "Check #7 failed");
+            Assert.IsNull(obj.GetStringByPath("root.obj"), "Check #7 failed");
 
         }
 
@@ -183,14 +167,14 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"empty\":\"\",\"obj\":{\"value\":\"1234\",\"nothing\":\"0\",\"number\":1234}}}");
 
-            Assert.AreEqual(0, obj.GetInt32("root.nothing"), "Check #1 failed");
-            Assert.AreEqual(1234, obj.GetInt32("root.obj.value"), "Check #2 failed");
-            Assert.AreEqual(0, obj.GetInt32("root.obj.nothing"), "Check #3 failed");
-            Assert.AreEqual(1234, obj.GetInt32("root.obj.number"), "Check #4 failed");
-            Assert.AreEqual(1234, obj.GetInt32("root.obj.number", x => (int) TimeSpan.FromSeconds(x).TotalSeconds), "Check #5 failed");
+            Assert.AreEqual(0, obj.GetInt32ByPath("root.nothing"), "Check #1 failed");
+            Assert.AreEqual(1234, obj.GetInt32ByPath("root.obj.value"), "Check #2 failed");
+            Assert.AreEqual(0, obj.GetInt32ByPath("root.obj.nothing"), "Check #3 failed");
+            Assert.AreEqual(1234, obj.GetInt32ByPath("root.obj.number"), "Check #4 failed");
+            Assert.AreEqual(1234, obj.GetInt32ByPath("root.obj.number", x => (int) TimeSpan.FromSeconds(x).TotalSeconds), "Check #5 failed");
 
-            Assert.AreEqual(0, obj.GetInt32("root.obj"), "Check #6 failed");
-            Assert.AreEqual(0, obj.GetInt32("root.empty"), "Check #7 failed");
+            Assert.AreEqual(0, obj.GetInt32ByPath("root.obj"), "Check #6 failed");
+            Assert.AreEqual(0, obj.GetInt32ByPath("root.empty"), "Check #7 failed");
 
         }
 
@@ -220,14 +204,14 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"empty\":\"\",\"obj\":{\"value\":\"1234\",\"nothing\":\"0\",\"number\":2147483648}}}");
 
-            Assert.AreEqual(0, obj.GetInt64("root.nothing"), "Check #1 failed");
-            Assert.AreEqual(1234, obj.GetInt64("root.obj.value"), "Check #2 failed");
-            Assert.AreEqual(0, obj.GetInt64("root.obj.nothing"), "Check #3 failed");
-            Assert.AreEqual(2147483648, obj.GetInt64("root.obj.number"), "Check #4 failed");
-            Assert.AreEqual(2147483648, obj.GetInt64("root.obj.number", x => (long) TimeSpan.FromSeconds(x).TotalSeconds), "Check #5 failed");
+            Assert.AreEqual(0, obj.GetInt64ByPath("root.nothing"), "Check #1 failed");
+            Assert.AreEqual(1234, obj.GetInt64ByPath("root.obj.value"), "Check #2 failed");
+            Assert.AreEqual(0, obj.GetInt64ByPath("root.obj.nothing"), "Check #3 failed");
+            Assert.AreEqual(2147483648, obj.GetInt64ByPath("root.obj.number"), "Check #4 failed");
+            Assert.AreEqual(2147483648, obj.GetInt64ByPath("root.obj.number", x => (long) TimeSpan.FromSeconds(x).TotalSeconds), "Check #5 failed");
 
-            Assert.AreEqual(0, obj.GetInt64("root.obj"), "Check #6 failed");
-            Assert.AreEqual(0, obj.GetInt64("root.empty"), "Check #7 failed");
+            Assert.AreEqual(0, obj.GetInt64ByPath("root.obj"), "Check #6 failed");
+            Assert.AreEqual(0, obj.GetInt64ByPath("root.empty"), "Check #7 failed");
 
         }
 
@@ -237,11 +221,11 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"empty\":\"\",\"obj\":{\"value\":\"0.123\",\"nothing\":\"0\",\"number\":1234.567}}}");
 
-            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("nothing")), "Check #1 failed");
-            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.nothing")), "Check #2 failed");
-            Assert.AreEqual("0.123", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.obj.value")), "Check #3 failed");
-            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.obj.nothing")), "Check #4 failed");
-            Assert.AreEqual("1234.567", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloat("root.obj.number")), "Check #5 failed");
+            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloatByPath("nothing")), "Check #1 failed");
+            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloatByPath("root.nothing")), "Check #2 failed");
+            Assert.AreEqual("0.123", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloatByPath("root.obj.value")), "Check #3 failed");
+            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloatByPath("root.obj.nothing")), "Check #4 failed");
+            Assert.AreEqual("1234.567", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetFloatByPath("root.obj.number")), "Check #5 failed");
 
             Assert.AreEqual(0, obj.GetFloat("root.obj"), "Check #6 failed");
             Assert.AreEqual(0, obj.GetFloat("root.empty"), "Check #7 failed");
@@ -253,11 +237,11 @@ namespace UnitTestProject1.Json {
 
             JObject obj = JObject.Parse("{\"root\":{\"nothing\":null,\"empty\":\"\",\"obj\":{\"value\":\"0.123\",\"nothing\":\"0\",\"number\":1234.567}}}");
 
-            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("nothing")), "Check #1 failed");
-            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.nothing")), "Check #2 failed");
-            Assert.AreEqual("0.123", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.obj.value")), "Check #3 failed");
-            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.obj.nothing")), "Check #4 failed");
-            Assert.AreEqual("1234.567", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDouble("root.obj.number")), "Check #5 failed");
+            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDoubleByPath("nothing")), "Check #1 failed");
+            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDoubleByPath("root.nothing")), "Check #2 failed");
+            Assert.AreEqual("0.123", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDoubleByPath("root.obj.value")), "Check #3 failed");
+            Assert.AreEqual("0.000", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDoubleByPath("root.obj.nothing")), "Check #4 failed");
+            Assert.AreEqual("1234.567", string.Format(CultureInfo.InvariantCulture, "{0:0.000}", obj.GetDoubleByPath("root.obj.number")), "Check #5 failed");
 
             Assert.AreEqual(0, obj.GetDouble("root.obj"), "Check #6 failed");
             Assert.AreEqual(0, obj.GetDouble("root.empty"), "Check #7 failed");
@@ -281,17 +265,17 @@ namespace UnitTestProject1.Json {
             JObject obj = new JObject();
             obj.Add("root", root);
 
-            Assert.AreEqual(false, obj.GetBoolean("root.property0"), "Check #1 failed");
-            Assert.AreEqual(false, obj.GetBoolean("root.property1"), "Check #2 failed");
-            Assert.AreEqual(true, obj.GetBoolean("root.property2"), "Check #3 failed");
-            Assert.AreEqual(false, obj.GetBoolean("root.property3"), "Check #4 failed");
-            Assert.AreEqual(true, obj.GetBoolean("root.property4"), "Check #5 failed");
-            Assert.AreEqual(false, obj.GetBoolean("root.property5"), "Check #6 failed");
-            Assert.AreEqual(true, obj.GetBoolean("root.property6"), "Check #7 failed");
-            Assert.AreEqual(false, obj.GetBoolean("root.property7"), "Check #8 failed");
+            Assert.AreEqual(false, obj.GetBooleanByPath("root.property0"), "Check #1 failed");
+            Assert.AreEqual(false, obj.GetBooleanByPath("root.property1"), "Check #2 failed");
+            Assert.AreEqual(true, obj.GetBooleanByPath("root.property2"), "Check #3 failed");
+            Assert.AreEqual(false, obj.GetBooleanByPath("root.property3"), "Check #4 failed");
+            Assert.AreEqual(true, obj.GetBooleanByPath("root.property4"), "Check #5 failed");
+            Assert.AreEqual(false, obj.GetBooleanByPath("root.property5"), "Check #6 failed");
+            Assert.AreEqual(true, obj.GetBooleanByPath("root.property6"), "Check #7 failed");
+            Assert.AreEqual(false, obj.GetBooleanByPath("root.property7"), "Check #8 failed");
 
-            Assert.AreEqual(false, obj.GetBoolean("root.obj"), "Check #9 failed");
-            Assert.AreEqual(false, obj.GetBoolean("root.empty"), "Check #10 failed");
+            Assert.AreEqual(false, obj.GetBooleanByPath("root.obj"), "Check #9 failed");
+            Assert.AreEqual(false, obj.GetBooleanByPath("root.empty"), "Check #10 failed");
 
         }
 
@@ -309,12 +293,12 @@ namespace UnitTestProject1.Json {
             JObject obj = new JObject();
             obj.Add("root", root);
 
-            Assert.AreEqual(HttpStatusCode.NotFound, obj.GetEnum<HttpStatusCode>("root.property1"), "Check #1 failed");
-            Assert.AreEqual(HttpStatusCode.NotFound, obj.GetEnum<HttpStatusCode>("root.property2"), "Check #2 failed");
-            Assert.AreEqual(HttpStatusCode.NotFound, obj.GetEnum<HttpStatusCode>("root.property3"), "Check #3 failed");
-            Assert.AreEqual(HttpStatusCode.OK, obj.GetEnum<HttpStatusCode>("root.property4"), "Check #4 failed");
-            Assert.AreEqual(HttpStatusCode.OK, obj.GetEnum<HttpStatusCode>("root.property5"), "Check #5 failed");
-            Assert.AreEqual(HttpStatusCode.OK, obj.GetEnum<HttpStatusCode>("root.property6"), "Check #6 failed");
+            Assert.AreEqual(HttpStatusCode.NotFound, obj.GetEnumByPath<HttpStatusCode>("root.property1"), "Check #1 failed");
+            Assert.AreEqual(HttpStatusCode.NotFound, obj.GetEnumByPath<HttpStatusCode>("root.property2"), "Check #2 failed");
+            Assert.AreEqual(HttpStatusCode.NotFound, obj.GetEnumByPath<HttpStatusCode>("root.property3"), "Check #3 failed");
+            Assert.AreEqual(HttpStatusCode.OK, obj.GetEnumByPath<HttpStatusCode>("root.property4"), "Check #4 failed");
+            Assert.AreEqual(HttpStatusCode.OK, obj.GetEnumByPath<HttpStatusCode>("root.property5"), "Check #5 failed");
+            Assert.AreEqual(HttpStatusCode.OK, obj.GetEnumByPath<HttpStatusCode>("root.property6"), "Check #6 failed");
 
         }
 
@@ -325,7 +309,7 @@ namespace UnitTestProject1.Json {
 
             Assert.AreEqual(null, obj.GetArray("null"), "Check #1 failed");
             Assert.AreEqual(null, obj.GetArray("nothing"), "Check #2 failed");
-            Assert.AreEqual(3, obj.GetArray("root.array").Count, "Check #3 failed");
+            Assert.AreEqual(3, obj.GetArrayByPath("root.array")?.Count, "Check #3 failed");
 
         }
 
@@ -340,8 +324,8 @@ namespace UnitTestProject1.Json {
             JToken[] array3 = obj.GetArrayItems("null");
             int[] array4 = obj.GetArrayItems<int>("null");
 
-            JToken[] array5 = obj.GetArrayItems("root.array");
-            int[] array6 = obj.GetArrayItems<int>("root.array");
+            JToken[] array5 = obj.GetArrayItemsByPath("root.array");
+            int[] array6 = obj.GetArrayItemsByPath<int>("root.array");
 
             Assert.AreEqual(0, array1.Length, "Check #1 failed");
             Assert.AreEqual(0, array2.Length, "Check #2 failed");
@@ -367,8 +351,8 @@ namespace UnitTestProject1.Json {
             TestObject[] array3 = obj.GetArrayItems<JObject, TestObject>("null", TestObject.Parse);
             TestObject[] array4 = obj.GetArrayItems("null", TestObject.Parse);
 
-            TestObject[] array5 = obj.GetArrayItems<JObject, TestObject>("root.array", TestObject.Parse);
-            TestObject[] array6 = obj.GetArrayItems("root.array", TestObject.Parse);
+            TestObject[] array5 = obj.GetArrayItemsByPath<JObject, TestObject>("root.array", TestObject.Parse);
+            TestObject[] array6 = obj.GetArrayItemsByPath("root.array", TestObject.Parse);
 
             Assert.AreEqual(0, array1.Length, "Check #1 failed");
             Assert.AreEqual(0, array2.Length, "Check #2 failed");
@@ -390,8 +374,8 @@ namespace UnitTestProject1.Json {
 
             Assert.AreEqual(0, obj.GetStringArray("null").Length, "Check #1 failed");
             Assert.AreEqual(0, obj.GetStringArray("nothing").Length, "Check #2 failed");
-            Assert.AreEqual(3, obj.GetStringArray("root.array").Length, "Check #3 failed");
-            Assert.AreEqual("Alpha,Bravo,Charlie", string.Join(",", obj.GetStringArray("root.array")), "Check #4 failed");
+            Assert.AreEqual(3, obj.GetStringArrayByPath("root.array").Length, "Check #3 failed");
+            Assert.AreEqual("Alpha,Bravo,Charlie", string.Join(",", obj.GetStringArrayByPath("root.array")), "Check #4 failed");
 
         }
 
@@ -402,8 +386,8 @@ namespace UnitTestProject1.Json {
 
             Assert.AreEqual(0, obj.GetInt32Array("null").Length, "Check #1 failed");
             Assert.AreEqual(0, obj.GetInt32Array("nothing").Length, "Check #2 failed");
-            Assert.AreEqual(3, obj.GetInt32Array("root.array").Length, "Check #3 failed");
-            Assert.AreEqual("123,456,789", string.Join(",", obj.GetInt32Array("root.array")), "Check #4 failed");
+            Assert.AreEqual(3, obj.GetInt32ArrayByPath("root.array").Length, "Check #3 failed");
+            Assert.AreEqual("123,456,789", string.Join(",", obj.GetInt32ArrayByPath("root.array")), "Check #4 failed");
 
         }
 
@@ -414,8 +398,8 @@ namespace UnitTestProject1.Json {
 
             Assert.AreEqual(0, obj.GetInt64Array("null").Length, "Check #1 failed");
             Assert.AreEqual(0, obj.GetInt64Array("nothing").Length, "Check #2 failed");
-            Assert.AreEqual(3, obj.GetInt64Array("root.array").Length, "Check #3 failed");
-            Assert.AreEqual("123,456,789", string.Join(",", obj.GetInt64Array("root.array")), "Check #4 failed");
+            Assert.AreEqual(3, obj.GetInt64ArrayByPath("root.array").Length, "Check #3 failed");
+            Assert.AreEqual("123,456,789", string.Join(",", obj.GetInt64ArrayByPath("root.array")), "Check #4 failed");
 
         }
 

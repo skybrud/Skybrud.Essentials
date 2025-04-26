@@ -2,14 +2,10 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json;
-using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
 using TimeConverter = Skybrud.Essentials.Json.Newtonsoft.Converters.Time.TimeConverter;
-using UnixTimeConverter = Skybrud.Essentials.Json.Newtonsoft.Converters.Time.UnixTimeConverter;
-
-#pragma warning disable 618
 
 namespace UnitTestProject1.Json.Newtonsoft.Converters {
 
@@ -86,42 +82,6 @@ namespace UnitTestProject1.Json.Newtonsoft.Converters {
 
         }
 
-        [TestMethod]
-        public void Legacy() {
-
-            AnotherSample sample1 = new AnotherSample {
-                Time1 = new EssentialsDateTime(2019, 01, 20, 14, 24, 12, DateTimeKind.Utc)
-            };
-
-            AnotherSample sample2 = new AnotherSample {
-                Time1 = new EssentialsDateTime(2019, 01, 20, 14, 24, 12, DateTimeKind.Local)
-            };
-
-            AnotherSample sample3 = new AnotherSample {
-                Time1 = new EssentialsDateTime(2019, 01, 20, 14, 24, 12, DateTimeKind.Unspecified)
-            };
-
-            JObject obj1 = JObject.FromObject(sample1);
-            JObject obj2 = JObject.FromObject(sample2);
-            JObject obj3 = JObject.FromObject(sample3);
-
-            Assert.AreEqual("2019-01-20T14:24:12.000Z", obj1.GetString("Time1"), "#1");
-            Assert.AreEqual("2019-01-20T14:24:12Z", obj1.GetString("Time2"), "#2");
-            Assert.AreEqual("1547994252", obj1.GetString("Time3"), "#3");
-            Assert.AreEqual("1547994252", obj1.GetString("Time4"), "#4");
-
-            Assert.AreEqual("2019-01-20T14:24:12.000+01:00", obj2.GetString("Time1"), "#5");
-            Assert.AreEqual("2019-01-20T14:24:12+01:00", obj2.GetString("Time2"), "#6");
-            Assert.AreEqual("1547990652", obj2.GetString("Time3"), "#7");
-            Assert.AreEqual("1547990652", obj2.GetString("Time4"), "#8");
-
-            Assert.AreEqual("2019-01-20T14:24:12.000", obj3.GetString("Time1"), "#9");
-            Assert.AreEqual("2019-01-20T14:24:12", obj3.GetString("Time2"), "#10");
-            Assert.AreEqual("1547990652", obj3.GetString("Time3"), "#11");
-            Assert.AreEqual("1547990652", obj3.GetString("Time4"), "#12");
-
-        }
-
         public class Sample {
 
             [JsonProperty("time")]
@@ -191,24 +151,6 @@ namespace UnitTestProject1.Json.Newtonsoft.Converters {
                 Offset = Offset1 = Offset2 = Offset3 = Offset4 = Offset5 = time.DateTimeOffset;
                 Offset6 = Offset;
             }
-
-        }
-
-        public class AnotherSample {
-
-            [JsonConverter(typeof(TimeConverter))]
-            public EssentialsDateTime Time1 { get; set; }
-
-            [JsonConverter(typeof(EssentialsDateTimeConverter))]
-            public EssentialsDateTime Time2 => Time1;
-
-            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTime)]
-            public EssentialsDateTime Time3 => Time1;
-
-            [JsonConverter(typeof(UnixTimeConverter))]
-            public EssentialsDateTime Time4 => Time1;
-
-
 
         }
 

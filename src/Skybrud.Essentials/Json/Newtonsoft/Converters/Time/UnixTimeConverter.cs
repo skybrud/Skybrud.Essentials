@@ -4,12 +4,10 @@ using Newtonsoft.Json;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.UnixTime;
 
-#pragma warning disable CS0618
-
 namespace Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 
 /// <summary>
-/// Converts an instance of either <see cref="EssentialsDateTime"/> or <see cref="DateTime"/> to and from a Unix timestamp.
+/// Converts an instance of either <see cref="EssentialsDate"/>, <see cref="EssentialsTime"/>, <see cref="DateTime"/> or <see cref="DateTimeOffset"/> to and from a Unix timestamp.
 /// </summary>
 public class UnixTimeConverter : JsonConverter {
 
@@ -66,10 +64,6 @@ public class UnixTimeConverter : JsonConverter {
                 writer.WriteValue(UnixTimeUtils.ToInt64(dto, Format));
                 break;
 
-            case EssentialsDateTime edt:
-                writer.WriteValue(UnixTimeUtils.ToInt64(edt.DateTime, Format));
-                break;
-
             case EssentialsTime et:
                 writer.WriteValue(UnixTimeUtils.ToInt64(et, Format));
                 break;
@@ -119,7 +113,6 @@ public class UnixTimeConverter : JsonConverter {
         return type switch {
             "System.DateTime" => UnixTimeUtils.ToDateTime(timestamp, Format),
             "System.DateTimeOffset" => UnixTimeUtils.ToDateTimeOffset(timestamp, Format),
-            "Skybrud.Essentials.Time.EssentialsDateTime" => new EssentialsDateTime(UnixTimeUtils.ToDateTime(timestamp, Format)),
             "Skybrud.Essentials.Time.EssentialsTime" => new EssentialsTime(UnixTimeUtils.ToDateTimeOffset(timestamp, Format)),
             "Skybrud.Essentials.Time.EssentialsDate" => new EssentialsDate(UnixTimeUtils.ToDateTimeOffset(timestamp, Format)),
             _ => throw new JsonSerializationException($"Unsupported type {objectType.FullName}")
@@ -133,7 +126,7 @@ public class UnixTimeConverter : JsonConverter {
     /// <param name="objectType">Type of the object.</param>
     /// <returns><c>true</c> if this instance can convert the specified object type; otherwise <c>false</c>.</returns>
     public override bool CanConvert(Type objectType) {
-        return objectType == typeof(DateTime) || objectType == typeof(DateTimeOffset) || objectType == typeof(EssentialsDateTime) || objectType == typeof(EssentialsTime) || objectType == typeof(EssentialsDate);
+        return objectType == typeof(DateTime) || objectType == typeof(DateTimeOffset) || objectType == typeof(EssentialsTime) || objectType == typeof(EssentialsDate);
     }
 
     #endregion

@@ -150,15 +150,6 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <summary>
     /// Initializes a new instance from the specified <paramref name="time"/>.
     /// </summary>
-    /// <param name="time">An instance of <see cref="EssentialsDateTime"/>.</param>
-    [Obsolete("Use EssentialsTime class instead of EssentialsDateTime.")]
-    public EssentialsDate(EssentialsDateTime time) {
-        _dateTime = time.DateTime;
-    }
-
-    /// <summary>
-    /// Initializes a new instance from the specified <paramref name="time"/>.
-    /// </summary>
     /// <param name="time">An instance of <see cref="EssentialsTime"/>.</param>
     public EssentialsDate(EssentialsTime time) {
         _dateTime = time.DateTimeOffset.DateTime;

@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
-
-#pragma warning disable CS0618 // Type or member is obsolete
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace UnitTestProject1.Json {
 

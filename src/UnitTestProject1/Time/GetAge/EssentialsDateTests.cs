@@ -56,26 +56,6 @@ namespace UnitTestProject1.Time.GetAge {
         }
 
         [TestMethod]
-        public void EssentialsDateTime() {
-
-#pragma warning disable 618
-
-            EssentialsDate t = new EssentialsDate(2019, 9, 14);
-
-            EssentialsDateTime a = new EssentialsDateTime(2020, 9, 13);
-            EssentialsDateTime b = new EssentialsDateTime(2020, 9, 14);
-            EssentialsDateTime c = new EssentialsDateTime(2020, 9, 15);
-
-            Assert.AreEqual(0, TimeUtils.GetAge(t, t));
-            Assert.AreEqual(0, TimeUtils.GetAge(t, a));
-            Assert.AreEqual(1, TimeUtils.GetAge(t, b));
-            Assert.AreEqual(1, TimeUtils.GetAge(t, c));
-
-#pragma warning restore 618
-
-        }
-
-        [TestMethod]
         public void EssentialsTime() {
 
             EssentialsDate t = new EssentialsDate(2019, 9, 14);

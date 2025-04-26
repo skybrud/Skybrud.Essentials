@@ -1,10 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 using Skybrud.Essentials.Time;
-
-#pragma warning disable 618
 
 namespace UnitTestProject1.Time.Converters {
 
@@ -43,7 +41,7 @@ namespace UnitTestProject1.Time.Converters {
 
             [JsonProperty("timestamp2")]
             [JsonConverter(typeof(UnixTimeConverter))]
-            public EssentialsDateTime Timestamp2 { get; set; }
+            public EssentialsTime Timestamp2 { get; set; }
 
         }
 

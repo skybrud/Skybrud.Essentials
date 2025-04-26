@@ -72,15 +72,6 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     public DateTime GetMaundyThursday => CalendarUtils.GetMaundyThursday(Year);
 
     /// <summary>
-    /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before <strong>Easter</strong>.
-    /// </summary>
-    /// <see>
-    ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
-    /// </see>
-    [Obsolete("Method name is spelled incorrectly. Use the 'GetMaundyThursday' method instead.")]
-    public DateTime GetMoundyThursday => CalendarUtils.GetMaundyThursday(Year);
-
-    /// <summary>
     /// Gets the date of <strong>Good Friday</strong>, which falls on the Friday before <strong>Easter</strong>.
     /// </summary>
     /// <see>

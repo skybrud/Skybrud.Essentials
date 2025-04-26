@@ -8,14 +8,12 @@ namespace UnitTestProject1.Maps {
     [TestClass]
     public class DistanceTests {
 
-#pragma warning disable 618
-
         [TestMethod]
         public void GetDistance() {
 
             // Values used for comparison comes from lines plotted into Google Maps. Google uses a varying number
-            // decimals depending on the distance, so we loose a bit precision when rounding. But the results of this
-            // unit test still shows that the method works (eg. the test will fail if using the mean radius rather than
+            // decimals depending on the distance, so we loose a bit of precision when rounding. But the results of this
+            // unit test still shows that the method works (e.g. the test will fail if using the mean radius rather than
             // the equatorial radius).
 
             var samples = new[] {
@@ -29,8 +27,8 @@ namespace UnitTestProject1.Maps {
 
                 string format = "{0:0." + ("".PadLeft(sample.Decimals, '0')) + "}";
 
-                double result1 = DistanceUtils.GetDistance(sample.From, sample.To);
-                double result2 = DistanceUtils.GetDistance(sample.From.Latitude, sample.From.Longitude, sample.To.Latitude, sample.To.Longitude);
+                double result1 = PointUtils.GetDistance(sample.From, sample.To);
+                double result2 = PointUtils.GetDistance(sample.From.Latitude, sample.From.Longitude, sample.To.Latitude, sample.To.Longitude);
 
                 Assert.AreEqual(sample.Expected, string.Format(CultureInfo.InvariantCulture, format, result1 / 1000), "#1");
                 Assert.AreEqual(sample.Expected, string.Format(CultureInfo.InvariantCulture, format, result2 / 1000), "#2");
@@ -38,8 +36,6 @@ namespace UnitTestProject1.Maps {
             }
 
         }
-
-#pragma warning restore 618
 
     }
 

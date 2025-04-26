@@ -233,12 +233,6 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     public int Quarter => TimeUtils.GetQuarter(this);
 
     /// <summary>
-    /// Gets the UNIX timestamp (amount of seconds since the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
-    /// </summary>
-    [Obsolete("Use 'UnixTimeSeconds' instead.")]
-    public long UnixTimestamp => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
-
-    /// <summary>
     /// Gets the UNIX timestamp in seconds (amount of time the start of the Unix Epoch) for this <see cref="EssentialsTime"/>.
     /// </summary>
     public long UnixTimeSeconds => (long) UnixTimeUtils.ToSeconds(DateTimeOffset);
@@ -404,17 +398,6 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="dateTimeOffset">An instance <see cref="DateTimeOffset"/> the instance should be based on.</param>
     public EssentialsTime(DateTimeOffset dateTimeOffset) {
         DateTimeOffset = dateTimeOffset;
-    }
-
-    /// <summary>
-    /// Initializes a new instance based on the specified <paramref name="dateTime"/>.
-    /// </summary>
-    /// <param name="dateTime">An instance <see cref="EssentialsDateTime"/> the instance should be based on.</param>
-#pragma warning disable CS0618 // Type or member is obsolete
-    public EssentialsTime(EssentialsDateTime dateTime) {
-#pragma warning restore CS0618 // Type or member is obsolete
-        if (dateTime is null) throw new ArgumentNullException(nameof(dateTime));
-        DateTimeOffset = dateTime.DateTime;
     }
 
     /// <summary>
@@ -1227,37 +1210,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
         return false;
 
     }
-
-    /// <summary>
-    /// Initialize a new instance from the specified UNIX timestamp.
-    /// </summary>
-    /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
-    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [Obsolete("Use 'FromUnixTimeSeconds' method instead.")]
-    public static EssentialsTime FromUnixTimestamp(int timestamp) {
-        return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
-    }
-
-    /// <summary>
-    /// Initialize a new instance from the specified UNIX timestamp.
-    /// </summary>
-    /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
-    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [Obsolete("Use 'FromUnixTimeSeconds' method instead.")]
-    public static EssentialsTime FromUnixTimestamp(long timestamp) {
-        return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
-    }
-
-    /// <summary>
-    /// Initialize a new instance from the specified UNIX timestamp.
-    /// </summary>
-    /// <param name="timestamp">The UNIX timestamp specified in seconds.</param>
-    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [Obsolete("Use 'FromUnixTimeSeconds' method instead.")]
-    public static EssentialsTime FromUnixTimestamp(double timestamp) {
-        return new EssentialsTime(UnixTimeUtils.FromSeconds(timestamp), TimeZoneInfo.Utc);
-    }
-
+    
     /// <summary>
     /// Initialize a new instance from the specified UNIX timestamp.
     /// </summary>
@@ -1578,28 +1531,6 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     public static implicit operator EssentialsTime(DateTimeOffset timestamp) {
         return new EssentialsTime(timestamp);
-    }
-
-    /// <summary>
-    /// Initializes a new instance of <see cref="EssentialsDateTime"/> from the specified
-    /// <paramref name="timestamp"/>.
-    /// </summary>
-    /// <param name="timestamp">The timestamp specified in seconds.</param>
-    /// <returns>An instance of <see cref="EssentialsDateTime"/>.</returns>
-    [Obsolete("Use FromUnixTimestamp(long) method instead.")]
-    public static implicit operator EssentialsTime(long timestamp) {
-        return FromUnixTimestamp(timestamp);
-    }
-
-    /// <summary>
-    /// Initializes a new instance of <see cref="EssentialsTime"/> from the specified
-    /// <paramref name="timestamp"/>.
-    /// </summary>
-    /// <param name="timestamp">The timestamp specified in seconds.</param>
-    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [Obsolete("Use FromUnixTimestamp(double) method instead.")]
-    public static implicit operator EssentialsTime(double timestamp) {
-        return FromUnixTimestamp(timestamp);
     }
 
     /// <summary>

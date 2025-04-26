@@ -271,29 +271,6 @@ public static partial class XElementExtensions {
 
     #endregion
 
-    #region Get attribute value as System.Boolean (deprecated due to wrong naming)
-
-#pragma warning disable 1591
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static bool GetAttributeAsBoolean(this XElement? element, XName name) {
-        return GetAttributeValueAsBoolean(element, name, x => x);
-    }
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static bool GetAttributeAsBoolean(this XElement? element, XName name, out bool value) {
-        return GetAttributeValueAsBoolean(element, name, out value);
-    }
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static T? GetAttributeAsBoolean<T>(this XElement? element, XName name, Func<bool, T> callback) {
-        return GetAttributeValueAsBoolean(element, name, callback);
-    }
-
-#pragma warning restore 1591
-
-    #endregion
-
     #region Get attribute value as System.Enum
 
     /// <summary>

@@ -1,6 +1,5 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.UnixTime;
 
 #pragma warning disable 618
@@ -8,7 +7,7 @@ using Skybrud.Essentials.Time.UnixTime;
 namespace UnitTestProject1.Time.Formats {
 
     [TestClass]
-    public class UnixtimeTests {
+    public class UnixTimeTests {
 
         #region Unix time -> DateTime
 
@@ -20,8 +19,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeUtils)");
+                Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp).DateTime, "\n\n" + sample.Timestamp + " (UnixTimeUtils)");
             }
 
         }
@@ -34,8 +32,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeUtils)");
+                Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp).DateTime, "\n\n" + sample.Timestamp + " (UnixTimeUtils)");
             }
 
         }
@@ -48,8 +45,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeUtils)");
+                Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp).DateTime, "\n\n" + sample.Timestamp + " (UnixTimeUtils)");
             }
 
         }
@@ -62,8 +58,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeFromUnixTime(sample.Timestamp), "\n\n" + sample.Timestamp + " (TimeUtils)");
+                Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp).DateTime, "\n\n" + sample.Timestamp + " (UnixTimeUtils)");
             }
 
         }
@@ -83,8 +78,6 @@ namespace UnitTestProject1.Time.Formats {
 
             int n = 1;
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeUtils)");
                 Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (UnixTimeUtils)");
                 n++;
             }
@@ -102,8 +95,6 @@ namespace UnitTestProject1.Time.Formats {
 
             int n = 1;
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeUtils)");
                 Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (UnixTimeUtils)");
                 n++;
             }
@@ -121,8 +112,6 @@ namespace UnitTestProject1.Time.Formats {
 
             int n = 1;
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeUtils)");
                 Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (UnixTimeUtils)");
                 n++;
             }
@@ -140,8 +129,6 @@ namespace UnitTestProject1.Time.Formats {
 
             int n = 1;
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Date, TimeHelper.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeHelper)");
-                Assert.AreEqual(sample.Date, TimeUtils.GetDateTimeOffsetFromUnixTime(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (TimeUtils)");
                 Assert.AreEqual(sample.Date, UnixTimeUtils.FromSeconds(sample.Timestamp), $"\n\n#{n}. {sample.Timestamp} (UnixTimeUtils)");
                 n++;
             }
@@ -160,8 +147,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Timestamp, TimeHelper.GetUnixTimeFromDateTime(sample.Date), "\n\n" + sample.Date + " (TimeHelper)");
-                Assert.AreEqual(sample.Timestamp, TimeUtils.GetUnixTimeFromDateTime(sample.Date), "\n\n" + sample.Date + " (TimeUtils)");
+                Assert.AreEqual(sample.Timestamp, (long) UnixTimeUtils.ToSeconds(sample.Date), "\n\n" + sample.Date + " (UnixTimeUtils)");
             }
 
         }
@@ -174,8 +160,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Timestamp, TimeHelper.GetUnixTimeFromDateTimeAsDouble(sample.Date), "\n\n" + sample.Date + " (TimeHelper)");
-                Assert.AreEqual(sample.Timestamp, TimeUtils.GetUnixTimeFromDateTimeAsDouble(sample.Date), "\n\n" + sample.Date + " (TimeUtils)");
+                Assert.AreEqual(sample.Timestamp, UnixTimeUtils.ToSeconds(sample.Date), "\n\n" + sample.Date + " (UnixTimeUtils)");
             }
 
         }
@@ -194,8 +179,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Timestamp, TimeHelper.GetUnixTimeFromDateTimeOffset(sample.Date), "\n\n" + sample.Date + " (TimeHelper)");
-                Assert.AreEqual(sample.Timestamp, TimeUtils.GetUnixTimeFromDateTimeOffset(sample.Date), "\n\n" + sample.Date + " (TimeUtils)");
+                Assert.AreEqual(sample.Timestamp, UnixTimeUtils.ToSeconds(sample.Date), "\n\n" + sample.Date + " (UnixTimeUtils)");
             }
 
         }
@@ -210,8 +194,7 @@ namespace UnitTestProject1.Time.Formats {
             };
 
             foreach (var sample in samples) {
-                Assert.AreEqual(sample.Timestamp, TimeHelper.GetUnixTimeFromDateTimeOffsetAsDouble(sample.Date), "\n\n" + sample.Date + " (TimeHelper)");
-                Assert.AreEqual(sample.Timestamp, TimeUtils.GetUnixTimeFromDateTimeOffsetAsDouble(sample.Date), "\n\n" + sample.Date + " (TimeUtils)");
+                Assert.AreEqual(sample.Timestamp, UnixTimeUtils.ToSeconds(sample.Date), "\n\n" + sample.Date + " (UnixTimeUtils)");
             }
 
         }

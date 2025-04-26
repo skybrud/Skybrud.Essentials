@@ -1,8 +1,6 @@
 ﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json.Extensions;
-
-#pragma warning disable CS0618 // Type or member is obsolete
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
 namespace UnitTestProject1.Json {
 
@@ -158,25 +156,25 @@ namespace UnitTestProject1.Json {
 
             JObject json = JObject.Parse(rawJson);
 
-            Assert.IsFalse(json.GetBoolean("array[0]"), "#0");
-            Assert.IsFalse(json.GetBoolean("array[1]"), "#1");
-            Assert.IsTrue(json.GetBoolean("array[2]"), "#2");
-            Assert.IsTrue(json.GetBoolean("array[3]"), "#3");
-            Assert.IsFalse(json.GetBoolean("array[4]"), "#4");
-            Assert.IsFalse(json.GetBoolean("array[5]"), "#5");
-            Assert.IsFalse(json.GetBoolean("array[6]"), "#6");
-            Assert.IsFalse(json.GetBoolean("array[7]"), "#7");
-            Assert.IsTrue(json.GetBoolean("array[8]"), "#8");
-            Assert.IsFalse(json.GetBoolean("array[9]"), "#9");
-            Assert.IsFalse(json.GetBoolean("array[10]"), "#10");
-            Assert.IsTrue(json.GetBoolean("array[11]"), "#11");
-            Assert.IsFalse(json.GetBoolean("array[12]"), "#12");
-            Assert.IsTrue(json.GetBoolean("array[13]"), "#13");
-            Assert.IsFalse(json.GetBoolean("array[14]"), "#14");
-            Assert.IsFalse(json.GetBoolean("array[15]"), "#15");
-            Assert.IsFalse(json.GetBoolean("array[16]"), "#16");
-            Assert.IsFalse(json.GetBoolean("array[17]"), "#17");
-            Assert.IsFalse(json.GetBoolean("array[18]"), "#18");
+            Assert.IsFalse(json.GetBooleanByPath("array[0]"), "#0");
+            Assert.IsFalse(json.GetBooleanByPath("array[1]"), "#1");
+            Assert.IsTrue(json.GetBooleanByPath("array[2]"), "#2");
+            Assert.IsTrue(json.GetBooleanByPath("array[3]"), "#3");
+            Assert.IsFalse(json.GetBooleanByPath("array[4]"), "#4");
+            Assert.IsFalse(json.GetBooleanByPath("array[5]"), "#5");
+            Assert.IsFalse(json.GetBooleanByPath("array[6]"), "#6");
+            Assert.IsFalse(json.GetBooleanByPath("array[7]"), "#7");
+            Assert.IsTrue(json.GetBooleanByPath("array[8]"), "#8");
+            Assert.IsFalse(json.GetBooleanByPath("array[9]"), "#9");
+            Assert.IsFalse(json.GetBooleanByPath("array[10]"), "#10");
+            Assert.IsTrue(json.GetBooleanByPath("array[11]"), "#11");
+            Assert.IsFalse(json.GetBooleanByPath("array[12]"), "#12");
+            Assert.IsTrue(json.GetBooleanByPath("array[13]"), "#13");
+            Assert.IsFalse(json.GetBooleanByPath("array[14]"), "#14");
+            Assert.IsFalse(json.GetBooleanByPath("array[15]"), "#15");
+            Assert.IsFalse(json.GetBooleanByPath("array[16]"), "#16");
+            Assert.IsFalse(json.GetBooleanByPath("array[17]"), "#17");
+            Assert.IsFalse(json.GetBooleanByPath("array[18]"), "#18");
 
         }
 
@@ -208,45 +206,45 @@ namespace UnitTestProject1.Json {
 
             JObject json = JObject.Parse(rawJson);
 
-            Assert.IsFalse(json.GetBoolean("array[0]", false), "#0");
-            Assert.IsFalse(json.GetBoolean("array[1]", false), "#1");
-            Assert.IsTrue(json.GetBoolean("array[2]", false), "#2");
-            Assert.IsTrue(json.GetBoolean("array[3]", false), "#3");
-            Assert.IsFalse(json.GetBoolean("array[4]", false), "#4");
-            Assert.IsFalse(json.GetBoolean("array[5]", false), "#5");
-            Assert.IsFalse(json.GetBoolean("array[6]", false), "#6");
-            Assert.IsFalse(json.GetBoolean("array[7]", false), "#7");
-            Assert.IsTrue(json.GetBoolean("array[8]", false), "#8");
-            Assert.IsFalse(json.GetBoolean("array[9]", false), "#9");
-            Assert.IsFalse(json.GetBoolean("array[10]", false), "#10");
-            Assert.IsTrue(json.GetBoolean("array[11]", false), "#11");
-            Assert.IsFalse(json.GetBoolean("array[12]", false), "#12");
-            Assert.IsTrue(json.GetBoolean("array[13]", false), "#13");
-            Assert.IsFalse(json.GetBoolean("array[14]", false), "#14");
-            Assert.IsFalse(json.GetBoolean("array[15]", false), "#15");
-            Assert.IsFalse(json.GetBoolean("array[16]", false), "#16");
-            Assert.IsFalse(json.GetBoolean("array[17]", false), "#17");
-            Assert.IsFalse(json.GetBoolean("array[18]", false), "#18");
+            Assert.IsFalse(json.GetBooleanByPath("array[0]", false), "#0");
+            Assert.IsFalse(json.GetBooleanByPath("array[1]", false), "#1");
+            Assert.IsTrue(json.GetBooleanByPath("array[2]", false), "#2");
+            Assert.IsTrue(json.GetBooleanByPath("array[3]", false), "#3");
+            Assert.IsFalse(json.GetBooleanByPath("array[4]", false), "#4");
+            Assert.IsFalse(json.GetBooleanByPath("array[5]", false), "#5");
+            Assert.IsFalse(json.GetBooleanByPath("array[6]", false), "#6");
+            Assert.IsFalse(json.GetBooleanByPath("array[7]", false), "#7");
+            Assert.IsTrue(json.GetBooleanByPath("array[8]", false), "#8");
+            Assert.IsFalse(json.GetBooleanByPath("array[9]", false), "#9");
+            Assert.IsFalse(json.GetBooleanByPath("array[10]", false), "#10");
+            Assert.IsTrue(json.GetBooleanByPath("array[11]", false), "#11");
+            Assert.IsFalse(json.GetBooleanByPath("array[12]", false), "#12");
+            Assert.IsTrue(json.GetBooleanByPath("array[13]", false), "#13");
+            Assert.IsFalse(json.GetBooleanByPath("array[14]", false), "#14");
+            Assert.IsFalse(json.GetBooleanByPath("array[15]", false), "#15");
+            Assert.IsFalse(json.GetBooleanByPath("array[16]", false), "#16");
+            Assert.IsFalse(json.GetBooleanByPath("array[17]", false), "#17");
+            Assert.IsFalse(json.GetBooleanByPath("array[18]", false), "#18");
 
-            Assert.IsTrue(json.GetBoolean("array[0]", true), "#0");
-            Assert.IsTrue(json.GetBoolean("array[1]", true), "#1");
-            Assert.IsTrue(json.GetBoolean("array[2]", true), "#2");
-            Assert.IsTrue(json.GetBoolean("array[3]", true), "#3");
-            Assert.IsFalse(json.GetBoolean("array[4]", true), "#4");
-            Assert.IsFalse(json.GetBoolean("array[5]", true), "#5");
-            Assert.IsTrue(json.GetBoolean("array[6]", true), "#6");
-            Assert.IsFalse(json.GetBoolean("array[7]", true), "#7");
-            Assert.IsTrue(json.GetBoolean("array[8]", true), "#8");
-            Assert.IsTrue(json.GetBoolean("array[9]", true), "#9");
-            Assert.IsFalse(json.GetBoolean("array[10]", true), "#10");
-            Assert.IsTrue(json.GetBoolean("array[11]", true), "#11");
-            Assert.IsTrue(json.GetBoolean("array[12]", true), "#12");
-            Assert.IsTrue(json.GetBoolean("array[13]", true), "#13");
-            Assert.IsFalse(json.GetBoolean("array[14]", true), "#14");
-            Assert.IsTrue(json.GetBoolean("array[15]", true), "#15");
-            Assert.IsTrue(json.GetBoolean("array[16]", true), "#16");
-            Assert.IsTrue(json.GetBoolean("array[17]", true), "#17");
-            Assert.IsTrue(json.GetBoolean("array[18]", true), "#18");
+            Assert.IsTrue(json.GetBooleanByPath("array[0]", true), "#0");
+            Assert.IsTrue(json.GetBooleanByPath("array[1]", true), "#1");
+            Assert.IsTrue(json.GetBooleanByPath("array[2]", true), "#2");
+            Assert.IsTrue(json.GetBooleanByPath("array[3]", true), "#3");
+            Assert.IsFalse(json.GetBooleanByPath("array[4]", true), "#4");
+            Assert.IsFalse(json.GetBooleanByPath("array[5]", true), "#5");
+            Assert.IsTrue(json.GetBooleanByPath("array[6]", true), "#6");
+            Assert.IsFalse(json.GetBooleanByPath("array[7]", true), "#7");
+            Assert.IsTrue(json.GetBooleanByPath("array[8]", true), "#8");
+            Assert.IsTrue(json.GetBooleanByPath("array[9]", true), "#9");
+            Assert.IsFalse(json.GetBooleanByPath("array[10]", true), "#10");
+            Assert.IsTrue(json.GetBooleanByPath("array[11]", true), "#11");
+            Assert.IsTrue(json.GetBooleanByPath("array[12]", true), "#12");
+            Assert.IsTrue(json.GetBooleanByPath("array[13]", true), "#13");
+            Assert.IsFalse(json.GetBooleanByPath("array[14]", true), "#14");
+            Assert.IsTrue(json.GetBooleanByPath("array[15]", true), "#15");
+            Assert.IsTrue(json.GetBooleanByPath("array[16]", true), "#16");
+            Assert.IsTrue(json.GetBooleanByPath("array[17]", true), "#17");
+            Assert.IsTrue(json.GetBooleanByPath("array[18]", true), "#18");
 
         }
 

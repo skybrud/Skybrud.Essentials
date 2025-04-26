@@ -1,10 +1,8 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Assemblies;
 using Skybrud.Essentials.Collections;
-using Skybrud.Essentials.Json;
-using Skybrud.Essentials.Locations;
+using Skybrud.Essentials.Json.Newtonsoft;
 using Skybrud.Essentials.Maps.Geometry;
 using Skybrud.Essentials.Reflection;
 using Skybrud.Essentials.Reflection.Extensions;
@@ -88,33 +86,13 @@ namespace UnitTestProject1.Reflection {
         }
 
         [TestMethod]
-        public void MemberIsObsolete() {
-
-            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.JsonObjectBase)));
-            Assert.IsTrue(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.JsonObjectBase>());
-
-            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase)));
-            Assert.IsFalse(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase>());
-
-            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(EssentialsLocation)));
-            Assert.IsTrue(ReflectionUtils.IsObsolete<EssentialsLocation>());
-
-            Assert.IsFalse(ReflectionUtils.IsEnum(typeof(IPoint)));
-            Assert.IsFalse(ReflectionUtils.IsEnum<IPoint>());
-
-        }
-
-        [TestMethod]
         public void TypeIsObsolete() {
 
-            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.JsonObjectBase)));
-            Assert.IsTrue(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.JsonObjectBase>());
+            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(LegacyAssemblyUtils)));
+            Assert.IsTrue(ReflectionUtils.IsObsolete<LegacyAssemblyUtils>());
 
-            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase)));
-            Assert.IsFalse(ReflectionUtils.IsObsolete<Skybrud.Essentials.Json.Newtonsoft.JsonObjectBase>());
-
-            Assert.IsTrue(ReflectionUtils.IsObsolete(typeof(EssentialsLocation)));
-            Assert.IsTrue(ReflectionUtils.IsObsolete<EssentialsLocation>());
+            Assert.IsFalse(ReflectionUtils.IsObsolete(typeof(JsonObjectBase)));
+            Assert.IsFalse(ReflectionUtils.IsObsolete<JsonObjectBase>());
 
             Assert.IsFalse(ReflectionUtils.IsEnum(typeof(IPoint)));
             Assert.IsFalse(ReflectionUtils.IsEnum<IPoint>());
@@ -179,7 +157,7 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void MemberHasCustomAttribute() {
 
-            var member1 = typeof(AssemblyUtils).GetMember("GetVersion").First();
+            var member1 = typeof(LegacyAssemblyUtils).GetMember("GetVersion").First();
             var member2 = typeof(ReflectionUtils).GetMember("GetVersion").First();
 
             Assert.IsTrue(ReflectionUtils.HasCustomAttribute<ObsoleteAttribute>(member1));
@@ -207,7 +185,7 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void MemberGetCustomAttribute() {
 
-            var member1 = typeof(AssemblyUtils).GetMember("GetVersion").First();
+            var member1 = typeof(LegacyAssemblyUtils).GetMember("GetVersion").First();
             var member2 = typeof(ReflectionUtils).GetMember("GetVersion").First();
 
             ObsoleteAttribute attribute1 = ReflectionUtils.GetCustomAttribute<ObsoleteAttribute>(member1);
@@ -231,7 +209,7 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void MemberGetCustomAttributes() {
 
-            var member1 = typeof(AssemblyUtils).GetMember("GetVersion").First();
+            var member1 = typeof(LegacyAssemblyUtils).GetMember("GetVersion").First();
             var member2 = typeof(ReflectionUtils).GetMember("GetVersion").First();
 
             ObsoleteAttribute[] attributes1 = ReflectionUtils.GetCustomAttributes<ObsoleteAttribute>(member1);
@@ -281,7 +259,7 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void TypeHasCustomAttribute() {
 
-            var type1 = typeof(AssemblyUtils);
+            var type1 = typeof(LegacyAssemblyUtils);
             var type2 = typeof(ReflectionUtils);
 
             Assert.IsTrue(ReflectionUtils.HasCustomAttribute<ObsoleteAttribute>(type1));
@@ -309,7 +287,7 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void TypeGetCustomAttribute() {
 
-            var type1 = typeof(AssemblyUtils);
+            var type1 = typeof(LegacyAssemblyUtils);
             var type2 = typeof(ReflectionUtils);
 
             ObsoleteAttribute attribute1 = ReflectionUtils.GetCustomAttribute<ObsoleteAttribute>(type1);
@@ -333,7 +311,7 @@ namespace UnitTestProject1.Reflection {
         [TestMethod]
         public void TypeGetCustomAttributes() {
 
-            var type1 = typeof(AssemblyUtils);
+            var type1 = typeof(LegacyAssemblyUtils);
             var type2 = typeof(ReflectionUtils);
 
             ObsoleteAttribute[] attributes1 = ReflectionUtils.GetCustomAttributes<ObsoleteAttribute>(type1);
@@ -358,6 +336,16 @@ namespace UnitTestProject1.Reflection {
             Assert.IsNotNull(attributes4, "#4");
             Assert.AreEqual(0, attributes4.Length, "#4");
 
+        }
+
+    }
+
+    [Obsolete("Use static methods in the ReflectionUtils class instead.")]
+    public class LegacyAssemblyUtils {
+
+        [Obsolete("Use ReflectionUtils.GetVersion() method instead.")]
+        public static string GetVersion() {
+            return "1234";
         }
 
     }

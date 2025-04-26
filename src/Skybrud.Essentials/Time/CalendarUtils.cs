@@ -35,20 +35,6 @@ public static class CalendarUtils {
     }
 
     /// <summary>
-    /// Gets the date of <strong>Moundy Thursday</strong>, which falls on the Thursday before
-    /// <strong>Easter</strong>.
-    /// </summary>
-    /// <param name="year">The year.</param>
-    /// <returns>An instance of <see cref="DateTime"/> representing the date of <strong>Moundy Thursday</strong>.</returns>
-    /// <see>
-    ///     <cref>https://en.wikipedia.org/wiki/Maundy_Thursday</cref>
-    /// </see>
-    [Obsolete("Method name is spelled incorrectly. Use the 'GetMaundyThursday' method instead.")]
-    public static DateTime GetMoundyThursday(int year) {
-        return GetEasterSunday(year).AddDays(-3);
-    }
-
-    /// <summary>
     /// Gets the date of <strong>Good Friday</strong>, which falls on the Friday before <strong>Easter</strong>.
     /// </summary>
     /// <param name="year">The year.</param>

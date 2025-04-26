@@ -1,7 +1,7 @@
 ﻿using System.Net;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Enums;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Enums;
 
 #pragma warning disable 618
 

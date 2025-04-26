@@ -1,16 +1,13 @@
 ﻿using System;
-using System.Text;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Json;
-using Skybrud.Essentials.Json.Converters.Time;
-using Skybrud.Essentials.Json.Extensions;
+using Skybrud.Essentials.Json.Newtonsoft;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.UnixTime;
-
-#pragma warning disable 618
 
 namespace UnitTestProject1.Json.Converters {
 
@@ -30,9 +27,6 @@ namespace UnitTestProject1.Json.Converters {
 
             Assert.AreEqual(1547983355, obj.GetDouble("time3"), "Time #3");
             Assert.AreEqual(1547983355123, obj.GetDouble("time4"), "Time #4");
-
-            Assert.AreEqual(1547983355, obj.GetDouble("time5"), "Time #5");
-            Assert.AreEqual(1547983355123, obj.GetDouble("time6"), "Time #6");
 
             Assert.AreEqual(1547983355, obj.GetDouble("time7"), "Time #7");
             Assert.AreEqual(1547983355123, obj.GetDouble("time8"), "Time #8");
@@ -64,9 +58,6 @@ namespace UnitTestProject1.Json.Converters {
             Assert.AreEqual(WithSeconds(sample1.Time3), WithSeconds(sample2.Time3), "Time3");
             Assert.AreEqual(WithMilliseconds(sample1.Time4), WithMilliseconds(sample2.Time4), "Time4");
 
-            Assert.AreEqual(WithSeconds(sample1.Time5), WithSeconds(sample2.Time5), "Time5");
-            Assert.AreEqual(WithMilliseconds(sample1.Time6), WithMilliseconds(sample2.Time6), "Time6");
-
             Assert.AreEqual(WithSeconds(sample1.Time7), WithSeconds(sample2.Time7), "Time7");
             Assert.AreEqual(WithMilliseconds(sample1.Time8), WithMilliseconds(sample2.Time8), "Time8");
 
@@ -96,9 +87,6 @@ namespace UnitTestProject1.Json.Converters {
 
             Assert.AreEqual(WithSeconds(sample1.Time3), WithSeconds(sample2.Time3), "Time3");
             Assert.AreEqual(WithMilliseconds(sample1.Time4), WithMilliseconds(sample2.Time4), "Time4");
-
-            Assert.AreEqual(WithSeconds(sample1.Time5), WithSeconds(sample2.Time5), "Time5");
-            Assert.AreEqual(WithMilliseconds(sample1.Time6), WithMilliseconds(sample2.Time6), "Time6");
 
             Assert.AreEqual(WithSeconds(sample1.Time7), WithSeconds(sample2.Time7), "Time7");
             Assert.AreEqual(WithMilliseconds(sample1.Time8), WithMilliseconds(sample2.Time8), "Time8");
@@ -130,9 +118,6 @@ namespace UnitTestProject1.Json.Converters {
             Assert.AreEqual(WithSeconds(sample1.Time3), WithSeconds(sample2.Time3), "Time3");
             Assert.AreEqual(WithMilliseconds(sample1.Time4), WithMilliseconds(sample2.Time4), "Time4");
 
-            Assert.AreEqual(WithSeconds(sample1.Time5), WithSeconds(sample2.Time5), "Time5");
-            Assert.AreEqual(WithMilliseconds(sample1.Time6), WithMilliseconds(sample2.Time6), "Time6");
-
             Assert.AreEqual(WithSeconds(sample1.Time7), WithSeconds(sample2.Time7), "Time7");
             Assert.AreEqual(WithMilliseconds(sample1.Time8), WithMilliseconds(sample2.Time8), "Time8");
 
@@ -146,10 +131,6 @@ namespace UnitTestProject1.Json.Converters {
             return timestamp.ToUniversalTime().ToString(Iso8601Constants.DateTimeSeconds);
         }
 
-        private string WithSeconds(EssentialsDateTime timestamp) {
-            return timestamp.ToUniversalTime().ToString(Iso8601Constants.DateTimeSeconds);
-        }
-
         private string WithSeconds(EssentialsTime timestamp) {
             return timestamp.ToUniversalTime().ToString(Iso8601Constants.DateTimeSeconds);
         }
@@ -159,10 +140,6 @@ namespace UnitTestProject1.Json.Converters {
         }
 
         private string WithMilliseconds(DateTimeOffset timestamp) {
-            return timestamp.ToUniversalTime().ToString(Iso8601Constants.DateTimeMilliseconds);
-        }
-
-        private string WithMilliseconds(EssentialsDateTime timestamp) {
             return timestamp.ToUniversalTime().ToString(Iso8601Constants.DateTimeMilliseconds);
         }
 
@@ -188,14 +165,6 @@ namespace UnitTestProject1.Json.Converters {
             [JsonConverter(typeof(UnixTimeConverter), UnixTimeFormat.Milliseconds)]
             public DateTimeOffset Time4 { get; set; }
 
-            [JsonProperty("time5")]
-            [JsonConverter(typeof(UnixTimeConverter), UnixTimeFormat.Seconds)]
-            public EssentialsDateTime Time5 { get; set; }
-
-            [JsonProperty("time6")]
-            [JsonConverter(typeof(UnixTimeConverter), UnixTimeFormat.Milliseconds)]
-            public EssentialsDateTime Time6 { get; set; }
-
             [JsonProperty("time7")]
             [JsonConverter(typeof(UnixTimeConverter), UnixTimeFormat.Seconds)]
             public EssentialsTime Time7 { get; set; }
@@ -208,13 +177,9 @@ namespace UnitTestProject1.Json.Converters {
             public Sample() { }
 
             public Sample(EssentialsTime time) {
-
                 Time1 = Time2 = time.DateTimeOffset.DateTime;
                 Time3 = Time4 = time.DateTimeOffset;
-
-                Time5 = Time6 = new EssentialsDateTime(time.DateTimeOffset.DateTime);
                 Time7 = Time8 = time;
-
             }
 
         }

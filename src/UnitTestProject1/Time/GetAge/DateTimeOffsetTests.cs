@@ -53,25 +53,6 @@ namespace UnitTestProject1.Time.GetAge {
         }
 
         [TestMethod]
-        public void EssentialsDateTime() {
-
-#pragma warning disable 618
-
-            DateTimeOffset t = new DateTimeOffset(2019, 9, 14, 0, 0, 0, TimeSpan.Zero);
-
-            EssentialsDateTime a = new EssentialsDateTime(2020, 9, 13);
-            EssentialsDateTime b = new EssentialsDateTime(2020, 9, 14);
-            EssentialsDateTime c = new EssentialsDateTime(2020, 9, 15);
-
-            Assert.AreEqual(0, TimeUtils.GetAge(t, a));
-            Assert.AreEqual(1, TimeUtils.GetAge(t, b));
-            Assert.AreEqual(1, TimeUtils.GetAge(t, c));
-
-#pragma warning restore 618
-
-        }
-
-        [TestMethod]
         public void EssentialsTime() {
 
             DateTimeOffset t = new DateTimeOffset(2019, 9, 14, 0, 0, 0, TimeSpan.Zero);

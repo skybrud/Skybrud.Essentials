@@ -44,12 +44,6 @@ public class EssentialsWeekRange : IReadOnlyList<EssentialsWeek> {
     public EssentialsWeek End => _weeks[_weeks.Count - 1];
 
     /// <summary>
-    /// Gets an array of <see cref="EssentialsWeek"/> within the range.
-    /// </summary>
-    [Obsolete("Use 'ToArray' method instead.")]
-    public EssentialsWeek[] Weeks => [.. _weeks];
-
-    /// <summary>
     /// Indicates whether the range is in reverse order (if <see cref="End"/> is before <see cref="Start"/>).
     /// </summary>
     public bool IsReverse => End < Start;

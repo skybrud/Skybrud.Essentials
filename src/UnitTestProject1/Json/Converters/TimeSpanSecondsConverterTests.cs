@@ -1,7 +1,8 @@
 ﻿using System;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
+using Skybrud.Essentials.Time;
 
 namespace UnitTestProject1.Json.Converters {
 
@@ -42,11 +43,11 @@ namespace UnitTestProject1.Json.Converters {
         class Sample {
 
             [JsonProperty("duration")]
-            [JsonConverter(typeof(TimeSpanSecondsConverter))]
+            [JsonConverter(typeof(TimeSpanConverter), TimeSpanFormat.Seconds)]
             public TimeSpan Duration { get; set; }
 
             [JsonProperty("duration2")]
-            [JsonConverter(typeof(TimeSpanSecondsConverter))]
+            [JsonConverter(typeof(TimeSpanConverter), TimeSpanFormat.Seconds)]
             public TimeSpan? Duration2 { get; set; }
 
         }

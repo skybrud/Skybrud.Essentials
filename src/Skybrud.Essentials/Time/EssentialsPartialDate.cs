@@ -3,14 +3,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 
 namespace Skybrud.Essentials.Time;
 
 /// <summary>
 /// Class representing a partial date (e.g. only year and month).
 /// </summary>
-[JsonConverter(typeof(EssentialsPartialDateConverter))]
+[JsonConverter(typeof(PartialDateConverter))]
 public class EssentialsPartialDate {
 
     #region Properties
@@ -81,19 +81,6 @@ public class EssentialsPartialDate {
         Month = date.Month;
         Day = date.Day;
         DateTime = new DateTime(Year, Month, Day);
-    }
-
-    /// <summary>
-    /// Initializes a new instance from the specified <paramref name="date"/>.
-    /// </summary>
-    /// <param name="date">An instance of <see cref="EssentialsDateTime"/> representing the full date.</param>
-#pragma warning disable 618
-    public EssentialsPartialDate(EssentialsDateTime? date) {
-#pragma warning restore 618
-        Year = date?.Year ?? 0;
-        Month = date?.Month ?? 0;
-        Day = date?.Day ?? 0;
-        DateTime = new DateTime(Year == 0 ? 1 : Year, Month == 0 ? 1 : Month, Day == 0 ? 1 : Day);
     }
 
     /// <summary>
@@ -280,18 +267,6 @@ public class EssentialsPartialDate {
     /// <param name="timestamp">An instance of <see cref="DateTimeOffset"/>.</param>
     /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
     public static implicit operator EssentialsPartialDate(DateTimeOffset timestamp) {
-        return new EssentialsPartialDate(timestamp);
-    }
-
-    /// <summary>
-    /// Initializes a new instance of <see cref="EssentialsPartialDate"/> from the specified
-    /// <paramref name="timestamp"/>.
-    /// </summary>
-    /// <param name="timestamp">An instance of <see cref="EssentialsDateTime"/>.</param>
-    /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
-#pragma warning disable 618
-    public static implicit operator EssentialsPartialDate(EssentialsDateTime timestamp) {
-#pragma warning restore 618
         return new EssentialsPartialDate(timestamp);
     }
 

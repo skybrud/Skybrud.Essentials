@@ -533,39 +533,6 @@ public static partial class XElementExtensions {
 
     #endregion
 
-    #region Get attribute value as System.Boolean (deprecated due to wrong naming)
-
-#pragma warning disable 1591
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static bool GetAttributeAsBoolean(this XElement? element, string expression) {
-        return GetAttributeValueAsBoolean(element, expression, null, x => x);
-    }
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static T GetAttributeAsBoolean<T>(this XElement? element, string expression, Func<bool, T> callback) {
-        return GetAttributeValueAsBoolean(element, expression, null, callback);
-    }
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static bool GetAttributeAsBoolean(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
-        return GetAttributeValueAsBoolean(element, expression, resolver, x => x);
-    }
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static bool GetAttributeAsBoolean(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out bool value) {
-        return GetAttributeValueAsBoolean(element, expression, resolver, out value);
-    }
-
-    [Obsolete("Use the GetAttributeValueAsBoolean method instead.")]
-    public static T GetAttributeAsBoolean<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver, Func<bool, T> callback) {
-        return GetAttributeValueAsBoolean(element, expression, resolver, callback);
-    }
-
-#pragma warning restore 1591
-
-    #endregion
-
     #region Get attribute value as System.Enum
 
     /// <summary>
