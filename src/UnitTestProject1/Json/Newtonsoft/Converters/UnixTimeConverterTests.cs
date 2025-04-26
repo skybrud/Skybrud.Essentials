@@ -9,8 +9,6 @@ using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.UnixTime;
 
-#pragma warning disable 618
-
 namespace UnitTestProject1.Json.Newtonsoft.Converters {
 
     [TestClass]

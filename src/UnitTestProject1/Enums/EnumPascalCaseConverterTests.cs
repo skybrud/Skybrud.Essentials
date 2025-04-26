@@ -3,8 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Json.Newtonsoft.Converters.Enums;
 
-#pragma warning disable 618
-
 namespace UnitTestProject1.Enums {
 
     [TestClass]

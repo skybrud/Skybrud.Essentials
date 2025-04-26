@@ -10,7 +10,7 @@ using DescriptionAttribute = System.ComponentModel.DescriptionAttribute;
 
 // ReSharper disable RedundantNameQualifier
 
-#pragma warning disable 618
+#pragma warning disable CS0618 // Type or member is obsolete
 
 namespace UnitTestProject1.Reflection {
 

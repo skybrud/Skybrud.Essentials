@@ -2,8 +2,6 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time.UnixTime;
 
-#pragma warning disable 618
-
 namespace UnitTestProject1.Time.Formats {
 
     [TestClass]
@@ -204,5 +202,3 @@ namespace UnitTestProject1.Time.Formats {
     }
 
 }
-
-#pragma warning restore 618

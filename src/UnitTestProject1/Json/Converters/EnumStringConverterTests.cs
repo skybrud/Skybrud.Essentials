@@ -5,9 +5,6 @@ using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Converters.Enums;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Strings;
-
-#pragma warning disable CS0618
-
 namespace UnitTestProject1.Json.Converters {
 
     [TestClass]

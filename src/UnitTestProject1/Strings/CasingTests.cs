@@ -3,8 +3,6 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
-#pragma warning disable 618
-
 namespace UnitTestProject1.Strings {
 
     [TestClass]

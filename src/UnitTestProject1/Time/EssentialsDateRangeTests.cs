@@ -2,8 +2,6 @@
 using Skybrud.Essentials.Time;
 // ReSharper disable ExpressionIsAlwaysNull
 
-#pragma warning disable 618
-
 namespace UnitTestProject1.Time {
 
     [TestClass]
@@ -56,5 +54,3 @@ namespace UnitTestProject1.Time {
     }
 
 }
-
-#pragma warning restore 618

@@ -7,8 +7,6 @@ using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 using Skybrud.Essentials.Json.Newtonsoft.Extensions;
 using Skybrud.Essentials.Time;
 
-#pragma warning disable 618
-
 namespace UnitTestProject1.Json.Converters {
 
     [TestClass]
