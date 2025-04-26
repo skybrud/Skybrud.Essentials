@@ -1,6 +1,4 @@
-﻿#if NETSTANDARD2_0_OR_GREATER || NET45_OR_GREATER || NET5_0_OR_GREATER
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Reflection;
 using Newtonsoft.Json;
@@ -57,5 +55,3 @@ public class JsonObjectBaseConverter : JsonConverter {
     }
 
 }
-
-#endif

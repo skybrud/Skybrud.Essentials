@@ -388,8 +388,6 @@ public static class JsonUtils {
 
     }
 
-#if I_CAN_HAZ_FILE
-
     /// <summary>
     /// Loads and parses the JSON token in the file at the specified <paramref name="path"/>.
     /// </summary>
@@ -728,7 +726,5 @@ public static class JsonUtils {
         if (token == null) throw new ArgumentNullException(nameof(token));
         File.WriteAllText(path, token.ToString(formatting), Encoding.UTF8);
     }
-
-#endif
 
 }

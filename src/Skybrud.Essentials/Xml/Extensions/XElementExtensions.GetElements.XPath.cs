@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAZ_XPATH
-
-using System;
+﻿using System;
 using System.Linq;
 using System.Xml;
 using System.Xml.Linq;
@@ -87,5 +85,3 @@ public static partial class XElementExtensions {
     }
 
 }
-
-#endif

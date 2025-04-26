@@ -3,36 +3,12 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;netstandard1.3;netstandard2.0;net45;net46;net47;net48;net5.0;net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>netstandard2.0;net6.0;net7.0</TargetFrameworks>
     <BuildInParallel>false</BuildInParallel>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
     <CheckEolTargetFramework>false</CheckEolTargetFramework>
   </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.1'">
-    <DefineConstants>NET_STANDARD,JETBRAINS_ANNOTATIONS</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
-    <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;JETBRAINS_ANNOTATIONS</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <DefineConstants>NET_STANDARD;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAS_ENCODING;I_CAN_HAZ_FILE_VERSION_INFO;I_CAN_HAS_NAME_VALUE_COLLECTION;JETBRAINS_ANNOTATIONS</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='net48'">
-    <DefineConstants>NET_FRAMEWORK;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAS_ENCODING;I_CAN_HAZ_FILE_VERSION_INFO;I_CAN_HAS_NAME_VALUE_COLLECTION;JETBRAINS_ANNOTATIONS</DefineConstants>
-  </PropertyGroup>
-
-  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0' OR '$(TargetFramework)'=='net6.0' OR '$(TargetFramework)'=='net7.0' OR '$(TargetFramework)'=='net8.0'">
-    <DefineConstants>I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAS_ENCODING;I_CAN_HAZ_FILE_VERSION_INFO;I_CAN_HAS_NAME_VALUE_COLLECTION;JETBRAINS_ANNOTATIONS</DefineConstants>
-  </PropertyGroup>
-
-  <ItemGroup Condition="'$(TargetFramework)'=='net45' OR '$(TargetFramework)'=='net46' OR '$(TargetFramework)'=='net47' OR '$(TargetFramework)'=='net48'">
-    <Reference Include="System.Web" />
-  </ItemGroup>
 
   <PropertyGroup>
     <VersionPrefix>1.1.59</VersionPrefix>
@@ -62,8 +38,8 @@
     <AssemblyMetadata Include="NuGetUrl" Value="https://packages.limbo.works/skybrud.essentials/docs/" />
   </ItemGroup>
 
-  <!-- Include NuGet dependencies (.NET STadnard 1.3 and 2.0) -->
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3' OR '$(TargetFramework)'=='netstandard2.0'">
+  <!-- Include NuGet dependencies (.NET Standard 2.0) -->
+  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
 

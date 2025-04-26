@@ -1,6 +1,4 @@
-﻿#if NETSTANDARD1_3_OR_GREATER || NET45_OR_GREATER || NET5_0_OR_GREATER
-
-using System;
+﻿using System;
 using System.Collections;
 using System.Diagnostics.CodeAnalysis;
 using System.Xml;
@@ -256,5 +254,3 @@ public partial class XPathExtensions {
     }
 
 }
-
-#endif

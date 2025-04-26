@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAZ_XPATH
-
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
 using System.Xml;
@@ -42,5 +40,3 @@ public static partial class XElementExtensions {
     }
 
 }
-
-#endif

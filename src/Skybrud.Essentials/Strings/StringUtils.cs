@@ -338,52 +338,6 @@ public static partial class StringUtils {
 
     }
 
-#if NET_FRAMEWORK
-
-    /// <summary>
-    /// URL encodes the specified <paramref name="str"/>.
-    /// </summary>
-    /// <param name="str">The string to be encoded.</param>
-    /// <returns>The URL encoded string.</returns>
-    [return: NotNullIfNotNull(nameof(str))]
-    public static string? UrlEncode(string? str) {
-        return System.Web.HttpUtility.UrlEncode(str);
-    }
-
-    /// <summary>
-    /// URL decodes a URL string.
-    /// </summary>
-    /// <param name="str">The string to be decoded.</param>
-    /// <returns>The URL decoded string.</returns>
-    [return: NotNullIfNotNull(nameof(str))]
-    public static string? UrlDecode(string? str) {
-        return System.Web.HttpUtility.UrlDecode(str);
-    }
-
-    /// <summary>
-    /// HTML encodes the specified <paramref name="str"/>.
-    /// </summary>
-    /// <param name="str">The string to be encoded.</param>
-    /// <returns>The encoded string.</returns>
-    [return: NotNullIfNotNull(nameof(str))]
-    public static string? HtmlEncode(string? str) {
-        return System.Web.HttpUtility.HtmlEncode(str!);
-    }
-
-    /// <summary>
-    /// HTML decodes the specified <paramref name="str"/>.
-    /// </summary>
-    /// <param name="str">The string to be decoded.</param>
-    /// <returns>The decoded string.</returns>
-    [return: NotNullIfNotNull(nameof(str))]
-    public static string? HtmlDecode(string? str) {
-        return System.Web.HttpUtility.HtmlDecode(str);
-    }
-
-#endif
-
-#if I_CAN_HAS_NAME_VALUE_COLLECTION
-
     /// <summary>
     /// Returns a URL encoded value of the specified <paramref name="collection"/>,
     /// </summary>
@@ -393,51 +347,45 @@ public static partial class StringUtils {
         return collection == null ? string.Empty : string.Join("&", from string key in collection.Keys select $"{UrlEncode(key)}={UrlEncode(collection[key])}");
     }
 
-#endif
+    /// <summary>
+    /// URL encodes the specified <paramref name="str"/>.
+    /// </summary>
+    /// <param name="str">The string to be encoded.</param>
+    /// <returns>The URL encoded string.</returns>
+    [return: NotNullIfNotNull(nameof(str))]
+    public static string? UrlEncode(string? str) {
+        return System.Net.WebUtility.UrlEncode(str);
+    }
 
-#if NET_STANDARD || NET5_0_OR_GREATER
+    /// <summary>
+    /// URL decodes a URL string.
+    /// </summary>
+    /// <param name="str">The string to be decoded.</param>
+    /// <returns>The URL decoded string.</returns>
+    [return: NotNullIfNotNull(nameof(str))]
+    public static string? UrlDecode(string? str) {
+        return System.Net.WebUtility.UrlDecode(str);
+    }
 
-        /// <summary>
-        /// URL encodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be encoded.</param>
-        /// <returns>The URL encoded string.</returns>
-        [return: NotNullIfNotNull(nameof(str))]
-        public static string? UrlEncode(string? str) {
-            return System.Net.WebUtility.UrlEncode(str);
-        }
+    /// <summary>
+    /// HTML encodes the specified <paramref name="str"/>.
+    /// </summary>
+    /// <param name="str">The string to be encoded.</param>
+    /// <returns>The encoded string.</returns>
+    [return: NotNullIfNotNull(nameof(str))]
+    public static string? HtmlEncode(string? str) {
+        return System.Net.WebUtility.HtmlEncode(str);
+    }
 
-        /// <summary>
-        /// URL decodes a URL string.
-        /// </summary>
-        /// <param name="str">The string to be decoded.</param>
-        /// <returns>The URL decoded string.</returns>
-        [return: NotNullIfNotNull(nameof(str))]
-        public static string? UrlDecode(string? str) {
-            return System.Net.WebUtility.UrlDecode(str);
-        }
-
-        /// <summary>
-        /// HTML encodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be encoded.</param>
-        /// <returns>The encoded string.</returns>
-        [return: NotNullIfNotNull(nameof(str))]
-        public static string? HtmlEncode(string? str) {
-            return System.Net.WebUtility.HtmlEncode(str);
-        }
-
-        /// <summary>
-        /// HTML decodes the specified <paramref name="str"/>.
-        /// </summary>
-        /// <param name="str">The string to be decoded.</param>
-        /// <returns>The decoded string.</returns>
-        [return: NotNullIfNotNull(nameof(str))]
-        public static string? HtmlDecode(string? str) {
-            return System.Net.WebUtility.HtmlDecode(str);
-        }
-
-#endif
+    /// <summary>
+    /// HTML decodes the specified <paramref name="str"/>.
+    /// </summary>
+    /// <param name="str">The string to be decoded.</param>
+    /// <returns>The decoded string.</returns>
+    [return: NotNullIfNotNull(nameof(str))]
+    public static string? HtmlDecode(string? str) {
+        return System.Net.WebUtility.HtmlDecode(str);
+    }
 
     /// <summary>
     /// Strips all HTML elements from the specified <paramref name="html"/> string.

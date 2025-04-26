@@ -51,8 +51,6 @@ public static partial class StringExtensions {
         return StringUtils.HtmlDecode(str);
     }
 
-#if I_CAN_HAS_NAME_VALUE_COLLECTION
-
     /// <summary>
     /// Returns a URL encoded value of the specified <paramref name="collection"/>,
     /// </summary>
@@ -70,8 +68,6 @@ public static partial class StringExtensions {
     public static NameValueCollection ToNameValueCollection(this string? encoded) {
         return string.IsNullOrWhiteSpace(encoded) ? [] : System.Web.HttpUtility.ParseQueryString(encoded);
     }
-
-#endif
 
     /// <summary>
     /// Counts number of words in the specified <paramref name="str"/>.

@@ -334,8 +334,6 @@ public static partial class StringExtensions {
 
     #endregion
 
-#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
-
     /// <summary>
     /// Returns a title cased version of the specified <paramref name="input"/> string according to the invariant culture.
     /// </summary>
@@ -362,8 +360,6 @@ public static partial class StringExtensions {
     public static string? ToTitleCase(this string? input, CultureInfo culture) {
         return string.IsNullOrWhiteSpace(input) ? input : culture.TextInfo.ToTitleCase(input);
     }
-
-#endif
 
     /// <summary>
     /// Lower cases the first character of the specified <paramref name="str"/>. If <paramref name="str"/> is

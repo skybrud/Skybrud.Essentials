@@ -25,8 +25,6 @@ public static partial class XElementExtensions {
 
     }
 
-#if I_CAN_HAZ_XPATH
-
     /// <summary>
     /// Gets whether the first element matching the specified XPath <paramref name="expression"/> has a value.
     /// </summary>
@@ -59,8 +57,6 @@ public static partial class XElementExtensions {
         return child != null && !string.IsNullOrWhiteSpace(child.Value);
 
     }
-
-#endif
 
     /// <summary>
     /// Gets the outer XML of the specified <paramref name="element"/>.

@@ -70,25 +70,6 @@ namespace UnitTestProject1.Strings {
 
         }
 
-        [TestMethod]
-        public void ToHtmlString() {
-
-            var samples = new[] {
-                new { Input = default(string), Output = "" },
-                new { Input = "", Output = "" },
-                new { Input = "<div>Hello World</div>", Output = "<div>Hello World</div>" }
-            };
-
-            foreach (var sample in samples) {
-
-                IHtmlString html = sample.Input.ToHtmlString();
-
-                Assert.AreEqual(sample.Output, html.ToHtmlString());
-
-            }
-
-        }
-
     }
 
 }

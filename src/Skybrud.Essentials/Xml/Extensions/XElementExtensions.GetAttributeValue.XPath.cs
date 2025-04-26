@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAZ_XPATH
-
-using System;
+﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Xml;
@@ -689,5 +687,3 @@ public static partial class XElementExtensions {
     #endregion
 
 }
-
-#endif

@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAS_NAME_VALUE_COLLECTION
-
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
 using System;
 using System.Collections.Specialized;
@@ -60,5 +58,3 @@ public class NameValueCollectionJsonConverter : JsonConverter {
     }
 
 }
-
-#endif

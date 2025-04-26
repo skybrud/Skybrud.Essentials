@@ -3,11 +3,8 @@ using System.Globalization;
 using System.Reflection;
 using Newtonsoft.Json;
 using Skybrud.Essentials.Enums;
-
-#if I_CAN_HAS_NAME_VALUE_COLLECTION
 using System.Collections.Specialized;
 using Skybrud.Essentials.Strings;
-#endif
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Converters;
 
@@ -33,11 +30,9 @@ public class StringJsonConverter : JsonConverter {
                 writer.WriteNull();
                 break;
 
-#if I_CAN_HAS_NAME_VALUE_COLLECTION
             case NameValueCollection nvc:
                 writer.WriteValue(StringUtils.ToUrlEncodedString(nvc));
                 break;
-#endif
 
             default:
                 writer.WriteValue(string.Format(CultureInfo.InvariantCulture, "{0}", value));
@@ -50,12 +45,10 @@ public class StringJsonConverter : JsonConverter {
     /// <inheritdoc />
     public override object ReadJson(JsonReader reader, Type objectType, object? existingValue, JsonSerializer serializer) {
 
-#if I_CAN_HAS_NAME_VALUE_COLLECTION
         if (objectType == typeof(NameValueCollection)) {
             string? temp = reader.Value?.ToString();
             return temp is null ? [] : System.Web.HttpUtility.ParseQueryString(temp);
         }
-#endif
 
         if (objectType.GetTypeInfo().IsEnum) {
             string? temp = reader.Value?.ToString();

@@ -165,7 +165,6 @@ public static class ReflectionExtensions {
         return ReflectionUtils.GetCustomAttributes<T>(type);
     }
 
-#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
 
     /// <summary>
     /// Returns whether the type extends <typeparamref name="TClass"/>.
@@ -186,8 +185,6 @@ public static class ReflectionExtensions {
     public static bool Implements<TInterface>(this Type type) {
         return typeof(TInterface).IsAssignableFrom(type);
     }
-
-#endif
 
     /// <summary>
     /// Returns whether the specified <paramref name="member" /> is marked as obsolete.
@@ -246,8 +243,6 @@ public static class ReflectionExtensions {
         return ReflectionUtils.IsObsolete(type, out attribute);
     }
 
-#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
-
     /// <summary>
     /// Returns whether the specified <paramref name="type"/> is an extension class.
     /// </summary>
@@ -265,7 +260,5 @@ public static class ReflectionExtensions {
     public static bool IsExtensionMethod(this MethodInfo? method) {
         return ReflectionUtils.IsExtensionMethod(method);
     }
-
-#endif
 
 }

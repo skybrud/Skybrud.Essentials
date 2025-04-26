@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAZ_SECURITY
-
-using System.Text;
+﻿using System.Text;
 using System;
 using Skybrud.Essentials.Strings;
 
@@ -370,5 +368,3 @@ public static class HashingExtensions {
     #endregion
 
 }
-
-#endif

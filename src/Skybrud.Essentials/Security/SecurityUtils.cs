@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAZ_SECURITY
-
-using Skybrud.Essentials.Strings;
+﻿using Skybrud.Essentials.Strings;
 using System;
 using System.IO;
 using System.Security.Cryptography;
@@ -527,5 +525,3 @@ public static class SecurityUtils {
     }
 
 }
-
-#endif

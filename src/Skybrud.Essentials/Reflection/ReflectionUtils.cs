@@ -22,9 +22,7 @@ public static class ReflectionUtils {
         if (assembly == null) throw new ArgumentNullException(nameof(assembly));
         return assembly.GetName().Version?.ToString()!;
     }
-
-#if I_CAN_HAZ_FILE_VERSION_INFO
-
+    
     /// <summary>
     /// Returns the version of the assembly of the specified <paramref name="type"/>.
     /// </summary>
@@ -128,10 +126,6 @@ public static class ReflectionUtils {
         return GetFileVersionInfo(typeof(T).Assembly);
     }
 
-#endif
-
-#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
-
     /// <summary>
     /// Returns whether the type extends <typeparamref name="TClass"/>.
     /// </summary>
@@ -151,8 +145,6 @@ public static class ReflectionUtils {
     public static bool Implements<TInterface>(Type type) {
         return typeof(TInterface).IsAssignableFrom(type);
     }
-
-#endif
 
     /// <summary>
     /// Returns whether <typeparamref name="T"/> is a class type.
@@ -533,8 +525,6 @@ public static class ReflectionUtils {
             .ToArray() ?? [];
     }
 
-#if NET45_OR_GREATER || NETSTANDARD2_0_OR_GREATER || NET5_0_OR_GREATER
-
     /// <summary>
     /// Returns whether the specified <paramref name="type"/> is an extension class.
     /// </summary>
@@ -561,8 +551,6 @@ public static class ReflectionUtils {
     public static bool IsExtensionMethod(MethodInfo? method) {
         return method is not null && method.IsDefined(typeof(ExtensionAttribute));
     }
-
-#endif
 
     /// <summary>
     /// Returns the <see cref="MethodInfo"/> identified by the specified <paramref name="expression"/>.

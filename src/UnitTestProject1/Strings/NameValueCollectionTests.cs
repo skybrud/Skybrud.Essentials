@@ -47,7 +47,7 @@ namespace UnitTestProject1.Strings {
             string encoded = nvc.ToUrlEncodedString();
 
             Assert.IsNotNull(encoded);
-            Assert.AreEqual("r%c3%b8d=gr%c3%b8d&med=fl%c3%b8de", encoded);
+            Assert.AreEqual("r%C3%B8d=gr%C3%B8d&med=fl%C3%B8de", encoded);
 
         }
 

@@ -36,17 +36,4 @@ public static partial class StringExtensions {
         return StringUtils.ReplaceLineBreaks(input);
     }
 
-#if NET_FRAMEWORK
-
-    /// <summary>
-    /// Returns a new <see cref="System.Web.IHtmlString"/> wrapping the specified <paramref name="input"/> string.
-    /// </summary>
-    /// <param name="input">The input string to be wrapped.</param>
-    /// <returns>An instance of <see cref="System.Web.IHtmlString"/>.</returns>
-    public static System.Web.IHtmlString ToHtmlString(this string? input) {
-        return new  System.Web.HtmlString(input ?? string.Empty);
-    }
-
-#endif
-
 }

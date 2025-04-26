@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAZ_SECURITY
-
-namespace Skybrud.Essentials.Security.Extensions;
+﻿namespace Skybrud.Essentials.Security.Extensions;
 
 /// <summary>
 /// Static class with various Base64 related extension methods.
@@ -26,5 +24,3 @@ public static class Base64Extensions {
     }
 
 }
-
-#endif
