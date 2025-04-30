@@ -82,6 +82,8 @@ public static partial class StringUtils {
             case "1":
             case "t":
             case "on":
+            case "yes":
+            case "y":
                 result = true;
                 return true;
 
@@ -89,6 +91,8 @@ public static partial class StringUtils {
             case "0":
             case "f":
             case "off":
+            case "no":
+            case "n":
                 result = false;
                 return true;
 
