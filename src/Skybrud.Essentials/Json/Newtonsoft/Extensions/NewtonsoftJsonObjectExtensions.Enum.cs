@@ -15,7 +15,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="json">The parent JSON object.</param>
     /// <param name="propertyName">The name of the property.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
-    public static T GetEnum<T>(this JObject? json, string propertyName) where T : Enum {
+    public static T GetEnum<T>(this JObject? json, string propertyName) where T : struct, Enum {
         return JsonTokenUtils.ParseEnum<T>(json?[propertyName]);
     }
 
@@ -27,7 +27,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <param name="fallback">The fallback value if the value in the JSON couldn't be parsed.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
-    public static T GetEnum<T>(this JObject? json, string propertyName, T fallback) where T : Enum {
+    public static T GetEnum<T>(this JObject? json, string propertyName, T fallback) where T : struct, Enum {
         return JsonTokenUtils.ParseEnum(json?[propertyName], fallback);
     }
 
@@ -49,7 +49,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="json">The parent JSON object.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
-    public static T GetEnumByPath<T>(this JObject? json, string path) where T : Enum {
+    public static T GetEnumByPath<T>(this JObject? json, string path) where T : struct, Enum {
         return JsonTokenUtils.ParseEnum<T>(json?.SelectToken(path));
     }
 
@@ -61,7 +61,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <param name="fallback">The fallback value if the value in the JSON couldn't be parsed.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
-    public static T GetEnumByPath<T>(this JObject? json, string path, T fallback) where T : Enum {
+    public static T GetEnumByPath<T>(this JObject? json, string path, T fallback) where T : struct, Enum {
         return JsonTokenUtils.ParseEnum(json?.SelectToken(path), fallback);
     }
 

@@ -38,11 +38,7 @@ public static class EnumUtils {
     /// </summary>
     /// <typeparam name="T">The type of the enum class.</typeparam>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
-    public static T[] GetEnumValues<T>() where T : struct {
-        return (T[]) Enum.GetValues(typeof(T));
-    }
-
-    internal static T[] GetEnumValuesInternal<T>() where T : Enum {
+    public static T[] GetEnumValues<T>() where T : Enum {
         return (T[]) Enum.GetValues(typeof(T));
     }
 
@@ -67,15 +63,9 @@ public static class EnumUtils {
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of
     /// <typeparamref name="T"/>.</exception>
-    public static T ParseEnum<T>([NotNull] string? str) where T : struct {
+    public static T ParseEnum<T>([NotNull] string? str) where T : struct, Enum {
         ThrowIfNullOrWhiteSpace(str, nameof(str));
         if (TryParseEnum(str, out T value)) return value;
-        throw new EnumParseException(typeof(T), str!);
-    }
-
-    internal static T ParseEnumInternal<T>([NotNull] string? str) where T : Enum {
-        ThrowIfNullOrWhiteSpace(str, nameof(str));
-        if (TryParseEnumInternal(str, out T? value)) return value;
         throw new EnumParseException(typeof(T), str!);
     }
 
@@ -114,7 +104,7 @@ public static class EnumUtils {
     /// <param name="fallback">The fallback if the enum could not be parsed.</param>
     /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-    public static T ParseEnum<T>(string? str, T fallback) where T : struct {
+    public static T ParseEnum<T>(string? str, T fallback) where T : struct, Enum {
         return TryParseEnum(str, out T value) ? value : fallback;
     }
 
@@ -128,11 +118,6 @@ public static class EnumUtils {
     /// <see langword="null"/>.</returns>
     public static TEnum? ParseEnumOrNull<TEnum>(string? input) where TEnum : struct, Enum {
         return TryParseEnum(input, out TEnum value) ? value : null;
-    }
-
-    internal static T ParseEnumInternal<T>(string str, T fallback) where T : Enum {
-        if (string.IsNullOrWhiteSpace(str)) return fallback;
-        return TryParseEnumInternal(str, out T? value) ? value : fallback;
     }
 
     /// <summary>
@@ -175,7 +160,7 @@ public static class EnumUtils {
     /// value is represented by value. This parameter is passed uninitialized.</param>
     /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-    public static bool TryParseEnum<T>(string? str, out T value) where T : struct {
+    public static bool TryParseEnum<T>(string? str, out T value) where T : struct, Enum {
 
         // Initialize "value"
         value = default;
@@ -212,7 +197,7 @@ public static class EnumUtils {
     /// value is represented by value. This parameter is passed uninitialized.</param>
     /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-    public static bool TryParseEnum<T>(string? str, [NotNullWhen(true)] out T? value) where T : struct {
+    public static bool TryParseEnum<T>(string? str, [NotNullWhen(true)] out T? value) where T : struct, Enum {
 
         // Initialize "value"
         value = null;
@@ -230,30 +215,6 @@ public static class EnumUtils {
         foreach (T v in GetEnumValues<T>()) {
             string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
             string? name = v.ToString()?.ToCamelCase().ToLowerInvariant();
-            if (ordinal != modified && name != modified) continue;
-            value = v;
-            return true;
-        }
-
-        return false;
-
-    }
-
-    internal static bool TryParseEnumInternal<T>(string? str, [NotNullWhen(true)] out T? value) where T : Enum {
-
-        // Initialize "value"
-        value = default;
-
-        // Check whether the specified string is NULL (or white space)
-        if (string.IsNullOrWhiteSpace(str)) return false;
-
-        // Convert "str" to camel case and then lowercase
-        string modified = StringUtils.ToCamelCase(str + string.Empty).ToLowerInvariant();
-
-        // Parse the enum
-        foreach (T v in GetEnumValuesInternal<T>()) {
-            string ordinal = Convert.ChangeType(v, typeof(int)) + string.Empty;
-            string? name = v.ToString()?.ToLowerInvariant();
             if (ordinal != modified && name != modified) continue;
             value = v;
             return true;
@@ -308,21 +269,9 @@ public static class EnumUtils {
     /// <returns>An array of <typeparamref name="T"/> with the converted values.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
-    public static T[] ParseEnumArray<T>(string? str) where T : struct {
+    public static T[] ParseEnumArray<T>(string? str) where T : struct, Enum {
         if (string.IsNullOrWhiteSpace(str)) return [];
         return [.. from piece in str!.Split(StringUtils.DefaultSeparators, StringSplitOptions.RemoveEmptyEntries) select ParseEnum<T>(piece)];
-    }
-
-    /// <summary>
-    /// Converts the specified <paramref name="input"/> string into an array of <typeparamref name="T"/>.
-    /// </summary>
-    /// <typeparam name="T">The type of the enum.</typeparam>
-    /// <param name="input">A string value containing one or more enum values.</param>
-    /// <returns>An array of <typeparamref name="T"/> with the converted values.</returns>
-    /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-    /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
-    internal static T[] ParseEnumArrayInternal<T>(string? input) where T : Enum {
-        return ParseEnumArray<T>(input, StringUtils.DefaultSeparators);
     }
 
     /// <summary>
@@ -334,9 +283,9 @@ public static class EnumUtils {
     /// <returns>An array of <typeparamref name="T"/> with the converted values.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
-    public static T[] ParseEnumArray<T>(string? input, char[] separators) where T : Enum {
+    public static T[] ParseEnumArray<T>(string? input, char[] separators) where T : struct, Enum {
         if (string.IsNullOrWhiteSpace(input)) return [];
-        return [.. from piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries) select ParseEnumInternal<T>(piece)];
+        return [.. from piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries) select ParseEnum<T>(piece)];
     }
 
     /// <summary>
@@ -387,7 +336,7 @@ public static class EnumUtils {
     /// <param name="input">A string value containing one or more enum values.</param>
     /// <returns>A list of <typeparamref name="T"/> with the converted values.</returns>
     /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
-    public static List<T> ParseEnumList<T>(string? input) where T : Enum {
+    public static List<T> ParseEnumList<T>(string? input) where T : struct, Enum {
         return ParseEnumList<T>(input, StringUtils.DefaultSeparators);
     }
 
@@ -399,7 +348,7 @@ public static class EnumUtils {
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>A list of <typeparamref name="T"/> with the converted values.</returns>
     /// <exception cref="EnumParseException">If one or more values can't be converted.</exception>
-    public static List<T> ParseEnumList<T>(string? input, char[] separators) where T : Enum {
+    public static List<T> ParseEnumList<T>(string? input, char[] separators) where T : struct, Enum {
         List<T> temp = [];
         return string.IsNullOrWhiteSpace(input) ? temp : ParseEnumList<T>(input.ToStringArray(separators));
     }
@@ -452,13 +401,13 @@ public static class EnumUtils {
     /// <typeparam name="T">The type of the enum.</typeparam>
     /// <param name="pieces">Array of enum string representation.</param>
     /// <returns>A list of <typeparamref name="T"/> containing the parsed enum values.</returns>
-    public static List<T> ParseEnumList<T>(IEnumerable<string> pieces) where T : Enum {
+    public static List<T> ParseEnumList<T>(IEnumerable<string> pieces) where T : struct, Enum {
 
         List<T> temp = [];
 
         foreach (string piece in pieces) {
-            if (TryParseEnumInternal(piece, out T? value)) {
-                temp.Add(value);
+            if (TryParseEnum(piece, out T? value)) {
+                temp.Add(value.Value);
             }
         }
 
@@ -475,7 +424,7 @@ public static class EnumUtils {
     /// <param name="array">The array of <typeparamref name="T"/> with the converted values.</param>
     /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
-    public static bool TryParseEnumArray<T>(string? str, [NotNullWhen(true)] out T[]? array) where T : struct {
+    public static bool TryParseEnumArray<T>(string? str, [NotNullWhen(true)] out T[]? array) where T : struct, Enum {
 
         // An empty string (or white space) is treated as a valid value as it may indicate an empty array
         if (string.IsNullOrWhiteSpace(str)) {
@@ -504,8 +453,7 @@ public static class EnumUtils {
     /// <param name="a">The first enum value.</param>
     /// <param name="b">The second enum value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
-    public static T Min<T>(T a, T b) where T : struct {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+    public static T Min<T>(T a, T b) where T : struct, Enum {
         return (T) Enum.ToObject(typeof(T), Math.Min(Convert.ToInt32(a), Convert.ToInt32(b)));
     }
 
@@ -515,8 +463,7 @@ public static class EnumUtils {
     /// <typeparam name="T">The enum type.</typeparam>
     /// <param name="values">The enum values to compare.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
-    public static T Min<T>(params T[] values) where T : struct {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+    public static T Min<T>(params T[] values) where T : struct, Enum {
         if (values == null) throw new ArgumentNullException(nameof(values));
         return (T) Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
     }
@@ -527,8 +474,7 @@ public static class EnumUtils {
     /// <typeparam name="T">The enum type.</typeparam>
     /// <param name="values">The enum values to compare.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the minimum value.</returns>
-    public static T Min<T>(IEnumerable<T> values) where T : struct {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+    public static T Min<T>(IEnumerable<T> values) where T : struct, Enum {
         if (values == null) throw new ArgumentNullException(nameof(values));
         return (T) Enum.ToObject(typeof(T), values.Min(x => Convert.ToInt32(x)));
     }
@@ -540,8 +486,7 @@ public static class EnumUtils {
     /// <param name="a">The first enum value.</param>
     /// <param name="b">The second enum value.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
-    public static T Max<T>(T a, T b) where T : struct {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+    public static T Max<T>(T a, T b) where T : struct, Enum {
         return (T) Enum.ToObject(typeof(T), Math.Max(Convert.ToInt32(a), Convert.ToInt32(b)));
     }
 
@@ -551,8 +496,7 @@ public static class EnumUtils {
     /// <typeparam name="T">The enum type.</typeparam>
     /// <param name="values">The enum values to compare.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
-    public static T Max<T>(params T[] values) where T : struct {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+    public static T Max<T>(params T[] values) where T : struct, Enum {
         if (values == null) throw new ArgumentNullException(nameof(values));
         return (T) Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
     }
@@ -563,8 +507,7 @@ public static class EnumUtils {
     /// <typeparam name="T">The enum type.</typeparam>
     /// <param name="values">The enum values to compare.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the maximum value.</returns>
-    public static T Max<T>(IEnumerable<T> values) where T : struct {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+    public static T Max<T>(IEnumerable<T> values) where T : struct, Enum {
         if (values == null) throw new ArgumentNullException(nameof(values));
         return (T) Enum.ToObject(typeof(T), values.Max(x => Convert.ToInt32(x)));
     }
@@ -575,19 +518,7 @@ public static class EnumUtils {
     /// <typeparam name="T">The enum type.</typeparam>
     /// <param name="input">The input value to be converted.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
-    public static T FromInt32<T>(int input) where T : struct {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
-        return (T) Enum.ToObject(typeof(T), input);
-    }
-
-    /// <summary>
-    /// Converts the specified <paramref name="input"/> value to an enum of type <typeparamref name="T"/>.
-    /// </summary>
-    /// <typeparam name="T">The enum type.</typeparam>
-    /// <param name="input">The input value to be converted.</param>
-    /// <returns>An instance of <typeparamref name="T"/>.</returns>
-    internal static T FromInt32Internal<T>(int input) where T : Enum {
-        if (IsEnum<T>() == false) throw new ArgumentException("Generic type T must be an enum.");
+    public static T FromInt32<T>(int input) where T : struct, Enum {
         return (T) Enum.ToObject(typeof(T), input);
     }
 

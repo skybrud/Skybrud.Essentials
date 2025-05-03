@@ -127,8 +127,8 @@ public static class EnumExtensions {
     /// <typeparam name="T">The type of to enum to convert to.</typeparam>
     /// <param name="input">The string containing the enum values.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
-    public static T[] ToEnumArray<T>(this string? input) where T : Enum {
-        return EnumUtils.ParseEnumArrayInternal<T>(input);
+    public static T[] ToEnumArray<T>(this string? input) where T : struct, Enum {
+        return EnumUtils.ParseEnumArray<T>(input);
     }
 
     /// <summary>
@@ -140,7 +140,7 @@ public static class EnumExtensions {
     /// <param name="input">The string containing the enum values.</param>
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>An array of <typeparamref name="T"/>.</returns>
-    public static T[] ToEnumArray<T>(this string? input, char[] separators) where T : Enum {
+    public static T[] ToEnumArray<T>(this string? input, char[] separators) where T : struct, Enum {
         return EnumUtils.ParseEnumArray<T>(input, separators);
     }
 
@@ -153,7 +153,7 @@ public static class EnumExtensions {
     /// <typeparam name="T">The type of to enum to convert to.</typeparam>
     /// <param name="input">The string containing the enum values.</param>
     /// <returns>A list of <typeparamref name="T"/>.</returns>
-    public static List<T> ToEnumList<T>(this string? input) where T : Enum {
+    public static List<T> ToEnumList<T>(this string? input) where T : struct, Enum {
         return EnumUtils.ParseEnumList<T>(input);
     }
 
@@ -166,7 +166,7 @@ public static class EnumExtensions {
     /// <param name="input">The string containing the enum values.</param>
     /// <param name="separators">An array of supported separators.</param>
     /// <returns>A list of <typeparamref name="T"/>.</returns>
-    public static List<T> ToEnumList<T>(this string? input, char[] separators) where T : Enum {
+    public static List<T> ToEnumList<T>(this string? input, char[] separators) where T : struct, Enum {
         return EnumUtils.ParseEnumList<T>(input, separators);
     }
 

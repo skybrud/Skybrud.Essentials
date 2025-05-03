@@ -16,11 +16,11 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <returns>The converted enum value if successful.</returns>
     /// <exception cref="EnumParseException">If the type <paramref name="token"/> is not supported, or the doesn't match a valid token value.</exception>
-    public static TEnum ParseEnum<TEnum>(JToken? token) where TEnum : Enum {
+    public static TEnum ParseEnum<TEnum>(JToken? token) where TEnum : struct, Enum {
         return token?.Type switch {
-            JTokenType.Integer => EnumUtils.FromInt32Internal<TEnum>(token.Value<int>()),
-            JTokenType.Float => EnumUtils.FromInt32Internal<TEnum>(token.Value<int>()),
-            JTokenType.String => EnumUtils.ParseEnumInternal<TEnum>(token.Value<string>()),
+            JTokenType.Integer => EnumUtils.FromInt32<TEnum>(token.Value<int>()),
+            JTokenType.Float => EnumUtils.FromInt32<TEnum>(token.Value<int>()),
+            JTokenType.String => EnumUtils.ParseEnum<TEnum>(token.Value<string>()),
             _ => throw new EnumParseException(typeof(TEnum), token?.Value<string>())
         };
     }
@@ -32,11 +32,11 @@ static partial class JsonTokenUtils {
     /// <param name="token">The token to be converted.</param>
     /// <param name="fallback">The fallback value to be returned if the conversion fails.</param>
     /// <returns>The converted enum value if successful; otherwise, <paramref name="fallback"/>.</returns>
-    public static TEnum ParseEnum<TEnum>(JToken? token, TEnum fallback) where TEnum : Enum {
+    public static TEnum ParseEnum<TEnum>(JToken? token, TEnum fallback) where TEnum : struct, Enum {
         return token?.Type switch {
             JTokenType.Integer => EnumUtils.FromInt32(token.Value<int>(), fallback),
             JTokenType.Float => EnumUtils.FromInt32(token.Value<int>(), fallback),
-            JTokenType.String => EnumUtils.ParseEnumInternal(token.Value<string>()!, fallback),
+            JTokenType.String => EnumUtils.ParseEnum(token.Value<string>()!, fallback),
             _ => fallback
         };
     }

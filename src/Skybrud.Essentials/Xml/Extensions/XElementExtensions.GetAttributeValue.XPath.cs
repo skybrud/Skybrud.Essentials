@@ -541,7 +541,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
-    public static T GetAttributeValueAsEnum<T>(this XElement element, string expression) where T : struct {
+    public static T GetAttributeValueAsEnum<T>(this XElement element, string expression) where T : struct, Enum {
         return GetAttributeValueAsEnum<T>(element, expression, null);
     }
 
@@ -555,7 +555,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression the attribute should match.</param>
     /// <param name="fallback">An instance of <typeparamref name="T"/> used as fallback.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
-    public static T GetAttributeValueAsEnum<T>(this XElement element, string expression, T fallback) where T : struct {
+    public static T GetAttributeValueAsEnum<T>(this XElement element, string expression, T fallback) where T : struct, Enum {
         return GetAttributeValueAsEnum(element, expression, null, fallback);
     }
 
@@ -569,7 +569,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
-    public static T GetAttributeValueAsEnum<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver) where T : struct {
+    public static T GetAttributeValueAsEnum<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver) where T : struct, Enum {
 
         // Get the attribute matching "expression"
         XAttribute? attr = GetAttribute(element, expression, resolver);
@@ -591,7 +591,7 @@ public static partial class XElementExtensions {
     /// in the XPath expression.</param>
     /// <param name="fallback">An instance of <typeparamref name="T"/> used as fallback.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
-    public static T GetAttributeValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver? resolver, T fallback) where T : struct {
+    public static T GetAttributeValueAsEnum<T>(this XElement element, string expression, IXmlNamespaceResolver? resolver, T fallback) where T : struct, Enum {
 
         // Get the attribute matching "expression"
         XAttribute? attr = GetAttribute(element, expression, resolver);

@@ -281,7 +281,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> the attribute should match.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
-    public static T GetAttributeValueAsEnum<T>(this XElement? element, XName name) where T : struct {
+    public static T GetAttributeValueAsEnum<T>(this XElement? element, XName name) where T : struct, Enum {
         XAttribute? child = element?.Attribute(name);
         return child == null ? default : EnumUtils.ParseEnum<T>(child.Value);
     }
@@ -296,7 +296,7 @@ public static partial class XElementExtensions {
     /// <param name="name">The <see cref="XName"/> the attribute should match.</param>
     /// <param name="fallback">An instance of <typeparamref name="T"/> used as fallback.</param>
     /// <returns>An instance of <typeparamref name="T"/> representing the attribute value.</returns>
-    public static T GetAttributeValueAsEnum<T>(this XElement? element, XName name, T fallback) where T : struct {
+    public static T GetAttributeValueAsEnum<T>(this XElement? element, XName name, T fallback) where T : struct, Enum {
         XAttribute? child = element?.Attribute(name);
         return child == null ? fallback : EnumUtils.ParseEnum(child.Value, fallback);
     }
