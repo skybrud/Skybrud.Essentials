@@ -1,4 +1,5 @@
 ﻿using System.Globalization;
+using Skybrud.Essentials.Strings.Extensions;
 
 namespace Skybrud.Essentials.Globalization.Extensions;
 
@@ -32,6 +33,15 @@ public static class CultureInfoExtensions {
     /// <returns><see langword="true"/> if <paramref name="culture"/> matches <strong>German</strong>; otherwise, <see langword="null"/>.</returns>
     public static bool IsGerman(this CultureInfo? culture) {
         return culture is { TwoLetterISOLanguageName: "de" };
+    }
+
+    /// <summary>
+    /// Returns the native name of the language associated with the specified <paramref name="cultureInfo"/>.
+    /// </summary>
+    /// <param name="cultureInfo">The culture info.</param>
+    /// <returns>The native language name.</returns>
+    public static string GetNativeLanguageName(this CultureInfo cultureInfo) {
+        return (cultureInfo.IsNeutralCulture ? cultureInfo.NativeName : cultureInfo.Parent.NativeName).FirstCharToUpper();
     }
 
 }
