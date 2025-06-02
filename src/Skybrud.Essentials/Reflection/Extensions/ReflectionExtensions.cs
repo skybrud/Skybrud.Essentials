@@ -177,6 +177,16 @@ public static class ReflectionExtensions {
     }
 
     /// <summary>
+    /// Returns whether <paramref name="type"/> extends <paramref name="otherType"/>.
+    /// </summary>
+    /// <param name="type">The type to check.</param>
+    /// <param name="otherType">The type of the class to check against.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> extends <paramref name="otherType"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Extends(this Type type, Type otherType) {
+        return otherType.IsAssignableFrom(type);
+    }
+
+    /// <summary>
     /// Returns whether the type implements <typeparamref name="TInterface"/>.
     /// </summary>
     /// <typeparam name="TInterface">The type of the interface to check.</typeparam>
@@ -184,6 +194,16 @@ public static class ReflectionExtensions {
     /// <returns><see langword="true"/> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <see langword="false"/>.</returns>
     public static bool Implements<TInterface>(this Type type) {
         return typeof(TInterface).IsAssignableFrom(type);
+    }
+
+    /// <summary>
+    /// Returns whether <paramref name="type"/> implements <paramref name="otherType"/>.
+    /// </summary>
+    /// <param name="type">The type to check.</param>
+    /// <param name="otherType">The type of the interface to check against.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> implements <paramref name="otherType"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Implements(this Type type, Type otherType) {
+        return otherType.IsAssignableFrom(type);
     }
 
     /// <summary>

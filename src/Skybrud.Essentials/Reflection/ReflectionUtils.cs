@@ -22,7 +22,7 @@ public static class ReflectionUtils {
         if (assembly == null) throw new ArgumentNullException(nameof(assembly));
         return assembly.GetName().Version?.ToString()!;
     }
-    
+
     /// <summary>
     /// Returns the version of the assembly of the specified <paramref name="type"/>.
     /// </summary>
@@ -127,6 +127,16 @@ public static class ReflectionUtils {
     }
 
     /// <summary>
+    /// Returns whether <paramref name="type"/> extends <paramref name="otherType"/>.
+    /// </summary>
+    /// <param name="type">The subtype.</param>
+    /// <param name="otherType">The base type.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> extends <paramref name="otherType"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Extends(Type type, Type otherType) {
+        return otherType.IsAssignableFrom(type);
+    }
+
+    /// <summary>
     /// Returns whether the type extends <typeparamref name="TClass"/>.
     /// </summary>
     /// <typeparam name="TClass">The type of the class to check.</typeparam>
@@ -137,6 +147,26 @@ public static class ReflectionUtils {
     }
 
     /// <summary>
+    /// Returns whether <typeparamref name="TSource"/> extends <typeparamref name="TBase"/>.
+    /// </summary>
+    /// <typeparam name="TSource">The source type.</typeparam>
+    /// <typeparam name="TBase">The base type.</typeparam>
+    /// <returns><see langword="true"/> if <typeparamref name="TSource"/> extends <typeparamref name="TBase"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Extends<TSource, TBase>() {
+        return typeof(TBase).IsAssignableFrom(typeof(TSource));
+    }
+
+    /// <summary>
+    /// Returns whether <paramref name="type"/> implements <paramref name="otherType"/>.
+    /// </summary>
+    /// <param name="type">The subtype.</param>
+    /// <param name="otherType">The base type.</param>
+    /// <returns><see langword="true"/> if <paramref name="type"/> implements <paramref name="otherType"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Implements(Type type, Type otherType) {
+        return otherType.IsAssignableFrom(type);
+    }
+
+    /// <summary>
     /// Returns whether the type implements <typeparamref name="TInterface"/>.
     /// </summary>
     /// <typeparam name="TInterface">The type of the interface to check.</typeparam>
@@ -144,6 +174,16 @@ public static class ReflectionUtils {
     /// <returns><see langword="true"/> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <see langword="false"/>.</returns>
     public static bool Implements<TInterface>(Type type) {
         return typeof(TInterface).IsAssignableFrom(type);
+    }
+
+    /// <summary>
+    /// Returns whether <typeparamref name="TSource"/> implements <typeparamref name="TInterface"/>.
+    /// </summary>
+    /// <typeparam name="TSource">The source type.</typeparam>
+    /// <typeparam name="TInterface">The type of the interface to check.</typeparam>
+    /// <returns><see langword="true"/> if <typeparamref name="TSource"/> implements <typeparamref name="TInterface"/>; otherwise, <see langword="false"/>.</returns>
+    public static bool Implements<TSource, TInterface>() {
+        return typeof(TInterface).IsAssignableFrom(typeof(TSource));
     }
 
     /// <summary>
