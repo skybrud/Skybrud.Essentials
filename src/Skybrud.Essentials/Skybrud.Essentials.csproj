@@ -60,6 +60,7 @@
     <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/skybrud.essentials/" />
     <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.iddqd/docs/v13/" />
     <AssemblyMetadata Include="NuGetUrl" Value="https://packages.limbo.works/skybrud.essentials/docs/" />
+    <AssemblyMetadata Include="BuildDate" Value="$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmmss`))" />
   </ItemGroup>
 
   <!-- Include NuGet dependencies (.NET STadnard 1.3 and 2.0) -->
