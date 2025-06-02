@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
+using System.Globalization;
 using System.Linq;
 using System.Reflection;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Essentials.Reflection.Extensions;
 
@@ -221,6 +223,33 @@ public static class AssemblyExtensions {
     public static bool TryGetMetadata(this Assembly assembly, string key, out string? result) {
         result = assembly.GetCustomAttributes<AssemblyMetadataAttribute>().FirstOrDefault(x => x.Key == key)?.Value;
         return !string.IsNullOrWhiteSpace(result);
+    }
+
+    /// <summary>
+    /// Returns the build date of the specified <paramref name="assembly"/> if available. The build date is not an official .NET assembly attribute, but can be set as a custom metadata attribute with the key "BuildDate" as used by many Limbo assemblies.
+    /// </summary>
+    /// <param name="assembly">The assembly.</param>
+    /// <returns>The build date if successful; otherwise, <see langword="null"/>.</returns>
+    public static EssentialsTime? GetBuildDate(this Assembly assembly) {
+        return assembly
+            .GetCustomAttributes<AssemblyMetadataAttribute>()
+            .FirstOrDefault(x => x.Key == "BuildDate")?.Value
+            .ToEssentialsTimeOrNull("yyyyMMddHHmmss", CultureInfo.InvariantCulture, DateTimeStyles.AssumeUniversal);
+    }
+
+    /// <summary>
+    /// Attempts to get the build date of the specified <paramref name="assembly"/>. The build date is not an official .NET assembly attribute, but can be set as a custom metadata attribute with the key "BuildDate" as used by many Limbo assemblies.
+    /// </summary>
+    /// <param name="assembly">The assembly.</param>
+    /// <param name="result">When this method returns, holds the build date if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/></returns>
+    public static bool TryGetBuildDate(this Assembly assembly, [NotNullWhen(true)] out EssentialsTime? result) {
+        result = GetBuildDate(assembly);
+        return result is not null;
+    }
+
+    private static EssentialsTime? ToEssentialsTimeOrNull(this string? value, string? format, IFormatProvider formatProvider, DateTimeStyles styles) {
+        return DateTimeOffset.TryParseExact(value, format, formatProvider, styles, out DateTimeOffset result) ? new EssentialsTime(result) : null;
     }
 
 }
