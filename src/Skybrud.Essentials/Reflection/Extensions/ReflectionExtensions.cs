@@ -177,6 +177,10 @@ public static class ReflectionExtensions {
         return typeof(TClass).IsAssignableFrom(type);
     }
 
+    public static bool Extends(this Type type, Type otherType) {
+        return otherType.IsAssignableFrom(type);
+    }
+
     /// <summary>
     /// Returns whether the type implements <typeparamref name="TInterface"/>.
     /// </summary>
@@ -185,6 +189,10 @@ public static class ReflectionExtensions {
     /// <returns><see langword="true"/> if <paramref name="type"/> implements <typeparamref name="TInterface"/>; otherwise, <see langword="false"/>.</returns>
     public static bool Implements<TInterface>(this Type type) {
         return typeof(TInterface).IsAssignableFrom(type);
+    }
+
+    public static bool Implements(this Type type, Type otherType) {
+        return otherType.IsAssignableFrom(type);
     }
 
 #endif
