@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 
+#pragma warning disable CS8777 // Parameter must have a non-null value when exiting.
+
 namespace Skybrud.Essentials.Exceptions;
 
 internal static class EssentialsException {
