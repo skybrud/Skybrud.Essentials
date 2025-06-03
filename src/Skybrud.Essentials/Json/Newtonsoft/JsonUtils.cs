@@ -90,6 +90,15 @@ public static class JsonUtils {
     }
 
     /// <summary>
+    /// Parses the specified <paramref name="json"/> string into an instance of <paramref name="objectType"/>.
+    /// </summary>
+    /// <param name="json">The JSON string to be parsed.</param>
+    /// <param name="objectType">The type of the object.</param>
+    public static object ParseJsonObject(string json, Type objectType) {
+        return ParseJsonObject(json).ToObject(objectType);
+    }
+
+    /// <summary>
     /// Parses the specified <paramref name="json"/> string into an instance of <see cref="JArray"/>.
     /// </summary>
     /// <param name="json">The JSON string to be parsed.</param>
@@ -436,6 +445,15 @@ public static class JsonUtils {
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T LoadJsonObject<T>(string path) {
         return LoadJsonObject(path).ToObject<T>();
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+    /// </summary>
+    /// <param name="path">The path to the JSON file.</param>
+    /// <param name="objectType">The type of the object.</param>
+    public static object LoadJsonObject(string path, Type objectType) {
+        return LoadJsonObject(path).ToObject(objectType);
     }
 
     /// <summary>
