@@ -6,6 +6,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Collections.Extensions;
 using Skybrud.Essentials.Common;
 
 namespace Skybrud.Essentials.Json.Newtonsoft;
@@ -95,7 +96,7 @@ public static class JsonUtils {
     /// <param name="json">The JSON string to be parsed.</param>
     /// <param name="objectType">The type of the object.</param>
     public static object ParseJsonObject(string json, Type objectType) {
-        return ParseJsonObject(json).ToObject(objectType);
+        return ParseJsonObject(json).ToObject(objectType) ?? throw new JsonException($"Failed parsing JSON string into an object of type '{objectType}'.");
     }
 
     /// <summary>
@@ -398,6 +399,146 @@ public static class JsonUtils {
     }
 
     /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <returns>An instance of <see cref="JToken"/>.</returns>
+    public static JToken LoadJsonToken(Stream stream) {
+        using StreamReader reader = new(stream);
+        using JsonTextReader jsonTextReader = new(reader);
+        jsonTextReader.DateParseHandling = DateParseHandling.None;
+        return JToken.Load(jsonTextReader);
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <param name="objectType">The type the JSON token should be converted to.</param>
+    /// <returns>An instance of <paramref name="objectType"/>.</returns>
+    public static object LoadJsonToken(Stream stream, Type objectType) {
+        return LoadJsonToken(stream).ToObject(objectType) ?? throw new JsonException($"Failed parsing JSON token into an object of type '{objectType}'.");
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type to be returned.</typeparam>
+    /// <param name="stream">The stream.</param>
+    /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
+    public static TResult LoadJsonToken<TResult>(Stream stream) {
+        return LoadJsonToken(stream).ToObject<TResult>() ?? throw new JsonException($"Failed parsing JSON token into an object of type '{typeof(TResult)}'.");
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type to which the JSON token should be converted.</typeparam>
+    /// <param name="stream">The stream.</param>
+    /// <param name="func">A callback function used for converting the JSON token.</param>
+    /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
+    public static TResult LoadJsonToken<TResult>(Stream stream, Func<JToken, TResult> func) {
+        return func(LoadJsonToken(stream));
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON object from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <returns>An instance of <see cref="JObject"/>.</returns>
+    public static JObject LoadJsonObject(Stream stream) {
+        using StreamReader reader = new(stream);
+        using JsonTextReader jsonTextReader = new(reader);
+        jsonTextReader.DateParseHandling = DateParseHandling.None;
+        return JObject.Load(jsonTextReader);
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON object from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <param name="objectType">The type the JSON object should be converted to.</param>
+    /// <returns>An instance of <paramref name="objectType"/>.</returns>
+    public static object LoadJsonObject(Stream stream, Type objectType) {
+        return LoadJsonObject(stream).ToObject(objectType) ?? throw new JsonException($"Failed parsing JSON object into an object of type '{objectType}'.");
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON object from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type to be returned.</typeparam>
+    /// <param name="stream">The stream.</param>
+    /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
+    public static TResult LoadJsonObject<TResult>(Stream stream) {
+        return LoadJsonObject(stream).ToObject<TResult>() ?? throw new JsonException($"Failed parsing JSON object into an object of type '{typeof(TResult)}'.");
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON object from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type to which the JSON object should be converted.</typeparam>
+    /// <param name="stream">The stream.</param>
+    /// <param name="func">A callback function used for converting the JSON object.</param>
+    /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
+    public static TResult LoadJsonObject<TResult>(Stream stream, Func<JObject, TResult> func) {
+        return func(LoadJsonObject(stream));
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON array from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <returns>An instance of <see cref="JToken"/>.</returns>
+    public static JArray LoadJsonArray(Stream stream) {
+        using StreamReader reader = new(stream);
+        using JsonTextReader jsonTextReader = new(reader);
+        jsonTextReader.DateParseHandling = DateParseHandling.None;
+        return JArray.Load(jsonTextReader);
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <param name="stream">The stream.</param>
+    /// <param name="objectType">The type of the array.</param>
+    /// <returns>An array of <paramref name="objectType"/>.</returns>
+    public static object LoadJsonArray(Stream stream, Type objectType) {
+        return LoadJsonArray(stream).ToObject(objectType) ?? throw new JsonException($"Failed parsing JSON array into an object of type '{objectType}'.");
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <typeparam name="TItem">The type of the items in the array.</typeparam>
+    /// <param name="stream">The stream.</param>
+    /// <returns>An array of <typeparamref name="TItem"/>.</returns>
+    public static TItem[] LoadJsonArray<TItem>(Stream stream) {
+        return LoadJsonArray(stream).ToObject<TItem[]>() ?? throw new JsonException($"Failed parsing JSON string into an object of type '{typeof(TItem[])}'.");
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <typeparam name="TItem">The type of the items in the array.</typeparam>
+    /// <param name="stream">The stream.</param>
+    /// <param name="func">A callback function for converting each item to an instance of <typeparamref name="TItem"/>.</param>
+    /// <returns>An array of <typeparamref name="TItem"/>.</returns>
+    public static TItem[] LoadJsonArray<TItem>(Stream stream, Func<JObject, TItem> func) {
+        return LoadJsonArray(stream).OfType<JObject>().Select(func).ToArray();
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON token from the specified <paramref name="stream"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type returned by the conversion.</typeparam>
+    /// <param name="stream">The stream.</param>
+    /// <param name="func">A callback function used for converting the JSON array.</param>
+    /// <returns>An instance of <typeparamref name="TResult"/> representing the array.</returns>
+    public static TResult LoadJsonArray<TResult>(Stream stream, Func<JArray, TResult> func) {
+        return func(LoadJsonArray(stream));
+    }
+
+    /// <summary>
     /// Loads and parses the JSON token in the file at the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="path">The path to the JSON file.</param>
@@ -407,12 +548,22 @@ public static class JsonUtils {
     }
 
     /// <summary>
+    /// Loads and parses the JSON token in the file at the specified <paramref name="path"/>.
+    /// </summary>
+    /// <param name="path">The path to the JSON file.</param>
+    /// <param name="objectType">The type the JSON token should be converted to.</param>
+    /// <returns>An instance of <paramref name="objectType"/>.</returns>
+    public static object LoadJsonToken(string path, Type objectType) {
+        return LoadJsonToken(path).ToObject(objectType) ?? throw new JsonException($"Failed parsing JSON token into an object of type '{objectType}'.");
+    }
+
+    /// <summary>
     /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
     /// </summary>
     /// <param name="path">The path to the JSON file.</param>
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T LoadJsonToken<T>(string path) {
-        return LoadJsonToken(path).ToObject<T>() ?? throw new JsonException($"Failed parsing JSON string into an object of type '{typeof(T)}'.");
+        return LoadJsonToken(path).ToObject<T>() ?? throw new JsonException($"Failed parsing JSON token into an object of type '{typeof(T)}'.");
     }
 
     /// <summary>
@@ -451,7 +602,7 @@ public static class JsonUtils {
     /// <param name="path">The path to the JSON file.</param>
     /// <param name="objectType">The type of the object.</param>
     public static object LoadJsonObject(string path, Type objectType) {
-        return LoadJsonObject(path).ToObject(objectType);
+        return LoadJsonObject(path).ToObject(objectType) ?? throw new JsonException($"Failed parsing object string into an object of type '{objectType}'.");
     }
 
     /// <summary>
@@ -476,6 +627,26 @@ public static class JsonUtils {
     }
 
     /// <summary>
+    /// Loads and parses the JSON array at the specified <paramref name="path"/>.
+    /// </summary>
+    /// <param name="path">The path to the JSON file.</param>
+    /// <param name="objectType">The type of the items in the array.</param>
+    /// <returns>An array of <paramref name="objectType"/>.</returns>
+    public static Array LoadJsonArray(string path, Type objectType) {
+        return LoadJsonArray(path).Select(x => x.ToObject(objectType)).ToArray(objectType);
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON array at the specified <paramref name="path"/>.
+    /// </summary>
+    /// <typeparam name="TItem">The type of the items in the array.</typeparam>
+    /// <param name="path">The path to the JSON file.</param>
+    /// <returns>An array of <typeparamref name="TItem"/>.</returns>
+    public static TItem[] LoadJsonArray<TItem>(string path) {
+        return LoadJsonArray(path).ToObject<TItem[]>() ?? throw new JsonException($"Failed parsing JSON array into an object of type '{typeof(TItem[])}'.");
+    }
+
+    /// <summary>
     /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
     /// </summary>
     /// <typeparam name="T">The type to be returned.</typeparam>
@@ -485,6 +656,17 @@ public static class JsonUtils {
     /// <returns>An instance of <typeparamref name="T"/>.</returns>
     public static T[] LoadJsonArray<T>(string path, Func<JObject, T> func) {
         return ParseJsonArray(File.ReadAllText(path, Encoding.UTF8), func);
+    }
+
+    /// <summary>
+    /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type returned by the conversion.</typeparam>
+    /// <param name="path">The path to the JSON file.</param>
+    /// <param name="func">A callback function used for converting the JSON array.</param>
+    /// <returns>An instance of <typeparamref name="TResult"/> representing the array.</returns>
+    public static TResult LoadJsonArray<TResult>(string path, Func<JArray, TResult> func) {
+        return func(LoadJsonArray(path));
     }
 
     /// <summary>
