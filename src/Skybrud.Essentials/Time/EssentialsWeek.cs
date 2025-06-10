@@ -198,7 +198,7 @@ public class EssentialsWeek : IEnumerable<EssentialsDate>, IComparable, ICompara
     /// <returns>An instance of <see cref="EssentialsTime"/> representing the start of the month.</returns>
     public EssentialsTime GetStartOfWeek(TimeZoneInfo? timeZone) {
         timeZone ??= TimeZoneInfo.Local;
-        return new EssentialsTime(Start.Year, Start.Month, Start.Day, 0, 0, 0, timeZone);
+        return new EssentialsTime(Start.Year, Start.Month, Start.Day, 12, 0, 0, timeZone).GetStartOfDay(timeZone);
     }
 
     /// <summary>
