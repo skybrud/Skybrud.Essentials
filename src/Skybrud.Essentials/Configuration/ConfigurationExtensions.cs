@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
+using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -472,6 +473,76 @@ public static class ConfigurationExtensions {
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetGuid(this IConfiguration configuration, string key, [NotNullWhen(true)] out Guid? result) {
         return configuration.GetSection(key).Value.TryParseGuid(out result);
+    }
+
+    #endregion
+
+    #region Enum
+
+    /// <summary>
+    /// Returns the <typeparamref name="TEnum"/> value with the specified <paramref name="key"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="key">The key of the configuration section.</param>
+    /// <returns>An enum value if successful; otherwise, the default value of <typeparamref name="TEnum"/>.</returns>
+    public static TEnum GetEnum<TEnum>(this IConfiguration configuration, string key) where TEnum : struct, Enum {
+        return configuration.GetSection(key).Value.ToEnum<TEnum>();
+    }
+
+    /// <summary>
+    /// Returns the <typeparamref name="TEnum"/> value with the specified <paramref name="key"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="key">The key of the configuration section.</param>
+    /// <param name="fallback">The fallback value.</param>
+    /// <returns>An enum value if successful; otherwise, <paramref name="fallback"/>.</returns>
+    public static TEnum GetEnum<TEnum>(this IConfiguration configuration, string key, TEnum fallback) where TEnum : struct, Enum {
+        return configuration.GetSection(key).Value.ToEnum(fallback);
+    }
+
+    /// <summary>
+    /// Returns the <typeparamref name="TEnum"/> value with the specified <paramref name="key"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="key">The key of the configuration section.</param>
+    /// <returns>An enum value if successful; otherwise, <see langword="null"/>.</returns>
+    public static TEnum? GetEnumOrNull<TEnum>(this IConfiguration configuration, string key) where TEnum : struct, Enum {
+        return configuration.GetSection(key).Value.ToEnumOrNull<TEnum>();
+    }
+
+    /// <summary>
+    /// Returns the <typeparamref name="TEnum"/> value of the section with the specified <paramref name="key"/>. If the section is missing, or its value doesn't match a <typeparamref name="TEnum"/> value, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="key">The key of the configuration section.</param>
+    /// <returns>The <typeparamref name="TEnum"/> value of the section.</returns>
+    /// <exception cref="Exception">If the section is missing, empty or the conversion fails.</exception>
+    public static TEnum GetRequiredEnum<TEnum>(this IConfiguration configuration, string key) where TEnum : struct, Enum {
+        string? value = configuration.GetSection(key).Value;
+        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
+        return EnumUtils.TryParseEnum(value, out TEnum result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match an enum value of '{typeof(TEnum)}' value.");
+    }
+
+    /// <summary>
+    /// Attempts to get the <typeparamref name="TEnum"/> value of the section matching the specified <paramref name="key"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="key">The key of the configuration section.</param>
+    /// <param name="result">When this method returns, holds the s<typeparamref name="TEnum"/> value if successful; otherwise, the default value of <typeparamref name="TEnum"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetEnum<TEnum>(this IConfiguration configuration, string key, out TEnum result) where TEnum : struct, Enum {
+        return configuration.GetSection(key).Value.TryParseEnum(out result);
+    }
+
+    /// <summary>
+    /// Attempts to get the <typeparamref name="TEnum"/> value of the section matching the specified <paramref name="key"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="key">The key of the configuration section.</param>
+    /// <param name="result">When this method returns, holds the <typeparamref name="TEnum"/> value if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetEnum<TEnum>(this IConfiguration configuration, string key, [NotNullWhen(true)] out TEnum? result) where TEnum : struct, Enum {
+        return configuration.GetSection(key).Value.TryParseEnum(out result);
     }
 
     #endregion
