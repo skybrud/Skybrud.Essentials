@@ -30,58 +30,33 @@ public static class Rfc822Utils {
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="rfc822"/> formatted date to a corresponding instance of <see cref="DateTimeOffset"/>.
+    /// Converts the specified <paramref name="value"/> formatted date to a corresponding instance of <see cref="DateTimeOffset"/>.
     /// </summary>
-    /// <param name="rfc822">The string with the RFC 822 formatted date.</param>
+    /// <param name="value">The string with the RFC 822 formatted date.</param>
     /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
-    public static DateTimeOffset Parse(string? rfc822) {
-
-        if (string.IsNullOrWhiteSpace(rfc822)) return default;
-
-        Match m1 = Regex.Match(rfc822, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
-
-        if (!m1.Success) return DateTimeOffset.ParseExact(rfc822, "ddd, dd MMM yyyy HH:mm:ss K", CultureInfo.InvariantCulture).ToLocalTime();
-
-        // The RFC 822 specification describes a few predefined time zones, which we
-        // need to convert to an offset instead, since "DateTimeOffset" can't parse the
-        // time zone
-        string timezone = string.IsNullOrWhiteSpace(m1.Groups[9].Value) ? NormalizeTimeZone(m1.Groups[10].Value) : m1.Groups[9].Value.Replace(":", "");
-
-        // Generate a new input string based on our conversions
-        string str = string.Format(
-            "{0}, {1} {2} {3} {4}:{5}:{6} {7}",
-            m1.Groups[1].Value,
-            m1.Groups[2].Value.PadLeft(2, '0'),
-            m1.Groups[3].Value,
-            m1.Groups[4].Value,
-            m1.Groups[5].Value,
-            m1.Groups[6].Value,
-            m1.Groups[7].Value,
-            timezone
-        );
-
-        return DateTimeOffset.ParseExact(str, "ddd, dd MMM yyyy HH:mm:ss K", CultureInfo.InvariantCulture);
-
+    public static DateTimeOffset Parse(string value) {
+        if (TryParse(value, out DateTimeOffset result)) return result;
+        throw new FormatException($"String '{value}' was not recognized as a valid DateTime.");
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="rfc822"/> formatted date to its <see cref="DateTime"/>
+    /// Converts the specified <paramref name="value"/> formatted date to its <see cref="DateTime"/>
     /// equivalent and returns a value that indicates whether the conversion
     /// succeeded.
     /// </summary>
-    /// <param name="rfc822">The string with the RFC 822 formatted date.</param>
+    /// <param name="value">The string with the RFC 822 formatted date.</param>
     /// <param name="result">When this method returns, contains the <see cref="DateTime"/> value
-    /// equivalent to the date and time contained in <paramref name="rfc822"/>, if the conversion succeeded, or
+    /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-    public static bool TryParse(string? rfc822, out DateTime result) {
+    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    public static bool TryParse(string? value, out DateTime result) {
 
-        if (string.IsNullOrWhiteSpace(rfc822)) {
+        if (string.IsNullOrWhiteSpace(value)) {
             result = default;
             return false;
         }
 
-        if (TryParse(rfc822, out DateTimeOffset dto)) {
+        if (TryParse(value, out DateTimeOffset dto)) {
             result = dto.DateTime;
             return true;
         }
@@ -92,26 +67,26 @@ public static class Rfc822Utils {
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="rfc822"/> formatted date to its <see cref="DateTimeOffset"/>
+    /// Converts the specified <paramref name="value"/> formatted date to its <see cref="DateTimeOffset"/>
     /// equivalent and returns a value that indicates whether the conversion
     /// succeeded.
     /// </summary>
-    /// <param name="rfc822">The string with the RFC 822 formatted date.</param>
+    /// <param name="value">The string with the RFC 822 formatted date.</param>
     /// <param name="result">When this method returns, contains the <see cref="DateTimeOffset"/> value
-    /// equivalent to the date and time contained in <paramref name="rfc822"/>, if the conversion succeeded, or
+    /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-    public static bool TryParse(string? rfc822, out DateTimeOffset result) {
+    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    public static bool TryParse(string? value, out DateTimeOffset result) {
 
-        if (string.IsNullOrWhiteSpace(rfc822)) {
+        if (string.IsNullOrWhiteSpace(value)) {
             result = default;
             return false;
         }
 
-        Match m1 = Regex.Match(rfc822, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
+        Match m1 = Regex.Match(value, "^([a-zø]+), ([0-9]+) ([a-z]+) ([0-9]{4}) ([0-9]{2}):([0-9]{2}):([0-9]{2}) (([0-9-+:]+)|([a-z]+))$", RegexOptions.IgnoreCase);
 
         if (!m1.Success) {
-            return DateTimeOffset.TryParseExact(rfc822, "ddd, dd MMM yyyy HH:mm:ss K", CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+            return DateTimeOffset.TryParseExact(value, "ddd, dd MMM yyyy HH:mm:ss K", CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
         }
 
         // The RFC 822 specification describes a few predefined time zones, which we

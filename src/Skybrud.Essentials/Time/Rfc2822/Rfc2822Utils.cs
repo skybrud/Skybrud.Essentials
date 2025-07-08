@@ -1,4 +1,5 @@
 ﻿using System;
+using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Time.Rfc822;
 
 namespace Skybrud.Essentials.Time.Rfc2822;
@@ -27,40 +28,41 @@ public static class Rfc2822Utils {
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="rfc2822"/> formatted date to a corresponding instance of <see cref="DateTimeOffset"/>.
+    /// Converts the specified <paramref name="value"/> formatted date to a corresponding instance of <see cref="DateTimeOffset"/>.
     /// </summary>
-    /// <param name="rfc2822">The string with the RFC 2822 formatted date.</param>
+    /// <param name="value">The string with the RFC 2822 formatted date.</param>
     /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
-    public static DateTimeOffset Parse(string? rfc2822) {
-        return Rfc822Utils.Parse(rfc2822);
+    public static DateTimeOffset Parse(string? value) {
+        if (TryParse(value, out DateTimeOffset result)) return result;
+        throw new FormatException($"String '{value}' was not recognized as a valid DateTime.");
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="rfc2822"/> formatted date to its <see cref="DateTime"/>
+    /// Converts the specified <paramref name="value"/> formatted date to its <see cref="DateTime"/>
     /// equivalent and returns a value that indicates whether the conversion
     /// succeeded.
     /// </summary>
-    /// <param name="rfc2822">The string with the RFC 2822 formatted date.</param>
+    /// <param name="value">The string with the RFC 2822 formatted date.</param>
     /// <param name="result">When this method returns, contains the <see cref="DateTime"/> value
-    /// equivalent to the date and time contained in <paramref name="rfc2822"/>, if the conversion succeeded, or
+    /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="rfc2822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-    public static bool TryParse(string? rfc2822, out DateTime result) {
-        return Rfc822Utils.TryParse(rfc2822, out result);
+    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    public static bool TryParse(string? value, out DateTime result) {
+        return Rfc822Utils.TryParse(value, out result);
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="rfc2822"/> formatted date to its <see cref="DateTimeOffset"/>
+    /// Converts the specified <paramref name="value"/> formatted date to its <see cref="DateTimeOffset"/>
     /// equivalent and returns a value that indicates whether the conversion
     /// succeeded.
     /// </summary>
-    /// <param name="rfc2822">The string with the RFC 2822 formatted date.</param>
+    /// <param name="value">The string with the RFC 2822 formatted date.</param>
     /// <param name="result">When this method returns, contains the <see cref="DateTimeOffset"/> value
-    /// equivalent to the date and time contained in <paramref name="rfc2822"/>, if the conversion succeeded, or
+    /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="rfc2822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-    public static bool TryParse(string? rfc2822, out DateTimeOffset result) {
-        return Rfc822Utils.TryParse(rfc2822, out result);
+    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    public static bool TryParse(string? value, out DateTimeOffset result) {
+        return Rfc822Utils.TryParse(value, out result);
     }
 
 }

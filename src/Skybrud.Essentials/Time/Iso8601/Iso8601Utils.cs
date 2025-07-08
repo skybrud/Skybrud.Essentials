@@ -153,41 +153,40 @@ public class Iso8601Utils {
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="iso8601"/> date to an instance of <see cref="DateTimeOffset"/>.
+    /// Converts the specified <paramref name="value"/> date to an instance of <see cref="DateTimeOffset"/>.
     /// </summary>
-    /// <param name="iso8601">The string with the ISO 8106 formatted string.</param>
+    /// <param name="value">The string with the ISO 8106 formatted string.</param>
     /// <returns>An instance of <see cref="DateTimeOffset"/>.</returns>
-    public static DateTimeOffset Parse(string? iso8601) {
-        if (string.IsNullOrWhiteSpace(iso8601)) return default;
-        return DateTimeOffset.ParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None);
+    public static DateTimeOffset Parse(string value) {
+        return DateTimeOffset.ParseExact(value, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None);
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="iso8601"/> formatted date and time to its <see cref="DateTime"/>
+    /// Converts the specified <paramref name="value"/> formatted date and time to its <see cref="DateTime"/>
     /// equivalent and returns a value that indicates whether the conversion
     /// succeeded.
     /// </summary>
-    /// <param name="iso8601">The string with the ISO 8601 formatted date and time.</param>
+    /// <param name="value">The string with the ISO 8601 formatted date and time.</param>
     /// <param name="result">When this method returns, contains the <see cref="DateTime"/> value
-    /// equivalent to the date and time contained in <paramref name="iso8601"/>, if the conversion succeeded, or
+    /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-    public static bool TryParse(string? iso8601, out DateTime result) {
-        return DateTime.TryParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    public static bool TryParse(string? value, out DateTime result) {
+        return DateTime.TryParseExact(value, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="iso8601"/> formatted date and time to its <see cref="DateTimeOffset"/>
+    /// Converts the specified <paramref name="value"/> formatted date and time to its <see cref="DateTimeOffset"/>
     /// equivalent and returns a value that indicates whether the conversion
     /// succeeded.
     /// </summary>
-    /// <param name="iso8601">The string with the ISO 8601 formatted date and time.</param>
+    /// <param name="value">The string with the ISO 8601 formatted date and time.</param>
     /// <param name="result">When this method returns, contains the <see cref="DateTimeOffset"/> value
-    /// equivalent to the date and time contained in <paramref name="iso8601"/>, if the conversion succeeded, or
+    /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
-    public static bool TryParse(string? iso8601, out DateTimeOffset result) {
-        return DateTimeOffset.TryParseExact(iso8601, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
+    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    public static bool TryParse(string? value, out DateTimeOffset result) {
+        return DateTimeOffset.TryParseExact(value, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
     }
 
     /// <summary>

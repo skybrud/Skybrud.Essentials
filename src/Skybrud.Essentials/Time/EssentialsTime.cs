@@ -1035,11 +1035,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="input">The input string to be parsed.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsTime? Parse(string? input) {
-
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+    public static EssentialsTime Parse(string input) {
 
         // Attempt to parse the date
         DateTimeOffset dto = DateTimeOffset.Parse(input);
@@ -1055,11 +1051,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="input">The input string to be parsed.</param>
     /// <param name="provider">An object that provides culture-specific format information about input.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsTime? Parse(string? input, IFormatProvider? provider) {
-
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+    public static EssentialsTime Parse(string input, IFormatProvider? provider) {
 
         // Attempt to parse the date
         DateTimeOffset dto = DateTimeOffset.Parse(input, provider);
@@ -1076,11 +1068,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="provider">An object that provides culture-specific format information about input.</param>
     /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsTime? Parse(string? input, IFormatProvider? provider, DateTimeStyles styles) {
-
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+    public static EssentialsTime Parse(string input, IFormatProvider? provider, DateTimeStyles styles) {
 
         // Attempt to parse the date
         DateTimeOffset dto = DateTimeOffset.Parse(input, provider, styles);
@@ -1210,7 +1198,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
         return false;
 
     }
-    
+
     /// <summary>
     /// Initialize a new instance from the specified UNIX timestamp.
     /// </summary>
@@ -1272,7 +1260,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     [return: NotNullIfNotNull(nameof(value))]
     public static EssentialsTime? FromIso8601(string? value) {
-        return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Iso8601Utils.Parse(value));
+        return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Iso8601Utils.Parse(value!));
     }
 
     /// <summary>
@@ -1310,21 +1298,21 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <summary>
     /// Convert the specified <strong>RFC 822</strong> string to an instance of <see cref="EssentialsTime"/>.
     /// </summary>
-    /// <param name="str">The <strong>RFC 822</strong> string to be converted.</param>
+    /// <param name="value">The <strong>RFC 822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(str))]
-    public static EssentialsTime? FromRfc822(string? str) {
-        return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc822Utils.Parse(str));
+    [return: NotNullIfNotNull(nameof(value))]
+    public static EssentialsTime? FromRfc822(string? value) {
+        return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Rfc822Utils.Parse(value!));
     }
 
     /// <summary>
     /// Convert the specified <strong>RFC 2822</strong> string to an instance of <see cref="EssentialsTime"/>.
     /// </summary>
-    /// <param name="str">The <strong>RFC 2822</strong> string to be converted.</param>
+    /// <param name="value">The <strong>RFC 2822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(str))]
-    public static EssentialsTime? FromRfc2822(string? str) {
-        return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc2822Utils.Parse(str));
+    [return: NotNullIfNotNull(nameof(value))]
+    public static EssentialsTime? FromRfc2822(string? value) {
+        return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Rfc2822Utils.Parse(value));
     }
 
     /// <summary>
@@ -1508,6 +1496,164 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     public static EssentialsTime Max(IEnumerable<EssentialsTime> values) {
         return values.Max(x => x)!;
+    }
+
+    /// <summary>
+    /// Converts the specified <strong>ISO 8601</strong> string to an instance of <see cref="EssentialsTime"/>.
+    /// </summary>
+    /// <param name="value">The <strong>ISO 8601</strong> string to be converted.</param>
+    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+    /// <remarks>
+    /// This method differs from the <see cref="FromIso8601"/> method as <see cref="FromIso8601"/> will return <see langword="null"/> for null or white space values, whereas <see cref="ParseIso8601"/> will throw an exception.
+    /// </remarks>
+    public static EssentialsTime ParseIso8601(string value) {
+        return new EssentialsTime(Iso8601Utils.Parse(value));
+    }
+
+    /// <summary>
+    /// Converts the specified <strong>RFC 822</strong> string to an instance of <see cref="EssentialsTime"/>.
+    /// </summary>
+    /// <param name="value">The <strong>RFC 822</strong> string to be converted.</param>
+    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+    public static EssentialsTime ParseRfc822(string value) {
+        return new EssentialsTime(Rfc822Utils.Parse(value));
+    }
+
+    /// <summary>
+    /// Converts the specified <strong>RFC 2822</strong> string to an instance of <see cref="EssentialsTime"/>.
+    /// </summary>
+    /// <param name="value">The <strong>RFC 2822</strong> string to be converted.</param>
+    /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
+    public static EssentialsTime ParseRfc2822(string value) {
+        return new EssentialsTime(Rfc2822Utils.Parse(value));
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified format, culture-invariant format information, and style. The format of the string
+    /// representation must match the specified format exactly.
+    /// </summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="format">A format specifier that defines the expected format of <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of <paramref name="input" />.</param>
+    /// <returns>An object that is equivalent to the date and time that is contained in the <paramref name="input" /> parameter, as specified by the <paramref name="format" />, and <paramref name="styles" /> parameters.</returns>
+    public static EssentialsTime ParseExact(string input, string format, DateTimeStyles styles) {
+        return DateTimeOffset.ParseExact(input, format, CultureInfo.InvariantCulture, styles);
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified formats, culture-invariant format information, and style. The format of the string
+    /// representation must match one of the specified formats exactly.
+    /// </summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="formats">An array of format specifiers that define the expected formats of <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of <paramref name="input" />.</param>
+    /// <returns>An object that is equivalent to the date and time that is contained in the <paramref name="input" /> parameter, as specified by the <paramref name="formats" />, and <paramref name="styles" /> parameters.</returns>
+    public static EssentialsTime ParseExact(string input, string[] formats, DateTimeStyles styles) {
+        return DateTimeOffset.ParseExact(input, formats, CultureInfo.InvariantCulture, styles);
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified format, culture-specific format information, and style. The format of the string
+    /// representation must match the specified format exactly.
+    /// </summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="format">A format specifier that defines the expected format of <paramref name="input" />.</param>
+    /// <param name="formatProvider">An object that supplies culture-specific formatting information about <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of <paramref name="input" />.</param>
+    /// <returns>An object that is equivalent to the date and time that is contained in the <paramref name="input" /> parameter, as specified by the <paramref name="format" />, <paramref name="formatProvider" />, and <paramref name="styles" /> parameters.</returns>
+    public static EssentialsTime ParseExact(string input, string format, IFormatProvider formatProvider, DateTimeStyles styles) {
+        return DateTimeOffset.ParseExact(input, format, formatProvider, styles);
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified formats, culture-specific format information, and style. The format of the string
+    /// representation must match one of the specified formats exactly.
+    /// </summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="formats">An array of format specifiers that define the expected formats of <paramref name="input" />.</param>
+    /// <param name="formatProvider">An object that supplies culture-specific formatting information about <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of <paramref name="input" />.</param>
+    /// <returns>An object that is equivalent to the date and time that is contained in the <paramref name="input" /> parameter, as specified by the <paramref name="formats" />, <paramref name="formatProvider" />, and <paramref name="styles" /> parameters.</returns>
+    public static EssentialsTime ParseExact(string input, string[] formats, IFormatProvider formatProvider, DateTimeStyles styles) {
+        return DateTimeOffset.ParseExact(input, formats, formatProvider, styles);
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified format, culture-invariant format information, and style. The format of the string
+    /// representation must match the specified format exactly.</summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="format">A format specifier that defines the required format of <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see langword="None" />.</param>
+    /// <param name="result">When the method returns, contains the <see cref="EssentialsTime" /> equivalent to the date and time of <paramref name="input" />, if the conversion succeeded, or <see langword="null" />, if the conversion failed. The conversion fails if the <paramref name="input" /> parameter is <see langword="null" />, or does not contain a valid string representation of a date and time in the expected format defined by <paramref name="format" /> and <c>provider</c>. This parameter is passed uninitialized.</param>
+    /// <returns><see langword="true" /> if the <paramref name="input" /> parameter is successfully converted; otherwise, <see langword="false" />.</returns>
+    public static bool TryParseExact(string input, string format, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsTime? result) {
+        if (DateTimeOffset.TryParseExact(input, format, CultureInfo.InvariantCulture, styles, out DateTimeOffset temp)) {
+            result = temp;
+            return true;
+        }
+        result = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified format, culture-specific format information, and style. The format of the string
+    /// representation must match the specified format exactly.</summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="format">A format specifier that defines the required format of <paramref name="input" />.</param>
+    /// <param name="formatProvider">An object that supplies culture-specific formatting information about <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see langword="None" />.</param>
+    /// <param name="result">When the method returns, contains the <see cref="EssentialsTime" /> equivalent to the date and time of <paramref name="input" />, if the conversion succeeded, or <see langword="null" />, if the conversion failed. The conversion fails if the <paramref name="input" /> parameter is <see langword="null" />, or does not contain a valid string representation of a date and time in the expected format defined by <paramref name="format" /> and <c>provider</c>. This parameter is passed uninitialized.</param>
+    /// <returns><see langword="true" /> if the <paramref name="input" /> parameter is successfully converted; otherwise, <see langword="false" />.</returns>
+    public static bool TryParseExact(string input, string format, IFormatProvider formatProvider, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsTime? result) {
+        if (DateTimeOffset.TryParseExact(input, format, formatProvider, styles, out DateTimeOffset temp)) {
+            result = temp;
+            return true;
+        }
+        result = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified array of formats, culture-invariant format information, and style. The format of the string
+    /// representation must match one of the specified formats exactly.</summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="formats">An array that defines the expected formats of <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see langword="None" />.</param>
+    /// <param name="result">When the method returns, contains the <see cref="EssentialsTime" /> equivalent to the date and time of <paramref name="input" />, if the conversion succeeded, or <see langword="null" />, if the conversion failed. The conversion fails if the <paramref name="input" /> does not contain a valid string representation of a date and time, or does not contain the date and time in the expected format defined by <paramref name="formats" />, or if <paramref name="formats" /> is <see langword="null" />. This parameter is passed uninitialized.</param>
+    /// <returns><see langword="true" /> if the <paramref name="input" /> parameter is successfully converted; otherwise, <see langword="false" />.</returns>
+    public static bool TryParseExact(string? input, string?[]? formats, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsTime? result) {
+        if (DateTimeOffset.TryParseExact(input, formats, CultureInfo.InvariantCulture, styles, out DateTimeOffset temp)) {
+            result = temp;
+            return true;
+        }
+        result = null;
+        return false;
+    }
+
+    /// <summary>
+    /// Converts the specified string representation of a date and time to its <see cref="EssentialsTime" /> equivalent
+    /// using the specified array of formats, culture-specific format information, and style. The format of the string
+    /// representation must match one of the specified formats exactly.</summary>
+    /// <param name="input">A string that contains a date and time to convert.</param>
+    /// <param name="formats">An array that defines the expected formats of <paramref name="input" />.</param>
+    /// <param name="formatProvider">An object that supplies culture-specific formatting information about <paramref name="input" />.</param>
+    /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input. A typical value to specify is <see langword="None" />.</param>
+    /// <param name="result">When the method returns, contains the <see cref="EssentialsTime" /> equivalent to the date and time of <paramref name="input" />, if the conversion succeeded, or <see langword="null" />, if the conversion failed. The conversion fails if the <paramref name="input" /> does not contain a valid string representation of a date and time, or does not contain the date and time in the expected format defined by <paramref name="formats" />, or if <paramref name="formats" /> is <see langword="null" />. This parameter is passed uninitialized.</param>
+    /// <returns><see langword="true" /> if the <paramref name="input" /> parameter is successfully converted; otherwise, <see langword="false" />.</returns>
+    public static bool TryParseExact(string? input, string?[]? formats, IFormatProvider? formatProvider, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsTime? result) {
+        if (DateTimeOffset.TryParseExact(input, formats, formatProvider, styles, out DateTimeOffset temp)) {
+            result = temp;
+            return true;
+        }
+        result = null;
+        return false;
     }
 
     #endregion
