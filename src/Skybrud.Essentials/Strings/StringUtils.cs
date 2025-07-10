@@ -273,7 +273,7 @@ public static partial class StringUtils {
     /// </summary>
     /// <param name="str">The string to validate.</param>
     /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
-    public static bool IsNumeric(string? str) {
+    public static bool IsNumeric([NotNullWhen(true)] string? str) {
         return str is not null && long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long _);
     }
 
@@ -282,7 +282,7 @@ public static partial class StringUtils {
     /// </summary>
     /// <param name="str">The string to validate.</param>
     /// <returns><c>true</c> if <paramref name="str"/> is alphanumeric; otherwise <c>false</c>.</returns>
-    public static bool IsAlphanumeric(string? str) {
+    public static bool IsAlphanumeric([NotNullWhen(true)] string? str) {
         return str is not null && Regex.IsMatch(str, "^[0-9a-zA-Z]+$");
     }
 
@@ -291,7 +291,7 @@ public static partial class StringUtils {
     /// </summary>
     /// <param name="value">The string to validate.</param>
     /// <returns><c>true</c> if <paramref name="value"/> is alphanumeric; otherwise <c>false</c>.</returns>
-    public static bool IsAlphabetic(string? value) {
+    public static bool IsAlphabetic([NotNullWhen(true)] string? value) {
         return value is not null && Regex.IsMatch(value, "^[a-zA-Z]+$");
     }
 

@@ -110,7 +110,7 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The input string to test.</param>
     /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
-    public static bool HasValue(this string? input) {
+    public static bool HasValue([NotNullWhen(true)] this string? input) {
         return string.IsNullOrWhiteSpace(input) == false;
     }
 
@@ -122,7 +122,7 @@ public static partial class StringExtensions {
     /// <param name="input">The input string to test.</param>
     /// <param name="result">When this method returns, contains the input value.</param>
     /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
-    public static bool HasValue(this string? input, [NotNullWhen(true)] out string? result) {
+    public static bool HasValue([NotNullWhen(true)] this string? input, [NotNullWhen(true)] out string? result) {
         result = input;
         return string.IsNullOrWhiteSpace(input) == false;
     }
@@ -133,7 +133,7 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The input string to test.</param>
     /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
-    public static bool IsNullOrWhiteSpace(this string? input) {
+    public static bool IsNullOrWhiteSpace([NotNullWhen(true)] this string? input) {
         return string.IsNullOrWhiteSpace(input);
     }
 
@@ -142,7 +142,7 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The string to validate.</param>
     /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise <c>false</c>.</returns>
-    public static bool IsNumeric(this string? input) {
+    public static bool IsNumeric([NotNullWhen(true)] this string? input) {
         return StringUtils.IsNumeric(input);
     }
 
@@ -151,7 +151,7 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The string to validate.</param>
     /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
-    public static bool IsAlphanumeric(this string? input) {
+    public static bool IsAlphanumeric([NotNullWhen(true)] this string? input) {
         return StringUtils.IsAlphanumeric(input);
     }
 
@@ -160,7 +160,7 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The string to validate.</param>
     /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
-    public static bool IsAlphabetic(this string? input) {
+    public static bool IsAlphabetic([NotNullWhen(true)] this string? input) {
         return StringUtils.IsAlphabetic(input);
     }
 
