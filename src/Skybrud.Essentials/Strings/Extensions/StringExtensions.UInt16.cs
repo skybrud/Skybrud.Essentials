@@ -9,7 +9,7 @@ public static partial class StringExtensions {
     /// Returns whether the specified <paramref name="input"/> string matches a 16-bit unsigned integer (<see cref="ushort"/>).
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a 16-bit unsigned integer (<see cref="ushort"/>); otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a 16-bit unsigned integer (<see cref="ushort"/>); otherwise, <see langword="false"/>.</returns>
     public static bool IsUInt16(this string? input) {
         return StringUtils.TryParseUInt16(input, out ushort _);
     }
@@ -19,7 +19,7 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The string to validate.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="ushort"/> if successful; otherwise, <c>0</c>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a 16-bit unsigned integer (<see cref="ushort"/>); otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a 16-bit unsigned integer (<see cref="ushort"/>); otherwise, <see langword="false"/>.</returns>
     public static bool IsUInt16(this string? input, out ushort result) {
         return StringUtils.TryParseUInt16(input, out result);
     }
@@ -28,8 +28,8 @@ public static partial class StringExtensions {
     /// Returns whether the specified <paramref name="input"/> string matches a 16-bit unsigned integer (<see cref="ushort"/>).
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <param name="result">When this method returns, holds the converted <see cref="ushort"/> if successful; otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a 16-bit unsigned integer (<see cref="ushort"/>); otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, holds the converted <see cref="ushort"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a 16-bit unsigned integer (<see cref="ushort"/>); otherwise, <see langword="false"/>.</returns>
     public static bool IsUInt16(this string? input, [NotNullWhen(true)] out ushort? result) {
         return StringUtils.TryParseUInt16(input, out result);
     }
@@ -69,10 +69,10 @@ public static partial class StringExtensions {
     /// <param name="input">A string containing a number to convert.</param>
     /// <param name="result">When this method returns, contains the 16-bit unsigned integer value equivalent of the
     /// number contained in <paramref name="input"/>, if the conversion succeeded, or zero if the conversion
-    /// failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+    /// failed. The conversion fails if the <paramref name="input"/> parameter is <see langword="null"/> or
     /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
     /// <see cref="ushort.MinValue"/> or greater than <see cref="ushort.MaxValue"/>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseUInt16(this string? input, out ushort result) {
         return StringUtils.TryParseUInt16(input, out result);
     }
@@ -82,11 +82,11 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">A string containing a number to convert.</param>
     /// <param name="result">When this method returns, contains the 16-bit unsigned integer value equivalent of the
-    /// number contained in <paramref name="input"/>, if the conversion succeeded, or <c>null</c> if the conversion
-    /// failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+    /// number contained in <paramref name="input"/>, if the conversion succeeded, or <see langword="null"/> if the conversion
+    /// failed. The conversion fails if the <paramref name="input"/> parameter is <see langword="null"/> or
     /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
     /// <see cref="ushort.MinValue"/> or greater than <see cref="ushort.MaxValue"/>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseUInt16(this string? input, [NotNullWhen(true)] out ushort? result) {
         return StringUtils.TryParseUInt16(input, out result);
     }

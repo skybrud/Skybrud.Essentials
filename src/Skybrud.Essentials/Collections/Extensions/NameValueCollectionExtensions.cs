@@ -94,11 +94,11 @@ public static class NameValueCollectionExtensions {
     #region Boolean
 
     /// <summary>
-    /// Returns the boolean value of the item with <paramref name="key"/>. If a matching isn't found, or conversion to a boolean representation failed, <c>false</c> is returned instead.
+    /// Returns the boolean value of the item with <paramref name="key"/>. If a matching isn't found, or conversion to a boolean representation failed, <see langword="false"/> is returned instead.
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <c>false</c>.</returns>
+    /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <see langword="false"/>.</returns>
     public static bool GetBoolean(this NameValueCollection? collection, string key) {
         return StringUtils.ParseBoolean(collection?.GetString(key));
     }
@@ -129,8 +129,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>false</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see langword="false"/>.</param>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetBoolean(this NameValueCollection? collection, string key, out bool result) {
         return StringUtils.TryParseBoolean(collection?.GetString(key), out result);
     }
@@ -140,8 +140,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetBoolean(this NameValueCollection? collection, string key, [NotNullWhen(true)] out bool? result) {
         return StringUtils.TryParseBoolean(collection?.GetString(key), out result);
     }
@@ -155,7 +155,7 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <c>false</c>.</returns>
+    /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <see langword="false"/>.</returns>
     public static Guid GetGuid(this NameValueCollection? collection, string key) {
         return StringUtils.ParseGuid(collection?.GetString(key));
     }
@@ -176,7 +176,7 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <c>false</c>.</returns>
+    /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <see langword="false"/>.</returns>
     public static Guid? GetGuidOrNull(this NameValueCollection? collection, string key) {
         return StringUtils.ParseGuidOrNull(collection?.GetString(key));
     }
@@ -187,7 +187,7 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see cref="Guid.Empty"/>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetGuid(this NameValueCollection? collection, string key, out Guid result) {
         return StringUtils.TryParseGuid(collection?.GetString(key), out result);
     }
@@ -197,8 +197,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetGuid(this NameValueCollection? collection, string key, [NotNullWhen(true)] out Guid? result) {
         return StringUtils.TryParseGuid(collection?.GetString(key), out result);
     }
@@ -292,7 +292,7 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetInt32(this NameValueCollection? collection, string key, out int result) {
         return StringUtils.TryParseInt32(collection?.GetString(key), out result);
     }
@@ -302,8 +302,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetInt32(this NameValueCollection? collection, string key, [NotNullWhen(true)] out int? result) {
         return StringUtils.TryParseInt32(collection?.GetString(key), out result);
     }
@@ -397,7 +397,7 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetInt64(this NameValueCollection? collection, string key, out long result) {
         return StringUtils.TryParseInt64(collection?.GetString(key), out result);
     }
@@ -407,8 +407,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetInt64(this NameValueCollection? collection, string key, [NotNullWhen(true)] out long? result) {
         return StringUtils.TryParseInt64(collection?.GetString(key), out result);
     }
@@ -502,7 +502,7 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetFloat(this NameValueCollection? collection, string key, out float result) {
         return StringUtils.TryParseFloat(collection?.GetString(key), out result);
     }
@@ -512,8 +512,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetFloat(this NameValueCollection? collection, string key, [NotNullWhen(true)] out float? result) {
         return StringUtils.TryParseFloat(collection?.GetString(key), out result);
     }
@@ -607,7 +607,7 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="double"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetDouble(this NameValueCollection? collection, string key, out double result) {
         return StringUtils.TryParseDouble(collection?.GetString(key), out result);
     }
@@ -617,8 +617,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
+    /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
     public static bool TryGetDouble(this NameValueCollection? collection, string key, [NotNullWhen(true)] out double? result) {
         return StringUtils.TryParseDouble(collection?.GetString(key), out result);
     }
@@ -678,8 +678,8 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <param name="result">When this method returns, contains the value associated with the specified key, if the key is found; otherwise <c>null</c>.</param>
-    /// <returns><c>true</c> if the <see cref="NameValueCollection"/> contains an element with the specified key; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, contains the value associated with the specified key, if the key is found; otherwise <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the <see cref="NameValueCollection"/> contains an element with the specified key; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetValue(this NameValueCollection? collection, string key, [NotNullWhen(true)] out string? result) {
         result = collection?.GetString(key);
         return result != null;
@@ -690,7 +690,7 @@ public static class NameValueCollectionExtensions {
     /// </summary>
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
-    /// <returns><c>true</c> if an item with <paramref name="key"/> is found; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if an item with <paramref name="key"/> is found; otherwise, <see langword="false"/>.</returns>
     public static bool ContainsKey(this NameValueCollection? collection, string key) {
         return collection is not null && collection.AllKeys.Any(x => x == key);
     }

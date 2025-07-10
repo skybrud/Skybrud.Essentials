@@ -12,7 +12,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression.</param>
-    /// <returns>An instance of <see cref="XElement"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
+    /// <returns>An instance of <see cref="XElement"/>, or <see langword="null"/> if <paramref name="expression"/> doesn't match any elements.</returns>
     public static XElement? GetElement(this XElement? element, string expression) {
         return element?.XPathSelectElement(expression);
     }
@@ -24,7 +24,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression.</param>
     /// <param name="callback">A callback function for parsing the element.</param>
-    /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
+    /// <returns>An instance of <typeparamref name="T"/>, or <see langword="null"/> if <paramref name="expression"/> doesn't match any elements.</returns>
     public static T? GetElement<T>(this XElement? element, string expression, Func<XElement, T> callback) {
         XElement? child = element?.XPathSelectElement(expression);
         return child == null ? default : callback(child);
@@ -36,7 +36,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The parent <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
-    /// <returns>An instance of <see cref="XElement"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
+    /// <returns>An instance of <see cref="XElement"/>, or <see langword="null"/> if <paramref name="expression"/> doesn't match any elements.</returns>
     public static XElement? GetElement(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
         return element?.XPathSelectElement(expression, resolver);
     }
@@ -49,7 +49,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
     /// <param name="callback">A callback function for parsing the element.</param>
-    /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
+    /// <returns>An instance of <typeparamref name="T"/>, or <see langword="null"/> if <paramref name="expression"/> doesn't match any elements.</returns>
     public static T? GetElement<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver, Func<XElement, T> callback) {
         XElement? child = element?.XPathSelectElement(expression, resolver);
         return child == null ? default : callback(child);
@@ -63,7 +63,7 @@ public static partial class XElementExtensions {
     /// <param name="expression">The XPath expression.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
     /// <param name="callback">A callback function for parsing the element.</param>
-    /// <returns>An instance of <typeparamref name="T"/>, or <c>null</c> if <paramref name="expression"/> doesn't match any elements.</returns>
+    /// <returns>An instance of <typeparamref name="T"/>, or <see langword="null"/> if <paramref name="expression"/> doesn't match any elements.</returns>
     public static T? GetElement<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver, Func<XElement, IXmlNamespaceResolver?, T> callback) {
         XElement? child = element?.XPathSelectElement(expression, resolver);
         return child == null ? default : callback(child, resolver);

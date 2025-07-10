@@ -14,8 +14,8 @@ public static partial class StringUtils {
     /// (<see cref="uint"/>).
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a 32-bit unsigned integer (<see cref="uint"/>);
-    /// otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a 32-bit unsigned integer (<see cref="uint"/>);
+    /// otherwise, <see langword="false"/>.</returns>
     public static bool IsUInt32(string? input) {
         return TryParseUInt32(input, out uint _);
     }
@@ -58,10 +58,10 @@ public static partial class StringUtils {
     /// <param name="input">A string containing a number to convert.</param>
     /// <param name="result">When this method returns, contains the 32-bit unsigned integer value equivalent of the
     /// number contained in <paramref name="input"/>, if the conversion succeeded, or zero if the conversion
-    /// failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+    /// failed. The conversion fails if the <paramref name="input"/> parameter is <see langword="null"/> or
     /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
     /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseUInt32(string? input, out uint result) {
         return uint.TryParse(input, NumberStyles.Integer | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out result);
     }
@@ -72,11 +72,11 @@ public static partial class StringUtils {
     /// </summary>
     /// <param name="input">A string containing a number to convert.</param>
     /// <param name="result">When this method returns, contains the 32-bit unsigned integer value equivalent of the
-    /// number contained in <paramref name="input"/>, if the conversion succeeded, or <c>null</c> if the conversion
-    /// failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+    /// number contained in <paramref name="input"/>, if the conversion succeeded, or <see langword="null"/> if the conversion
+    /// failed. The conversion fails if the <paramref name="input"/> parameter is <see langword="null"/> or
     /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
     /// <see cref="int.MinValue"/> or greater than <see cref="int.MaxValue"/>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseUInt32(string? input, [NotNullWhen(true)] out uint? result) {
         if (uint.TryParse(input, NumberStyles.Integer | NumberStyles.AllowDecimalPoint, CultureInfo.InvariantCulture, out uint temp)) {
             result = temp;

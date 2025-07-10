@@ -61,7 +61,7 @@ public static class DateTimeExtensions {
     /// Gets whether the specified <paramref name="date"/> is a weekday.
     /// </summary>
     /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is a weekday; otherwise <c>false</c>. </returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is a weekday; otherwise <see langword="false"/>. </returns>
     public static bool IsWeekday(this DateTime date) {
         return TimeUtils.IsWeekday(date);
     }
@@ -70,7 +70,7 @@ public static class DateTimeExtensions {
     /// Gets whether the specified <paramref name="date"/> is in the weekend.
     /// </summary>
     /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is in the weekend; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is in the weekend; otherwise <see langword="false"/>.</returns>
     public static bool IsWeekend(this DateTime date) {
         return TimeUtils.IsWeekend(date);
     }
@@ -79,7 +79,7 @@ public static class DateTimeExtensions {
     /// Gets whether the specified <paramref name="date"/> is a leap year.
     /// </summary>
     /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
-    /// <returns><c>true</c> if the year of <paramref name="date"/> is a leap year; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the year of <paramref name="date"/> is a leap year; otherwise <see langword="false"/>.</returns>
     public static bool IsLeapYear(this DateTime date) {
         return TimeUtils.IsLeapYear(date);
     }
@@ -88,7 +88,7 @@ public static class DateTimeExtensions {
     /// Gets whether the specified year is a leap year.
     /// </summary>
     /// <param name="year">The year.</param>
-    /// <returns><c>true</c> if <paramref name="year"/> is a leap year; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="year"/> is a leap year; otherwise <see langword="false"/>.</returns>
     public static bool IsLeapYear(this int year) {
         return TimeUtils.IsLeapYear(year);
     }
@@ -108,8 +108,8 @@ public static class DateTimeExtensions {
     /// </summary>
     /// <param name="date">An instance of <see cref="DateTime"/> representing the date.</param>
     /// <param name="days">The number of days.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is within the last number of
-    /// <paramref name="days"/>, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is within the last number of
+    /// <paramref name="days"/>, otherwise <see langword="false"/>.</returns>
     public static bool IsDateWithinLastDays(this DateTime date, int days) {
         return TimeUtils.IsDateWithinLastDays(date, days);
     }
@@ -302,7 +302,7 @@ public static class DateTimeExtensions {
     /// Returns whether the specified <paramref name="date"/> is today.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is today; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is today; otherwise, <see langword="false"/>.</returns>
     public static bool IsToday(this DateTime date) {
         return TimeUtils.IsToday(date);
     }
@@ -311,7 +311,7 @@ public static class DateTimeExtensions {
     /// Returns whether the specified <paramref name="date"/> is tomorrow.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is tomorrow; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is tomorrow; otherwise, <see langword="false"/>.</returns>
     public static bool IsTomorrow(this DateTime date) {
         return TimeUtils.IsTomorrow(date);
     }
@@ -320,7 +320,7 @@ public static class DateTimeExtensions {
     /// Returns whether the specified <paramref name="date"/> is yesterday.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is yesterday; otherwise, <see langword="false"/>.</returns>
     public static bool IsYesterday(this DateTime date) {
         return TimeUtils.IsYesterday(date);
     }

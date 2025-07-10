@@ -59,7 +59,7 @@ public static class EnumUtils {
     /// <typeparam name="T">The type of the enum.</typeparam>
     /// <param name="str">The string to be parsed.</param>
     /// <returns>An enum of type <typeparamref name="T"/> from the specified <paramref name="str"/>.</returns>
-    /// <exception cref="ArgumentNullException">If <paramref name="str"/> is <c>null</c> (or white space).</exception>
+    /// <exception cref="ArgumentNullException">If <paramref name="str"/> is <see langword="null"/> (or white space).</exception>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     /// <exception cref="EnumParseException">If <paramref name="str"/> doesn't match any of the values of
     /// <typeparamref name="T"/>.</exception>
@@ -158,7 +158,7 @@ public static class EnumUtils {
     /// <param name="str">The string representation of the enumeration name or underlying value to convert.</param>
     /// <param name="value">When this method returns, contains an object of type <typeparamref name="T"/> whose
     /// value is represented by value. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the value parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     public static bool TryParseEnum<T>(string? str, out T value) where T : struct, Enum {
 
@@ -195,7 +195,7 @@ public static class EnumUtils {
     /// <param name="str">The string representation of the enumeration name or underlying value to convert.</param>
     /// <param name="value">When this method returns, contains an object of type <typeparamref name="T"/> whose
     /// value is represented by value. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the value parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     public static bool TryParseEnum<T>(string? str, [NotNullWhen(true)] out T? value) where T : struct, Enum {
 
@@ -422,7 +422,7 @@ public static class EnumUtils {
     /// <typeparam name="T">The type of the enum.</typeparam>
     /// <param name="str">A string value containing one or more enum values.</param>
     /// <param name="array">The array of <typeparamref name="T"/> with the converted values.</param>
-    /// <returns><c>true</c> if the value parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the value parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     /// <exception cref="ArgumentException">If <typeparamref name="T"/> is not an enum class.</exception>
     public static bool TryParseEnumArray<T>(string? str, [NotNullWhen(true)] out T[]? array) where T : struct, Enum {
 
@@ -560,7 +560,7 @@ public static class EnumUtils {
     /// Returns whether <typeparamref name="T"/> is an enum.
     /// </summary>
     /// <typeparam name="T">The type to check.</typeparam>
-    /// <returns><c>true</c> if <typeparamref name="T"/> is an enum; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <typeparamref name="T"/> is an enum; otherwise <see langword="false"/>.</returns>
     public static bool IsEnum<T>() {
         return IsEnum(typeof(T));
     }
@@ -569,7 +569,7 @@ public static class EnumUtils {
     /// Returns whether the specified <paramref name="type"/> is an enum.
     /// </summary>
     /// <param name="type">The type to check.</param>
-    /// <returns><c>true</c> if <paramref name="type"/> is an enum; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="type"/> is an enum; otherwise <see langword="false"/>.</returns>
     public static bool IsEnum(Type type) {
         return type.GetTypeInfo().IsEnum;
     }
@@ -581,8 +581,8 @@ public static class EnumUtils {
     /// <param name="value">The enum value.</param>
     /// <param name="min">The minimum value.</param>
     /// <param name="max">The maximum value.</param>
-    /// <returns><c>true</c> if <paramref name="value"/> is between <paramref name="min"/> and
-    /// <paramref name="max"/>; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="value"/> is between <paramref name="min"/> and
+    /// <paramref name="max"/>; otherwise, <see langword="false"/>.</returns>
     public static bool IsBetween(Enum value, int min, int max) {
         int v = Convert.ToInt32(value);
         return v >= min && v <= max;
@@ -595,8 +595,8 @@ public static class EnumUtils {
     /// <param name="value">The enum value.</param>
     /// <param name="min">The minimum value.</param>
     /// <param name="max">The maximum value.</param>
-    /// <returns><c>true</c> if <paramref name="value"/> is between <paramref name="min"/> and
-    /// <paramref name="max"/>; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="value"/> is between <paramref name="min"/> and
+    /// <paramref name="max"/>; otherwise, <see langword="false"/>.</returns>
     public static bool IsBetween(Enum value, Enum min, Enum max) {
         int v = Convert.ToInt32(value);
         return v >= Convert.ToInt32(min) && v <= Convert.ToInt32(max);

@@ -1086,10 +1086,10 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="str">A string containing a date and time to convert.</param>
     /// <param name="result">When this method returns, contains the <see cref="EssentialsTime"/> value
     /// equivalent to the date and time contained in <paramref name="str"/>, if the conversion succeeded, or
-    /// <c>null</c> if the conversion failed. The conversion fails if the <paramref name="str"/> parameter is
-    /// <c>null</c>, is an empty string (""), or does not contain a valid string representation of a date and
+    /// <see langword="null"/> if the conversion failed. The conversion fails if the <paramref name="str"/> parameter is
+    /// <see langword="null"/>, is an empty string (""), or does not contain a valid string representation of a date and
     /// time. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the <paramref name="str"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the <paramref name="str"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? str, [NotNullWhen(true)] out EssentialsTime? result) {
 
         // Make sure "offset" is initialized
@@ -1115,10 +1115,10 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="provider">An object that provides culture-specific formatting information about input.</param>
     /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
     /// <param name="result">When the method returns, contains the <see cref="EssentialsTime"/> value equivalent to
-    /// the date and time of input, if the conversion succeeded, or <c>null</c>, if the conversion failed. The
+    /// the date and time of input, if the conversion succeeded, or <see langword="null"/>, if the conversion failed. The
     /// conversion fails if the input parameter is null or does not contain a valid string representation of a date
     /// and time. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the input parameter is successfully converted; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? input, IFormatProvider? provider, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsTime? result) {
 
         // Make sure "offset" is initialized
@@ -1143,8 +1143,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="iso8601">The string with the ISO 8601 formatted date and time.</param>
     /// <param name="result">When this method returns, contains the <see cref="EssentialsTime"/> value
     /// equivalent to the date and time contained in <paramref name="iso8601"/>, if the conversion succeeded, or
-    /// <c>null</c> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <see langword="null"/> if the conversion failed.</param>
+    /// <returns><see langword="true"/> if the <paramref name="iso8601"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseIso8601(string? iso8601, [NotNullWhen(true)] out EssentialsTime? result) {
 
         if (Iso8601Utils.TryParse(iso8601, out DateTimeOffset dto)) {
@@ -1164,8 +1164,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="rfc822">The string with the RFC 822 formatted date.</param>
     /// <param name="result">When this method returns, contains the <see cref="EssentialsTime"/> value
     /// equivalent to the date and time contained in <paramref name="rfc822"/>, if the conversion succeeded, or
-    /// <c>null</c> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <see langword="null"/> if the conversion failed.</param>
+    /// <returns><see langword="true"/> if the <paramref name="rfc822"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseRfc822(string? rfc822, [NotNullWhen(true)] out EssentialsTime? result) {
 
         if (Rfc822Utils.TryParse(rfc822, out DateTimeOffset dto)) {
@@ -1185,8 +1185,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="rfc2822">The string with the RFC 2822 formatted date.</param>
     /// <param name="result">When this method returns, contains the <see cref="EssentialsTime"/> value
     /// equivalent to the date and time contained in <paramref name="rfc2822"/>, if the conversion succeeded, or
-    /// <c>null</c> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="rfc2822"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <see langword="null"/> if the conversion failed.</param>
+    /// <returns><see langword="true"/> if the <paramref name="rfc2822"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseRfc2822(string? rfc2822, [NotNullWhen(true)] out EssentialsTime? result) {
 
         if (Rfc2822Utils.TryParse(rfc2822, out DateTimeOffset dto)) {
@@ -1411,7 +1411,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// Creates a new <see cref="EssentialsTime"/> instance from the specified amount of <paramref name="ticks"/> and <paramref name="timeZone"/>.
     /// </summary>
     /// <param name="ticks">The amount of ticks.</param>
-    /// <param name="timeZone">The time zone to be used. Uses <see cref="TimeZoneInfo.Local"/> if <c>null</c>.</param>
+    /// <param name="timeZone">The time zone to be used. Uses <see cref="TimeZoneInfo.Local"/> if <see langword="null"/>.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     public static EssentialsTime FromTicks(long ticks, TimeZoneInfo? timeZone) {
         DateTime time = new(ticks);
@@ -1714,8 +1714,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsTime"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if the two instances represent the same date and time, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the two instances represent the same date and time, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator ==(EssentialsTime? d1, EssentialsTime? d2) {
 
         // Check for NULL conditions
@@ -1733,8 +1733,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsTime"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if the two instances represents a different date and time, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the two instances represents a different date and time, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator !=(EssentialsTime? d1, EssentialsTime? d2) {
         return !(d1 == d2);
     }
@@ -1744,8 +1744,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsTime"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator <(EssentialsTime? d1, EssentialsTime? d2) {
 
         // Check for NULL conditions
@@ -1762,8 +1762,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsTime"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator <=(EssentialsTime? d1, EssentialsTime? d2) {
         return d1 < d2 || d1 == d2;
     }
@@ -1773,8 +1773,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsTime"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >(EssentialsTime? d1, EssentialsTime? d2) {
 
         // Check for NULL conditions
@@ -1791,8 +1791,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsTime"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >=(EssentialsTime? d1, EssentialsTime? d2) {
         return d1 > d2 || d1 == d2;
     }

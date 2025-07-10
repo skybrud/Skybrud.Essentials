@@ -334,7 +334,7 @@ public static partial class TimeUtils {
     /// Gets whether the specified <paramref name="date"/> is a weekday.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if the specified day is weekday; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the specified day is weekday; otherwise <see langword="false"/>.</returns>
     public static bool IsWeekday(DateTime date) {
         return date.DayOfWeek != DayOfWeek.Saturday && date.DayOfWeek != DayOfWeek.Sunday;
     }
@@ -343,7 +343,7 @@ public static partial class TimeUtils {
     /// Gets whether the specified <paramref name="date"/> is a weekday.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if the specified day is weekday; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the specified day is weekday; otherwise <see langword="false"/>.</returns>
     public static bool IsWeekday(DateTimeOffset date) {
         return IsWeekday(date.Date);
     }
@@ -352,7 +352,7 @@ public static partial class TimeUtils {
     /// Gets whether the specified <paramref name="date"/> is in the weekend.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if the specified day is weekend; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the specified day is weekend; otherwise <see langword="false"/>.</returns>
     public static bool IsWeekend(DateTime date) {
         return !IsWeekday(date);
     }
@@ -361,7 +361,7 @@ public static partial class TimeUtils {
     /// Gets whether the specified <paramref name="date"/> is in the weekend.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if the specified day is weekend; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the specified day is weekend; otherwise <see langword="false"/>.</returns>
     public static bool IsWeekend(DateTimeOffset date) {
         return IsWeekend(date.Date);
     }
@@ -370,8 +370,8 @@ public static partial class TimeUtils {
     /// Gets whether the specified <paramref name="date"/> is a leap year.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if the year of the specified <paramref name="date"/> is a leap year; otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the year of the specified <paramref name="date"/> is a leap year; otherwise
+    /// <see langword="false"/>.</returns>
     public static bool IsLeapYear(DateTime date) {
         return IsLeapYear(date.Year);
     }
@@ -380,8 +380,8 @@ public static partial class TimeUtils {
     /// Gets whether the specified <paramref name="date"/> is a leap year.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if the year of the specified <paramref name="date"/> is a leap year; otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the year of the specified <paramref name="date"/> is a leap year; otherwise
+    /// <see langword="false"/>.</returns>
     public static bool IsLeapYear(DateTimeOffset date) {
         return IsLeapYear(date.Date);
     }
@@ -390,7 +390,7 @@ public static partial class TimeUtils {
     /// Gets whether the specified <paramref name="year"/> is a leap year.
     /// </summary>
     /// <param name="year">The year.</param>
-    /// <returns><c>true</c> if the specified year is a leap year; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the specified year is a leap year; otherwise <see langword="false"/>.</returns>
     public static bool IsLeapYear(int year) {
         return DateTime.DaysInMonth(year, 2).Equals(29);
     }
@@ -419,8 +419,8 @@ public static partial class TimeUtils {
     /// </summary>
     /// <param name="date">The date.</param>
     /// <param name="days">The number of days.</param>
-    /// <returns><c>true</c> if the <paramref name="date"/> is within the last number of
-    /// <paramref name="days"/>, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the <paramref name="date"/> is within the last number of
+    /// <paramref name="days"/>, otherwise <see langword="false"/>.</returns>
     public static bool IsDateWithinLastDays(DateTime date, int days) {
         double lastDays = (double) 0 - days;
         DateTime startDate = date.AddDays(lastDays);
@@ -433,8 +433,8 @@ public static partial class TimeUtils {
     /// <param name="date">The date.</param>
     /// <param name="days">The number of days.</param>
     /// <returns>
-    /// Returns <c>true</c> if the <paramref name="date"/> is within the last number of
-    /// <paramref name="days"/>, otherwise <c>false</c>.
+    /// Returns <see langword="true"/> if the <paramref name="date"/> is within the last number of
+    /// <paramref name="days"/>, otherwise <see langword="false"/>.
     /// </returns>
     public static bool IsDateWithinLastDays(DateTimeOffset date, int days) {
         return IsDateWithinLastDays(date.DateTime, days);
@@ -1140,10 +1140,10 @@ public static partial class TimeUtils {
     /// <param name="result">When this method returns, contains the <see cref="int"/> value
     /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
     /// or <c>0</c> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
-    /// <c>null</c>, is an empty string (""), or does not contain a valid month name. This parameter is
+    /// <see langword="null"/>, is an empty string (""), or does not contain a valid month name. This parameter is
     /// passed uninitialized.</param>
-    /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="monthName"/> was converted successfully; otherwise,
+    /// <see langword="false"/>.</returns>
     public static bool TryParseNumberFromMonthName(string monthName, out int result) {
         if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
         return TryParseNumberFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
@@ -1160,10 +1160,10 @@ public static partial class TimeUtils {
     /// <param name="result">When this method returns, contains the <see cref="int"/> value
     /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded,
     /// or <c>0</c> if the conversion failed. The conversion fails if <paramref name="monthName"/> is
-    /// <c>null</c>, is an empty string (""), or does not contain a valid month name. This parameter is
+    /// <see langword="null"/>, is an empty string (""), or does not contain a valid month name. This parameter is
     /// passed uninitialized.</param>
-    /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="monthName"/> was converted successfully; otherwise,
+    /// <see langword="false"/>.</returns>
     public static bool TryParseNumberFromMonthName(string monthName, IFormatProvider? provider, out int result) {
         if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
         result = 0;
@@ -1208,10 +1208,10 @@ public static partial class TimeUtils {
     /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonthName"/> value
     /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
     /// default value of <see cref="EssentialsDateMonthName"/> if the conversion failed. The conversion fails if
-    /// <paramref name="monthName"/> is <c>null</c>, is an empty string (""), or does not contain a valid
+    /// <paramref name="monthName"/> is <see langword="null"/>, is an empty string (""), or does not contain a valid
     /// month name. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if <paramref name="monthName"/> was converted successfully; otherwise,
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="monthName"/> was converted successfully; otherwise,
+    /// <see langword="false"/>.</returns>
     public static bool TryParseEnumFromMonthName(string monthName, out EssentialsDateMonthName result) {
         return TryParseEnumFromMonthName(monthName, CultureInfo.InvariantCulture, out result);
     }
@@ -1226,11 +1226,11 @@ public static partial class TimeUtils {
     /// <param name="result">When this method returns, contains the <see cref="EssentialsDateMonthName"/> value
     /// equivalent to the month name contained in <paramref name="monthName"/>, if the conversion succeeded, or the
     /// default value of <see cref="EssentialsDateMonthName"/> if the conversion failed. The conversion fails if
-    /// <paramref name="monthName"/> is <c>null</c>, is an empty string (""), or does not contain a valid
+    /// <paramref name="monthName"/> is <see langword="null"/>, is an empty string (""), or does not contain a valid
     /// month name. This parameter is passed uninitialized.</param>
     /// <param name="provider">An object that supplies culture-specific format information about
-    /// <paramref name="monthName"/>.</param> <returns><c>true</c> if <paramref name="monthName"/> was converted
-    /// successfully; otherwise, <c>false</c>.</returns>
+    /// <paramref name="monthName"/>.</param> <returns><see langword="true"/> if <paramref name="monthName"/> was converted
+    /// successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseEnumFromMonthName(string monthName, IFormatProvider provider, out EssentialsDateMonthName result) {
         if (string.IsNullOrWhiteSpace(monthName)) throw new ArgumentNullException(nameof(monthName));
         result = 0;

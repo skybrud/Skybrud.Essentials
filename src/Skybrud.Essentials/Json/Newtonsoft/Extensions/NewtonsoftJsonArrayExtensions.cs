@@ -63,8 +63,8 @@ public static class NewtonsoftJsonArrayExtensions {
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the token.</param>
-    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
-    /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <see langword="false"/>.</param>
+    /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetBoolean(this JArray? array, int index, out bool result) {
         return JsonTokenUtils.TryParseBoolean(array?[index], out result);
     }
@@ -74,8 +74,8 @@ public static class NewtonsoftJsonArrayExtensions {
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
-    /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <see langword="false"/>.</param>
+    /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetBooleanByPath(this JArray? array, string path, out bool result) {
         return JsonTokenUtils.TryParseBoolean(array?.SelectToken(path), out result);
     }
@@ -250,7 +250,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
-    /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
+    /// <returns>An instance of <see cref="JObject"/>, or <see langword="null"/> if not found.</returns>
     public static JObject? GetObject(this JArray? array, int index) {
         return array?[index] as JObject;
     }
@@ -285,7 +285,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <returns>An instance of <see cref="JObject"/>, or <c>null</c> if not found.</returns>
+    /// <returns>An instance of <see cref="JObject"/>, or <see langword="null"/> if not found.</returns>
     public static JObject? GetObjectByPath(this JArray? array, string path) {
         return array?.SelectToken(path) as JObject;
     }
@@ -332,7 +332,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// </summary>
     /// <param name="array">The parent array.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <returns>An instance of <see cref="string"/>, or <c>null</c> if <paramref name="path"/> didn't match
+    /// <returns>An instance of <see cref="string"/>, or <see langword="null"/> if <paramref name="path"/> didn't match
     /// any tokens.</returns>
     public static string? GetStringByPath(this JArray? array, string path) {
         return array?.SelectToken(path)?.Value<string>();

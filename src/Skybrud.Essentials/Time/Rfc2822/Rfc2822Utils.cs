@@ -46,7 +46,7 @@ public static class Rfc2822Utils {
     /// <param name="result">When this method returns, contains the <see cref="DateTime"/> value
     /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the <paramref name="value"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? value, out DateTime result) {
         return Rfc822Utils.TryParse(value, out result);
     }
@@ -60,7 +60,7 @@ public static class Rfc2822Utils {
     /// <param name="result">When this method returns, contains the <see cref="DateTimeOffset"/> value
     /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the <paramref name="value"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? value, out DateTimeOffset result) {
         return Rfc822Utils.TryParse(value, out result);
     }

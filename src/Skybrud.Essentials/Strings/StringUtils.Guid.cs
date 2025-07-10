@@ -12,7 +12,7 @@ public static partial class StringUtils {
     /// Returns whether the specified <paramref name="input"/> string matches a GUID (<see cref="Guid"/>).
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a GUID; otherwise <see langword="false"/>.</returns>
     public static bool IsGuid(string? input) {
         return Guid.TryParse(input, out Guid _);
     }
@@ -55,7 +55,7 @@ public static partial class StringUtils {
     /// <param name="input">The string containing the GUID.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
     /// otherwise, <see cref="Guid.Empty"/>.</param>
-    /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseGuid(string? input, out Guid result) {
         return Guid.TryParse(input, out result);
     }
@@ -65,8 +65,8 @@ public static partial class StringUtils {
     /// </summary>
     /// <param name="input">The string containing the GUID.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
-    /// otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+    /// otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseGuid(string? input, [NotNullWhen(true)] out Guid? result) {
         if (Guid.TryParse(input, out Guid guid)) {
             result = guid;

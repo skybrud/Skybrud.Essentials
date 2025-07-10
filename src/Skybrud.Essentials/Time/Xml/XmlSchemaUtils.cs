@@ -28,7 +28,7 @@ public class XmlSchemaUtils {
     /// </summary>
     /// <param name="input">The duration using the XML schema format.</param>
     /// <param name="result">When this method returns, holds the parsed <see cref="TimeSpan"/> structure if successful; otherwise, <see cref="TimeSpan.Zero"/>.</param>
-    /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseDuration(string? input, out TimeSpan result) {
 
         if (string.IsNullOrWhiteSpace(input)) {

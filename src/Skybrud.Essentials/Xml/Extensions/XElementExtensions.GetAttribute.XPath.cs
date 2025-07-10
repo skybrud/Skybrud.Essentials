@@ -14,7 +14,7 @@ public static partial class XElementExtensions {
     /// </summary>
     /// <param name="element">An instance of <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
-    /// <returns>An instance of <see cref="XAttribute"/>, or <c>null</c> if no attributes were matched.</returns>
+    /// <returns>An instance of <see cref="XAttribute"/>, or <see langword="null"/> if no attributes were matched.</returns>
     public static XAttribute? GetAttribute(this XElement? element, string expression) {
         return GetAttribute(element, expression, null);
     }
@@ -25,7 +25,7 @@ public static partial class XElementExtensions {
     /// <param name="element">An instance of <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression to match.</param>
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for the namespace prefixes in the XPath expression.</param>
-    /// <returns>An instance of <see cref="XAttribute"/>, or <c>null</c> if no attributes were matched.</returns>
+    /// <returns>An instance of <see cref="XAttribute"/>, or <see langword="null"/> if no attributes were matched.</returns>
     public static XAttribute? GetAttribute(this XElement? element, string expression, IXmlNamespaceResolver? resolver) {
 
         // If "expression" is just the name of the attribute, we convert the expression to an instance of "XName"

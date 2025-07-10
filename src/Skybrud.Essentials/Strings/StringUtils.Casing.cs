@@ -353,7 +353,7 @@ public static partial class StringUtils {
 
     /// <summary>
     /// Uppercases the first character of the specified <paramref name="str"/>. If <paramref name="str"/> is
-    /// either <c>null</c> or empty, an empty string will be returned instead.
+    /// either <see langword="null"/> or empty, an empty string will be returned instead.
     /// </summary>
     /// <param name="str">The string which first character should be uppercased.</param>
     /// <returns>The input string with the first character has been uppercased.</returns>

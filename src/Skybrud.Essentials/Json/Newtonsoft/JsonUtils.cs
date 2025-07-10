@@ -140,8 +140,8 @@ public static partial class JsonUtils {
     /// Attempts to parse the specified <paramref name="json"/> string into an instance of <see cref="JToken"/>.
     /// </summary>
     /// <param name="json">The JSON string to parse.</param>
-    /// <param name="result">When this method returns, holds the parsed <see cref="JToken"/> if successful; otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, holds the parsed <see cref="JToken"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonToken(string? json, [NotNullWhen(true)] out JToken? result) {
 
         if (json is null) {
@@ -165,7 +165,7 @@ public static partial class JsonUtils {
     /// <typeparam name="T">The type of the output object.</typeparam>
     /// <param name="json">The JSON string to parse.</param>
     /// <param name="result">When this method returns, holds the parsed <see cref="JToken"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonToken<T>(string? json, [NotNullWhen(true)] out T? result) {
 
         if (json is null) {
@@ -190,7 +190,7 @@ public static partial class JsonUtils {
     /// <param name="json">The JSON string to parse.</param>
     /// <param name="callback">A callback function used for converting a <see cref="JToken"/> into an instance of <typeparamref name="T"/>.</param>
     /// <param name="result">When this method returns, holds the parsed <see cref="JToken"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonToken<T>(string? json, Func<JToken, T> callback, [NotNullWhen(true)] out T? result) {
 
         if (json is null) {
@@ -221,8 +221,8 @@ public static partial class JsonUtils {
     /// Attempts to parse the specified <paramref name="json"/> string into an instance of <see cref="JObject"/>.
     /// </summary>
     /// <param name="json">The JSON string to parse.</param>
-    /// <param name="result">When this method returns, holds the parsed <see cref="JObject"/> if successful; otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, holds the parsed <see cref="JObject"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonObject(string? json, [NotNullWhen(true)] out JObject? result) {
 
         if (json is null) {
@@ -246,7 +246,7 @@ public static partial class JsonUtils {
     /// <typeparam name="T">The type of the output object.</typeparam>
     /// <param name="json">The JSON string to parse.</param>
     /// <param name="result">When this method returns, holds the parsed <see cref="JObject"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonObject<T>(string? json, [NotNullWhen(true)] out T? result) {
 
         if (json is null) {
@@ -271,7 +271,7 @@ public static partial class JsonUtils {
     /// <param name="json">The JSON string to parse.</param>
     /// <param name="callback">A callback function used for converting a <see cref="JObject"/> into an instance of <typeparamref name="T"/>.</param>
     /// <param name="result">When this method returns, holds the parsed <see cref="JObject"/> if successful; otherwise, the default value of <typeparamref name="T"/>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonObject<T>(string? json, Func<JObject, T> callback, [NotNullWhen(true)] out T? result) {
 
         if (json is null) {
@@ -297,8 +297,8 @@ public static partial class JsonUtils {
     /// Attempts to parse the specified <paramref name="json"/> string into an instance of <see cref="JArray"/>.
     /// </summary>
     /// <param name="json">The JSON string to parse.</param>
-    /// <param name="result">When this method returns, holds the parsed <see cref="JArray"/> if successful; otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, holds the parsed <see cref="JArray"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonArray(string? json, [NotNullWhen(true)] out JArray? result) {
 
         if (json is null) {
@@ -321,8 +321,8 @@ public static partial class JsonUtils {
     /// </summary>
     /// <typeparam name="T">The type of the output Array.</typeparam>
     /// <param name="json">The JSON string to parse.</param>
-    /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonArray<T>(string? json, [NotNullWhen(true)] out T[]? result) {
 
         if (json is null) {
@@ -346,8 +346,8 @@ public static partial class JsonUtils {
     /// <typeparam name="T">The type of the output array.</typeparam>
     /// <param name="json">The JSON string to parse.</param>
     /// <param name="callback">A callback function used for converting a <see cref="JArray"/> into an instance of <typeparamref name="T"/>.</param>
-    /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonArray<T>(string? json, Func<JArray, T[]> callback, [NotNullWhen(true)] out T[]? result) {
 
         if (json is null) {
@@ -375,8 +375,8 @@ public static partial class JsonUtils {
     /// <typeparam name="T">The type of the output array.</typeparam>
     /// <param name="json">The JSON string to parse.</param>
     /// <param name="callback">A callback function used for converting the individual <see cref="JObject"/> of the parsed array into instances of <typeparamref name="T"/>.</param>
-    /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if the parsing was successful; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, holds the parsed array of <typeparamref name="T"/> if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if the parsing was successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseJsonArray<T>(string? json, Func<JObject, T> callback, [NotNullWhen(true)] out T[]? result) {
 
         if (json is null) {

@@ -167,7 +167,7 @@ public partial class TimeUtils {
     /// Returns whether the specified <paramref name="date"/> is today.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is today; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is today; otherwise, <see langword="false"/>.</returns>
     public static bool IsToday(DateTime date) {
         return IsSameDay(date, DateTime.Now);
     }
@@ -176,7 +176,7 @@ public partial class TimeUtils {
     /// Returns whether the specified <paramref name="date"/> is tomorrow.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is tomorrow; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is tomorrow; otherwise, <see langword="false"/>.</returns>
     public static bool IsTomorrow(DateTime date) {
         return IsSameDay(date, DateTime.Now.AddDays(1));
     }
@@ -185,7 +185,7 @@ public partial class TimeUtils {
     /// Returns whether the specified <paramref name="date"/> is yesterday.
     /// </summary>
     /// <param name="date">The date.</param>
-    /// <returns><c>true</c> if <paramref name="date"/> is yesterday; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="date"/> is yesterday; otherwise, <see langword="false"/>.</returns>
     public static bool IsYesterday(DateTime date) {
         return IsSameDay(date, DateTime.Now.AddDays(-1));
     }

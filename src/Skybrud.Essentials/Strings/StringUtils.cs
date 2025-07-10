@@ -145,11 +145,11 @@ public static partial class StringUtils {
     }
 
     /// <summary>
-    /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <c>true</c>. Works only with English words.
+    /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <see langword="true"/>. Works only with English words.
     /// </summary>
     /// <param name="singular">The singular word.</param>
     /// <param name="condition">A boolean value.</param>
-    /// <returns>The plural word if <paramref name="condition"/> is <c>true</c>; otherwise <paramref name="singular"/>.</returns>
+    /// <returns>The plural word if <paramref name="condition"/> is <see langword="true"/>; otherwise <paramref name="singular"/>.</returns>
     public static string ToPlural(string singular, bool condition) {
         return condition ? ToPlural(singular) : singular;
     }
@@ -272,7 +272,7 @@ public static partial class StringUtils {
     /// Alias of <see cref="IsDouble"/>. Gets whether the string matches a double (<see cref="double"/>).
     /// </summary>
     /// <param name="str">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="str"/> matches a double; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="str"/> matches a double; otherwise <see langword="false"/>.</returns>
     public static bool IsNumeric([NotNullWhen(true)] string? str) {
         return str is not null && long.TryParse(str, NumberStyles.Integer, CultureInfo.InvariantCulture, out long _);
     }
@@ -281,7 +281,7 @@ public static partial class StringUtils {
     /// Gets whether the specified string is alphanumeric - meaning it only consists of numbers and letters.
     /// </summary>
     /// <param name="str">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="str"/> is alphanumeric; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="str"/> is alphanumeric; otherwise <see langword="false"/>.</returns>
     public static bool IsAlphanumeric([NotNullWhen(true)] string? str) {
         return str is not null && Regex.IsMatch(str, "^[0-9a-zA-Z]+$");
     }
@@ -290,7 +290,7 @@ public static partial class StringUtils {
     /// Returns whether the specified <paramref name="value"/> is alphabetic - meaning it only consists of letters.
     /// </summary>
     /// <param name="value">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="value"/> is alphanumeric; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="value"/> is alphanumeric; otherwise <see langword="false"/>.</returns>
     public static bool IsAlphabetic([NotNullWhen(true)] string? value) {
         return value is not null && Regex.IsMatch(value, "^[a-zA-Z]+$");
     }

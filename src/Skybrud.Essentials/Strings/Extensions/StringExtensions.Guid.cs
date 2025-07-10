@@ -10,7 +10,7 @@ public static partial class StringExtensions {
     /// Returns whether the specified <paramref name="input"/> string matches a GUID (<see cref="Guid"/>).
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a GUID; otherwise, <see langword="false"/>.</returns>
     public static bool IsGuid(this string? input) {
         return StringUtils.IsGuid(input);
     }
@@ -21,7 +21,7 @@ public static partial class StringExtensions {
     /// <param name="input">The string to validate.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
     /// otherwise, <see cref="Guid.Empty"/>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a GUID; otherwise, <see langword="false"/>.</returns>
     public static bool IsGuid(this string? input, out Guid result) {
         return StringUtils.TryParseGuid(input, out result);
     }
@@ -31,8 +31,8 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The string to validate.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
-    /// otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a GUID; otherwise, <c>false</c>.</returns>
+    /// otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a GUID; otherwise, <see langword="false"/>.</returns>
     public static bool IsGuid(this string? input, [NotNullWhen(true)] out Guid? result) {
         return StringUtils.TryParseGuid(input, out result);
     }
@@ -74,7 +74,7 @@ public static partial class StringExtensions {
     /// <param name="input">The string containing the GUID.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
     /// otherwise, <see cref="Guid.Empty"/>.</param>
-    /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseGuid(this string? input, out Guid result) {
         return StringUtils.TryParseGuid(input, out result);
     }
@@ -84,8 +84,8 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The string containing the GUID.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="Guid"/> value if successful;
-    /// otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+    /// otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseGuid(this string? input, [NotNullWhen(true)] out Guid? result) {
         return StringUtils.TryParseGuid(input, out result);
     }

@@ -72,7 +72,7 @@ public static class EnumerableExtensions {
     /// <param name="source">The input collection to be grouped.</param>
     /// <param name="groupSize">The maximum size of each group.</param>
     /// <returns>A collection of individual <see cref="IEnumerable{TSource}"/> instances representing each group.</returns>
-    /// <exception cref="ArgumentNullException">If <paramref name="source"/> is <c>null</c>.</exception>
+    /// <exception cref="ArgumentNullException">If <paramref name="source"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentException">If <paramref name="groupSize"/> is not greater than <c>0</c>.</exception>
     /// <see>
     ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L42</cref>
@@ -100,7 +100,7 @@ public static class EnumerableExtensions {
 
     /// <summary>
     /// Orders <paramref name="collection"/> in descending order if <paramref name="reverse"/> is
-    /// <c>true</c>, otherwise in ascending order.
+    /// <see langword="true"/>, otherwise in ascending order.
     /// </summary>
     /// <typeparam name="T">The type of the items in the collection.</typeparam>
     /// <typeparam name="TKey"></typeparam>
@@ -128,7 +128,7 @@ public static class EnumerableExtensions {
 
     /// <summary>
     /// Sorts the elements of <paramref name="source"/> in descending order if <paramref name="reverse"/> is
-    /// <c>true</c>, otherwise in ascending order.
+    /// <see langword="true"/>, otherwise in ascending order.
     /// </summary>
     /// <typeparam name="T">The type of the items in the collection.</typeparam>
     /// <typeparam name="TKey"></typeparam>

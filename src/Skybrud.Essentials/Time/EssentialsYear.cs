@@ -27,7 +27,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     public bool IsLeapYear => TimeUtils.IsLeapYear(Year);
 
     /// <summary>
-    /// Gets the amount of days in the year - <c>366</c> if <see cref="IsLeapYear"/> is <c>true</c>,
+    /// Gets the amount of days in the year - <c>366</c> if <see cref="IsLeapYear"/> is <see langword="true"/>,
     /// otherwise <c>365</c>.
     /// </summary>
     public int Days => IsLeapYear ? 366 : 365;
@@ -433,7 +433,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     /// </summary>
     /// <param name="year1">The first instance of <see cref="EssentialsYear"/>.</param>
     /// <param name="year2">The second instance of <see cref="EssentialsYear"/>.</param>
-    /// <returns><c>true</c> if the two instances represent two different years; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the two instances represent two different years; otherwise, <see langword="false"/>.</returns>
     public static bool operator !=(EssentialsYear? year1, EssentialsYear? year2) {
         return CompareTo(year1, year2) != 0;
     }
@@ -443,7 +443,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     /// </summary>
     /// <param name="year1">The first instance of <see cref="EssentialsYear"/>.</param>
     /// <param name="year2">The second instance of <see cref="EssentialsYear"/>.</param>
-    /// <returns><c>true</c> if <paramref name="year1"/> is less than <paramref name="year2"/>, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="year1"/> is less than <paramref name="year2"/>, otherwise <see langword="false"/>.</returns>
     public static bool operator <(EssentialsYear? year1, EssentialsYear? year2) {
         return CompareTo(year1, year2) < 0;
     }
@@ -453,7 +453,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     /// </summary>
     /// <param name="year1">The first instance of <see cref="EssentialsYear"/>.</param>
     /// <param name="year2">The second instance of <see cref="EssentialsYear"/>.</param>
-    /// <returns><c>true</c> if <paramref name="year1"/> is less than or equal to <paramref name="year2"/>, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="year1"/> is less than or equal to <paramref name="year2"/>, otherwise <see langword="false"/>.</returns>
     public static bool operator <=(EssentialsYear? year1, EssentialsYear? year2) {
         return CompareTo(year1, year2) <= 0;
     }
@@ -463,7 +463,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     /// </summary>
     /// <param name="year1">The first instance of <see cref="EssentialsYear"/>.</param>
     /// <param name="year2">The second instance of <see cref="EssentialsYear"/>.</param>
-    /// <returns><c>true</c> if <paramref name="year1"/> is greater than <paramref name="year2"/>, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="year1"/> is greater than <paramref name="year2"/>, otherwise <see langword="false"/>.</returns>
     public static bool operator >(EssentialsYear? year1, EssentialsYear? year2) {
         return CompareTo(year1, year2) > 0;
     }
@@ -473,7 +473,7 @@ public class EssentialsYear : EssentialsPeriod, IComparable, IComparable<Essenti
     /// </summary>
     /// <param name="year1">The first instance of <see cref="EssentialsYear"/>.</param>
     /// <param name="year2">The second instance of <see cref="EssentialsYear"/>.</param>
-    /// <returns><c>true</c> if <paramref name="year1"/> is greater than or equal to <paramref name="year2"/>, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="year1"/> is greater than or equal to <paramref name="year2"/>, otherwise <see langword="false"/>.</returns>
     public static bool operator >=(EssentialsYear? year1, EssentialsYear? year2) {
         return CompareTo(year1, year2) >= 0;
     }

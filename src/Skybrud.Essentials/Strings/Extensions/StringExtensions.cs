@@ -109,7 +109,7 @@ public static partial class StringExtensions {
     /// <see cref="string.IsNullOrWhiteSpace"/>.
     /// </summary>
     /// <param name="input">The input string to test.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> has a value; otherwise <see langword="false"/>.</returns>
     public static bool HasValue([NotNullWhen(true)] this string? input) {
         return string.IsNullOrWhiteSpace(input) == false;
     }
@@ -121,7 +121,7 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The input string to test.</param>
     /// <param name="result">When this method returns, contains the input value.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> has a value; otherwise <see langword="false"/>.</returns>
     public static bool HasValue([NotNullWhen(true)] this string? input, [NotNullWhen(true)] out string? result) {
         result = input;
         return string.IsNullOrWhiteSpace(input) == false;
@@ -132,7 +132,7 @@ public static partial class StringExtensions {
     /// <see cref="string.IsNullOrWhiteSpace"/>.
     /// </summary>
     /// <param name="input">The input string to test.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> has a value; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> has a value; otherwise <see langword="false"/>.</returns>
     public static bool IsNullOrWhiteSpace([NotNullWhen(true)] this string? input) {
         return string.IsNullOrWhiteSpace(input);
     }
@@ -141,7 +141,7 @@ public static partial class StringExtensions {
     /// Returns whether the specified <paramref name="input"/> string matches a double (<see cref="double"/>).
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a double; otherwise <see langword="false"/>.</returns>
     public static bool IsNumeric([NotNullWhen(true)] this string? input) {
         return StringUtils.IsNumeric(input);
     }
@@ -150,7 +150,7 @@ public static partial class StringExtensions {
     /// Gets whether the specified <paramref name="input"/> string is alphanumeric - meaning it only consists of numbers and letters.
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> is alphanumeric; otherwise <see langword="false"/>.</returns>
     public static bool IsAlphanumeric([NotNullWhen(true)] this string? input) {
         return StringUtils.IsAlphanumeric(input);
     }
@@ -159,7 +159,7 @@ public static partial class StringExtensions {
     /// Returns whether the specified <paramref name="input"/> string is alphabetic - meaning it only consists of letters.
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> is alphanumeric; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> is alphanumeric; otherwise <see langword="false"/>.</returns>
     public static bool IsAlphabetic([NotNullWhen(true)] this string? input) {
         return StringUtils.IsAlphabetic(input);
     }
@@ -288,11 +288,11 @@ public static partial class StringExtensions {
     }
 
     /// <summary>
-    /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <c>true</c>. Works only with English words.
+    /// Returns the plural counterpart of <paramref name="singular"/> if <paramref name="condition"/> is <see langword="true"/>. Works only with English words.
     /// </summary>
     /// <param name="singular">The singular word.</param>
     /// <param name="condition">A boolean value.</param>
-    /// <returns>The plural word if <paramref name="condition"/> is <c>true</c>; otherwise <paramref name="singular"/>.</returns>
+    /// <returns>The plural word if <paramref name="condition"/> is <see langword="true"/>; otherwise <paramref name="singular"/>.</returns>
     public static string ToPlural(this string singular, bool condition) {
         return StringUtils.ToPlural(singular, condition);
     }
@@ -307,13 +307,13 @@ public static partial class StringExtensions {
     }
 
     /// <summary>
-    /// If the specified <paramref name="input"/> string is either <c>null</c> or white space, this method returns
+    /// If the specified <paramref name="input"/> string is either <see langword="null"/> or white space, this method returns
     /// the specified <paramref name="fallback"/> value; otherwise returns the <paramref name="input"/> string
     /// untouched.
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <param name="fallback">The fallback value.</param>
-    /// <returns><paramref name="fallback"/> if <paramref name="input"/> is <c>null</c> or white space; otherwise <paramref name="input"/>.</returns>
+    /// <returns><paramref name="fallback"/> if <paramref name="input"/> is <see langword="null"/> or white space; otherwise <paramref name="input"/>.</returns>
     [return: NotNullIfNotNull(nameof(input))]
     [return: NotNullIfNotNull(nameof(fallback))]
     public static string? IfNullOrWhiteSpace(this string? input, string? fallback) {
@@ -321,23 +321,23 @@ public static partial class StringExtensions {
     }
 
     /// <summary>
-    /// If the specified <paramref name="input"/> string is either <c>null</c> or white space, this method returns
+    /// If the specified <paramref name="input"/> string is either <see langword="null"/> or white space, this method returns
     /// value of the specified <paramref name="fallback"/> function; otherwise returns the <paramref name="input"/>
     /// string untouched.
     /// </summary>
     /// <param name="input">The input string.</param>
     /// <param name="fallback">The fallback function.</param>
-    /// <returns>The value returned by <paramref name="fallback"/> if <paramref name="input"/> is <c>null</c> or white space; otherwise <paramref name="input"/>.</returns>
+    /// <returns>The value returned by <paramref name="fallback"/> if <paramref name="input"/> is <see langword="null"/> or white space; otherwise <paramref name="input"/>.</returns>
     [return: NotNullIfNotNull(nameof(input))]
     public static string? IfNullOrWhiteSpace(this string? input, Func<string?> fallback) {
         return string.IsNullOrWhiteSpace(input) ? fallback() : input;
     }
 
     /// <summary>
-    /// Returns <c>null</c> if the specified <paramref name="input"/> string is empty or white space.
+    /// Returns <see langword="null"/> if the specified <paramref name="input"/> string is empty or white space.
     /// </summary>
     /// <param name="input">The input string.</param>
-    /// <returns><c>null</c> if <paramref name="input"/> is empty or white space; otherwise <paramref name="input"/>.</returns>
+    /// <returns><see langword="null"/> if <paramref name="input"/> is empty or white space; otherwise <paramref name="input"/>.</returns>
     public static string? NullIfWhiteSpace(this string? input) {
         return string.IsNullOrWhiteSpace(input) ? null : input;
     }

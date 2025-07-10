@@ -56,7 +56,7 @@ public class PartialDateConverter : JsonConverter {
     /// Determines whether this instance can convert the specified object type.
     /// </summary>
     /// <param name="objectType">Type of the object.</param>
-    /// <returns><c>true</c> if this instance can convert the specified object type; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if this instance can convert the specified object type; otherwise, <see langword="false"/>.</returns>
     public override bool CanConvert(Type objectType) {
         return objectType == typeof(EssentialsPartialDate);
     }

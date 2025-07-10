@@ -117,7 +117,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <param name="value">An instance of <see cref="int"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetElementValueAsInt32(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out int value) {
         return GetElementValue(element, expression, resolver, out value);
     }
@@ -187,7 +187,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <param name="value">An instance of <see cref="long"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetElementValueAsInt64(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out long value) {
         return GetElementValue(element, expression, resolver, out value);
     }
@@ -257,7 +257,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <param name="value">An instance of <see cref="float"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetElementValueAsSingle(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out float value) {
         return GetElementValue(element, expression, resolver, out value);
     }
@@ -327,7 +327,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <param name="value">An instance of <see cref="float"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetElementValueAsFloat(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out float value) {
         return GetElementValue(element, expression, resolver, out value);
     }
@@ -397,7 +397,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <param name="value">An instance of <see cref="double"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetElementValueAsDouble(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out double value) {
         return GetElementValue(element, expression, resolver, out value);
     }
@@ -467,7 +467,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <param name="value">An instance of <see cref="bool"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetElementValueAsBoolean(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out bool value) {
 
         // Get the element from the specified "element"
@@ -633,7 +633,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="expression">The XPath expression the element should match.</param>
     /// <param name="value">The converted value.</param>
-    /// <returns><c>true</c> if the element was found and has a value, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the element was found and has a value, otherwise <see langword="false"/>.</returns>
     public static bool GetElementValue<T>(this XElement? element, string expression, out T value) {
 
         // Get the element matching "expression"
@@ -662,7 +662,7 @@ public static partial class XElementExtensions {
     /// <param name="resolver">An instance of <see cref="IXmlNamespaceResolver"/> for resolving namespace prefixes
     /// in the XPath expression.</param>
     /// <param name="value">The converted value.</param>
-    /// <returns><c>true</c> if the element was found and has a value, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the element was found and has a value, otherwise <see langword="false"/>.</returns>
     public static bool GetElementValue<T>(this XElement? element, string expression, IXmlNamespaceResolver? resolver, out T value) {
 
         // Get the element matching "expression"

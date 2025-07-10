@@ -121,8 +121,8 @@ public static class EnumExtensions {
     /// <param name="value">The enum value.</param>
     /// <param name="min">The minimum value.</param>
     /// <param name="max">The maximum value.</param>
-    /// <returns><c>true</c> if <paramref name="value"/> is between <paramref name="min"/> and
-    /// <paramref name="max"/>; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="value"/> is between <paramref name="min"/> and
+    /// <paramref name="max"/>; otherwise, <see langword="false"/>.</returns>
     public static bool IsBetween(this Enum value, int min, int max) {
         int v = Convert.ToInt32(value);
         return v >= min && v <= max;
@@ -135,8 +135,8 @@ public static class EnumExtensions {
     /// <param name="value">The enum value.</param>
     /// <param name="min">The minimum value.</param>
     /// <param name="max">The maximum value.</param>
-    /// <returns><c>true</c> if <paramref name="value"/> is between <paramref name="min"/> and
-    /// <paramref name="max"/>; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="value"/> is between <paramref name="min"/> and
+    /// <paramref name="max"/>; otherwise, <see langword="false"/>.</returns>
     public static bool IsBetween(this Enum value, Enum min, Enum max) {
         int v = Convert.ToInt32(value);
         return v >= Convert.ToInt32(min) && v <= Convert.ToInt32(max);

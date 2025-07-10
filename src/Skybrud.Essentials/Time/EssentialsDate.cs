@@ -602,10 +602,10 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="input">A string that contains a date to convert.</param>
     /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
-    /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
-    /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+    /// the date, if the conversion succeeded, or <see langword="null"/>, if the conversion failed. The conversion fails if
+    /// the input parameter is <see langword="null"/> or does not contain a valid string representation of a date. This
     /// parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the input parameter is successfully converted; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? input, [NotNullWhen(true)] out EssentialsDate? result) {
 
         // Make sure "result" is initialized
@@ -631,10 +631,10 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <param name="provider">An object that provides culture-specific formatting information about input.</param>
     /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
     /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
-    /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
-    /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+    /// the date, if the conversion succeeded, or <see langword="null"/>, if the conversion failed. The conversion fails if
+    /// the input parameter is <see langword="null"/> or does not contain a valid string representation of a date. This
     /// parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the input parameter is successfully converted; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? input, IFormatProvider? provider, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsDate? result) {
 
         // Make sure "result" is initialized
@@ -663,10 +663,10 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <param name="provider">An object that provides culture-specific formatting information about input.</param>
     /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
     /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
-    /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
-    /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+    /// the date, if the conversion succeeded, or <see langword="null"/>, if the conversion failed. The conversion fails if
+    /// the input parameter is <see langword="null"/> or does not contain a valid string representation of a date. This
     /// parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the input parameter is successfully converted; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseExact(string? input, string format, IFormatProvider? provider, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsDate? result) {
 
         // Make sure "result" is initialized
@@ -695,10 +695,10 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// <param name="provider">An object that provides culture-specific formatting information about input.</param>
     /// <param name="styles">A bitwise combination of enumeration values that indicates the permitted format of input.</param>
     /// <param name="result">When the method returns, contains the <see cref="EssentialsDate"/> value equivalent to
-    /// the date, if the conversion succeeded, or <c>null</c>, if the conversion failed. The conversion fails if
-    /// the input parameter is <c>null</c> or does not contain a valid string representation of a date. This
+    /// the date, if the conversion succeeded, or <see langword="null"/>, if the conversion failed. The conversion fails if
+    /// the input parameter is <see langword="null"/> or does not contain a valid string representation of a date. This
     /// parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if the input parameter is successfully converted; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the input parameter is successfully converted; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseExact(string input, string[] formats, IFormatProvider provider, DateTimeStyles styles, [NotNullWhen(true)] out EssentialsDate? result) {
 
         // Make sure "result" is initialized
@@ -821,8 +821,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
-    /// <returns><c>true</c> if the two instances represent the same date and time, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the two instances represent the same date and time, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator ==(EssentialsDate? d1, EssentialsDate? d2) {
         return CompareTo(d1, d2) == 0;
     }
@@ -833,8 +833,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
-    /// <returns><c>true</c> if the two instances represents a different date and time, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the two instances represents a different date and time, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator !=(EssentialsDate? d1, EssentialsDate? d2) {
         return CompareTo(d1, d2) != 0;
     }
@@ -844,8 +844,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator <(EssentialsDate? d1, EssentialsDate? d2) {
         return CompareTo(d1, d2) < 0;
     }
@@ -855,8 +855,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator <(EssentialsDate? d1, DateTime d2) {
         return CompareTo(d1, d2) < 0;
     }
@@ -866,8 +866,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator <(EssentialsDate? d1, DateTimeOffset d2) {
         return CompareTo(d1, d2) < 0;
     }
@@ -877,8 +877,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator <(EssentialsDate? d1, EssentialsTime? d2) {
         return CompareTo(d1, d2) < 0;
     }
@@ -888,8 +888,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator <=(EssentialsDate? d1, EssentialsDate? d2) {
         return CompareTo(d1, d2) <= 0;
     }
@@ -899,8 +899,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator <=(EssentialsDate? d1, DateTime d2) {
         return CompareTo(d1, d2) <= 0;
     }
@@ -910,8 +910,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator <=(EssentialsDate? d1, DateTimeOffset d2) {
         return CompareTo(d1, d2) <= 0;
     }
@@ -921,8 +921,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator <=(EssentialsDate? d1, EssentialsTime? d2) {
         return CompareTo(d1, d2) <= 0;
     }
@@ -932,8 +932,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >(EssentialsDate? d1, EssentialsDate? d2) {
         return CompareTo(d1, d2) > 0;
     }
@@ -943,8 +943,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >(EssentialsDate? d1, DateTime d2) {
         return CompareTo(d1, d2) > 0;
     }
@@ -954,8 +954,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >(EssentialsDate? d1, DateTimeOffset d2) {
         return CompareTo(d1, d2) > 0;
     }
@@ -965,8 +965,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >(EssentialsDate? d1, EssentialsTime? d2) {
         return CompareTo(d1, d2) > 0;
     }
@@ -976,8 +976,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsDate"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >=(EssentialsDate? d1, EssentialsDate? d2) {
         return CompareTo(d1, d2) >= 0;
     }
@@ -987,8 +987,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >=(EssentialsDate? d1, DateTime d2) {
         return CompareTo(d1, d2) >= 0;
     }
@@ -998,8 +998,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="DateTimeOffset"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >=(EssentialsDate? d1, DateTimeOffset d2) {
         return CompareTo(d1, d2) >= 0;
     }
@@ -1009,8 +1009,8 @@ public class EssentialsDate : IComparable, IComparable<EssentialsDate>, IFormatt
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsDate"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsTime"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >=(EssentialsDate? d1, EssentialsTime? d2) {
         return CompareTo(d1, d2) >= 0;
     }

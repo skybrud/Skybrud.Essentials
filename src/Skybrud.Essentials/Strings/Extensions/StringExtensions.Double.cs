@@ -10,7 +10,7 @@ public static partial class StringExtensions {
     /// number (<see cref="double"/>).
     /// </summary>
     /// <param name="input">The string to validate.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a float; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a float; otherwise <see langword="false"/>.</returns>
     public static bool IsDouble(this string? input) {
         return StringUtils.TryParseDouble(input, out double _);
     }
@@ -22,7 +22,7 @@ public static partial class StringExtensions {
     /// <param name="input">The string to validate.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="double"/> if successful;
     /// otherwise, <c>0</c>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a double; otherwise, <see langword="false"/>.</returns>
     public static bool IsDouble(this string? input, out double result) {
         return StringUtils.TryParseDouble(input, out result);
     }
@@ -33,8 +33,8 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">The string to validate.</param>
     /// <param name="result">When this method returns, holds the converted <see cref="double"/> if successful;
-    /// otherwise, <c>null</c>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> matches a double; otherwise, <c>false</c>.</returns>
+    /// otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if <paramref name="input"/> matches a double; otherwise, <see langword="false"/>.</returns>
     public static bool IsDouble(this string? input, [NotNullWhen(true)] out double? result) {
         return StringUtils.TryParseDouble(input, out result);
     }
@@ -77,10 +77,10 @@ public static partial class StringExtensions {
     /// <param name="input">A string containing a number to convert.</param>
     /// <param name="result">When this method returns, contains the double-precision floating-point number
     /// equivalent of the number contained in <paramref name="input"/>, if the conversion succeeded, or zero if the
-    /// conversion failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+    /// conversion failed. The conversion fails if the <paramref name="input"/> parameter is <see langword="null"/> or
     /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
     /// <see cref="double.MinValue"/> or greater than <see cref="double.MaxValue"/>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseDouble(this string? input, out double result) {
         return StringUtils.TryParseDouble(input, out result);
     }
@@ -91,11 +91,11 @@ public static partial class StringExtensions {
     /// </summary>
     /// <param name="input">A string containing a number to convert.</param>
     /// <param name="result">When this method returns, contains the double-precision floating-point number
-    /// equivalent of the number contained in <paramref name="input"/>, if the conversion succeeded, or <c>null</c>
-    /// if the conversion failed. The conversion fails if the <paramref name="input"/> parameter is <c>null</c> or
+    /// equivalent of the number contained in <paramref name="input"/>, if the conversion succeeded, or <see langword="null"/>
+    /// if the conversion failed. The conversion fails if the <paramref name="input"/> parameter is <see langword="null"/> or
     /// <see cref="string.Empty"/>, is not of the correct format, or represents a number less than
     /// <see cref="double.MinValue"/> or greater than <see cref="double.MaxValue"/>.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseDouble(this string? input, [NotNullWhen(true)] out double? result) {
         return StringUtils.TryParseDouble(input, out result);
     }

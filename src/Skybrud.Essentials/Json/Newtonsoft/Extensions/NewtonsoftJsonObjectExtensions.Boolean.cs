@@ -11,7 +11,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <summary>
     /// Returns the <see cref="bool"/> value of the property with the specified <paramref name="propertyName"/>. If
     /// a matching property can not be found or the value can not be successfully converted to a <see cref="bool"/>
-    /// value, <c>false</c> is returned instead.
+    /// value, <see langword="false"/> is returned instead.
     /// </summary>
     /// <param name="json">The parent JSON object.</param>
     /// <param name="propertyName">The name of the property.</param>
@@ -48,7 +48,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <summary>
     /// Returns the <see cref="bool"/> value of the token matching the specified <paramref name="path"/>.
     /// If a matching property can not be found or the value can not be successfully converted to a
-    /// <see cref="bool"/> value, <c>false</c> is returned instead.
+    /// <see cref="bool"/> value, <see langword="false"/> is returned instead.
     /// </summary>
     /// <param name="json">The parent JSON object.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
@@ -87,8 +87,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <param name="json">The parent JSON object.</param>
     /// <param name="propertyName">The name of the property.</param>
-    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
-    /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <see langword="false"/>.</param>
+    /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetBoolean(this JObject? json, string propertyName, out bool result) {
         return JsonTokenUtils.TryParseBoolean(json?[propertyName], out result);
     }
@@ -98,8 +98,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <param name="json">The parent JSON object.</param>
     /// <param name="propertyName">The name of the property.</param>
-    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
-    /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetBoolean(this JObject? json, string propertyName, [NotNullWhen(true)] out bool? result) {
         return JsonTokenUtils.TryParseBoolean(json?[propertyName], out result);
     }
@@ -109,8 +109,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <param name="json">The parent JSON object.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>false</c>.</param>
-    /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <see langword="false"/>.</param>
+    /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetBooleanByPath(this JObject? json, string path, out bool result) {
         return JsonTokenUtils.TryParseBoolean(json?.SelectToken(path), out result);
     }
@@ -120,8 +120,8 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// </summary>
     /// <param name="json">The parent JSON object.</param>
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
-    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <c>null</c>.</param>
-    /// <returns><c>true</c> if value was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <param name="result">When this method returns, if the conversion succeeded, contains the parsed boolean value. If the conversion failed, contains <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if value was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryGetBooleanByPath(this JObject? json, string path, [NotNullWhen(true)] out bool? result) {
         return JsonTokenUtils.TryParseBoolean(json?.SelectToken(path), out result);
     }

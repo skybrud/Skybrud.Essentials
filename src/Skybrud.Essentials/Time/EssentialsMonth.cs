@@ -476,7 +476,7 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
-    /// <returns><c>true</c> if the two instances represent the same month; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the two instances represent the same month; otherwise, <see langword="false"/>.</returns>
     public static bool operator ==(EssentialsMonth? d1, EssentialsMonth? d2) {
         return CompareTo(d1, d2) == 0;
     }
@@ -487,7 +487,7 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
-    /// <returns><c>true</c> if the two instances represents two different months; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the two instances represents two different months; otherwise, <see langword="false"/>.</returns>
     public static bool operator !=(EssentialsMonth? d1, EssentialsMonth? d2) {
         return CompareTo(d1, d2) != 0;
     }
@@ -497,8 +497,8 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than <paramref name="d2"/>, otherwise
+    /// <see langword="false"/>.</returns>
     public static bool operator <(EssentialsMonth? d1, EssentialsMonth? d2) {
         return CompareTo(d1, d2) < 0;
     }
@@ -508,8 +508,8 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is less than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator <=(EssentialsMonth? d1, EssentialsMonth? d2) {
         return CompareTo(d1, d2) <= 0;
     }
@@ -519,8 +519,8 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >(EssentialsMonth? d1, EssentialsMonth? d2) {
         return CompareTo(d1, d2) > 0;
     }
@@ -530,8 +530,8 @@ public class EssentialsMonth : EssentialsPeriod, IComparable, IComparable<Essent
     /// </summary>
     /// <param name="d1">The first instance of <see cref="EssentialsMonth"/>.</param>
     /// <param name="d2">The second instance of <see cref="EssentialsMonth"/>.</param>
-    /// <returns><c>true</c> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
-    /// otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="d1"/> is greater than or equal to <paramref name="d2"/>,
+    /// otherwise <see langword="false"/>.</returns>
     public static bool operator >=(EssentialsMonth? d1, EssentialsMonth? d2) {
         return CompareTo(d1, d2) >= 0;
     }

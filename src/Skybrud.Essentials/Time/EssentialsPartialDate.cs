@@ -179,11 +179,11 @@ public class EssentialsPartialDate {
     /// <param name="input">The input string to be converted.</param>
     /// <param name="result">When this method returns, contains the <see cref="EssentialsPartialDate"/> value
     /// equivalent to the partial date and time contained in <paramref name="input"/>, if the conversion succeeded,
-    /// or <c>null</c> if the conversion failed. The conversion fails if <paramref name="input"/> is
-    /// <c>null</c>, is an empty string (""), or does not contain a valid string representation of a partial
+    /// or <see langword="null"/> if the conversion failed. The conversion fails if <paramref name="input"/> is
+    /// <see langword="null"/>, is an empty string (""), or does not contain a valid string representation of a partial
     /// date. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise,
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise,
+    /// <see langword="false"/>.</returns>
     public static bool TryParse(string? input, [NotNullWhen(true)] out EssentialsPartialDate? result) {
         return TryParse(input, CultureInfo.InvariantCulture, out result);
     }
@@ -197,11 +197,11 @@ public class EssentialsPartialDate {
     /// <paramref name="input"/>.</param>
     /// <param name="result">When this method returns, contains the <see cref="EssentialsPartialDate"/> value
     /// equivalent to the partial date and time contained in <paramref name="input"/>, if the conversion succeeded,
-    /// or <c>null</c> if the conversion failed. The conversion fails if <paramref name="input"/> is
-    /// <c>null</c>, is an empty string (""), or does not contain a valid string representation of a partial
+    /// or <see langword="null"/> if the conversion failed. The conversion fails if <paramref name="input"/> is
+    /// <see langword="null"/>, is an empty string (""), or does not contain a valid string representation of a partial
     /// date. This parameter is passed uninitialized.</param>
-    /// <returns><c>true</c> if <paramref name="input"/> was converted successfully; otherwise,
-    /// <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise,
+    /// <see langword="false"/>.</returns>
     public static bool TryParse(string? input, IFormatProvider? provider, [NotNullWhen(true)] out EssentialsPartialDate? result) {
 
         // Initialize "date"

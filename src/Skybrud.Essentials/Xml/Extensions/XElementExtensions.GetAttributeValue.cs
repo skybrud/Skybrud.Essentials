@@ -65,7 +65,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
     /// <param name="value">An instance of <see cref="int"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetAttributeValueAsInt32(this XElement? element, XName name, out int value) {
         return GetAttributeValue(element, name, out value);
     }
@@ -109,7 +109,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
     /// <param name="value">An instance of <see cref="long"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetAttributeValueAsInt64(this XElement? element, XName name, out long value) {
         return GetAttributeValue(element, name, out value);
     }
@@ -153,7 +153,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
     /// <param name="value">An instance of <see cref="float"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetAttributeValueAsSingle(this XElement? element, XName name, out float value) {
         return GetAttributeValue(element, name, out value);
     }
@@ -197,7 +197,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
     /// <param name="value">An instance of <see cref="double"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetAttributeValueAsDouble(this XElement? element, XName name, out double value) {
         return GetAttributeValue(element, name, out value);
     }
@@ -241,7 +241,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">An instance of <see cref="XName"/> identifying the attribute.</param>
     /// <param name="value">An instance of <see cref="bool"/> representing the element value.</param>
-    /// <returns><c>true</c> if a matching element was found; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if a matching element was found; otherwise <see langword="false"/>.</returns>
     public static bool GetAttributeValueAsBoolean(this XElement? element, XName name, out bool value) {
 
         // Get the attribute from the specified "element"
@@ -329,7 +329,7 @@ public static partial class XElementExtensions {
     /// <param name="element">The <see cref="XElement"/>.</param>
     /// <param name="name">The <see cref="XName"/> identifying the element.</param>
     /// <param name="value">The converted value.</param>
-    /// <returns><c>true</c> if the attribute was found and has a value, otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the attribute was found and has a value, otherwise <see langword="false"/>.</returns>
     public static bool GetAttributeValue<T>(this XElement? element, XName name, [NotNullWhen(true)] out T? value) {
 
         // Get the first attribute matching "name"

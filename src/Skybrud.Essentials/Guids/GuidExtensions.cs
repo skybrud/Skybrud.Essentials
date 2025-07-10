@@ -12,16 +12,16 @@ public static class GuidExtensions {
     /// Returns whether the specified GUID <paramref name="value"/> is different from <see cref="Guid.Empty"/>.
     /// </summary>
     /// <param name="value">The GUID value.</param>
-    /// <returns><c>false</c> if <paramref name="value"/> is either <c>null</c> or <see cref="Guid.Empty"/>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="false"/> if <paramref name="value"/> is either <see langword="null"/> or <see cref="Guid.Empty"/>; otherwise <see langword="false"/>.</returns>
     public static bool HasValue(this Guid value) {
         return value != Guid.Empty;
     }
 
     /// <summary>
-    /// Returns whether the specified GUID <paramref name="value"/> is neither <c>null</c> nor equal to <see cref="Guid.Empty"/>.
+    /// Returns whether the specified GUID <paramref name="value"/> is neither <see langword="null"/> nor equal to <see cref="Guid.Empty"/>.
     /// </summary>
     /// <param name="value">The GUID value.</param>
-    /// <returns><c>false</c> if <paramref name="value"/> is either <c>null</c> or <see cref="Guid.Empty"/>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="false"/> if <paramref name="value"/> is either <see langword="null"/> or <see cref="Guid.Empty"/>; otherwise <see langword="false"/>.</returns>
     public static bool HasValue(this Guid? value) {
         return value != null && value.Value != Guid.Empty;
     }
@@ -30,16 +30,16 @@ public static class GuidExtensions {
     /// Returns whether the specified GUID <paramref name="value"/> is empty.
     /// </summary>
     /// <param name="value">The GUID value.</param>
-    /// <returns><c>true</c> if <paramref name="value"/> is equal to <see cref="Guid.NewGuid"/>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="value"/> is equal to <see cref="Guid.NewGuid"/>; otherwise <see langword="false"/>.</returns>
     public static bool IsEmpty(this Guid value) {
         return value == Guid.Empty;
     }
 
     /// <summary>
-    /// Returns whether the specified GUID <paramref name="value"/> is either <c>null</c> or <see cref="Guid.Empty"/>.
+    /// Returns whether the specified GUID <paramref name="value"/> is either <see langword="null"/> or <see cref="Guid.Empty"/>.
     /// </summary>
     /// <param name="value">The GUID value.</param>
-    /// <returns><c>true</c> if <paramref name="value"/> is either <c>null</c> or <see cref="Guid.Empty"/>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if <paramref name="value"/> is either <see langword="null"/> or <see cref="Guid.Empty"/>; otherwise <see langword="false"/>.</returns>
     public static bool IsNullOrEmpty(this Guid? value) {
         return value == null || value.Value == Guid.Empty;
     }

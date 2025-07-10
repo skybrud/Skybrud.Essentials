@@ -80,8 +80,8 @@ public static class PointUtils {
     /// </summary>
     /// <param name="latitude">The latitude of the point.</param>
     /// <param name="longitude">The longitude of the point.</param>
-    /// <returns><c>true</c> if both <paramref name="latitude"/> and <paramref name="longitude"/> are equal to
-    /// <c>0</c>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if both <paramref name="latitude"/> and <paramref name="longitude"/> are equal to
+    /// <c>0</c>; otherwise <see langword="false"/>.</returns>
     /// <see>
     ///     <cref>https://en.wikipedia.org/wiki/Null_Island</cref>
     /// </see>
@@ -94,8 +94,8 @@ public static class PointUtils {
     /// where both <see cref="IPoint.Latitude"/> and <see cref="IPoint.Longitude"/> are <c>0</c>.
     /// </summary>
     /// <param name="point">The point.</param>
-    /// <returns><c>true</c> if both <see cref="IPoint.Latitude"/> and <see cref="IPoint.Longitude"/> are equal to
-    /// <c>0</c>; otherwise <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if both <see cref="IPoint.Latitude"/> and <see cref="IPoint.Longitude"/> are equal to
+    /// <c>0</c>; otherwise <see langword="false"/>.</returns>
     /// <see>
     ///     <cref>https://en.wikipedia.org/wiki/Null_Island</cref>
     /// </see>

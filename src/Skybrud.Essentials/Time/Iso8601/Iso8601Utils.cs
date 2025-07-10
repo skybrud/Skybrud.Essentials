@@ -170,7 +170,7 @@ public class Iso8601Utils {
     /// <param name="result">When this method returns, contains the <see cref="DateTime"/> value
     /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTime.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the <paramref name="value"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? value, out DateTime result) {
         return DateTime.TryParseExact(value, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
     }
@@ -184,7 +184,7 @@ public class Iso8601Utils {
     /// <param name="result">When this method returns, contains the <see cref="DateTimeOffset"/> value
     /// equivalent to the date and time contained in <paramref name="value"/>, if the conversion succeeded, or
     /// <see cref="DateTimeOffset.MinValue"/> if the conversion failed.</param>
-    /// <returns><c>true</c> if the <paramref name="value"/> parameter was converted successfully; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if the <paramref name="value"/> parameter was converted successfully; otherwise, <see langword="false"/>.</returns>
     public static bool TryParse(string? value, out DateTimeOffset result) {
         return DateTimeOffset.TryParseExact(value, DateTimeFormats, CultureInfo.InvariantCulture, DateTimeStyles.None, out result);
     }
@@ -203,7 +203,7 @@ public class Iso8601Utils {
     /// </summary>
     /// <param name="input">The ISO 8601 formatted duration to parse.</param>
     /// <param name="result">When this method returns, holds the parsed <see cref="TimeSpan"/> structure if successful; otherwise, <see cref="TimeSpan.Zero"/>.</param>
-    /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseDuration(string? input, out TimeSpan result) {
         return XmlSchemaUtils.TryParseDuration(input, out result);
     }
