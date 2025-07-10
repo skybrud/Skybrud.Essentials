@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
@@ -178,6 +179,30 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <see cref="Guid"/>.</returns>
     public static Guid[] GetGuidArrayByPath(this JObject? json, string path) {
         return JsonTokenUtils.ParseGuidArray(json?.SelectToken(path));
+    }
+
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/> as a list of
+    /// <see cref="Guid"/>. If a matching property is not found, the value is not an array or the value can not be
+    /// successfully converted, an empty list of <see cref="Guid"/> is returned instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>A list of <see cref="Guid"/>.</returns>
+    public static List<Guid> GetGuidList(this JObject? json, string propertyName) {
+        return JsonTokenUtils.ParseGuidList(json?[propertyName]);
+    }
+
+    /// <summary>
+    /// Returns the value of the token matching the specified <paramref name="path"/> as a list of
+    /// <see cref="Guid"/>. If a matching token is not found, the value is not an array or the value can not be
+    /// successfully converted, an empty list of <see cref="Guid"/> is returned instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
+    /// <returns>A list of <see cref="Guid"/>.</returns>
+    public static List<Guid> GetGuidListByPath(this JObject? json, string path) {
+        return JsonTokenUtils.ParseGuidList(json?.SelectToken(path));
     }
 
     /// <summary>
