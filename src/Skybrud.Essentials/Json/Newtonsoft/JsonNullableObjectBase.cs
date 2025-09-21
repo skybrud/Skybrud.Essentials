@@ -6,9 +6,9 @@ namespace Skybrud.Essentials.Json.Newtonsoft;
 /// <summary>
 /// Class representing an object that was parsed from an instance of <see cref="global::Newtonsoft.Json.Linq.JObject"/>.
 ///
-/// The <see cref="global::Newtonsoft.Json.Linq.JObject"/> must not be <see langword="null"/>.
+/// The <see cref="global::Newtonsoft.Json.Linq.JObject"/> may be <see langword="null"/> (aka optional). Use <see cref="JsonObjectBase"/> if the <see cref="global::Newtonsoft.Json.Linq.JObject"/> instance should not be <see langword="null"/> (aka required).
 /// </summary>
-public class JsonObjectBase {
+public class JsonNullableObjectBase {
 
     #region Properties
 
@@ -16,7 +16,7 @@ public class JsonObjectBase {
     /// Gets the internal <see cref="global::Newtonsoft.Json.Linq.JObject"/> the object was created from.
     /// </summary>
     [JsonIgnore]
-    public JObject JObject { get; }
+    public JObject? JObject { get; }
 
     #endregion
 
@@ -26,7 +26,7 @@ public class JsonObjectBase {
     /// Initializes a new instance from the specified <paramref name="json"/> object.
     /// </summary>
     /// <param name="json">The instance of <see cref="global::Newtonsoft.Json.Linq.JObject"/> representing the object.</param>
-    protected JsonObjectBase(JObject json) {
+    protected JsonNullableObjectBase(JObject? json) {
         JObject = json;
     }
 
