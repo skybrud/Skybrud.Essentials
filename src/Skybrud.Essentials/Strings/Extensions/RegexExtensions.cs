@@ -1,6 +1,6 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Text.RegularExpressions;
-using JetBrains.Annotations;
 
 namespace Skybrud.Essentials.Strings.Extensions;
 
@@ -16,7 +16,7 @@ public static class RegexExtensions {
     /// <param name="pattern">The regular expression pattern to match.</param>
     /// <param name="match">The match.</param>
     /// <returns><see langword="true"/> if the regular expression finds a match; otherwise, <see langword="false"/>.</returns>
-    public static bool IsMatch(this string input, [RegexPattern] string pattern, out Match match) {
+    public static bool IsMatch(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, out Match match) {
         return RegexUtils.IsMatch(input, pattern, out match);
     }
 
@@ -28,7 +28,7 @@ public static class RegexExtensions {
     /// <param name="options">A bitwise combination of the enumeration values that provide options for matching.</param>
     /// <param name="match">The match.</param>
     /// <returns><see langword="true"/> if the regular expression finds a match; otherwise, <see langword="false"/>.</returns>
-    public static bool IsMatch(this string input, [RegexPattern] string pattern, RegexOptions options, out Match match) {
+    public static bool IsMatch(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, RegexOptions options, out Match match) {
         return RegexUtils.IsMatch(input, pattern, options, out match);
     }
 
@@ -39,7 +39,7 @@ public static class RegexExtensions {
     /// <param name="pattern">The regular expression pattern to match.</param>
     /// <param name="matches">The matches.</param>
     /// <returns><see langword="true"/> if the regular expression finds any matches; otherwise, <see langword="false"/>.</returns>
-    public static bool IsMatch(this string input, [RegexPattern] string pattern, out MatchCollection matches) {
+    public static bool IsMatch(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, out MatchCollection matches) {
         return RegexUtils.IsMatch(input, pattern, out matches);
     }
 
@@ -51,7 +51,7 @@ public static class RegexExtensions {
     /// <param name="options">A bitwise combination of the enumeration values that provide options for matching.</param>
     /// <param name="matches">The matches.</param>
     /// <returns><see langword="true"/> if the regular expression finds any matches; otherwise, <see langword="false"/>.</returns>
-    public static bool IsMatch(this string input, [RegexPattern] string pattern, RegexOptions options, out MatchCollection matches) {
+    public static bool IsMatch(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, RegexOptions options, out MatchCollection matches) {
         return RegexUtils.IsMatch(input, pattern, options, out matches);
     }
 
@@ -65,7 +65,7 @@ public static class RegexExtensions {
     /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="input"/>, <paramref name="pattern"/>, or <paramref name="replacement"/> is <see langword="null"/>.</exception>
     /// <exception cref="RegexMatchTimeoutException">A time-out occurred.</exception>
-    public static string RegexReplace(this string input, [RegexPattern] string pattern, string replacement) {
+    public static string RegexReplace(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, string replacement) {
         return Regex.Replace(input, pattern, replacement);
     }
 
@@ -81,7 +81,7 @@ public static class RegexExtensions {
     /// <exception cref="ArgumentNullException"><paramref name="input"/>, <paramref name="pattern"/>, or <paramref name="replacement"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentOutOfRangeException"><paramref name="options"/> is not a valid bitwise combination of <see cref="RegexOptions"/> values.</exception>
     /// <exception cref="RegexMatchTimeoutException">A time-out occurred.</exception>
-    public static string RegexReplace(this string input, [RegexPattern] string pattern, string replacement, RegexOptions options) {
+    public static string RegexReplace(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, string replacement, RegexOptions options) {
         return Regex.Replace(input, pattern, replacement, options);
     }
 
@@ -98,7 +98,7 @@ public static class RegexExtensions {
     /// <exception cref="ArgumentNullException"><paramref name="input"/>, <paramref name="pattern"/>, or <paramref name="replacement"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentOutOfRangeException">options is not a valid bitwise combination of System.Text.RegularExpressions.RegexOptions values.-or-matchTimeout is negative, zero, or greater than approximately 24 days.</exception>
     /// <exception cref="RegexMatchTimeoutException">A time-out occurred.</exception>
-    public static string RegexReplace(this string input, [RegexPattern] string pattern, string replacement, RegexOptions options, TimeSpan matchTimeout) {
+    public static string RegexReplace(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, string replacement, RegexOptions options, TimeSpan matchTimeout) {
         return Regex.Replace(input, pattern, replacement, options, matchTimeout);
     }
 
@@ -112,7 +112,7 @@ public static class RegexExtensions {
     /// <exception cref="ArgumentException">A regular expression parsing error occurred.</exception>
     /// <exception cref="ArgumentNullException"><paramref name="input"/>, <paramref name="pattern"/>, or <paramref name="evaluator"/> is <see langword="null"/>.</exception>
     /// <exception cref="RegexMatchTimeoutException">A time-out occurred.</exception>
-    public static string RegexReplace(this string input, [RegexPattern] string pattern, MatchEvaluator evaluator) {
+    public static string RegexReplace(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, MatchEvaluator evaluator) {
         return Regex.Replace(input, pattern, evaluator);
     }
 
@@ -128,7 +128,7 @@ public static class RegexExtensions {
     /// <exception cref="ArgumentNullException"><paramref name="input"/>, <paramref name="pattern"/>, or <paramref name="evaluator"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentOutOfRangeException">options is not a valid bitwise combination of <see cref="RegexOptions"/> values.</exception>
     /// <exception cref="RegexMatchTimeoutException">A time-out occurred.</exception>
-    public static string RegexReplace(this string input, [RegexPattern] string pattern, MatchEvaluator evaluator, RegexOptions options) {
+    public static string RegexReplace(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, MatchEvaluator evaluator, RegexOptions options) {
         return Regex.Replace(input, pattern, evaluator, options);
     }
 
@@ -145,7 +145,7 @@ public static class RegexExtensions {
     /// <exception cref="ArgumentNullException"><paramref name="input"/>, <paramref name="pattern"/>, or <paramref name="evaluator"/> is <see langword="null"/>.</exception>
     /// <exception cref="ArgumentOutOfRangeException">options is not a valid bitwise combination of <see cref="RegexOptions"/> values.-or-<paramref name="matchTimeout"/> is negative, zero, or greater than approximately 24 days.</exception>
     /// <exception cref="RegexMatchTimeoutException">A time-out occurred.</exception>
-    public static string RegexReplace(this string input, [RegexPattern] string pattern, MatchEvaluator evaluator, RegexOptions options, TimeSpan matchTimeout) {
+    public static string RegexReplace(this string input, [StringSyntax(StringSyntaxAttribute.Regex)] string pattern, MatchEvaluator evaluator, RegexOptions options, TimeSpan matchTimeout) {
         return Regex.Replace(input, pattern, evaluator, options, matchTimeout);
     }
 
