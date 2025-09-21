@@ -8,6 +8,7 @@ using JetBrains.Annotations;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
+// ReSharper disable UseIndexFromEndExpression
 // ReSharper disable RedundantSuppressNullableWarningExpression
 
 namespace Skybrud.Essentials.Time;

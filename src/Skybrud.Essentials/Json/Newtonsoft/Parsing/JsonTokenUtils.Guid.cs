@@ -118,7 +118,7 @@ static partial class JsonTokenUtils {
                 foreach (JToken t in array) {
 
                     // Attempt to parse the individual tokens in the array, ensuring invalid values doesn't trigger an exception
-                    if (t != null && Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
+                    if (Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
 
                 }
 
@@ -157,7 +157,7 @@ static partial class JsonTokenUtils {
                 foreach (JToken t in array) {
 
                     // Attempt to parse the individual tokens in the array, ensuring invalid values doesn't trigger an exception
-                    if (t != null && Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
+                    if (Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
 
                 }
 

@@ -325,7 +325,7 @@ public static class ReflectionUtils {
     /// </summary>
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="value">The enum value.</param>
-    /// <returns><see langword="true"/>c> if an attribute is found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if an attribute is found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttribute<T>(Enum value) where T : Attribute {
         return HasCustomAttribute<T>(value, out _);
     }
@@ -336,7 +336,7 @@ public static class ReflectionUtils {
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="value">The enum value.</param>
     /// <param name="result">The first attribute of <typeparamref name="T"/>, or <see langword="null"/> if no matches.</param>
-    /// <returns><see langword="true"/>c> if an attribute is found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if an attribute is found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttribute<T>(Enum value, [NotNullWhen(true)] out T? result) where T : Attribute {
         result = GetCustomAttributes<T>(value).FirstOrDefault();
         return result != null;
@@ -348,7 +348,7 @@ public static class ReflectionUtils {
     /// <typeparam name="T">The type of the attributes.</typeparam>
     /// <param name="value">The enum value.</param>
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-    /// <returns><see langword="true"/>c> if one or more attributes are found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if one or more attributes are found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttributes<T>(Enum value, [NotNullWhen(true)] out T[]? result) where T : Attribute {
         result = GetCustomAttributes<T>(value);
         return result.Length > 0;
@@ -394,7 +394,7 @@ public static class ReflectionUtils {
     /// </summary>
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="member">The member.</param>
-    /// <returns><see langword="true"/>c> if an attribute is found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if an attribute is found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttribute<T>(MemberInfo? member) where T : Attribute {
         return HasCustomAttribute<T>(member, out _);
     }
@@ -405,7 +405,7 @@ public static class ReflectionUtils {
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="member">The member.</param>
     /// <param name="result">The first attribute of <typeparamref name="T"/>, or <see langword="null"/> if no matches.</param>
-    /// <returns><see langword="true"/>c> if an attribute is found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if an attribute is found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttribute<T>(MemberInfo? member, [NotNullWhen(true)] out T? result) where T : Attribute {
         result = member?.GetCustomAttributes<T>().FirstOrDefault();
         return result != null;
@@ -417,7 +417,7 @@ public static class ReflectionUtils {
     /// <typeparam name="T">The type of the attributes.</typeparam>
     /// <param name="member">The member.</param>
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-    /// <returns><see langword="true"/>c> if one or more attributes are found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if one or more attributes are found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttributes<T>(MemberInfo? member, [NotNullWhen(true)] out T[]? result) where T : Attribute {
         result = member?.GetCustomAttributes<T>().ToArray() ?? [];
         return result.Length > 0;
@@ -452,7 +452,7 @@ public static class ReflectionUtils {
     /// </summary>
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="type">The type to check.</param>
-    /// <returns><see langword="true"/>c> if an attribute is found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if an attribute is found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttribute<T>(Type? type) where T : Attribute {
         return HasCustomAttribute<T>(type, out _);
     }
@@ -463,7 +463,7 @@ public static class ReflectionUtils {
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="type">The type to check.</param>
     /// <param name="result">The first attribute of <typeparamref name="T"/>, or <see langword="null"/> if no matches.</param>
-    /// <returns><see langword="true"/>c> if an attribute is found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if an attribute is found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttribute<T>(Type? type, [NotNullWhen(true)] out T? result) where T : Attribute {
         result = type?.GetTypeInfo().GetCustomAttributes<T>(false).FirstOrDefault();
         return result != null;
@@ -475,7 +475,7 @@ public static class ReflectionUtils {
     /// <typeparam name="T">The type of the attributes.</typeparam>
     /// <param name="type">The type to check.</param>
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-    /// <returns><see langword="true"/>c> if one or more attributes are found; otherwise <see langword="false"/>.</returns>
+    /// <returns><see langword="true"/> if one or more attributes are found; otherwise <see langword="false"/>.</returns>
     public static bool HasCustomAttributes<T>(Type? type, [NotNullWhen(true)] out T[]? result) where T : Attribute {
         result = type?.GetTypeInfo().GetCustomAttributes<T>(false).ToArray() ?? [];
         return result.Length > 0;

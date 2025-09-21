@@ -43,7 +43,7 @@ public abstract class EnumBaseCaseConverter : JsonConverter {
             throw new JsonSerializationException(string.Format(CultureInfo.InvariantCulture, "Cannot convert null value to {0}.", objectType));
         }
 
-        // Try to parse the sepcified enum value
+        // Try to parse the specified enum value
         try {
             if (reader.TokenType == JsonToken.String) {
                 return EnumUtils.ParseEnum(reader.Value?.ToString() ?? string.Empty, objectType);

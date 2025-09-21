@@ -22,7 +22,7 @@ public class JsonPropertyNotFoundException : JsonException {
     /// </summary>
     /// <param name="source">A reference to the JSON object where the property was expected.</param>
     /// <param name="propertyName">The name of the property.</param>
-    public JsonPropertyNotFoundException(JObject source, string propertyName) : base($"JSON property with name '{propertyName}' not found.") {
+    public JsonPropertyNotFoundException(JObject source, string propertyName) : base($"A required property with name '{propertyName}' could not be not found.") {
         Source = source;
         PropertyName = propertyName;
     }

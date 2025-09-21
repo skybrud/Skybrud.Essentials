@@ -91,7 +91,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
     public static double GetDouble(this JArray? array, int index) {
-        return array?[index]?.Value<double>() ?? default;
+        return array?[index].Value<double>() ?? 0;
     }
 
     /// <summary>
@@ -101,7 +101,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="double"/>.</returns>
     public static double GetDoubleByPath(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<double>() ?? default;
+        return array?.SelectToken(path)?.Value<double>() ?? 0;
     }
 
     #endregion
@@ -176,7 +176,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="short"/>.</returns>
     public static short GetInt16(this JArray? array, int index) {
-        return array?[index]?.Value<short>() ?? default;
+        return array?[index].Value<short>() ?? 0;
     }
 
     /// <summary>
@@ -187,7 +187,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="short"/>.</returns>
     public static short GetInt16ByPath(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<short>() ?? default;
+        return array?.SelectToken(path)?.Value<short>() ?? 0;
     }
 
     #endregion
@@ -202,7 +202,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="int"/>.</returns>
     public static int GetInt32(this JArray? array, int index) {
-        return array?[index]?.Value<int>() ?? default;
+        return array?[index].Value<int>() ?? 0;
     }
 
     /// <summary>
@@ -213,7 +213,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="int"/>.</returns>
     public static int GetInt32ByPath(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<int>() ?? default;
+        return array?.SelectToken(path)?.Value<int>() ?? 0;
     }
 
     #endregion
@@ -228,7 +228,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="long"/>.</returns>
     public static long GetInt64(this JArray? array, int index) {
-        return array?[index]?.Value<long>() ?? default;
+        return array?[index].Value<long>() ?? 0;
     }
 
     /// <summary>
@@ -238,7 +238,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="long"/>.</returns>
     public static long GetInt64ByPath(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<long>() ?? default;
+        return array?.SelectToken(path)?.Value<long>() ?? 0;
     }
 
     #endregion
@@ -324,7 +324,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="array">The parent array.</param>
     /// <param name="index">The index of the item.</param>
     public static string? GetString(this JArray? array, int index) {
-        return array?[index]?.Value<string>();
+        return array?[index].Value<string>();
     }
 
     /// <summary>
@@ -350,7 +350,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     public static ushort GetUInt16(this JArray? array, int index) {
-        return array?[index]?.Value<ushort>() ?? default;
+        return array?[index].Value<ushort>() ?? 0;
     }
 
     /// <summary>
@@ -361,7 +361,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ushort"/>.</returns>
     public static ushort GetUInt16ByPath(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<ushort>() ?? default;
+        return array?.SelectToken(path)?.Value<ushort>() ?? 0;
     }
 
     #endregion
@@ -376,7 +376,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
     public static uint GetUInt32(this JArray? array, int index) {
-        return array?[index]?.Value<uint>() ?? default;
+        return array?[index].Value<uint>() ?? 0;
     }
 
     /// <summary>
@@ -387,7 +387,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="uint"/>.</returns>
     public static uint GetUInt32ByPath(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<uint>() ?? default;
+        return array?.SelectToken(path)?.Value<uint>() ?? 0;
     }
 
     #endregion
@@ -402,7 +402,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     public static ulong GetUInt64(this JArray? array, int index) {
-        return array?[index]?.Value<ulong>() ?? default;
+        return array?[index].Value<ulong>() ?? 0;
     }
 
     /// <summary>
@@ -413,7 +413,7 @@ public static class NewtonsoftJsonArrayExtensions {
     /// <param name="path">A <see cref="string"/> that contains a JPath expression.</param>
     /// <returns>An instance of <see cref="ulong"/>.</returns>
     public static ulong GetUInt64ByPath(this JArray? array, string path) {
-        return array?.SelectToken(path)?.Value<ulong>() ?? default;
+        return array?.SelectToken(path)?.Value<ulong>() ?? 0;
     }
 
     #endregion

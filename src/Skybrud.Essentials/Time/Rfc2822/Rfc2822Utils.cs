@@ -1,5 +1,4 @@
 ﻿using System;
-using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Time.Rfc822;
 
 namespace Skybrud.Essentials.Time.Rfc2822;

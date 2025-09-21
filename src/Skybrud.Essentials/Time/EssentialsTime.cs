@@ -11,6 +11,8 @@ using Skybrud.Essentials.Time.Rfc822;
 using Skybrud.Essentials.Time.Swatch;
 using Skybrud.Essentials.Time.UnixTime;
 
+// ReSharper disable RedundantSuppressNullableWarningExpression
+
 namespace Skybrud.Essentials.Time;
 
 /// <summary>
