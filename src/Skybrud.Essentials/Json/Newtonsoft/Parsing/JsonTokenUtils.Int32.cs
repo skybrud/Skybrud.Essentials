@@ -84,6 +84,11 @@ static partial class JsonTokenUtils {
 
             case JTokenType.Integer:
             case JTokenType.Float:
+                long longValue = token.Value<long>();
+                if (longValue is < int.MinValue or > int.MaxValue) {
+                    result = null;
+                    return false;
+                }
                 result = token.ToObject<int>();
                 return true;
 

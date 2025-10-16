@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
+using Skybrud.Essentials.Exceptions;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
 
@@ -85,7 +86,12 @@ static partial class JsonTokenUtils {
 
             case JTokenType.Integer:
             case JTokenType.Float:
-                result = token.ToObject<ushort>();
+                double value = token.ToObject<double>();
+                if (value is < ushort.MinValue or > ushort.MaxValue) {
+                    result = null;
+                    return false;
+                }
+                result = (ushort) value;
                 return true;
 
             case JTokenType.String:

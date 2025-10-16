@@ -73,4 +73,8 @@ public static partial class JsonTokenUtils {
 
     }
 
+    internal static JToken? GetToken(JArray? array, int index) {
+        return array != null && index >= 0 && index < array.Count ? array[index] : null;
+    }
+
 }

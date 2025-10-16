@@ -78,10 +78,15 @@ static partial class JsonTokenUtils {
             case JTokenType.Integer:
             case JTokenType.Float:
                 result = token.Value<double>();
-                return true;
+                if (result is double.NegativeInfinity) result = null;
+                if (result is double.PositiveInfinity) result = null;
+                return result is not null;
 
             case JTokenType.String:
-                return StringUtils.TryParseDouble(token.Value<string>(), out result);
+                if (!StringUtils.TryParseDouble(token.Value<string>(), out result)) return false;
+                if (result is double.NegativeInfinity) result = null;
+                if (result is double.PositiveInfinity) result = null;
+                return result is not null;
 
             default:
                 result = null;

@@ -85,7 +85,12 @@ static partial class JsonTokenUtils {
 
             case JTokenType.Integer:
             case JTokenType.Float:
-                result = token.ToObject<ulong>();
+                double value = token.ToObject<double>();
+                if (value is < ulong.MinValue or > ulong.MaxValue) {
+                    result = null;
+                    return false;
+                }
+                result = (ulong) value;
                 return true;
 
             case JTokenType.String:

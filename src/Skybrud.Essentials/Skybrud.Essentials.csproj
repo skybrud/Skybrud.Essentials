@@ -63,4 +63,16 @@
     <DocumentationFile>bin\$(Configuration)\$(TargetFramework)\Skybrud.Essentials.xml</DocumentationFile>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Compile Update="Json\Newtonsoft\Extensions\NewtonsoftJsonArrayExtensions.*.cs">
+      <DependentUpon>Json\Newtonsoft\Extensions\NewtonsoftJsonArrayExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Json\Newtonsoft\Extensions\NewtonsoftJsonObjectExtensions.*.cs">
+      <DependentUpon>Json\Newtonsoft\Extensions\NewtonsoftJsonObjectExtensions.cs</DependentUpon>
+    </Compile>
+    <Compile Update="Json\Newtonsoft\Parsing\JsonTokenUtils.*.cs">
+      <DependentUpon>Json\Newtonsoft\Parsing\JsonTokenUtils.cs</DependentUpon>
+    </Compile>
+  </ItemGroup>
+
 </Project>

@@ -127,5 +127,4 @@ static partial class JsonTokenUtils {
 
     }
 
-
 }
