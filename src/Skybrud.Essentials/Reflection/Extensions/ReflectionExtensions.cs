@@ -14,7 +14,7 @@ public static class ReflectionExtensions {
     /// </summary>
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="value">The enum value.</param>
-    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if an attribute is found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttribute<T>(this Enum value) where T : Attribute {
         return ReflectionUtils.HasCustomAttribute<T>(value);
     }
@@ -25,7 +25,7 @@ public static class ReflectionExtensions {
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="value">The enum value.</param>
     /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
-    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if an attribute is found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttribute<T>(this Enum value, [NotNullWhen(true)] out T? result) where T : Attribute {
         return ReflectionUtils.HasCustomAttribute(value, out result);
     }
@@ -36,7 +36,7 @@ public static class ReflectionExtensions {
     /// <typeparam name="T">The type of the attributes.</typeparam>
     /// <param name="value">The enum value.</param>
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-    /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if one or more attributes are found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttributes<T>(this Enum value, [NotNullWhen(true)] out T[]? result) where T : Attribute {
         return ReflectionUtils.HasCustomAttributes(value, out result);
     }
@@ -66,7 +66,7 @@ public static class ReflectionExtensions {
     /// </summary>
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="member">The member info.</param>
-    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if an attribute is found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttribute<T>(this MemberInfo? member) where T : Attribute {
         return ReflectionUtils.HasCustomAttribute<T>(member);
     }
@@ -77,7 +77,7 @@ public static class ReflectionExtensions {
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="member">The member info.</param>
     /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
-    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if an attribute is found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttribute<T>(this MemberInfo? member, [NotNullWhen(true)] out T? result) where T : Attribute {
         return ReflectionUtils.HasCustomAttribute(member, out result);
     }
@@ -88,7 +88,7 @@ public static class ReflectionExtensions {
     /// <typeparam name="T">The type of the attributes.</typeparam>
     /// <param name="member">The member info.</param>
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-    /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if one or more attributes are found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttributes<T>(this MemberInfo? member, [NotNullWhen(true)] out T[]? result) where T : Attribute {
         return ReflectionUtils.HasCustomAttributes(member, out result);
     }
@@ -118,7 +118,7 @@ public static class ReflectionExtensions {
     /// </summary>
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="type">The type holding the attribute.</param>
-    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if an attribute is found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttribute<T>(this Type? type) where T : Attribute {
         return ReflectionUtils.HasCustomAttribute<T>(type);
     }
@@ -129,7 +129,7 @@ public static class ReflectionExtensions {
     /// <typeparam name="T">The type of the attribute.</typeparam>
     /// <param name="type">The type holding the attribute.</param>
     /// <param name="result">The first attribute of <typeparamref name="T"/>, or <c>null</c> if no matches.</param>
-    /// <returns><c>true</c>c> if an attribute is found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if an attribute is found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttribute<T>(this Type? type, [NotNullWhen(true)] out T? result) where T : Attribute {
         return ReflectionUtils.HasCustomAttribute(type, out result);
     }
@@ -140,7 +140,7 @@ public static class ReflectionExtensions {
     /// <typeparam name="T">The type of the attributes.</typeparam>
     /// <param name="type">The type holding the attributes.</param>
     /// <param name="result">When this method returns, an array containing the matched attributes.</param>
-    /// <returns><c>true</c>c> if one or more attributes are found; otherwise <c>false</c>.</returns>
+    /// <returns><c>true</c> if one or more attributes are found; otherwise <c>false</c>.</returns>
     public static bool HasCustomAttributes<T>(this Type type, [NotNullWhen(true)] out T[]? result) where T : Attribute {
         return ReflectionUtils.HasCustomAttributes(type, out result);
     }
