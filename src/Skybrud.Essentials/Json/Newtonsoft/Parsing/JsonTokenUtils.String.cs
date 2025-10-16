@@ -12,8 +12,6 @@ namespace Skybrud.Essentials.Json.Newtonsoft.Parsing;
 
 static partial class JsonTokenUtils {
 
-    #region System.String
-
     /// <summary>
     /// Converts the specified <paramref name="token"/> into a string value.
     /// </summary>
@@ -104,7 +102,5 @@ static partial class JsonTokenUtils {
         return [..temp];
 
     }
-
-    #endregion
 
 }
