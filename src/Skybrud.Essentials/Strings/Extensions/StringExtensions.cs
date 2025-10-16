@@ -826,7 +826,7 @@ public static partial class StringExtensions {
     /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
     [return: NotNullIfNotNull(nameof(value))]
     public static string? ToInvariantString(this IFormattable? value, string format) {
-        return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        return value?.ToString(format, CultureInfo.InvariantCulture);
     }
 
     /// <summary>
@@ -837,7 +837,7 @@ public static partial class StringExtensions {
     /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
     [return: NotNullIfNotNull(nameof(value))]
     public static string? ToInvariantString(this DateTime? value, [StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string format) {
-        return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        return value?.ToInvariantString(format);
     }
 
     /// <summary>
@@ -848,7 +848,7 @@ public static partial class StringExtensions {
     /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
     [return: NotNullIfNotNull(nameof(value))]
     public static string? ToInvariantString(this DateTimeOffset? value, [StringSyntax(StringSyntaxAttribute.DateTimeFormat)] string format) {
-        return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        return value?.ToInvariantString(format);
     }
 
     /// <summary>
@@ -859,7 +859,7 @@ public static partial class StringExtensions {
     /// <returns>A culture invariant string representation of <paramref name="value"/>.</returns>
     [return: NotNullIfNotNull(nameof(value))]
     public static string? ToInvariantString(this TimeSpan? value, [StringSyntax(StringSyntaxAttribute.TimeSpanFormat)] string format) {
-        return value is null ? null : string.Format(CultureInfo.InvariantCulture, format, value);
+        return value?.ToInvariantString(format);
     }
 
 }
