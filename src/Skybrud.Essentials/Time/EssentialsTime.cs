@@ -1260,9 +1260,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="value">The <strong>ISO 8601</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(value))]
-    public static EssentialsTime? FromIso8601(string? value) {
-        return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Iso8601Utils.Parse(value!));
+    public static EssentialsTime FromIso8601(string value) {
+        return new EssentialsTime(Iso8601Utils.Parse(value!));
     }
 
     /// <summary>
@@ -1302,9 +1301,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="value">The <strong>RFC 822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(value))]
-    public static EssentialsTime? FromRfc822(string? value) {
-        return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Rfc822Utils.Parse(value!));
+    public static EssentialsTime FromRfc822(string value) {
+        return new EssentialsTime(Rfc822Utils.Parse(value!));
     }
 
     /// <summary>
@@ -1312,9 +1310,8 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     /// <param name="value">The <strong>RFC 2822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
-    [return: NotNullIfNotNull(nameof(value))]
-    public static EssentialsTime? FromRfc2822(string? value) {
-        return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Rfc2822Utils.Parse(value));
+    public static EssentialsTime FromRfc2822(string? value) {
+        return new EssentialsTime(Rfc2822Utils.Parse(value));
     }
 
     /// <summary>
