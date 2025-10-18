@@ -358,7 +358,7 @@ public static partial class StringUtils {
     /// <param name="str">The string which first character should be uppercased.</param>
     /// <returns>The input string with the first character has been uppercased.</returns>
     public static string FirstCharToUpper(string? str) {
-#if NET5_0_OR_GREATER
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
         return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str[..1].ToUpper(), str[1..]);
 #else
         return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToUpper(), str.Substring(1));
@@ -472,7 +472,7 @@ public static partial class StringUtils {
 
         IReadOnlyList<string> words = ToCasingList(input!, firstToUpper, upperCase);
 
-#if NET6_0_OR_GREATER
+#if NET6_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
         return separator > 0 ? string.Join(separator, words) : string.Join("", words);
 #else
         return separator > 0 ? string.Join(separator.ToString(), words) : string.Join("", words);

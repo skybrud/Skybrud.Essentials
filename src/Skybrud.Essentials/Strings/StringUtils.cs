@@ -459,8 +459,8 @@ public static partial class StringUtils {
     public static string? Truncate(string? input, int maxCharacters, string? end) {
         if (string.IsNullOrWhiteSpace(input)) return input;
         end ??= string.Empty;
-#if NET5_0_OR_GREATER
-            return input.Length > maxCharacters ? input[..(maxCharacters - end.Length)] + end : input;
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        return input.Length > maxCharacters ? input[..(maxCharacters - end.Length)] + end : input;
 #else
         return input!.Length > maxCharacters ? input.Substring(0, maxCharacters - end.Length) + end : input;
 #endif

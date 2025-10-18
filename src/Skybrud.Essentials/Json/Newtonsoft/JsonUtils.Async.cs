@@ -9,7 +9,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft;
 
 public partial class JsonUtils {
 
-#if NET5_0_OR_GREATER
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
 
     /// <summary>
     /// Loads and parses the JSON object from the file at the specified <paramref name="path"/>.

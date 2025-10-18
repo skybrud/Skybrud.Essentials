@@ -368,8 +368,8 @@ public static partial class StringExtensions {
     /// <param name="str">The string which first character should be lowercased.</param>
     /// <returns>The input string with the first character has been lowercased.</returns>
     public static string FirstCharToLower(this string? str) {
-#if NET5_0_OR_GREATER
-            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str[..1].ToLowerInvariant(), str[1..]);
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str[..1].ToLowerInvariant(), str[1..]);
 #else
         return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToLowerInvariant(), str.Substring(1));
 #endif
@@ -382,8 +382,8 @@ public static partial class StringExtensions {
     /// <param name="str">The string which first character should be uppercased.</param>
     /// <returns>The input string with the first character has been uppercased.</returns>
     public static string FirstCharToUpper(this string? str) {
-#if NET5_0_OR_GREATER
-            return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str![..1].ToUpperInvariant(), str[1..]);
+#if NET5_0_OR_GREATER || NETSTANDARD2_1_OR_GREATER
+        return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str![..1].ToUpperInvariant(), str[1..]);
 #else
         return string.IsNullOrEmpty(str) ? string.Empty : string.Concat(str!.Substring(0, 1).ToUpperInvariant(), str.Substring(1));
 #endif
