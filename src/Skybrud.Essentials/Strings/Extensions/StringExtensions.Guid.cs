@@ -91,52 +91,52 @@ public static partial class StringExtensions {
     }
 
     /// <summary>
-    /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>. Supported
+    /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/> items. Supported
     /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
     /// tab (<c>\t</c>).
     ///
     /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
     /// </summary>
     /// <param name="input">The string containing the GUIDs.</param>
-    /// <returns>An array of <see cref="Guid"/>.</returns>
+    /// <returns>An array of <see cref="Guid"/> items.</returns>
     public static Guid[] ToGuidArray(this string? input) {
         return StringUtils.ParseGuidArray(input);
     }
 
     /// <summary>
-    /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>, using the
+    /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/> items, using the
     /// specified array of <paramref name="separators"/>.
     ///
     /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
     /// </summary>
     /// <param name="input">The string containing the GUIDs.</param>
     /// <param name="separators">An array of supported separators.</param>
-    /// <returns>An array of <see cref="Guid"/>.</returns>
+    /// <returns>An array of <see cref="Guid"/> items.</returns>
     public static Guid[] ToGuidArray(this string? input, params char[] separators) {
         return StringUtils.ParseGuidArray(input, separators);
     }
 
     /// <summary>
-    /// Parses a string of multiple GUIDs into a list of <see cref="Guid"/>. Supported separators are
+    /// Parses a string of multiple GUIDs into a list of <see cref="Guid"/> items. Supported separators are
     /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
     ///
     /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
     /// </summary>
     /// <param name="input">The string containing the GUIDs.</param>
-    /// <returns>An array of <see cref="Guid"/>.</returns>
+    /// <returns>A list of <see cref="Guid"/> items.</returns>
     public static List<Guid> ToGuidList(this string? input) {
         return StringUtils.ParseGuidList(input);
     }
 
     /// <summary>
-    /// Parses a string of multiple GUIDs into an array of <see cref="Guid"/>, using the specified array of
+    /// Parses a string of multiple GUIDs into a list of <see cref="Guid"/> items, using the specified array of
     /// <paramref name="separators"/>.
     ///
     /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
     /// </summary>
     /// <param name="input">The string containing the GUIDs.</param>
     /// <param name="separators">An array of supported separators.</param>
-    /// <returns>An array of <see cref="Guid"/>.</returns>
+    /// <returns>A list of <see cref="Guid"/> items.</returns>
     public static List<Guid> ToGuidList(this string? input, params char[] separators) {
         return StringUtils.ParseGuidList(input, separators);
     }

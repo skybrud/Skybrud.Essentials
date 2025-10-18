@@ -90,7 +90,7 @@ public static partial class StringUtils {
     }
 
     /// <summary>
-    /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/>, using the
+    /// Parses the specified <paramref name="input"/> string into an array of <see cref="Guid"/> items, using the
     /// specified array of <paramref name="separators"/>.
     ///
     /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
@@ -112,7 +112,7 @@ public static partial class StringUtils {
     }
 
     /// <summary>
-    /// Parses the specified <paramref name="input"/> string into a list of <see cref="Guid"/>. Supported
+    /// Parses the specified <paramref name="input"/> string into a list of <see cref="Guid"/> items. Supported
     /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
     /// tab (<c>\t</c>).
     ///
@@ -125,14 +125,14 @@ public static partial class StringUtils {
     }
 
     /// <summary>
-    /// Parses the specified <paramref name="input"/> string into a list of <see cref="Guid"/>, using the specified
+    /// Parses the specified <paramref name="input"/> string into a list of <see cref="Guid"/> items, using the specified
     /// array of <paramref name="separators"/>.
     ///
     /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
     /// </summary>
     /// <param name="input">The string containing the GUIDs.</param>
     /// <param name="separators">An array of supported separators.</param>
-    /// <returns>A list of <see cref="Guid"/>.</returns>
+    /// <returns>A list of <see cref="Guid"/> items.</returns>
     public static List<Guid> ParseGuidList(string? input, params char[] separators) {
 
         List<Guid> temp = [];
