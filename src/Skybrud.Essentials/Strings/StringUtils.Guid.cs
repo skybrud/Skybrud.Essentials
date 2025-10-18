@@ -146,4 +146,35 @@ public static partial class StringUtils {
 
     }
 
+    /// <summary>
+    /// Parses the specified <paramref name="input"/> string into a set of <see cref="Guid"/> items. Supported
+    /// separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and
+    /// tab (<c>\t</c>).
+    ///
+    /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
+    /// </summary>
+    /// <param name="input">The string containing the GUIDs.</param>
+    /// <returns>A set of <see cref="Guid"/> items.</returns>
+    public static HashSet<Guid> ParseGuidSet(string? input) {
+        return ParseGuidSet(input, DefaultSeparators);
+    }
+
+    /// <summary>
+    /// Parses the specified <paramref name="input"/> string into a set of <see cref="Guid"/> items, using the specified
+    /// array of <paramref name="separators"/>.
+    ///
+    /// Values in <paramref name="input"/> that can't be converted to <see cref="Guid"/> will be ignored.
+    /// </summary>
+    /// <param name="input">The string containing the GUIDs.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>A set of <see cref="Guid"/> items.</returns>
+    public static HashSet<Guid> ParseGuidSet(string? input, params char[] separators) {
+        HashSet<Guid> temp = [];
+        if (string.IsNullOrWhiteSpace(input)) return temp;
+        foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            if (Guid.TryParse(piece, out Guid result)) temp.Add(result);
+        }
+        return temp;
+    }
+
 }
