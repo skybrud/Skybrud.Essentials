@@ -4,6 +4,7 @@ using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
 using Skybrud.Essentials.Json.Newtonsoft.Parsing;
+using Skybrud.Essentials.Strings;
 
 namespace Skybrud.Essentials.Json.Newtonsoft.Extensions;
 
@@ -237,6 +238,68 @@ public static partial class NewtonsoftJsonObjectExtensions {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
         if (!JsonTokenUtils.TryParseGuid(property.Value, out Guid result)) throw new JsonException($"The value of the '{propertyName}' property is not a valid GUID.");
         return callback(result);
+    }
+
+    /// <summary>
+    /// Returns a GUID array from value the property with the specified <paramref name="propertyName"/>. If a matching property isn't found, or at least one of the values doesn't match a GUID, an exception is thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>An array of <see cref="Guid"/></returns>.
+    public static Guid[] GetRequiredGuidArray(this JObject json, string propertyName) {
+        return [..GetRequiredGuidList(json, propertyName)];
+    }
+
+    /// <summary>
+    /// Returns a GUID list from value the property with the specified <paramref name="propertyName"/>. If a matching property isn't found, or at least one of the values doesn't match a GUID, an exception is thrown instead.
+    /// </summary>
+    /// <param name="json">The parent JSON object.</param>
+    /// <param name="propertyName">The name of the property.</param>
+    /// <returns>A list of <see cref="Guid"/></returns>.
+    public static List<Guid> GetRequiredGuidList(this JObject json, string propertyName) {
+
+        JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
+
+        switch (property.Value.Type) {
+
+            case JTokenType.String:
+
+                List<Guid> temp = [];
+
+                foreach (string piece in StringUtils.ParseStringArray(property.Value.ToString())) {
+
+                    if (!StringUtils.TryParseGuid(piece, out Guid guid)) {
+                        throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid GUID array.");
+                    }
+
+                    temp.Add(guid);
+
+                }
+
+                return temp;
+
+            case JTokenType.Array:
+
+                List<Guid> temp2 = [];
+
+                foreach (JToken item in (JArray) property.Value) {
+
+                    if (item.Type is not JTokenType.String || !StringUtils.TryParseGuid(item.ToString(), out Guid guid)) {
+                        throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid GUID array.");
+                    }
+
+                    temp2.Add(guid);
+
+                }
+
+                return temp2;
+
+            default:
+
+                throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid GUID array.");
+
+        }
+
     }
 
 }

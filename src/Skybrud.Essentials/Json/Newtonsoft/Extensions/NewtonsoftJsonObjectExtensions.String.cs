@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
@@ -94,12 +95,32 @@ public static partial class NewtonsoftJsonObjectExtensions {
     }
 
     /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching token
+    /// is not found, or the value can not be successfully converted to a <see cref="string"/> list, an empty
+    /// list is returned instead.
+    /// </summary>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> GetStringList(this JObject? json, string propertyName) {
+        return JsonTokenUtils.ParseStringList(json?[propertyName]);
+    }
+
+    /// <summary>
+    /// Returns the value of the token matching the specified <paramref name="path"/>. If a matching token is not
+    /// found, or the value can not be successfully converted to a <see cref="string"/> list, an empty list is
+    /// returned instead.
+    /// </summary>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> GetStringListByPath(this JObject? json, string path) {
+        return JsonTokenUtils.ParseStringList(json?.SelectToken(path));
+    }
+
+    /// <summary>
     /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching property is not found, an exception will be thrown instead.
     /// </summary>
     /// <param name="json">The JSON object.</param>
     /// <param name="propertyName">The name of the property.</param>
-    /// <returns>The string value </returns>
-    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <returns>The string value.</returns>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> is not found.</exception>
     public static string GetRequiredString(this JObject json, string propertyName) {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
         if (!JsonTokenUtils.TryParseString(property.Value, out string? result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid string value.");
@@ -115,10 +136,41 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <param name="propertyName">The name of the property.</param>
     /// <param name="callback">A callback function used for converting the string value to <typeparamref name="TResult"/>.</param>
     /// <returns>The converted value.</returns>
-    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> isn't found.</exception>
+    /// <exception cref="JsonPropertyNotFoundException">If a property matching <paramref name="propertyName"/> is not found.</exception>
     public static TResult GetRequiredString<TResult>(this JObject json, string propertyName, Func<string, TResult> callback) where TResult : notnull {
         JProperty property = json.Property(propertyName) ?? throw new JsonPropertyNotFoundException(json, propertyName);
         if (!JsonTokenUtils.TryParseString(property.Value, out string? result)) throw new JsonException($"The value of the '{propertyName}' property doesn't match a valid string value.");
+        return callback(result);
+    }
+
+    /// <summary>
+    /// Returns the string value of the token matching the specified <paramref name="path"/>. If a matching token is not found, an exception will be thrown instead.
+    /// </summary>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="path">The path to the JSON token.</param>
+    /// <returns>The string value.</returns>
+    /// <exception cref="JsonTokenNotFoundException">If a token matching <paramref name="path"/> is not found.</exception>
+    /// <exception cref="JsonException">If the token matching <paramref name="path"/> canno be converted to a string value.</exception>
+    public static string GetRequiredStringByPath(this JObject json, string path) {
+        JToken value = json.SelectToken(path) ?? throw new JsonTokenNotFoundException(json, path);
+        if (!JsonTokenUtils.TryParseString(value, out string? result)) throw new JsonException($"The token matching the path '{path}' doesn't match a valid string value.");
+        return result;
+    }
+
+    /// <summary>
+    /// Returns the value of the token matching the specified <paramref name="path"/>. If a matching token is
+    /// found, the value is converted using <paramref name="callback"/>. If not found, an exception will be thrown instead.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the result.</typeparam>
+    /// <param name="json">The JSON object.</param>
+    /// <param name="path">The path to the JSON token.</param>
+    /// <param name="callback">A callback function used for converting the string value to <typeparamref name="TResult"/>.</param>
+    /// <returns>The converted value.</returns>
+    /// <exception cref="JsonTokenNotFoundException">If a token matching <paramref name="path"/> isn&apos;t found.</exception>
+    /// <exception cref="JsonException">If the token matching <paramref name="path"/> canno be converted to a string value.</exception>
+    public static TResult GetRequiredStringByPath<TResult>(this JObject json, string path, Func<string, TResult> callback) where TResult : notnull {
+        JToken value = json.SelectToken(path) ?? throw new JsonTokenNotFoundException(json, path);
+        if (!JsonTokenUtils.TryParseString(value, out string? result)) throw new JsonException($"The token matching the path '{path}' doesn't match a valid string value.");
         return callback(result);
     }
 

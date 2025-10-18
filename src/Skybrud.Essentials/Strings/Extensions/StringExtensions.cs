@@ -190,6 +190,31 @@ public static partial class StringExtensions {
     }
 
     /// <summary>
+    /// Parses string of multiple values into a list of <see cref="string"/>. Supported separators are
+    /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+    ///
+    /// Empty entries are automatically removed from the output list.
+    /// </summary>
+    /// <param name="input">The input string containing the values.</param>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> ToStringList(this string? input) {
+        return StringUtils.ParseStringList(input);
+    }
+
+    /// <summary>
+    /// Parses string of multiple values into a list of <see cref="string"/>, using the specified list of
+    /// <paramref name="separators"/>.
+    ///
+    /// Empty entries are automatically removed from the output list.
+    /// </summary>
+    /// <param name="input">The input string containing the values.</param>
+    /// <param name="separators">A list of supported separators.</param>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> ToStringList(this string? input, char[] separators) {
+        return StringUtils.ParseStringList(input, separators);
+    }
+
+    /// <summary>
     /// If <paramref name="input"/> is longer than <paramref name="maxCharacters"/>, this method will return a
     /// truncated version of <paramref name="input"/> with <c>...</c> appended to the end, and where the overall
     /// length is exactly <paramref name="maxCharacters"/>. If the length <paramref name="input"/> is lower than or

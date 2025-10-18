@@ -89,7 +89,25 @@ static partial class JsonTokenUtils {
         };
     }
 
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a string list.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>A string list.</returns>
+    public static List<string> ParseStringList(JToken? token) {
+        return token?.Type switch {
+            JTokenType.String => token.Value<string>().ToStringList(),
+            JTokenType.Array => ConvertArrayTokenToStringList(token),
+            _ => TryParseString(token, out string? result) ? [result] : []
+        };
+    }
+
     internal static string[] ConvertArrayTokenToStringArray(JToken token) {
+        if (token is not JArray) return [];
+        return [.. ConvertArrayTokenToStringList(token)];
+    }
+
+    internal static List<string> ConvertArrayTokenToStringList(JToken token) {
 
         if (token is not JArray) return [];
 
