@@ -10,16 +10,16 @@ namespace Skybrud.Essentials.Collections;
 public static class ArrayUtils {
 
     /// <summary>
-    /// Returns an empty array of the specified <paramref name="type"/>.
+    /// Returns an empty array of the specified <paramref name="itemType"/>.
     /// </summary>
-    /// <param name="type">The type of the items in the array.</param>
-    /// <returns>An array of <paramref name="type"/>.</returns>
-    public static Array Empty(Type type) {
+    /// <param name="itemType">The type of the items in the array.</param>
+    /// <returns>An array of <paramref name="itemType"/>.</returns>
+    public static Array Empty(Type itemType) {
         return (Array) typeof(ArrayUtils)
             .GetTypeInfo()
             .GetDeclaredMethods(nameof(Empty))
             .First(x => x.GetParameters().Length == 0)
-            .MakeGenericMethod(type)
+            .MakeGenericMethod(itemType)
             .Invoke(null, null)!;
     }
 
