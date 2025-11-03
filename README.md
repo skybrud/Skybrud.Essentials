@@ -46,7 +46,7 @@ A .NET package for working with maps and geospatial data, including popular form
 - [**Skybrud.Essentials.AspNetCore**](https://github.com/skybrud/Skybrud.Essentials.AspNetCore)  
 A .NET package for that provides various logic that makes it easier to work with different parts of ASP.NET Core - eg. parsing query strings and reading request headers.
 
-- [**Skybrud.Essentials.Umbraco**](https://github.com/skybrud/Skybrud.Essentials.AspNUmbracoetCore)  
+- [**Skybrud.Essentials.Umbraco**](https://github.com/skybrud/Skybrud.Essentials.Umbraco)  
 A .NET package for that provides various logic that makes it easier to work with different parts of Umbraco.
 
 

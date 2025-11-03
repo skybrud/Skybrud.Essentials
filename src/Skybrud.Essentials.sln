@@ -10,6 +10,12 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{9B92441C-24CF-4901-AD1A-26338EAC414F}"
 	ProjectSection(SolutionItems) = preProject
 		.editorconfig = .editorconfig
+		..\debug.bat = ..\debug.bat
+		..\LICENSE.md = ..\LICENSE.md
+		..\NUGET.md = ..\NUGET.md
+		..\README.md = ..\README.md
+		..\REFERENCE.md = ..\REFERENCE.md
+		..\release.bat = ..\release.bat
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{8EAA7946-1878-4720-86F6-BEA03787ED8E}"
