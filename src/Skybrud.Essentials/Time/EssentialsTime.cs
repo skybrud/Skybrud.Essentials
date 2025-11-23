@@ -1444,7 +1444,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="values">An array of <see cref="EssentialsTime"/> instances.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     public static EssentialsTime Min(params EssentialsTime[] values) {
-        if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.");
+        if (values.Length == 0) throw new ArgumentException("Specified array must not be empty.", nameof(values));
         return values.Min(x => x)!;
     }
 
