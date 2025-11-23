@@ -1392,7 +1392,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="ticks">The amount of ticks.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     public static EssentialsTime FromTicks(long ticks) {
-        DateTime time = new(ticks);
+        DateTimeOffset time = new(ticks, TimeSpan.Zero);
         return new EssentialsTime(time, TimeZoneInfo.Local);
     }
 
@@ -1413,7 +1413,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="timeZone">The time zone to be used. Uses <see cref="TimeZoneInfo.Local"/> if <see langword="null"/>.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     public static EssentialsTime FromTicks(long ticks, TimeZoneInfo? timeZone) {
-        DateTime time = new(ticks);
+        DateTimeOffset time = new(ticks, TimeSpan.Zero);
         return new EssentialsTime(time, timeZone ?? TimeZoneInfo.Local);
     }
 
