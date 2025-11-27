@@ -3,7 +3,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFrameworks>netstandard1.1;netstandard1.3;netstandard2.0;net45;net46;net47;net48;net5.0;net6.0;net7.0</TargetFrameworks>
+    <TargetFrameworks>netstandard1.1;netstandard1.3;netstandard2.0;net45;net46;net47;net48;net5.0;net6.0;net7.0;net8.0;net10.0</TargetFrameworks>
     <BuildInParallel>false</BuildInParallel>
     <LangVersion>12</LangVersion>
     <Nullable>enable</Nullable>
@@ -27,7 +27,7 @@
     <DefineConstants>NET_FRAMEWORK;I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAS_ENCODING;I_CAN_HAZ_FILE_VERSION_INFO;I_CAN_HAS_NAME_VALUE_COLLECTION;JETBRAINS_ANNOTATIONS</DefineConstants>
   </PropertyGroup>
 
-  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0' OR '$(TargetFramework)'=='net6.0' OR '$(TargetFramework)'=='net7.0' OR '$(TargetFramework)'=='net8.0'">
+  <PropertyGroup Condition="'$(TargetFramework)'=='net5.0' OR '$(TargetFramework)'=='net6.0' OR '$(TargetFramework)'=='net7.0' OR '$(TargetFramework)'=='net8.0' OR '$(TargetFramework)'=='net10.0'">
     <DefineConstants>I_CAN_HAZ_FILE;I_CAN_HAZ_SECURITY;I_CAN_HAZ_XPATH;I_CAN_HAS_ENCODING;I_CAN_HAZ_FILE_VERSION_INFO;I_CAN_HAS_NAME_VALUE_COLLECTION;JETBRAINS_ANNOTATIONS</DefineConstants>
   </PropertyGroup>
 
@@ -76,7 +76,7 @@
   </ItemGroup>
 
   <!-- Include NuGet dependencies (.NET) -->
-  <ItemGroup Condition="'$(TargetFramework)'=='net5.0' OR '$(TargetFramework)'=='net6.0' OR '$(TargetFramework)'=='net7.0' OR '$(TargetFramework)'=='net8.0'">
+  <ItemGroup Condition="'$(TargetFramework)'=='net5.0' OR '$(TargetFramework)'=='net6.0' OR '$(TargetFramework)'=='net7.0' OR '$(TargetFramework)'=='net8.0' OR '$(TargetFramework)'=='net10.0'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />
   </ItemGroup>
