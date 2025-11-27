@@ -146,4 +146,41 @@ public static partial class StringUtils {
 
     }
 
+    /// <summary>
+    /// Converts the specified string of separated GUID values into a set of unique GUIDs. Supported separators are comma
+    /// (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+    /// </summary>
+    /// <param name="input">The input string containing one or more GUIDs separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Guid}"/> containing the unique GUIDs parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid GUIDs.
+    /// </returns>
+    /// <remarks>Only valid GUIDs are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<Guid> ParseGuidSet(string? input) {
+        return ParseGuidSet(input, DefaultSeparators);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated GUID values into a set of unique GUIDs, using the specified <paramref name="separators"/>.
+    /// </summary>
+    /// <param name="input">The input string containing one or more GUIDs separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Guid}"/> containing the unique GUIDs parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid GUIDs.
+    /// </returns>
+    /// <remarks>Only valid GUIDs are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<Guid> ParseGuidSet(string? input, params char[] separators) {
+
+        HashSet<Guid> temp = [];
+        if (string.IsNullOrWhiteSpace(input)) return temp;
+
+        foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            if (Guid.TryParse(piece, out Guid result)) temp.Add(result);
+        }
+
+        return temp;
+
+    }
+
 }

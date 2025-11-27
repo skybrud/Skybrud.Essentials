@@ -143,4 +143,41 @@ public static partial class StringUtils {
 
     }
 
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of unsigned 32-bit integer values. Supported separators are comma
+    /// (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="uint"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <returns>
+    /// A <see cref="HashSet{UInt32}"/> containing the unique <see cref="uint"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="uint"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="uint"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<uint> ParseUInt32Set(string? input) {
+        return ParseUInt32Set(input, DefaultSeparators);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of unsigned 32-bit integer values, using the specified <paramref name="separators"/>.
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="uint"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>
+    /// A <see cref="HashSet{UInt32}"/> containing the unique <see cref="uint"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="uint"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="uint"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<uint> ParseUInt32Set(string? input, params char[] separators) {
+
+        HashSet<uint> temp = [];
+        if (string.IsNullOrWhiteSpace(input)) return temp;
+
+        foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            if (uint.TryParse(piece, out uint result)) temp.Add(result);
+        }
+
+        return temp;
+
+    }
+
 }

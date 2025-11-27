@@ -194,6 +194,28 @@ public static partial class StringExtensions {
     }
 
     /// <summary>
+    /// Converts the specified string of separated values into a <see cref="HashSet{T}"/> of <see cref="string"/>.
+    /// Supported separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>)
+    /// and tab (<c>\t</c>).
+    /// </summary>
+    /// <param name="str">The input string containing the values.</param>
+    /// <returns>A set of <see cref="string"/> values.</returns>
+    public static HashSet<string> ToStringSet(this string? str) {
+        return StringUtils.ParseStringSet(str);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated values into a <see cref="HashSet{T}"/> of <see cref="string"/>, using
+    /// the specified array of <paramref name="separators"/>.
+    /// </summary>
+    /// <param name="str">The input string containing the values.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>A set of <see cref="string"/> values.</returns>
+    public static HashSet<string> ToStringSet(this string? str, params char[] separators) {
+        return StringUtils.ParseStringSet(str, separators);
+    }
+
+    /// <summary>
     /// If <paramref name="input"/> is longer than <paramref name="maxCharacters"/>, this method will return a
     /// truncated version of <paramref name="input"/> with <c>...</c> appended to the end, and where the overall
     /// length is exactly <paramref name="maxCharacters"/>. If the length <paramref name="input"/> is lower than or

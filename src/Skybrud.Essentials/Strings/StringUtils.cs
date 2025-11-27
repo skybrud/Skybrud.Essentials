@@ -92,6 +92,28 @@ public static partial class StringUtils {
     }
 
     /// <summary>
+    /// Converts the specified string of separated values into a <see cref="HashSet{T}"/> of <see cref="string"/>.
+    /// Supported separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>)
+    /// and tab (<c>\t</c>).
+    /// </summary>
+    /// <param name="str">The input string containing the values.</param>
+    /// <returns>A set of <see cref="string"/> values.</returns>
+    public static HashSet<string> ParseStringSet(string? str) {
+        return ParseStringSet(str, DefaultSeparators);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated values into a <see cref="HashSet{T}"/> of <see cref="string"/>, using
+    /// the specified array of <paramref name="separators"/>.
+    /// </summary>
+    /// <param name="str">The input string containing the values.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>A set of <see cref="string"/> values.</returns>
+    public static HashSet<string> ParseStringSet(string? str, params char[] separators) {
+        return string.IsNullOrWhiteSpace(str) ? [] : [..str!.Split(separators, StringSplitOptions.RemoveEmptyEntries)];
+    }
+
+    /// <summary>
     /// Converts a singular word to the plural counterpart (for English words only).
     /// </summary>
     /// <param name="word">The singular word.</param>

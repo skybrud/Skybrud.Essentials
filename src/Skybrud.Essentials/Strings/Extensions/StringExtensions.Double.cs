@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Essentials.Strings.Extensions;
@@ -146,6 +147,34 @@ public static partial class StringExtensions {
     /// <returns>A list of double-precision floating-point values (<see cref="double"/>).</returns>
     public static List<double> ToDoubleList(this string? input, params char[] separators) {
         return StringUtils.ParseDoubleList(input, separators);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of double-precision floating-point values. Supported separators are comma
+    /// (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="double"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Double}"/> containing the unique <see cref="double"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="double"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="double"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<double> ToDoubleSet(this string? input) {
+        return StringUtils.ParseDoubleSet(input);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of double-precision floating-point values, using the specified <paramref name="separators"/>.
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="double"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Double}"/> containing the unique <see cref="double"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="double"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="double"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<double> ToDoubleSet(this string? input, params char[] separators) {
+        return StringUtils.ParseDoubleSet(input, separators);
     }
 
 }
