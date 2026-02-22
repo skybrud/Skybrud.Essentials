@@ -194,6 +194,31 @@ public static partial class StringExtensions {
     }
 
     /// <summary>
+    /// Parses string of multiple values into a list of <see cref="string"/>. Supported separators are
+    /// comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+    ///
+    /// Empty entries are automatically removed from the output list.
+    /// </summary>
+    /// <param name="input">The input string containing the values.</param>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> ToStringList(this string? input) {
+        return StringUtils.ParseStringList(input);
+    }
+
+    /// <summary>
+    /// Parses string of multiple values into a list of <see cref="string"/>, using the specified array of
+    /// <paramref name="separators"/>.
+    ///
+    /// Empty entries are automatically removed from the output list.
+    /// </summary>
+    /// <param name="input">The input string containing the values.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> ToStringList(this string? input, char[] separators) {
+        return StringUtils.ParseStringList(input, separators);
+    }
+
+    /// <summary>
     /// Converts the specified string of separated values into a <see cref="HashSet{T}"/> of <see cref="string"/>.
     /// Supported separators are comma (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>)
     /// and tab (<c>\t</c>).
