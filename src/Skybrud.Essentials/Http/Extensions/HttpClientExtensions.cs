@@ -181,7 +181,7 @@ public static class HttpClientExtensions {
     /// <returns>A task that represents the asynchronous operation. The task result contains the parsed <see cref="JArray"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="client"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
     /// <exception cref="HttpRequestException">The request failed or the response content could not be read.</exception>
-    public static async Task<JArray> GetJsonObjectArray(this HttpClient client, string url) {
+    public static async Task<JArray> GetJsonArrayAsync(this HttpClient client, string url) {
         if (client is null) throw new ArgumentNullException(nameof(client));
         if (url is null) throw new ArgumentNullException(nameof(url));
         string body = await client.GetStringAsync(url);
@@ -197,7 +197,7 @@ public static class HttpClientExtensions {
     /// <returns>A task that represents the asynchronous operation. The task result contains an array of <typeparamref name="T"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="client"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
     /// <exception cref="HttpRequestException">The request failed or the response content could not be read.</exception>
-    public static async Task<T[]> GetJsonObjectArray<T>(this HttpClient client, string url) {
+    public static async Task<T[]> GetJsonArrayAsync<T>(this HttpClient client, string url) {
         if (client is null) throw new ArgumentNullException(nameof(client));
         if (url is null) throw new ArgumentNullException(nameof(url));
         string body = await client.GetStringAsync(url);
@@ -214,7 +214,7 @@ public static class HttpClientExtensions {
     /// <returns>A task that represents the asynchronous operation. The task result contains an array of values returned by <paramref name="func"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="client"/>, <paramref name="url"/>, or <paramref name="func"/> is <see langword="null"/>.</exception>
     /// <exception cref="HttpRequestException">The request failed or the response content could not be read.</exception>
-    public static async Task<T[]> GetJsonObjectArray<T>(this HttpClient client, string url, Func<JObject, T> func) {
+    public static async Task<T[]> GetJsonArrayAsync<T>(this HttpClient client, string url, Func<JObject, T> func) {
         if (client is null) throw new ArgumentNullException(nameof(client));
         if (url is null) throw new ArgumentNullException(nameof(url));
         if (func is null) throw new ArgumentNullException(nameof(func));
@@ -288,7 +288,7 @@ public static class HttpClientExtensions {
     /// <returns>A task that represents the asynchronous operation. The task result contains the parsed <see cref="JToken"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="client"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
     /// <exception cref="HttpRequestException">The request failed or the response content could not be read.</exception>
-    public static async Task<JToken> GetJsonObjectToken(this HttpClient client, string url) {
+    public static async Task<JToken> GetJsonTokenAsync(this HttpClient client, string url) {
         if (client is null) throw new ArgumentNullException(nameof(client));
         if (url is null) throw new ArgumentNullException(nameof(url));
         string body = await client.GetStringAsync(url);
@@ -304,7 +304,7 @@ public static class HttpClientExtensions {
     /// <returns>A task that represents the asynchronous operation. The task result contains the deserialized value.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="client"/> or <paramref name="url"/> is <see langword="null"/>.</exception>
     /// <exception cref="HttpRequestException">The request failed or the response content could not be read.</exception>
-    public static async Task<T> GetJsonObjectToken<T>(this HttpClient client, string url) {
+    public static async Task<T> GetJsonTokenAsync<T>(this HttpClient client, string url) {
         if (client is null) throw new ArgumentNullException(nameof(client));
         if (url is null) throw new ArgumentNullException(nameof(url));
         string body = await client.GetStringAsync(url);
@@ -322,7 +322,7 @@ public static class HttpClientExtensions {
     /// <returns>A task that represents the asynchronous operation. The task result contains the value returned by <paramref name="func"/>.</returns>
     /// <exception cref="ArgumentNullException"><paramref name="client"/>, <paramref name="url"/>, or <paramref name="func"/> is <see langword="null"/>.</exception>
     /// <exception cref="HttpRequestException">The request failed or the response content could not be read.</exception>
-    public static async Task<T> GetJsonObjectToken<T>(this HttpClient client, string url, Func<JToken, T> func) {
+    public static async Task<T> GetJsonTokenAsync<T>(this HttpClient client, string url, Func<JToken, T> func) {
         if (client is null) throw new ArgumentNullException(nameof(client));
         if (url is null) throw new ArgumentNullException(nameof(url));
         if (func is null) throw new ArgumentNullException(nameof(func));
