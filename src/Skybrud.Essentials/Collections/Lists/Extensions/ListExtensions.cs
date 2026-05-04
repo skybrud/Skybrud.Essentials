@@ -1,12 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 
-namespace Skybrud.Essentials.Collections.Extensions;
+namespace Skybrud.Essentials.Collections.Lists.Extensions;
 
 /// <summary>
 /// Static class with various extension methods for <see cref="IReadOnlyList{T}"/>.
 /// </summary>
-[Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions' class instead.")]
 public static class ListExtensions {
 
     /// <summary>
@@ -22,7 +20,6 @@ public static class ListExtensions {
     /// var (a) = list;
     /// </code>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IReadOnlyList<T> list, out T? first) {
         first = list.Count > 0 ? list[0] : default;
     }
@@ -41,7 +38,6 @@ public static class ListExtensions {
     /// var (a, b) = list;
     /// </code>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IReadOnlyList<T> list, out T? first, out T? second) {
         first = list.Count > 0 ? list[0] : default;
         second = list.Count > 1 ? list[1] : default;
@@ -62,7 +58,6 @@ public static class ListExtensions {
     /// var (a, b, c) = list;
     /// </code>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IReadOnlyList<T> list, out T? first, out T? second, out T? third) {
         first = list.Count > 0 ? list[0] : default;
         second = list.Count > 1 ? list[1] : default;
@@ -85,7 +80,6 @@ public static class ListExtensions {
     /// var (a, b, c, d) = list;
     /// </code>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IReadOnlyList<T> list, out T? first, out T? second, out T? third, out T? fourth) {
         first = list.Count > 0 ? list[0] : default;
         second = list.Count > 1 ? list[1] : default;
@@ -110,7 +104,6 @@ public static class ListExtensions {
     /// var (a, b, c, d, e) = list;
     /// </code>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IReadOnlyList<T> list, out T? first, out T? second, out T? third, out T? fourth, out T? fifth) {
         first = list.Count > 0 ? list[0] : default;
         second = list.Count > 1 ? list[1] : default;
@@ -137,7 +130,6 @@ public static class ListExtensions {
     /// var (a, b, c, d, e, f) = list;
     /// </code>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IReadOnlyList<T> list, out T? first, out T? second, out T? third, out T? fourth, out T? fifth, out T? sixth) {
         first = list.Count > 0 ? list[0] : default;
         second = list.Count > 1 ? list[1] : default;
@@ -166,7 +158,6 @@ public static class ListExtensions {
     /// var (a, b, c, d, e, f, g) = list;
     /// </code>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Lists.Extensions.ListExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IReadOnlyList<T> list, out T? first, out T? second, out T? third, out T? fourth, out T? fifth, out T? sixth, out T? seventh) {
         first = list.Count > 0 ? list[0] : default;
         second = list.Count > 1 ? list[1] : default;
