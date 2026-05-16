@@ -39,11 +39,6 @@
     <AssemblyMetadata Include="BuildDate" Value="$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmmss`))" />
   </ItemGroup>
 
-  <!-- Include NuGet dependencies (.NET Standard 2.0) -->
-  <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
-    <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
-  </ItemGroup>
-
   <!-- Include NuGet dependencies (all target frameworks) -->
   <ItemGroup>
     <PackageReference Include="JetBrains.Annotations" Version="2022.1.0" PrivateAssets="All" />
