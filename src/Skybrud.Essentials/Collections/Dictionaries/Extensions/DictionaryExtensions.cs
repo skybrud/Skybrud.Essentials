@@ -1,15 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Skybrud.Essentials.Strings;
 
-namespace Skybrud.Essentials.Collections.Extensions;
+namespace Skybrud.Essentials.Collections.Dictionaries.Extensions;
 
 /// <summary>
 /// Static class with various dictionary related extension methods.
 /// </summary>
-[Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions' class instead.")]
 public static class DictionaryExtensions {
 
     /// <summary>
@@ -20,7 +18,6 @@ public static class DictionaryExtensions {
     /// <param name="dictionary">The dictionary.</param>
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="bool"/> value if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.GetBoolean' method instead.")]
     public static bool GetBoolean(this IDictionary<object, object?>? dictionary, object key) {
         return TryGetBoolean(dictionary, key, out bool value) && value;
     }
@@ -33,7 +30,6 @@ public static class DictionaryExtensions {
     /// <param name="dictionary">The dictionary.</param>
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="bool"/> value if successful; otherwise, <see langword="null"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.GetBooleanOrNull' method instead.")]
     public static bool? GetBooleanOrNull(this IDictionary<object, object?>? dictionary, object key) {
         return TryGetBoolean(dictionary, key, out bool? value) ? value : null;
     }
@@ -46,7 +42,6 @@ public static class DictionaryExtensions {
     /// <param name="dictionary">The dictionary.</param>
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="int"/> value if successful; otherwise, <c>0</c>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.GetInt32' method instead.")]
     public static int GetInt32(this IDictionary<object, object?>? dictionary, object key) {
         return TryGetInt32(dictionary, key, out int result) ? result : 0;
     }
@@ -59,7 +54,6 @@ public static class DictionaryExtensions {
     /// <param name="dictionary">The dictionary.</param>
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="int"/> value if successful; otherwise, <see langword="null"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.GetInt32OrNull' method instead.")]
     public static int? GetInt32OrNull(this IDictionary<object, object?>? dictionary, object key) {
         return TryGetInt32(dictionary, key, out int? result) ? result : null;
     }
@@ -72,7 +66,6 @@ public static class DictionaryExtensions {
     /// <param name="dictionary">The dictionary.</param>
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="long"/> value if successful; otherwise, <c>0</c>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.GetInt64' method instead.")]
     public static long GetInt64(this IDictionary<object, object?>? dictionary, object key) {
         return TryGetInt64(dictionary, key, out long result) ? result : 0;
     }
@@ -85,7 +78,6 @@ public static class DictionaryExtensions {
     /// <param name="dictionary">The dictionary.</param>
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="long"/> value if successful; otherwise, <see langword="null"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.GetInt64OrNull' method instead.")]
     public static long? GetInt64OrNull(this IDictionary<object, object?>? dictionary, object key) {
         return TryGetInt64(dictionary, key, out long? result) ? result : null;
     }
@@ -96,7 +88,6 @@ public static class DictionaryExtensions {
     /// <param name="dictionary">The dictionary.</param>
     /// <param name="key">The key of the dictionary item.</param>
     /// <returns>The <see cref="string"/> value if successful; otherwise, <see langword="null"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.GetString' method instead.")]
     public static string? GetString(this IDictionary<object, object?>? dictionary, object key) {
         return TryGetString(dictionary, key, out string? result) ? result : null;
     }
@@ -108,7 +99,6 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="false"/>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.TryGetBoolean' method instead.")]
     public static bool TryGetBoolean(this IDictionary<object, object?>? dictionary, object key, out bool result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
@@ -140,7 +130,6 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <param name="result">When this method returns, holds the <see cref="bool"/> value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.TryGetBoolean' method instead.")]
     public static bool TryGetBoolean(this IDictionary<object, object?>? dictionary, object key, out bool? result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
@@ -172,7 +161,6 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <param name="result">When this method returns, holds the <see cref="int"/> value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.TryGetInt32' method instead.")]
     public static bool TryGetInt32(this IDictionary<object, object?>? dictionary, object key, out int result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
@@ -212,7 +200,6 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <param name="result">When this method returns, holds the <see cref="int"/> value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.TryGetInt32' method instead.")]
     public static bool TryGetInt32(this IDictionary<object, object?>? dictionary, object key, [NotNullWhen(true)] out int? result) {
 
         if (TryGetInt32(dictionary, key, out int value)) {
@@ -232,7 +219,6 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <param name="result">When this method returns, holds the <see cref="long"/> value if successful; otherwise, <c>0</c>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.TryGetInt64' method instead.")]
     public static bool TryGetInt64(this IDictionary<object, object?>? dictionary, object key, out long result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {
@@ -268,7 +254,6 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <param name="result">When this method returns, holds the <see cref="long"/> value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.TryGetInt64' method instead.")]
     public static bool TryGetInt64(this IDictionary<object, object?>? dictionary, object key, [NotNullWhen(true)] out long? result) {
 
         if (TryGetInt64(dictionary, key, out long value)) {
@@ -288,7 +273,6 @@ public static class DictionaryExtensions {
     /// <param name="key">The key of the dictionary item.</param>
     /// <param name="result">When this method returns, holds the <see cref="string"/> value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Dictionaries.Extensions.DictionaryExtensions.TryGetString' method instead.")]
     public static bool TryGetString(this IDictionary<object, object?>? dictionary, object key, [NotNullWhen(true)] out string? result) {
 
         if (dictionary is null || !dictionary.TryGetValue(key, out object? value)) {

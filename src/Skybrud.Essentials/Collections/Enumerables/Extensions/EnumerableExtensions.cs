@@ -4,12 +4,11 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
 
-namespace Skybrud.Essentials.Collections.Extensions;
+namespace Skybrud.Essentials.Collections.Enumerables.Extensions;
 
 /// <summary>
 /// Static class with extensions methods for instances of <see cref="IEnumerable{T}"/>.
 /// </summary>
-[Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions' class instead.")]
 public static class EnumerableExtensions {
 
     /// <summary>
@@ -23,7 +22,6 @@ public static class EnumerableExtensions {
     /// <see>
     ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L34</cref>
     /// </see>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.DistinctBy' method instead.")]
     public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector) {
         return DistinctBy(source, keySelector, null);
     }
@@ -41,7 +39,6 @@ public static class EnumerableExtensions {
     /// <see>
     ///     <cref>https://github.com/dotnet/runtime/blob/v6.0.4/src/libraries/System.Linq/src/System/Linq/Distinct.cs#L48</cref>
     /// </see>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.DistinctBy' method instead.")]
     public static IEnumerable<TSource> DistinctBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IEqualityComparer<TKey>? comparer) {
         if (source is null) throw new ArgumentNullException(nameof(source));
         if (keySelector is null) throw new ArgumentNullException(nameof(keySelector));
@@ -80,7 +77,6 @@ public static class EnumerableExtensions {
     /// <see>
     ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L42</cref>
     /// </see>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.InGroupsOf' method instead.")]
     public static IEnumerable<IEnumerable<TSource>> InGroupsOf<TSource>(this IEnumerable<TSource> source, int groupSize) {
 
         if (source == null) throw new ArgumentNullException(nameof(source));
@@ -112,7 +108,6 @@ public static class EnumerableExtensions {
     /// <param name="func">The callback function used for sorting the items.</param>
     /// <param name="reverse">Whether <paramref name="collection"/> should be sorted in descending order.</param>
     /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.OrderBy' method instead.")]
     public static IOrderedEnumerable<T> OrderBy<T, TKey>(this IEnumerable<T> collection, Func<T, TKey> func, bool reverse) {
         return reverse ? collection.OrderByDescending(func) : collection.OrderBy(func);
     }
@@ -127,7 +122,6 @@ public static class EnumerableExtensions {
     /// <param name="func">The callback function used for sorting the items.</param>
     /// <param name="order">The order by which the collection should be sorted.</param>
     /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.OrderBy' method instead.")]
     public static IOrderedEnumerable<T> OrderBy<T, TKey>(this IEnumerable<T> collection, Func<T, TKey> func, SortOrder order) {
         return order == SortOrder.Descending ? collection.OrderByDescending(func) : collection.OrderBy(func);
     }
@@ -144,7 +138,6 @@ public static class EnumerableExtensions {
     /// <param name="comparer">An <see cref="IComparer{T}"/> to compare the keys.</param>
     /// <param name="reverse">Whether <paramref name="source"/> should be sorted in descending order.</param>
     /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.OrderBy' method instead.")]
     public static IOrderedEnumerable<T> OrderBy<T, TKey>(this IEnumerable<T> source, Func<T, TKey> func, IComparer<TKey>? comparer, bool reverse) {
         return reverse ? source.OrderByDescending(func, comparer) : source.OrderBy(func, comparer);
     }
@@ -160,7 +153,6 @@ public static class EnumerableExtensions {
     /// <param name="comparer">An <see cref="IComparer{T}"/> to compare the keys.</param>
     /// <param name="order">The order by which the collection should be sorted.</param>
     /// <returns>An instanced of <see cref="IOrderedEnumerable{T}"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.OrderBy' method instead.")]
     public static IOrderedEnumerable<TSource> OrderBy<TSource, TKey>(this IEnumerable<TSource> source, Func<TSource, TKey> keySelector, IComparer<TKey>? comparer, SortOrder order) {
         return order == SortOrder.Descending ? source.OrderByDescending(keySelector, comparer) : source.OrderBy(keySelector, comparer);
     }
@@ -174,7 +166,6 @@ public static class EnumerableExtensions {
     /// <see>
     ///     <cref>https://github.com/umbraco/Umbraco-CMS/blob/v9/contrib/src/Umbraco.Core/Extensions/EnumerableExtensions.cs#L226</cref>
     /// </see>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.WhereNotNull' method instead.")]
     public static IEnumerable<TSource> WhereNotNull<TSource>(this IEnumerable<TSource?> source) where TSource : class {
         return source.Where(x => x != null)!;
     }
@@ -186,7 +177,6 @@ public static class EnumerableExtensions {
     /// <param name="targetType"></param>
     /// <returns>An <see cref="IEnumerable"/> that contains each element of the source sequence cast to the specified type.</returns>
     /// <remarks>The <see cref="Enumerable.Cast{TResult}"/> method requires developers to know the target type at compile time. Using the non-generic <see cref="Cast"/> method instead, the target type can be specified at runtime.</remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.Cast' method instead.")]
     public static IEnumerable Cast(this IEnumerable source, Type targetType) {
         return (IEnumerable) typeof(Enumerable)
             .GetTypeInfo()
@@ -201,7 +191,6 @@ public static class EnumerableExtensions {
     /// <param name="source">The <see cref="IEnumerable"/> to create an <see cref="IList"/> from.</param>
     /// <param name="targetType">The type of the elements of <paramref name="source"/>.</param>
     /// <returns>An <see cref="IList"/> that contains elements from the input sequence.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.ToList' method instead.")]
     public static IList ToList(this IEnumerable source, Type targetType) {
         return (IList) typeof(Enumerable)
             .GetTypeInfo()
@@ -216,7 +205,6 @@ public static class EnumerableExtensions {
     /// <param name="source">An <see cref="IEnumerable"/> to create an array from.</param>
     /// <param name="targetType">The type of the elements of <paramref name="source"/>.</param>
     /// <returns>An array that contains the elements from the input sequence.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.ToArray' method instead.")]
     public static Array ToArray(this IEnumerable source, Type targetType) {
         return (Array) typeof(Enumerable)
             .GetTypeInfo()
@@ -233,7 +221,6 @@ public static class EnumerableExtensions {
     /// <param name="source">An <see cref="IEnumerable{T}"/> to create a <see cref="HashSet{TResult}"/> from.</param>
     /// <param name="selector">A function to extract a key from each element.</param>
     /// <returns>A <see cref="HashSet{TResult}"/> that contains values of type <typeparamref name="TResult"/> selected from the input sequence.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.ToHashSet' method instead.")]
     public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
         return [..source.Select(selector)];
     }
@@ -247,7 +234,6 @@ public static class EnumerableExtensions {
     /// <param name="selector">A function to extract a key from each element.</param>
     /// <param name="comparer">The <see cref="IEqualityComparer{T}"/> implementation to use when comparing values in the set, or null to use the default <see cref="EqualityComparer{T}"/> implementation for the set type.</param>
     /// <returns>A <see cref="HashSet{TResult}"/> that contains values of type <typeparamref name="TResult"/> selected from the input sequence.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.ToHashSet' method instead.")]
     public static HashSet<TResult> ToHashSet<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector, IEqualityComparer<TResult>? comparer) {
         return new HashSet<TResult>(source.Select(selector), comparer);
     }
@@ -257,7 +243,6 @@ public static class EnumerableExtensions {
     /// </summary>
     /// <param name="order">The sort order.</param>
     /// <returns>An instance of <see cref="SortOrder"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.GetReverse' method instead.")]
     public static SortOrder GetReverse(this SortOrder order) {
         return order == SortOrder.Ascending ? SortOrder.Descending : SortOrder.Ascending;
     }
@@ -271,7 +256,6 @@ public static class EnumerableExtensions {
     /// otherwise, the default value of <typeparamref name="T"/>.</param>
     /// <param name="second">When this method returns, holds the second item if the collection has at least two
     /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IEnumerable<T> collection, out T? first, out T? second) {
 
         first = default;
@@ -309,7 +293,6 @@ public static class EnumerableExtensions {
     /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
     /// <param name="third">When this method returns, holds the third item if the collection has at least three
     /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IEnumerable<T> collection, out T? first, out T? second, out T? third) {
 
         first = default;
@@ -342,7 +325,6 @@ public static class EnumerableExtensions {
     /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
     /// <param name="fourth">When this method returns, holds the fourth item if the collection has at least four
     /// items; otherwise, the default value of <typeparamref name="T"/>.</param>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.Deconstruct' method instead.")]
     public static void Deconstruct<T>(this IEnumerable<T> collection, out T? first, out T? second, out T? third, out T? fourth) {
 
         first = default;
@@ -373,7 +355,6 @@ public static class EnumerableExtensions {
     /// <remarks>
     ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementations, this seems to be the most random.</para>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.RandomOrDefault' method instead.")]
     public static TSource? RandomOrDefault<TSource>(this IEnumerable<TSource> collection) {
         return collection.OrderBy(_ => Guid.NewGuid()).FirstOrDefault();
     }
@@ -387,7 +368,6 @@ public static class EnumerableExtensions {
     /// <remarks>
     ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementations, this seems to be the most random.</para>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.OrderByRandom' method instead.")]
     public static IOrderedEnumerable<TSource> OrderByRandom<TSource>(this IEnumerable<TSource> collection) {
         return collection.OrderBy(_ => Guid.NewGuid());
     }
@@ -401,7 +381,6 @@ public static class EnumerableExtensions {
     /// <remarks>
     ///     <para>The implementation of this method uses <see cref="Guid.NewGuid"/> for sorting the items in a random order. When testing various implementations, this seems to be the most random.</para>
     /// </remarks>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.Randomize' method instead.")]
     public static IOrderedEnumerable<TSource> Randomize<TSource>(this IEnumerable<TSource> collection) {
         return collection.OrderBy(_ => Guid.NewGuid());
     }
@@ -414,7 +393,6 @@ public static class EnumerableExtensions {
     /// <param name="source">A <see cref="IEnumerable{T}"/> instance with the items.</param>
     /// <param name="selector">A function used for converting the elements.</param>
     /// <returns>An instance of <see cref="List{TResult}"/></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.SelectList' method instead.")]
     public static List<TResult> SelectList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
 
         // Initialize a new list
@@ -436,7 +414,6 @@ public static class EnumerableExtensions {
     /// <param name="source">A <see cref="IEnumerable{T}"/> instance with the items.</param>
     /// <param name="selector">A function used for converting the elements.</param>
     /// <returns>An array of <typeparamref name="TResult"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.SelectArray' method instead.")]
     public static TResult[] SelectArray<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
         return [.. source.Select(selector)];
     }
@@ -449,7 +426,6 @@ public static class EnumerableExtensions {
     /// <param name="source">A <see cref="IEnumerable{T}"/> instance with the items.</param>
     /// <param name="selector">A function used for converting the elements.</param>
     /// <returns>An instance of <see cref="IReadOnlyList{TResult}"/></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.SelectReadOnlyList' method instead.")]
     public static IReadOnlyList<TResult> SelectReadOnlyList<TSource, TResult>(this IEnumerable<TSource> source, Func<TSource, TResult> selector) {
         return [.. source.Select(selector)];
     }
@@ -461,7 +437,6 @@ public static class EnumerableExtensions {
     /// <param name="source">An <see cref="IEnumerable{TSource}"/> to filter.</param>
     /// <param name="predicate">A function to test each element for a condition.</param>
     /// <returns>An <see cref="List{TSource}"/> that contains elements from the input sequence that satisfy the condition.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.WhereList' method instead.")]
     public static List<TSource> WhereList<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
 
         // Initialize a new list
@@ -485,7 +460,6 @@ public static class EnumerableExtensions {
     /// <param name="source">An <see cref="IEnumerable{TSource}"/> to filter.</param>
     /// <param name="predicate">A function to test each element for a condition.</param>
     /// <returns>An array that contains elements from the input sequence that satisfy the condition.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.WhereArray' method instead.")]
     public static TSource[] WhereArray<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
         return [.. source.Where(predicate)];
     }
@@ -497,7 +471,6 @@ public static class EnumerableExtensions {
     /// <param name="source">An <see cref="IEnumerable{TSource}"/> to filter.</param>
     /// <param name="predicate">A function to test each element for a condition.</param>
     /// <returns>An <see cref="IReadOnlyList{TSource}"/> that contains elements from the input sequence that satisfy the condition.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.WhereReadOnlyList' method instead.")]
     public static IReadOnlyList<TSource> WhereReadOnlyList<TSource>(this IEnumerable<TSource> source, Func<TSource, bool> predicate) {
         return [.. source.Where(predicate)];
     }
@@ -507,7 +480,6 @@ public static class EnumerableExtensions {
     /// <typeparam name="T">The common type of the items.</typeparam>
     /// <param name="items">The items to be appended.</param>
     /// <param name="list">The list <paramref name="items"/> should be appended to.</param>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Enumerables.Extensions.EnumerableExtensions.AppendTo' method instead.")]
     public static void AppendTo<T>(this IEnumerable<T> items, List<T> list) {
         list.AddRange(items);
     }

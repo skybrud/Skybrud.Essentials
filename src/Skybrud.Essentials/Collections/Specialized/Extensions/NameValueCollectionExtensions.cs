@@ -7,12 +7,11 @@ using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Skybrud.Essentials.Strings;
 
-namespace Skybrud.Essentials.Collections.Extensions;
+namespace Skybrud.Essentials.Collections.Specialized.Extensions;
 
 /// <summary>
 /// Class with various extension methods for <see cref="NameValueCollection"/>.
 /// </summary>
-[Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions' class instead.")]
 public static class NameValueCollectionExtensions {
 
     #region String
@@ -24,7 +23,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>An instance of <see cref="string"/> if successful; otherwise, <see langword="null"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetString' method instead.")]
     public static string? GetString(this NameValueCollection? collection, string key) {
         return collection?.GetValues(key)?.FirstOrDefault();
     }
@@ -36,7 +34,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, holds the string value if successful; otherwise, <see langword="null"/>.</param>
     /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetString' method instead.")]
     public static bool TryGetString(this NameValueCollection? collection, string key, [NotNullWhen(true)] out string? result) {
         if (collection?.GetValues(key)?.FirstOrDefault() is { } str && !string.IsNullOrWhiteSpace(str)) {
             result = str;
@@ -52,7 +49,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A string array representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetStringArray' method instead.")]
     public static string[] GetStringArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -77,7 +73,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A string list representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetStringList' method instead.")]
     public static List<string> GetStringList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -106,7 +101,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <c>false</c>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetBoolean' method instead.")]
     public static bool GetBoolean(this NameValueCollection? collection, string key) {
         return StringUtils.ParseBoolean(collection?.GetString(key));
     }
@@ -118,7 +112,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
     /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <paramref name="fallback"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetBoolean' method instead.")]
     public static bool GetBoolean(this NameValueCollection? collection, string key, bool fallback) {
         return StringUtils.ParseBoolean(collection?.GetString(key), fallback);
     }
@@ -129,7 +122,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <see langword="null"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetBooleanOrNull' method instead.")]
     public static bool? GetBooleanOrNull(this NameValueCollection? collection, string key) {
         return StringUtils.ParseBooleanOrNull(collection?.GetString(key));
     }
@@ -141,7 +133,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>false</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetBoolean' method instead.")]
     public static bool TryGetBoolean(this NameValueCollection? collection, string key, out bool result) {
         return StringUtils.TryParseBoolean(collection?.GetString(key), out result);
     }
@@ -153,7 +144,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the boolean value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetBoolean' method instead.")]
     public static bool TryGetBoolean(this NameValueCollection? collection, string key, [NotNullWhen(true)] out bool? result) {
         return StringUtils.TryParseBoolean(collection?.GetString(key), out result);
     }
@@ -168,7 +158,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <c>false</c>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetGuid' method instead.")]
     public static Guid GetGuid(this NameValueCollection? collection, string key) {
         return StringUtils.ParseGuid(collection?.GetString(key));
     }
@@ -180,7 +169,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
     /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <paramref name="fallback"/>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetGuid' method instead.")]
     public static Guid GetGuid(this NameValueCollection? collection, string key, Guid fallback) {
         return StringUtils.ParseGuid(collection?.GetString(key), fallback);
     }
@@ -191,7 +179,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The converted value of the item with <paramref name="key"/> if the conversion was successful; otherwise <c>false</c>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetGuidOrNull' method instead.")]
     public static Guid? GetGuidOrNull(this NameValueCollection? collection, string key) {
         return StringUtils.ParseGuidOrNull(collection?.GetString(key));
     }
@@ -203,7 +190,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the conversion succeeded; otherwise <see cref="Guid.Empty"/>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetGuid' method instead.")]
     public static bool TryGetGuid(this NameValueCollection? collection, string key, out Guid result) {
         return StringUtils.TryParseGuid(collection?.GetString(key), out result);
     }
@@ -215,7 +201,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the GUID value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetGuid' method instead.")]
     public static bool TryGetGuid(this NameValueCollection? collection, string key, [NotNullWhen(true)] out Guid? result) {
         return StringUtils.TryParseGuid(collection?.GetString(key), out result);
     }
@@ -226,7 +211,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="Guid"/> array representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetGuidArray' method instead.")]
     public static Guid[] GetGuidArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -251,7 +235,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="Guid"/> list representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetGuidList' method instead.")]
     public static List<Guid> GetGuidList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -280,7 +263,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a 32-bit unsigned integer (<see cref="int"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt32' method instead.")]
     public static int GetInt32(this NameValueCollection? collection, string key) {
         return StringUtils.ParseInt32(collection?.GetString(key));
     }
@@ -292,7 +274,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
     /// <returns>The value as a 32-bit unsigned integer (<see cref="int"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt32' method instead.")]
     public static int GetInt32(this NameValueCollection? collection, string key, int fallback) {
         return StringUtils.ParseInt32(collection?.GetString(key), fallback);
     }
@@ -303,7 +284,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a 32-bit unsigned integer (<see cref="int"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt32OrNull' method instead.")]
     public static int? GetInt32OrNull(this NameValueCollection? collection, string key) {
         return StringUtils.ParseInt32OrNull(collection?.GetString(key));
     }
@@ -315,7 +295,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetInt32' method instead.")]
     public static bool TryGetInt32(this NameValueCollection? collection, string key, out int result) {
         return StringUtils.TryParseInt32(collection?.GetString(key), out result);
     }
@@ -327,7 +306,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="int"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetInt32' method instead.")]
     public static bool TryGetInt32(this NameValueCollection? collection, string key, [NotNullWhen(true)] out int? result) {
         return StringUtils.TryParseInt32(collection?.GetString(key), out result);
     }
@@ -338,7 +316,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>An <see cref="int"/> array representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt32Array' method instead.")]
     public static int[] GetInt32Array(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -363,7 +340,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>An <see cref="int"/> list representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt32List' method instead.")]
     public static List<int> GetInt32List(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -392,7 +368,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a 64-bit unsigned integer (<see cref="long"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt64' method instead.")]
     public static long GetInt64(this NameValueCollection? collection, string key) {
         return StringUtils.ParseInt64(collection?.GetString(key));
     }
@@ -404,7 +379,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
     /// <returns>The value as a 64-bit unsigned integer (<see cref="long"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt64' method instead.")]
     public static long GetInt64(this NameValueCollection? collection, string key, long fallback) {
         return StringUtils.ParseInt64(collection?.GetString(key), fallback);
     }
@@ -415,7 +389,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a 64-bit unsigned integer (<see cref="long"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt64OrNull' method instead.")]
     public static long? GetInt64OrNull(this NameValueCollection? collection, string key) {
         return StringUtils.ParseInt64OrNull(collection?.GetString(key));
     }
@@ -427,7 +400,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetInt64' method instead.")]
     public static bool TryGetInt64(this NameValueCollection? collection, string key, out long result) {
         return StringUtils.TryParseInt64(collection?.GetString(key), out result);
     }
@@ -439,7 +411,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetInt64' method instead.")]
     public static bool TryGetInt64(this NameValueCollection? collection, string key, [NotNullWhen(true)] out long? result) {
         return StringUtils.TryParseInt64(collection?.GetString(key), out result);
     }
@@ -450,7 +421,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="long"/> array representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt64Array' method instead.")]
     public static long[] GetInt64Array(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -475,7 +445,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="long"/> list representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetInt64List' method instead.")]
     public static List<long> GetInt64List(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -504,7 +473,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a single-precision floating-point number (<see cref="float"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetFloat' method instead.")]
     public static float GetFloat(this NameValueCollection? collection, string key) {
         return StringUtils.ParseFloat(collection?.GetString(key));
     }
@@ -516,7 +484,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
     /// <returns>The value as a single-precision floating-point number (<see cref="float"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetFloat' method instead.")]
     public static float GetFloat(this NameValueCollection? collection, string key, int fallback) {
         return StringUtils.ParseFloat(collection?.GetString(key), fallback);
     }
@@ -527,7 +494,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a single-precision floating-point number (<see cref="float"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetFloatOrNull' method instead.")]
     public static float? GetFloatOrNull(this NameValueCollection? collection, string key) {
         return StringUtils.ParseFloatOrNull(collection?.GetString(key));
     }
@@ -539,7 +505,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetFloat' method instead.")]
     public static bool TryGetFloat(this NameValueCollection? collection, string key, out float result) {
         return StringUtils.TryParseFloat(collection?.GetString(key), out result);
     }
@@ -551,7 +516,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="float"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetFloat' method instead.")]
     public static bool TryGetFloat(this NameValueCollection? collection, string key, [NotNullWhen(true)] out float? result) {
         return StringUtils.TryParseFloat(collection?.GetString(key), out result);
     }
@@ -562,7 +526,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="float"/> array representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetFloatArray' method instead.")]
     public static float[] GetFloatArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -587,7 +550,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="float"/> list representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetFloatList' method instead.")]
     public static List<float> GetFloatList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -616,7 +578,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a double-precision floating-point number (<see cref="double"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetDouble' method instead.")]
     public static double GetDouble(this NameValueCollection? collection, string key) {
         return StringUtils.ParseDouble(collection?.GetString(key));
     }
@@ -628,7 +589,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="fallback">The fallback value that will be returned if the conversion fails.</param>
     /// <returns>The value as a double-precision floating-point number (<see cref="double"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetDouble' method instead.")]
     public static double GetDouble(this NameValueCollection? collection, string key, double fallback) {
         return StringUtils.ParseDouble(collection?.GetString(key), fallback);
     }
@@ -639,7 +599,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns>The value as a double-precision floating-point number (<see cref="double"/>).</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetDoubleOrNull' method instead.")]
     public static double? GetDoubleOrNull(this NameValueCollection? collection, string key) {
         return StringUtils.ParseDoubleOrNull(collection?.GetString(key));
     }
@@ -651,7 +610,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="double"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>0</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetDouble' method instead.")]
     public static bool TryGetDouble(this NameValueCollection? collection, string key, out double result) {
         return StringUtils.TryParseDouble(collection?.GetString(key), out result);
     }
@@ -663,7 +621,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the <see cref="long"/> value associated with the specified key, if the key is found and the conversion succeeded; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> was found converted successfully; otherwise, <c>false.</c></returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetDouble' method instead.")]
     public static bool TryGetDouble(this NameValueCollection? collection, string key, [NotNullWhen(true)] out double? result) {
         return StringUtils.TryParseDouble(collection?.GetString(key), out result);
     }
@@ -674,7 +631,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="double"/> array representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetDoubleArray' method instead.")]
     public static double[] GetDoubleArray(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -699,7 +655,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The name value collection.</param>
     /// <param name="key">The key of the item or items.</param>
     /// <returns>A <see cref="double"/> list representing the parsed values.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.GetDoubleList' method instead.")]
     public static List<double> GetDoubleList(this NameValueCollection? collection, string key) {
 
         // Return an empty array if the value is null
@@ -727,7 +682,6 @@ public static class NameValueCollectionExtensions {
     /// <param name="key">The key of the item.</param>
     /// <param name="result">When this method returns, contains the value associated with the specified key, if the key is found; otherwise <c>null</c>.</param>
     /// <returns><c>true</c> if the <see cref="NameValueCollection"/> contains an element with the specified key; otherwise, <c>false</c>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.TryGetValue' method instead.")]
     public static bool TryGetValue(this NameValueCollection? collection, string key, [NotNullWhen(true)] out string? result) {
         result = collection?.GetString(key);
         return result != null;
@@ -739,11 +693,11 @@ public static class NameValueCollectionExtensions {
     /// <param name="collection">The collection.</param>
     /// <param name="key">The key of the item.</param>
     /// <returns><c>true</c> if an item with <paramref name="key"/> is found; otherwise, <c>false</c>.</returns>
-    [Obsolete("Use the 'Skybrud.Essentials.Collections.Specialized.Extensions.NameValueCollectionExtensions.ContainsKey' method instead.")]
     public static bool ContainsKey(this NameValueCollection? collection, string key) {
         return collection is not null && collection.AllKeys.Any(x => x == key);
     }
 
 }
+
 
 #endif
