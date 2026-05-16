@@ -1,6 +1,4 @@
-﻿#if I_CAN_HAS_NAME_VALUE_COLLECTION
-
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Collections.Specialized;
 using System.Diagnostics.CodeAnalysis;
@@ -698,6 +696,3 @@ public static class NameValueCollectionExtensions {
     }
 
 }
-
-
-#endif
