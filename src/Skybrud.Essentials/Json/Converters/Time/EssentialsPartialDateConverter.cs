@@ -7,6 +7,7 @@ namespace Skybrud.Essentials.Json.Converters.Time {
     /// <summary>
     /// JSON converter for serializing and deserializing instances of <see cref="EssentialsPartialDate"/>.
     /// </summary>
+    [Obsolete("This converter is deprecated and will be removed in a future version.")]
     public class EssentialsPartialDateConverter : JsonConverter {
 
         /// <summary>

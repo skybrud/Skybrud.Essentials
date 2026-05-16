@@ -6,7 +6,7 @@
 namespace Skybrud.Essentials.Time;
 
 /// <summary>
-/// Utility class used for calculating the dates of varios international and national days.
+/// Utility class used for calculating the dates of various international and national days.
 /// </summary>
 [Obsolete("Use the CalendarUtils class instead.")]
 public static class CalendarHelper {
@@ -246,8 +246,9 @@ public static class CalendarHelper {
     #region Canada
 
     /// <summary>
-    /// Natianal holidays and special dates in <strong>Canada</strong>.
+    /// National holidays and special dates in <strong>Canada</strong>.
     /// </summary>
+    [Obsolete("Use the 'CalendarUtils.Canada' class instead.")]
     public static class Canada {
 
         /// <summary>
@@ -298,8 +299,9 @@ public static class CalendarHelper {
     #region Denmark
 
     /// <summary>
-    /// Natianal holidays and special dates in <strong>Denmark</strong>.
+    /// National holidays and special dates in <strong>Denmark</strong>.
     /// </summary>
+    [Obsolete("Use the 'CalendarUtils.Denmark' class instead.")]
     public static class Denmark {
 
         /// <summary>
@@ -343,8 +345,9 @@ public static class CalendarHelper {
     #region United States
 
     /// <summary>
-    /// Natianal holidays and special dates in the <strong>United States</strong>.
+    /// National holidays and special dates in the <strong>United States</strong>.
     /// </summary>
+    [Obsolete("Use the 'CalendarUtils.UnitedStates' class instead.")]
     public static class UnitedStates {
 
         /// <summary>

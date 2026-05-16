@@ -5,6 +5,7 @@ namespace Skybrud.Essentials.Locations.Extensions;
 /// <summary>
 /// Static class with various extension methods for the <see cref="ILocation"/> interface.
 /// </summary>
+[Obsolete("Use the 'IPoint' interface as well as the extension methods in the 'Skybrud.Essentials.Maps' namespace instead.")]
 public static class LocationExtensions {
 
     /// <summary>

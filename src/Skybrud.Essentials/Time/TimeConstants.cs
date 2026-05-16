@@ -6,11 +6,13 @@ namespace Skybrud.Essentials.Time;
 /// <summary>
 /// Class with various time related constants.
 /// </summary>
+[Obsolete($"Use the '{nameof(Iso8601Constants)}' class instead.")]
 public static class TimeConstants {
 
     /// <summary>
     /// Class with various constants related to date and time.
     /// </summary>
+    [Obsolete($"Use the '{nameof(Iso8601Constants)}' class instead.")]
     public static class DateAndTime {
 
         /// <summary>
