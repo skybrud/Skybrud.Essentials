@@ -60,25 +60,27 @@ public static class StreamUtils {
     }
 
     /// <summary>
-    /// Returns a byte array representing the contents of the specified <paramref name="stream"/>.
+    /// Converts the specified <paramref name="stream"/> to a byte array.
     /// </summary>
-    /// <param name="stream">The stream.</param>
-    /// <returns>An array of <see cref="byte"/> representing the contents of the stream.</returns>
-    public static byte[] ToBytes(Stream stream) {
-        using MemoryStream ms = new();
-        stream.CopyTo(ms);
-        return ms.ToArray();
+    /// <param name="stream">The input stream.</param>
+    /// <returns>A <see cref="byte"/> array.</returns>
+    public static byte[] ToArray(Stream stream) {
+        if (stream is MemoryStream ms) return ms.ToArray();
+        using MemoryStream memory = stream.CanSeek ? new MemoryStream((int) stream.Length) : new MemoryStream();
+        stream.CopyTo(memory);
+        return memory.ToArray();
     }
 
     /// <summary>
-    /// Returns a byte array representing the contents of the specified <paramref name="stream"/>.
+    /// Converts the specified <paramref name="stream"/> to a byte array.
     /// </summary>
-    /// <param name="stream">The stream.</param>
-    /// <returns>An array of <see cref="byte"/> representing the contents of the stream.</returns>
-    public static async Task<byte[]> ToBytesAsync(Stream stream) {
-        using MemoryStream ms = new();
-        await stream.CopyToAsync(ms);
-        return ms.ToArray();
+    /// <param name="stream">The input stream.</param>
+    /// <returns>A <see cref="byte"/> array.</returns>
+    public static async Task<byte[]> ToArrayAsync(this Stream stream) {
+        if (stream is MemoryStream ms) return ms.ToArray();
+        using MemoryStream memory = stream.CanSeek ? new MemoryStream((int) stream.Length) : new MemoryStream();
+        await stream.CopyToAsync(memory).ConfigureAwait(false);
+        return memory.ToArray();
     }
 
 }
