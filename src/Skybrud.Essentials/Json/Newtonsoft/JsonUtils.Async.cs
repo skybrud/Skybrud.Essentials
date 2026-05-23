@@ -21,6 +21,18 @@ public partial class JsonUtils {
     }
 
     /// <summary>
+    /// Loads and parses the JSON object in the file at the specified <paramref name="path"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type to be returned.</typeparam>
+    /// <param name="path">The path to the JSON file.</param>
+    /// <param name="func">A callback function/method used for converting an instance of <see cref="JObject"/> into
+    /// an instance of <typeparamref name="TResult"/>.</param>
+    /// <returns>An instance of <typeparamref name="TResult"/>.</returns>
+    public static async Task<TResult> LoadJsonObjectAsync<TResult>(string path, Func<JObject, TResult> func) {
+        return ParseJsonObject(await File.ReadAllTextAsync(path, Encoding.UTF8), func);
+    }
+
+    /// <summary>
     /// Saves the specified <paramref name="json" /> object to a file at <paramref name="path"/>.
     /// </summary>
     /// <param name="path">The path to the JSON file.</param>

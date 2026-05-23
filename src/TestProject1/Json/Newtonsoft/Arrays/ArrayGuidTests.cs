@@ -6,6 +6,8 @@ namespace TestProject1.Json.Newtonsoft.Arrays;
 [TestClass]
 public class ArrayGuidTests {
 
+    protected static readonly JValue Null = JValue.CreateNull();
+
     public static readonly Guid Key = new("e4ac4109-303f-44ba-b29a-413f94beb00e");
 
     protected static readonly JArray SampleArray = new(new object[13]) {
@@ -13,7 +15,7 @@ public class ArrayGuidTests {
         [1] = "Hello there!",
         [2] = 123,
         [3] = 123.456,
-        [4] = null,
+        [4] = Null,
         [5] = new JArray(),
         [6] = new JObject(),
         [7] = true,

@@ -6,12 +6,14 @@ namespace TestProject1.Json.Newtonsoft.Arrays;
 [TestClass]
 public class ArrayBooleanTests {
 
+    protected static readonly JValue Null = JValue.CreateNull();
+
     protected static readonly JArray Sample1 = new(new object[11]) {
         [0] = "",
         [1] = "Hello there!",
         [2] = 123,
         [3] = 123.456,
-        [4] = null,
+        [4] = Null,
         [5] = new JArray(),
         [6] = new JObject(),
         [7] = true,
@@ -25,7 +27,7 @@ public class ArrayBooleanTests {
         [1] = "Hello there!",
         [2] = 1,
         [3] = 123.456,
-        [4] = null,
+        [4] = Null,
         [5] = new JArray(),
         [6] = new JObject(),
         [7] = true,

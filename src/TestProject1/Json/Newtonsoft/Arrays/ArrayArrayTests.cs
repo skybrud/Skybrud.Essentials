@@ -6,10 +6,12 @@ namespace TestProject1.Json.Newtonsoft.Arrays;
 [TestClass]
 public class ArrayArrayTests {
 
+    protected static readonly JValue Null = JValue.CreateNull();
+
     [TestMethod]
     public void GetObject() {
 
-        JArray array = new("", "Hello there!", 1, 123.456, null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
+        JArray array = new("", "Hello there!", 1, 123.456, Null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
 
         Assert.IsNull(array.GetObject(0), "Index 0");
         Assert.IsNull(array.GetObject(1), "Index 1");
@@ -29,7 +31,7 @@ public class ArrayArrayTests {
     [TestMethod]
     public void GetObjectByPath() {
 
-        JArray array = new("", "Hello there!", 1, 123.456, null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
+        JArray array = new("", "Hello there!", 1, 123.456, Null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
 
         Assert.IsNull(array.GetObjectByPath("[0]"), "Index 0");
         Assert.IsNull(array.GetObjectByPath("[1]"), "Index 1");
@@ -49,7 +51,7 @@ public class ArrayArrayTests {
     [TestMethod]
     public void GetArray() {
 
-        JArray array = new("", "Hello there!", 1, 123.456, null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
+        JArray array = new("", "Hello there!", 1, 123.456, Null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
 
         Assert.IsNull(array.GetArray(0), "Index 0");
         Assert.IsNull(array.GetArray(1), "Index 1");
@@ -69,7 +71,7 @@ public class ArrayArrayTests {
     [TestMethod]
     public void GetArrayByPath() {
 
-        JArray array = new("", "Hello there!", 1, 123.456, null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
+        JArray array = new("", "Hello there!", 1, 123.456, Null, new JArray(), new JObject(), true, false, long.MaxValue, "9223372036854775808");
 
         Assert.IsNull(array.GetArrayByPath("[0]"), "Index 0");
         Assert.IsNull(array.GetArrayByPath("[1]"), "Index 1");

@@ -6,6 +6,8 @@ namespace TestProject1.Json.Newtonsoft.Arrays;
 [TestClass]
 public class ArrayInt64Tests {
 
+    protected static readonly JValue Null = JValue.CreateNull();
+
     protected const long Zero = 0;
 
     protected const long One = 1;
@@ -17,7 +19,7 @@ public class ArrayInt64Tests {
         [1] = "Hello there!",
         [2] = 123,
         [3] = 123.456,
-        [4] = null,
+        [4] = Null,
         [5] = new JArray(),
         [6] = new JObject(),
         [7] = true,
