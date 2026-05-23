@@ -139,4 +139,32 @@ public static partial class StringExtensions {
         return StringUtils.ParseUInt16List(input, separators);
     }
 
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of unsigned 16-bit integer values. Supported separators are comma
+    /// (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="ushort"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Int16}"/> containing the unique <see cref="ushort"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="ushort"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="ushort"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<ushort> ToUInt16Set(this string? input) {
+        return StringUtils.ParseUInt16Set(input);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of unsigned 16-bit integer values, using the specified <paramref name="separators"/>.
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="ushort"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Int16}"/> containing the unique <see cref="ushort"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="ushort"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="ushort"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<ushort> ToUInt16Set(this string? input, params char[] separators) {
+        return StringUtils.ParseUInt16Set(input, separators);
+    }
+
 }

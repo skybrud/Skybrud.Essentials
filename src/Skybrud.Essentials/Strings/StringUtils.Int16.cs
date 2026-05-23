@@ -142,4 +142,41 @@ public static partial class StringUtils {
 
     }
 
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of 16-bit integer values. Supported separators are comma
+    /// (<c>,</c>), space (<c> </c>), carriage return (<c>\r</c>), new line (<c>\n</c>) and tab (<c>\t</c>).
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="short"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Int16}"/> containing the unique <see cref="short"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="short"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="short"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<short> ParseInt16Set(string? input) {
+        return ParseInt16Set(input, DefaultSeparators);
+    }
+
+    /// <summary>
+    /// Converts the specified string of separated values into a corresponding set of 16-bit integer values, using the specified <paramref name="separators"/>.
+    /// </summary>
+    /// <param name="input">The input string containing one or more <see cref="short"/> values separated by the specified separator characters. Can be <see langword="null"/> or empty.</param>
+    /// <param name="separators">An array of supported separators.</param>
+    /// <returns>
+    /// A <see cref="HashSet{Int16}"/> containing the unique <see cref="short"/> values parsed from the input string. Returns an empty set if
+    /// the input is <see langword="null"/> or contains no valid <see cref="short"/>.
+    /// </returns>
+    /// <remarks>Only valid <see cref="short"/> values are included in the returned set. Invalid or unparseable values are ignored.</remarks>
+    public static HashSet<short> ParseInt16Set(string? input, params char[] separators) {
+
+        HashSet<short> temp = [];
+        if (string.IsNullOrWhiteSpace(input)) return temp;
+
+        foreach (string piece in input!.Split(separators, StringSplitOptions.RemoveEmptyEntries)) {
+            if (short.TryParse(piece, out short result)) temp.Add(result);
+        }
+
+        return temp;
+
+    }
+
 }
