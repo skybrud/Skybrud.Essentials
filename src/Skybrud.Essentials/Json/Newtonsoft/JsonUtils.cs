@@ -6,7 +6,7 @@ using System.Linq;
 using System.Text;
 using Newtonsoft.Json;
 using Newtonsoft.Json.Linq;
-using Skybrud.Essentials.Collections.Extensions;
+using Skybrud.Essentials.Collections.Enumerables.Extensions;
 using Skybrud.Essentials.Common;
 
 namespace Skybrud.Essentials.Json.Newtonsoft;
