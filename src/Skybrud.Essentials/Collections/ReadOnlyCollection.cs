@@ -28,9 +28,9 @@ public static class ReadOnlyCollection {
     /// <summary>
     /// Returns an empty instance of <see cref="IReadOnlyCollection{T}"/>.
     /// </summary>
-    /// <typeparam name="TItem">The item type of the collection.</typeparam>
+    /// <typeparam name="T">The item type of the collection.</typeparam>
     /// <returns>An instance of <see cref="IReadOnlyCollection{T}"/>.</returns>
-    public static IReadOnlyCollection<TItem> Empty<TItem>() {
+    public static IReadOnlyCollection<T> Empty<T>() {
         return [];
     }
 

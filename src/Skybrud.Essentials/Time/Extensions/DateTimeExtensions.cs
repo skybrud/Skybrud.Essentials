@@ -345,6 +345,15 @@ public static class DateTimeExtensions {
     }
 
     /// <summary>
+    /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>.
+    /// </summary>
+    /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+    public static EssentialsDate ToEssentialsDate(this DateTime time) {
+        return new EssentialsDate(time);
+    }
+
+    /// <summary>
     /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>, or
     /// <see langword="null"/> if <paramref name="time"/> is <see langword="null"/>.
     /// </summary>
@@ -353,6 +362,25 @@ public static class DateTimeExtensions {
     [return: NotNullIfNotNull(nameof(time))]
     public static EssentialsDate? ToEssentialsDate(this DateTime? time) {
         return time is null ? null : new EssentialsDate(time.Value);
+    }
+
+    /// <summary>
+    /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>.
+    /// </summary>
+    /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+    public static EssentialsTime ToEssentialsTime(this DateTime time) {
+        return new EssentialsTime(time);
+    }
+
+    /// <summary>
+    /// Returns a new <see cref="EssentialsDate"/> instance based on the specified <paramref name="time"/>.
+    /// </summary>
+    /// <param name="time">The date and time the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <param name="timeZone">The time zone the new <see cref="EssentialsDate"/> instance should be based on.</param>
+    /// <returns>An instance of <see cref="EssentialsDate"/>.</returns>
+    public static EssentialsTime ToEssentialsTime(this DateTime time, TimeZoneInfo timeZone) {
+        return new EssentialsTime(time, timeZone);
     }
 
     /// <summary>
