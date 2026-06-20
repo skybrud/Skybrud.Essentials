@@ -3,14 +3,14 @@ using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using System.Text.RegularExpressions;
 using Newtonsoft.Json;
-using Skybrud.Essentials.Json.Converters.Time;
+using Skybrud.Essentials.Json.Newtonsoft.Converters.Time;
 
 namespace Skybrud.Essentials.Time;
 
 /// <summary>
 /// Class representing a partial date (e.g. only year and month).
 /// </summary>
-[JsonConverter(typeof(EssentialsPartialDateConverter))]
+[JsonConverter(typeof(PartialDateConverter))]
 public class EssentialsPartialDate {
 
     #region Properties
@@ -32,7 +32,7 @@ public class EssentialsPartialDate {
 
     /// <summary>
     /// Gets an instance of <see cref="DateTime"/> representing the publication date. This instance will not be
-    /// reliable in the way that an instance of <see cref="DateTime"/> can't represent a partial date.
+    /// reliable in the way that an instance of <see cref="DateTime"/> cant represent a partial date.
     /// </summary>
     public DateTime DateTime { get; }
 
