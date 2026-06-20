@@ -289,9 +289,8 @@ public class EssentialsPartialDate {
     /// </summary>
     /// <param name="timestamp">An instance of <see cref="EssentialsDateTime"/>.</param>
     /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
-#pragma warning disable 618
+    [Obsolete("This operator is deprecated and will be removed in a future version.")]
     public static implicit operator EssentialsPartialDate(EssentialsDateTime timestamp) {
-#pragma warning restore 618
         return new EssentialsPartialDate(timestamp);
     }
 

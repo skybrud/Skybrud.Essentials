@@ -27,7 +27,7 @@ public static partial class NewtonsoftJsonArrayExtensions {
     /// <param name="index">The index of the item.</param>
     /// <param name="fallback">The fallback value.</param>
     /// <returns>An instance of <see cref="bool"/> if successful; otherwise, <paramref name="fallback"/>.</returns>
-    public static bool? GetBoolean(this JArray? array, int index, bool fallback) {
+    public static bool GetBoolean(this JArray? array, int index, bool fallback) {
         return TryParseBoolean(GetToken(array, index), out bool result) ? result : fallback;
     }
 

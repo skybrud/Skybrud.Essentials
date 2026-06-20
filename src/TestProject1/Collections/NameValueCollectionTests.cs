@@ -1,5 +1,5 @@
 ﻿using System.Collections.Specialized;
-using Skybrud.Essentials.Collections.Extensions;
+using Skybrud.Essentials.Collections.Specialized.Extensions;
 
 namespace TestProject1.Collections;
 

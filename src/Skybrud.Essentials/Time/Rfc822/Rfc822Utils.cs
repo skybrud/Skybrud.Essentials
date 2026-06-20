@@ -35,9 +35,8 @@ public static class Rfc822Utils {
     /// </summary>
     /// <param name="timestamp">The timestamp to be converted.</param>
     /// <returns>The timestamp formatted as an RFC 822 date string.</returns>
-#pragma warning disable 618
+    [Obsolete("This method is deprecated and will be removed in a future version.")]
     public static string ToString(EssentialsDateTime timestamp) {
-#pragma warning restore 618
         return ToString(timestamp.DateTime);
     }
 
