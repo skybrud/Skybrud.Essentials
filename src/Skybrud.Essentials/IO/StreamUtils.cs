@@ -93,7 +93,7 @@ public static class StreamUtils {
     /// </summary>
     /// <param name="stream">The input stream.</param>
     /// <returns>A <see cref="byte"/> array.</returns>
-    public static async Task<byte[]> ToArrayAsync(this Stream stream) {
+    public static async Task<byte[]> ToArrayAsync(Stream stream) {
         if (stream is MemoryStream ms) return ms.ToArray();
         using MemoryStream memory = stream.CanSeek ? new MemoryStream((int) stream.Length) : new MemoryStream();
         await stream.CopyToAsync(memory).ConfigureAwait(false);

@@ -17,7 +17,7 @@ public static class StreamExtensions {
     /// </summary>
     /// <param name="stream">The input stream.</param>
     /// <returns>A <see cref="byte"/> array.</returns>
-    public static byte[] ToArray(Stream stream) {
+    public static byte[] ToArray(this Stream stream) {
         return StreamUtils.ToArray(stream);
     }
 
