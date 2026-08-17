@@ -87,6 +87,7 @@ public class EssentialsPartialDate {
     /// Initializes a new instance from the specified <paramref name="date"/>.
     /// </summary>
     /// <param name="date">An instance of <see cref="EssentialsDateTime"/> representing the full date.</param>
+    [Obsolete("This constructor is deprecated and will be removed in a future version.")]
 #pragma warning disable 618
     public EssentialsPartialDate(EssentialsDateTime? date) {
 #pragma warning restore 618
@@ -290,9 +291,11 @@ public class EssentialsPartialDate {
     /// <param name="timestamp">An instance of <see cref="EssentialsDateTime"/>.</param>
     /// <returns>An instance of <see cref="EssentialsPartialDate"/>.</returns>
     [Obsolete("This operator is deprecated and will be removed in a future version.")]
+#pragma warning disable 618
     public static implicit operator EssentialsPartialDate(EssentialsDateTime timestamp) {
         return new EssentialsPartialDate(timestamp);
     }
+#pragma warning restore 618
 
     #endregion
 
