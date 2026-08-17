@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 
 namespace Skybrud.Essentials.Enums;
 
@@ -62,6 +63,28 @@ public static class EnumExtensions {
     /// <returns>The parsed instance of <typeparamref name="TEnum"/> if successful; otherwise, <see langword="null"/>.</returns>
     public static TEnum? ToEnumOrNull<TEnum>(this string? input) where TEnum : struct, Enum {
         return EnumUtils.ParseEnumOrNull<TEnum>(input);
+    }
+
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="input"/> string into a corresponding enum value of type <typeparamref name="TEnum"/>.
+    /// </summary>
+    /// <typeparam name="TEnum">The enum type.</typeparam>
+    /// <param name="input">The input string to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted enum value if successful; otherwise, the default value of <typeparamref name="TEnum"/>.</param>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
+    public static bool TryParseEnum<TEnum>(this string? input, out TEnum result) where TEnum : struct, Enum {
+        return EnumUtils.TryParseEnum(input, out result);
+    }
+
+    /// <summary>
+    /// Attempts to convert the specified <paramref name="input"/> string into a corresponding enum value of type <typeparamref name="TEnum"/>.
+    /// </summary>
+    /// <typeparam name="TEnum">The enum type.</typeparam>
+    /// <param name="input">The input string to be converted.</param>
+    /// <param name="result">When this method returns, holds the converted enum value if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if <paramref name="input"/> was converted successfully; otherwise, <see langword="false"/>.</returns>
+    public static bool TryParseEnum<TEnum>(this string? input, [NotNullWhen(true)] out TEnum? result) where TEnum : struct, Enum {
+        return EnumUtils.TryParseEnum(input, out result);
     }
 
     /// <summary>
