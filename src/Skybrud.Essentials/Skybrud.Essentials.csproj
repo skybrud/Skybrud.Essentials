@@ -58,30 +58,24 @@
 
   <!-- Include additional metadata in the assembly -->
   <ItemGroup>
+    <AssemblyMetadata Include="Authors" Value="$(Authors)" />
     <AssemblyMetadata Include="PackageProjectUrl" Value="https://packages.limbo.works/skybrud.essentials/" />
-    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/limbo.umbraco.iddqd/docs/v13/" />
+    <AssemblyMetadata Include="DocumentationUrl" Value="https://packages.limbo.works/skybrud.essentials/docs/" />
     <AssemblyMetadata Include="NuGetUrl" Value="https://packages.limbo.works/skybrud.essentials/docs/" />
     <AssemblyMetadata Include="BuildDate" Value="$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmmss`))" />
   </ItemGroup>
 
-
   <!-- Ignore vulnerabilities from transient dependencies -->
-  <ItemGroup>
+  <PropertyGroup>
+    <NuGetAuditMode>direct</NuGetAuditMode>
+  </PropertyGroup>
 
-    <!-- Package 'System.Net.Http' 4.3.0 has a known high severity vulnerability -->
-    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-7jgj-8wvc-jh57" />
-
-    <!-- Package 'System.Text.RegularExpressions' 4.3.0 has a known high severity vulnerability -->
-    <NuGetAuditSuppress Include="https://github.com/advisories/GHSA-cmhx-cq75-c4mj" />
-
-  </ItemGroup>
-
-  <!-- Include NuGet dependencies (.NET STadnard 1.3 and 2.0) -->
+  <!-- Include NuGet dependencies (.NET Stadnard 1.3 and 2.0) -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard1.3'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
 
-  <!-- Include NuGet dependencies (.NET STadnard 1.3 and 2.0) -->
+  <!-- Include NuGet dependencies (.NET Stadnard 1.3 and 2.0) -->
   <ItemGroup Condition="'$(TargetFramework)'=='netstandard2.0'">
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
     <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="6.0.0" />

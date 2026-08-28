@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.4.33205.214
+# Visual Studio Version 18
+VisualStudioVersion = 18.8.11912.234 insiders
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Skybrud.Essentials", "Skybrud.Essentials\Skybrud.Essentials.csproj", "{EDEB8F09-B293-4D1B-BC36-AD6C8EF8D9BD}"
 EndProject
@@ -16,6 +16,7 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution 
 		..\README.md = ..\README.md
 		..\REFERENCE.md = ..\REFERENCE.md
 		..\release.bat = ..\release.bat
+		Skybrud.Essentials.sln.DotSettings = Skybrud.Essentials.sln.DotSettings
 	EndProjectSection
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestProject1", "TestProject1\TestProject1.csproj", "{8EAA7946-1878-4720-86F6-BEA03787ED8E}"
