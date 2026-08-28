@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Xml;
 
 namespace Skybrud.Essentials.Time.Xml;
@@ -28,11 +29,11 @@ public class XmlSchemaUtils {
     /// </summary>
     /// <param name="input">The duration using the XML schema format.</param>
     /// <param name="result">When this method returns, holds the parsed <see cref="TimeSpan"/> structure if successful; otherwise, <see cref="TimeSpan.Zero"/>.</param>
-    /// <returns><c>true</c> if successful; otherwise, <c>false</c>.</returns>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
     public static bool TryParseDuration(string? input, out TimeSpan result) {
 
         if (string.IsNullOrWhiteSpace(input)) {
-            result = default;
+            result = TimeSpan.Zero;
             return false;
         }
 
@@ -40,7 +41,30 @@ public class XmlSchemaUtils {
             result = XmlConvert.ToTimeSpan(input);
             return true;
         } catch {
-            result = default;
+            result = TimeSpan.Zero;
+            return false;
+        }
+
+    }
+
+    /// <summary>
+    /// Attempts to parse the specified <paramref name="input"/> string into a corresponding <see cref="TimeSpan"/> structure.
+    /// </summary>
+    /// <param name="input">The duration using the XML schema format.</param>
+    /// <param name="result">When this method returns, holds the parsed <see cref="TimeSpan"/> structure if successful; otherwise, <see langword="null"/>.</param>
+    /// <returns><see langword="true"/> if successful; otherwise, <see langword="false"/>.</returns>
+    public static bool TryParseDuration(string? input, [NotNullWhen(true)] out TimeSpan? result) {
+
+        if (string.IsNullOrWhiteSpace(input)) {
+            result = null;
+            return false;
+        }
+
+        try {
+            result = XmlConvert.ToTimeSpan(input);
+            return true;
+        } catch {
+            result = null;
             return false;
         }
 

@@ -1,9 +1,11 @@
 ﻿using System;
+using System.Diagnostics.CodeAnalysis;
 using System.Globalization;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
 using Skybrud.Essentials.Time.UnixTime;
+using Skybrud.Essentials.Time.Xml;
 
 namespace Skybrud.Essentials.Time;
 
@@ -1386,6 +1388,116 @@ public static partial class TimeUtils {
         result = (EssentialsDateMonthName) dt.Month;
         return true;
     }
+
+    /// <summary>
+    /// Parses the specified value as a <see cref="TimeSpan"/>.
+    /// </summary>
+    /// <param name="value">
+    /// The value to parse. A numeric value is interpreted as a number of minutes.
+    /// The value may also be a standard <see cref="TimeSpan"/> representation or an XML Schema/ISO 8601 duration.
+    /// </param>
+    /// <returns>The parsed <see cref="TimeSpan"/>.</returns>
+    /// <remarks>
+    /// Valid formats include:
+    /// <list type="bullet">
+    /// <item><description>Numeric minutes: <c>5</c>, <c>30</c>, <c>120</c></description></item>
+    /// <item><description><see cref="TimeSpan" /> formats: <c>00:05:00</c>, <c>01:30:00</c>, <c>2.00:00:00</c></description></item>
+    /// <item><description>XML Schema / ISO 8601 durations: <c>PT5M</c>, <c>PT30M</c>, <c>P1DT2H</c></description></item>
+    /// </list>
+    /// </remarks>
+    /// <exception cref="ArgumentException">
+    /// <paramref name="value"/> is <see langword="null"/>, empty, or consists only of white-space characters.
+    /// </exception>
+    /// <exception cref="FormatException">
+    /// <paramref name="value"/> is not a valid number of minutes, <see cref="TimeSpan"/>, or XML Schema/ISO 8601 duration.
+    /// </exception>
+
+    public static TimeSpan ParseTimeSpan(string value) {
+        if (string.IsNullOrWhiteSpace(value)) throw new ArgumentException("Value cannot be null or white space.", nameof(value));
+        return TryParseTimeSpan(value, out TimeSpan result) ? result : throw new FormatException($"Invalid time span specified: {value}");
+    }
+
+    /// <summary>
+    /// Attempts to parse the specified value as a <see cref="TimeSpan"/>.
+    /// </summary>
+    /// <param name="value">
+    /// The value to parse. A numeric value is interpreted as a number of minutes.
+    /// The value may also be a standard <see cref="TimeSpan"/> representation or an XML Schema/ISO 8601 duration.
+    /// </param>
+    /// <param name="result">
+    /// When this method returns <see langword="true"/>, contains the parsed <see cref="TimeSpan"/>.
+    /// When this method returns <see langword="false"/>, contains <see cref="TimeSpan.Zero"/>.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if <paramref name="value"/> was parsed successfully; otherwise, <see langword="false"/>.
+    /// </returns>
+    /// <remarks>
+    /// Valid formats include:
+    /// <list type="bullet">
+    /// <item><description>Numeric minutes: <c>5</c>, <c>30</c>, <c>120</c></description></item>
+    /// <item><description><see cref="TimeSpan" /> formats: <c>00:05:00</c>, <c>01:30:00</c>, <c>2.00:00:00</c></description></item>
+    /// <item><description>XML Schema / ISO 8601 durations: <c>PT5M</c>, <c>PT30M</c>, <c>P1DT2H</c></description></item>
+    /// </list>
+    /// </remarks>
+    public static bool TryParseTimeSpan(string? value, out TimeSpan result) {
+
+        // Must not be null or white space
+        if (string.IsNullOrWhiteSpace(value)) {
+            result = TimeSpan.Zero;
+            return false;
+        }
+
+        // If configured value is a numeric value, we assume it's in minutes
+        if (int.TryParse(value, out int minutes)) {
+            result = TimeSpan.FromMinutes(minutes);
+            return true;
+        }
+
+        // Try to parse as TimeSpan
+        if (TimeSpan.TryParse(value, out TimeSpan timeSpan)) {
+            result = timeSpan;
+            return true;
+        }
+
+        // Try to parse the XML schema duration (also ISO 8601 duration)
+        return XmlSchemaUtils.TryParseDuration(value, out result);
+
+    }
+
+    /// <summary>
+    /// Attempts to parse the specified value as a nullable <see cref="TimeSpan"/>.
+    /// </summary>
+    /// <param name="value">
+    /// The value to parse. A numeric value is interpreted as a number of minutes.
+    /// The value may also be a standard <see cref="TimeSpan"/> representation or an XML Schema/ISO 8601 duration.
+    /// </param>
+    /// <param name="result">
+    /// When this method returns <see langword="true"/>, contains the parsed <see cref="TimeSpan"/>.
+    /// When this method returns <see langword="false"/>, contains <see langword="null"/>.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if <paramref name="value"/> was parsed successfully; otherwise, <see langword="false"/>.
+    /// </returns>
+    /// <remarks>
+    /// Valid formats include:
+    /// <list type="bullet">
+    /// <item><description>Numeric minutes: <c>5</c>, <c>30</c>, <c>120</c></description></item>
+    /// <item><description><see cref="TimeSpan" /> formats: <c>00:05:00</c>, <c>01:30:00</c>, <c>2.00:00:00</c></description></item>
+    /// <item><description>XML Schema / ISO 8601 durations: <c>PT5M</c>, <c>PT30M</c>, <c>P1DT2H</c></description></item>
+    /// </list>
+    /// </remarks>
+    public static bool TryParseTimeSpan(string? value, [NotNullWhen(true)] out TimeSpan? result) {
+        bool success = TryParseTimeSpan(value, out TimeSpan span);
+        result = success ? span : null;
+        return success;
+    }
+
+
+
+
+
+
+
 
     internal static DateTimeOffset AdjustForTimeZoneAndDaylightSavings(DateTimeOffset time, TimeZoneInfo timeZone) {
 
