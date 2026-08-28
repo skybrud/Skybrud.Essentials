@@ -3,9 +3,11 @@
 using System;
 using System.Diagnostics.CodeAnalysis;
 using Microsoft.Extensions.Configuration;
+using Skybrud.Essentials.Configuration.Exceptions;
 using Skybrud.Essentials.Enums;
 using Skybrud.Essentials.Strings;
 using Skybrud.Essentials.Strings.Extensions;
+using Skybrud.Essentials.Time;
 
 namespace Skybrud.Essentials.Configuration;
 
@@ -57,8 +59,8 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing or empty.</exception>
     public static bool GetRequiredBoolean(this IConfiguration configuration, string key) {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
-        return StringUtils.TryParseBoolean(value, out bool result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match a '{typeof(bool)}' value.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
+        return StringUtils.TryParseBoolean(value, out bool result) ? result : throw ConfigurationException.Invalid(configuration.GetFullPath(key), typeof(bool));
     }
 
     /// <summary>
@@ -128,8 +130,8 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing or empty.</exception>
     public static int GetRequiredInt32(this IConfiguration configuration, string key) {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
-        return StringUtils.TryParseInt32(value, out int result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match a '{typeof(int)}' value.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
+        return StringUtils.TryParseInt32(value, out int result) ? result : throw ConfigurationException.Invalid(configuration.GetFullPath(key), typeof(int));
     }
 
     /// <summary>
@@ -199,8 +201,8 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing or empty.</exception>
     public static long GetRequiredInt64(this IConfiguration configuration, string key) {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
-        return StringUtils.TryParseInt64(value, out long result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match a '{typeof(long)}' value.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
+        return StringUtils.TryParseInt64(value, out long result) ? result : throw ConfigurationException.Invalid(configuration.GetFullPath(key), typeof(long));
     }
 
     /// <summary>
@@ -248,7 +250,7 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing or empty.</exception>
     public static string GetRequiredString(this IConfiguration configuration, string key) {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
         return value;
     }
 
@@ -308,8 +310,8 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing or empty.</exception>
     public static float GetRequiredFloat(this IConfiguration configuration, string key) {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
-        return StringUtils.TryParseFloat(value, out float result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match a '{typeof(float)}' value.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
+        return StringUtils.TryParseFloat(value, out float result) ? result : throw ConfigurationException.Invalid(configuration.GetFullPath(key), typeof(float));
     }
 
     /// <summary>
@@ -380,8 +382,8 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing or empty.</exception>
     public static double GetRequiredDouble(this IConfiguration configuration, string key) {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
-        return StringUtils.TryParseDouble(value, out double result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match a '{typeof(double)}' value.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
+        return StringUtils.TryParseDouble(value, out double result) ? result : throw ConfigurationException.Invalid(configuration.GetFullPath(key), typeof(double));
     }
 
     /// <summary>
@@ -451,8 +453,8 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing or empty.</exception>
     public static Guid GetRequiredGuid(this IConfiguration configuration, string key) {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
-        return StringUtils.TryParseGuid(value, out Guid result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match a '{typeof(Guid)}' value.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
+        return StringUtils.TryParseGuid(value, out Guid result) ? result : throw ConfigurationException.Invalid(configuration.GetFullPath(key), typeof(Guid));
     }
 
     /// <summary>
@@ -521,8 +523,8 @@ public static class ConfigurationExtensions {
     /// <exception cref="Exception">If the section is missing, empty or the conversion fails.</exception>
     public static TEnum GetRequiredEnum<TEnum>(this IConfiguration configuration, string key) where TEnum : struct, Enum {
         string? value = configuration.GetSection(key).Value;
-        if (string.IsNullOrWhiteSpace(value)) throw new Exception($"The required configuration section '{key}' is missing or empty.");
-        return EnumUtils.TryParseEnum(value, out TEnum result) ? result : throw new Exception($"The value of the required configuration section '{key}' does not match an enum value of '{typeof(TEnum)}' value.");
+        if (string.IsNullOrWhiteSpace(value)) throw ConfigurationException.Missing(configuration.GetFullPath(key));
+        return EnumUtils.TryParseEnum(value, out TEnum result) ? result : throw ConfigurationException.Invalid(configuration.GetFullPath(key), typeof(TEnum));
     }
 
     /// <summary>
@@ -548,6 +550,155 @@ public static class ConfigurationExtensions {
     }
 
     #endregion
+
+    #region TimeSpan (Duration)
+
+    /// <summary>
+    /// Returns the duration specified at the given configuration <paramref name="path"/>, or <see langword="default"/> if no value is specified.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="path">The path of the configuration value.</param>
+    /// <returns>
+    /// The configured duration, or <see langword="default"/> if no value is specified.
+    /// </returns>
+    /// <exception cref="InvalidConfigurationException">
+    /// Thrown if a value is specified but cannot be parsed as a <see cref="TimeSpan"/>.
+    /// </exception>
+    public static TimeSpan GetTimeSpan(this IConfiguration configuration, string path) {
+        return configuration.GetTimeSpan(path, TimeSpan.Zero);
+    }
+
+    /// <summary>
+    /// Returns the duration specified at the given configuration <paramref name="path"/>, or the specified <paramref name="fallback"/> if no value is specified.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="path">The path of the configuration value.</param>
+    /// <param name="fallback">The duration to return if no value is specified.</param>
+    /// <returns>
+    /// The configured duration, or <paramref name="fallback"/> if no value is specified.
+    /// </returns>
+    /// <remarks>
+    /// <para>
+    /// The configured value may be specified as a number of minutes, a <see cref="TimeSpan"/> value, or an XML Schema duration (ISO 8601 duration).
+    /// </para>
+    /// <para>
+    /// A numeric value is interpreted as a number of minutes. For example, <c>15</c> represents 15 minutes.
+    /// A <see cref="TimeSpan"/> value may be specified using a format such as <c>00:15:00</c>, while an ISO 8601 duration
+    /// may be specified using a format such as <c>PT15M</c>.
+    /// </para>
+    /// </remarks>
+    /// <exception cref="InvalidConfigurationException"> Thrown if a value is specified but cannot be parsed as a <see cref="TimeSpan"/>.</exception>
+    public static TimeSpan GetTimeSpan(this IConfiguration configuration, string path, TimeSpan fallback) {
+
+        // Get the value as a string - return the fallback value if the value is missing
+        if (!configuration.TryGetString(path, out string? value)) return fallback;
+
+        // If configured value is a numeric value, we assume it's in minutes
+        if (int.TryParse(value, out int minutes)) return TimeSpan.FromMinutes(minutes);
+
+        // Try to parse as TimeSpan
+        if (TimeSpan.TryParse(value, out TimeSpan timeSpan)) return timeSpan;
+
+        // Try to parse as "TimeSpan" or XML schema duration (aka ISO 8601 duration)
+        if (TimeUtils.TryParseTimeSpan(value, out TimeSpan duration)) return duration;
+
+        // Eventually throw an exception if we can't parse the value
+        throw ConfigurationException.Invalid(configuration.GetFullPath(path), typeof(TimeSpan));
+
+    }
+
+    /// <summary>
+    /// Gets the required duration specified at the given configuration <paramref name="path"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="path">The path of the configuration value.</param>
+    /// <returns>The configured duration.</returns>
+    /// <remarks>
+    /// <para>
+    /// The configured value may be specified as a number of minutes, a <see cref="TimeSpan"/> value, or an XML Schema duration (ISO 8601 duration).
+    /// </para>
+    /// <para>
+    /// A numeric value is interpreted as a number of minutes. For example, <c>15</c> represents 15 minutes.
+    /// A <see cref="TimeSpan"/> value may be specified using a format such as <c>00:15:00</c>, while an ISO 8601 duration
+    /// may be specified using a format such as <c>PT15M</c>.
+    /// </para>
+    /// </remarks>
+    /// <exception cref="MissingConfigurationException">Thrown if no value is specified at <paramref name="path"/>.</exception>
+    /// <exception cref="InvalidConfigurationException">Thrown if a value is specified but cannot be parsed as a duration.</exception>
+    public static TimeSpan GetRequiredTimeSpan(this IConfiguration configuration, string path) {
+
+        // Get the value as a string - throw an exception if the value is missing
+        if (!configuration.TryGetString(path, out string? value)) throw ConfigurationException.Missing(configuration.GetFullPath(path));
+
+        // If configured value is a numeric value, we assume it's in minutes
+        if (int.TryParse(value, out int minutes)) return TimeSpan.FromMinutes(minutes);
+
+        // Try to parse as TimeSpan
+        if (TimeSpan.TryParse(value, out TimeSpan timeSpan)) return timeSpan;
+
+        // Try to parse as "TimeSpan" or XML schema duration (aka ISO 8601 duration)
+        if (TimeUtils.TryParseTimeSpan(value, out TimeSpan duration)) return duration;
+
+        // Eventually throw an exception if we can't parse the value
+        throw ConfigurationException.Invalid(configuration.GetFullPath(path), typeof(TimeSpan));
+
+    }
+
+    /// <summary>
+    /// Attempts to get the duration specified at the given configuration <paramref name="path"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="path">The path of the configuration value.</param>
+    /// <param name="result">
+    /// When this method returns <see langword="true"/>, contains the parsed duration; otherwise <see cref="TimeSpan.Zero"/>.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if a value is specified at <paramref name="path"/> and can be parsed as a duration;
+    /// otherwise <see langword="false"/>.
+    /// </returns>
+    /// <remarks>
+    /// Numeric values are interpreted as a number of minutes (e.g. <c>5</c> for five minutes). Other values are parsed
+    /// first as a <see cref="TimeSpan"/> (e.g. <c>00:05:00</c> for five minutes) and then as an XML Schema duration,
+    /// which also supports ISO 8601 durations (e.g. <c>PT5M</c> for five minutes).
+    /// </remarks>
+    public static bool TryGetTimeSpan(this IConfiguration configuration, string path, out TimeSpan result) {
+
+        result = TimeSpan.Zero;
+
+        // Get the value as a string - return false if the value is missing
+        if (!configuration.TryGetString(path, out string? value)) return false;
+
+        // If configured value is a numeric value, we assume it's in minutes
+        if (int.TryParse(value, out int minutes)) {
+            result = TimeSpan.FromMinutes(minutes);
+            return true;
+        }
+
+        // Try to parse as "TimeSpan" or XML schema duration (aka ISO 8601 duration)
+        if (TimeUtils.TryParseTimeSpan(value, out TimeSpan timeSpan)) {
+            result = timeSpan;
+            return true;
+        }
+
+        // Eventually return false if we can't parse the value
+        return false;
+
+    }
+
+    #endregion
+
+    /// <summary>
+    /// Returns the full configuration path for the specified <paramref name="configuration"/> and <paramref name="path"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="path">The path relative to <paramref name="configuration"/>.</param>
+    /// <returns>The full configuration path.</returns>
+    public static string GetFullPath(this IConfiguration configuration, string path) {
+        if (configuration is IConfigurationSection section) {
+            return ConfigurationPath.Combine(section.Path, path);
+        }
+        return path;
+    }
 
 }
 
