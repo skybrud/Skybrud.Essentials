@@ -36,7 +36,7 @@
   </ItemGroup>
 
   <PropertyGroup>
-    <VersionPrefix>1.1.68</VersionPrefix>
+    <VersionPrefix>1.1.69</VersionPrefix>
     <VersionSuffix Condition="'$(Configuration)'=='Debug'">build$([System.DateTime]::UtcNow.ToString(`yyyyMMddHHmm`))</VersionSuffix>
     <Authors>Anders Bjerner</Authors>
     <Company>Limbo</Company>
