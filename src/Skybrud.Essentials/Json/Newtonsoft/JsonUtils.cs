@@ -14,7 +14,7 @@ namespace Skybrud.Essentials.Json.Newtonsoft;
 /// <summary>
 /// Utility class with various static helper methods for working with JSON.
 /// </summary>
-public static class JsonUtils {
+public static partial class JsonUtils {
 
     /// <summary>
     /// Parses the specified <paramref name="json"/> string into an instance <see cref="JToken"/>.
