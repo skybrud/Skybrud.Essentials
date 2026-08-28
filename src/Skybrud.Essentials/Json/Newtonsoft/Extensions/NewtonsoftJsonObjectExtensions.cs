@@ -416,6 +416,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
         if (property.Value is not JObject obj) throw new JsonException($"The value of the '{propertyName}' property is not a valid JSON object.");
         return callback(obj);
     }
+
     /// <summary>
     /// Returns a list of <typeparamref name="TResult"/> representing the items of the property with the specified <paramref name="propertyName"/>.
     /// </summary>
