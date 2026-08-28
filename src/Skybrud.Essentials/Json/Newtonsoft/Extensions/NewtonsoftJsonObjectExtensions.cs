@@ -344,6 +344,7 @@ public static partial class NewtonsoftJsonObjectExtensions {
         return callback(array);
     }
 
+    #region GetRequiredArray(...)
 
     /// <summary>
     /// Returns an instance of <typeparamref name="TResult"/> representing the value of the property with the specified
@@ -383,6 +384,10 @@ public static partial class NewtonsoftJsonObjectExtensions {
         return array.OfType<JObject>().SelectArray(callback);
     }
 
+    #endregion
+
+    #region GetRequiredObject(...)
+
     /// <summary>
     /// Returns an instance of <see cref="JObject"/> representing the value of the property with the specified
     /// <paramref name="propertyName"/>. If a matching property isn't found or the property value isn't a
@@ -418,4 +423,91 @@ public static partial class NewtonsoftJsonObjectExtensions {
         return callback(obj);
     }
 
+    #endregion
+
+    #region GetList(...)
+
+    /// <summary>
+    /// Returns a list of <typeparamref name="TResult"/> representing the items of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the items.</typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the object.</param>
+    /// <returns>A list of <typeparamref name="TResult"/> if successful; otherwise, <see langword="null"/>.</returns>
+    public static List<TResult>? GetList<TResult>(this JObject? source, string propertyName) {
+        JToken? token = source?.GetValue(propertyName);
+        if (token is null || token.Type is JTokenType.Null) return null;
+        return token.ToObject<List<TResult>>();
+    }
+
+    /// <summary>
+    /// Returns a list of <typeparamref name="TResult"/> representing the items of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the items.</typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the object.</param>
+    /// <param name="callback">A callback method for converting each <see cref="JToken"/> item into an instance of <typeparamref name="TResult"/>.</param>
+    /// <returns>A list of <typeparamref name="TResult"/> if successful; otherwise, <see langword="null"/>.</returns>
+    public static List<TResult>? GetList<TResult>(this JObject? source, string propertyName, Func<JToken, TResult> callback) {
+        if (source?.GetValue(propertyName) is not JArray array) return null;
+        return [.. array.Select(callback)];
+    }
+
+    /// <summary>
+    /// Returns a list of <typeparamref name="TResult"/> representing the items of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the items.</typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the object.</param>
+    /// <param name="callback">A callback method for converting each <see cref="JObject"/> item into an instance of <typeparamref name="TResult"/>.</param>
+    /// <returns>A list of <typeparamref name="TResult"/> if successful; otherwise, <see langword="null"/>.</returns>
+    public static List<TResult>? GetList<TResult>(this JObject? source, string propertyName, Func<JObject, TResult> callback) {
+        if (source?.GetValue(propertyName) is not JArray array) return null;
+        return [.. array.OfType<JObject>().Select(callback)];
+    }
+
+    #endregion
+
+    #region GetListItems(...)
+
+    /// <summary>
+    /// Returns a list of <typeparamref name="TResult"/> representing the items of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the items.</typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the object.</param>
+    /// <returns>A list of <typeparamref name="TResult"/> if successful.</returns>
+    public static List<TResult> GetListItems<TResult>(this JObject? source, string propertyName) {
+        JToken? token = source?.GetValue(propertyName);
+        if (token is null || token.Type is JTokenType.Null) return [];
+        return token.ToObject<List<TResult>>() ?? [];
+    }
+
+    /// <summary>
+    /// Returns a list of <typeparamref name="TResult"/> representing the items of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the items.</typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the object.</param>
+    /// <param name="callback">A callback method for converting each <see cref="JToken"/> item into an instance of <typeparamref name="TResult"/>.</param>
+    /// <returns>A list of <typeparamref name="TResult"/> if successful.</returns>
+    public static List<TResult> GetListItems<TResult>(this JObject? source, string propertyName, Func<JToken, TResult> callback) {
+        if (source?.GetValue(propertyName) is not JArray array) return [];
+        return [.. array.Select(callback)];
+    }
+
+    /// <summary>
+    /// Returns a list of <typeparamref name="TResult"/> representing the items of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TResult">The type of the items.</typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the object.</param>
+    /// <param name="callback">A callback method for converting each <see cref="JObject"/> item into an instance of <typeparamref name="TResult"/>.</param>
+    /// <returns>A list of <typeparamref name="TResult"/> if successful.</returns>
+    public static List<TResult> GetListItems<TResult>(this JObject? source, string propertyName, Func<JObject, TResult> callback) {
+        if (source?.GetValue(propertyName) is not JArray array) return [];
+        return [.. array.OfType<JObject>().Select(callback)];
+    }
+
+    #endregion
 }

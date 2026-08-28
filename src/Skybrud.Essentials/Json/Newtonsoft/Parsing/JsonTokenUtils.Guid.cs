@@ -137,4 +137,42 @@ static partial class JsonTokenUtils {
 
     }
 
+    /// <summary>
+    /// Converts the specified <paramref name="token"/> into a <see cref="Guid"/> list.
+    /// </summary>
+    /// <param name="token">The token to be converted.</param>
+    /// <returns>A <see cref="Guid"/> list.</returns>
+    public static List<Guid> ParseGuidList(JToken? token) {
+
+        switch (token) {
+
+            case null:
+                return [];
+
+            case JArray array:
+
+                List<Guid> temp = [];
+
+                foreach (JToken t in array) {
+
+                    // Attempt to parse the individual tokens in the array, ensuring invalid values doesn't trigger an exception
+                    if (Guid.TryParse(t.ToString(), out Guid guid)) temp.Add(guid);
+
+                }
+
+                return [.. temp];
+
+            default:
+
+                // Be friendly to other formats
+                return token.Type switch {
+                    JTokenType.String => StringUtils.ParseGuidList(token.Value<string>()),
+                    JTokenType.Guid => [token.Value<Guid>()],
+                    _ => []
+                };
+
+        }
+
+    }
+
 }

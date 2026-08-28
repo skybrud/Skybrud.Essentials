@@ -67,7 +67,7 @@ public partial class JsonUtils {
     /// <typeparam name="TResult">The type of the value produced from the parsed JSON token.</typeparam>
     /// <param name="path">The path to the JSON file to read.</param>
     /// <param name="func">A function that maps the parsed <see cref="JToken"/> to a <typeparamref name="TResult"/> value.</param>
-    /// <returns>An instance of <see cref="JToken"/> parsed from the file at the specified <paramref name="path"/>.</returns>
+    /// <returns>An instance of <typeparamref name="TResult"/> parsed from the file at the specified <paramref name="path"/>.</returns>
     public static async Task<TResult> LoadJsonTokenAsync<TResult>(string path, Func<JToken, TResult> func) {
         return ParseJsonToken(await File.ReadAllTextAsync(path, Encoding.UTF8), func);
     }

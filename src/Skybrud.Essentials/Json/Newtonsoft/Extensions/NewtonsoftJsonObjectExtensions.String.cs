@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Json.Newtonsoft.Exceptions;
@@ -91,6 +92,26 @@ public static partial class NewtonsoftJsonObjectExtensions {
     /// <returns>An array of <see cref="string"/>.</returns>
     public static string[] GetStringArrayByPath(this JObject? json, string path) {
         return JsonTokenUtils.ParseStringArray(json?.SelectToken(path));
+    }
+
+    /// <summary>
+    /// Returns the value of the property with the specified <paramref name="propertyName"/>. If a matching token
+    /// is not found, or the value can not be successfully converted to a <see cref="string"/> list, an empty
+    /// list is returned instead.
+    /// </summary>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> GetStringList(this JObject? json, string propertyName) {
+        return JsonTokenUtils.ParseStringList(json?[propertyName]);
+    }
+
+    /// <summary>
+    /// Returns the value of the token matching the specified <paramref name="path"/>. If a matching token is not
+    /// found, or the value can not be successfully converted to a <see cref="string"/> list, an empty list is
+    /// returned instead.
+    /// </summary>
+    /// <returns>A list of <see cref="string"/>.</returns>
+    public static List<string> GetStringListByPath(this JObject? json, string path) {
+        return JsonTokenUtils.ParseStringList(json?.SelectToken(path));
     }
 
     /// <summary>
