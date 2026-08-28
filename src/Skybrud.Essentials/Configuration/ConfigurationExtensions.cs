@@ -551,15 +551,15 @@ public static class ConfigurationExtensions {
 
     #endregion
 
-    #region TimeSpan (Duration)
+    #region TimeSpan
 
     /// <summary>
-    /// Returns the duration specified at the given configuration <paramref name="path"/>, or <see langword="default"/> if no value is specified.
+    /// Returns the <see cref="TimeSpan"/> value specified at the given configuration <paramref name="path"/>, or <see langword="default"/> if no value is specified.
     /// </summary>
     /// <param name="configuration">The configuration.</param>
     /// <param name="path">The path of the configuration value.</param>
     /// <returns>
-    /// The configured duration, or <see langword="default"/> if no value is specified.
+    /// The configured <see cref="TimeSpan"/> value, or <see langword="default"/> if no value is specified.
     /// </returns>
     /// <exception cref="InvalidConfigurationException">
     /// Thrown if a value is specified but cannot be parsed as a <see cref="TimeSpan"/>.
@@ -569,13 +569,13 @@ public static class ConfigurationExtensions {
     }
 
     /// <summary>
-    /// Returns the duration specified at the given configuration <paramref name="path"/>, or the specified <paramref name="fallback"/> if no value is specified.
+    /// Returns the <see cref="TimeSpan"/> value specified at the given configuration <paramref name="path"/>, or the specified <paramref name="fallback"/> if no value is specified.
     /// </summary>
     /// <param name="configuration">The configuration.</param>
     /// <param name="path">The path of the configuration value.</param>
-    /// <param name="fallback">The duration to return if no value is specified.</param>
+    /// <param name="fallback">The <see cref="TimeSpan"/> value to return if no value is specified.</param>
     /// <returns>
-    /// The configured duration, or <paramref name="fallback"/> if no value is specified.
+    /// The configured <see cref="TimeSpan"/> value, or <paramref name="fallback"/> if no value is specified.
     /// </returns>
     /// <remarks>
     /// <para>
@@ -608,11 +608,49 @@ public static class ConfigurationExtensions {
     }
 
     /// <summary>
-    /// Gets the required duration specified at the given configuration <paramref name="path"/>.
+    /// Returns the <see cref="TimeSpan"/> value specified at the given configuration <paramref name="path"/>, or <see langword="null"/> if no value is specified.
     /// </summary>
     /// <param name="configuration">The configuration.</param>
     /// <param name="path">The path of the configuration value.</param>
-    /// <returns>The configured duration.</returns>
+    /// <returns>
+    /// The configured <see cref="TimeSpan"/> value, or <see langword="null"/> if no value is specified.
+    /// </returns>
+    /// <remarks>
+    /// <para>
+    /// The configured value may be specified as a number of minutes, a <see cref="TimeSpan"/> value, or an XML Schema duration (ISO 8601 duration).
+    /// </para>
+    /// <para>
+    /// A numeric value is interpreted as a number of minutes. For example, <c>15</c> represents 15 minutes.
+    /// A <see cref="TimeSpan"/> value may be specified using a format such as <c>00:15:00</c>, while an ISO 8601 duration
+    /// may be specified using a format such as <c>PT15M</c>.
+    /// </para>
+    /// </remarks>
+    /// <exception cref="InvalidConfigurationException"> Thrown if a value is specified but cannot be parsed as a <see cref="TimeSpan"/>.</exception>
+    public static TimeSpan? GetTimeSpanOrNull(this IConfiguration configuration, string path) {
+
+        // Get the value as a string - return the fallback value if the value is missing
+        if (!configuration.TryGetString(path, out string? value)) return null;
+
+        // If configured value is a numeric value, we assume it's in minutes
+        if (int.TryParse(value, out int minutes)) return TimeSpan.FromMinutes(minutes);
+
+        // Try to parse as TimeSpan
+        if (TimeSpan.TryParse(value, out TimeSpan timeSpan)) return timeSpan;
+
+        // Try to parse as "TimeSpan" or XML schema duration (aka ISO 8601 duration)
+        if (TimeUtils.TryParseTimeSpan(value, out TimeSpan duration)) return duration;
+
+        // Eventually throw an exception if we can't parse the value
+        throw ConfigurationException.Invalid(configuration.GetFullPath(path), typeof(TimeSpan));
+
+    }
+
+    /// <summary>
+    /// Gets the required <see cref="TimeSpan"/> value specified at the given configuration <paramref name="path"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="path">The path of the configuration value.</param>
+    /// <returns>The configured <see cref="TimeSpan"/> value.</returns>
     /// <remarks>
     /// <para>
     /// The configured value may be specified as a number of minutes, a <see cref="TimeSpan"/> value, or an XML Schema duration (ISO 8601 duration).
@@ -645,7 +683,7 @@ public static class ConfigurationExtensions {
     }
 
     /// <summary>
-    /// Attempts to get the duration specified at the given configuration <paramref name="path"/>.
+    /// Attempts to get the <see cref="TimeSpan"/> value specified at the given configuration <paramref name="path"/>.
     /// </summary>
     /// <param name="configuration">The configuration.</param>
     /// <param name="path">The path of the configuration value.</param>
@@ -664,6 +702,47 @@ public static class ConfigurationExtensions {
     public static bool TryGetTimeSpan(this IConfiguration configuration, string path, out TimeSpan result) {
 
         result = TimeSpan.Zero;
+
+        // Get the value as a string - return false if the value is missing
+        if (!configuration.TryGetString(path, out string? value)) return false;
+
+        // If configured value is a numeric value, we assume it's in minutes
+        if (int.TryParse(value, out int minutes)) {
+            result = TimeSpan.FromMinutes(minutes);
+            return true;
+        }
+
+        // Try to parse as "TimeSpan" or XML schema duration (aka ISO 8601 duration)
+        if (TimeUtils.TryParseTimeSpan(value, out TimeSpan timeSpan)) {
+            result = timeSpan;
+            return true;
+        }
+
+        // Eventually return false if we can't parse the value
+        return false;
+
+    }
+
+    /// <summary>
+    /// Attempts to get the <see cref="TimeSpan"/> value specified at the given configuration <paramref name="path"/>.
+    /// </summary>
+    /// <param name="configuration">The configuration.</param>
+    /// <param name="path">The path of the configuration value.</param>
+    /// <param name="result">
+    /// When this method returns <see langword="true"/>, contains the parsed duration; otherwise <see langword="null"/>.
+    /// </param>
+    /// <returns>
+    /// <see langword="true"/> if a value is specified at <paramref name="path"/> and can be parsed as a duration;
+    /// otherwise <see langword="false"/>.
+    /// </returns>
+    /// <remarks>
+    /// Numeric values are interpreted as a number of minutes (e.g. <c>5</c> for five minutes). Other values are parsed
+    /// first as a <see cref="TimeSpan"/> (e.g. <c>00:05:00</c> for five minutes) and then as an XML Schema duration,
+    /// which also supports ISO 8601 durations (e.g. <c>PT5M</c> for five minutes).
+    /// </remarks>
+    public static bool TryGetTimeSpan(this IConfiguration configuration, string path, out TimeSpan? result) {
+
+        result = null;
 
         // Get the value as a string - return false if the value is missing
         if (!configuration.TryGetString(path, out string? value)) return false;
