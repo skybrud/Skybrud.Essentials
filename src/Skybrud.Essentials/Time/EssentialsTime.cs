@@ -1318,7 +1318,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="value">The <strong>ISO 8601</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     [return: NotNullIfNotNull(nameof(value))]
-    [Obsolete("Use the 'ParseIso8601' method instead.")]
+    [Obsolete($"Use the '{nameof(ParseIso8601)}' method instead.")]
     public static EssentialsTime? FromIso8601(string? value) {
         return string.IsNullOrWhiteSpace(value) ? null : new EssentialsTime(Iso8601Utils.Parse(value));
     }
@@ -1361,6 +1361,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="str">The <strong>RFC 822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     [return: NotNullIfNotNull(nameof(str))]
+    [Obsolete($"Use the '{nameof(ParseRfc822)}' method instead.")]
     public static EssentialsTime? FromRfc822(string? str) {
         return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc822Utils.Parse(str));
     }
@@ -1371,6 +1372,7 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// <param name="str">The <strong>RFC 2822</strong> string to be converted.</param>
     /// <returns>An instance of <see cref="EssentialsTime"/>.</returns>
     [return: NotNullIfNotNull(nameof(str))]
+    [Obsolete($"Use the '{nameof(ParseRfc2822)}' method instead.")]
     public static EssentialsTime? FromRfc2822(string? str) {
         return string.IsNullOrWhiteSpace(str) ? null : new EssentialsTime(Rfc2822Utils.Parse(str));
     }
