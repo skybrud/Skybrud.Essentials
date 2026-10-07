@@ -47,6 +47,10 @@ public class ConfigurationTests {
             config.GetRequiredDouble("SectionName:Double:Nope");
         });
 
+        Assert.ThrowsException<InvalidConfigurationException>(() => {
+            config.GetRequiredDouble("SectionName:String");
+        });
+
     }
 
     [TestMethod]
@@ -108,6 +112,10 @@ public class ConfigurationTests {
 
         Assert.ThrowsException<MissingConfigurationException>(() => {
             config.GetRequiredFloat("SectionName:Float:Nope");
+        });
+
+        Assert.ThrowsException<InvalidConfigurationException>(() => {
+            config.GetRequiredFloat("SectionName:String");
         });
 
     }
@@ -173,6 +181,10 @@ public class ConfigurationTests {
             config.GetRequiredInt32("SectionName:Int32:Nope");
         });
 
+        Assert.ThrowsException<InvalidConfigurationException>(() => {
+            config.GetRequiredInt32("SectionName:String");
+        });
+
     }
 
     [TestMethod]
@@ -234,6 +246,10 @@ public class ConfigurationTests {
 
         Assert.ThrowsException<MissingConfigurationException>(() => {
             config.GetRequiredInt64("SectionName:Int64:Nope");
+        });
+
+        Assert.ThrowsException<InvalidConfigurationException>(() => {
+            config.GetRequiredInt64("SectionName:String");
         });
 
     }
