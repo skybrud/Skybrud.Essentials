@@ -1,0 +1,16 @@
+<Solution>
+  <Folder Name="/Solution Items/">
+    <File Path="../.gitignore" />
+    <File Path="../debug.bat" />
+    <File Path="../LICENSE.md" />
+    <File Path="../NUGET.md" />
+    <File Path="../README.md" />
+    <File Path="../REFERENCE.md" />
+    <File Path="../release.bat" />
+    <File Path=".editorconfig" />
+    <File Path="Skybrud.Essentials.sln.DotSettings" />
+  </Folder>
+  <Project Path="Skybrud.Essentials/Skybrud.Essentials.csproj" />
+  <Project Path="TestProject1/TestProject1.csproj" />
+  <Project Path="UnitTestProject1/UnitTestProject1.csproj" />
+</Solution>
