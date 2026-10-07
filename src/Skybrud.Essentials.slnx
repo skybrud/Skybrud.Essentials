@@ -12,5 +12,5 @@
   </Folder>
   <Project Path="Skybrud.Essentials/Skybrud.Essentials.csproj" />
   <Project Path="TestProject1/TestProject1.csproj" />
-  <Project Path="UnitTestProject1/UnitTestProject1.csproj" />
+  <Project Path="UnitTestProject1/UnitTestProject1.csproj" Id="a160e1d0-5c6e-414d-ba75-06cc12fbfcef" />
 </Solution>

@@ -1,6 +1,7 @@
 ﻿using System.Globalization;
 using Microsoft.Extensions.Configuration;
 using Skybrud.Essentials.Configuration;
+using Skybrud.Essentials.Configuration.Exceptions;
 using Skybrud.Essentials.Strings.Extensions;
 
 namespace TestProject1.Configuration;
@@ -42,7 +43,7 @@ public class ConfigurationTests {
         double? value1 = config.GetRequiredDouble("SectionName:Double");
         Assert.AreEqual(1234.5678, value1);
 
-        Assert.ThrowsException<Exception>(() => {
+        Assert.ThrowsException<MissingConfigurationException>(() => {
             config.GetRequiredDouble("SectionName:Double:Nope");
         });
 
@@ -105,7 +106,7 @@ public class ConfigurationTests {
         float? value1 = config.GetRequiredFloat("SectionName:Float");
         Assert.AreEqual(1234.568, ToPrecision(value1, 3));
 
-        Assert.ThrowsException<Exception>(() => {
+        Assert.ThrowsException<MissingConfigurationException>(() => {
             config.GetRequiredFloat("SectionName:Float:Nope");
         });
 
@@ -168,7 +169,7 @@ public class ConfigurationTests {
         int? value1 = config.GetRequiredInt32("SectionName:Int32");
         Assert.AreEqual(1234, value1);
 
-        Assert.ThrowsException<Exception>(() => {
+        Assert.ThrowsException<MissingConfigurationException>(() => {
             config.GetRequiredInt32("SectionName:Int32:Nope");
         });
 
@@ -231,7 +232,7 @@ public class ConfigurationTests {
         long? value1 = config.GetRequiredInt64("SectionName:Int64");
         Assert.AreEqual(12345678, value1);
 
-        Assert.ThrowsException<Exception>(() => {
+        Assert.ThrowsException<MissingConfigurationException>(() => {
             config.GetRequiredInt64("SectionName:Int64:Nope");
         });
 
@@ -281,7 +282,7 @@ public class ConfigurationTests {
         string? value1 = config.GetRequiredString("SectionName:String");
         Assert.AreEqual("Hello there!", value1);
 
-        Assert.ThrowsException<Exception>(() => {
+        Assert.ThrowsException<MissingConfigurationException>(() => {
             config.GetRequiredString("SectionName:String:Nope");
         });
 
