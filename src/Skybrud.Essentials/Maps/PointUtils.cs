@@ -130,8 +130,7 @@ public static class PointUtils {
     public static double GetSphericalLawOfCosinesDistance(IPoint point1, IPoint point2, double radius) {
         if (point1 == null) throw new ArgumentNullException(nameof(point1));
         if (point2 == null) throw new ArgumentNullException(nameof(point2));
-        return GetSphericalLawOfCosinesDistance(point1.Latitude, point1.Longitude, point2.Latitude, point2.Longitude,
-            radius);
+        return GetSphericalLawOfCosinesDistance(point1.Latitude, point1.Longitude, point2.Latitude, point2.Longitude, radius);
     }
 
     /// <summary>
@@ -147,8 +146,7 @@ public static class PointUtils {
     /// Haversine formula but uses a different
     /// trigonometric formulation.
     /// </remarks>
-    public static double GetSphericalLawOfCosinesDistance(double latitude1, double longitude1, double latitude2,
-        double longitude2) {
+    public static double GetSphericalLawOfCosinesDistance(double latitude1, double longitude1, double latitude2, double longitude2) {
         return GetSphericalLawOfCosinesDistance(latitude1, longitude1, latitude2, longitude2, EquatorialRadius);
     }
 
@@ -168,8 +166,7 @@ public static class PointUtils {
     /// Haversine formula but uses a different
     /// trigonometric formulation.
     /// </remarks>
-    public static double GetSphericalLawOfCosinesDistance(double latitude1, double longitude1, double latitude2,
-        double longitude2, double radius) {
+    public static double GetSphericalLawOfCosinesDistance(double latitude1, double longitude1, double latitude2, double longitude2, double radius) {
 
         // Result should match: https://developers.google.com/maps/documentation/javascript/reference/3/geometry#spherical.computeDistanceBetween
 
@@ -261,8 +258,7 @@ public static class PointUtils {
     /// This overload can be used to calculate distances on spherical models of Earth or on other planetary bodies by
     /// supplying the appropriate radius.
     /// </remarks>
-    public static double GetHaversineDistance(double latitude1, double longitude1, double latitude2, double longitude2,
-        double radius) {
+    public static double GetHaversineDistance(double latitude1, double longitude1, double latitude2, double longitude2, double radius) {
 
         double lat1 = DegreesToRadians(latitude1);
         double lat2 = DegreesToRadians(latitude2);
