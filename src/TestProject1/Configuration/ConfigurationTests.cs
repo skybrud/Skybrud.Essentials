@@ -295,7 +295,7 @@ public class ConfigurationTests {
 
         IConfiguration config = GetConfiguration();
 
-        string? value1 = config.GetRequiredString("SectionName:String");
+        string value1 = config.GetRequiredString("SectionName:String");
         Assert.AreEqual("Hello there!", value1);
 
         Assert.ThrowsException<MissingConfigurationException>(() => {

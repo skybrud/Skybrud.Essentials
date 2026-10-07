@@ -130,7 +130,7 @@ public static class PointUtils {
     public static double GetSphericalLawOfCosinesDistance(IPoint point1, IPoint point2, double radius) {
         if (point1 == null) throw new ArgumentNullException(nameof(point1));
         if (point2 == null) throw new ArgumentNullException(nameof(point2));
-        return GetSphericalLawOfCosinesDistance(point1.Latitude, point1.Longitude, point1.Latitude, point2.Longitude,
+        return GetSphericalLawOfCosinesDistance(point1.Latitude, point1.Longitude, point2.Latitude, point2.Longitude,
             radius);
     }
 
