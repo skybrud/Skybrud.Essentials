@@ -6,14 +6,24 @@
 public static class EarthConstants {
 
     /// <summary>
-    /// Gets the equatorial radius of Earth (in metres).
-    ///
-    /// Notice: When comparing with various online services, they seem to use 6378137 metres for the equatorial
-    /// radius of Earth, while 6378136.6 metres for the equatorial radius is more precise.
+    /// Gets the equatorial radius of the WGS84 reference ellipsoid (in metres).
     /// </summary>
-    /// <see>
-    ///     <cref>https://web.archive.org/web/20130826043456/http://asa.usno.navy.mil/SecK/2011/Astronomical_Constants_2011.txt</cref>
-    /// </see>
-    public const double EquatorialRadius = 6378136.6;
+    /// <remarks>
+    /// This is the defining semi-major axis of the WGS84 ellipsoid and is used
+    /// by GPS and most GIS software.
+    /// </remarks>
+    /// <see href="https://en.wikipedia.org/wiki/Earth_radius"/>
+    public const double EquatorialRadius = 6378137;
+
+    /// <summary>
+    /// Gets the mean radius of Earth (in metres).
+    ///
+    /// This is the International Union of Geodesy and Geophysics (IUGG) mean
+    /// Earth radius. It is commonly used when approximating Earth as a sphere,
+    /// providing a better overall approximation than the equatorial or polar
+    /// radius alone.
+    /// </summary>
+    /// <see href="https://en.wikipedia.org/wiki/Earth_radius"/>
+    public const double MeanRadius = 6371008.8;
 
 }
