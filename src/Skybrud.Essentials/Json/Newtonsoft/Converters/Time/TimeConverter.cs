@@ -4,6 +4,7 @@ using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using Skybrud.Essentials.Time.Rfc2822;
 using Skybrud.Essentials.Time.Rfc822;
+using Skybrud.Essentials.Time.UnixTime;
 
 #pragma warning disable 618
 
@@ -163,7 +164,8 @@ public class TimeConverter : JsonConverter {
                     TimeFormat.Iso8601 => Iso8601Utils.Parse(value).DateTime,
                     TimeFormat.Rfc822 => Rfc822Utils.Parse(value).DateTime,
                     TimeFormat.Rfc2822 => Rfc2822Utils.Parse(value).DateTime,
-                    TimeFormat.UnixTime => TimeUtils.GetDateTimeFromUnixTime(value),
+                    TimeFormat.UnixTimeSeconds => UnixTimeUtils.FromSeconds(value).DateTime,
+                    TimeFormat.UnixTimeMilliseconds => UnixTimeUtils.FromMilliseconds(value).DateTime,
                     _ => throw new JsonSerializationException("Unsupported format " + Format)
                 };
 
@@ -210,7 +212,8 @@ public class TimeConverter : JsonConverter {
                     TimeFormat.Iso8601 => Iso8601Utils.Parse(value),
                     TimeFormat.Rfc822 => Rfc822Utils.Parse(value),
                     TimeFormat.Rfc2822 => Rfc2822Utils.Parse(value),
-                    TimeFormat.UnixTime => TimeUtils.GetDateTimeOffsetFromUnixTime(value),
+                    TimeFormat.UnixTimeSeconds => UnixTimeUtils.FromSeconds(value),
+                    TimeFormat.UnixTimeMilliseconds => UnixTimeUtils.FromMilliseconds(value),
                     _ => throw new JsonSerializationException("Unsupported format " + Format)
                 };
 

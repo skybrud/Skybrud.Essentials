@@ -1,4 +1,6 @@
-﻿namespace Skybrud.Essentials.Time;
+﻿using System;
+
+namespace Skybrud.Essentials.Time;
 
 /// <summary>
 /// Enum class representing a time format.
@@ -24,11 +26,19 @@ public enum TimeFormat {
     Rfc2822,
 
     /// <summary>
-    /// Indicates that the format is <strong>Unix time</strong>.
+    /// Indicates that the format is <strong>Unix time</strong> seconds.
     /// </summary>
-    /// <see>
-    ///     <cref>https://en.wikipedia.org/wiki/Unix_time</cref>
-    /// </see>
-    UnixTime
+    UnixTimeSeconds,
+
+    /// <summary>
+    /// Indicates that the format is <strong>Unix time</strong> milliseconds.
+    /// </summary>
+    UnixTimeMilliseconds,
+
+    /// <summary>
+    /// Use <see cref="UnixTimeSeconds"/> instead.
+    /// </summary>
+    [Obsolete("Use UnixTimeSeconds' instead.")]
+    UnixTime = UnixTimeSeconds
 
 }
