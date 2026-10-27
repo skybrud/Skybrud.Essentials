@@ -9,5 +9,6 @@
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Maundy/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=Skybrud/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=truthy/@EntryIndexedValue">True</s:Boolean>
+	<s:Boolean x:Key="/Default/UserDictionary/Words/=usno/@EntryIndexedValue">True</s:Boolean>
 	<s:Boolean x:Key="/Default/UserDictionary/Words/=utcticks/@EntryIndexedValue">True</s:Boolean>
 </wpf:ResourceDictionary>
