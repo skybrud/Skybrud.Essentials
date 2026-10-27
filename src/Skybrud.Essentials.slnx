@@ -5,7 +5,6 @@
     <File Path="../LICENSE.md" />
     <File Path="../NUGET.md" />
     <File Path="../README.md" />
-    <File Path="../REFERENCE.md" />
     <File Path="../release.bat" />
     <File Path=".editorconfig" />
     <File Path="Skybrud.Essentials.sln.DotSettings" />
