@@ -19,7 +19,7 @@ namespace Skybrud.Essentials.Time;
 /// Class wrapping an instance of <see cref="System.DateTimeOffset"/> (as an alternative to using <see cref="Nullable{DateTimeOffset}"/>).
 /// </summary>
 [JsonConverter(typeof(TimeConverter))]
-public class EssentialsTime : IComparable, IComparable<EssentialsTime>, IComparable<DateTimeOffset>, IFormattable {
+public partial class EssentialsTime : IComparable, IComparable<EssentialsTime>, IComparable<DateTimeOffset>, IFormattable {
 
     #region Static properties
 
@@ -134,24 +134,6 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// </summary>
     public int Hour => DateTimeOffset.Hour;
 
-#if NET7_0_OR_GREATER
-
-        /// <summary>
-        /// Gets the microsecond part of this <see cref="EssentialsTime"/>.
-        /// </summary>
-        /// <remarks>
-        /// If you rely on properties such as <see cref="Now"/> or <see cref="UtcNow"/> to accurately track the number
-        /// of elapsed microseconds, the precision of the time's microseconds component depends on the resolution of
-        /// the system clock. On Windows NT 3.5 and later, and Windows Vista operating systems, the clock's resolution
-        /// is approximately 10000-15000 microseconds.
-        /// </remarks>
-        /// <see>
-        ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.microsecond?view=net-7.0#system-datetimeoffset-microsecond</cref>
-        /// </see>
-        public int Microsecond => DateTimeOffset.Microsecond;
-
-#endif
-
     ///  <summary>
     ///  Gets the millisecond part of this <see cref="EssentialsTime"/>. The returned value is an integer between
     ///  <c>0</c> and <c>999</c>.
@@ -176,24 +158,6 @@ public class EssentialsTime : IComparable, IComparable<EssentialsTime>, ICompara
     /// Gets the month part of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>1</c> and <c>12</c>.
     /// </summary>
     public int Month => DateTimeOffset.Month;
-
-#if NET7_0_OR_GREATER
-
-        /// <summary>
-        /// Gets the nanosecond part of this <see cref="EssentialsTime"/>.
-        /// </summary>
-        /// <remarks>
-        /// If you rely on properties such as <see cref="Now"/> or <see cref="UtcNow"/> to accurately track the number
-        /// of elapsed nanosecond, the precision of the time's nanosecond component depends on the resolution of the
-        /// system clock. On Windows NT 3.5 and later, and Windows Vista operating systems, the clock's resolution is
-        /// approximately 10000000-15000000 nanoseconds.
-        /// </remarks>
-        /// <see>
-        ///     <cref>https://learn.microsoft.com/en-us/dotnet/api/system.datetimeoffset.nanosecond?view=net-7.0#system-datetimeoffset-nanosecond</cref>
-        /// </see>
-        public int Nanosecond => DateTimeOffset.Nanosecond;
-
-#endif
 
     /// <summary>
     /// Gets the second part of this <see cref="EssentialsTime"/>. The returned value is an integer between <c>0</c> and <c>59</c>.

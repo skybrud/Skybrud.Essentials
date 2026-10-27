@@ -83,11 +83,11 @@ public static class EnumUtils {
         ThrowIfNullOrWhiteSpace(str, nameof(str));
 
         // Convert the input string to camel case and lowercase (morel likely to get a match)
-        string enumText = StringUtils.ToCamelCase(str).ToLower();
+        string enumText = StringUtils.ToCamelCase(str).ToLowerInvariant();
 
         // Look through each enum value of "enumType"
         foreach (object value in Enum.GetValues(enumType)) {
-            if (StringUtils.ToCamelCase(value.ToString()).ToLower() == enumText) return value;
+            if (StringUtils.ToCamelCase(value.ToString()).ToLowerInvariant() == enumText) return value;
         }
 
         // Throw an exception if we didn't find a match
@@ -240,7 +240,7 @@ public static class EnumUtils {
         if (string.IsNullOrWhiteSpace(str)) return false;
 
         // Check whether the type of T is an enum
-        if (IsEnum(type) == false) return false;
+        if (!IsEnum(type)) return false;
 
         // Check whether the specified string is NULL (or white space)
         if (string.IsNullOrWhiteSpace(str)) return false;

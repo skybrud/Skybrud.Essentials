@@ -311,7 +311,7 @@ public static partial class StringUtils {
     /// <param name="value">The enum value to be converted.</param>
     /// <returns>The lower case version of <paramref name="value"/>.</returns>
     public static string ToLower(Enum value) {
-        return value.ToString().ToLower();
+        return value.ToString().ToLowerInvariant();
     }
 
     /// <summary>
@@ -335,7 +335,7 @@ public static partial class StringUtils {
     /// <param name="value">The enum value to be converted.</param>
     /// <returns>The upper case version of <paramref name="value"/>.</returns>
     public static string ToUpper(Enum value) {
-        return value.ToString().ToUpper();
+        return value.ToString().ToUpperInvariant();
     }
 
     /// <summary>
