@@ -104,11 +104,11 @@ namespace UnitTestProject1.Json.Newtonsoft.Converters {
             public EssentialsTime Time4 { get; set; }
 
             [JsonProperty("time5")]
-            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTime)]
+            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTimeSeconds)]
             public EssentialsTime Time5 { get; set; }
 
             [JsonProperty("time6")]
-            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTime)]
+            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTimeSeconds)]
             public EssentialsTime Time6 { get; set; }
 
             [JsonProperty("offset")]
@@ -128,11 +128,11 @@ namespace UnitTestProject1.Json.Newtonsoft.Converters {
             public DateTimeOffset Offset3 { get; set; }
 
             [JsonProperty("offset4")]
-            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTime)]
+            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTimeSeconds)]
             public DateTimeOffset Offset4 { get; set; }
 
             [JsonProperty("offset5")]
-            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTime)]
+            [JsonConverter(typeof(TimeConverter), TimeFormat.UnixTimeSeconds)]
             public DateTimeOffset Offset5 { get; set; }
 
             [JsonProperty("offset6")]

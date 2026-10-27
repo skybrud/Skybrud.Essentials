@@ -1361,7 +1361,8 @@ public static partial class TimeUtils {
             TimeFormat.Iso8601 => Iso8601Utils.ToString(value),
             TimeFormat.Rfc822 => Rfc822Utils.ToString(value),
             TimeFormat.Rfc2822 => Rfc2822Utils.ToString(value),
-            TimeFormat.UnixTime => (long) UnixTimeUtils.ToSeconds(value),
+            TimeFormat.UnixTimeSeconds => (long) UnixTimeUtils.ToSeconds(value),
+            TimeFormat.UnixTimeMilliseconds => (long) UnixTimeUtils.ToMilliseconds(value),
             _ => throw new ArgumentException("Unsupported format " + format, nameof(format))
         };
     }
@@ -1378,7 +1379,8 @@ public static partial class TimeUtils {
             TimeFormat.Iso8601 => Iso8601Utils.ToString(value),
             TimeFormat.Rfc822 => Rfc822Utils.ToString(value),
             TimeFormat.Rfc2822 => Rfc2822Utils.ToString(value),
-            TimeFormat.UnixTime => (long) UnixTimeUtils.ToSeconds(value),
+            TimeFormat.UnixTimeSeconds => (long) UnixTimeUtils.ToSeconds(value),
+            TimeFormat.UnixTimeMilliseconds => (long) UnixTimeUtils.ToMilliseconds(value),
             _ => throw new ArgumentException("Unsupported format " + format, nameof(format))
         };
     }
