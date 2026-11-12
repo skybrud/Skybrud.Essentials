@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics.CodeAnalysis;
 using System.Linq;
 using Newtonsoft.Json.Linq;
 using Skybrud.Essentials.Collections.Extensions;
@@ -493,6 +494,102 @@ public static partial class NewtonsoftJsonObjectExtensions {
     public static List<TResult> GetListItems<TResult>(this JObject? source, string propertyName, Func<JObject, TResult> callback) {
         if (source?.GetValue(propertyName) is not JArray array) return [];
         return [.. array.OfType<JObject>().Select(callback)];
+    }
+
+    /// <summary>
+    /// Attempts to get the <see cref="JObject"/> value of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the property holding the object.</param>
+    /// <param name="value">An output parameter for the retrieved <see cref="JObject"/> value.</param>
+    /// <returns><see langword="true"/> if the property exists and has a valid value; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetObject(this JObject? source, string propertyName, [NotNullWhen(true)] out JObject? value) {
+        value = source?.GetObject(propertyName);
+        return value is not null;
+    }
+
+    /// <summary>
+    /// Attempts to get the <typeparamref name="TValue"/> value of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the property holding the object.</param>
+    /// <param name="callback">A callback method for converting the <see cref="JObject"/> into an instance of <typeparamref name="TValue"/>.</param>
+    /// <param name="value">An output parameter for the retrieved <see cref="JObject"/> value.</param>
+    /// <returns><see langword="true"/> if the property exists and has a valid value; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetObject<TValue>(this JObject? source, string propertyName, Func<JObject, TValue> callback, [NotNullWhen(true)] out TValue? value) {
+
+        JObject? obj = source?.GetObject(propertyName);
+
+        if (obj is null) {
+            value = default;
+            return false;
+        }
+
+        value = callback(obj);
+        return value is not null;
+
+    }
+
+    /// <summary>
+    /// Attempts to get the <see cref="JArray"/> value of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the property holding the array.</param>
+    /// <param name="value">An output parameter for the retrieved <see cref="JArray"/> value.</param>
+    /// <returns><see langword="true"/> if the property exists and has a valid value; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetArray(this JObject? source, string propertyName, [NotNullWhen(true)] out JArray? value) {
+        value = source?.GetArray(propertyName);
+        return value is not null;
+    }
+
+    /// <summary>
+    /// Attempts to get the <typeparamref name="TValue"/> value of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the property holding the array.</param>
+    /// <param name="callback">A callback method for converting the <see cref="JArray"/> into an instance of <typeparamref name="TValue"/>.</param>
+    /// <param name="value">An output parameter for the retrieved <typeparamref name="TValue"/> value.</param>
+    /// <returns><see langword="true"/> if the property exists and has a valid value; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetObject<TValue>(this JObject? source, string propertyName, Func<JArray, TValue> callback, [NotNullWhen(true)] out TValue? value) {
+
+        JArray? array = source?.GetArray(propertyName);
+
+        if (array is null) {
+            value = default;
+            return false;
+        }
+
+        value = callback(array);
+        return value is not null;
+
+    }
+
+    /// <summary>
+    /// Attempts to get an array of <typeparamref name="TValue"/> values of the property with the specified <paramref name="propertyName"/>.
+    /// </summary>
+    /// <typeparam name="TValue"></typeparam>
+    /// <param name="source">The parent <see cref="JObject"/> holding the property.</param>
+    /// <param name="propertyName">The name of the property holding the array.</param>
+    /// <param name="callback">A callback method for converting each <see cref="JObject"/> in the array into an instance of <typeparamref name="TValue"/>.</param>
+    /// <param name="value">An output parameter for the retrieved array of <typeparamref name="TValue"/> values.</param>
+    /// <returns><see langword="true"/> if the property exists and has a valid value; otherwise, <see langword="false"/>.</returns>
+    public static bool TryGetArray<TValue>(this JObject? source, string propertyName, Func<JObject, TValue> callback, [NotNullWhen(true)] out TValue[]? value) {
+
+        JArray? array = source?.GetArray(propertyName);
+
+        if (array is null) {
+            value = null;
+            return false;
+        }
+
+        value = array
+            .OfType<JObject>()
+            .Select(callback)
+            .ToArray();
+
+        return true;
+
     }
 
 }
