@@ -1,6 +1,6 @@
 # Skybrud.Essentials
 
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/skybrud/Skybrud.Essentials/blob/v1.2/main/LICENSE.md)
 [![NuGet](https://img.shields.io/nuget/v/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
 [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
 [![Skybrud.Essentials at packages.limbo.works](https://img.shields.io/badge/limbo-packages-blue)](https://packages.limbo.works/skybrud.essentials/)
@@ -11,6 +11,18 @@ The package has a strong focus on parsing various types of input. Among other th
 
 It also contains utilities for converting to and from string values, changing text casing and working with both JSON and XML.
 
+
+
+
+<br /><br />
+
+### Target Frameworks
+
+- .NET Standard 2.0
+- .NET Standard 2.1
+- .NET 8.0
+- .NET 9.0
+- .NET 10.0
 
 
 

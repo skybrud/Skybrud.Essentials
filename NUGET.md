@@ -1,4 +1,4 @@
-[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](LICENSE.md) [![NuGet](https://img.shields.io/nuget/v/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
+[![GitHub license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/skybrud/Skybrud.Essentials/blob/v1.2/main/LICENSE.md) [![NuGet](https://img.shields.io/nuget/v/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials) [![NuGet](https://img.shields.io/nuget/dt/Skybrud.Essentials.svg)](https://www.nuget.org/packages/Skybrud.Essentials)
 
 Skybrud.Essentials is a library with common purpose functionality for working with .NET.
 
@@ -17,7 +17,10 @@ A .NET package for working with maps and geospatial data, including popular form
 - [**Skybrud.Essentials.AspNetCore**](https://github.com/skybrud/Skybrud.Essentials.AspNetCore)  
 A .NET package for that provides various logic that makes it easier to work with different parts of ASP.NET Core - e.g. parsing query strings and reading request headers.
 
-- [**Skybrud.Essentials.Umbraco**](https://github.com/skybrud/Skybrud.Essentials.AspNUmbracoetCore)  
+- [**Skybrud.Essentials.Json.SystemTextJson**](https://github.com/skybrud/Skybrud.Essentials.Json.SystemTextJson)  
+JSON converters and extensions for working with `System.Text.Json`.
+
+- [**Skybrud.Essentials.Umbraco**](https://github.com/skybrud/Skybrud.Essentials.Umbraco)  
 A .NET package for that provides various logic that makes it easier to work with different parts of Umbraco.
 
 ## Found a bug? Have a question?
