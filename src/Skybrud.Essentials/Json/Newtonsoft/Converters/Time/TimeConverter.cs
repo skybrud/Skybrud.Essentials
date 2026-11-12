@@ -129,13 +129,10 @@ public class TimeConverter : JsonConverter {
             case JsonToken.Null:
                 return default;
 
-            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
+            // If the token type is an integer or a floating point number, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return UnixTimeUtils.FromSeconds((long) reader.Value!).DateTime;
-
-            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
             case JsonToken.Float:
-                return UnixTimeUtils.FromSeconds((double) reader.Value!).DateTime;
+                return FromDouble(Convert.ToDouble(reader.Value)).DateTime;
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -143,8 +140,7 @@ public class TimeConverter : JsonConverter {
                 return reader.Value switch {
                     DateTime dt => dt,
                     DateTimeOffset dto => dto.DateTime,
-                    _ => throw new JsonSerializationException(
-                        "Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value!.GetType())
+                    _ => throw new JsonSerializationException("Value doesn't match an instance of DateTime or DateTimeOffset: " + reader.Value!.GetType())
                 };
 
             case JsonToken.String:
@@ -177,13 +173,9 @@ public class TimeConverter : JsonConverter {
             case JsonToken.Null:
                 return default;
 
-            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
+            // If the token type is an integer or a floating point number, we assume UNIX time regardless of the format of the converter
             case JsonToken.Integer:
-                return UnixTimeUtils.FromSeconds((long) reader.Value!);
-
-            // If the token type is an integer, we assume UNIX time regardless of the format of the converter
-            case JsonToken.Float:
-                return UnixTimeUtils.FromSeconds((double) reader.Value!);
+                return FromDouble(Convert.ToDouble(reader.Value));
 
             // Is the value already a date? JSON.net may automatically detect and parse some date formats
             case JsonToken.Date:
@@ -261,6 +253,13 @@ public class TimeConverter : JsonConverter {
 
     private EssentialsTime? ParseEssentialsTime(JsonReader reader) {
         return reader.TokenType == JsonToken.Null ? null : new EssentialsTime(ParseDateTimeOffset(reader));
+    }
+
+    private DateTimeOffset FromDouble(double value) {
+        return Format switch {
+            TimeFormat.UnixTimeMilliseconds => UnixTimeUtils.FromMilliseconds(value),
+            _ => UnixTimeUtils.FromSeconds(value)
+        };
     }
 
 }
