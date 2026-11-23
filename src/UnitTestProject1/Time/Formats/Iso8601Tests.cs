@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Globalization;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
-using Skybrud.Essentials.Time;
 using Skybrud.Essentials.Time.Iso8601;
 using static Skybrud.Essentials.Time.Iso8601.Iso8601Constants;
 
@@ -91,8 +90,8 @@ namespace UnitTestProject1.Time.Formats {
             DateTimeOffset reference2 = new DateTime(2016, 10, 07, 17, 33, 38, DateTimeKind.Utc);
 
             // Universal time
-            Assert.AreEqual("2013-08-07T21:07:24.000Z", Iso8601Utils.ToString(reference1));
-            Assert.AreEqual("2016-10-07T17:33:38.000Z", Iso8601Utils.ToString(reference2));
+            Assert.AreEqual("2013-08-07T21:07:24.0000000+00:00", Iso8601Utils.ToString(reference1));
+            Assert.AreEqual("2016-10-07T17:33:38.0000000+00:00", Iso8601Utils.ToString(reference2));
 
             // Declare the timezones
             TimeZoneInfo utcPlus01 = TimeZoneInfo.CreateCustomTimeZone("UTC +01", TimeSpan.FromHours(1), "UTC +01", "UTC +01");
@@ -121,30 +120,30 @@ namespace UnitTestProject1.Time.Formats {
             TimeZoneInfo utcMinus12 = TimeZoneInfo.CreateCustomTimeZone("UTC -12", TimeSpan.FromHours(-12), "UTC -12", "UTC -12");
 
             // Offset
-            Assert.AreEqual("2013-08-07T22:07:24.000+01:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus01)));
-            Assert.AreEqual("2013-08-07T23:07:24.000+02:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus02)));
-            Assert.AreEqual("2013-08-08T00:07:24.000+03:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus03)));
-            Assert.AreEqual("2013-08-08T01:07:24.000+04:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus04)));
-            Assert.AreEqual("2013-08-08T02:07:24.000+05:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus05)));
-            Assert.AreEqual("2013-08-08T03:07:24.000+06:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus06)));
-            Assert.AreEqual("2013-08-08T04:07:24.000+07:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus07)));
-            Assert.AreEqual("2013-08-08T05:07:24.000+08:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus08)));
-            Assert.AreEqual("2013-08-08T06:07:24.000+09:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus09)));
-            Assert.AreEqual("2013-08-08T07:07:24.000+10:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus10)));
-            Assert.AreEqual("2013-08-08T08:07:24.000+11:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus11)));
-            Assert.AreEqual("2013-08-08T09:07:24.000+12:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus12)));
-            Assert.AreEqual("2013-08-07T20:07:24.000-01:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus01)));
-            Assert.AreEqual("2013-08-07T19:07:24.000-02:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus02)));
-            Assert.AreEqual("2013-08-07T18:07:24.000-03:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus03)));
-            Assert.AreEqual("2013-08-07T17:07:24.000-04:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus04)));
-            Assert.AreEqual("2013-08-07T16:07:24.000-05:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus05)));
-            Assert.AreEqual("2013-08-07T15:07:24.000-06:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus06)));
-            Assert.AreEqual("2013-08-07T14:07:24.000-07:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus07)));
-            Assert.AreEqual("2013-08-07T13:07:24.000-08:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus08)));
-            Assert.AreEqual("2013-08-07T12:07:24.000-09:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus09)));
-            Assert.AreEqual("2013-08-07T11:07:24.000-10:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus10)));
-            Assert.AreEqual("2013-08-07T10:07:24.000-11:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus11)));
-            Assert.AreEqual("2013-08-07T09:07:24.000-12:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus12)));
+            Assert.AreEqual("2013-08-07T22:07:24.0000000+01:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus01)));
+            Assert.AreEqual("2013-08-07T23:07:24.0000000+02:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus02)));
+            Assert.AreEqual("2013-08-08T00:07:24.0000000+03:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus03)));
+            Assert.AreEqual("2013-08-08T01:07:24.0000000+04:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus04)));
+            Assert.AreEqual("2013-08-08T02:07:24.0000000+05:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus05)));
+            Assert.AreEqual("2013-08-08T03:07:24.0000000+06:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus06)));
+            Assert.AreEqual("2013-08-08T04:07:24.0000000+07:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus07)));
+            Assert.AreEqual("2013-08-08T05:07:24.0000000+08:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus08)));
+            Assert.AreEqual("2013-08-08T06:07:24.0000000+09:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus09)));
+            Assert.AreEqual("2013-08-08T07:07:24.0000000+10:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus10)));
+            Assert.AreEqual("2013-08-08T08:07:24.0000000+11:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus11)));
+            Assert.AreEqual("2013-08-08T09:07:24.0000000+12:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcPlus12)));
+            Assert.AreEqual("2013-08-07T20:07:24.0000000-01:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus01)));
+            Assert.AreEqual("2013-08-07T19:07:24.0000000-02:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus02)));
+            Assert.AreEqual("2013-08-07T18:07:24.0000000-03:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus03)));
+            Assert.AreEqual("2013-08-07T17:07:24.0000000-04:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus04)));
+            Assert.AreEqual("2013-08-07T16:07:24.0000000-05:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus05)));
+            Assert.AreEqual("2013-08-07T15:07:24.0000000-06:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus06)));
+            Assert.AreEqual("2013-08-07T14:07:24.0000000-07:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus07)));
+            Assert.AreEqual("2013-08-07T13:07:24.0000000-08:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus08)));
+            Assert.AreEqual("2013-08-07T12:07:24.0000000-09:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus09)));
+            Assert.AreEqual("2013-08-07T11:07:24.0000000-10:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus10)));
+            Assert.AreEqual("2013-08-07T10:07:24.0000000-11:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus11)));
+            Assert.AreEqual("2013-08-07T09:07:24.0000000-12:00", Iso8601Utils.ToString(TimeZoneInfo.ConvertTime(reference1, utcMinus12)));
 
         }
 

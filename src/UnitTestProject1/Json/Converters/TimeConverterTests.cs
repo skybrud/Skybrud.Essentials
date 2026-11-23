@@ -20,21 +20,21 @@ namespace UnitTestProject1.Json.Converters {
 
             JObject obj = JObject.FromObject(sample1);
 
-            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("time"), "Time");
-            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("time1"), "Time #1");
-            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("time2"), "Time #2");
+            Assert.AreEqual("2019-01-20T12:22:35.0000000+01:00", obj.GetString("time"), "Time");
+            Assert.AreEqual("2019-01-20T12:22:35.0000000+01:00", obj.GetString("time1"), "Time #1");
+            Assert.AreEqual("2019-01-20T12:22:35.0000000+01:00", obj.GetString("time2"), "Time #2");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("time3"), "Time #3");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("time4"), "Time #4");
             Assert.AreEqual(1547983355, obj.GetInt32("time5"), "Time #5");
             Assert.AreEqual("1547983355", obj.GetString("time6"), "Time #6");
 
-            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("offset"), "Offset");
-            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("offset1"), "Offset #1");
+            Assert.AreEqual("2019-01-20T12:22:35.0000000+01:00", obj.GetString("offset"), "Offset");
+            Assert.AreEqual("2019-01-20T12:22:35.0000000+01:00", obj.GetString("offset1"), "Offset #1");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("offset2"), "Offset #2");
             Assert.AreEqual("Sun, 20 Jan 2019 12:22:35 +0100", obj.GetString("offset3"), "Offset #3");
             Assert.AreEqual(1547983355, obj.GetInt32("offset4"), "Offset #4");
             Assert.AreEqual("1547983355", obj.GetString("offset5"), "Offset #5");
-            Assert.AreEqual("2019-01-20T12:22:35.000+01:00", obj.GetString("offset6"), "Offset #6");
+            Assert.AreEqual("2019-01-20T12:22:35.0000000+01:00", obj.GetString("offset6"), "Offset #6");
             Assert.IsNull(obj.GetString("offset7"), "Offset #7");
 
         }

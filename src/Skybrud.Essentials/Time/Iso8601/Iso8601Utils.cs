@@ -131,25 +131,23 @@ public class Iso8601Utils {
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+    /// Converts the specified <paramref name="value"/> to a string representation as specified by the
     /// <strong>ISO 8601</strong> format.
     /// </summary>
-    /// <param name="timestamp">The timestamp to be converted.</param>
+    /// <param name="value">The timestamp to be converted.</param>
     /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
-    public static string ToString(DateTime timestamp) {
-        string format = timestamp.Kind == DateTimeKind.Utc ? DateTimeMillisecondsZulu : DateTimeMilliseconds;
-        return timestamp.ToString(format, CultureInfo.InvariantCulture);
+    public static string ToString(DateTime value) {
+        return value.ToString("o", CultureInfo.InvariantCulture);
     }
 
     /// <summary>
-    /// Converts the specified <paramref name="timestamp"/> to a string representation as specified by the
+    /// Converts the specified <paramref name="value"/> to a string representation as specified by the
     /// <strong>ISO 8601</strong> format.
     /// </summary>
-    /// <param name="timestamp">The timestamp to be converted.</param>
+    /// <param name="value">The timestamp to be converted.</param>
     /// <returns>The timestamp formatted as a ISO 8601 date string.</returns>
-    public static string ToString(DateTimeOffset timestamp) {
-        string format = timestamp.Offset == TimeSpan.Zero ? DateTimeMillisecondsZulu : DateTimeMilliseconds;
-        return timestamp.ToString(format, CultureInfo.InvariantCulture);
+    public static string ToString(DateTimeOffset value) {
+        return value.ToString("o", CultureInfo.InvariantCulture);
     }
 
     /// <summary>

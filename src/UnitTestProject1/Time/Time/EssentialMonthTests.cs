@@ -42,41 +42,41 @@ namespace UnitTestProject1.Time.Time {
             EssentialsMonth november = new EssentialsMonth(date11, romance);
             EssentialsMonth december = new EssentialsMonth(date12, romance);
 
-            Assert.AreEqual("2021-01-01T00:00:00.000+01:00", january.Start.ToString(), "January - Start");
-            Assert.AreEqual("2021-01-31T23:59:59.999+01:00", january.End.ToString(), "January - End");
+            Assert.AreEqual("2021-01-01T00:00:00.0000000+01:00", january.Start.ToString(), "January - Start");
+            Assert.AreEqual("2021-01-31T23:59:59.9999999+01:00", january.End.ToString(), "January - End");
 
-            Assert.AreEqual("2021-02-01T00:00:00.000+01:00", february.Start.ToString(), "February - Start");
-            Assert.AreEqual("2021-02-28T23:59:59.999+01:00", february.End.ToString(), "February - End");
+            Assert.AreEqual("2021-02-01T00:00:00.0000000+01:00", february.Start.ToString(), "February - Start");
+            Assert.AreEqual("2021-02-28T23:59:59.9999999+01:00", february.End.ToString(), "February - End");
 
-            Assert.AreEqual("2021-03-01T00:00:00.000+01:00", march.Start.ToString(), "March - Start");
-            Assert.AreEqual("2021-03-31T23:59:59.999+02:00", march.End.ToString(), "March - End");
+            Assert.AreEqual("2021-03-01T00:00:00.0000000+01:00", march.Start.ToString(), "March - Start");
+            Assert.AreEqual("2021-03-31T23:59:59.9999999+02:00", march.End.ToString(), "March - End");
 
-            Assert.AreEqual("2021-04-01T00:00:00.000+02:00", april.Start.ToString(), "April - Start");
-            Assert.AreEqual("2021-04-30T23:59:59.999+02:00", april.End.ToString(), "April - End");
+            Assert.AreEqual("2021-04-01T00:00:00.0000000+02:00", april.Start.ToString(), "April - Start");
+            Assert.AreEqual("2021-04-30T23:59:59.9999999+02:00", april.End.ToString(), "April - End");
 
-            Assert.AreEqual("2021-05-01T00:00:00.000+02:00", may.Start.ToString(), "May - Start");
-            Assert.AreEqual("2021-05-31T23:59:59.999+02:00", may.End.ToString(), "May - End");
+            Assert.AreEqual("2021-05-01T00:00:00.0000000+02:00", may.Start.ToString(), "May - Start");
+            Assert.AreEqual("2021-05-31T23:59:59.9999999+02:00", may.End.ToString(), "May - End");
 
-            Assert.AreEqual("2021-06-01T00:00:00.000+02:00", june.Start.ToString(), "June - Start");
-            Assert.AreEqual("2021-06-30T23:59:59.999+02:00", june.End.ToString(), "June - End");
+            Assert.AreEqual("2021-06-01T00:00:00.0000000+02:00", june.Start.ToString(), "June - Start");
+            Assert.AreEqual("2021-06-30T23:59:59.9999999+02:00", june.End.ToString(), "June - End");
 
-            Assert.AreEqual("2021-07-01T00:00:00.000+02:00", july.Start.ToString(), "July - Start");
-            Assert.AreEqual("2021-07-31T23:59:59.999+02:00", july.End.ToString(), "July - End");
+            Assert.AreEqual("2021-07-01T00:00:00.0000000+02:00", july.Start.ToString(), "July - Start");
+            Assert.AreEqual("2021-07-31T23:59:59.9999999+02:00", july.End.ToString(), "July - End");
 
-            Assert.AreEqual("2021-08-01T00:00:00.000+02:00", august.Start.ToString(), "August - Start");
-            Assert.AreEqual("2021-08-31T23:59:59.999+02:00", august.End.ToString(), "August - End");
+            Assert.AreEqual("2021-08-01T00:00:00.0000000+02:00", august.Start.ToString(), "August - Start");
+            Assert.AreEqual("2021-08-31T23:59:59.9999999+02:00", august.End.ToString(), "August - End");
 
-            Assert.AreEqual("2021-09-01T00:00:00.000+02:00", september.Start.ToString(), "September - Start");
-            Assert.AreEqual("2021-09-30T23:59:59.999+02:00", september.End.ToString(), "September - End");
+            Assert.AreEqual("2021-09-01T00:00:00.0000000+02:00", september.Start.ToString(), "September - Start");
+            Assert.AreEqual("2021-09-30T23:59:59.9999999+02:00", september.End.ToString(), "September - End");
 
-            Assert.AreEqual("2021-10-01T00:00:00.000+02:00", october.Start.ToString(), "October - Start");
-            Assert.AreEqual("2021-10-31T23:59:59.999+01:00", october.End.ToString(), "October - End");
+            Assert.AreEqual("2021-10-01T00:00:00.0000000+02:00", october.Start.ToString(), "October - Start");
+            Assert.AreEqual("2021-10-31T23:59:59.9999999+01:00", october.End.ToString(), "October - End");
 
-            Assert.AreEqual("2021-11-01T00:00:00.000+01:00", november.Start.ToString(), "November - Start");
-            Assert.AreEqual("2021-11-30T23:59:59.999+01:00", november.End.ToString(), "November - End");
+            Assert.AreEqual("2021-11-01T00:00:00.0000000+01:00", november.Start.ToString(), "November - Start");
+            Assert.AreEqual("2021-11-30T23:59:59.9999999+01:00", november.End.ToString(), "November - End");
 
-            Assert.AreEqual("2021-12-01T00:00:00.000+01:00", december.Start.ToString(), "December - Start");
-            Assert.AreEqual("2021-12-31T23:59:59.999+01:00", december.End.ToString(), "December - End");
+            Assert.AreEqual("2021-12-01T00:00:00.0000000+01:00", december.Start.ToString(), "December - Start");
+            Assert.AreEqual("2021-12-31T23:59:59.9999999+01:00", december.End.ToString(), "December - End");
 
         }
 
@@ -87,13 +87,13 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsMonth month = new EssentialsMonth(2021, 4, romance);
 
-            Assert.AreEqual("2021-04-01T00:00:00.000+02:00", month.Start.Iso8601);
-            Assert.AreEqual("2021-04-30T23:59:59.999+02:00", month.End.Iso8601);
+            Assert.AreEqual("2021-04-01T00:00:00.0000000+02:00", month.Start.Iso8601);
+            Assert.AreEqual("2021-04-30T23:59:59.9999999+02:00", month.End.Iso8601);
 
             EssentialsMonth previous = month.GetPrevious(romance);
 
-            Assert.AreEqual("2021-03-01T00:00:00.000+01:00", previous.Start.Iso8601);
-            Assert.AreEqual("2021-03-31T23:59:59.999+02:00", previous.End.Iso8601);
+            Assert.AreEqual("2021-03-01T00:00:00.0000000+01:00", previous.Start.Iso8601);
+            Assert.AreEqual("2021-03-31T23:59:59.9999999+02:00", previous.End.Iso8601);
 
         }
 
@@ -104,13 +104,13 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsMonth month = new EssentialsMonth(2021, 3, romance);
 
-            Assert.AreEqual("2021-03-01T00:00:00.000+01:00", month.Start.Iso8601);
-            Assert.AreEqual("2021-03-31T23:59:59.999+02:00", month.End.Iso8601);
+            Assert.AreEqual("2021-03-01T00:00:00.0000000+01:00", month.Start.Iso8601);
+            Assert.AreEqual("2021-03-31T23:59:59.9999999+02:00", month.End.Iso8601);
 
             EssentialsMonth next = month.GetNext(romance);
 
-            Assert.AreEqual("2021-04-01T00:00:00.000+02:00", next.Start.Iso8601);
-            Assert.AreEqual("2021-04-30T23:59:59.999+02:00", next.End.Iso8601);
+            Assert.AreEqual("2021-04-01T00:00:00.0000000+02:00", next.Start.Iso8601);
+            Assert.AreEqual("2021-04-30T23:59:59.9999999+02:00", next.End.Iso8601);
 
         }
 
@@ -223,10 +223,10 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime start3 = month3.GetStartOfMonth(romance);
             EssentialsTime start4 = month4.GetStartOfMonth(romance);
 
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start1.ToString(), "#1");
-            Assert.AreEqual("2022-02-01T00:00:00.000+01:00", start2.ToString(), "#2");
-            Assert.AreEqual("2022-03-01T00:00:00.000+01:00", start3.ToString(), "#3");
-            Assert.AreEqual("2022-10-01T00:00:00.000+02:00", start4.ToString(), "#4");
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start1.ToString(), "#1");
+            Assert.AreEqual("2022-02-01T00:00:00.0000000+01:00", start2.ToString(), "#2");
+            Assert.AreEqual("2022-03-01T00:00:00.0000000+01:00", start3.ToString(), "#3");
+            Assert.AreEqual("2022-10-01T00:00:00.0000000+02:00", start4.ToString(), "#4");
 
         }
 
@@ -271,10 +271,10 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime start3 = month3.GetStartOfYear(romance);
             EssentialsTime start4 = month4.GetStartOfYear(romance);
 
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start1.ToString(), "#1");
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start2.ToString(), "#2");
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start3.ToString(), "#3");
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start4.ToString(), "#4");
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start1.ToString(), "#1");
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start2.ToString(), "#2");
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start3.ToString(), "#3");
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start4.ToString(), "#4");
 
         }
 
@@ -319,10 +319,10 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime end3 = month3.GetEndOfMonth(romance);
             EssentialsTime end4 = month4.GetEndOfMonth(romance);
 
-            Assert.AreEqual("2022-01-31T23:59:59.999+01:00", end1.ToString(), "#1");
-            Assert.AreEqual("2022-02-28T23:59:59.999+01:00", end2.ToString(), "#2");
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end3.ToString(), "#3");
-            Assert.AreEqual("2022-10-31T23:59:59.999+01:00", end4.ToString(), "#4");
+            Assert.AreEqual("2022-01-31T23:59:59.9999999+01:00", end1.ToString(), "#1");
+            Assert.AreEqual("2022-02-28T23:59:59.9999999+01:00", end2.ToString(), "#2");
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end3.ToString(), "#3");
+            Assert.AreEqual("2022-10-31T23:59:59.9999999+01:00", end4.ToString(), "#4");
 
         }
 
@@ -367,10 +367,10 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime end3 = month3.GetEndOfYear(romance);
             EssentialsTime end4 = month4.GetEndOfYear(romance);
 
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end1.ToString(), "#1");
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end2.ToString(), "#2");
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end3.ToString(), "#3");
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end4.ToString(), "#4");
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end1.ToString(), "#1");
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end2.ToString(), "#2");
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end3.ToString(), "#3");
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end4.ToString(), "#4");
 
         }
 

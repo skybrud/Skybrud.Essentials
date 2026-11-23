@@ -27,16 +27,16 @@ namespace UnitTestProject1.Time.Time {
             EssentialsYear year3 = new EssentialsYear(date3, romance);
 
             Assert.AreEqual(2021, year1.Year, "#1");
-            Assert.AreEqual("2021-01-01T00:00:00.000+01:00", year1.Start.ToString(), "#1");
-            Assert.AreEqual("2021-12-31T23:59:59.999+01:00", year1.End.ToString(), "#1");
+            Assert.AreEqual("2021-01-01T00:00:00.0000000+01:00", year1.Start.ToString(), "#1");
+            Assert.AreEqual("2021-12-31T23:59:59.9999999+01:00", year1.End.ToString(), "#1");
 
             Assert.AreEqual(2021, year2.Year, "#2");
-            Assert.AreEqual("2021-01-01T00:00:00.000+01:00", year2.Start.ToString(), "#2");
-            Assert.AreEqual("2021-12-31T23:59:59.999+01:00", year2.End.ToString(), "#2");
+            Assert.AreEqual("2021-01-01T00:00:00.0000000+01:00", year2.Start.ToString(), "#2");
+            Assert.AreEqual("2021-12-31T23:59:59.9999999+01:00", year2.End.ToString(), "#2");
 
             Assert.AreEqual(2021, year2.Year, "#3");
-            Assert.AreEqual("2021-01-01T00:00:00.000+01:00", year3.Start.ToString(), "#3");
-            Assert.AreEqual("2021-12-31T23:59:59.999+01:00", year3.End.ToString(), "#3");
+            Assert.AreEqual("2021-01-01T00:00:00.0000000+01:00", year3.Start.ToString(), "#3");
+            Assert.AreEqual("2021-12-31T23:59:59.9999999+01:00", year3.End.ToString(), "#3");
 
         }
 
@@ -51,8 +51,8 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime start1 = year1.GetStartOfYear(romance);
             EssentialsTime start2 = year2.GetStartOfYear(romance);
 
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start1.ToString(), "#1");
-            Assert.AreEqual("2023-01-01T00:00:00.000+01:00", start2.ToString(), "#2");
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start1.ToString(), "#1");
+            Assert.AreEqual("2023-01-01T00:00:00.0000000+01:00", start2.ToString(), "#2");
 
         }
 
@@ -83,8 +83,8 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime end1 = year1.GetEndOfYear(romance);
             EssentialsTime end2 = year2.GetEndOfYear(romance);
 
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end1.ToString(), "#1");
-            Assert.AreEqual("2023-12-31T23:59:59.999+01:00", end2.ToString(), "#2");
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end1.ToString(), "#1");
+            Assert.AreEqual("2023-12-31T23:59:59.9999999+01:00", end2.ToString(), "#2");
 
         }
 

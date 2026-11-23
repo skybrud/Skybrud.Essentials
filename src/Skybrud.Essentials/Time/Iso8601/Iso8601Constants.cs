@@ -37,13 +37,25 @@ public static class Iso8601Constants {
     public const string DateTimeMillisecondsZulu = "yyyy-MM-ddTHH:mm:ss.fffZ";
 
     /// <summary>
+    /// ISO 8601 round-trip date and time format, preserving all seven fractional second digits (ticks)
+    /// including trailing zeros, matching the standard .NET <c>o</c> format specifier.
+    /// </summary>
+    public const string DateTimeRoundtrip = "yyyy-MM-ddTHH:mm:ss.fffffffK";
+
+    /// <summary>
+    /// ISO 8601 date and time format with up to seven fractional second digits, omitting trailing zeros.
+    /// </summary>
+    public const string DateTimeFractionalSeconds = "yyyy-MM-ddTHH:mm:ss.FFFFFFFK";
+
+    /// <summary>
     /// An array with known ISO 8601 date time formats used when attempt to parse ISO 8601 values.
     /// </summary>
     internal static readonly string[] DateTimeFormats = [
         DateTimeSecondsZulu,
         DateTimeSeconds,
         DateTimeMillisecondsZulu,
-        DateTimeMilliseconds
+        DateTimeMilliseconds,
+        DateTimeFractionalSeconds,
     ];
 
 }

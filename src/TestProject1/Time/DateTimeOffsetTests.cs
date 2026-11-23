@@ -31,11 +31,11 @@ public class DateTimeOffsetTests {
 
         var samples = new[] {
             new {
-                Expected = "2023-08-17T06:35:00.000Z",
+                Expected = "2023-08-17T06:35:00.0000000+00:00",
                 Input = new DateTimeOffset(2023, 8, 17, 6, 35, 0, TimeSpan.FromHours(0))
             },
             new {
-                Expected = "2023-08-17T08:35:00.000+02:00",
+                Expected = "2023-08-17T08:35:00.0000000+02:00",
                 Input = new DateTimeOffset(2023, 8, 17, 8, 35, 0, TimeSpan.FromHours(2))
             }
         };

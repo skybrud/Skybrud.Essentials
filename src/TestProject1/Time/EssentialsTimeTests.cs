@@ -14,8 +14,8 @@ public class EssentialsTimeTests {
 
         EssentialsTime time = new(2024, 3, 27, 12, 0, 0, TimeZoneInfo.Utc);
 
-        Assert.AreEqual("2024-03-27T12:00:00.000Z", time.ToString(), "#1");
-        Assert.AreEqual("2024-03-27T12:00:00.000Z", $"{time}", "#2");
+        Assert.AreEqual("2024-03-27T12:00:00.0000000+00:00", time.ToString(), "#1");
+        Assert.AreEqual("2024-03-27T12:00:00.0000000+00:00", $"{time}", "#2");
 
     }
 
@@ -39,16 +39,16 @@ public class EssentialsTimeTests {
         long ticks = 638959464000000000;
 
         EssentialsTime et1 = EssentialsTime.FromTicks(ticks, TimeSpan.Zero);
-        Assert.AreEqual("2025-10-13T10:00:00.000Z", et1.Iso8601, "et1");
+        Assert.AreEqual("2025-10-13T10:00:00.0000000+00:00", et1.Iso8601, "et1");
 
         EssentialsTime et2 = EssentialsTime.FromTicks(ticks, TimeZoneInfo.Utc);
-        Assert.AreEqual("2025-10-13T10:00:00.000Z", et2.Iso8601, "et2");
+        Assert.AreEqual("2025-10-13T10:00:00.0000000+00:00", et2.Iso8601, "et2");
 
         DateTime dt = new(ticks, DateTimeKind.Utc);
-        Assert.AreEqual("2025-10-13T10:00:00.000Z", Iso8601Utils.ToString(dt), "dt");
+        Assert.AreEqual("2025-10-13T10:00:00.0000000Z", Iso8601Utils.ToString(dt), "dt");
 
         DateTimeOffset dto = new(ticks, TimeSpan.Zero);
-        Assert.AreEqual("2025-10-13T10:00:00.000Z", Iso8601Utils.ToString(dto), "dto");
+        Assert.AreEqual("2025-10-13T10:00:00.0000000+00:00", Iso8601Utils.ToString(dto), "dto");
 
     }
 

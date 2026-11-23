@@ -30,7 +30,7 @@ public class DateTimeTests {
     public void ToIso8601() {
 
         var samples = new[] {
-            new { Expected = "2023-08-17T07:35:00.000Z", Input = new DateTime(2023, 8, 17, 07, 35, 0, DateTimeKind.Utc) }
+            new { Expected = "2023-08-17T07:35:00.0000000Z", Input = new DateTime(2023, 8, 17, 07, 35, 0, DateTimeKind.Utc) }
         };
 
         foreach (var sample in samples) {

@@ -278,8 +278,8 @@ namespace UnitTestProject1.Time.Time {
 
             EssentialsWeek week = new EssentialsWeek(date, romance);
 
-            Assert.AreEqual("2019-10-21T00:00:00.000+02:00", week.Start.ToString(), "Start");
-            Assert.AreEqual("2019-10-27T23:59:59.999+01:00", week.End.ToString(), "End");
+            Assert.AreEqual("2019-10-21T00:00:00.0000000+02:00", week.Start.ToString(), "Start");
+            Assert.AreEqual("2019-10-27T23:59:59.9999999+01:00", week.End.ToString(), "End");
 
             EssentialsDate[] days = week.ToArray();
 
@@ -330,15 +330,30 @@ namespace UnitTestProject1.Time.Time {
             EssentialsWeek week2 = EssentialsWeek.Parse("2022W52");
             EssentialsWeek week3 = EssentialsWeek.Parse("2022-52");
 
-            Assert.AreEqual(2022, week1?.Year);
-            Assert.AreEqual(52, week1?.WeekNumber);
+            Assert.AreEqual(2022, week1.Year);
+            Assert.AreEqual(52, week1.WeekNumber);
 
-            Assert.AreEqual(2022, week2?.Year);
-            Assert.AreEqual(52, week2?.WeekNumber);
+            Assert.AreEqual(2022, week2.Year);
+            Assert.AreEqual(52, week2.WeekNumber);
 
-            Assert.AreEqual(2022, week3?.Year);
-            Assert.AreEqual(52, week3?.WeekNumber);
+            Assert.AreEqual(2022, week3.Year);
+            Assert.AreEqual(52, week3.WeekNumber);
 
+        }
+
+        [TestMethod]
+        public void ParseNull() {
+            Assert.ThrowsExactly<ArgumentNullException>(() => EssentialsWeek.Parse(null));
+        }
+
+        [TestMethod]
+        public void ParseEmpty() {
+            Assert.ThrowsExactly<ArgumentException>(() => EssentialsWeek.Parse(string.Empty));
+        }
+
+        [TestMethod]
+        public void ParseInvalid() {
+            Assert.ThrowsExactly<FormatException>(() => EssentialsWeek.Parse("nope!"));
         }
 
         [TestMethod]
@@ -362,13 +377,13 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime start6 = week6.GetStartOfWeek(romance);
             EssentialsTime start7 = week7.GetStartOfWeek(romance);
 
-            Assert.AreEqual("2022-01-03T00:00:00.000+01:00", start1.ToString(), "#1");
-            Assert.AreEqual("2022-01-10T00:00:00.000+01:00", start2.ToString(), "#2");
-            Assert.AreEqual("2022-03-21T00:00:00.000+01:00", start3.ToString(), "#3");
-            Assert.AreEqual("2022-10-24T00:00:00.000+02:00", start4.ToString(), "#4");
-            Assert.AreEqual("2022-10-31T00:00:00.000+01:00", start5.ToString(), "#5");
-            Assert.AreEqual("2022-12-19T00:00:00.000+01:00", start6.ToString(), "#6");
-            Assert.AreEqual("2022-12-26T00:00:00.000+01:00", start7.ToString(), "#7");
+            Assert.AreEqual("2022-01-03T00:00:00.0000000+01:00", start1.ToString(), "#1");
+            Assert.AreEqual("2022-01-10T00:00:00.0000000+01:00", start2.ToString(), "#2");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000+01:00", start3.ToString(), "#3");
+            Assert.AreEqual("2022-10-24T00:00:00.0000000+02:00", start4.ToString(), "#4");
+            Assert.AreEqual("2022-10-31T00:00:00.0000000+01:00", start5.ToString(), "#5");
+            Assert.AreEqual("2022-12-19T00:00:00.0000000+01:00", start6.ToString(), "#6");
+            Assert.AreEqual("2022-12-26T00:00:00.0000000+01:00", start7.ToString(), "#7");
 
         }
 
@@ -393,13 +408,13 @@ namespace UnitTestProject1.Time.Time {
             EssentialsTime end6 = week6.GetEndOfWeek(romance);
             EssentialsTime end7 = week7.GetEndOfWeek(romance);
 
-            Assert.AreEqual("2022-01-09T23:59:59.999+01:00", end1.ToString(), "#1");
-            Assert.AreEqual("2022-01-16T23:59:59.999+01:00", end2.ToString(), "#2");
-            Assert.AreEqual("2022-03-27T23:59:59.999+02:00", end3.ToString(), "#3");
-            Assert.AreEqual("2022-10-30T23:59:59.999+01:00", end4.ToString(), "#4");
-            Assert.AreEqual("2022-11-06T23:59:59.999+01:00", end5.ToString(), "#5");
-            Assert.AreEqual("2022-12-25T23:59:59.999+01:00", end6.ToString(), "#6");
-            Assert.AreEqual("2023-01-01T23:59:59.999+01:00", end7.ToString(), "#7");
+            Assert.AreEqual("2022-01-09T23:59:59.9999999+01:00", end1.ToString(), "#1");
+            Assert.AreEqual("2022-01-16T23:59:59.9999999+01:00", end2.ToString(), "#2");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999+02:00", end3.ToString(), "#3");
+            Assert.AreEqual("2022-10-30T23:59:59.9999999+01:00", end4.ToString(), "#4");
+            Assert.AreEqual("2022-11-06T23:59:59.9999999+01:00", end5.ToString(), "#5");
+            Assert.AreEqual("2022-12-25T23:59:59.9999999+01:00", end6.ToString(), "#6");
+            Assert.AreEqual("2023-01-01T23:59:59.9999999+01:00", end7.ToString(), "#7");
 
         }
 
@@ -422,31 +437,31 @@ namespace UnitTestProject1.Time.Time {
 
             Assert.AreEqual(2022, week1.Year, "#1a");
             Assert.AreEqual(12, week1.WeekNumber, "#1b");
-            Assert.AreEqual("2022-03-21T00:00:00.000+01:00", week1.GetStartOfWeek().Iso8601, "#1c");
-            Assert.AreEqual("2022-03-21T00:00:00.000+01:00", week1.GetStartOfWeek(romance).Iso8601, "#1d");
-            Assert.AreEqual("2022-03-21T00:00:00.000+02:00", week1.GetStartOfWeek(fle).Iso8601, "#1e");
-            Assert.AreEqual("2022-03-21T00:00:00.000-03:00", week1.GetStartOfWeek(greenland).Iso8601, "#1f");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000+01:00", week1.GetStartOfWeek().Iso8601, "#1c");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000+01:00", week1.GetStartOfWeek(romance).Iso8601, "#1d");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000+02:00", week1.GetStartOfWeek(fle).Iso8601, "#1e");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000-03:00", week1.GetStartOfWeek(greenland).Iso8601, "#1f");
 
             Assert.AreEqual(2022, week2.Year, "#2a");
             Assert.AreEqual(12, week2.WeekNumber, "#2b");
-            Assert.AreEqual("2022-03-21T00:00:00.000+01:00", week2.GetStartOfWeek().Iso8601, "#2c");
-            Assert.AreEqual("2022-03-21T00:00:00.000+01:00", week2.GetStartOfWeek(romance).Iso8601, "#2d");
-            Assert.AreEqual("2022-03-21T00:00:00.000+02:00", week2.GetStartOfWeek(fle).Iso8601, "#2e");
-            Assert.AreEqual("2022-03-21T00:00:00.000-03:00", week2.GetStartOfWeek(greenland).Iso8601, "#2f");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000+01:00", week2.GetStartOfWeek().Iso8601, "#2c");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000+01:00", week2.GetStartOfWeek(romance).Iso8601, "#2d");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000+02:00", week2.GetStartOfWeek(fle).Iso8601, "#2e");
+            Assert.AreEqual("2022-03-21T00:00:00.0000000-03:00", week2.GetStartOfWeek(greenland).Iso8601, "#2f");
 
             Assert.AreEqual(2022, week3.Year, "#3a");
             Assert.AreEqual(43, week3.WeekNumber, "#3b");
-            Assert.AreEqual("2022-10-24T00:00:00.000+02:00", week3.GetStartOfWeek().Iso8601, "#3c");
-            Assert.AreEqual("2022-10-24T00:00:00.000+02:00", week3.GetStartOfWeek(romance).Iso8601, "#3d");
-            Assert.AreEqual("2022-10-24T00:00:00.000+03:00", week3.GetStartOfWeek(fle).Iso8601, "#3e");
-            Assert.AreEqual("2022-10-24T00:00:00.000-02:00", week3.GetStartOfWeek(greenland).Iso8601, "#3f");
+            Assert.AreEqual("2022-10-24T00:00:00.0000000+02:00", week3.GetStartOfWeek().Iso8601, "#3c");
+            Assert.AreEqual("2022-10-24T00:00:00.0000000+02:00", week3.GetStartOfWeek(romance).Iso8601, "#3d");
+            Assert.AreEqual("2022-10-24T00:00:00.0000000+03:00", week3.GetStartOfWeek(fle).Iso8601, "#3e");
+            Assert.AreEqual("2022-10-24T00:00:00.0000000-02:00", week3.GetStartOfWeek(greenland).Iso8601, "#3f");
 
             Assert.AreEqual(2022, week4.Year, "#4a");
             Assert.AreEqual(45, week4.WeekNumber, "#4b");
-            Assert.AreEqual("2022-11-07T00:00:00.000+01:00", week4.GetStartOfWeek().Iso8601, "#4c");
-            Assert.AreEqual("2022-11-07T00:00:00.000+01:00", week4.GetStartOfWeek(romance).Iso8601, "#4d");
-            Assert.AreEqual("2022-11-07T00:00:00.000+02:00", week4.GetStartOfWeek(fle).Iso8601, "#4e");
-            Assert.AreEqual("2022-11-07T00:00:00.000-03:00", week4.GetStartOfWeek(greenland).Iso8601, "#4f");
+            Assert.AreEqual("2022-11-07T00:00:00.0000000+01:00", week4.GetStartOfWeek().Iso8601, "#4c");
+            Assert.AreEqual("2022-11-07T00:00:00.0000000+01:00", week4.GetStartOfWeek(romance).Iso8601, "#4d");
+            Assert.AreEqual("2022-11-07T00:00:00.0000000+02:00", week4.GetStartOfWeek(fle).Iso8601, "#4e");
+            Assert.AreEqual("2022-11-07T00:00:00.0000000-03:00", week4.GetStartOfWeek(greenland).Iso8601, "#4f");
 
         }
 
@@ -469,31 +484,31 @@ namespace UnitTestProject1.Time.Time {
 
             Assert.AreEqual(2022, week1.Year, "#1a");
             Assert.AreEqual(12, week1.WeekNumber, "#1b");
-            Assert.AreEqual("2022-03-27T23:59:59.999+02:00", week1.GetEndOfWeek().Iso8601, "#1c");
-            Assert.AreEqual("2022-03-27T23:59:59.999+02:00", week1.GetEndOfWeek(romance).Iso8601, "#1d");
-            Assert.AreEqual("2022-03-27T23:59:59.999+03:00", week1.GetEndOfWeek(fle).Iso8601, "#1e");
-            Assert.AreEqual("2022-03-27T23:59:59.999-02:00", week1.GetEndOfWeek(greenland).Iso8601, "#1f");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999+02:00", week1.GetEndOfWeek().Iso8601, "#1c");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999+02:00", week1.GetEndOfWeek(romance).Iso8601, "#1d");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999+03:00", week1.GetEndOfWeek(fle).Iso8601, "#1e");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999-02:00", week1.GetEndOfWeek(greenland).Iso8601, "#1f");
 
             Assert.AreEqual(2022, week2.Year, "#2a");
             Assert.AreEqual(12, week2.WeekNumber, "#2b");
-            Assert.AreEqual("2022-03-27T23:59:59.999+02:00", week2.GetEndOfWeek().Iso8601, "#2c");
-            Assert.AreEqual("2022-03-27T23:59:59.999+02:00", week2.GetEndOfWeek(romance).Iso8601, "#2d");
-            Assert.AreEqual("2022-03-27T23:59:59.999+03:00", week2.GetEndOfWeek(fle).Iso8601, "#2e");
-            Assert.AreEqual("2022-03-27T23:59:59.999-02:00", week2.GetEndOfWeek(greenland).Iso8601, "#2f");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999+02:00", week2.GetEndOfWeek().Iso8601, "#2c");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999+02:00", week2.GetEndOfWeek(romance).Iso8601, "#2d");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999+03:00", week2.GetEndOfWeek(fle).Iso8601, "#2e");
+            Assert.AreEqual("2022-03-27T23:59:59.9999999-02:00", week2.GetEndOfWeek(greenland).Iso8601, "#2f");
 
             Assert.AreEqual(2022, week3.Year, "#3a");
             Assert.AreEqual(43, week3.WeekNumber, "#3b");
-            Assert.AreEqual("2022-10-30T23:59:59.999+01:00", week3.GetEndOfWeek().Iso8601, "#3c");
-            Assert.AreEqual("2022-10-30T23:59:59.999+01:00", week3.GetEndOfWeek(romance).Iso8601, "#3d");
-            Assert.AreEqual("2022-10-30T23:59:59.999+02:00", week3.GetEndOfWeek(fle).Iso8601, "#3e");
-            Assert.AreEqual("2022-10-30T23:59:59.999-03:00", week3.GetEndOfWeek(greenland).Iso8601, "#3f");
+            Assert.AreEqual("2022-10-30T23:59:59.9999999+01:00", week3.GetEndOfWeek().Iso8601, "#3c");
+            Assert.AreEqual("2022-10-30T23:59:59.9999999+01:00", week3.GetEndOfWeek(romance).Iso8601, "#3d");
+            Assert.AreEqual("2022-10-30T23:59:59.9999999+02:00", week3.GetEndOfWeek(fle).Iso8601, "#3e");
+            Assert.AreEqual("2022-10-30T23:59:59.9999999-03:00", week3.GetEndOfWeek(greenland).Iso8601, "#3f");
 
             Assert.AreEqual(2022, week4.Year, "#4a");
             Assert.AreEqual(45, week4.WeekNumber, "#4b");
-            Assert.AreEqual("2022-11-13T23:59:59.999+01:00", week4.GetEndOfWeek().Iso8601, "#4c");
-            Assert.AreEqual("2022-11-13T23:59:59.999+01:00", week4.GetEndOfWeek(romance).Iso8601, "#4d");
-            Assert.AreEqual("2022-11-13T23:59:59.999+02:00", week4.GetEndOfWeek(fle).Iso8601, "#4e");
-            Assert.AreEqual("2022-11-13T23:59:59.999-03:00", week4.GetEndOfWeek(greenland).Iso8601, "#4f");
+            Assert.AreEqual("2022-11-13T23:59:59.9999999+01:00", week4.GetEndOfWeek().Iso8601, "#4c");
+            Assert.AreEqual("2022-11-13T23:59:59.9999999+01:00", week4.GetEndOfWeek(romance).Iso8601, "#4d");
+            Assert.AreEqual("2022-11-13T23:59:59.9999999+02:00", week4.GetEndOfWeek(fle).Iso8601, "#4e");
+            Assert.AreEqual("2022-11-13T23:59:59.9999999-03:00", week4.GetEndOfWeek(greenland).Iso8601, "#4f");
 
         }
 

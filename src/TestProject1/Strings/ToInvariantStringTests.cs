@@ -34,6 +34,7 @@ public class ToInvariantStringTests {
     public void DateTimeOffset() {
         DateTimeOffset dto = new(2025, 10, 16, 14, 7, 2, TimeSpan.Zero);
         Assert.AreEqual("10/16/2025 14:07:02 +00:00", dto.ToInvariantString());
+        Assert.AreEqual("2025-10-16T14:07:02.0000000+00:00", dto.ToInvariantString("o"));
         Assert.AreEqual("2025-10-16", dto.ToInvariantString("yyyy-MM-dd"));
         Assert.AreEqual("October", dto.ToInvariantString("MMMM"));
         Assert.AreEqual("Thursday", dto.ToInvariantString("dddd"));
@@ -43,6 +44,8 @@ public class ToInvariantStringTests {
     public void DateTimeOffsetNullable() {
         DateTimeOffset? dto = new(2025, 10, 16, 14, 7, 2, TimeSpan.Zero);
         Assert.AreEqual("10/16/2025 14:07:02 +00:00", dto.ToInvariantString());
+        Assert.AreEqual("2025-10-16T14:07:02.0000000+00:00", dto.ToInvariantString("o"));
+        Assert.AreEqual("2025-10-16T14:07:02.0000000+00:00", dto.Value.ToInvariantString("o"));
         Assert.AreEqual("2025-10-16", dto.ToInvariantString("yyyy-MM-dd"));
         Assert.AreEqual("October", dto.ToInvariantString("MMMM"));
         Assert.AreEqual("Thursday", dto.ToInvariantString("dddd"));
@@ -51,7 +54,7 @@ public class ToInvariantStringTests {
     [TestMethod]
     public void EssentialsTime() {
         EssentialsTime dto = new(2025, 10, 16, 14, 7, 2, TimeSpan.Zero);
-        Assert.AreEqual("2025-10-16T14:07:02.000Z", dto.ToInvariantString());
+        Assert.AreEqual("2025-10-16T14:07:02.0000000+00:00", dto.ToInvariantString());
         Assert.AreEqual("2025-10-16", dto.ToInvariantString("yyyy-MM-dd"));
         Assert.AreEqual("October", dto.ToInvariantString("MMMM"));
         Assert.AreEqual("Thursday", dto.ToInvariantString("dddd"));

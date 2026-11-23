@@ -466,8 +466,9 @@ namespace UnitTestProject1.Time.Time {
             // Convert to EssentialsTime
             EssentialsTime time = EssentialsTime.FromTicks(dt.Ticks);
 
-            Assert.AreEqual(637461720000000000, time.Ticks, "#3");
-            Assert.AreEqual("2021-01-13T22:00:00", time.ToString("yyyy-MM-ddTHH:mm:ss"), "#4");
+            Assert.AreEqual(637461756000000000, time.Ticks, "#3");
+            Assert.AreEqual(637461720000000000, time.UtcTicks, "#4");
+            Assert.AreEqual("2021-01-13T23:00:00.0000000+01:00", time.ToString("o"), "#5");
 
         }
 
@@ -501,14 +502,14 @@ namespace UnitTestProject1.Time.Time {
 
             using (new CultureDisposable(InvariantCulture)) {
                 string actual = time.ToString();
-                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#1a");
-                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", $"{time}", "#1b");
+                Assert.AreEqual("2022-03-07T17:50:23.1230000+01:00", actual, "#1a");
+                Assert.AreEqual("2022-03-07T17:50:23.1230000+01:00", $"{time}", "#1b");
             }
 
             using (new CultureDisposable(DanishCulture)) {
                 string actual = time.ToString();
-                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", actual, "#2a");
-                Assert.AreEqual("2022-03-07T17:50:23.123+01:00", $"{time}", "#2b");
+                Assert.AreEqual("2022-03-07T17:50:23.1230000+01:00", actual, "#2a");
+                Assert.AreEqual("2022-03-07T17:50:23.1230000+01:00", $"{time}", "#2b");
             }
 
         }
