@@ -457,11 +457,10 @@ public partial class EssentialsDate : IComparable, IComparable<EssentialsDate>, 
     /// </summary>
     /// <param name="input">A string that contains a date to convert.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsDate? Parse(string? input) {
+    public static EssentialsDate Parse(string input) {
 
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+        // Some input validation
+        Guard.ThrowIfNullOrWhiteSpace(input);
 
         // Attempt to parse the date
         DateTime dt = DateTime.Parse(input);
@@ -478,11 +477,10 @@ public partial class EssentialsDate : IComparable, IComparable<EssentialsDate>, 
     /// <param name="input">A string that contains a date to convert.</param>
     /// <param name="provider">An object that supplies culture-specific format information about <paramref name="input"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsDate? Parse(string? input, IFormatProvider? provider) {
+    public static EssentialsDate Parse(string input, IFormatProvider? provider) {
 
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+        // Some input validation
+        Guard.ThrowIfNullOrWhiteSpace(input);
 
         // Attempt to parse the date
         DateTime dt = DateTime.Parse(input, provider);
@@ -503,11 +501,10 @@ public partial class EssentialsDate : IComparable, IComparable<EssentialsDate>, 
     /// interpret the parsed date in relation to the current time zone or the current date. A typical value to
     /// specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/> as specified by <paramref name="provider"/> and <paramref name="styles"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsDate? Parse(string? input, IFormatProvider? provider, DateTimeStyles styles) {
+    public static EssentialsDate Parse(string input, IFormatProvider? provider, DateTimeStyles styles) {
 
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+        // Some input validation
+        Guard.ThrowIfNullOrWhiteSpace(input);
 
         // Attempt to parse the date
         DateTime dt = DateTime.Parse(input, provider, styles);
@@ -528,11 +525,10 @@ public partial class EssentialsDate : IComparable, IComparable<EssentialsDate>, 
     /// <paramref name="input"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
     /// <paramref name="format"/> and <paramref name="provider"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsDate? ParseExact(string? input, string format, IFormatProvider? provider) {
+    public static EssentialsDate ParseExact(string input, string format, IFormatProvider? provider) {
 
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+        // Some input validation
+        Guard.ThrowIfNullOrWhiteSpace(input);
 
         // Attempt to parse the date
         DateTime dt = DateTime.ParseExact(input, format, provider);
@@ -556,11 +552,10 @@ public partial class EssentialsDate : IComparable, IComparable<EssentialsDate>, 
     /// to specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
     /// <paramref name="format"/>, <paramref name="provider"/>, and <paramref name="styles"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsDate? ParseExact(string? input, string format, IFormatProvider? provider, DateTimeStyles styles) {
+    public static EssentialsDate ParseExact(string? input, string format, IFormatProvider? provider, DateTimeStyles styles) {
 
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+        // Some input validation
+        Guard.ThrowIfNullOrWhiteSpace(input);
 
         // Attempt to parse the date
         DateTime dt = DateTime.ParseExact(input, format, provider, styles);
@@ -582,11 +577,10 @@ public partial class EssentialsDate : IComparable, IComparable<EssentialsDate>, 
     /// <paramref name="input"/>. A typical value to specify is <see cref="DateTimeStyles.None"/>.</param>
     /// <returns>An object that is equivalent to the date contained in <paramref name="input"/>, as specified by
     /// <paramref name="formats"/>, <paramref name="provider"/>, and <paramref name="styles"/>.</returns>
-    [return: NotNullIfNotNull(nameof(input))]
-    public static EssentialsDate? ParseExact(string? input, string[] formats, IFormatProvider? provider, DateTimeStyles styles) {
+    public static EssentialsDate ParseExact(string? input, string[] formats, IFormatProvider? provider, DateTimeStyles styles) {
 
-        // Is "input" an empty string?
-        if (string.IsNullOrWhiteSpace(input)) return null;
+        // Some input validation
+        Guard.ThrowIfNullOrWhiteSpace(input);
 
         // Attempt to parse the date
         DateTime dt = DateTime.ParseExact(input, formats, provider, styles);

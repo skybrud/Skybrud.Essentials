@@ -192,15 +192,14 @@ public class EssentialsMonthRange : IReadOnlyList<EssentialsMonth> {
 
     /// <summary>
     /// Parses the specified <paramref name="input"/> string representation of a month range into a corresponding of
-    /// <see cref="EssentialsMonthRange"/>. If <paramref name="input"/> is either <see langword="null"/> or white space,
-    /// <see langword="null"/> will be returned instead.
+    /// <see cref="EssentialsMonthRange"/>.
     /// </summary>
     /// <param name="input">The string identifying the week range.</param>
     /// <returns>An instance of <see cref="EssentialsMonthRange"/>.</returns>
-    public static EssentialsMonthRange? Parse(string? input) {
-        if (string.IsNullOrWhiteSpace(input)) return null;
+    public static EssentialsMonthRange Parse(string input) {
+        Guard.ThrowIfNullOrWhiteSpace(input);
         if (TryParse(input!, out EssentialsMonthRange? result)) return result;
-        throw new Exception("Specified input string is not a valid month range.");
+        throw new FormatException("Specified input string is not a valid month range.");
     }
 
     /// <summary>

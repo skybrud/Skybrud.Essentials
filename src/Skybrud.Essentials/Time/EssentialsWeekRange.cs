@@ -149,10 +149,10 @@ public class EssentialsWeekRange : IReadOnlyList<EssentialsWeek> {
     /// </summary>
     /// <param name="input">The string identifying the week range.</param>
     /// <returns>An instance of <see cref="EssentialsWeekRange"/>.</returns>
-    public static EssentialsWeekRange? Parse(string? input) {
-        if (string.IsNullOrWhiteSpace(input)) return null;
+    public static EssentialsWeekRange Parse(string input) {
+        Guard.ThrowIfNullOrWhiteSpace(input);
         if (TryParse(input!, out EssentialsWeekRange? result)) return result;
-        throw new Exception("Specified input string is not a valid week range.");
+        throw new FormatException("Specified input string is not a valid week range.");
     }
 
     /// <summary>

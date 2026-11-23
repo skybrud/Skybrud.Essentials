@@ -98,15 +98,14 @@ public class EssentialsDateRange : IEnumerable<EssentialsDate> {
 
     /// <summary>
     /// Parses the specified <paramref name="input"/> string representation of a date range into a corresponding of
-    /// <see cref="EssentialsDateRange"/>. If <paramref name="input"/> is either <see langword="null"/> or white space,
-    /// <see langword="null"/> will be returned instead.
+    /// <see cref="EssentialsDateRange"/>.
     /// </summary>
     /// <param name="input">The string identifying the date range.</param>
     /// <returns>An instance of <see cref="EssentialsDateRange"/>.</returns>
-    public static EssentialsDateRange? Parse(string? input) {
-        if (string.IsNullOrWhiteSpace(input)) return null;
-        if (TryParse(input!, out EssentialsDateRange? result)) return result;
-        throw new Exception("Specified input string is not a valid date range.");
+    public static EssentialsDateRange Parse(string input) {
+        Guard.ThrowIfNullOrWhiteSpace(input);
+        if (TryParse(input, out EssentialsDateRange? result)) return result;
+        throw new FormatException("Specified input string is not a valid date range.");
     }
 
     /// <summary>

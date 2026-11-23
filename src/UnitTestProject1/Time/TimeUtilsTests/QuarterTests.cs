@@ -42,11 +42,11 @@ namespace UnitTestProject1.Time.TimeUtilsTests {
             EssentialsTime start3 = TimeUtils.GetStartOfQuarter(time3);
             EssentialsTime start4 = TimeUtils.GetStartOfQuarter(time4);
 
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start1.Iso8601);
-            Assert.AreEqual("2022-01-01T00:00:00.000+01:00", start2.Iso8601);
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start1.Iso8601);
+            Assert.AreEqual("2022-01-01T00:00:00.0000000+01:00", start2.Iso8601);
 
-            Assert.AreEqual("2022-10-01T00:00:00.000+02:00", start3.Iso8601);
-            Assert.AreEqual("2022-10-01T00:00:00.000+02:00", start4.Iso8601);
+            Assert.AreEqual("2022-10-01T00:00:00.0000000+02:00", start3.Iso8601);
+            Assert.AreEqual("2022-10-01T00:00:00.0000000+02:00", start4.Iso8601);
 
         }
 
@@ -67,11 +67,11 @@ namespace UnitTestProject1.Time.TimeUtilsTests {
             EssentialsTime end3 = TimeUtils.GetEndOfQuarter(time3);
             EssentialsTime end4 = TimeUtils.GetEndOfQuarter(time4);
 
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end1.Iso8601);
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end2.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end1.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end2.Iso8601);
 
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end3.Iso8601);
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end4.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end3.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end4.Iso8601);
 
         }
 
@@ -100,11 +100,11 @@ namespace UnitTestProject1.Time.TimeUtilsTests {
             EssentialsTime end4 = TimeUtils.GetEndOfQuarter(time4);
             EssentialsTime end5 = TimeUtils.GetEndOfQuarter(time5);
 
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end1.Iso8601);
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end2.Iso8601);
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end3.Iso8601);
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end4.Iso8601);
-            Assert.AreEqual("2022-03-31T23:59:59.999+02:00", end5.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end1.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end2.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end3.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end4.Iso8601);
+            Assert.AreEqual("2022-03-31T23:59:59.9999999+02:00", end5.Iso8601);
 
         }
 
@@ -133,11 +133,11 @@ namespace UnitTestProject1.Time.TimeUtilsTests {
             EssentialsTime end4 = TimeUtils.GetEndOfQuarter(time4);
             EssentialsTime end5 = TimeUtils.GetEndOfQuarter(time5);
 
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end1.Iso8601);
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end2.Iso8601);
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end3.Iso8601);
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end4.Iso8601);
-            Assert.AreEqual("2022-12-31T23:59:59.999+01:00", end5.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end1.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end2.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end3.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end4.Iso8601);
+            Assert.AreEqual("2022-12-31T23:59:59.9999999+01:00", end5.Iso8601);
 
         }
 

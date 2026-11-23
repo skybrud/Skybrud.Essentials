@@ -323,10 +323,10 @@ public class EssentialsWeek : IEnumerable<EssentialsDate>, IComparable, ICompara
     /// </summary>
     /// <param name="input">The string identifying the ISO 8601 week.</param>
     /// <returns>An instance of <see cref="EssentialsWeek"/>.</returns>
-    public static EssentialsWeek? Parse(string input) {
-        if (string.IsNullOrWhiteSpace(input)) return null;
+    public static EssentialsWeek Parse(string input) {
+        Guard.ThrowIfNullOrWhiteSpace(input);
         if (TryParse(input, out EssentialsWeek? result)) return result;
-        throw new Exception("Specified input string is not a valid week.");
+        throw new FormatException("Specified input string is not a valid week.");
     }
 
     /// <summary>

@@ -1,4 +1,5 @@
-﻿using Microsoft.VisualStudio.TestTools.UnitTesting;
+﻿using System;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Skybrud.Essentials.Time;
 
 namespace UnitTestProject1.Time.Time {
@@ -25,13 +26,8 @@ namespace UnitTestProject1.Time.Time {
         [TestMethod]
         public void Parse() {
 
-            EssentialsDateRange range1 = EssentialsDateRange.Parse(null);
-            EssentialsDateRange range2 = EssentialsDateRange.Parse(string.Empty);
             EssentialsDateRange range3 = EssentialsDateRange.Parse("2022-10-01__2022-12-31");
             EssentialsDateRange range4 = EssentialsDateRange.Parse("2022-12-31__2022-10-01");
-
-            Assert.IsNull(range1);
-            Assert.IsNull(range2);
 
             Assert.IsNotNull(range3);
             Assert.IsFalse(range3.IsReverse);
@@ -45,6 +41,21 @@ namespace UnitTestProject1.Time.Time {
             Assert.AreEqual("2022-10-01", range4.Days[range4.Days.Length - 1].ToString());
             Assert.AreEqual("2022-12-31__2022-10-01", range4.ToString());
 
+        }
+
+        [TestMethod]
+        public void ParseNull() {
+            Assert.ThrowsExactly<ArgumentNullException>(() => EssentialsDateRange.Parse(null));
+        }
+
+        [TestMethod]
+        public void ParseEmpty() {
+            Assert.ThrowsExactly<ArgumentException>(() => EssentialsDateRange.Parse(string.Empty));
+        }
+
+        [TestMethod]
+        public void ParseInvalid() {
+            Assert.ThrowsExactly<FormatException>(() => EssentialsDateRange.Parse("nope!"));
         }
 
     }
