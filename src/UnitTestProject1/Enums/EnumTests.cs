@@ -20,8 +20,8 @@ namespace UnitTestProject1.Enums {
 
             Assert.AreEqual(2, values.Length);
 
-            Assert.AreEqual(values[0], SortOrder.Ascending);
-            Assert.AreEqual(values[1], SortOrder.Descending);
+            Assert.AreEqual(SortOrder.Ascending, values[0]);
+            Assert.AreEqual(SortOrder.Descending, values[1]);
 
         }
 
@@ -32,8 +32,8 @@ namespace UnitTestProject1.Enums {
 
             Assert.AreEqual(2, values.Length);
 
-            Assert.AreEqual(values[0], SortOrder.Ascending);
-            Assert.AreEqual(values[1], SortOrder.Descending);
+            Assert.AreEqual(SortOrder.Ascending, values[0]);
+            Assert.AreEqual(SortOrder.Descending, values[1]);
 
         }
 
@@ -119,31 +119,31 @@ namespace UnitTestProject1.Enums {
             bool status9 = EnumUtils.TryParseEnum("not found", out HttpStatusCode result9);
 
             Assert.IsFalse(status1);
-            Assert.AreEqual(result1, default);
+            Assert.AreEqual(default, result1);
 
             Assert.IsFalse(status2);
-            Assert.AreEqual(result2, default);
+            Assert.AreEqual(default, result2);
 
             Assert.IsTrue(status3);
-            Assert.AreEqual(result3, HttpStatusCode.OK);
+            Assert.AreEqual(HttpStatusCode.OK, result3);
 
             Assert.IsTrue(status4);
-            Assert.AreEqual(result4, HttpStatusCode.OK);
+            Assert.AreEqual(HttpStatusCode.OK, result4);
 
             Assert.IsTrue(status5);
-            Assert.AreEqual(result5, HttpStatusCode.OK);
+            Assert.AreEqual(HttpStatusCode.OK, result5);
 
             Assert.IsTrue(status6);
-            Assert.AreEqual(result6, HttpStatusCode.NotFound);
+            Assert.AreEqual(HttpStatusCode.NotFound, result6);
 
             Assert.IsTrue(status7);
-            Assert.AreEqual(result7, HttpStatusCode.NotFound);
+            Assert.AreEqual(HttpStatusCode.NotFound, result7);
 
             Assert.IsTrue(status8);
-            Assert.AreEqual(result8, HttpStatusCode.NotFound);
+            Assert.AreEqual(HttpStatusCode.NotFound, result8);
 
             Assert.IsTrue(status9);
-            Assert.AreEqual(result9, HttpStatusCode.NotFound);
+            Assert.AreEqual(HttpStatusCode.NotFound, result9);
 
         }
 

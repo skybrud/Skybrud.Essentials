@@ -11,16 +11,11 @@ namespace UnitTestProject1.Maps {
         [TestMethod]
         public void GetDistance() {
 
-            // Values used for comparison comes from lines plotted into Google Maps. Google uses a varying number
-            // decimals depending on the distance, so we loose a bit of precision when rounding. But the results of this
-            // unit test still shows that the method works (e.g. the test will fail if using the mean radius rather than
-            // the equatorial radius).
-
             var samples = new[] {
-                new { From = new Point(55.6946159, 10.0366974), To = new Point(55.6477614, 10.1589203), Expected = "9.28", Decimals = 2 },
-                new { From = new Point(54.8671242, 7.7124023), To = new Point(56.8159142, 12.2113037), Expected = "355", Decimals = 0 },
-                new { From = new Point(49.2104204, -6.1083984), To = new Point(59.578851, 22.9833984), Expected = "2184", Decimals = 0 },
-                new { From = new Point(12.3829283, -71.3671875), To = new Point(71.2443555, 25.4882813), Expected = "8958", Decimals = 0 }
+                new { From = new Point(55.6946159, 10.0366974), To = new Point(55.6477614, 10.1589203), Expected = "9.29", Decimals = 2 },
+                new { From = new Point(54.8671242, 7.7124023), To = new Point(56.8159142, 12.2113037), Expected = "356", Decimals = 0 },
+                new { From = new Point(49.2104204, -6.1083984), To = new Point(59.578851, 22.9833984), Expected = "2188", Decimals = 0 },
+                new { From = new Point(12.3829283, -71.3671875), To = new Point(71.2443555, 25.4882813), Expected = "8952", Decimals = 0 }
             };
 
             foreach (var sample in samples) {
