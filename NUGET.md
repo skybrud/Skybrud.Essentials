@@ -33,7 +33,7 @@ The [**releases page**][GitHubReleases] lists the relevant changes from each rel
 
 ## Documentation
 
-See more at [**packages.skybrud.dk**](https://packages.skybrud.dk/skybrud.essentials/).
+See more at [**packages.limbo.works**](https://packages.limbo.works/skybrud.essentials/).
 
 [GitHubReleases]: https://github.com/skybrud/Skybrud.Essentials/releases
 [Changelog]: https://github.com/skybrud/Skybrud.Essentials/releases
